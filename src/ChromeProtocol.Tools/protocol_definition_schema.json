@@ -1,0 +1,220 @@
+{
+  "additionalProperties": true,
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "object",
+      "properties": {
+        "major": {
+          "type": "string"
+        },
+        "minor": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "major",
+        "minor"
+      ]
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Domain"
+      }
+    }
+  },
+  "required": [
+    "version",
+    "domains"
+  ],
+  "$defs": {
+    "Domain": {
+      "type": "object",
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "dependencies": {
+          "$ref": "#/$defs/array"
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "type": {
+                "enum": [
+                  "any",
+                  "array",
+                  "boolean",
+                  "integer",
+                  "number",
+                  "object",
+                  "string"
+                ]
+              },
+              "properties": {
+                "$ref": "#/$defs/array1"
+              },
+              "enum": {
+                "$ref": "#/$defs/array"
+              },
+              "experimental": {
+                "type": "boolean"
+              },
+              "deprecated": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id"
+            ]
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "parameters": {
+                "$ref": "#/$defs/array1"
+              },
+              "experimental": {
+                "type": "boolean"
+              },
+              "deprecated": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "parameters": {
+                "$ref": "#/$defs/array1"
+              },
+              "returns": {
+                "$ref": "#/$defs/array1"
+              },
+              "experimental": {
+                "type": "boolean"
+              },
+              "deprecated": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          }
+        },
+        "experimental": {
+          "type": "boolean"
+        },
+        "deprecated": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "domain"
+      ]
+    },
+    "array": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "array1": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "ref": {
+            "type": "string"
+          },
+          "optional": {
+            "type": "boolean"
+          },
+          "type": {
+            "enum": [
+              "any",
+              "array",
+              "boolean",
+              "integer",
+              "number",
+              "object",
+              "string"
+            ]
+          },
+          "enum": {
+            "$ref": "#/$defs/array"
+          },
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "enum": [
+                  "any",
+                  "array",
+                  "boolean",
+                  "integer",
+                  "number",
+                  "object",
+                  "string"
+                ]
+              },
+              "ref": {
+                "type": "string"
+              }
+            },
+            "required": []
+          },
+          "experimental": {
+            "type": "boolean"
+          },
+          "deprecated": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      }
+    }
+  }
+}

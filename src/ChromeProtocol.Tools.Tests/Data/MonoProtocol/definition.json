@@ -1,0 +1,198 @@
+{
+  "version": {
+    "major": "7",
+    "minor": "0"
+  },
+  "domains": [
+    {
+      "domain": "Mono",
+      "description": "Contains commands and events related to Mono runtime.",
+      "experimental": true,
+      "events": [
+        {
+          "name": "runtimeReady",
+          "description": "Issued when Mono runtime is ready to use."
+        }
+      ]
+    },
+    {
+      "domain": "DotnetDebugger",
+      "description": "TBD",
+      "experimental": true,
+      "types": [
+        {
+          "id": "SourceLocation",
+          "description": "TBD.",
+          "type": "object",
+          "properties": [
+            {
+              "name": "scriptId",
+              "description": "Script identifier as reported in the `Debugger.scriptParsed`.",
+              "$ref": "Runtime.ScriptId"
+            },
+            {
+              "name": "lineNumber",
+              "description": "Line number in the script (0-based).",
+              "type": "integer"
+            },
+            {
+              "name": "columnNumber",
+              "description": "Column number in the script (0-based).",
+              "optional": true,
+              "type": "integer"
+            }
+          ]
+        }
+      ],
+      "commands": [
+        {
+          "name": "setDebuggerProperty",
+          "description": "TBD.",
+          "availableSince": "7",
+          "parameters": [
+            {
+              "name": "JustMyCodeStepping",
+              "description": "If true, enables stepping only into user code, not library one.",
+              "type": "boolean"
+            }
+          ],
+          "returns": [
+            {
+              "name": "justMyCodeEnabled",
+              "description": "TBD",
+              "optional": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        {
+          "name": "setNextIP",
+          "description": "TBD",
+          "availableSince": "7",
+          "parameters": [
+            {
+              "name": "location",
+              "description": "TBD",
+              "$ref": "DotnetDebugger.SourceLocation"
+            }
+          ]
+        },
+        {
+          "name": "applyUpdates",
+          "description": "TBD",
+          "availableSince": "7",
+          "parameters": [
+            {
+              "name": "moduleGUID",
+              "description": "TBD",
+              "type": "string"
+            },
+            {
+              "name": "dmeta",
+              "description": "The metadata changes to be applied",
+              "type": "string"
+            },
+            {
+              "name": "dil",
+              "description": "The IL changes to be applied",
+              "type": "string"
+            },
+            {
+              "name": "dpdb",
+              "description": "The PDB changes to be applied",
+              "type": "string"
+            }
+          ],
+          "returns": []
+        },
+        {
+          "name": "addSymbolServerUrl",
+          "description": "Note: this command will never respond, so don't wait for the response. When succeeded, it will emit 'Debugger.scriptParsed' event per each parsed .NET source file.",
+          "availableSince": "5",
+          "parameters": [
+            {
+              "name": "url",
+              "description": "TBD",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "name": "getMethodLocation",
+          "description": "TBD",
+          "parameters": [
+            {
+              "name": "assemblyName",
+              "description": "TBD",
+              "type": "string"
+            },
+            {
+              "name": "typeName",
+              "description": "TBD",
+              "type": "string"
+            },
+            {
+              "name": "methodName",
+              "description": "TBD",
+              "type": "string"
+            }
+          ],
+          "returns": [
+            {
+              "name": "line",
+              "description": "TBD",
+              "type": "integer"
+            },
+            {
+              "name": "column",
+              "description": "TBD",
+              "type": "integer"
+            },
+            {
+              "name": "url",
+              "description": "TBD",
+              "type": "string"
+            }
+          ]
+        }
+      ],
+      "events": []
+    },
+    {
+      "domain": "DotnetRuntime",
+      "experimental": true,
+      "types": [],
+      "commands": [
+        {
+          "name": "callFunctionOn",
+          "description": "An alias for different version of Runtime.callFunctionOn used in Mono proxy.\nDon't use directly, send it as Runtime.callFunctionOn command.",
+          "parameters": [
+            {
+              "name": "objectId",
+              "description": "TBD",
+              "type": "string"
+            },
+            {
+              "name": "typeName",
+              "description": "TBD",
+              "type": "string"
+            },
+            {
+              "name": "methodName",
+              "description": "TBD",
+              "type": "string"
+            }
+          ],
+          "returns": [
+            {
+              "name": "result",
+              "description": "TBD",
+              "type": "object"
+            }
+          ]
+        }
+      ],
+      "events": []
+    }
+  ]
+}

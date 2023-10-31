@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <AssemblyName>dotnet-cdp</AssemblyName>
+        <IsPackable>false</IsPackable>
+        <RootNamespace>ChromeProtocol.Tools</RootNamespace>
+        <AssemblyName>ChromeProtocol.Tools</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="JsonSchema.Net.Generation" />
+        <PackageReference Include="Microsoft.Extensions.Logging" />
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="Spectre.Console.Cli" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\ChromeProtocol.Core\ChromeProtocol.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="js_protocol.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="mono_protocol.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="browser_protocol.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="protocol_definition_schema.json" />
+        <EmbeddedResource Include="protocol_definition_schema.json" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,219 @@
+using System.Collections.Concurrent;
+using System.Net.WebSockets;
+using System.Reflection;
+using System.Text;
+using ChromeProtocol.Core;
+using ChromeProtocol.Runtime.Messaging.Json;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace ChromeProtocol.Runtime.Messaging.WebSockets;
+
+public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
+  where TNativeClient : WebSocket
+{
+  private readonly Uri _wsUri;
+  private readonly ILogger _logger;
+  private readonly ConcurrentDictionary<string, Func<ProtocolEvent<JObject>, Task>> _eventHandlers = new ();
+  private readonly ConcurrentDictionary<int, TaskCompletionSource<JObject>> _responseResolvers = new ();
+  private readonly TNativeClient _nativeClient;
+  private CancellationTokenSource _connectionCancellation;
+  private readonly BlockingCollection<ProtocolRequest<ICommand>> _outgoingMessages = new(new ConcurrentQueue<ProtocolRequest<ICommand>>());
+  private int _currentId = 0;
+
+  private readonly JsonSerializer _serializer = JsonSerializer.Create(JsonProtocolSerialization.Settings);
+
+  public event EventHandler<ProtocolRequest<ICommand>> OnRequestSent;
+  public event EventHandler<ProtocolResponse<JObject>> OnResponseReceived;
+  public event EventHandler<ProtocolEvent<JObject>> OnEventReceived;
+
+  public WebSocketProtocolClient(TNativeClient nativeClient, Uri wsUri, ILogger logger)
+  {
+    _nativeClient = nativeClient;
+    _wsUri = wsUri;
+    _logger = logger;
+  }
+
+  public event EventHandler? OnConnected;
+  public event EventHandler? OnDisconnected;
+
+  protected virtual Task InitializeConnectionAsync(TNativeClient nativeClient, Uri wsUri, CancellationToken token) =>
+    Task.CompletedTask;
+
+  public async Task ConnectAsync(CancellationToken token = default)
+  {
+    _connectionCancellation = new CancellationTokenSource();
+    await InitializeConnectionAsync(_nativeClient, _wsUri, token).ConfigureAwait(false);
+
+#pragma warning disable CS4014
+    StartIncomingWorker(_connectionCancellation.Token);
+      // .ContinueWith(task => _logger.LogError(task.Exception, "Error occured in incoming worker pump"), TaskContinuationOptions.OnlyOnFaulted);
+    StartOutgoingWorker(_connectionCancellation.Token);
+      // .ContinueWith(task => _logger.LogError(task.Exception, "Error occured in outgoing worker pump"), TaskContinuationOptions.OnlyOnFaulted);
+#pragma warning restore CS4014
+    OnConnected?.Invoke(this, EventArgs.Empty);
+  }
+
+  public async Task DisconnectAsync(CancellationToken token = default)
+  {
+    await _nativeClient.CloseAsync(WebSocketCloseStatus.Empty, "Graceful disconnect", token).ConfigureAwait(false);
+    _connectionCancellation.Cancel();
+    OnDisconnected?.Invoke(this, EventArgs.Empty);
+  }
+
+  public void ListenEvent<TEvent>(DomainEventHandler<TEvent> handler) where TEvent : IEvent
+  {
+    Func<ProtocolEvent<JObject>, Task> HandleProtocolEvent(DomainEventHandler<TEvent> eventHandler) =>
+      async rawEvent =>
+      {
+        var eventItself = rawEvent.Params.ToObject<TEvent>();
+        await eventHandler(eventItself).ConfigureAwait(false);
+      };
+
+    _eventHandlers.AddOrUpdate(GetMethodName(typeof(TEvent)), HandleProtocolEvent(handler), (_, existing) => existing + HandleProtocolEvent(handler));
+  }
+
+  public async Task<TResponse> SendCommandAsync<TResponse>(ICommand<TResponse> command,
+    string? sessionId = null,
+    CancellationToken? token = default) where TResponse : IType
+  {
+    var id = Interlocked.Increment(ref _currentId);
+    try
+    {
+      var resolver = new TaskCompletionSource<JObject>();
+      if (_responseResolvers.TryAdd(id, resolver))
+      {
+        await FireInternalAsync(id, GetMethodName(command.GetType()), command, sessionId).ConfigureAwait(false);
+        var responseRaw = await resolver.Task.ConfigureAwait(false);
+        var response = responseRaw.ToObject<TResponse>(_serializer) ?? throw new ArgumentException(null, nameof(responseRaw));
+        return response;
+      }
+
+      throw new Exception();
+    }
+    catch (Exception e)
+    {
+      _logger.LogError(e, "Error occured while sending the protocol message");
+      throw;
+    }
+  }
+
+  public async Task FireCommandAsync(ICommand command, string? sessionId = default,
+    CancellationToken token = default)
+  {
+    var id = Interlocked.Increment(ref _currentId);
+    await FireInternalAsync(id, GetMethodName(command.GetType()), command, sessionId).ConfigureAwait(false);
+  }
+
+  public IScopedProtocolClient CreateScoped(string sessionId) => new ScopedProtocolClient(this, sessionId);
+
+  public void Dispose()
+  {
+    if (_connectionCancellation.IsCancellationRequested) return;
+    _connectionCancellation.Cancel();
+  }
+
+  private async Task FireInternalAsync(int id, string methodName, ICommand command, string? sessionId)
+  {
+    var request = new ProtocolRequest<ICommand>(id, methodName, command, sessionId);
+    if (!_outgoingMessages.TryAdd(request))
+    {
+      throw new Exception("Can't schedule outgoing event for sending.");
+    }
+  }
+
+  private void StartOutgoingWorker(CancellationToken token)
+  {
+    new Thread(() =>
+    {
+      _logger.LogInformation("Starting outgoing messages pump...");
+      while (!token.IsCancellationRequested)
+      {
+        var message = _outgoingMessages.Take();
+        ProcessOutgoingRequest(message).ConfigureAwait(false).GetAwaiter().GetResult();
+      }
+    }).Start();
+  }
+
+  private void StartIncomingWorker(CancellationToken token)
+  {
+    new Thread(() =>
+    {
+      _logger.LogInformation("Starting incoming messages pump...");
+      try
+      {
+        var buffer = new byte[40096];
+        using var memoryStream = new MemoryStream();
+        while (!token.IsCancellationRequested)
+        {
+          WebSocketReceiveResult incoming;
+          do
+          {
+            incoming = _nativeClient.ReceiveAsync(new ArraySegment<byte>(buffer), token).ConfigureAwait(false).GetAwaiter().GetResult();
+            memoryStream.Write(buffer, 0, incoming.Count);
+          } while (!incoming.EndOfMessage);
+
+          var message = Encoding.UTF8.GetString(memoryStream.ToArray());
+          memoryStream.Position = 0;
+          memoryStream.SetLength(0);
+          Task.Run(() => ProcessIncoming(message), token);
+        }
+      }
+      catch (Exception e)
+      {
+        _logger.LogError(e, "Error occured while receiving the protocol message");
+        throw;
+      }
+    }).Start();
+  }
+
+  private IProtocolMessage DeserializeMessage(string message)
+  {
+    var token = JToken.Parse(message) ?? throw new ArgumentException(null, nameof(message));
+
+    if (token["id"] != null)
+      return token.ToObject<ProtocolResponse<JObject>>(_serializer) ?? throw new ArgumentException(null, nameof(token));
+
+    return token.ToObject<ProtocolEvent<JObject>>(_serializer) ?? throw new ArgumentException(null, nameof(token));
+  }
+
+  private Task ProcessIncoming(string message) =>
+    DeserializeMessage(message) switch
+    {
+      ProtocolResponse<JObject> response => ProcessIncomingResponse(response),
+      ProtocolEvent<JObject> @event => ProcessIncomingEvent(@event),
+      _ => Task.CompletedTask
+    };
+
+  private async Task ProcessIncomingEvent(ProtocolEvent<JObject> @event)
+  {
+    OnEventReceived?.Invoke(this, @event);
+    if (_eventHandlers.TryGetValue(@event.Method, out var handler))
+      await handler.Invoke(@event).ConfigureAwait(false);
+  }
+
+  private async Task ProcessIncomingResponse(ProtocolResponse<JObject> response)
+  {
+    OnResponseReceived?.Invoke(this, response);
+    _responseResolvers.TryRemove(response.Id, out var resolver);
+
+    if (response.Error is { } error)
+      resolver?.SetException(new ProtocolErrorException(error));
+
+    if (response.Result is { } result)
+      resolver?.SetResult(result);
+  }
+
+  private async Task ProcessOutgoingRequest(ProtocolRequest<ICommand> request)
+  {
+    var serialized = JsonConvert.SerializeObject(request, JsonProtocolSerialization.Settings);
+    var bytes = Encoding.UTF8.GetBytes(serialized);
+    await _nativeClient.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, _connectionCancellation.Token).ConfigureAwait(false);
+    OnRequestSent?.Invoke(this, request);
+  }
+
+  private static string GetMethodName(MemberInfo type) =>
+    type.GetCustomAttribute<MethodNameAttribute>()?.MethodName
+    ?? throw new Exception($"{nameof(MethodNameAttribute)} is required on type {type.Name} but it is not presented.");
+}
