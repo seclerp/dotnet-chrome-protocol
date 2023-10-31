@@ -1,0 +1,9 @@
+<RuleSet Name="Main rules for .NET solution" ToolsVersion="10.0">
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="SA1309" Action="None"/> <!-- Allow underscores -->
+    <Rule Id="SA1101" Action="None"/> <!-- Allow calls and assignments for fields without explicit "this." -->
+    <Rule Id="SA1512" Action="None"/> <!-- Allow comments before empty line -->
+    <Rule Id="SA1633" Action="None"/> <!-- Disable file headers -->
+    <Rule Id="SA1009" Action="None"/> <!-- Closing parenthesis should not be preceded by a space -->
+  </Rules>
+</RuleSet>
