@@ -4,7 +4,6 @@
     <Version>1.0.0-preview1</Version>
     <Authors>seclerp</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)\style\Main.ruleset</CodeAnalysisRuleSet>
 
     <LangVersion>Latest</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
