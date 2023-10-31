@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Xunit.Abstractions;
 
-namespace JetBrains.Wasm.Debugger.ChromeProtocol.Tests.Extensions.Logging;
+namespace ChromeProtocol.Tests.Extensions.Logging;
 
 public class XunitLoggerProvider : ILoggerProvider
 {

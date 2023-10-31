@@ -78,7 +78,7 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
             var valueType = CsharpTypeResolver.Resolve(@namespace, domain.Name, null, type.Kind, null, false);
             recordBuilder
               .Attribute(CsharpTypeInfo.FromTypeName("Newtonsoft.Json", nameof(JsonConverter)),
-                attr => attr.Arguments("typeof(JetBrains.Wasm.Debugger.ChromeProtocol.Messaging.Json.PrimitiveTypeConverter)"))
+                attr => attr.Arguments("typeof(ChromeProtocol.Messaging.Json.PrimitiveTypeConverter)"))
               .Modifiers("public")
               .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
               .Parameters(paramsBuilder => paramsBuilder.Parameter("Value", valueType))

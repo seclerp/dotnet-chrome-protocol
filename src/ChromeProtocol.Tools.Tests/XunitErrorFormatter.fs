@@ -1,6 +1,6 @@
 namespace Chrome.DevTools.Protocol.Tools.Tests
 
-open JetBrains.Wasm.Debugger.ChromeProtocol.Tools.Logging
+open ChromeProtocol.Tools.Logging
 open Newtonsoft.Json
 
 type XunitErrorFormatter() =

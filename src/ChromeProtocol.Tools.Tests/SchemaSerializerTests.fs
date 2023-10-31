@@ -2,7 +2,7 @@ namespace Chrome.DevTools.Protocol.Tools.Tests
 
 open System.IO
 open System.Text
-open JetBrains.Wasm.Debugger.ChromeProtocol.Tools.Schema
+open ChromeProtocol.Tools.Schema
 open Xunit
 
 type SchemaSerializerTests () =

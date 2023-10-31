@@ -2,8 +2,8 @@ namespace Chrome.DevTools.Protocol.Tools.Tests
 
 open System
 open System.IO
-open JetBrains.Wasm.Debugger.ChromeProtocol.Tests.Extensions.Logging
-open JetBrains.Wasm.Debugger.ChromeProtocol.Tools.Commands
+open ChromeProtocol.Tests.Extensions.Logging
+open ChromeProtocol.Tools.Commands
 open Xunit
 open Xunit.Abstractions
 

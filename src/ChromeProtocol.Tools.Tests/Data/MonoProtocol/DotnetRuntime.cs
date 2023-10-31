@@ -12,7 +12,7 @@ namespace Protocol.Generated
     /// <param name="ObjectId">TBD</param>
     /// <param name="TypeName">TBD</param>
     /// <param name="MethodName">TBD</param>
-    public static Protocol.Generated.DotnetRuntime.CallFunctionOnRequest CallFunctionOn(string ObjectId, string TypeName, string MethodName)    
+    public static Protocol.Generated.DotnetRuntime.CallFunctionOnRequest CallFunctionOn(string ObjectId, string TypeName, string MethodName)
     {
       return new Protocol.Generated.DotnetRuntime.CallFunctionOnRequest(ObjectId, TypeName, MethodName);
     }
@@ -23,7 +23,7 @@ namespace Protocol.Generated
     /// <param name="ObjectId">TBD</param>
     /// <param name="TypeName">TBD</param>
     /// <param name="MethodName">TBD</param>
-    [JetBrains.Wasm.Debugger.ChromeProtocol.Core.MethodName("DotnetRuntime.callFunctionOn")]
+    [ChromeProtocol.Core.MethodName("DotnetRuntime.callFunctionOn")]
     public record CallFunctionOnRequest(
       [property: Newtonsoft.Json.JsonProperty("objectId")]
       string ObjectId,
@@ -31,14 +31,14 @@ namespace Protocol.Generated
       string TypeName,
       [property: Newtonsoft.Json.JsonProperty("methodName")]
       string MethodName
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.ICommand<CallFunctionOnRequestResult>
+    ) : ChromeProtocol.Core.ICommand<CallFunctionOnRequestResult>
     {
     }
     /// <param name="Result">TBD</param>
     public record CallFunctionOnRequestResult(
       [property: Newtonsoft.Json.JsonProperty("result")]
       Newtonsoft.Json.Linq.JObject Result
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.IType
+    ) : ChromeProtocol.Core.IType
     {
     }
   }

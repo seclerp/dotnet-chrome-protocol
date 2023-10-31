@@ -1,7 +1,7 @@
 using ChromeProtocol.Runtime.Messaging;
 using ChromeProtocol.Runtime.Tests.Protocol;
 using ChromeProtocol.Runtime.Tests.Protocol.TestServer;
-using JetBrains.Wasm.Debugger.ChromeProtocol.Tests.Extensions.Logging;
+using ChromeProtocol.Tests.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Xunit.Abstractions;
 

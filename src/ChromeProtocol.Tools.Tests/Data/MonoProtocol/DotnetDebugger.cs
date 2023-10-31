@@ -17,7 +17,7 @@ namespace Protocol.Generated
       int LineNumber,
       [property: Newtonsoft.Json.JsonProperty("columnNumber")]
       int? ColumnNumber = default
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.IType
+    ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>TBD.</summary>
@@ -28,18 +28,18 @@ namespace Protocol.Generated
     }
     /// <summary>TBD.</summary>
     /// <param name="JustMyCodeStepping">If true, enables stepping only into user code, not library one.</param>
-    [JetBrains.Wasm.Debugger.ChromeProtocol.Core.MethodName("DotnetDebugger.setDebuggerProperty")]
+    [ChromeProtocol.Core.MethodName("DotnetDebugger.setDebuggerProperty")]
     public record SetDebuggerPropertyRequest(
       [property: Newtonsoft.Json.JsonProperty("JustMyCodeStepping")]
       bool JustMyCodeStepping
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.ICommand<SetDebuggerPropertyRequestResult>
+    ) : ChromeProtocol.Core.ICommand<SetDebuggerPropertyRequestResult>
     {
     }
     /// <param name="JustMyCodeEnabled">TBD</param>
     public record SetDebuggerPropertyRequestResult(
       [property: Newtonsoft.Json.JsonProperty("justMyCodeEnabled")]
       bool? JustMyCodeEnabled = default
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.IType
+    ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>TBD</summary>
@@ -50,14 +50,14 @@ namespace Protocol.Generated
     }
     /// <summary>TBD</summary>
     /// <param name="Location">TBD</param>
-    [JetBrains.Wasm.Debugger.ChromeProtocol.Core.MethodName("DotnetDebugger.setNextIP")]
+    [ChromeProtocol.Core.MethodName("DotnetDebugger.setNextIP")]
     public record SetNextIPRequest(
       [property: Newtonsoft.Json.JsonProperty("location")]
       Protocol.Generated.DotnetDebugger.SourceLocationType Location
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.ICommand<SetNextIPRequestResult>
+    ) : ChromeProtocol.Core.ICommand<SetNextIPRequestResult>
     {
     }
-    public record SetNextIPRequestResult() : JetBrains.Wasm.Debugger.ChromeProtocol.Core.IType
+    public record SetNextIPRequestResult() : ChromeProtocol.Core.IType
     {
     }
     /// <summary>TBD</summary>
@@ -74,7 +74,7 @@ namespace Protocol.Generated
     /// <param name="Dmeta">The metadata changes to be applied</param>
     /// <param name="Dil">The IL changes to be applied</param>
     /// <param name="Dpdb">The PDB changes to be applied</param>
-    [JetBrains.Wasm.Debugger.ChromeProtocol.Core.MethodName("DotnetDebugger.applyUpdates")]
+    [ChromeProtocol.Core.MethodName("DotnetDebugger.applyUpdates")]
     public record ApplyUpdatesRequest(
       [property: Newtonsoft.Json.JsonProperty("moduleGUID")]
       string ModuleGUID,
@@ -84,10 +84,10 @@ namespace Protocol.Generated
       string Dil,
       [property: Newtonsoft.Json.JsonProperty("dpdb")]
       string Dpdb
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.ICommand<ApplyUpdatesRequestResult>
+    ) : ChromeProtocol.Core.ICommand<ApplyUpdatesRequestResult>
     {
     }
-    public record ApplyUpdatesRequestResult() : JetBrains.Wasm.Debugger.ChromeProtocol.Core.IType
+    public record ApplyUpdatesRequestResult() : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Note: this command will never respond, so don&#39;t wait for the response. When succeeded, it will emit &#39;Debugger.scriptParsed&#39; event per each parsed .NET source file.</summary>
@@ -98,14 +98,14 @@ namespace Protocol.Generated
     }
     /// <summary>Note: this command will never respond, so don&#39;t wait for the response. When succeeded, it will emit &#39;Debugger.scriptParsed&#39; event per each parsed .NET source file.</summary>
     /// <param name="Url">TBD</param>
-    [JetBrains.Wasm.Debugger.ChromeProtocol.Core.MethodName("DotnetDebugger.addSymbolServerUrl")]
+    [ChromeProtocol.Core.MethodName("DotnetDebugger.addSymbolServerUrl")]
     public record AddSymbolServerUrlRequest(
       [property: Newtonsoft.Json.JsonProperty("url")]
       string Url
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.ICommand<AddSymbolServerUrlRequestResult>
+    ) : ChromeProtocol.Core.ICommand<AddSymbolServerUrlRequestResult>
     {
     }
-    public record AddSymbolServerUrlRequestResult() : JetBrains.Wasm.Debugger.ChromeProtocol.Core.IType
+    public record AddSymbolServerUrlRequestResult() : ChromeProtocol.Core.IType
     {
     }
     /// <summary>TBD</summary>
@@ -120,7 +120,7 @@ namespace Protocol.Generated
     /// <param name="AssemblyName">TBD</param>
     /// <param name="TypeName">TBD</param>
     /// <param name="MethodName">TBD</param>
-    [JetBrains.Wasm.Debugger.ChromeProtocol.Core.MethodName("DotnetDebugger.getMethodLocation")]
+    [ChromeProtocol.Core.MethodName("DotnetDebugger.getMethodLocation")]
     public record GetMethodLocationRequest(
       [property: Newtonsoft.Json.JsonProperty("assemblyName")]
       string AssemblyName,
@@ -128,7 +128,7 @@ namespace Protocol.Generated
       string TypeName,
       [property: Newtonsoft.Json.JsonProperty("methodName")]
       string MethodName
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.ICommand<GetMethodLocationRequestResult>
+    ) : ChromeProtocol.Core.ICommand<GetMethodLocationRequestResult>
     {
     }
     /// <param name="Line">TBD</param>
@@ -141,7 +141,7 @@ namespace Protocol.Generated
       int Column,
       [property: Newtonsoft.Json.JsonProperty("url")]
       string Url
-    ) : JetBrains.Wasm.Debugger.ChromeProtocol.Core.IType
+    ) : ChromeProtocol.Core.IType
     {
     }
   }

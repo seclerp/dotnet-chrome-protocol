@@ -7,8 +7,8 @@ namespace Protocol.Generated
   public static partial class Mono
   {
     /// <summary>Issued when Mono runtime is ready to use.</summary>
-    [JetBrains.Wasm.Debugger.ChromeProtocol.Core.MethodName("Mono.runtimeReady")]
-    public record RuntimeReady() : JetBrains.Wasm.Debugger.ChromeProtocol.Core.IEvent
+    [ChromeProtocol.Core.MethodName("Mono.runtimeReady")]
+    public record RuntimeReady() : ChromeProtocol.Core.IEvent
     {
     }
   }
