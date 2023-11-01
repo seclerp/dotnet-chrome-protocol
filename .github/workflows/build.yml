@@ -21,7 +21,7 @@ jobs:
     - name: 🛠 Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        global-json-file: src/global.json
+        dotnet-version: 8.0.x
     - name: 🏗 Restore dependencies
       run: dotnet restore
     - name: 🏗 Build
