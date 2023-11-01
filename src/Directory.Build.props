@@ -1,7 +1,7 @@
 <Project>
   <!-- Global project and StyleCop Analyzers configuration -->
   <PropertyGroup>
-    <Version>1.0.0-preview1</Version>
+    <Version>1.0.0-preview2</Version>
     <Authors>seclerp</Authors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
@@ -10,5 +10,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
   </PropertyGroup>
 </Project>
