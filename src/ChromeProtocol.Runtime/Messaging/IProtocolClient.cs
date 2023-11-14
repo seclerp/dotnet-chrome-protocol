@@ -6,18 +6,24 @@ namespace ChromeProtocol.Runtime.Messaging;
 public interface IProtocolClient : IDisposable
 {
   event EventHandler OnConnected;
-
   event EventHandler OnDisconnected;
-
   event EventHandler<ProtocolRequest<ICommand>> OnRequestSent;
   event EventHandler<ProtocolResponse<JObject>> OnResponseReceived;
   event EventHandler<ProtocolEvent<JObject>> OnEventReceived;
 
   Task ConnectAsync(CancellationToken token = default);
 
+  [Obsolete("Use Dispose of the ConnectAsync return object.")]
   Task DisconnectAsync(CancellationToken token = default);
 
-  void ListenEvent<TEvent>(DomainEventHandler<TEvent> handler)
+  [Obsolete("Use SubscribeSync or SubscribeAsync instead.")]
+  void ListenEvent<TEvent>(AsyncDomainEventHandler<TEvent> handler)
+    where TEvent : IEvent;
+
+  IDisposable SubscribeAsync<TEvent>(AsyncDomainEventHandler<TEvent> handler)
+    where TEvent : IEvent;
+
+  IDisposable SubscribeSync<TEvent>(SyncDomainEventHandler<TEvent> handler)
     where TEvent : IEvent;
 
   Task<TResponse> SendCommandAsync<TResponse>(ICommand<TResponse> command, string? sessionId = default, CancellationToken? token = default)

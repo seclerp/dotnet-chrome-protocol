@@ -14,8 +14,14 @@ public class ScopedProtocolClient : IScopedProtocolClient
   }
 
   // TODO: Support session-specific events
-  public void ListenEvent<TEvent>(DomainEventHandler<TEvent> handler) where TEvent : IEvent =>
-    _mainClient.ListenEvent(handler);
+  public void ListenEvent<TEvent>(AsyncDomainEventHandler<TEvent> handler) where TEvent : IEvent =>
+    SubscribeAsync(handler);
+
+  public IDisposable SubscribeAsync<TEvent>(AsyncDomainEventHandler<TEvent> handler) where TEvent : IEvent =>
+    _mainClient.SubscribeAsync(handler);
+
+  public IDisposable SubscribeSync<TEvent>(SyncDomainEventHandler<TEvent> handler) where TEvent : IEvent =>
+    _mainClient.SubscribeSync(handler);
 
   public Task<TResponse> SendCommandAsync<TResponse>(ICommand<TResponse> command, CancellationToken? token = default)
     where TResponse : IType => _mainClient.SendCommandAsync(command, SessionId, token);

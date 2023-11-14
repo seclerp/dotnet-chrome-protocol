@@ -1,4 +1,7 @@
 namespace ChromeProtocol.Core;
 
-public delegate Task DomainEventHandler<in TEvent>(TEvent @event)
+public delegate void SyncDomainEventHandler<in TEvent>(TEvent @event)
+  where TEvent : IEvent;
+
+public delegate Task AsyncDomainEventHandler<in TEvent>(TEvent @event)
   where TEvent : IEvent;

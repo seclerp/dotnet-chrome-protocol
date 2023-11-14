@@ -62,16 +62,33 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     OnDisconnected?.Invoke(this, EventArgs.Empty);
   }
 
-  public void ListenEvent<TEvent>(DomainEventHandler<TEvent> handler) where TEvent : IEvent
+  public void ListenEvent<TEvent>(AsyncDomainEventHandler<TEvent> handler) where TEvent : IEvent
   {
-    Func<ProtocolEvent<JObject>, Task> HandleProtocolEvent(DomainEventHandler<TEvent> eventHandler) =>
+    SubscribeAsync(handler);
+  }
+
+  public IDisposable SubscribeAsync<TEvent>(AsyncDomainEventHandler<TEvent> handler) where TEvent : IEvent
+  {
+    Func<ProtocolEvent<JObject>, Task> HandleProtocolEvent(AsyncDomainEventHandler<TEvent> eventHandler) =>
       async rawEvent =>
       {
         var eventItself = rawEvent.Params.ToObject<TEvent>();
         await eventHandler(eventItself).ConfigureAwait(false);
       };
 
-    _eventHandlers.AddOrUpdate(GetMethodName(typeof(TEvent)), HandleProtocolEvent(handler), (_, existing) => existing + HandleProtocolEvent(handler));
+    return SubscribeInternal<TEvent>(HandleProtocolEvent(handler));
+  }
+
+  public IDisposable SubscribeSync<TEvent>(SyncDomainEventHandler<TEvent> handler) where TEvent : IEvent
+  {
+    Func<ProtocolEvent<JObject>, Task> HandleProtocolEvent(SyncDomainEventHandler<TEvent> eventHandler) =>
+      rawEvent =>
+      {
+        var eventItself = rawEvent.Params.ToObject<TEvent>();
+        return Task.Run(() => eventHandler(eventItself));
+      };
+
+    return SubscribeInternal<TEvent>(HandleProtocolEvent(handler));
   }
 
   public async Task<TResponse> SendCommandAsync<TResponse>(ICommand<TResponse> command,
@@ -121,6 +138,14 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     {
       throw new Exception("Can't schedule outgoing event for sending.");
     }
+  }
+
+  private IDisposable SubscribeInternal<TEvent>(Func<ProtocolEvent<JObject>, Task> rawHandler) where TEvent : IEvent
+  {
+    var eventName = GetMethodName(typeof(TEvent));
+    var subscription = new ProtocolSubscription<TNativeClient>(eventName, rawHandler, this);
+    _eventHandlers.AddOrUpdate(GetMethodName(typeof(TEvent)), rawHandler, (_, existing) => existing + rawHandler);
+    return subscription;
   }
 
   private void StartOutgoingWorker(CancellationToken token)
@@ -216,4 +241,35 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
   private static string GetMethodName(MemberInfo type) =>
     type.GetCustomAttribute<MethodNameAttribute>()?.MethodName
     ?? throw new Exception($"{nameof(MethodNameAttribute)} is required on type {type.Name} but it is not presented.");
+
+  private class ProtocolSubscription<T> : IDisposable where T : WebSocket
+  {
+    private readonly string _eventName;
+    private readonly Func<ProtocolEvent<JObject>, Task>? _wrappedHandler;
+    private readonly WebSocketProtocolClient<T> _client;
+
+    public ProtocolSubscription(string eventName, Func<ProtocolEvent<JObject>,Task>? wrappedHandler, WebSocketProtocolClient<T> client)
+    {
+      _eventName = eventName;
+      _wrappedHandler = wrappedHandler;
+      _client = client;
+    }
+
+    public void Dispose()
+    {
+      if (_client._eventHandlers.TryGetValue(_eventName, out var aggregatedHandlers))
+      {
+        var updatedHandlers = aggregatedHandlers - _wrappedHandler;
+        if (updatedHandlers is null)
+        {
+          _client._eventHandlers.TryRemove(_eventName, out _);
+        }
+        else
+        {
+          _client._eventHandlers[_eventName] = updatedHandlers;
+        }
+      }
+    }
+  }
 }
+
