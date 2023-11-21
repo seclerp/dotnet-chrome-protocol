@@ -9,12 +9,16 @@ namespace ChromeProtocol.Runtime.Messaging.Logging;
 public abstract class ProtocolClientLogger : IDisposable
 {
   private readonly IProtocolClient _client;
+
+  private readonly ProtocolClientLoggerOptions _options;
+
   // Contains methodName for particular request id.
   private readonly ConcurrentDictionary<int, string> _methodNamesMapping = new();
 
-  protected ProtocolClientLogger(IProtocolClient client)
+  protected ProtocolClientLogger(IProtocolClient client, ProtocolClientLoggerOptions options)
   {
     _client = client;
+    _options = options;
   }
 
   public void StartLogging()
@@ -38,18 +42,30 @@ public abstract class ProtocolClientLogger : IDisposable
 
   private void ProcessOutgoingRequest(object sender, ProtocolRequest<ICommand> request)
   {
-    LogOutgoingRequest($"-> ({request.Id}) [{request.Method}] {{{GetPresentableSessionId(request.SessionId)}}}: {JsonConvert.SerializeObject(request.Params, JsonProtocolSerialization.Settings)}");
+    var sessionId = GetPresentableSessionId(request.SessionId);
+    var serializedMessage =
+      TruncateIfNeeded(JsonConvert.SerializeObject(request.Params, JsonProtocolSerialization.Settings));
+    LogOutgoingRequest($"-> ({request.Id}) [{request.Method}] {{{sessionId}}}: {serializedMessage}");
     _methodNamesMapping.AddOrUpdate(request.Id, request.Method, (_, _) => request.Method);
   }
 
   private void ProcessIncomingResponse(object sender, ProtocolResponse<JObject> response)
   {
+    var sessionId = GetPresentableSessionId(response.SessionId);
     if (!_methodNamesMapping.TryGetValue(response.Id, out var methodName))
       LogIncomingUnknownResponse($"Received an error of unknown request ID ({response.Id})");
     else if (response.Result is { } result)
-      LogIncomingResponse($"<- ({response.Id}) [{methodName}] {{{GetPresentableSessionId(response.SessionId)}}}: {JsonConvert.SerializeObject(result, JsonProtocolSerialization.Settings)}");
+    {
+      var serializedMessage =
+        TruncateIfNeeded(JsonConvert.SerializeObject(result, JsonProtocolSerialization.Settings));
+      LogIncomingResponse($"<- ({response.Id}) [{methodName}] {{{sessionId}}}: {serializedMessage}");
+    }
     else if (response.Error is { } error)
-      LogIncomingError($"<! ({response.Id}) [{methodName}] {{{GetPresentableSessionId(response.SessionId)}}}: {JsonConvert.SerializeObject(error, JsonProtocolSerialization.Settings)}");
+    {
+      var serializedMessage =
+        TruncateIfNeeded(JsonConvert.SerializeObject(error, JsonProtocolSerialization.Settings));
+      LogIncomingError($"<! ({response.Id}) [{methodName}] {{{sessionId}}}: {serializedMessage}");
+    }
   }
 
   private void ProcessIncomingEvent(object sender, ProtocolEvent<JObject> @event)
@@ -79,6 +95,11 @@ public abstract class ProtocolClientLogger : IDisposable
   public abstract void LogIncomingError(string message);
 
   public abstract void LogIncomingEvent(string message);
+
+  private string TruncateIfNeeded(string message) =>
+    message.Length > _options.MaxMessageLengthChars && _options.MaxMessageLengthChars > 0
+      ? $"{message.Substring(0, _options.MaxMessageLengthChars)}"
+      : message;
 
   private static string GetPresentableSessionId(string? sessionId) => sessionId?.ToLowerInvariant().Substring(0, 5) ?? "<main>";
 }

@@ -8,7 +8,11 @@ public class ChannelProtocolClientLogger : ProtocolClientLogger
   private readonly ChannelWriter<Payload> _writer;
   public ChannelReader<Payload> Reader { get; }
 
-  public ChannelProtocolClientLogger(IProtocolClient client, Channel<Payload> channel) : base(client)
+  public ChannelProtocolClientLogger(IProtocolClient client, Channel<Payload> channel) : this(client, channel, ProtocolClientLoggerOptions.Default)
+  {
+  }
+
+  public ChannelProtocolClientLogger(IProtocolClient client, Channel<Payload> channel, ProtocolClientLoggerOptions options) : base(client, options)
   {
     _writer = channel.Writer;
     Reader = channel.Reader;
