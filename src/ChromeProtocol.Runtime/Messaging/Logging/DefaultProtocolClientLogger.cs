@@ -12,6 +12,7 @@ public class DefaultProtocolClientLogger : ProtocolClientLogger
 
   public DefaultProtocolClientLogger(IProtocolClient client, ILogger logger, ProtocolClientLoggerOptions options) : base(client, options)
   {
+    _logger = logger;
   }
 
   public override void LogConnected(string message) => _logger.LogInformation(message);
