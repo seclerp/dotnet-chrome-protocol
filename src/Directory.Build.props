@@ -1,8 +1,9 @@
 <Project>
   <!-- Global project and StyleCop Analyzers configuration -->
   <PropertyGroup>
-    <Version>1.0.0-preview6</Version>
+    <Version>1.0.0</Version>
     <Authors>seclerp</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <LangVersion>Latest</LangVersion>
