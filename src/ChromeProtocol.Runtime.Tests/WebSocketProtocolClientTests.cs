@@ -22,7 +22,7 @@ public class WebSocketProtocolClientTests : IClassFixture<TestServerFixture>, IA
   public async Task InitializeAsync()
   {
     var nativeClient = _serverFactory.Server.CreateWebSocketClient();
-    _protocolClient = await TestHostProtocolClient.CreateAsync(nativeClient, _serverFactory.Server.BaseAddress, _clientLogger);
+    _protocolClient = await TestHostProtocolClient.CreateAsync(nativeClient, new Uri(_serverFactory.Server.BaseAddress, "/ws"), _clientLogger);
     // await _serverFactory.Server.Host.StartAsync();
     _clientLogger.LogInformation("Connecting to the test WebSocket server...");
     await _protocolClient.ConnectAsync().ConfigureAwait(false);
