@@ -30,6 +30,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{63E926A1-AB9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeProtocol.Runtime", "ChromeProtocol.Runtime\ChromeProtocol.Runtime.csproj", "{39A4FA94-CE7D-4C10-A57E-D162F2AD303C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{7B81D3F1-B42B-457F-B677-3317CB092F53}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{68F4A830-B12C-40F8-8EAE-319140055442}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,5 +84,6 @@ Global
 		{13DA8902-6687-4EC3-9C1B-C99AF5DA0A64} = {63E926A1-AB97-4BBD-8075-7E524EC5167E}
 		{ADC322AC-7DD6-4FF5-9426-86493EB61E41} = {63E926A1-AB97-4BBD-8075-7E524EC5167E}
 		{39A4FA94-CE7D-4C10-A57E-D162F2AD303C} = {63E926A1-AB97-4BBD-8075-7E524EC5167E}
+		{68F4A830-B12C-40F8-8EAE-319140055442} = {7B81D3F1-B42B-457F-B677-3317CB092F53}
 	EndGlobalSection
 EndGlobal
