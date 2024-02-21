@@ -155,8 +155,16 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
       _logger.LogInformation("Starting outgoing messages pump...");
       while (!token.IsCancellationRequested)
       {
-        var message = _outgoingMessages.Take();
-        ProcessOutgoingRequest(message).ConfigureAwait(false).GetAwaiter().GetResult();
+        try
+        {
+          var message = _outgoingMessages.Take(token);
+          ProcessOutgoingRequest(message).ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+        catch (OperationCanceledException)
+        {
+          _logger.LogInformation("Cancellation requested, stopping outgoing queue thread...");
+          return;
+        }
       }
     }).Start();
   }
@@ -166,16 +174,21 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     new Thread(() =>
     {
       _logger.LogInformation("Starting incoming messages pump...");
+
       try
       {
         var buffer = new byte[40096];
         using var memoryStream = new MemoryStream();
+
         while (!token.IsCancellationRequested)
         {
           WebSocketReceiveResult incoming;
+
           do
           {
-            incoming = _nativeClient.ReceiveAsync(new ArraySegment<byte>(buffer), token).ConfigureAwait(false).GetAwaiter().GetResult();
+            incoming = _nativeClient.ReceiveAsync(new ArraySegment<byte>(buffer), token).ConfigureAwait(false)
+              .GetAwaiter().GetResult();
+
             memoryStream.Write(buffer, 0, incoming.Count);
           } while (!incoming.EndOfMessage);
 
@@ -184,6 +197,11 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
           memoryStream.SetLength(0);
           Task.Run(() => ProcessIncoming(message), token);
         }
+      }
+      catch (OperationCanceledException)
+      {
+        _logger.LogInformation("Cancellation requested, stopping incoming queue thread...");
+        return;
       }
       catch (Exception e)
       {

@@ -1,4 +1,4 @@
-namespace Chrome.DevTools.Protocol.Tools.Tests
+namespace ChromeProtocol.Tools.Tests
 
 open ChromeProtocol.Tools.Logging
 open Newtonsoft.Json

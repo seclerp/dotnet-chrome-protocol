@@ -17,19 +17,31 @@ public class XunitLogger : ILogger, IDisposable
 
   public virtual void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception, string> formatter)
   {
-    var builder = new StringBuilder();
-    builder.Append($"{logLevel.ToString()} ");
-    if (!string.IsNullOrEmpty(_prefix))
+    try
     {
-      builder.Append(_prefix);
-      builder.Append(": ");
+      var builder = new StringBuilder();
+      builder.Append($"{logLevel.ToString()} ");
+
+      if (!string.IsNullOrEmpty(_prefix))
+      {
+        builder.Append(_prefix);
+        builder.Append(": ");
+      }
+
+      builder.Append(state);
+
+      if (exception != null)
+      {
+        builder.Append($", exception: {exception}");
+      }
+
+      _output.WriteLine(builder.ToString());
     }
-    builder.Append(state);
-    if (exception != null)
+    catch (InvalidOperationException)
     {
-      builder.Append($", exception: {exception}");
+      // Sometimes test resource cleanup from other threads happening after test lifecycle.
+      // That's why here sometimes may happen "System.InvalidOperationException: There is no currently active test.".
     }
-    _output.WriteLine(builder.ToString());
   }
 
   public bool IsEnabled(LogLevel logLevel)

@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
     <GenerateProgramFile>false</GenerateProgramFile>
-    <RootNamespace>Chrome.DevTools.Protocol.Tools.Tests</RootNamespace>
+    <RootNamespace>ChromeProtocol.Tools.Tests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
 using ChromeProtocol.Runtime.Messaging;
+using ChromeProtocol.Runtime.Messaging.Extensions;
 using ChromeProtocol.Runtime.Tests.Protocol;
 using ChromeProtocol.Runtime.Tests.Protocol.TestServer;
 using ChromeProtocol.Tests.Extensions.Logging;
@@ -12,6 +13,8 @@ public class WebSocketProtocolClientTests : IClassFixture<TestServerFixture>, IA
   private readonly WebApplicationFactory<Protocol.TestServer.Program> _serverFactory;
   private readonly ILogger _clientLogger;
   private IProtocolClient _protocolClient;
+  private CancellationTokenSource _tokenSource = new CancellationTokenSource(30_000);
+  private CancellationToken Token => _tokenSource.Token;
 
   public WebSocketProtocolClientTests(TestServerFixture serverFixture, ITestOutputHelper testOutputHelper)
   {
@@ -22,10 +25,9 @@ public class WebSocketProtocolClientTests : IClassFixture<TestServerFixture>, IA
   public async Task InitializeAsync()
   {
     var nativeClient = _serverFactory.Server.CreateWebSocketClient();
-    _protocolClient = await TestHostProtocolClient.CreateAsync(nativeClient, new Uri(_serverFactory.Server.BaseAddress, "/ws"), _clientLogger);
-    // await _serverFactory.Server.Host.StartAsync();
+    _protocolClient = await TestHostProtocolClient.CreateAsync(nativeClient, new Uri(_serverFactory.Server.BaseAddress, "/ws"), _clientLogger, Token);
     _clientLogger.LogInformation("Connecting to the test WebSocket server...");
-    await _protocolClient.ConnectAsync().ConfigureAwait(false);
+    await _protocolClient.ConnectAsync(Token).ConfigureAwait(false);
     _clientLogger.LogInformation("Connected successfully");
   }
 
@@ -42,7 +44,7 @@ public class WebSocketProtocolClientTests : IClassFixture<TestServerFixture>, IA
   {
     try
     {
-      await _protocolClient.SendCommandAsync(new AlwaysErrorCommand()).ConfigureAwait(false);
+      await _protocolClient.SendCommandAsync(new AlwaysErrorCommand(), token: Token).ConfigureAwait(false);
     }
     catch (ProtocolErrorException e)
     {
@@ -52,23 +54,28 @@ public class WebSocketProtocolClientTests : IClassFixture<TestServerFixture>, IA
   }
 
   [Fact]
-  public async Task FireCommandAsync_TriggerEvent_ShouldSendEvent()
+  public async Task FireCommandAsync_TriggerEvent_ShouldSendEventBack()
   {
-    var awaiter = new ManualResetEvent(false);
+    _serverFactory.Server.CreateWebSocketClient();
+    var tcs = new TaskCompletionSource<bool>();
+    Token.Register(() => tcs.TrySetCanceled(), useSynchronizationContext: false);
 
-    _protocolClient.ListenEvent((EventTriggeredEvent _) =>
+    var subscription = _protocolClient.SubscribeOnceAsync<EventTriggeredEvent>(async _ =>
     {
-      awaiter.Set();
-      return Task.CompletedTask;
+      tcs.TrySetResult(true);
     });
-    await _protocolClient.FireCommandAsync(new TriggerEventCommand()).ConfigureAwait(false);
-    var signalled = awaiter.WaitOne(TimeSpan.FromSeconds(10));
 
-    Assert.True(signalled);
+    Token.Register(() => subscription.Dispose());
+
+    await _protocolClient.FireCommandAsync(new TriggerEventCommand(), token: Token).ConfigureAwait(false);
+    var result = await tcs.Task.ConfigureAwait(false);
+
+    Assert.True(result);
   }
 
   public async Task DisposeAsync()
   {
+    _tokenSource.Cancel();
     _clientLogger.LogInformation("Shutdown");
     _protocolClient.Dispose();
   }
