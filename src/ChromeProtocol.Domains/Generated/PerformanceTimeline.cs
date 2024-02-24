@@ -56,7 +56,7 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">Identifies the frame that this event is related to. Empty for non-frame targets.</param>
     /// <param name="Type">
     /// The event type, as specified in https://w3c.github.io/performance-timeline/#dom-performanceentry-entrytype<br/>
-    /// This determines which of the optional &quot;details&quot; fiedls is present.<br/>
+    /// This determines which of the optional &quot;details&quot; fields is present.<br/>
     /// </param>
     /// <param name="Name">Name may be empty depending on the type.</param>
     /// <param name="Time">Time in seconds since Epoch, monotonically increasing within document lifetime.</param>

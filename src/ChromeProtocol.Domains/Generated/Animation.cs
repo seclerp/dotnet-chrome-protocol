@@ -11,7 +11,12 @@ namespace ChromeProtocol.Domains
     /// <param name="PausedState">`Animation`&#39;s internal paused state.</param>
     /// <param name="PlayState">`Animation`&#39;s play state.</param>
     /// <param name="PlaybackRate">`Animation`&#39;s playback rate.</param>
-    /// <param name="StartTime">`Animation`&#39;s start time.</param>
+    /// <param name="StartTime">
+    /// `Animation`&#39;s start time.<br/>
+    /// Milliseconds for time based animations and<br/>
+    /// percentage [0 - 100] for scroll driven animations<br/>
+    /// (i.e. when viewOrScrollTimeline exists).<br/>
+    /// </param>
     /// <param name="CurrentTime">`Animation`&#39;s current time.</param>
     /// <param name="Type">Animation type of `Animation`.</param>
     /// <param name="Source">`Animation`&#39;s source animation node.</param>
@@ -19,6 +24,7 @@ namespace ChromeProtocol.Domains
     /// A unique ID for `Animation` representing the sources that triggered this CSS<br/>
     /// animation/transition.<br/>
     /// </param>
+    /// <param name="ViewOrScrollTimeline">View or scroll timeline</param>
     public record AnimationType(
       [property: Newtonsoft.Json.JsonProperty("id")]
       string Id,
@@ -39,7 +45,39 @@ namespace ChromeProtocol.Domains
       [property: Newtonsoft.Json.JsonProperty("source")]
       ChromeProtocol.Domains.Animation.AnimationEffectType? Source = default,
       [property: Newtonsoft.Json.JsonProperty("cssId")]
-      string? CssId = default
+      string? CssId = default,
+      [property: Newtonsoft.Json.JsonProperty("viewOrScrollTimeline")]
+      ChromeProtocol.Domains.Animation.ViewOrScrollTimelineType? ViewOrScrollTimeline = default
+    ) : ChromeProtocol.Core.IType
+    {
+    }
+    /// <summary>Timeline instance</summary>
+    /// <param name="Axis">Orientation of the scroll</param>
+    /// <param name="SourceNodeId">Scroll container node</param>
+    /// <param name="StartOffset">
+    /// Represents the starting scroll position of the timeline<br/>
+    /// as a length offset in pixels from scroll origin.<br/>
+    /// </param>
+    /// <param name="EndOffset">
+    /// Represents the ending scroll position of the timeline<br/>
+    /// as a length offset in pixels from scroll origin.<br/>
+    /// </param>
+    /// <param name="SubjectNodeId">
+    /// The element whose principal box&#39;s visibility in the<br/>
+    /// scrollport defined the progress of the timeline.<br/>
+    /// Does not exist for animations with ScrollTimeline<br/>
+    /// </param>
+    public record ViewOrScrollTimelineType(
+      [property: Newtonsoft.Json.JsonProperty("axis")]
+      ChromeProtocol.Domains.DOM.ScrollOrientationType Axis,
+      [property: Newtonsoft.Json.JsonProperty("sourceNodeId")]
+      ChromeProtocol.Domains.DOM.BackendNodeIdType? SourceNodeId = default,
+      [property: Newtonsoft.Json.JsonProperty("startOffset")]
+      double? StartOffset = default,
+      [property: Newtonsoft.Json.JsonProperty("endOffset")]
+      double? EndOffset = default,
+      [property: Newtonsoft.Json.JsonProperty("subjectNodeId")]
+      ChromeProtocol.Domains.DOM.BackendNodeIdType? SubjectNodeId = default
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -48,7 +86,12 @@ namespace ChromeProtocol.Domains
     /// <param name="EndDelay">`AnimationEffect`&#39;s end delay.</param>
     /// <param name="IterationStart">`AnimationEffect`&#39;s iteration start.</param>
     /// <param name="Iterations">`AnimationEffect`&#39;s iterations.</param>
-    /// <param name="Duration">`AnimationEffect`&#39;s iteration duration.</param>
+    /// <param name="Duration">
+    /// `AnimationEffect`&#39;s iteration duration.<br/>
+    /// Milliseconds for time based animations and<br/>
+    /// percentage [0 - 100] for scroll driven animations<br/>
+    /// (i.e. when viewOrScrollTimeline exists).<br/>
+    /// </param>
     /// <param name="Direction">`AnimationEffect`&#39;s playback direction.</param>
     /// <param name="Fill">`AnimationEffect`&#39;s fill mode.</param>
     /// <param name="Easing">`AnimationEffect`&#39;s timing function.</param>
