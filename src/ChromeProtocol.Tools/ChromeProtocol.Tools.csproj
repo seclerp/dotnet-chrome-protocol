@@ -6,6 +6,7 @@
     <IsPackable>true</IsPackable>
     <RootNamespace>ChromeProtocol.Tools</RootNamespace>
     <AssemblyName>ChromeProtocol.Tools</AssemblyName>
+    <PackageId>dotnet-cdp</PackageId>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>cdp</ToolCommandName>
   </PropertyGroup>
@@ -22,15 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="js_protocol.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="mono_protocol.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="browser_protocol.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Update="js_protocol.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Never"/>
+    <None Update="mono_protocol.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Never"/>
+    <None Update="browser_protocol.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Never"/>
   </ItemGroup>
 
   <ItemGroup>

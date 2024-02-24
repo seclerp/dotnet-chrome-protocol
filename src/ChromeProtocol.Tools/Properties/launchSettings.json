@@ -1,13 +1,9 @@
 {
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "generate --help": {
+    "Generate ChromeProtocol.Domains": {
       "commandName": "Project",
-      "commandLineArgs": "generate --help"
-    },
-    "generate": {
-      "commandName": "Project",
-      "commandLineArgs": "generate js_protocol.json browser_protocol.json mono_protocol.json --namespace ChromeProtocol.Domains --output ../../../../src/ChromeProtocol.Domains/Generated"
+      "commandLineArgs": "generate js_protocol.json browser_protocol.json mono_protocol.json --namespace ChromeProtocol.Domains --output ../../../../ChromeProtocol.Domains/Generated"
     }
   }
 }
