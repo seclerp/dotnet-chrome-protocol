@@ -1,5 +1,6 @@
 # ChromeProtocol
 
+[![NuGet version (ChromeProtocol.Runtime)](https://img.shields.io/nuget/v/ChromeProtocol.Runtime.svg?style=flat-square)](https://www.nuget.org/packages/ChromeProtocol.Runtime/)
 !['main' Build status](../../actions/workflows/build.yml/badge.svg?branch=main)
 
 A runtime library and schema code generation tools for Chrome DevTools Protocol support in C#/.NET.
@@ -9,7 +10,7 @@ A runtime library and schema code generation tools for Chrome DevTools Protocol 
 - Asynchronous and synchronous APIs for commands execution
 - Disposable event subscriptions, one-time subscriptions
 - Code-generation of domains, commands, events, types from protocol's JSON schema
-- Multiple CDP schema files support in generation pipeline
+- Multiple CDP schema files support in generation pipeline with domains definitions merging
 - .NET Standard 2.0 compatible
 
 ## How to use
