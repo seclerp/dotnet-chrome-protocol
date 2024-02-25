@@ -31,6 +31,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChromeProtocol.Runtime", "ChromeProtocol.Runtime\ChromeProtocol.Runtime.csproj", "{39A4FA94-CE7D-4C10-A57E-D162F2AD303C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{7B81D3F1-B42B-457F-B677-3317CB092F53}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\FUNDING.yml = ..\.github\FUNDING.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{68F4A830-B12C-40F8-8EAE-319140055442}"
 	ProjectSection(SolutionItems) = preProject
