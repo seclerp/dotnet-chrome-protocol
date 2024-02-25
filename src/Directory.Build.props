@@ -3,6 +3,7 @@
   <PropertyGroup>
     <Version>1.1.0-preview1</Version>
     <Authors>seclerp</Authors>
+    <RepositoryUrl>https://github.com/seclerp/dotnet-chrome-protocol</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 

@@ -29,7 +29,7 @@ jobs:
         uses: mindsers/changelog-reader-action@v2
         with:
           validation_level: warn
-          version: ${{ env.PLUGIN_VERSION }}
+          version: ${{ env.RELEASE_VERSION }}
           path: ./CHANGELOG.md
       - name: 🚀 Create Release
         id: create_release
@@ -37,8 +37,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ env.PLUGIN_VERSION }}
-          name: ${{ env.PLUGIN_VERSION }}
+          tag_name: v${{ env.RELEASE_VERSION }}
+          name: ${{ env.RELEASE_VERSION }}
           draft: true
           prerelease: false
           generate_release_notes: false
