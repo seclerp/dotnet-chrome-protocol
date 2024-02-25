@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>ChromeProtocol.Core</PackageId>
+    <Description>A core library with basic types and interfaces to represent protocol interaction.</Description>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 

@@ -8,7 +8,7 @@
     <AssemblyName>ChromeProtocol.Tools</AssemblyName>
     <PackageId>dotnet-cdp</PackageId>
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>cdp</ToolCommandName>
+    <ToolCommandName>dotnet-cdp</ToolCommandName>
   </PropertyGroup>
 
   <ItemGroup>
