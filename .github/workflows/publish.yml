@@ -39,6 +39,6 @@ jobs:
             - [ChromeProtocol.Domains](https://www.nuget.org/packages/ChromeProtocol.Domains)
             - [ChromeProtocol.Core](https://www.nuget.org/packages/ChromeProtocol.Core)
     - name: 🏗 Publish
-      run: dotnet nuget push "**/*.nupkg" --api-key ${NUGET_API_KEY} --source https://api.nuget.org/v3/index.json --skip-duplicate
+      run: dotnet nuget push "**/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }} 
