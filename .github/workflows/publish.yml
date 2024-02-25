@@ -7,38 +7,51 @@ defaults:
     working-directory: src
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
-    - name: 📝 Fetch Sources
-      uses: actions/checkout@v3
-    - name: 🛠 Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 8.0.x
-    - name: 🏗 Restore dependencies
-      run: dotnet restore
-    - name: 🏗 Build
-      run: dotnet build --no-restore --configuration Release
-    - name: Create Release
-      id: create_release
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        name: Release ${{ github.ref }}
-        draft: true
-        prerelease: false
-        generate_release_notes: true
-        body: |
-          Changelog can be found [here](./CHANGELOG.md).
-          
-          NuGet links:
-            - [ChromeProtocol.Runtime](https://www.nuget.org/packages/ChromeProtocol.Runtime)
-            - [ChromeProtocol.Domains](https://www.nuget.org/packages/ChromeProtocol.Domains)
-            - [ChromeProtocol.Core](https://www.nuget.org/packages/ChromeProtocol.Core)
-    - name: 🏗 Publish
-      run: dotnet nuget push "**/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
-      env:
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }} 
+      - name: 📝 Fetch Sources
+        uses: actions/checkout@v3
+      - name: 🛠 Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+      - name: 🏗 Restore dependencies
+        run: dotnet restore
+      - name: 🏗 Build
+        run: dotnet build --no-restore --configuration Release
+      - name: 🔍 Extract Version
+        id: version
+        run: |
+          echo "RELEASE_VERSION=$(dotnet msbuild Directory.Build.props -getProperty:Version)" >> $GITHUB_ENV
+      - name: 🔍 Extract Changelog
+        id: changelog_reader
+        uses: mindsers/changelog-reader-action@v2
+        with:
+          validation_level: warn
+          version: ${{ env.PLUGIN_VERSION }}
+          path: ./CHANGELOG.md
+      - name: 🚀 Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ env.PLUGIN_VERSION }}
+          name: ${{ env.PLUGIN_VERSION }}
+          draft: true
+          prerelease: false
+          generate_release_notes: false
+          body: |
+            ${{ steps.changelog_reader.outputs.changes }}
+
+            Changelog file can be found [here](./CHANGELOG.md).
+            
+            NuGet links:
+              - [ChromeProtocol.Runtime](https://www.nuget.org/packages/ChromeProtocol.Runtime)
+              - [ChromeProtocol.Domains](https://www.nuget.org/packages/ChromeProtocol.Domains)
+              - [ChromeProtocol.Core](https://www.nuget.org/packages/ChromeProtocol.Core)
+      - name: 🚀 Publish
+        run: dotnet nuget push "**/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }} 
