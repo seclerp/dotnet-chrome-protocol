@@ -18,10 +18,10 @@ public class ScopedProtocolClient : IScopedProtocolClient
     SubscribeAsync(handler);
 
   public IDisposable SubscribeAsync<TEvent>(AsyncDomainEventHandler<TEvent> handler) where TEvent : IEvent =>
-    _mainClient.SubscribeAsync(handler);
+    _mainClient.SubscribeAsync(handler, SessionId);
 
   public IDisposable SubscribeSync<TEvent>(SyncDomainEventHandler<TEvent> handler) where TEvent : IEvent =>
-    _mainClient.SubscribeSync(handler);
+    _mainClient.SubscribeSync(handler, SessionId);
 
   public Task<TResponse> SendCommandAsync<TResponse>(ICommand<TResponse> command, CancellationToken? token = default)
     where TResponse : IType => _mainClient.SendCommandAsync(command, SessionId, token);

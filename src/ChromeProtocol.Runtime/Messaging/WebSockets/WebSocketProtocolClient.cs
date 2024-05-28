@@ -15,7 +15,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 {
   private readonly Uri _wsUri;
   private readonly ILogger _logger;
-  private readonly ConcurrentDictionary<string, Func<ProtocolEvent<JObject>, Task>> _eventHandlers = new ();
+  private readonly ConcurrentDictionary<(string? sessionId, string eventName), Func<ProtocolEvent<JObject>, Task>> _eventHandlers = new ();
   private readonly ConcurrentDictionary<int, TaskCompletionSource<JObject>> _responseResolvers = new ();
   private readonly TNativeClient _nativeClient;
   private CancellationTokenSource _connectionCancellation;
@@ -67,7 +67,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     SubscribeAsync(handler);
   }
 
-  public IDisposable SubscribeAsync<TEvent>(AsyncDomainEventHandler<TEvent> handler) where TEvent : IEvent
+  public IDisposable SubscribeAsync<TEvent>(AsyncDomainEventHandler<TEvent> handler, string? sessionId = default) where TEvent : IEvent
   {
     Func<ProtocolEvent<JObject>, Task> HandleProtocolEvent(AsyncDomainEventHandler<TEvent> eventHandler) =>
       async rawEvent =>
@@ -76,10 +76,10 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
         await eventHandler(eventItself).ConfigureAwait(false);
       };
 
-    return SubscribeInternal<TEvent>(HandleProtocolEvent(handler));
+    return SubscribeInternal<TEvent>(HandleProtocolEvent(handler), sessionId);
   }
 
-  public IDisposable SubscribeSync<TEvent>(SyncDomainEventHandler<TEvent> handler) where TEvent : IEvent
+  public IDisposable SubscribeSync<TEvent>(SyncDomainEventHandler<TEvent> handler, string? sessionId = default) where TEvent : IEvent
   {
     Func<ProtocolEvent<JObject>, Task> HandleProtocolEvent(SyncDomainEventHandler<TEvent> eventHandler) =>
       rawEvent =>
@@ -88,7 +88,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
         return Task.Run(() => eventHandler(eventItself));
       };
 
-    return SubscribeInternal<TEvent>(HandleProtocolEvent(handler));
+    return SubscribeInternal<TEvent>(HandleProtocolEvent(handler), sessionId);
   }
 
   public async Task<TResponse> SendCommandAsync<TResponse>(ICommand<TResponse> command,
@@ -140,11 +140,11 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     }
   }
 
-  private IDisposable SubscribeInternal<TEvent>(Func<ProtocolEvent<JObject>, Task> rawHandler) where TEvent : IEvent
+  private IDisposable SubscribeInternal<TEvent>(Func<ProtocolEvent<JObject>, Task> rawHandler, string? sessionId) where TEvent : IEvent
   {
     var eventName = GetMethodName(typeof(TEvent));
-    var subscription = new ProtocolSubscription<TNativeClient>(eventName, rawHandler, this);
-    _eventHandlers.AddOrUpdate(GetMethodName(typeof(TEvent)), rawHandler, (_, existing) => existing + rawHandler);
+    var subscription = new ProtocolSubscription<TNativeClient>(sessionId, eventName, rawHandler, this);
+    _eventHandlers.AddOrUpdate((sessionId, eventName), rawHandler, (_, existing) => existing + rawHandler);
     return subscription;
   }
 
@@ -232,7 +232,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
   private async Task ProcessIncomingEvent(ProtocolEvent<JObject> @event)
   {
     OnEventReceived?.Invoke(this, @event);
-    if (_eventHandlers.TryGetValue(@event.Method, out var handler))
+    if (_eventHandlers.TryGetValue((@event.SessionId, @event.Method), out var handler))
       await handler.Invoke(@event).ConfigureAwait(false);
   }
 
@@ -262,12 +262,14 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   private class ProtocolSubscription<T> : IDisposable where T : WebSocket
   {
+    private readonly string? _sessionId;
     private readonly string _eventName;
     private readonly Func<ProtocolEvent<JObject>, Task>? _wrappedHandler;
     private readonly WebSocketProtocolClient<T> _client;
 
-    public ProtocolSubscription(string eventName, Func<ProtocolEvent<JObject>,Task>? wrappedHandler, WebSocketProtocolClient<T> client)
+    public ProtocolSubscription(string? sessionId, string eventName, Func<ProtocolEvent<JObject>,Task>? wrappedHandler, WebSocketProtocolClient<T> client)
     {
+      _sessionId = sessionId;
       _eventName = eventName;
       _wrappedHandler = wrappedHandler;
       _client = client;
@@ -275,16 +277,17 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
     public void Dispose()
     {
-      if (_client._eventHandlers.TryGetValue(_eventName, out var aggregatedHandlers))
+      var eventKey = (_sessionId, _eventName);
+      if (_client._eventHandlers.TryGetValue(eventKey, out var aggregatedHandlers))
       {
         var updatedHandlers = aggregatedHandlers - _wrappedHandler;
         if (updatedHandlers is null)
         {
-          _client._eventHandlers.TryRemove(_eventName, out _);
+          _client._eventHandlers.TryRemove(eventKey, out _);
         }
         else
         {
-          _client._eventHandlers[_eventName] = updatedHandlers;
+          _client._eventHandlers[eventKey] = updatedHandlers;
         }
       }
     }
