@@ -21,6 +21,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
   private CancellationTokenSource _connectionCancellation;
   private readonly BlockingCollection<ProtocolRequest<ICommand>> _outgoingMessages = new(new ConcurrentQueue<ProtocolRequest<ICommand>>());
   private int _currentId = 0;
+  private bool _isDisposed = false;
 
   private readonly JsonSerializer _serializer = JsonSerializer.Create(JsonProtocolSerialization.Settings);
 
@@ -57,9 +58,33 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   public async Task DisconnectAsync(CancellationToken token = default)
   {
-    await _nativeClient.CloseAsync(WebSocketCloseStatus.Empty, "Graceful disconnect", token).ConfigureAwait(false);
-    _connectionCancellation.Cancel();
-    OnDisconnected?.Invoke(this, EventArgs.Empty);
+    try
+    {
+      if (_nativeClient.State
+          is not WebSocketState.Open
+          and not WebSocketState.CloseSent
+          and not WebSocketState.CloseReceived)
+      {
+        _logger.LogWarning(
+          $"A graceful socket disconnect has been requested, but socket state is not valid for disconnect: {_nativeClient.State}");
+      }
+      else
+      {
+        _logger.LogInformation("Graceful socket disconnect has been requested");
+        await _nativeClient.CloseAsync(WebSocketCloseStatus.Empty, null, token).ConfigureAwait(false);
+      }
+    }
+    catch (Exception ex)
+    {
+      _logger.LogError(ex, "Failed to disconnect the socket");
+    }
+    finally
+    {
+      Dispose();
+
+      if (!_connectionCancellation.IsCancellationRequested)
+        OnDisconnected?.Invoke(this, EventArgs.Empty);
+    }
   }
 
   public void ListenEvent<TEvent>(AsyncDomainEventHandler<TEvent> handler) where TEvent : IEvent
@@ -127,8 +152,11 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   public void Dispose()
   {
+    if (_isDisposed) return;
     if (_connectionCancellation.IsCancellationRequested) return;
+
     _connectionCancellation.Cancel();
+    _isDisposed = true;
   }
 
   private async Task FireInternalAsync(int id, string methodName, ICommand command, string? sessionId)
@@ -180,7 +208,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
         var buffer = new byte[40096];
         using var memoryStream = new MemoryStream();
 
-        while (!token.IsCancellationRequested)
+        while (_nativeClient.State == WebSocketState.Open && !token.IsCancellationRequested)
         {
           WebSocketReceiveResult incoming;
 
@@ -201,7 +229,11 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
       catch (OperationCanceledException)
       {
         _logger.LogInformation("Cancellation requested, stopping incoming queue thread...");
-        return;
+      }
+      catch (WebSocketException ex) when (ex.WebSocketErrorCode == WebSocketError.ConnectionClosedPrematurely)
+      {
+        _logger.LogWarning($"Chrome has aborted the WebSocket connection during receive operation. Socket state: {_nativeClient.State}");
+        DisconnectAsync(CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
       }
       catch (Exception e)
       {
@@ -252,7 +284,15 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
   {
     var serialized = JsonConvert.SerializeObject(request, JsonProtocolSerialization.Settings);
     var bytes = Encoding.UTF8.GetBytes(serialized);
-    await _nativeClient.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, _connectionCancellation.Token).ConfigureAwait(false);
+    try
+    {
+      await _nativeClient.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, _connectionCancellation.Token).ConfigureAwait(false);
+    }
+    catch (WebSocketException ex) when (ex.WebSocketErrorCode == WebSocketError.InvalidState)
+    {
+      _logger.LogError($"Unsupported state detected when trying to send message to Chrome. Socket state: {_nativeClient.State}");
+      await DisconnectAsync(CancellationToken.None).ConfigureAwait(false);
+    }
     OnRequestSent?.Invoke(this, request);
   }
 
