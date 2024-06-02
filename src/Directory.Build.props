@@ -5,6 +5,7 @@
     <Authors>seclerp</Authors>
     <RepositoryUrl>https://github.com/seclerp/dotnet-chrome-protocol</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>(C) 2024 Andrii Rublov</Copyright>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <LangVersion>Latest</LangVersion>
