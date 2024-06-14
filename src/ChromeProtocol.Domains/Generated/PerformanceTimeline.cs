@@ -14,27 +14,27 @@ namespace ChromeProtocol.Domains
     /// <param name="ElementId">The id attribute of the element, if available.</param>
     /// <param name="Url">The URL of the image (may be trimmed).</param>
     public record LargestContentfulPaintType(
-      [property: Newtonsoft.Json.JsonProperty("renderTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("renderTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType RenderTime,
-      [property: Newtonsoft.Json.JsonProperty("loadTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loadTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType LoadTime,
-      [property: Newtonsoft.Json.JsonProperty("size")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("size")]
       double Size,
-      [property: Newtonsoft.Json.JsonProperty("elementId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("elementId")]
       string? ElementId = default,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? NodeId = default
     ) : ChromeProtocol.Core.IType
     {
     }
     public record LayoutShiftAttributionType(
-      [property: Newtonsoft.Json.JsonProperty("previousRect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("previousRect")]
       ChromeProtocol.Domains.DOM.RectType PreviousRect,
-      [property: Newtonsoft.Json.JsonProperty("currentRect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("currentRect")]
       ChromeProtocol.Domains.DOM.RectType CurrentRect,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? NodeId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -42,13 +42,13 @@ namespace ChromeProtocol.Domains
     /// <summary>See https://wicg.github.io/layout-instability/#sec-layout-shift and layout_shift.idl</summary>
     /// <param name="Value">Score increment produced by this event.</param>
     public record LayoutShiftType(
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       double Value,
-      [property: Newtonsoft.Json.JsonProperty("hadRecentInput")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hadRecentInput")]
       bool HadRecentInput,
-      [property: Newtonsoft.Json.JsonProperty("lastInputTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lastInputTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType LastInputTime,
-      [property: Newtonsoft.Json.JsonProperty("sources")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sources")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.PerformanceTimeline.LayoutShiftAttributionType> Sources
     ) : ChromeProtocol.Core.IType
     {
@@ -62,19 +62,19 @@ namespace ChromeProtocol.Domains
     /// <param name="Time">Time in seconds since Epoch, monotonically increasing within document lifetime.</param>
     /// <param name="Duration">Event duration, if applicable.</param>
     public record TimelineEventType(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("time")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("time")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType Time,
-      [property: Newtonsoft.Json.JsonProperty("duration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("duration")]
       double? Duration = default,
-      [property: Newtonsoft.Json.JsonProperty("lcpDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lcpDetails")]
       ChromeProtocol.Domains.PerformanceTimeline.LargestContentfulPaintType? LcpDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("layoutShiftDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layoutShiftDetails")]
       ChromeProtocol.Domains.PerformanceTimeline.LayoutShiftType? LayoutShiftDetails = default
     ) : ChromeProtocol.Core.IType
     {
@@ -82,7 +82,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sent when a performance timeline event is added. See reportPerformanceTimeline method.</summary>
     [ChromeProtocol.Core.MethodName("PerformanceTimeline.timelineEventAdded")]
     public record TimelineEventAdded(
-      [property: Newtonsoft.Json.JsonProperty("event")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("event")]
       ChromeProtocol.Domains.PerformanceTimeline.TimelineEventType Event
     ) : ChromeProtocol.Core.IEvent
     {
@@ -98,7 +98,7 @@ namespace ChromeProtocol.Domains
     /// filter disables recording.<br/>
     /// Note that not all types exposed to the web platform are currently supported.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.PerformanceTimeline.EnableRequest Enable(System.Collections.Generic.IReadOnlyList<string> EventTypes)    
+    public static ChromeProtocol.Domains.PerformanceTimeline.EnableRequest Enable(System.Collections.Generic.IReadOnlyList<string> EventTypes)
     {
       return new ChromeProtocol.Domains.PerformanceTimeline.EnableRequest(EventTypes);
     }
@@ -115,7 +115,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("PerformanceTimeline.enable")]
     public record EnableRequest(
-      [property: Newtonsoft.Json.JsonProperty("eventTypes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventTypes")]
       System.Collections.Generic.IReadOnlyList<string> EventTypes
     ) : ChromeProtocol.Core.ICommand<EnableRequestResult>
     {

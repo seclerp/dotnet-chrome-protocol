@@ -1,10 +1,10 @@
 using System.Net.WebSockets;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using ChromeProtocol.Runtime.Messaging;
 using ChromeProtocol.Runtime.Messaging.Json;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace ChromeProtocol.Runtime.Tests.Protocol.TestServer;
 
@@ -47,13 +47,13 @@ public class WebSocketController : ControllerBase
 
   static async Task ProcessMessage(WebSocket webSocket, ArraySegment<byte> incoming)
   {
-    var message = JsonConvert.DeserializeObject<ProtocolRequest<JObject>>(Encoding.UTF8.GetString(incoming.ToArray()), JsonProtocolSerialization.Settings)
+    var message = JsonSerializer.Deserialize<ProtocolRequest<JsonObject>>(Encoding.UTF8.GetString(incoming.ToArray()), JsonProtocolSerialization.Settings)
                   ?? throw new NotImplementedException();
     switch (message.Method)
     {
       case "Echo":
       {
-        var result = new EchoResult(message.Params["message"]?.Value<string>() ?? throw new NotImplementedException());
+        var result = new EchoResult(message.Params["message"]?.Deserialize<string>() ?? throw new NotImplementedException());
         var response = new ProtocolResponse<EchoResult>(message.Id, result, null);
         await Send(webSocket, response).ConfigureAwait(false);
         break;
@@ -75,7 +75,9 @@ public class WebSocketController : ControllerBase
 
   private static async Task Send(WebSocket webSocket, IProtocolMessage message)
   {
-    var bytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message, JsonProtocolSerialization.Settings));
+    var serialized = JsonSerializer.Serialize<object>(message, JsonProtocolSerialization.Settings);
+    var bytes = Encoding.UTF8.GetBytes(serialized);
+
     await webSocket.SendAsync(
       new ArraySegment<byte>(bytes, 0, bytes.Length),
       WebSocketMessageType.Text,

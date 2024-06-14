@@ -1,13 +1,40 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using ChromeProtocol.Core;
 
 namespace ChromeProtocol.Runtime.Messaging.Json;
 
 public static class JsonProtocolSerialization
 {
-  public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
+  public static readonly JsonSerializerOptions Settings;
+
+  static JsonProtocolSerialization()
   {
-    NullValueHandling = NullValueHandling.Ignore,
-    ContractResolver = new CamelCasePropertyNamesContractResolver()
-  };
+    var interfaces = new[]
+    {
+      typeof(ICommand),
+      typeof(IEvent),
+      typeof(IType),
+      typeof(IProtocolMessage)
+    };
+
+    var assembliesTypes = AppDomain
+      .CurrentDomain
+      .GetAssemblies()
+      .SelectMany(assembly => assembly.GetTypes())
+      .Where(implementation => implementation.IsClass && !implementation.IsGenericType);
+
+    var derivedTypes = interfaces.ToDictionary(
+      @interface => @interface,
+      @interface => assembliesTypes
+        .Where(@interface.IsAssignableFrom)
+        .ToArray());
+
+    Settings = new JsonSerializerOptions
+    {
+      DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+      PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+      TypeInfoResolver = new PolymorphicTypeResolver(derivedTypes)
+    };
+  }
 }

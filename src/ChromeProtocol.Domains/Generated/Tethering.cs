@@ -11,16 +11,16 @@ namespace ChromeProtocol.Domains
     /// <param name="ConnectionId">Connection id to be used.</param>
     [ChromeProtocol.Core.MethodName("Tethering.accepted")]
     public record Accepted(
-      [property: Newtonsoft.Json.JsonProperty("port")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("port")]
       int Port,
-      [property: Newtonsoft.Json.JsonProperty("connectionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("connectionId")]
       string ConnectionId
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Request browser port binding.</summary>
     /// <param name="Port">Port number to bind.</param>
-    public static ChromeProtocol.Domains.Tethering.BindRequest Bind(int Port)    
+    public static ChromeProtocol.Domains.Tethering.BindRequest Bind(int Port)
     {
       return new ChromeProtocol.Domains.Tethering.BindRequest(Port);
     }
@@ -28,7 +28,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Port">Port number to bind.</param>
     [ChromeProtocol.Core.MethodName("Tethering.bind")]
     public record BindRequest(
-      [property: Newtonsoft.Json.JsonProperty("port")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("port")]
       int Port
     ) : ChromeProtocol.Core.ICommand<BindRequestResult>
     {
@@ -38,7 +38,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Request browser port unbinding.</summary>
     /// <param name="Port">Port number to unbind.</param>
-    public static ChromeProtocol.Domains.Tethering.UnbindRequest Unbind(int Port)    
+    public static ChromeProtocol.Domains.Tethering.UnbindRequest Unbind(int Port)
     {
       return new ChromeProtocol.Domains.Tethering.UnbindRequest(Port);
     }
@@ -46,7 +46,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Port">Port number to unbind.</param>
     [ChromeProtocol.Core.MethodName("Tethering.unbind")]
     public record UnbindRequest(
-      [property: Newtonsoft.Json.JsonProperty("port")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("port")]
       int Port
     ) : ChromeProtocol.Core.ICommand<UnbindRequestResult>
     {

@@ -14,11 +14,11 @@ namespace ChromeProtocol.Domains
     /// session on the sink.<br/>
     /// </param>
     public record SinkType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id,
-      [property: Newtonsoft.Json.JsonProperty("session")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("session")]
       string? Session = default
     ) : ChromeProtocol.Core.IType
     {
@@ -29,7 +29,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Cast.sinksUpdated")]
     public record SinksUpdated(
-      [property: Newtonsoft.Json.JsonProperty("sinks")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sinks")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Cast.SinkType> Sinks
     ) : ChromeProtocol.Core.IEvent
     {
@@ -40,7 +40,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Cast.issueUpdated")]
     public record IssueUpdated(
-      [property: Newtonsoft.Json.JsonProperty("issueMessage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issueMessage")]
       string IssueMessage
     ) : ChromeProtocol.Core.IEvent
     {
@@ -52,7 +52,7 @@ namespace ChromeProtocol.Domains
     /// Also starts observing for issue messages. When an issue is added or removed,<br/>
     /// an |issueUpdated| event is fired.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Cast.EnableRequest Enable(string? PresentationUrl = default)    
+    public static ChromeProtocol.Domains.Cast.EnableRequest Enable(string? PresentationUrl = default)
     {
       return new ChromeProtocol.Domains.Cast.EnableRequest(PresentationUrl);
     }
@@ -65,7 +65,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Cast.enable")]
     public record EnableRequest(
-      [property: Newtonsoft.Json.JsonProperty("presentationUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("presentationUrl")]
       string? PresentationUrl = default
     ) : ChromeProtocol.Core.ICommand<EnableRequestResult>
     {
@@ -74,7 +74,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Stops observing for sinks and issues.</summary>
-    public static ChromeProtocol.Domains.Cast.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Cast.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Cast.DisableRequest();
     }
@@ -90,7 +90,7 @@ namespace ChromeProtocol.Domains
     /// Sets a sink to be used when the web page requests the browser to choose a<br/>
     /// sink via Presentation API, Remote Playback API, or Cast SDK.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Cast.SetSinkToUseRequest SetSinkToUse(string SinkName)    
+    public static ChromeProtocol.Domains.Cast.SetSinkToUseRequest SetSinkToUse(string SinkName)
     {
       return new ChromeProtocol.Domains.Cast.SetSinkToUseRequest(SinkName);
     }
@@ -100,7 +100,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Cast.setSinkToUse")]
     public record SetSinkToUseRequest(
-      [property: Newtonsoft.Json.JsonProperty("sinkName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sinkName")]
       string SinkName
     ) : ChromeProtocol.Core.ICommand<SetSinkToUseRequestResult>
     {
@@ -109,14 +109,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Starts mirroring the desktop to the sink.</summary>
-    public static ChromeProtocol.Domains.Cast.StartDesktopMirroringRequest StartDesktopMirroring(string SinkName)    
+    public static ChromeProtocol.Domains.Cast.StartDesktopMirroringRequest StartDesktopMirroring(string SinkName)
     {
       return new ChromeProtocol.Domains.Cast.StartDesktopMirroringRequest(SinkName);
     }
     /// <summary>Starts mirroring the desktop to the sink.</summary>
     [ChromeProtocol.Core.MethodName("Cast.startDesktopMirroring")]
     public record StartDesktopMirroringRequest(
-      [property: Newtonsoft.Json.JsonProperty("sinkName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sinkName")]
       string SinkName
     ) : ChromeProtocol.Core.ICommand<StartDesktopMirroringRequestResult>
     {
@@ -125,14 +125,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Starts mirroring the tab to the sink.</summary>
-    public static ChromeProtocol.Domains.Cast.StartTabMirroringRequest StartTabMirroring(string SinkName)    
+    public static ChromeProtocol.Domains.Cast.StartTabMirroringRequest StartTabMirroring(string SinkName)
     {
       return new ChromeProtocol.Domains.Cast.StartTabMirroringRequest(SinkName);
     }
     /// <summary>Starts mirroring the tab to the sink.</summary>
     [ChromeProtocol.Core.MethodName("Cast.startTabMirroring")]
     public record StartTabMirroringRequest(
-      [property: Newtonsoft.Json.JsonProperty("sinkName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sinkName")]
       string SinkName
     ) : ChromeProtocol.Core.ICommand<StartTabMirroringRequestResult>
     {
@@ -141,14 +141,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Stops the active Cast session on the sink.</summary>
-    public static ChromeProtocol.Domains.Cast.StopCastingRequest StopCasting(string SinkName)    
+    public static ChromeProtocol.Domains.Cast.StopCastingRequest StopCasting(string SinkName)
     {
       return new ChromeProtocol.Domains.Cast.StopCastingRequest(SinkName);
     }
     /// <summary>Stops the active Cast session on the sink.</summary>
     [ChromeProtocol.Core.MethodName("Cast.stopCasting")]
     public record StopCastingRequest(
-      [property: Newtonsoft.Json.JsonProperty("sinkName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sinkName")]
       string SinkName
     ) : ChromeProtocol.Core.ICommand<StopCastingRequestResult>
     {

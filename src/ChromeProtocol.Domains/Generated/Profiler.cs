@@ -16,17 +16,17 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="PositionTicks">An array of source position ticks.</param>
     public record ProfileNodeType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       int Id,
-      [property: Newtonsoft.Json.JsonProperty("callFrame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrame")]
       ChromeProtocol.Domains.Runtime.CallFrameType CallFrame,
-      [property: Newtonsoft.Json.JsonProperty("hitCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hitCount")]
       int? HitCount = default,
-      [property: Newtonsoft.Json.JsonProperty("children")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("children")]
       System.Collections.Generic.IReadOnlyList<int>? Children = default,
-      [property: Newtonsoft.Json.JsonProperty("deoptReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deoptReason")]
       string? DeoptReason = default,
-      [property: Newtonsoft.Json.JsonProperty("positionTicks")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("positionTicks")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Profiler.PositionTickInfoType>? PositionTicks = default
     ) : ChromeProtocol.Core.IType
     {
@@ -41,15 +41,15 @@ namespace ChromeProtocol.Domains
     /// profile startTime.<br/>
     /// </param>
     public record ProfileType(
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Profiler.ProfileNodeType> Nodes,
-      [property: Newtonsoft.Json.JsonProperty("startTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startTime")]
       double StartTime,
-      [property: Newtonsoft.Json.JsonProperty("endTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endTime")]
       double EndTime,
-      [property: Newtonsoft.Json.JsonProperty("samples")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("samples")]
       System.Collections.Generic.IReadOnlyList<int>? Samples = default,
-      [property: Newtonsoft.Json.JsonProperty("timeDeltas")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timeDeltas")]
       System.Collections.Generic.IReadOnlyList<int>? TimeDeltas = default
     ) : ChromeProtocol.Core.IType
     {
@@ -58,9 +58,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Line">Source line number (1-based).</param>
     /// <param name="Ticks">Number of samples attributed to the source line.</param>
     public record PositionTickInfoType(
-      [property: Newtonsoft.Json.JsonProperty("line")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("line")]
       int Line,
-      [property: Newtonsoft.Json.JsonProperty("ticks")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ticks")]
       int Ticks
     ) : ChromeProtocol.Core.IType
     {
@@ -70,11 +70,11 @@ namespace ChromeProtocol.Domains
     /// <param name="EndOffset">JavaScript script source offset for the range end.</param>
     /// <param name="Count">Collected execution count of the source range.</param>
     public record CoverageRangeType(
-      [property: Newtonsoft.Json.JsonProperty("startOffset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startOffset")]
       int StartOffset,
-      [property: Newtonsoft.Json.JsonProperty("endOffset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endOffset")]
       int EndOffset,
-      [property: Newtonsoft.Json.JsonProperty("count")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("count")]
       int Count
     ) : ChromeProtocol.Core.IType
     {
@@ -84,11 +84,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Ranges">Source ranges inside the function with coverage data.</param>
     /// <param name="IsBlockCoverage">Whether coverage data for this function has block granularity.</param>
     public record FunctionCoverageType(
-      [property: Newtonsoft.Json.JsonProperty("functionName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("functionName")]
       string FunctionName,
-      [property: Newtonsoft.Json.JsonProperty("ranges")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ranges")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Profiler.CoverageRangeType> Ranges,
-      [property: Newtonsoft.Json.JsonProperty("isBlockCoverage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isBlockCoverage")]
       bool IsBlockCoverage
     ) : ChromeProtocol.Core.IType
     {
@@ -98,11 +98,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Url">JavaScript script name or url.</param>
     /// <param name="Functions">Functions contained in the script that has coverage data.</param>
     public record ScriptCoverageType(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("functions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("functions")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Profiler.FunctionCoverageType> Functions
     ) : ChromeProtocol.Core.IType
     {
@@ -111,13 +111,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Title">Profile title passed as an argument to console.profile().</param>
     [ChromeProtocol.Core.MethodName("Profiler.consoleProfileFinished")]
     public record ConsoleProfileFinished(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id,
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.Debugger.LocationType Location,
-      [property: Newtonsoft.Json.JsonProperty("profile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("profile")]
       ChromeProtocol.Domains.Profiler.ProfileType Profile,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       string? Title = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -127,11 +127,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Title">Profile title passed as an argument to console.profile().</param>
     [ChromeProtocol.Core.MethodName("Profiler.consoleProfileStarted")]
     public record ConsoleProfileStarted(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id,
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.Debugger.LocationType Location,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       string? Title = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -147,16 +147,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">Coverage data for the current isolate.</param>
     [ChromeProtocol.Core.MethodName("Profiler.preciseCoverageDeltaUpdate")]
     public record PreciseCoverageDeltaUpdate(
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       double Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("occasion")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("occasion")]
       string Occasion,
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Profiler.ScriptCoverageType> Result
     ) : ChromeProtocol.Core.IEvent
     {
     }
-    public static ChromeProtocol.Domains.Profiler.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Profiler.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Profiler.DisableRequest();
     }
@@ -167,7 +167,7 @@ namespace ChromeProtocol.Domains
     public record DisableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Profiler.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Profiler.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Profiler.EnableRequest();
     }
@@ -182,7 +182,7 @@ namespace ChromeProtocol.Domains
     /// Collect coverage data for the current isolate. The coverage data may be incomplete due to<br/>
     /// garbage collection.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Profiler.GetBestEffortCoverageRequest GetBestEffortCoverage()    
+    public static ChromeProtocol.Domains.Profiler.GetBestEffortCoverageRequest GetBestEffortCoverage()
     {
       return new ChromeProtocol.Domains.Profiler.GetBestEffortCoverageRequest();
     }
@@ -196,14 +196,14 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Result">Coverage data for the current isolate.</param>
     public record GetBestEffortCoverageRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Profiler.ScriptCoverageType> Result
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Changes CPU profiler sampling interval. Must be called before CPU profiles recording started.</summary>
     /// <param name="Interval">New sampling interval in microseconds.</param>
-    public static ChromeProtocol.Domains.Profiler.SetSamplingIntervalRequest SetSamplingInterval(int Interval)    
+    public static ChromeProtocol.Domains.Profiler.SetSamplingIntervalRequest SetSamplingInterval(int Interval)
     {
       return new ChromeProtocol.Domains.Profiler.SetSamplingIntervalRequest(Interval);
     }
@@ -211,7 +211,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Interval">New sampling interval in microseconds.</param>
     [ChromeProtocol.Core.MethodName("Profiler.setSamplingInterval")]
     public record SetSamplingIntervalRequest(
-      [property: Newtonsoft.Json.JsonProperty("interval")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("interval")]
       int Interval
     ) : ChromeProtocol.Core.ICommand<SetSamplingIntervalRequestResult>
     {
@@ -219,7 +219,7 @@ namespace ChromeProtocol.Domains
     public record SetSamplingIntervalRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Profiler.StartRequest Start()    
+    public static ChromeProtocol.Domains.Profiler.StartRequest Start()
     {
       return new ChromeProtocol.Domains.Profiler.StartRequest();
     }
@@ -238,7 +238,7 @@ namespace ChromeProtocol.Domains
     /// <param name="CallCount">Collect accurate call counts beyond simple &#39;covered&#39; or &#39;not covered&#39;.</param>
     /// <param name="Detailed">Collect block-based coverage.</param>
     /// <param name="AllowTriggeredUpdates">Allow the backend to send updates on its own initiative</param>
-    public static ChromeProtocol.Domains.Profiler.StartPreciseCoverageRequest StartPreciseCoverage(bool? CallCount = default, bool? Detailed = default, bool? AllowTriggeredUpdates = default)    
+    public static ChromeProtocol.Domains.Profiler.StartPreciseCoverageRequest StartPreciseCoverage(bool? CallCount = default, bool? Detailed = default, bool? AllowTriggeredUpdates = default)
     {
       return new ChromeProtocol.Domains.Profiler.StartPreciseCoverageRequest(CallCount, Detailed, AllowTriggeredUpdates);
     }
@@ -252,23 +252,23 @@ namespace ChromeProtocol.Domains
     /// <param name="AllowTriggeredUpdates">Allow the backend to send updates on its own initiative</param>
     [ChromeProtocol.Core.MethodName("Profiler.startPreciseCoverage")]
     public record StartPreciseCoverageRequest(
-      [property: Newtonsoft.Json.JsonProperty("callCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callCount")]
       bool? CallCount = default,
-      [property: Newtonsoft.Json.JsonProperty("detailed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("detailed")]
       bool? Detailed = default,
-      [property: Newtonsoft.Json.JsonProperty("allowTriggeredUpdates")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("allowTriggeredUpdates")]
       bool? AllowTriggeredUpdates = default
     ) : ChromeProtocol.Core.ICommand<StartPreciseCoverageRequestResult>
     {
     }
     /// <param name="Timestamp">Monotonically increasing time (in seconds) when the coverage update was taken in the backend.</param>
     public record StartPreciseCoverageRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       double Timestamp
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Profiler.StopRequest Stop()    
+    public static ChromeProtocol.Domains.Profiler.StopRequest Stop()
     {
       return new ChromeProtocol.Domains.Profiler.StopRequest();
     }
@@ -278,7 +278,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Profile">Recorded profile.</param>
     public record StopRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("profile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("profile")]
       ChromeProtocol.Domains.Profiler.ProfileType Profile
     ) : ChromeProtocol.Core.IType
     {
@@ -287,7 +287,7 @@ namespace ChromeProtocol.Domains
     /// Disable precise code coverage. Disabling releases unnecessary execution count records and allows<br/>
     /// executing optimized code.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Profiler.StopPreciseCoverageRequest StopPreciseCoverage()    
+    public static ChromeProtocol.Domains.Profiler.StopPreciseCoverageRequest StopPreciseCoverage()
     {
       return new ChromeProtocol.Domains.Profiler.StopPreciseCoverageRequest();
     }
@@ -306,7 +306,7 @@ namespace ChromeProtocol.Domains
     /// Collect coverage data for the current isolate, and resets execution counters. Precise code<br/>
     /// coverage needs to have started.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Profiler.TakePreciseCoverageRequest TakePreciseCoverage()    
+    public static ChromeProtocol.Domains.Profiler.TakePreciseCoverageRequest TakePreciseCoverage()
     {
       return new ChromeProtocol.Domains.Profiler.TakePreciseCoverageRequest();
     }
@@ -321,9 +321,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">Coverage data for the current isolate.</param>
     /// <param name="Timestamp">Monotonically increasing time (in seconds) when the coverage update was taken in the backend.</param>
     public record TakePreciseCoverageRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Profiler.ScriptCoverageType> Result,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       double Timestamp
     ) : ChromeProtocol.Core.IType
     {

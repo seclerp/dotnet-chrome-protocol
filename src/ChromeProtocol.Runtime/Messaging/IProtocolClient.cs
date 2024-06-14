@@ -1,5 +1,5 @@
+using System.Text.Json.Nodes;
 using ChromeProtocol.Core;
-using Newtonsoft.Json.Linq;
 
 namespace ChromeProtocol.Runtime.Messaging;
 
@@ -8,8 +8,8 @@ public interface IProtocolClient : IDisposable
   event EventHandler OnConnected;
   event EventHandler OnDisconnected;
   event EventHandler<ProtocolRequest<ICommand>> OnRequestSent;
-  event EventHandler<ProtocolResponse<JObject>> OnResponseReceived;
-  event EventHandler<ProtocolEvent<JObject>> OnEventReceived;
+  event EventHandler<ProtocolResponse<JsonObject>> OnResponseReceived;
+  event EventHandler<ProtocolEvent<JsonObject>> OnEventReceived;
 
   Task ConnectAsync(CancellationToken token = default);
 

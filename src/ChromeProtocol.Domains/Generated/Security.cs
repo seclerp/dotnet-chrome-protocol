@@ -7,7 +7,7 @@ namespace ChromeProtocol.Domains
   public static partial class Security
   {
     /// <summary>An internal certificate ID value.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CertificateIdType(
       int Value
     ) : ChromeProtocol.Core.PrimitiveType<int>(Value)
@@ -17,14 +17,14 @@ namespace ChromeProtocol.Domains
     /// A description of mixed content (HTTP resources on HTTPS pages), as defined by<br/>
     /// https://www.w3.org/TR/mixed-content/#categories<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record MixedContentTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>The security level of a page or resource.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SecurityStateType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -50,46 +50,46 @@ namespace ChromeProtocol.Domains
     /// <param name="Mac">TLS MAC. Note that AEAD ciphers do not have separate MACs.</param>
     /// <param name="CertificateNetworkError">The highest priority network error code, if the certificate has an error.</param>
     public record CertificateSecurityStateType(
-      [property: Newtonsoft.Json.JsonProperty("protocol")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("protocol")]
       string Protocol,
-      [property: Newtonsoft.Json.JsonProperty("keyExchange")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyExchange")]
       string KeyExchange,
-      [property: Newtonsoft.Json.JsonProperty("cipher")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cipher")]
       string Cipher,
-      [property: Newtonsoft.Json.JsonProperty("certificate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certificate")]
       System.Collections.Generic.IReadOnlyList<string> Certificate,
-      [property: Newtonsoft.Json.JsonProperty("subjectName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subjectName")]
       string SubjectName,
-      [property: Newtonsoft.Json.JsonProperty("issuer")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issuer")]
       string Issuer,
-      [property: Newtonsoft.Json.JsonProperty("validFrom")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("validFrom")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType ValidFrom,
-      [property: Newtonsoft.Json.JsonProperty("validTo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("validTo")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType ValidTo,
-      [property: Newtonsoft.Json.JsonProperty("certificateHasWeakSignature")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certificateHasWeakSignature")]
       bool CertificateHasWeakSignature,
-      [property: Newtonsoft.Json.JsonProperty("certificateHasSha1Signature")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certificateHasSha1Signature")]
       bool CertificateHasSha1Signature,
-      [property: Newtonsoft.Json.JsonProperty("modernSSL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("modernSSL")]
       bool ModernSSL,
-      [property: Newtonsoft.Json.JsonProperty("obsoleteSslProtocol")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("obsoleteSslProtocol")]
       bool ObsoleteSslProtocol,
-      [property: Newtonsoft.Json.JsonProperty("obsoleteSslKeyExchange")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("obsoleteSslKeyExchange")]
       bool ObsoleteSslKeyExchange,
-      [property: Newtonsoft.Json.JsonProperty("obsoleteSslCipher")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("obsoleteSslCipher")]
       bool ObsoleteSslCipher,
-      [property: Newtonsoft.Json.JsonProperty("obsoleteSslSignature")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("obsoleteSslSignature")]
       bool ObsoleteSslSignature,
-      [property: Newtonsoft.Json.JsonProperty("keyExchangeGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyExchangeGroup")]
       string? KeyExchangeGroup = default,
-      [property: Newtonsoft.Json.JsonProperty("mac")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mac")]
       string? Mac = default,
-      [property: Newtonsoft.Json.JsonProperty("certificateNetworkError")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certificateNetworkError")]
       string? CertificateNetworkError = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SafetyTipStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -98,9 +98,9 @@ namespace ChromeProtocol.Domains
     /// <param name="SafetyTipStatus">Describes whether the page triggers any safety tips or reputation warnings. Default is unknown.</param>
     /// <param name="SafeUrl">The URL the safety tip suggested (&quot;Did you mean?&quot;). Only filled in for lookalike matches.</param>
     public record SafetyTipInfoType(
-      [property: Newtonsoft.Json.JsonProperty("safetyTipStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("safetyTipStatus")]
       ChromeProtocol.Domains.Security.SafetyTipStatusType SafetyTipStatus,
-      [property: Newtonsoft.Json.JsonProperty("safeUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("safeUrl")]
       string? SafeUrl = default
     ) : ChromeProtocol.Core.IType
     {
@@ -111,13 +111,13 @@ namespace ChromeProtocol.Domains
     /// <param name="CertificateSecurityState">Security state details about the page certificate.</param>
     /// <param name="SafetyTipInfo">The type of Safety Tip triggered on the page. Note that this field will be set even if the Safety Tip UI was not actually shown.</param>
     public record VisibleSecurityStateType(
-      [property: Newtonsoft.Json.JsonProperty("securityState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityState")]
       ChromeProtocol.Domains.Security.SecurityStateType SecurityState,
-      [property: Newtonsoft.Json.JsonProperty("securityStateIssueIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityStateIssueIds")]
       System.Collections.Generic.IReadOnlyList<string> SecurityStateIssueIds,
-      [property: Newtonsoft.Json.JsonProperty("certificateSecurityState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certificateSecurityState")]
       ChromeProtocol.Domains.Security.CertificateSecurityStateType? CertificateSecurityState = default,
-      [property: Newtonsoft.Json.JsonProperty("safetyTipInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("safetyTipInfo")]
       ChromeProtocol.Domains.Security.SafetyTipInfoType? SafetyTipInfo = default
     ) : ChromeProtocol.Core.IType
     {
@@ -131,19 +131,19 @@ namespace ChromeProtocol.Domains
     /// <param name="Certificate">Page certificate.</param>
     /// <param name="Recommendations">Recommendations to fix any issues.</param>
     public record SecurityStateExplanationType(
-      [property: Newtonsoft.Json.JsonProperty("securityState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityState")]
       ChromeProtocol.Domains.Security.SecurityStateType SecurityState,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       string Title,
-      [property: Newtonsoft.Json.JsonProperty("summary")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("summary")]
       string Summary,
-      [property: Newtonsoft.Json.JsonProperty("description")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("description")]
       string Description,
-      [property: Newtonsoft.Json.JsonProperty("mixedContentType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mixedContentType")]
       ChromeProtocol.Domains.Security.MixedContentTypeType MixedContentType,
-      [property: Newtonsoft.Json.JsonProperty("certificate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certificate")]
       System.Collections.Generic.IReadOnlyList<string> Certificate,
-      [property: Newtonsoft.Json.JsonProperty("recommendations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("recommendations")]
       System.Collections.Generic.IReadOnlyList<string>? Recommendations = default
     ) : ChromeProtocol.Core.IType
     {
@@ -158,19 +158,19 @@ namespace ChromeProtocol.Domains
     /// <param name="DisplayedInsecureContentStyle">Always set to unknown.</param>
     [System.Obsolete("This type marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record InsecureContentStatusType(
-      [property: Newtonsoft.Json.JsonProperty("ranMixedContent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ranMixedContent")]
       bool RanMixedContent,
-      [property: Newtonsoft.Json.JsonProperty("displayedMixedContent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("displayedMixedContent")]
       bool DisplayedMixedContent,
-      [property: Newtonsoft.Json.JsonProperty("containedMixedForm")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containedMixedForm")]
       bool ContainedMixedForm,
-      [property: Newtonsoft.Json.JsonProperty("ranContentWithCertErrors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ranContentWithCertErrors")]
       bool RanContentWithCertErrors,
-      [property: Newtonsoft.Json.JsonProperty("displayedContentWithCertErrors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("displayedContentWithCertErrors")]
       bool DisplayedContentWithCertErrors,
-      [property: Newtonsoft.Json.JsonProperty("ranInsecureContentStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ranInsecureContentStyle")]
       ChromeProtocol.Domains.Security.SecurityStateType RanInsecureContentStyle,
-      [property: Newtonsoft.Json.JsonProperty("displayedInsecureContentStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("displayedInsecureContentStyle")]
       ChromeProtocol.Domains.Security.SecurityStateType DisplayedInsecureContentStyle
     ) : ChromeProtocol.Core.IType
     {
@@ -179,7 +179,7 @@ namespace ChromeProtocol.Domains
     /// The action to take when a certificate error occurs. continue will continue processing the<br/>
     /// request and cancel will cancel the request.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CertificateErrorActionType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -197,11 +197,11 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Security.certificateError")]
     [System.Obsolete("This event marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record CertificateError(
-      [property: Newtonsoft.Json.JsonProperty("eventId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventId")]
       int EventId,
-      [property: Newtonsoft.Json.JsonProperty("errorType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorType")]
       string ErrorType,
-      [property: Newtonsoft.Json.JsonProperty("requestURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestURL")]
       string RequestURL
     ) : ChromeProtocol.Core.IEvent
     {
@@ -210,7 +210,7 @@ namespace ChromeProtocol.Domains
     /// <param name="VisibleSecurityState">Security state information about the page.</param>
     [ChromeProtocol.Core.MethodName("Security.visibleSecurityStateChanged")]
     public record VisibleSecurityStateChanged(
-      [property: Newtonsoft.Json.JsonProperty("visibleSecurityState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("visibleSecurityState")]
       ChromeProtocol.Domains.Security.VisibleSecurityStateType VisibleSecurityState
     ) : ChromeProtocol.Core.IEvent
     {
@@ -227,25 +227,25 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Security.securityStateChanged")]
     [System.Obsolete("This event marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SecurityStateChanged(
-      [property: Newtonsoft.Json.JsonProperty("securityState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityState")]
       ChromeProtocol.Domains.Security.SecurityStateType SecurityState,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("schemeIsCryptographic")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("schemeIsCryptographic")]
       bool SchemeIsCryptographic,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("explanations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("explanations")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Security.SecurityStateExplanationType> Explanations,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("insecureContentStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("insecureContentStatus")]
       ChromeProtocol.Domains.Security.InsecureContentStatusType InsecureContentStatus,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("summary")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("summary")]
       string? Summary = default
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Disables tracking security state changes.</summary>
-    public static ChromeProtocol.Domains.Security.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Security.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Security.DisableRequest();
     }
@@ -258,7 +258,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables tracking security state changes.</summary>
-    public static ChromeProtocol.Domains.Security.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Security.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Security.EnableRequest();
     }
@@ -272,7 +272,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enable/disable whether all certificate errors should be ignored.</summary>
     /// <param name="Ignore">If true, all certificate errors will be ignored.</param>
-    public static ChromeProtocol.Domains.Security.SetIgnoreCertificateErrorsRequest SetIgnoreCertificateErrors(bool Ignore)    
+    public static ChromeProtocol.Domains.Security.SetIgnoreCertificateErrorsRequest SetIgnoreCertificateErrors(bool Ignore)
     {
       return new ChromeProtocol.Domains.Security.SetIgnoreCertificateErrorsRequest(Ignore);
     }
@@ -280,7 +280,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Ignore">If true, all certificate errors will be ignored.</param>
     [ChromeProtocol.Core.MethodName("Security.setIgnoreCertificateErrors")]
     public record SetIgnoreCertificateErrorsRequest(
-      [property: Newtonsoft.Json.JsonProperty("ignore")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ignore")]
       bool Ignore
     ) : ChromeProtocol.Core.ICommand<SetIgnoreCertificateErrorsRequestResult>
     {
@@ -292,7 +292,7 @@ namespace ChromeProtocol.Domains
     /// <param name="EventId">The ID of the event.</param>
     /// <param name="Action">The action to take on the certificate error.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Security.HandleCertificateErrorRequest HandleCertificateError(int EventId, ChromeProtocol.Domains.Security.CertificateErrorActionType Action)    
+    public static ChromeProtocol.Domains.Security.HandleCertificateErrorRequest HandleCertificateError(int EventId, ChromeProtocol.Domains.Security.CertificateErrorActionType Action)
     {
       return new ChromeProtocol.Domains.Security.HandleCertificateErrorRequest(EventId, Action);
     }
@@ -302,9 +302,9 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Security.handleCertificateError")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record HandleCertificateErrorRequest(
-      [property: Newtonsoft.Json.JsonProperty("eventId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventId")]
       int EventId,
-      [property: Newtonsoft.Json.JsonProperty("action")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("action")]
       ChromeProtocol.Domains.Security.CertificateErrorActionType Action
     ) : ChromeProtocol.Core.ICommand<HandleCertificateErrorRequestResult>
     {
@@ -319,7 +319,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     /// <param name="Override">If true, certificate errors will be overridden.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Security.SetOverrideCertificateErrorsRequest SetOverrideCertificateErrors(bool Override)    
+    public static ChromeProtocol.Domains.Security.SetOverrideCertificateErrorsRequest SetOverrideCertificateErrors(bool Override)
     {
       return new ChromeProtocol.Domains.Security.SetOverrideCertificateErrorsRequest(Override);
     }
@@ -331,7 +331,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Security.setOverrideCertificateErrors")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetOverrideCertificateErrorsRequest(
-      [property: Newtonsoft.Json.JsonProperty("override")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("override")]
       bool Override
     ) : ChromeProtocol.Core.ICommand<SetOverrideCertificateErrorsRequestResult>
     {

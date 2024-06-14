@@ -6,7 +6,7 @@ namespace ChromeProtocol.Domains
   public static partial class DeviceOrientation
   {
     /// <summary>Clears the overridden Device Orientation.</summary>
-    public static ChromeProtocol.Domains.DeviceOrientation.ClearDeviceOrientationOverrideRequest ClearDeviceOrientationOverride()    
+    public static ChromeProtocol.Domains.DeviceOrientation.ClearDeviceOrientationOverrideRequest ClearDeviceOrientationOverride()
     {
       return new ChromeProtocol.Domains.DeviceOrientation.ClearDeviceOrientationOverrideRequest();
     }
@@ -22,7 +22,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Alpha">Mock alpha</param>
     /// <param name="Beta">Mock beta</param>
     /// <param name="Gamma">Mock gamma</param>
-    public static ChromeProtocol.Domains.DeviceOrientation.SetDeviceOrientationOverrideRequest SetDeviceOrientationOverride(double Alpha, double Beta, double Gamma)    
+    public static ChromeProtocol.Domains.DeviceOrientation.SetDeviceOrientationOverrideRequest SetDeviceOrientationOverride(double Alpha, double Beta, double Gamma)
     {
       return new ChromeProtocol.Domains.DeviceOrientation.SetDeviceOrientationOverrideRequest(Alpha, Beta, Gamma);
     }
@@ -32,11 +32,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Gamma">Mock gamma</param>
     [ChromeProtocol.Core.MethodName("DeviceOrientation.setDeviceOrientationOverride")]
     public record SetDeviceOrientationOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("alpha")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("alpha")]
       double Alpha,
-      [property: Newtonsoft.Json.JsonProperty("beta")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("beta")]
       double Beta,
-      [property: Newtonsoft.Json.JsonProperty("gamma")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gamma")]
       double Gamma
     ) : ChromeProtocol.Core.ICommand<SetDeviceOrientationOverrideRequestResult>
     {
