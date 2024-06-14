@@ -7,20 +7,20 @@ namespace ChromeProtocol.Domains
   public static partial class Page
   {
     /// <summary>Unique frame identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record FrameIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Indicates whether a frame has been identified as an ad.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AdFrameTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AdFrameExplanationType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -28,9 +28,9 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Indicates whether a frame has been identified as an ad and why.</summary>
     public record AdFrameStatusType(
-      [property: Newtonsoft.Json.JsonProperty("adFrameType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("adFrameType")]
       ChromeProtocol.Domains.Page.AdFrameTypeType AdFrameType,
-      [property: Newtonsoft.Json.JsonProperty("explanations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("explanations")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.AdFrameExplanationType>? Explanations = default
     ) : ChromeProtocol.Core.IType
     {
@@ -45,28 +45,28 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="DebuggerId">Id of adScriptId&#39;s debugger.</param>
     public record AdScriptIdType(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("debuggerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("debuggerId")]
       ChromeProtocol.Domains.Runtime.UniqueDebuggerIdType DebuggerId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Indicates whether the frame is a secure context and why it is the case.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SecureContextTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Indicates whether the frame is cross-origin isolated and why it is the case.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CrossOriginIsolatedContextTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record GatedAPIFeaturesType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -76,33 +76,33 @@ namespace ChromeProtocol.Domains
     /// All Permissions Policy features. This enum should match the one defined<br/>
     /// in third_party/blink/renderer/core/permissions_policy/permissions_policy_features.json5.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PermissionsPolicyFeatureType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Reason for a permissions policy feature to be disabled.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PermissionsPolicyBlockReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record PermissionsPolicyBlockLocatorType(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("blockReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("blockReason")]
       ChromeProtocol.Domains.Page.PermissionsPolicyBlockReasonType BlockReason
     ) : ChromeProtocol.Core.IType
     {
     }
     public record PermissionsPolicyFeatureStateType(
-      [property: Newtonsoft.Json.JsonProperty("feature")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("feature")]
       ChromeProtocol.Domains.Page.PermissionsPolicyFeatureType Feature,
-      [property: Newtonsoft.Json.JsonProperty("allowed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("allowed")]
       bool Allowed,
-      [property: Newtonsoft.Json.JsonProperty("locator")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("locator")]
       ChromeProtocol.Domains.Page.PermissionsPolicyBlockLocatorType? Locator = default
     ) : ChromeProtocol.Core.IType
     {
@@ -111,37 +111,37 @@ namespace ChromeProtocol.Domains
     /// Origin Trial(https://www.chromium.org/blink/origin-trials) support.<br/>
     /// Status for an Origin Trial token.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record OriginTrialTokenStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Status for an Origin Trial.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record OriginTrialStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record OriginTrialUsageRestrictionType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record OriginTrialTokenType(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("matchSubDomains")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("matchSubDomains")]
       bool MatchSubDomains,
-      [property: Newtonsoft.Json.JsonProperty("trialName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("trialName")]
       string TrialName,
-      [property: Newtonsoft.Json.JsonProperty("expiryTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expiryTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType ExpiryTime,
-      [property: Newtonsoft.Json.JsonProperty("isThirdParty")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isThirdParty")]
       bool IsThirdParty,
-      [property: Newtonsoft.Json.JsonProperty("usageRestriction")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("usageRestriction")]
       ChromeProtocol.Domains.Page.OriginTrialUsageRestrictionType UsageRestriction
     ) : ChromeProtocol.Core.IType
     {
@@ -151,21 +151,21 @@ namespace ChromeProtocol.Domains
     /// parsable.<br/>
     /// </param>
     public record OriginTrialTokenWithStatusType(
-      [property: Newtonsoft.Json.JsonProperty("rawTokenText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rawTokenText")]
       string RawTokenText,
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       ChromeProtocol.Domains.Page.OriginTrialTokenStatusType Status,
-      [property: Newtonsoft.Json.JsonProperty("parsedToken")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parsedToken")]
       ChromeProtocol.Domains.Page.OriginTrialTokenType? ParsedToken = default
     ) : ChromeProtocol.Core.IType
     {
     }
     public record OriginTrialType(
-      [property: Newtonsoft.Json.JsonProperty("trialName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("trialName")]
       string TrialName,
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       ChromeProtocol.Domains.Page.OriginTrialStatusType Status,
-      [property: Newtonsoft.Json.JsonProperty("tokensWithStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tokensWithStatus")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.OriginTrialTokenWithStatusType> TokensWithStatus
     ) : ChromeProtocol.Core.IType
     {
@@ -191,33 +191,33 @@ namespace ChromeProtocol.Domains
     /// <param name="UnreachableUrl">If the frame failed to load, this contains the URL that could not be loaded. Note that unlike url above, this URL may contain a fragment.</param>
     /// <param name="AdFrameStatus">Indicates whether this frame was tagged as an ad and why.</param>
     public record FrameType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.Page.FrameIdType Id,
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType LoaderId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("domainAndRegistry")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domainAndRegistry")]
       string DomainAndRegistry,
-      [property: Newtonsoft.Json.JsonProperty("securityOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityOrigin")]
       string SecurityOrigin,
-      [property: Newtonsoft.Json.JsonProperty("mimeType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mimeType")]
       string MimeType,
-      [property: Newtonsoft.Json.JsonProperty("secureContextType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("secureContextType")]
       ChromeProtocol.Domains.Page.SecureContextTypeType SecureContextType,
-      [property: Newtonsoft.Json.JsonProperty("crossOriginIsolatedContextType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("crossOriginIsolatedContextType")]
       ChromeProtocol.Domains.Page.CrossOriginIsolatedContextTypeType CrossOriginIsolatedContextType,
-      [property: Newtonsoft.Json.JsonProperty("gatedAPIFeatures")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gatedAPIFeatures")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.GatedAPIFeaturesType> GatedAPIFeatures,
-      [property: Newtonsoft.Json.JsonProperty("parentId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentId")]
       ChromeProtocol.Domains.Page.FrameIdType? ParentId = default,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string? Name = default,
-      [property: Newtonsoft.Json.JsonProperty("urlFragment")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("urlFragment")]
       string? UrlFragment = default,
-      [property: Newtonsoft.Json.JsonProperty("unreachableUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("unreachableUrl")]
       string? UnreachableUrl = default,
-      [property: Newtonsoft.Json.JsonProperty("adFrameStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("adFrameStatus")]
       ChromeProtocol.Domains.Page.AdFrameStatusType? AdFrameStatus = default
     ) : ChromeProtocol.Core.IType
     {
@@ -231,19 +231,19 @@ namespace ChromeProtocol.Domains
     /// <param name="Failed">True if the resource failed to load.</param>
     /// <param name="Canceled">True if the resource was canceled during loading.</param>
     public record FrameResourceType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Network.ResourceTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("mimeType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mimeType")]
       string MimeType,
-      [property: Newtonsoft.Json.JsonProperty("lastModified")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lastModified")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType? LastModified = default,
-      [property: Newtonsoft.Json.JsonProperty("contentSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentSize")]
       double? ContentSize = default,
-      [property: Newtonsoft.Json.JsonProperty("failed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("failed")]
       bool? Failed = default,
-      [property: Newtonsoft.Json.JsonProperty("canceled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("canceled")]
       bool? Canceled = default
     ) : ChromeProtocol.Core.IType
     {
@@ -253,11 +253,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Resources">Information about frame resources.</param>
     /// <param name="ChildFrames">Child frames.</param>
     public record FrameResourceTreeType(
-      [property: Newtonsoft.Json.JsonProperty("frame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frame")]
       ChromeProtocol.Domains.Page.FrameType Frame,
-      [property: Newtonsoft.Json.JsonProperty("resources")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resources")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.FrameResourceType> Resources,
-      [property: Newtonsoft.Json.JsonProperty("childFrames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("childFrames")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.FrameResourceTreeType>? ChildFrames = default
     ) : ChromeProtocol.Core.IType
     {
@@ -266,22 +266,22 @@ namespace ChromeProtocol.Domains
     /// <param name="Frame">Frame information for this tree item.</param>
     /// <param name="ChildFrames">Child frames.</param>
     public record FrameTreeType(
-      [property: Newtonsoft.Json.JsonProperty("frame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frame")]
       ChromeProtocol.Domains.Page.FrameType Frame,
-      [property: Newtonsoft.Json.JsonProperty("childFrames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("childFrames")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.FrameTreeType>? ChildFrames = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Unique script identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ScriptIdentifierType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Transition type.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record TransitionTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -294,15 +294,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Title">Title of the navigation history entry.</param>
     /// <param name="TransitionType">Transition type.</param>
     public record NavigationEntryType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       int Id,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("userTypedURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userTypedURL")]
       string UserTypedURL,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       string Title,
-      [property: Newtonsoft.Json.JsonProperty("transitionType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("transitionType")]
       ChromeProtocol.Domains.Page.TransitionTypeType TransitionType
     ) : ChromeProtocol.Core.IType
     {
@@ -316,25 +316,25 @@ namespace ChromeProtocol.Domains
     /// <param name="ScrollOffsetY">Position of vertical scroll in CSS pixels.</param>
     /// <param name="Timestamp">Frame swap timestamp.</param>
     public record ScreencastFrameMetadataType(
-      [property: Newtonsoft.Json.JsonProperty("offsetTop")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offsetTop")]
       double OffsetTop,
-      [property: Newtonsoft.Json.JsonProperty("pageScaleFactor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pageScaleFactor")]
       double PageScaleFactor,
-      [property: Newtonsoft.Json.JsonProperty("deviceWidth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deviceWidth")]
       double DeviceWidth,
-      [property: Newtonsoft.Json.JsonProperty("deviceHeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deviceHeight")]
       double DeviceHeight,
-      [property: Newtonsoft.Json.JsonProperty("scrollOffsetX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollOffsetX")]
       double ScrollOffsetX,
-      [property: Newtonsoft.Json.JsonProperty("scrollOffsetY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollOffsetY")]
       double ScrollOffsetY,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType? Timestamp = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Javascript dialog type.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record DialogTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -346,13 +346,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Line">Error line.</param>
     /// <param name="Column">Error column.</param>
     public record AppManifestErrorType(
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       string Message,
-      [property: Newtonsoft.Json.JsonProperty("critical")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("critical")]
       int Critical,
-      [property: Newtonsoft.Json.JsonProperty("line")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("line")]
       int Line,
-      [property: Newtonsoft.Json.JsonProperty("column")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("column")]
       int Column
     ) : ChromeProtocol.Core.IType
     {
@@ -360,7 +360,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Parsed app manifest properties.</summary>
     /// <param name="Scope">Computed scope value</param>
     public record AppManifestParsedPropertiesType(
-      [property: Newtonsoft.Json.JsonProperty("scope")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scope")]
       string Scope
     ) : ChromeProtocol.Core.IType
     {
@@ -371,13 +371,13 @@ namespace ChromeProtocol.Domains
     /// <param name="ClientWidth">Width (CSS pixels), excludes scrollbar if present.</param>
     /// <param name="ClientHeight">Height (CSS pixels), excludes scrollbar if present.</param>
     public record LayoutViewportType(
-      [property: Newtonsoft.Json.JsonProperty("pageX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pageX")]
       int PageX,
-      [property: Newtonsoft.Json.JsonProperty("pageY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pageY")]
       int PageY,
-      [property: Newtonsoft.Json.JsonProperty("clientWidth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clientWidth")]
       int ClientWidth,
-      [property: Newtonsoft.Json.JsonProperty("clientHeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clientHeight")]
       int ClientHeight
     ) : ChromeProtocol.Core.IType
     {
@@ -392,21 +392,21 @@ namespace ChromeProtocol.Domains
     /// <param name="Scale">Scale relative to the ideal viewport (size at width=device-width).</param>
     /// <param name="Zoom">Page zoom factor (CSS to device independent pixels ratio).</param>
     public record VisualViewportType(
-      [property: Newtonsoft.Json.JsonProperty("offsetX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offsetX")]
       double OffsetX,
-      [property: Newtonsoft.Json.JsonProperty("offsetY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offsetY")]
       double OffsetY,
-      [property: Newtonsoft.Json.JsonProperty("pageX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pageX")]
       double PageX,
-      [property: Newtonsoft.Json.JsonProperty("pageY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pageY")]
       double PageY,
-      [property: Newtonsoft.Json.JsonProperty("clientWidth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clientWidth")]
       double ClientWidth,
-      [property: Newtonsoft.Json.JsonProperty("clientHeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clientHeight")]
       double ClientHeight,
-      [property: Newtonsoft.Json.JsonProperty("scale")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scale")]
       double Scale,
-      [property: Newtonsoft.Json.JsonProperty("zoom")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("zoom")]
       double? Zoom = default
     ) : ChromeProtocol.Core.IType
     {
@@ -418,15 +418,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Height">Rectangle height in device independent pixels (dip).</param>
     /// <param name="Scale">Page scale factor.</param>
     public record ViewportType(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       double Width,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       double Height,
-      [property: Newtonsoft.Json.JsonProperty("scale")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scale")]
       double Scale
     ) : ChromeProtocol.Core.IType
     {
@@ -440,19 +440,19 @@ namespace ChromeProtocol.Domains
     /// <param name="Fantasy">The fantasy font-family.</param>
     /// <param name="Math">The math font-family.</param>
     public record FontFamiliesType(
-      [property: Newtonsoft.Json.JsonProperty("standard")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("standard")]
       string? Standard = default,
-      [property: Newtonsoft.Json.JsonProperty("fixed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fixed")]
       string? Fixed = default,
-      [property: Newtonsoft.Json.JsonProperty("serif")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("serif")]
       string? Serif = default,
-      [property: Newtonsoft.Json.JsonProperty("sansSerif")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sansSerif")]
       string? SansSerif = default,
-      [property: Newtonsoft.Json.JsonProperty("cursive")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cursive")]
       string? Cursive = default,
-      [property: Newtonsoft.Json.JsonProperty("fantasy")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fantasy")]
       string? Fantasy = default,
-      [property: Newtonsoft.Json.JsonProperty("math")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("math")]
       string? Math = default
     ) : ChromeProtocol.Core.IType
     {
@@ -461,9 +461,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Script">Name of the script which these font families are defined for.</param>
     /// <param name="FontFamilies">Generic font families collection for the script.</param>
     public record ScriptFontFamiliesType(
-      [property: Newtonsoft.Json.JsonProperty("script")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("script")]
       string Script,
-      [property: Newtonsoft.Json.JsonProperty("fontFamilies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontFamilies")]
       ChromeProtocol.Domains.Page.FontFamiliesType FontFamilies
     ) : ChromeProtocol.Core.IType
     {
@@ -472,20 +472,20 @@ namespace ChromeProtocol.Domains
     /// <param name="Standard">Default standard font size.</param>
     /// <param name="Fixed">Default fixed font size.</param>
     public record FontSizesType(
-      [property: Newtonsoft.Json.JsonProperty("standard")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("standard")]
       int? Standard = default,
-      [property: Newtonsoft.Json.JsonProperty("fixed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fixed")]
       int? Fixed = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ClientNavigationReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ClientNavigationDispositionType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -494,9 +494,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Argument name (e.g. name:&#39;minimum-icon-size-in-pixels&#39;).</param>
     /// <param name="Value">Argument value (e.g. value:&#39;64&#39;).</param>
     public record InstallabilityErrorArgumentType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
@@ -505,15 +505,15 @@ namespace ChromeProtocol.Domains
     /// <param name="ErrorId">The error id (e.g. &#39;manifest-missing-suitable-icon&#39;).</param>
     /// <param name="ErrorArguments">The list of error arguments (e.g. {name:&#39;minimum-icon-size-in-pixels&#39;, value:&#39;64&#39;}).</param>
     public record InstallabilityErrorType(
-      [property: Newtonsoft.Json.JsonProperty("errorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorId")]
       string ErrorId,
-      [property: Newtonsoft.Json.JsonProperty("errorArguments")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorArguments")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.InstallabilityErrorArgumentType> ErrorArguments
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>The referring-policy used for the navigation.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ReferrerPolicyType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -526,36 +526,36 @@ namespace ChromeProtocol.Domains
     /// (the actual compilation mode used is upon backend discretion).<br/>
     /// </param>
     public record CompilationCacheParamsType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("eager")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eager")]
       bool? Eager = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Enum of possible auto-response for permission / prompt dialogs.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AutoResponseModeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>The type of a frameNavigated event.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record NavigationTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>List of not restored reasons for back-forward cache.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record BackForwardCacheNotRestoredReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Types of not restored reasons for back-forward cache.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record BackForwardCacheNotRestoredReasonTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -566,13 +566,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Url">Url of the file where blockage happened. Optional because of tests.</param>
     /// <param name="Function">Function name where blockage happened. Optional because of anonymous functions and tests.</param>
     public record BackForwardCacheBlockingDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int ColumnNumber,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("function")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("function")]
       string? Function = default
     ) : ChromeProtocol.Core.IType
     {
@@ -585,13 +585,13 @@ namespace ChromeProtocol.Domains
     /// - EmbedderExtensionSentMessageToCachedFrame: the extension ID.<br/>
     /// </param>
     public record BackForwardCacheNotRestoredExplanationType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Page.BackForwardCacheNotRestoredReasonTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("reason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reason")]
       ChromeProtocol.Domains.Page.BackForwardCacheNotRestoredReasonType Reason,
-      [property: Newtonsoft.Json.JsonProperty("context")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("context")]
       string? Context = default,
-      [property: Newtonsoft.Json.JsonProperty("details")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("details")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.BackForwardCacheBlockingDetailsType>? Details = default
     ) : ChromeProtocol.Core.IType
     {
@@ -600,18 +600,18 @@ namespace ChromeProtocol.Domains
     /// <param name="Explanations">Not restored reasons of each frame</param>
     /// <param name="Children">Array of children frame</param>
     public record BackForwardCacheNotRestoredExplanationTreeType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("explanations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("explanations")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.BackForwardCacheNotRestoredExplanationType> Explanations,
-      [property: Newtonsoft.Json.JsonProperty("children")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("children")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.BackForwardCacheNotRestoredExplanationTreeType> Children
     ) : ChromeProtocol.Core.IType
     {
     }
     [ChromeProtocol.Core.MethodName("Page.domContentEventFired")]
     public record DomContentEventFired(
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp
     ) : ChromeProtocol.Core.IEvent
     {
@@ -622,11 +622,11 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendNodeId">Input node id. Only present for file choosers opened via an `&lt;input type=&quot;file&quot;&gt;` element.</param>
     [ChromeProtocol.Core.MethodName("Page.fileChooserOpened")]
     public record FileChooserOpened(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("mode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mode")]
       string Mode,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -637,11 +637,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Stack">JavaScript stack trace of when frame was attached, only set if frame initiated from script.</param>
     [ChromeProtocol.Core.MethodName("Page.frameAttached")]
     public record FrameAttached(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("parentFrameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentFrameId")]
       ChromeProtocol.Domains.Page.FrameIdType ParentFrameId,
-      [property: Newtonsoft.Json.JsonProperty("stack")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stack")]
       ChromeProtocol.Domains.Runtime.StackTraceType? Stack = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -651,7 +651,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.frameClearedScheduledNavigation")]
     [System.Obsolete("This event marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record FrameClearedScheduledNavigation(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -660,9 +660,9 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">Id of the frame that has been detached.</param>
     [ChromeProtocol.Core.MethodName("Page.frameDetached")]
     public record FrameDetached(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("reason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reason")]
       string Reason
     ) : ChromeProtocol.Core.IEvent
     {
@@ -671,9 +671,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Frame">Frame object.</param>
     [ChromeProtocol.Core.MethodName("Page.frameNavigated")]
     public record FrameNavigated(
-      [property: Newtonsoft.Json.JsonProperty("frame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frame")]
       ChromeProtocol.Domains.Page.FrameType Frame,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Page.NavigationTypeType Type
     ) : ChromeProtocol.Core.IEvent
     {
@@ -682,7 +682,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Frame">Frame object.</param>
     [ChromeProtocol.Core.MethodName("Page.documentOpened")]
     public record DocumentOpened(
-      [property: Newtonsoft.Json.JsonProperty("frame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frame")]
       ChromeProtocol.Domains.Page.FrameType Frame
     ) : ChromeProtocol.Core.IEvent
     {
@@ -701,13 +701,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Disposition">The disposition for the navigation.</param>
     [ChromeProtocol.Core.MethodName("Page.frameRequestedNavigation")]
     public record FrameRequestedNavigation(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("reason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reason")]
       ChromeProtocol.Domains.Page.ClientNavigationReasonType Reason,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("disposition")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disposition")]
       ChromeProtocol.Domains.Page.ClientNavigationDispositionType Disposition
     ) : ChromeProtocol.Core.IEvent
     {
@@ -723,13 +723,13 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.frameScheduledNavigation")]
     [System.Obsolete("This event marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record FrameScheduledNavigation(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("delay")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("delay")]
       double Delay,
-      [property: Newtonsoft.Json.JsonProperty("reason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reason")]
       ChromeProtocol.Domains.Page.ClientNavigationReasonType Reason,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url
     ) : ChromeProtocol.Core.IEvent
     {
@@ -738,7 +738,7 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">Id of the frame that has started loading.</param>
     [ChromeProtocol.Core.MethodName("Page.frameStartedLoading")]
     public record FrameStartedLoading(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -747,7 +747,7 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">Id of the frame that has stopped loading.</param>
     [ChromeProtocol.Core.MethodName("Page.frameStoppedLoading")]
     public record FrameStoppedLoading(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -763,13 +763,13 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.downloadWillBegin")]
     [System.Obsolete("This event marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record DownloadWillBegin(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("guid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("guid")]
       string Guid,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("suggestedFilename")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("suggestedFilename")]
       string SuggestedFilename
     ) : ChromeProtocol.Core.IEvent
     {
@@ -785,13 +785,13 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.downloadProgress")]
     [System.Obsolete("This event marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record DownloadProgress(
-      [property: Newtonsoft.Json.JsonProperty("guid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("guid")]
       string Guid,
-      [property: Newtonsoft.Json.JsonProperty("totalBytes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("totalBytes")]
       double TotalBytes,
-      [property: Newtonsoft.Json.JsonProperty("receivedBytes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("receivedBytes")]
       double ReceivedBytes,
-      [property: Newtonsoft.Json.JsonProperty("state")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("state")]
       string State
     ) : ChromeProtocol.Core.IEvent
     {
@@ -814,9 +814,9 @@ namespace ChromeProtocol.Domains
     /// <param name="UserInput">User input in case of prompt.</param>
     [ChromeProtocol.Core.MethodName("Page.javascriptDialogClosed")]
     public record JavascriptDialogClosed(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       bool Result,
-      [property: Newtonsoft.Json.JsonProperty("userInput")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userInput")]
       string UserInput
     ) : ChromeProtocol.Core.IEvent
     {
@@ -836,15 +836,15 @@ namespace ChromeProtocol.Domains
     /// <param name="DefaultPrompt">Default dialog prompt.</param>
     [ChromeProtocol.Core.MethodName("Page.javascriptDialogOpening")]
     public record JavascriptDialogOpening(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       string Message,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Page.DialogTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("hasBrowserHandler")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasBrowserHandler")]
       bool HasBrowserHandler,
-      [property: Newtonsoft.Json.JsonProperty("defaultPrompt")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("defaultPrompt")]
       string? DefaultPrompt = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -854,13 +854,13 @@ namespace ChromeProtocol.Domains
     /// <param name="LoaderId">Loader identifier. Empty string if the request is fetched from worker.</param>
     [ChromeProtocol.Core.MethodName("Page.lifecycleEvent")]
     public record LifecycleEvent(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType LoaderId,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp
     ) : ChromeProtocol.Core.IEvent
     {
@@ -877,20 +877,20 @@ namespace ChromeProtocol.Domains
     /// <param name="NotRestoredExplanationsTree">Tree structure of reasons why the page could not be cached for each frame.</param>
     [ChromeProtocol.Core.MethodName("Page.backForwardCacheNotUsed")]
     public record BackForwardCacheNotUsed(
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType LoaderId,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("notRestoredExplanations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("notRestoredExplanations")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.BackForwardCacheNotRestoredExplanationType> NotRestoredExplanations,
-      [property: Newtonsoft.Json.JsonProperty("notRestoredExplanationsTree")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("notRestoredExplanationsTree")]
       ChromeProtocol.Domains.Page.BackForwardCacheNotRestoredExplanationTreeType? NotRestoredExplanationsTree = default
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("Page.loadEventFired")]
     public record LoadEventFired(
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp
     ) : ChromeProtocol.Core.IEvent
     {
@@ -900,9 +900,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Url">Frame&#39;s new url.</param>
     [ChromeProtocol.Core.MethodName("Page.navigatedWithinDocument")]
     public record NavigatedWithinDocument(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url
     ) : ChromeProtocol.Core.IEvent
     {
@@ -913,11 +913,11 @@ namespace ChromeProtocol.Domains
     /// <param name="SessionId">Frame number.</param>
     [ChromeProtocol.Core.MethodName("Page.screencastFrame")]
     public record ScreencastFrame(
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data,
-      [property: Newtonsoft.Json.JsonProperty("metadata")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("metadata")]
       ChromeProtocol.Domains.Page.ScreencastFrameMetadataType Metadata,
-      [property: Newtonsoft.Json.JsonProperty("sessionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sessionId")]
       int SessionId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -926,7 +926,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Visible">True if the page is visible.</param>
     [ChromeProtocol.Core.MethodName("Page.screencastVisibilityChanged")]
     public record ScreencastVisibilityChanged(
-      [property: Newtonsoft.Json.JsonProperty("visible")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("visible")]
       bool Visible
     ) : ChromeProtocol.Core.IEvent
     {
@@ -941,13 +941,13 @@ namespace ChromeProtocol.Domains
     /// <param name="UserGesture">Whether or not it was triggered by user gesture.</param>
     [ChromeProtocol.Core.MethodName("Page.windowOpen")]
     public record WindowOpen(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("windowName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("windowName")]
       string WindowName,
-      [property: Newtonsoft.Json.JsonProperty("windowFeatures")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("windowFeatures")]
       System.Collections.Generic.IReadOnlyList<string> WindowFeatures,
-      [property: Newtonsoft.Json.JsonProperty("userGesture")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userGesture")]
       bool UserGesture
     ) : ChromeProtocol.Core.IEvent
     {
@@ -959,16 +959,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Data">Base64-encoded data (Encoded as a base64 string when passed over JSON)</param>
     [ChromeProtocol.Core.MethodName("Page.compilationCacheProduced")]
     public record CompilationCacheProduced(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Deprecated, please use addScriptToEvaluateOnNewDocument instead.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.AddScriptToEvaluateOnLoadRequest AddScriptToEvaluateOnLoad(string ScriptSource)    
+    public static ChromeProtocol.Domains.Page.AddScriptToEvaluateOnLoadRequest AddScriptToEvaluateOnLoad(string ScriptSource)
     {
       return new ChromeProtocol.Domains.Page.AddScriptToEvaluateOnLoadRequest(ScriptSource);
     }
@@ -976,7 +976,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.addScriptToEvaluateOnLoad")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record AddScriptToEvaluateOnLoadRequest(
-      [property: Newtonsoft.Json.JsonProperty("scriptSource")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptSource")]
       string ScriptSource
     ) : ChromeProtocol.Core.ICommand<AddScriptToEvaluateOnLoadRequestResult>
     {
@@ -984,7 +984,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Identifier">Identifier of the added script.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record AddScriptToEvaluateOnLoadRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("identifier")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("identifier")]
       ChromeProtocol.Domains.Page.ScriptIdentifierType Identifier
     ) : ChromeProtocol.Core.IType
     {
@@ -1003,7 +1003,7 @@ namespace ChromeProtocol.Domains
     /// If true, runs the script immediately on existing execution contexts or worlds.<br/>
     /// Default: false.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Page.AddScriptToEvaluateOnNewDocumentRequest AddScriptToEvaluateOnNewDocument(string Source, string? WorldName = default, bool? IncludeCommandLineAPI = default, bool? RunImmediately = default)    
+    public static ChromeProtocol.Domains.Page.AddScriptToEvaluateOnNewDocumentRequest AddScriptToEvaluateOnNewDocument(string Source, string? WorldName = default, bool? IncludeCommandLineAPI = default, bool? RunImmediately = default)
     {
       return new ChromeProtocol.Domains.Page.AddScriptToEvaluateOnNewDocumentRequest(Source, WorldName, IncludeCommandLineAPI, RunImmediately);
     }
@@ -1023,26 +1023,26 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Page.addScriptToEvaluateOnNewDocument")]
     public record AddScriptToEvaluateOnNewDocumentRequest(
-      [property: Newtonsoft.Json.JsonProperty("source")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
       string Source,
-      [property: Newtonsoft.Json.JsonProperty("worldName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("worldName")]
       string? WorldName = default,
-      [property: Newtonsoft.Json.JsonProperty("includeCommandLineAPI")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeCommandLineAPI")]
       bool? IncludeCommandLineAPI = default,
-      [property: Newtonsoft.Json.JsonProperty("runImmediately")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("runImmediately")]
       bool? RunImmediately = default
     ) : ChromeProtocol.Core.ICommand<AddScriptToEvaluateOnNewDocumentRequestResult>
     {
     }
     /// <param name="Identifier">Identifier of the added script.</param>
     public record AddScriptToEvaluateOnNewDocumentRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("identifier")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("identifier")]
       ChromeProtocol.Domains.Page.ScriptIdentifierType Identifier
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Brings page to front (activates tab).</summary>
-    public static ChromeProtocol.Domains.Page.BringToFrontRequest BringToFront()    
+    public static ChromeProtocol.Domains.Page.BringToFrontRequest BringToFront()
     {
       return new ChromeProtocol.Domains.Page.BringToFrontRequest();
     }
@@ -1061,7 +1061,7 @@ namespace ChromeProtocol.Domains
     /// <param name="FromSurface">Capture the screenshot from the surface, rather than the view. Defaults to true.</param>
     /// <param name="CaptureBeyondViewport">Capture the screenshot beyond the viewport. Defaults to false.</param>
     /// <param name="OptimizeForSpeed">Optimize image encoding for speed, not for resulting size (defaults to false)</param>
-    public static ChromeProtocol.Domains.Page.CaptureScreenshotRequest CaptureScreenshot(string? Format = default, int? Quality = default, ChromeProtocol.Domains.Page.ViewportType? Clip = default, bool? FromSurface = default, bool? CaptureBeyondViewport = default, bool? OptimizeForSpeed = default)    
+    public static ChromeProtocol.Domains.Page.CaptureScreenshotRequest CaptureScreenshot(string? Format = default, int? Quality = default, ChromeProtocol.Domains.Page.ViewportType? Clip = default, bool? FromSurface = default, bool? CaptureBeyondViewport = default, bool? OptimizeForSpeed = default)
     {
       return new ChromeProtocol.Domains.Page.CaptureScreenshotRequest(Format, Quality, Clip, FromSurface, CaptureBeyondViewport, OptimizeForSpeed);
     }
@@ -1074,24 +1074,24 @@ namespace ChromeProtocol.Domains
     /// <param name="OptimizeForSpeed">Optimize image encoding for speed, not for resulting size (defaults to false)</param>
     [ChromeProtocol.Core.MethodName("Page.captureScreenshot")]
     public record CaptureScreenshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("format")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("format")]
       string? Format = default,
-      [property: Newtonsoft.Json.JsonProperty("quality")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quality")]
       int? Quality = default,
-      [property: Newtonsoft.Json.JsonProperty("clip")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clip")]
       ChromeProtocol.Domains.Page.ViewportType? Clip = default,
-      [property: Newtonsoft.Json.JsonProperty("fromSurface")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fromSurface")]
       bool? FromSurface = default,
-      [property: Newtonsoft.Json.JsonProperty("captureBeyondViewport")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("captureBeyondViewport")]
       bool? CaptureBeyondViewport = default,
-      [property: Newtonsoft.Json.JsonProperty("optimizeForSpeed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("optimizeForSpeed")]
       bool? OptimizeForSpeed = default
     ) : ChromeProtocol.Core.ICommand<CaptureScreenshotRequestResult>
     {
     }
     /// <param name="Data">Base64-encoded image data. (Encoded as a base64 string when passed over JSON)</param>
     public record CaptureScreenshotRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data
     ) : ChromeProtocol.Core.IType
     {
@@ -1101,7 +1101,7 @@ namespace ChromeProtocol.Domains
     /// iframes, shadow DOM, external resources, and element-inline styles.<br/>
     /// </summary>
     /// <param name="Format">Format (defaults to mhtml).</param>
-    public static ChromeProtocol.Domains.Page.CaptureSnapshotRequest CaptureSnapshot(string? Format = default)    
+    public static ChromeProtocol.Domains.Page.CaptureSnapshotRequest CaptureSnapshot(string? Format = default)
     {
       return new ChromeProtocol.Domains.Page.CaptureSnapshotRequest(Format);
     }
@@ -1112,21 +1112,21 @@ namespace ChromeProtocol.Domains
     /// <param name="Format">Format (defaults to mhtml).</param>
     [ChromeProtocol.Core.MethodName("Page.captureSnapshot")]
     public record CaptureSnapshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("format")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("format")]
       string? Format = default
     ) : ChromeProtocol.Core.ICommand<CaptureSnapshotRequestResult>
     {
     }
     /// <param name="Data">Serialized page data.</param>
     public record CaptureSnapshotRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Clears the overridden device metrics.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.ClearDeviceMetricsOverrideRequest ClearDeviceMetricsOverride()    
+    public static ChromeProtocol.Domains.Page.ClearDeviceMetricsOverrideRequest ClearDeviceMetricsOverride()
     {
       return new ChromeProtocol.Domains.Page.ClearDeviceMetricsOverrideRequest();
     }
@@ -1142,7 +1142,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Clears the overridden Device Orientation.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.ClearDeviceOrientationOverrideRequest ClearDeviceOrientationOverride()    
+    public static ChromeProtocol.Domains.Page.ClearDeviceOrientationOverrideRequest ClearDeviceOrientationOverride()
     {
       return new ChromeProtocol.Domains.Page.ClearDeviceOrientationOverrideRequest();
     }
@@ -1158,7 +1158,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Clears the overridden Geolocation Position and Error.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.ClearGeolocationOverrideRequest ClearGeolocationOverride()    
+    public static ChromeProtocol.Domains.Page.ClearGeolocationOverrideRequest ClearGeolocationOverride()
     {
       return new ChromeProtocol.Domains.Page.ClearGeolocationOverrideRequest();
     }
@@ -1179,7 +1179,7 @@ namespace ChromeProtocol.Domains
     /// Whether or not universal access should be granted to the isolated world. This is a powerful<br/>
     /// option, use with caution.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Page.CreateIsolatedWorldRequest CreateIsolatedWorld(ChromeProtocol.Domains.Page.FrameIdType FrameId, string? WorldName = default, bool? GrantUniveralAccess = default)    
+    public static ChromeProtocol.Domains.Page.CreateIsolatedWorldRequest CreateIsolatedWorld(ChromeProtocol.Domains.Page.FrameIdType FrameId, string? WorldName = default, bool? GrantUniveralAccess = default)
     {
       return new ChromeProtocol.Domains.Page.CreateIsolatedWorldRequest(FrameId, WorldName, GrantUniveralAccess);
     }
@@ -1192,18 +1192,18 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Page.createIsolatedWorld")]
     public record CreateIsolatedWorldRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("worldName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("worldName")]
       string? WorldName = default,
-      [property: Newtonsoft.Json.JsonProperty("grantUniveralAccess")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("grantUniveralAccess")]
       bool? GrantUniveralAccess = default
     ) : ChromeProtocol.Core.ICommand<CreateIsolatedWorldRequestResult>
     {
     }
     /// <param name="ExecutionContextId">Execution context of the isolated world.</param>
     public record CreateIsolatedWorldRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType ExecutionContextId
     ) : ChromeProtocol.Core.IType
     {
@@ -1212,7 +1212,7 @@ namespace ChromeProtocol.Domains
     /// <param name="CookieName">Name of the cookie to remove.</param>
     /// <param name="Url">URL to match cooke domain and path.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.DeleteCookieRequest DeleteCookie(string CookieName, string Url)    
+    public static ChromeProtocol.Domains.Page.DeleteCookieRequest DeleteCookie(string CookieName, string Url)
     {
       return new ChromeProtocol.Domains.Page.DeleteCookieRequest(CookieName, Url);
     }
@@ -1222,9 +1222,9 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.deleteCookie")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record DeleteCookieRequest(
-      [property: Newtonsoft.Json.JsonProperty("cookieName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookieName")]
       string CookieName,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url
     ) : ChromeProtocol.Core.ICommand<DeleteCookieRequestResult>
     {
@@ -1234,7 +1234,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables page domain notifications.</summary>
-    public static ChromeProtocol.Domains.Page.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Page.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Page.DisableRequest();
     }
@@ -1247,7 +1247,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables page domain notifications.</summary>
-    public static ChromeProtocol.Domains.Page.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Page.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Page.EnableRequest();
     }
@@ -1259,7 +1259,7 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Page.GetAppManifestRequest GetAppManifest()    
+    public static ChromeProtocol.Domains.Page.GetAppManifestRequest GetAppManifest()
     {
       return new ChromeProtocol.Domains.Page.GetAppManifestRequest();
     }
@@ -1271,18 +1271,18 @@ namespace ChromeProtocol.Domains
     /// <param name="Data">Manifest content.</param>
     /// <param name="Parsed">Parsed manifest properties</param>
     public record GetAppManifestRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("errors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errors")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.AppManifestErrorType> Errors,
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string? Data = default,
-      [property: Newtonsoft.Json.JsonProperty("parsed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parsed")]
       ChromeProtocol.Domains.Page.AppManifestParsedPropertiesType? Parsed = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Page.GetInstallabilityErrorsRequest GetInstallabilityErrors()    
+    public static ChromeProtocol.Domains.Page.GetInstallabilityErrorsRequest GetInstallabilityErrors()
     {
       return new ChromeProtocol.Domains.Page.GetInstallabilityErrorsRequest();
     }
@@ -1291,14 +1291,14 @@ namespace ChromeProtocol.Domains
     {
     }
     public record GetInstallabilityErrorsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("installabilityErrors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("installabilityErrors")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.InstallabilityErrorType> InstallabilityErrors
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Deprecated because it&#39;s not guaranteed that the returned icon is in fact the one used for PWA installation.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.GetManifestIconsRequest GetManifestIcons()    
+    public static ChromeProtocol.Domains.Page.GetManifestIconsRequest GetManifestIcons()
     {
       return new ChromeProtocol.Domains.Page.GetManifestIconsRequest();
     }
@@ -1310,7 +1310,7 @@ namespace ChromeProtocol.Domains
     }
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record GetManifestIconsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("primaryIcon")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("primaryIcon")]
       string? PrimaryIcon = default
     ) : ChromeProtocol.Core.IType
     {
@@ -1319,7 +1319,7 @@ namespace ChromeProtocol.Domains
     /// Returns the unique (PWA) app id.<br/>
     /// Only returns values if the feature flag &#39;WebAppEnableManifestId&#39; is enabled<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Page.GetAppIdRequest GetAppId()    
+    public static ChromeProtocol.Domains.Page.GetAppIdRequest GetAppId()
     {
       return new ChromeProtocol.Domains.Page.GetAppIdRequest();
     }
@@ -1334,20 +1334,20 @@ namespace ChromeProtocol.Domains
     /// <param name="AppId">App id, either from manifest&#39;s id attribute or computed from start_url</param>
     /// <param name="RecommendedId">Recommendation for manifest&#39;s id attribute to match current id computed from start_url</param>
     public record GetAppIdRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("appId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("appId")]
       string? AppId = default,
-      [property: Newtonsoft.Json.JsonProperty("recommendedId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("recommendedId")]
       string? RecommendedId = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Page.GetAdScriptIdRequest GetAdScriptId(ChromeProtocol.Domains.Page.FrameIdType FrameId)    
+    public static ChromeProtocol.Domains.Page.GetAdScriptIdRequest GetAdScriptId(ChromeProtocol.Domains.Page.FrameIdType FrameId)
     {
       return new ChromeProtocol.Domains.Page.GetAdScriptIdRequest(FrameId);
     }
     [ChromeProtocol.Core.MethodName("Page.getAdScriptId")]
     public record GetAdScriptIdRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.ICommand<GetAdScriptIdRequestResult>
     {
@@ -1357,13 +1357,13 @@ namespace ChromeProtocol.Domains
     /// as an ad. Only sent if frame is labelled as an ad and id is available.<br/>
     /// </param>
     public record GetAdScriptIdRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("adScriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("adScriptId")]
       ChromeProtocol.Domains.Page.AdScriptIdType? AdScriptId = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns present frame tree structure.</summary>
-    public static ChromeProtocol.Domains.Page.GetFrameTreeRequest GetFrameTree()    
+    public static ChromeProtocol.Domains.Page.GetFrameTreeRequest GetFrameTree()
     {
       return new ChromeProtocol.Domains.Page.GetFrameTreeRequest();
     }
@@ -1374,13 +1374,13 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="FrameTree">Present frame tree structure.</param>
     public record GetFrameTreeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("frameTree")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameTree")]
       ChromeProtocol.Domains.Page.FrameTreeType FrameTree
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns metrics relating to the layouting of the page, such as viewport bounds/scale.</summary>
-    public static ChromeProtocol.Domains.Page.GetLayoutMetricsRequest GetLayoutMetrics()    
+    public static ChromeProtocol.Domains.Page.GetLayoutMetricsRequest GetLayoutMetrics()
     {
       return new ChromeProtocol.Domains.Page.GetLayoutMetricsRequest();
     }
@@ -1397,25 +1397,25 @@ namespace ChromeProtocol.Domains
     /// <param name="CssContentSize">Size of scrollable area in CSS pixels.</param>
     public record GetLayoutMetricsRequestResult(
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("layoutViewport")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layoutViewport")]
       ChromeProtocol.Domains.Page.LayoutViewportType LayoutViewport,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("visualViewport")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("visualViewport")]
       ChromeProtocol.Domains.Page.VisualViewportType VisualViewport,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("contentSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentSize")]
       ChromeProtocol.Domains.DOM.RectType ContentSize,
-      [property: Newtonsoft.Json.JsonProperty("cssLayoutViewport")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssLayoutViewport")]
       ChromeProtocol.Domains.Page.LayoutViewportType CssLayoutViewport,
-      [property: Newtonsoft.Json.JsonProperty("cssVisualViewport")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssVisualViewport")]
       ChromeProtocol.Domains.Page.VisualViewportType CssVisualViewport,
-      [property: Newtonsoft.Json.JsonProperty("cssContentSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssContentSize")]
       ChromeProtocol.Domains.DOM.RectType CssContentSize
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns navigation history for the current page.</summary>
-    public static ChromeProtocol.Domains.Page.GetNavigationHistoryRequest GetNavigationHistory()    
+    public static ChromeProtocol.Domains.Page.GetNavigationHistoryRequest GetNavigationHistory()
     {
       return new ChromeProtocol.Domains.Page.GetNavigationHistoryRequest();
     }
@@ -1427,15 +1427,15 @@ namespace ChromeProtocol.Domains
     /// <param name="CurrentIndex">Index of the current navigation history entry.</param>
     /// <param name="Entries">Array of navigation history entries.</param>
     public record GetNavigationHistoryRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("currentIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("currentIndex")]
       int CurrentIndex,
-      [property: Newtonsoft.Json.JsonProperty("entries")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("entries")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.NavigationEntryType> Entries
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Resets navigation history for the current page.</summary>
-    public static ChromeProtocol.Domains.Page.ResetNavigationHistoryRequest ResetNavigationHistory()    
+    public static ChromeProtocol.Domains.Page.ResetNavigationHistoryRequest ResetNavigationHistory()
     {
       return new ChromeProtocol.Domains.Page.ResetNavigationHistoryRequest();
     }
@@ -1450,7 +1450,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Returns content of the given resource.</summary>
     /// <param name="FrameId">Frame id to get resource for.</param>
     /// <param name="Url">URL of the resource to get content for.</param>
-    public static ChromeProtocol.Domains.Page.GetResourceContentRequest GetResourceContent(ChromeProtocol.Domains.Page.FrameIdType FrameId, string Url)    
+    public static ChromeProtocol.Domains.Page.GetResourceContentRequest GetResourceContent(ChromeProtocol.Domains.Page.FrameIdType FrameId, string Url)
     {
       return new ChromeProtocol.Domains.Page.GetResourceContentRequest(FrameId, Url);
     }
@@ -1459,9 +1459,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Url">URL of the resource to get content for.</param>
     [ChromeProtocol.Core.MethodName("Page.getResourceContent")]
     public record GetResourceContentRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url
     ) : ChromeProtocol.Core.ICommand<GetResourceContentRequestResult>
     {
@@ -1469,15 +1469,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Content">Resource content.</param>
     /// <param name="Base64Encoded">True, if content was served as base64.</param>
     public record GetResourceContentRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("content")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("content")]
       string Content,
-      [property: Newtonsoft.Json.JsonProperty("base64Encoded")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("base64Encoded")]
       bool Base64Encoded
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns present frame / resource tree structure.</summary>
-    public static ChromeProtocol.Domains.Page.GetResourceTreeRequest GetResourceTree()    
+    public static ChromeProtocol.Domains.Page.GetResourceTreeRequest GetResourceTree()
     {
       return new ChromeProtocol.Domains.Page.GetResourceTreeRequest();
     }
@@ -1488,7 +1488,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="FrameTree">Present frame / resource tree structure.</param>
     public record GetResourceTreeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("frameTree")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameTree")]
       ChromeProtocol.Domains.Page.FrameResourceTreeType FrameTree
     ) : ChromeProtocol.Core.IType
     {
@@ -1499,7 +1499,7 @@ namespace ChromeProtocol.Domains
     /// The text to enter into the dialog prompt before accepting. Used only if this is a prompt<br/>
     /// dialog.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Page.HandleJavaScriptDialogRequest HandleJavaScriptDialog(bool Accept, string? PromptText = default)    
+    public static ChromeProtocol.Domains.Page.HandleJavaScriptDialogRequest HandleJavaScriptDialog(bool Accept, string? PromptText = default)
     {
       return new ChromeProtocol.Domains.Page.HandleJavaScriptDialogRequest(Accept, PromptText);
     }
@@ -1511,9 +1511,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Page.handleJavaScriptDialog")]
     public record HandleJavaScriptDialogRequest(
-      [property: Newtonsoft.Json.JsonProperty("accept")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accept")]
       bool Accept,
-      [property: Newtonsoft.Json.JsonProperty("promptText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("promptText")]
       string? PromptText = default
     ) : ChromeProtocol.Core.ICommand<HandleJavaScriptDialogRequestResult>
     {
@@ -1527,7 +1527,7 @@ namespace ChromeProtocol.Domains
     /// <param name="TransitionType">Intended transition type.</param>
     /// <param name="FrameId">Frame id to navigate, if not specified navigates the top frame.</param>
     /// <param name="ReferrerPolicy">Referrer-policy used for the navigation.</param>
-    public static ChromeProtocol.Domains.Page.NavigateRequest Navigate(string Url, string? Referrer = default, ChromeProtocol.Domains.Page.TransitionTypeType? TransitionType = default, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default, ChromeProtocol.Domains.Page.ReferrerPolicyType? ReferrerPolicy = default)    
+    public static ChromeProtocol.Domains.Page.NavigateRequest Navigate(string Url, string? Referrer = default, ChromeProtocol.Domains.Page.TransitionTypeType? TransitionType = default, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default, ChromeProtocol.Domains.Page.ReferrerPolicyType? ReferrerPolicy = default)
     {
       return new ChromeProtocol.Domains.Page.NavigateRequest(Url, Referrer, TransitionType, FrameId, ReferrerPolicy);
     }
@@ -1539,15 +1539,15 @@ namespace ChromeProtocol.Domains
     /// <param name="ReferrerPolicy">Referrer-policy used for the navigation.</param>
     [ChromeProtocol.Core.MethodName("Page.navigate")]
     public record NavigateRequest(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("referrer")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("referrer")]
       string? Referrer = default,
-      [property: Newtonsoft.Json.JsonProperty("transitionType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("transitionType")]
       ChromeProtocol.Domains.Page.TransitionTypeType? TransitionType = default,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default,
-      [property: Newtonsoft.Json.JsonProperty("referrerPolicy")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("referrerPolicy")]
       ChromeProtocol.Domains.Page.ReferrerPolicyType? ReferrerPolicy = default
     ) : ChromeProtocol.Core.ICommand<NavigateRequestResult>
     {
@@ -1559,18 +1559,18 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="ErrorText">User friendly error message, present if and only if navigation has failed.</param>
     public record NavigateRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType? LoaderId = default,
-      [property: Newtonsoft.Json.JsonProperty("errorText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorText")]
       string? ErrorText = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Navigates current page to the given history entry.</summary>
     /// <param name="EntryId">Unique id of the entry to navigate to.</param>
-    public static ChromeProtocol.Domains.Page.NavigateToHistoryEntryRequest NavigateToHistoryEntry(int EntryId)    
+    public static ChromeProtocol.Domains.Page.NavigateToHistoryEntryRequest NavigateToHistoryEntry(int EntryId)
     {
       return new ChromeProtocol.Domains.Page.NavigateToHistoryEntryRequest(EntryId);
     }
@@ -1578,7 +1578,7 @@ namespace ChromeProtocol.Domains
     /// <param name="EntryId">Unique id of the entry to navigate to.</param>
     [ChromeProtocol.Core.MethodName("Page.navigateToHistoryEntry")]
     public record NavigateToHistoryEntryRequest(
-      [property: Newtonsoft.Json.JsonProperty("entryId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("entryId")]
       int EntryId
     ) : ChromeProtocol.Core.ICommand<NavigateToHistoryEntryRequestResult>
     {
@@ -1625,7 +1625,7 @@ namespace ChromeProtocol.Domains
     /// <param name="TransferMode">return as stream</param>
     /// <param name="GenerateTaggedPDF">Whether or not to generate tagged (accessible) PDF. Defaults to embedder choice.</param>
     /// <param name="GenerateDocumentOutline">Whether or not to embed the document outline into the PDF.</param>
-    public static ChromeProtocol.Domains.Page.PrintToPDFRequest PrintToPDF(bool? Landscape = default, bool? DisplayHeaderFooter = default, bool? PrintBackground = default, double? Scale = default, double? PaperWidth = default, double? PaperHeight = default, double? MarginTop = default, double? MarginBottom = default, double? MarginLeft = default, double? MarginRight = default, string? PageRanges = default, string? HeaderTemplate = default, string? FooterTemplate = default, bool? PreferCSSPageSize = default, string? TransferMode = default, bool? GenerateTaggedPDF = default, bool? GenerateDocumentOutline = default)    
+    public static ChromeProtocol.Domains.Page.PrintToPDFRequest PrintToPDF(bool? Landscape = default, bool? DisplayHeaderFooter = default, bool? PrintBackground = default, double? Scale = default, double? PaperWidth = default, double? PaperHeight = default, double? MarginTop = default, double? MarginBottom = default, double? MarginLeft = default, double? MarginRight = default, string? PageRanges = default, string? HeaderTemplate = default, string? FooterTemplate = default, bool? PreferCSSPageSize = default, string? TransferMode = default, bool? GenerateTaggedPDF = default, bool? GenerateDocumentOutline = default)
     {
       return new ChromeProtocol.Domains.Page.PrintToPDFRequest(Landscape, DisplayHeaderFooter, PrintBackground, Scale, PaperWidth, PaperHeight, MarginTop, MarginBottom, MarginLeft, MarginRight, PageRanges, HeaderTemplate, FooterTemplate, PreferCSSPageSize, TransferMode, GenerateTaggedPDF, GenerateDocumentOutline);
     }
@@ -1670,39 +1670,39 @@ namespace ChromeProtocol.Domains
     /// <param name="GenerateDocumentOutline">Whether or not to embed the document outline into the PDF.</param>
     [ChromeProtocol.Core.MethodName("Page.printToPDF")]
     public record PrintToPDFRequest(
-      [property: Newtonsoft.Json.JsonProperty("landscape")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("landscape")]
       bool? Landscape = default,
-      [property: Newtonsoft.Json.JsonProperty("displayHeaderFooter")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("displayHeaderFooter")]
       bool? DisplayHeaderFooter = default,
-      [property: Newtonsoft.Json.JsonProperty("printBackground")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("printBackground")]
       bool? PrintBackground = default,
-      [property: Newtonsoft.Json.JsonProperty("scale")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scale")]
       double? Scale = default,
-      [property: Newtonsoft.Json.JsonProperty("paperWidth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paperWidth")]
       double? PaperWidth = default,
-      [property: Newtonsoft.Json.JsonProperty("paperHeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paperHeight")]
       double? PaperHeight = default,
-      [property: Newtonsoft.Json.JsonProperty("marginTop")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("marginTop")]
       double? MarginTop = default,
-      [property: Newtonsoft.Json.JsonProperty("marginBottom")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("marginBottom")]
       double? MarginBottom = default,
-      [property: Newtonsoft.Json.JsonProperty("marginLeft")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("marginLeft")]
       double? MarginLeft = default,
-      [property: Newtonsoft.Json.JsonProperty("marginRight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("marginRight")]
       double? MarginRight = default,
-      [property: Newtonsoft.Json.JsonProperty("pageRanges")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pageRanges")]
       string? PageRanges = default,
-      [property: Newtonsoft.Json.JsonProperty("headerTemplate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headerTemplate")]
       string? HeaderTemplate = default,
-      [property: Newtonsoft.Json.JsonProperty("footerTemplate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("footerTemplate")]
       string? FooterTemplate = default,
-      [property: Newtonsoft.Json.JsonProperty("preferCSSPageSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("preferCSSPageSize")]
       bool? PreferCSSPageSize = default,
-      [property: Newtonsoft.Json.JsonProperty("transferMode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("transferMode")]
       string? TransferMode = default,
-      [property: Newtonsoft.Json.JsonProperty("generateTaggedPDF")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("generateTaggedPDF")]
       bool? GenerateTaggedPDF = default,
-      [property: Newtonsoft.Json.JsonProperty("generateDocumentOutline")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("generateDocumentOutline")]
       bool? GenerateDocumentOutline = default
     ) : ChromeProtocol.Core.ICommand<PrintToPDFRequestResult>
     {
@@ -1710,9 +1710,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Data">Base64-encoded pdf data. Empty if |returnAsStream| is specified. (Encoded as a base64 string when passed over JSON)</param>
     /// <param name="Stream">A handle of the stream that holds resulting PDF data.</param>
     public record PrintToPDFRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data,
-      [property: Newtonsoft.Json.JsonProperty("stream")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stream")]
       ChromeProtocol.Domains.IO.StreamHandleType? Stream = default
     ) : ChromeProtocol.Core.IType
     {
@@ -1723,7 +1723,7 @@ namespace ChromeProtocol.Domains
     /// If set, the script will be injected into all frames of the inspected page after reload.<br/>
     /// Argument will be ignored if reloading dataURL origin.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Page.ReloadRequest Reload(bool? IgnoreCache = default, string? ScriptToEvaluateOnLoad = default)    
+    public static ChromeProtocol.Domains.Page.ReloadRequest Reload(bool? IgnoreCache = default, string? ScriptToEvaluateOnLoad = default)
     {
       return new ChromeProtocol.Domains.Page.ReloadRequest(IgnoreCache, ScriptToEvaluateOnLoad);
     }
@@ -1735,9 +1735,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Page.reload")]
     public record ReloadRequest(
-      [property: Newtonsoft.Json.JsonProperty("ignoreCache")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ignoreCache")]
       bool? IgnoreCache = default,
-      [property: Newtonsoft.Json.JsonProperty("scriptToEvaluateOnLoad")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptToEvaluateOnLoad")]
       string? ScriptToEvaluateOnLoad = default
     ) : ChromeProtocol.Core.ICommand<ReloadRequestResult>
     {
@@ -1747,7 +1747,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Deprecated, please use removeScriptToEvaluateOnNewDocument instead.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.RemoveScriptToEvaluateOnLoadRequest RemoveScriptToEvaluateOnLoad(ChromeProtocol.Domains.Page.ScriptIdentifierType Identifier)    
+    public static ChromeProtocol.Domains.Page.RemoveScriptToEvaluateOnLoadRequest RemoveScriptToEvaluateOnLoad(ChromeProtocol.Domains.Page.ScriptIdentifierType Identifier)
     {
       return new ChromeProtocol.Domains.Page.RemoveScriptToEvaluateOnLoadRequest(Identifier);
     }
@@ -1755,7 +1755,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.removeScriptToEvaluateOnLoad")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record RemoveScriptToEvaluateOnLoadRequest(
-      [property: Newtonsoft.Json.JsonProperty("identifier")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("identifier")]
       ChromeProtocol.Domains.Page.ScriptIdentifierType Identifier
     ) : ChromeProtocol.Core.ICommand<RemoveScriptToEvaluateOnLoadRequestResult>
     {
@@ -1765,14 +1765,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Removes given script from the list.</summary>
-    public static ChromeProtocol.Domains.Page.RemoveScriptToEvaluateOnNewDocumentRequest RemoveScriptToEvaluateOnNewDocument(ChromeProtocol.Domains.Page.ScriptIdentifierType Identifier)    
+    public static ChromeProtocol.Domains.Page.RemoveScriptToEvaluateOnNewDocumentRequest RemoveScriptToEvaluateOnNewDocument(ChromeProtocol.Domains.Page.ScriptIdentifierType Identifier)
     {
       return new ChromeProtocol.Domains.Page.RemoveScriptToEvaluateOnNewDocumentRequest(Identifier);
     }
     /// <summary>Removes given script from the list.</summary>
     [ChromeProtocol.Core.MethodName("Page.removeScriptToEvaluateOnNewDocument")]
     public record RemoveScriptToEvaluateOnNewDocumentRequest(
-      [property: Newtonsoft.Json.JsonProperty("identifier")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("identifier")]
       ChromeProtocol.Domains.Page.ScriptIdentifierType Identifier
     ) : ChromeProtocol.Core.ICommand<RemoveScriptToEvaluateOnNewDocumentRequestResult>
     {
@@ -1782,7 +1782,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Acknowledges that a screencast frame has been received by the frontend.</summary>
     /// <param name="SessionId">Frame number.</param>
-    public static ChromeProtocol.Domains.Page.ScreencastFrameAckRequest ScreencastFrameAck(int SessionId)    
+    public static ChromeProtocol.Domains.Page.ScreencastFrameAckRequest ScreencastFrameAck(int SessionId)
     {
       return new ChromeProtocol.Domains.Page.ScreencastFrameAckRequest(SessionId);
     }
@@ -1790,7 +1790,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SessionId">Frame number.</param>
     [ChromeProtocol.Core.MethodName("Page.screencastFrameAck")]
     public record ScreencastFrameAckRequest(
-      [property: Newtonsoft.Json.JsonProperty("sessionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sessionId")]
       int SessionId
     ) : ChromeProtocol.Core.ICommand<ScreencastFrameAckRequestResult>
     {
@@ -1804,7 +1804,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Query">String to search for.</param>
     /// <param name="CaseSensitive">If true, search is case sensitive.</param>
     /// <param name="IsRegex">If true, treats string parameter as regex.</param>
-    public static ChromeProtocol.Domains.Page.SearchInResourceRequest SearchInResource(ChromeProtocol.Domains.Page.FrameIdType FrameId, string Url, string Query, bool? CaseSensitive = default, bool? IsRegex = default)    
+    public static ChromeProtocol.Domains.Page.SearchInResourceRequest SearchInResource(ChromeProtocol.Domains.Page.FrameIdType FrameId, string Url, string Query, bool? CaseSensitive = default, bool? IsRegex = default)
     {
       return new ChromeProtocol.Domains.Page.SearchInResourceRequest(FrameId, Url, Query, CaseSensitive, IsRegex);
     }
@@ -1816,29 +1816,29 @@ namespace ChromeProtocol.Domains
     /// <param name="IsRegex">If true, treats string parameter as regex.</param>
     [ChromeProtocol.Core.MethodName("Page.searchInResource")]
     public record SearchInResourceRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("query")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("query")]
       string Query,
-      [property: Newtonsoft.Json.JsonProperty("caseSensitive")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("caseSensitive")]
       bool? CaseSensitive = default,
-      [property: Newtonsoft.Json.JsonProperty("isRegex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isRegex")]
       bool? IsRegex = default
     ) : ChromeProtocol.Core.ICommand<SearchInResourceRequestResult>
     {
     }
     /// <param name="Result">List of search matches.</param>
     public record SearchInResourceRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.SearchMatchType> Result
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Enable Chrome&#39;s experimental ad filter on all sites.</summary>
     /// <param name="Enabled">Whether to block ads.</param>
-    public static ChromeProtocol.Domains.Page.SetAdBlockingEnabledRequest SetAdBlockingEnabled(bool Enabled)    
+    public static ChromeProtocol.Domains.Page.SetAdBlockingEnabledRequest SetAdBlockingEnabled(bool Enabled)
     {
       return new ChromeProtocol.Domains.Page.SetAdBlockingEnabledRequest(Enabled);
     }
@@ -1846,7 +1846,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enabled">Whether to block ads.</param>
     [ChromeProtocol.Core.MethodName("Page.setAdBlockingEnabled")]
     public record SetAdBlockingEnabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetAdBlockingEnabledRequestResult>
     {
@@ -1856,7 +1856,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enable page Content Security Policy by-passing.</summary>
     /// <param name="Enabled">Whether to bypass page CSP.</param>
-    public static ChromeProtocol.Domains.Page.SetBypassCSPRequest SetBypassCSP(bool Enabled)    
+    public static ChromeProtocol.Domains.Page.SetBypassCSPRequest SetBypassCSP(bool Enabled)
     {
       return new ChromeProtocol.Domains.Page.SetBypassCSPRequest(Enabled);
     }
@@ -1864,7 +1864,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enabled">Whether to bypass page CSP.</param>
     [ChromeProtocol.Core.MethodName("Page.setBypassCSP")]
     public record SetBypassCSPRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetBypassCSPRequestResult>
     {
@@ -1873,39 +1873,39 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Get Permissions Policy state on given frame.</summary>
-    public static ChromeProtocol.Domains.Page.GetPermissionsPolicyStateRequest GetPermissionsPolicyState(ChromeProtocol.Domains.Page.FrameIdType FrameId)    
+    public static ChromeProtocol.Domains.Page.GetPermissionsPolicyStateRequest GetPermissionsPolicyState(ChromeProtocol.Domains.Page.FrameIdType FrameId)
     {
       return new ChromeProtocol.Domains.Page.GetPermissionsPolicyStateRequest(FrameId);
     }
     /// <summary>Get Permissions Policy state on given frame.</summary>
     [ChromeProtocol.Core.MethodName("Page.getPermissionsPolicyState")]
     public record GetPermissionsPolicyStateRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.ICommand<GetPermissionsPolicyStateRequestResult>
     {
     }
     public record GetPermissionsPolicyStateRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("states")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("states")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.PermissionsPolicyFeatureStateType> States
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Get Origin Trials on given frame.</summary>
-    public static ChromeProtocol.Domains.Page.GetOriginTrialsRequest GetOriginTrials(ChromeProtocol.Domains.Page.FrameIdType FrameId)    
+    public static ChromeProtocol.Domains.Page.GetOriginTrialsRequest GetOriginTrials(ChromeProtocol.Domains.Page.FrameIdType FrameId)
     {
       return new ChromeProtocol.Domains.Page.GetOriginTrialsRequest(FrameId);
     }
     /// <summary>Get Origin Trials on given frame.</summary>
     [ChromeProtocol.Core.MethodName("Page.getOriginTrials")]
     public record GetOriginTrialsRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.ICommand<GetOriginTrialsRequestResult>
     {
     }
     public record GetOriginTrialsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("originTrials")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("originTrials")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.OriginTrialType> OriginTrials
     ) : ChromeProtocol.Core.IType
     {
@@ -1931,7 +1931,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ScreenOrientation">Screen orientation override.</param>
     /// <param name="Viewport">The viewport dimensions and scale. If not set, the override is cleared.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.SetDeviceMetricsOverrideRequest SetDeviceMetricsOverride(int Width, int Height, double DeviceScaleFactor, bool Mobile, double? Scale = default, int? ScreenWidth = default, int? ScreenHeight = default, int? PositionX = default, int? PositionY = default, bool? DontSetVisibleSize = default, ChromeProtocol.Domains.Emulation.ScreenOrientationType? ScreenOrientation = default, ChromeProtocol.Domains.Page.ViewportType? Viewport = default)    
+    public static ChromeProtocol.Domains.Page.SetDeviceMetricsOverrideRequest SetDeviceMetricsOverride(int Width, int Height, double DeviceScaleFactor, bool Mobile, double? Scale = default, int? ScreenWidth = default, int? ScreenHeight = default, int? PositionX = default, int? PositionY = default, bool? DontSetVisibleSize = default, ChromeProtocol.Domains.Emulation.ScreenOrientationType? ScreenOrientation = default, ChromeProtocol.Domains.Page.ViewportType? Viewport = default)
     {
       return new ChromeProtocol.Domains.Page.SetDeviceMetricsOverrideRequest(Width, Height, DeviceScaleFactor, Mobile, Scale, ScreenWidth, ScreenHeight, PositionX, PositionY, DontSetVisibleSize, ScreenOrientation, Viewport);
     }
@@ -1958,29 +1958,29 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.setDeviceMetricsOverride")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetDeviceMetricsOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       int Width,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       int Height,
-      [property: Newtonsoft.Json.JsonProperty("deviceScaleFactor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deviceScaleFactor")]
       double DeviceScaleFactor,
-      [property: Newtonsoft.Json.JsonProperty("mobile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mobile")]
       bool Mobile,
-      [property: Newtonsoft.Json.JsonProperty("scale")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scale")]
       double? Scale = default,
-      [property: Newtonsoft.Json.JsonProperty("screenWidth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("screenWidth")]
       int? ScreenWidth = default,
-      [property: Newtonsoft.Json.JsonProperty("screenHeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("screenHeight")]
       int? ScreenHeight = default,
-      [property: Newtonsoft.Json.JsonProperty("positionX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("positionX")]
       int? PositionX = default,
-      [property: Newtonsoft.Json.JsonProperty("positionY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("positionY")]
       int? PositionY = default,
-      [property: Newtonsoft.Json.JsonProperty("dontSetVisibleSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dontSetVisibleSize")]
       bool? DontSetVisibleSize = default,
-      [property: Newtonsoft.Json.JsonProperty("screenOrientation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("screenOrientation")]
       ChromeProtocol.Domains.Emulation.ScreenOrientationType? ScreenOrientation = default,
-      [property: Newtonsoft.Json.JsonProperty("viewport")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("viewport")]
       ChromeProtocol.Domains.Page.ViewportType? Viewport = default
     ) : ChromeProtocol.Core.ICommand<SetDeviceMetricsOverrideRequestResult>
     {
@@ -1994,7 +1994,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Beta">Mock beta</param>
     /// <param name="Gamma">Mock gamma</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.SetDeviceOrientationOverrideRequest SetDeviceOrientationOverride(double Alpha, double Beta, double Gamma)    
+    public static ChromeProtocol.Domains.Page.SetDeviceOrientationOverrideRequest SetDeviceOrientationOverride(double Alpha, double Beta, double Gamma)
     {
       return new ChromeProtocol.Domains.Page.SetDeviceOrientationOverrideRequest(Alpha, Beta, Gamma);
     }
@@ -2005,11 +2005,11 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.setDeviceOrientationOverride")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetDeviceOrientationOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("alpha")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("alpha")]
       double Alpha,
-      [property: Newtonsoft.Json.JsonProperty("beta")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("beta")]
       double Beta,
-      [property: Newtonsoft.Json.JsonProperty("gamma")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gamma")]
       double Gamma
     ) : ChromeProtocol.Core.ICommand<SetDeviceOrientationOverrideRequestResult>
     {
@@ -2021,7 +2021,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Set generic font families.</summary>
     /// <param name="FontFamilies">Specifies font families to set. If a font family is not specified, it won&#39;t be changed.</param>
     /// <param name="ForScripts">Specifies font families to set for individual scripts.</param>
-    public static ChromeProtocol.Domains.Page.SetFontFamiliesRequest SetFontFamilies(ChromeProtocol.Domains.Page.FontFamiliesType FontFamilies, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.ScriptFontFamiliesType>? ForScripts = default)    
+    public static ChromeProtocol.Domains.Page.SetFontFamiliesRequest SetFontFamilies(ChromeProtocol.Domains.Page.FontFamiliesType FontFamilies, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.ScriptFontFamiliesType>? ForScripts = default)
     {
       return new ChromeProtocol.Domains.Page.SetFontFamiliesRequest(FontFamilies, ForScripts);
     }
@@ -2030,9 +2030,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ForScripts">Specifies font families to set for individual scripts.</param>
     [ChromeProtocol.Core.MethodName("Page.setFontFamilies")]
     public record SetFontFamiliesRequest(
-      [property: Newtonsoft.Json.JsonProperty("fontFamilies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontFamilies")]
       ChromeProtocol.Domains.Page.FontFamiliesType FontFamilies,
-      [property: Newtonsoft.Json.JsonProperty("forScripts")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("forScripts")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.ScriptFontFamiliesType>? ForScripts = default
     ) : ChromeProtocol.Core.ICommand<SetFontFamiliesRequestResult>
     {
@@ -2042,7 +2042,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Set default font sizes.</summary>
     /// <param name="FontSizes">Specifies font sizes to set. If a font size is not specified, it won&#39;t be changed.</param>
-    public static ChromeProtocol.Domains.Page.SetFontSizesRequest SetFontSizes(ChromeProtocol.Domains.Page.FontSizesType FontSizes)    
+    public static ChromeProtocol.Domains.Page.SetFontSizesRequest SetFontSizes(ChromeProtocol.Domains.Page.FontSizesType FontSizes)
     {
       return new ChromeProtocol.Domains.Page.SetFontSizesRequest(FontSizes);
     }
@@ -2050,7 +2050,7 @@ namespace ChromeProtocol.Domains
     /// <param name="FontSizes">Specifies font sizes to set. If a font size is not specified, it won&#39;t be changed.</param>
     [ChromeProtocol.Core.MethodName("Page.setFontSizes")]
     public record SetFontSizesRequest(
-      [property: Newtonsoft.Json.JsonProperty("fontSizes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontSizes")]
       ChromeProtocol.Domains.Page.FontSizesType FontSizes
     ) : ChromeProtocol.Core.ICommand<SetFontSizesRequestResult>
     {
@@ -2061,7 +2061,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets given markup as the document&#39;s HTML.</summary>
     /// <param name="FrameId">Frame id to set HTML for.</param>
     /// <param name="Html">HTML content to set.</param>
-    public static ChromeProtocol.Domains.Page.SetDocumentContentRequest SetDocumentContent(ChromeProtocol.Domains.Page.FrameIdType FrameId, string Html)    
+    public static ChromeProtocol.Domains.Page.SetDocumentContentRequest SetDocumentContent(ChromeProtocol.Domains.Page.FrameIdType FrameId, string Html)
     {
       return new ChromeProtocol.Domains.Page.SetDocumentContentRequest(FrameId, Html);
     }
@@ -2070,9 +2070,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Html">HTML content to set.</param>
     [ChromeProtocol.Core.MethodName("Page.setDocumentContent")]
     public record SetDocumentContentRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("html")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("html")]
       string Html
     ) : ChromeProtocol.Core.ICommand<SetDocumentContentRequestResult>
     {
@@ -2087,7 +2087,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="DownloadPath">The default path to save downloaded files to. This is required if behavior is set to &#39;allow&#39;</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.SetDownloadBehaviorRequest SetDownloadBehavior(string Behavior, string? DownloadPath = default)    
+    public static ChromeProtocol.Domains.Page.SetDownloadBehaviorRequest SetDownloadBehavior(string Behavior, string? DownloadPath = default)
     {
       return new ChromeProtocol.Domains.Page.SetDownloadBehaviorRequest(Behavior, DownloadPath);
     }
@@ -2100,9 +2100,9 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.setDownloadBehavior")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetDownloadBehaviorRequest(
-      [property: Newtonsoft.Json.JsonProperty("behavior")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("behavior")]
       string Behavior,
-      [property: Newtonsoft.Json.JsonProperty("downloadPath")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("downloadPath")]
       string? DownloadPath = default
     ) : ChromeProtocol.Core.ICommand<SetDownloadBehaviorRequestResult>
     {
@@ -2119,7 +2119,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Longitude">Mock longitude</param>
     /// <param name="Accuracy">Mock accuracy</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.SetGeolocationOverrideRequest SetGeolocationOverride(double? Latitude = default, double? Longitude = default, double? Accuracy = default)    
+    public static ChromeProtocol.Domains.Page.SetGeolocationOverrideRequest SetGeolocationOverride(double? Latitude = default, double? Longitude = default, double? Accuracy = default)
     {
       return new ChromeProtocol.Domains.Page.SetGeolocationOverrideRequest(Latitude, Longitude, Accuracy);
     }
@@ -2133,11 +2133,11 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.setGeolocationOverride")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetGeolocationOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("latitude")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("latitude")]
       double? Latitude = default,
-      [property: Newtonsoft.Json.JsonProperty("longitude")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("longitude")]
       double? Longitude = default,
-      [property: Newtonsoft.Json.JsonProperty("accuracy")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accuracy")]
       double? Accuracy = default
     ) : ChromeProtocol.Core.ICommand<SetGeolocationOverrideRequestResult>
     {
@@ -2148,7 +2148,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Controls whether page will emit lifecycle events.</summary>
     /// <param name="Enabled">If true, starts emitting lifecycle events.</param>
-    public static ChromeProtocol.Domains.Page.SetLifecycleEventsEnabledRequest SetLifecycleEventsEnabled(bool Enabled)    
+    public static ChromeProtocol.Domains.Page.SetLifecycleEventsEnabledRequest SetLifecycleEventsEnabled(bool Enabled)
     {
       return new ChromeProtocol.Domains.Page.SetLifecycleEventsEnabledRequest(Enabled);
     }
@@ -2156,7 +2156,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enabled">If true, starts emitting lifecycle events.</param>
     [ChromeProtocol.Core.MethodName("Page.setLifecycleEventsEnabled")]
     public record SetLifecycleEventsEnabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetLifecycleEventsEnabledRequestResult>
     {
@@ -2168,7 +2168,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enabled">Whether the touch event emulation should be enabled.</param>
     /// <param name="Configuration">Touch/gesture events configuration. Default: current platform.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Page.SetTouchEmulationEnabledRequest SetTouchEmulationEnabled(bool Enabled, string? Configuration = default)    
+    public static ChromeProtocol.Domains.Page.SetTouchEmulationEnabledRequest SetTouchEmulationEnabled(bool Enabled, string? Configuration = default)
     {
       return new ChromeProtocol.Domains.Page.SetTouchEmulationEnabledRequest(Enabled, Configuration);
     }
@@ -2178,9 +2178,9 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Page.setTouchEmulationEnabled")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetTouchEmulationEnabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled,
-      [property: Newtonsoft.Json.JsonProperty("configuration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("configuration")]
       string? Configuration = default
     ) : ChromeProtocol.Core.ICommand<SetTouchEmulationEnabledRequestResult>
     {
@@ -2195,7 +2195,7 @@ namespace ChromeProtocol.Domains
     /// <param name="MaxWidth">Maximum screenshot width.</param>
     /// <param name="MaxHeight">Maximum screenshot height.</param>
     /// <param name="EveryNthFrame">Send every n-th frame.</param>
-    public static ChromeProtocol.Domains.Page.StartScreencastRequest StartScreencast(string? Format = default, int? Quality = default, int? MaxWidth = default, int? MaxHeight = default, int? EveryNthFrame = default)    
+    public static ChromeProtocol.Domains.Page.StartScreencastRequest StartScreencast(string? Format = default, int? Quality = default, int? MaxWidth = default, int? MaxHeight = default, int? EveryNthFrame = default)
     {
       return new ChromeProtocol.Domains.Page.StartScreencastRequest(Format, Quality, MaxWidth, MaxHeight, EveryNthFrame);
     }
@@ -2207,15 +2207,15 @@ namespace ChromeProtocol.Domains
     /// <param name="EveryNthFrame">Send every n-th frame.</param>
     [ChromeProtocol.Core.MethodName("Page.startScreencast")]
     public record StartScreencastRequest(
-      [property: Newtonsoft.Json.JsonProperty("format")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("format")]
       string? Format = default,
-      [property: Newtonsoft.Json.JsonProperty("quality")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quality")]
       int? Quality = default,
-      [property: Newtonsoft.Json.JsonProperty("maxWidth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxWidth")]
       int? MaxWidth = default,
-      [property: Newtonsoft.Json.JsonProperty("maxHeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxHeight")]
       int? MaxHeight = default,
-      [property: Newtonsoft.Json.JsonProperty("everyNthFrame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("everyNthFrame")]
       int? EveryNthFrame = default
     ) : ChromeProtocol.Core.ICommand<StartScreencastRequestResult>
     {
@@ -2224,7 +2224,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Force the page stop all navigations and pending resource fetches.</summary>
-    public static ChromeProtocol.Domains.Page.StopLoadingRequest StopLoading()    
+    public static ChromeProtocol.Domains.Page.StopLoadingRequest StopLoading()
     {
       return new ChromeProtocol.Domains.Page.StopLoadingRequest();
     }
@@ -2237,7 +2237,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Crashes renderer on the IO thread, generates minidumps.</summary>
-    public static ChromeProtocol.Domains.Page.CrashRequest Crash()    
+    public static ChromeProtocol.Domains.Page.CrashRequest Crash()
     {
       return new ChromeProtocol.Domains.Page.CrashRequest();
     }
@@ -2250,7 +2250,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Tries to close page, running its beforeunload hooks, if any.</summary>
-    public static ChromeProtocol.Domains.Page.CloseRequest Close()    
+    public static ChromeProtocol.Domains.Page.CloseRequest Close()
     {
       return new ChromeProtocol.Domains.Page.CloseRequest();
     }
@@ -2268,7 +2268,7 @@ namespace ChromeProtocol.Domains
     /// https://github.com/WICG/web-lifecycle/<br/>
     /// </summary>
     /// <param name="State">Target lifecycle state</param>
-    public static ChromeProtocol.Domains.Page.SetWebLifecycleStateRequest SetWebLifecycleState(string State)    
+    public static ChromeProtocol.Domains.Page.SetWebLifecycleStateRequest SetWebLifecycleState(string State)
     {
       return new ChromeProtocol.Domains.Page.SetWebLifecycleStateRequest(State);
     }
@@ -2280,7 +2280,7 @@ namespace ChromeProtocol.Domains
     /// <param name="State">Target lifecycle state</param>
     [ChromeProtocol.Core.MethodName("Page.setWebLifecycleState")]
     public record SetWebLifecycleStateRequest(
-      [property: Newtonsoft.Json.JsonProperty("state")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("state")]
       string State
     ) : ChromeProtocol.Core.ICommand<SetWebLifecycleStateRequestResult>
     {
@@ -2289,7 +2289,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Stops sending each frame in the `screencastFrame`.</summary>
-    public static ChromeProtocol.Domains.Page.StopScreencastRequest StopScreencast()    
+    public static ChromeProtocol.Domains.Page.StopScreencastRequest StopScreencast()
     {
       return new ChromeProtocol.Domains.Page.StopScreencastRequest();
     }
@@ -2309,7 +2309,7 @@ namespace ChromeProtocol.Domains
     /// produced upon backend discretion, based on internal heuristics.<br/>
     /// See also: `Page.compilationCacheProduced`.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Page.ProduceCompilationCacheRequest ProduceCompilationCache(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.CompilationCacheParamsType> Scripts)    
+    public static ChromeProtocol.Domains.Page.ProduceCompilationCacheRequest ProduceCompilationCache(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.CompilationCacheParamsType> Scripts)
     {
       return new ChromeProtocol.Domains.Page.ProduceCompilationCacheRequest(Scripts);
     }
@@ -2323,7 +2323,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Page.produceCompilationCache")]
     public record ProduceCompilationCacheRequest(
-      [property: Newtonsoft.Json.JsonProperty("scripts")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scripts")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Page.CompilationCacheParamsType> Scripts
     ) : ChromeProtocol.Core.ICommand<ProduceCompilationCacheRequestResult>
     {
@@ -2336,7 +2336,7 @@ namespace ChromeProtocol.Domains
     /// cross-process navigation.<br/>
     /// </summary>
     /// <param name="Data">Base64-encoded data (Encoded as a base64 string when passed over JSON)</param>
-    public static ChromeProtocol.Domains.Page.AddCompilationCacheRequest AddCompilationCache(string Url, string Data)    
+    public static ChromeProtocol.Domains.Page.AddCompilationCacheRequest AddCompilationCache(string Url, string Data)
     {
       return new ChromeProtocol.Domains.Page.AddCompilationCacheRequest(Url, Data);
     }
@@ -2347,9 +2347,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Data">Base64-encoded data (Encoded as a base64 string when passed over JSON)</param>
     [ChromeProtocol.Core.MethodName("Page.addCompilationCache")]
     public record AddCompilationCacheRequest(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data
     ) : ChromeProtocol.Core.ICommand<AddCompilationCacheRequestResult>
     {
@@ -2358,7 +2358,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears seeded compilation cache.</summary>
-    public static ChromeProtocol.Domains.Page.ClearCompilationCacheRequest ClearCompilationCache()    
+    public static ChromeProtocol.Domains.Page.ClearCompilationCacheRequest ClearCompilationCache()
     {
       return new ChromeProtocol.Domains.Page.ClearCompilationCacheRequest();
     }
@@ -2374,7 +2374,7 @@ namespace ChromeProtocol.Domains
     /// Sets the Secure Payment Confirmation transaction mode.<br/>
     /// https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Page.SetSPCTransactionModeRequest SetSPCTransactionMode(ChromeProtocol.Domains.Page.AutoResponseModeType Mode)    
+    public static ChromeProtocol.Domains.Page.SetSPCTransactionModeRequest SetSPCTransactionMode(ChromeProtocol.Domains.Page.AutoResponseModeType Mode)
     {
       return new ChromeProtocol.Domains.Page.SetSPCTransactionModeRequest(Mode);
     }
@@ -2384,7 +2384,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Page.setSPCTransactionMode")]
     public record SetSPCTransactionModeRequest(
-      [property: Newtonsoft.Json.JsonProperty("mode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mode")]
       ChromeProtocol.Domains.Page.AutoResponseModeType Mode
     ) : ChromeProtocol.Core.ICommand<SetSPCTransactionModeRequestResult>
     {
@@ -2396,7 +2396,7 @@ namespace ChromeProtocol.Domains
     /// Extensions for Custom Handlers API:<br/>
     /// https://html.spec.whatwg.org/multipage/system-state.html#rph-automation<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Page.SetRPHRegistrationModeRequest SetRPHRegistrationMode(ChromeProtocol.Domains.Page.AutoResponseModeType Mode)    
+    public static ChromeProtocol.Domains.Page.SetRPHRegistrationModeRequest SetRPHRegistrationMode(ChromeProtocol.Domains.Page.AutoResponseModeType Mode)
     {
       return new ChromeProtocol.Domains.Page.SetRPHRegistrationModeRequest(Mode);
     }
@@ -2406,7 +2406,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Page.setRPHRegistrationMode")]
     public record SetRPHRegistrationModeRequest(
-      [property: Newtonsoft.Json.JsonProperty("mode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mode")]
       ChromeProtocol.Domains.Page.AutoResponseModeType Mode
     ) : ChromeProtocol.Core.ICommand<SetRPHRegistrationModeRequestResult>
     {
@@ -2417,7 +2417,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Generates a report for testing.</summary>
     /// <param name="Message">Message to be displayed in the report.</param>
     /// <param name="Group">Specifies the endpoint group to deliver the report to.</param>
-    public static ChromeProtocol.Domains.Page.GenerateTestReportRequest GenerateTestReport(string Message, string? Group = default)    
+    public static ChromeProtocol.Domains.Page.GenerateTestReportRequest GenerateTestReport(string Message, string? Group = default)
     {
       return new ChromeProtocol.Domains.Page.GenerateTestReportRequest(Message, Group);
     }
@@ -2426,9 +2426,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Group">Specifies the endpoint group to deliver the report to.</param>
     [ChromeProtocol.Core.MethodName("Page.generateTestReport")]
     public record GenerateTestReportRequest(
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       string Message,
-      [property: Newtonsoft.Json.JsonProperty("group")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("group")]
       string? Group = default
     ) : ChromeProtocol.Core.ICommand<GenerateTestReportRequestResult>
     {
@@ -2437,7 +2437,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.</summary>
-    public static ChromeProtocol.Domains.Page.WaitForDebuggerRequest WaitForDebugger()    
+    public static ChromeProtocol.Domains.Page.WaitForDebuggerRequest WaitForDebugger()
     {
       return new ChromeProtocol.Domains.Page.WaitForDebuggerRequest();
     }
@@ -2454,7 +2454,7 @@ namespace ChromeProtocol.Domains
     /// When file chooser interception is enabled, native file chooser dialog is not shown.<br/>
     /// Instead, a protocol event `Page.fileChooserOpened` is emitted.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Page.SetInterceptFileChooserDialogRequest SetInterceptFileChooserDialog(bool Enabled)    
+    public static ChromeProtocol.Domains.Page.SetInterceptFileChooserDialogRequest SetInterceptFileChooserDialog(bool Enabled)
     {
       return new ChromeProtocol.Domains.Page.SetInterceptFileChooserDialogRequest(Enabled);
     }
@@ -2465,7 +2465,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Page.setInterceptFileChooserDialog")]
     public record SetInterceptFileChooserDialogRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetInterceptFileChooserDialogRequestResult>
     {
@@ -2480,7 +2480,7 @@ namespace ChromeProtocol.Domains
     /// for more details.<br/>
     /// TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Page.SetPrerenderingAllowedRequest SetPrerenderingAllowed(bool IsAllowed)    
+    public static ChromeProtocol.Domains.Page.SetPrerenderingAllowedRequest SetPrerenderingAllowed(bool IsAllowed)
     {
       return new ChromeProtocol.Domains.Page.SetPrerenderingAllowedRequest(IsAllowed);
     }
@@ -2493,7 +2493,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Page.setPrerenderingAllowed")]
     public record SetPrerenderingAllowedRequest(
-      [property: Newtonsoft.Json.JsonProperty("isAllowed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isAllowed")]
       bool IsAllowed
     ) : ChromeProtocol.Core.ICommand<SetPrerenderingAllowedRequestResult>
     {

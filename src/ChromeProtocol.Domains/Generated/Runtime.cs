@@ -13,7 +13,7 @@ namespace ChromeProtocol.Domains
   public static partial class Runtime
   {
     /// <summary>Unique script identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ScriptIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -27,12 +27,12 @@ namespace ChromeProtocol.Domains
     /// Values can be only of type string or integer.<br/>
     /// </param>
     public record SerializationOptionsType(
-      [property: Newtonsoft.Json.JsonProperty("serialization")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("serialization")]
       string Serialization,
-      [property: Newtonsoft.Json.JsonProperty("maxDepth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxDepth")]
       int? MaxDepth = default,
-      [property: Newtonsoft.Json.JsonProperty("additionalParameters")]
-      Newtonsoft.Json.Linq.JObject? AdditionalParameters = default
+      [property: System.Text.Json.Serialization.JsonPropertyName("additionalParameters")]
+      System.Text.Json.Nodes.JsonObject? AdditionalParameters = default
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -43,19 +43,19 @@ namespace ChromeProtocol.Domains
     /// per value in the scope of one CDP call.<br/>
     /// </param>
     public record DeepSerializedValueType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("value")]
-      Newtonsoft.Json.Linq.JToken? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
+      System.Text.Json.Nodes.JsonNode? Value = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       string? ObjectId = default,
-      [property: Newtonsoft.Json.JsonProperty("weakLocalObjectReference")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("weakLocalObjectReference")]
       int? WeakLocalObjectReference = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Unique object identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record RemoteObjectIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -65,7 +65,7 @@ namespace ChromeProtocol.Domains
     /// Primitive value which cannot be JSON-stringified. Includes values `-0`, `NaN`, `Infinity`,<br/>
     /// `-Infinity`, and bigint literals.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record UnserializableValueType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -89,25 +89,25 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">Unique object identifier (for non-primitive values).</param>
     /// <param name="Preview">Preview containing abbreviated property values. Specified for `object` type values only.</param>
     public record RemoteObjectType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("subtype")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subtype")]
       string? Subtype = default,
-      [property: Newtonsoft.Json.JsonProperty("className")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("className")]
       string? ClassName = default,
-      [property: Newtonsoft.Json.JsonProperty("value")]
-      Newtonsoft.Json.Linq.JToken? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("unserializableValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
+      System.Text.Json.Nodes.JsonNode? Value = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("unserializableValue")]
       ChromeProtocol.Domains.Runtime.UnserializableValueType? UnserializableValue = default,
-      [property: Newtonsoft.Json.JsonProperty("description")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("description")]
       string? Description = default,
-      [property: Newtonsoft.Json.JsonProperty("deepSerializedValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deepSerializedValue")]
       ChromeProtocol.Domains.Runtime.DeepSerializedValueType? DeepSerializedValue = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default,
-      [property: Newtonsoft.Json.JsonProperty("preview")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("preview")]
       ChromeProtocol.Domains.Runtime.ObjectPreviewType? Preview = default,
-      [property: Newtonsoft.Json.JsonProperty("customPreview")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("customPreview")]
       ChromeProtocol.Domains.Runtime.CustomPreviewType? CustomPreview = default
     ) : ChromeProtocol.Core.IType
     {
@@ -122,9 +122,9 @@ namespace ChromeProtocol.Domains
     /// The result value is json ML array.<br/>
     /// </param>
     public record CustomPreviewType(
-      [property: Newtonsoft.Json.JsonProperty("header")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("header")]
       string Header,
-      [property: Newtonsoft.Json.JsonProperty("bodyGetterId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bodyGetterId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? BodyGetterId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -137,17 +137,17 @@ namespace ChromeProtocol.Domains
     /// <param name="Description">String representation of the object.</param>
     /// <param name="Entries">List of the entries. Specified for `map` and `set` subtype values only.</param>
     public record ObjectPreviewType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("overflow")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("overflow")]
       bool Overflow,
-      [property: Newtonsoft.Json.JsonProperty("properties")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("properties")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.PropertyPreviewType> Properties,
-      [property: Newtonsoft.Json.JsonProperty("subtype")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subtype")]
       string? Subtype = default,
-      [property: Newtonsoft.Json.JsonProperty("description")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("description")]
       string? Description = default,
-      [property: Newtonsoft.Json.JsonProperty("entries")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("entries")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.EntryPreviewType>? Entries = default
     ) : ChromeProtocol.Core.IType
     {
@@ -158,15 +158,15 @@ namespace ChromeProtocol.Domains
     /// <param name="ValuePreview">Nested value preview.</param>
     /// <param name="Subtype">Object subtype hint. Specified for `object` type values only.</param>
     public record PropertyPreviewType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("valuePreview")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("valuePreview")]
       ChromeProtocol.Domains.Runtime.ObjectPreviewType? ValuePreview = default,
-      [property: Newtonsoft.Json.JsonProperty("subtype")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subtype")]
       string? Subtype = default
     ) : ChromeProtocol.Core.IType
     {
@@ -174,9 +174,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Value">Preview of the value.</param>
     /// <param name="Key">Preview of the key. Specified for map-like collection entries.</param>
     public record EntryPreviewType(
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Runtime.ObjectPreviewType Value,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       ChromeProtocol.Domains.Runtime.ObjectPreviewType? Key = default
     ) : ChromeProtocol.Core.IType
     {
@@ -205,25 +205,25 @@ namespace ChromeProtocol.Domains
     /// <param name="IsOwn">True if the property is owned for the object.</param>
     /// <param name="Symbol">Property symbol object, if the property is of the `symbol` type.</param>
     public record PropertyDescriptorType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("configurable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("configurable")]
       bool Configurable,
-      [property: Newtonsoft.Json.JsonProperty("enumerable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enumerable")]
       bool Enumerable,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("writable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("writable")]
       bool? Writable = default,
-      [property: Newtonsoft.Json.JsonProperty("get")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("get")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Get = default,
-      [property: Newtonsoft.Json.JsonProperty("set")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("set")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Set = default,
-      [property: Newtonsoft.Json.JsonProperty("wasThrown")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("wasThrown")]
       bool? WasThrown = default,
-      [property: Newtonsoft.Json.JsonProperty("isOwn")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isOwn")]
       bool? IsOwn = default,
-      [property: Newtonsoft.Json.JsonProperty("symbol")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("symbol")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Symbol = default
     ) : ChromeProtocol.Core.IType
     {
@@ -232,9 +232,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Conventional property name.</param>
     /// <param name="Value">The value associated with the property.</param>
     public record InternalPropertyDescriptorType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Value = default
     ) : ChromeProtocol.Core.IType
     {
@@ -251,13 +251,13 @@ namespace ChromeProtocol.Domains
     /// or `undefined` if there is no setter (accessor descriptors only).<br/>
     /// </param>
     public record PrivatePropertyDescriptorType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("get")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("get")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Get = default,
-      [property: Newtonsoft.Json.JsonProperty("set")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("set")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Set = default
     ) : ChromeProtocol.Core.IType
     {
@@ -270,17 +270,17 @@ namespace ChromeProtocol.Domains
     /// <param name="UnserializableValue">Primitive value which can not be JSON-stringified.</param>
     /// <param name="ObjectId">Remote object handle.</param>
     public record CallArgumentType(
-      [property: Newtonsoft.Json.JsonProperty("value")]
-      Newtonsoft.Json.Linq.JToken? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("unserializableValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
+      System.Text.Json.Nodes.JsonNode? Value = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("unserializableValue")]
       ChromeProtocol.Domains.Runtime.UnserializableValueType? UnserializableValue = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Id of an execution context.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ExecutionContextIdType(
       int Value
     ) : ChromeProtocol.Core.PrimitiveType<int>(Value)
@@ -300,16 +300,16 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="AuxData">Embedder-specific auxiliary data likely matching {isDefault: boolean, type: &#39;default&#39;|&#39;isolated&#39;|&#39;worker&#39;, frameId: string}</param>
     public record ExecutionContextDescriptionType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType Id,
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("uniqueId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("uniqueId")]
       string UniqueId,
-      [property: Newtonsoft.Json.JsonProperty("auxData")]
-      Newtonsoft.Json.Linq.JObject? AuxData = default
+      [property: System.Text.Json.Serialization.JsonPropertyName("auxData")]
+      System.Text.Json.Nodes.JsonObject? AuxData = default
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -332,38 +332,38 @@ namespace ChromeProtocol.Domains
     /// requests, etc.<br/>
     /// </param>
     public record ExceptionDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("exceptionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionId")]
       int ExceptionId,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int ColumnNumber,
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType? ScriptId = default,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("stackTrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stackTrace")]
       ChromeProtocol.Domains.Runtime.StackTraceType? StackTrace = default,
-      [property: Newtonsoft.Json.JsonProperty("exception")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exception")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Exception = default,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("exceptionMetaData")]
-      Newtonsoft.Json.Linq.JObject? ExceptionMetaData = default
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionMetaData")]
+      System.Text.Json.Nodes.JsonObject? ExceptionMetaData = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Number of milliseconds since epoch.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record TimestampType(
       double Value
     ) : ChromeProtocol.Core.PrimitiveType<double>(Value)
     {
     }
     /// <summary>Number of milliseconds.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record TimeDeltaType(
       double Value
     ) : ChromeProtocol.Core.PrimitiveType<double>(Value)
@@ -376,15 +376,15 @@ namespace ChromeProtocol.Domains
     /// <param name="LineNumber">JavaScript script line number (0-based).</param>
     /// <param name="ColumnNumber">JavaScript script column number (0-based).</param>
     public record CallFrameType(
-      [property: Newtonsoft.Json.JsonProperty("functionName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("functionName")]
       string FunctionName,
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int ColumnNumber
     ) : ChromeProtocol.Core.IType
     {
@@ -398,19 +398,19 @@ namespace ChromeProtocol.Domains
     /// <param name="Parent">Asynchronous JavaScript stack trace that preceded this stack, if available.</param>
     /// <param name="ParentId">Asynchronous JavaScript stack trace that preceded this stack, if available.</param>
     public record StackTraceType(
-      [property: Newtonsoft.Json.JsonProperty("callFrames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrames")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.CallFrameType> CallFrames,
-      [property: Newtonsoft.Json.JsonProperty("description")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("description")]
       string? Description = default,
-      [property: Newtonsoft.Json.JsonProperty("parent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parent")]
       ChromeProtocol.Domains.Runtime.StackTraceType? Parent = default,
-      [property: Newtonsoft.Json.JsonProperty("parentId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentId")]
       ChromeProtocol.Domains.Runtime.StackTraceIdType? ParentId = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Unique identifier of current debugger.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record UniqueDebuggerIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -421,9 +421,9 @@ namespace ChromeProtocol.Domains
     /// allows to track cross-debugger calls. See `Runtime.StackTrace` and `Debugger.paused` for usages.<br/>
     /// </summary>
     public record StackTraceIdType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id,
-      [property: Newtonsoft.Json.JsonProperty("debuggerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("debuggerId")]
       ChromeProtocol.Domains.Runtime.UniqueDebuggerIdType? DebuggerId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -432,11 +432,11 @@ namespace ChromeProtocol.Domains
     /// <param name="ExecutionContextId">Identifier of the context where the call was made.</param>
     [ChromeProtocol.Core.MethodName("Runtime.bindingCalled")]
     public record BindingCalled(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("payload")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("payload")]
       string Payload,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType ExecutionContextId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -458,17 +458,17 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Runtime.consoleAPICalled")]
     public record ConsoleAPICalled(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("args")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("args")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.RemoteObjectType> Args,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType ExecutionContextId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Runtime.TimestampType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("stackTrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stackTrace")]
       ChromeProtocol.Domains.Runtime.StackTraceType? StackTrace = default,
-      [property: Newtonsoft.Json.JsonProperty("context")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("context")]
       string? Context = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -478,9 +478,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ExceptionId">The id of revoked exception, as reported in `exceptionThrown`.</param>
     [ChromeProtocol.Core.MethodName("Runtime.exceptionRevoked")]
     public record ExceptionRevoked(
-      [property: Newtonsoft.Json.JsonProperty("reason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reason")]
       string Reason,
-      [property: Newtonsoft.Json.JsonProperty("exceptionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionId")]
       int ExceptionId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -489,9 +489,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Timestamp">Timestamp of the exception.</param>
     [ChromeProtocol.Core.MethodName("Runtime.exceptionThrown")]
     public record ExceptionThrown(
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Runtime.TimestampType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType ExceptionDetails
     ) : ChromeProtocol.Core.IEvent
     {
@@ -500,7 +500,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Context">A newly created execution context.</param>
     [ChromeProtocol.Core.MethodName("Runtime.executionContextCreated")]
     public record ExecutionContextCreated(
-      [property: Newtonsoft.Json.JsonProperty("context")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("context")]
       ChromeProtocol.Domains.Runtime.ExecutionContextDescriptionType Context
     ) : ChromeProtocol.Core.IEvent
     {
@@ -511,9 +511,9 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Runtime.executionContextDestroyed")]
     public record ExecutionContextDestroyed(
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType ExecutionContextId,
-      [property: Newtonsoft.Json.JsonProperty("executionContextUniqueId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextUniqueId")]
       string ExecutionContextUniqueId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -530,11 +530,11 @@ namespace ChromeProtocol.Domains
     /// <param name="ExecutionContextId">Identifier of the context where the call was made.</param>
     [ChromeProtocol.Core.MethodName("Runtime.inspectRequested")]
     public record InspectRequested(
-      [property: Newtonsoft.Json.JsonProperty("object")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("object")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Object,
-      [property: Newtonsoft.Json.JsonProperty("hints")]
-      Newtonsoft.Json.Linq.JObject Hints,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hints")]
+      System.Text.Json.Nodes.JsonObject Hints,
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -543,7 +543,7 @@ namespace ChromeProtocol.Domains
     /// <param name="PromiseObjectId">Identifier of the promise.</param>
     /// <param name="ReturnByValue">Whether the result is expected to be a JSON object that should be sent by value.</param>
     /// <param name="GeneratePreview">Whether preview should be generated for the result.</param>
-    public static ChromeProtocol.Domains.Runtime.AwaitPromiseRequest AwaitPromise(ChromeProtocol.Domains.Runtime.RemoteObjectIdType PromiseObjectId, bool? ReturnByValue = default, bool? GeneratePreview = default)    
+    public static ChromeProtocol.Domains.Runtime.AwaitPromiseRequest AwaitPromise(ChromeProtocol.Domains.Runtime.RemoteObjectIdType PromiseObjectId, bool? ReturnByValue = default, bool? GeneratePreview = default)
     {
       return new ChromeProtocol.Domains.Runtime.AwaitPromiseRequest(PromiseObjectId, ReturnByValue, GeneratePreview);
     }
@@ -553,11 +553,11 @@ namespace ChromeProtocol.Domains
     /// <param name="GeneratePreview">Whether preview should be generated for the result.</param>
     [ChromeProtocol.Core.MethodName("Runtime.awaitPromise")]
     public record AwaitPromiseRequest(
-      [property: Newtonsoft.Json.JsonProperty("promiseObjectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("promiseObjectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType PromiseObjectId,
-      [property: Newtonsoft.Json.JsonProperty("returnByValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("returnByValue")]
       bool? ReturnByValue = default,
-      [property: Newtonsoft.Json.JsonProperty("generatePreview")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("generatePreview")]
       bool? GeneratePreview = default
     ) : ChromeProtocol.Core.ICommand<AwaitPromiseRequestResult>
     {
@@ -565,9 +565,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">Promise result. Will contain rejected value if promise was rejected.</param>
     /// <param name="ExceptionDetails">Exception details if stack strace is available.</param>
     public record AwaitPromiseRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Result,
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType? ExceptionDetails = default
     ) : ChromeProtocol.Core.IType
     {
@@ -620,7 +620,7 @@ namespace ChromeProtocol.Domains
     /// Specifies the result serialization. If provided, overrides<br/>
     /// `generatePreview` and `returnByValue`.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.CallFunctionOnRequest CallFunctionOn(string FunctionDeclaration, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.CallArgumentType>? Arguments = default, bool? Silent = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? UserGesture = default, bool? AwaitPromise = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ObjectGroup = default, bool? ThrowOnSideEffect = default, string? UniqueContextId = default, ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default)    
+    public static ChromeProtocol.Domains.Runtime.CallFunctionOnRequest CallFunctionOn(string FunctionDeclaration, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.CallArgumentType>? Arguments = default, bool? Silent = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? UserGesture = default, bool? AwaitPromise = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ObjectGroup = default, bool? ThrowOnSideEffect = default, string? UniqueContextId = default, ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default)
     {
       return new ChromeProtocol.Domains.Runtime.CallFunctionOnRequest(FunctionDeclaration, ObjectId, Arguments, Silent, ReturnByValue, GeneratePreview, UserGesture, AwaitPromise, ExecutionContextId, ObjectGroup, ThrowOnSideEffect, UniqueContextId, SerializationOptions);
     }
@@ -674,31 +674,31 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Runtime.callFunctionOn")]
     public record CallFunctionOnRequest(
-      [property: Newtonsoft.Json.JsonProperty("functionDeclaration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("functionDeclaration")]
       string FunctionDeclaration,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default,
-      [property: Newtonsoft.Json.JsonProperty("arguments")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("arguments")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.CallArgumentType>? Arguments = default,
-      [property: Newtonsoft.Json.JsonProperty("silent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("silent")]
       bool? Silent = default,
-      [property: Newtonsoft.Json.JsonProperty("returnByValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("returnByValue")]
       bool? ReturnByValue = default,
-      [property: Newtonsoft.Json.JsonProperty("generatePreview")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("generatePreview")]
       bool? GeneratePreview = default,
-      [property: Newtonsoft.Json.JsonProperty("userGesture")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userGesture")]
       bool? UserGesture = default,
-      [property: Newtonsoft.Json.JsonProperty("awaitPromise")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("awaitPromise")]
       bool? AwaitPromise = default,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectGroup")]
       string? ObjectGroup = default,
-      [property: Newtonsoft.Json.JsonProperty("throwOnSideEffect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("throwOnSideEffect")]
       bool? ThrowOnSideEffect = default,
-      [property: Newtonsoft.Json.JsonProperty("uniqueContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("uniqueContextId")]
       string? UniqueContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("serializationOptions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("serializationOptions")]
       ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default
     ) : ChromeProtocol.Core.ICommand<CallFunctionOnRequestResult>
     {
@@ -706,9 +706,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">Call result.</param>
     /// <param name="ExceptionDetails">Exception details.</param>
     public record CallFunctionOnRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Result,
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType? ExceptionDetails = default
     ) : ChromeProtocol.Core.IType
     {
@@ -721,7 +721,7 @@ namespace ChromeProtocol.Domains
     /// Specifies in which execution context to perform script run. If the parameter is omitted the<br/>
     /// evaluation will be performed in the context of the inspected page.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.CompileScriptRequest CompileScript(string Expression, string SourceURL, bool PersistScript, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)    
+    public static ChromeProtocol.Domains.Runtime.CompileScriptRequest CompileScript(string Expression, string SourceURL, bool PersistScript, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)
     {
       return new ChromeProtocol.Domains.Runtime.CompileScriptRequest(Expression, SourceURL, PersistScript, ExecutionContextId);
     }
@@ -735,13 +735,13 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Runtime.compileScript")]
     public record CompileScriptRequest(
-      [property: Newtonsoft.Json.JsonProperty("expression")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expression")]
       string Expression,
-      [property: Newtonsoft.Json.JsonProperty("sourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceURL")]
       string SourceURL,
-      [property: Newtonsoft.Json.JsonProperty("persistScript")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("persistScript")]
       bool PersistScript,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default
     ) : ChromeProtocol.Core.ICommand<CompileScriptRequestResult>
     {
@@ -749,15 +749,15 @@ namespace ChromeProtocol.Domains
     /// <param name="ScriptId">Id of the script.</param>
     /// <param name="ExceptionDetails">Exception details.</param>
     public record CompileScriptRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType? ScriptId = default,
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType? ExceptionDetails = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Disables reporting of execution contexts creation.</summary>
-    public static ChromeProtocol.Domains.Runtime.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Runtime.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Runtime.DisableRequest();
     }
@@ -770,7 +770,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Discards collected exceptions and console API calls.</summary>
-    public static ChromeProtocol.Domains.Runtime.DiscardConsoleEntriesRequest DiscardConsoleEntries()    
+    public static ChromeProtocol.Domains.Runtime.DiscardConsoleEntriesRequest DiscardConsoleEntries()
     {
       return new ChromeProtocol.Domains.Runtime.DiscardConsoleEntriesRequest();
     }
@@ -787,7 +787,7 @@ namespace ChromeProtocol.Domains
     /// When the reporting gets enabled the event will be sent immediately for each existing execution<br/>
     /// context.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Runtime.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Runtime.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Runtime.EnableRequest();
     }
@@ -854,7 +854,7 @@ namespace ChromeProtocol.Domains
     /// Specifies the result serialization. If provided, overrides<br/>
     /// `generatePreview` and `returnByValue`.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.EvaluateRequest Evaluate(string Expression, string? ObjectGroup = default, bool? IncludeCommandLineAPI = default, bool? Silent = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ContextId = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? UserGesture = default, bool? AwaitPromise = default, bool? ThrowOnSideEffect = default, ChromeProtocol.Domains.Runtime.TimeDeltaType? Timeout = default, bool? DisableBreaks = default, bool? ReplMode = default, bool? AllowUnsafeEvalBlockedByCSP = default, string? UniqueContextId = default, ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default)    
+    public static ChromeProtocol.Domains.Runtime.EvaluateRequest Evaluate(string Expression, string? ObjectGroup = default, bool? IncludeCommandLineAPI = default, bool? Silent = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ContextId = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? UserGesture = default, bool? AwaitPromise = default, bool? ThrowOnSideEffect = default, ChromeProtocol.Domains.Runtime.TimeDeltaType? Timeout = default, bool? DisableBreaks = default, bool? ReplMode = default, bool? AllowUnsafeEvalBlockedByCSP = default, string? UniqueContextId = default, ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default)
     {
       return new ChromeProtocol.Domains.Runtime.EvaluateRequest(Expression, ObjectGroup, IncludeCommandLineAPI, Silent, ContextId, ReturnByValue, GeneratePreview, UserGesture, AwaitPromise, ThrowOnSideEffect, Timeout, DisableBreaks, ReplMode, AllowUnsafeEvalBlockedByCSP, UniqueContextId, SerializationOptions);
     }
@@ -911,37 +911,37 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Runtime.evaluate")]
     public record EvaluateRequest(
-      [property: Newtonsoft.Json.JsonProperty("expression")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expression")]
       string Expression,
-      [property: Newtonsoft.Json.JsonProperty("objectGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectGroup")]
       string? ObjectGroup = default,
-      [property: Newtonsoft.Json.JsonProperty("includeCommandLineAPI")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeCommandLineAPI")]
       bool? IncludeCommandLineAPI = default,
-      [property: Newtonsoft.Json.JsonProperty("silent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("silent")]
       bool? Silent = default,
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("returnByValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("returnByValue")]
       bool? ReturnByValue = default,
-      [property: Newtonsoft.Json.JsonProperty("generatePreview")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("generatePreview")]
       bool? GeneratePreview = default,
-      [property: Newtonsoft.Json.JsonProperty("userGesture")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userGesture")]
       bool? UserGesture = default,
-      [property: Newtonsoft.Json.JsonProperty("awaitPromise")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("awaitPromise")]
       bool? AwaitPromise = default,
-      [property: Newtonsoft.Json.JsonProperty("throwOnSideEffect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("throwOnSideEffect")]
       bool? ThrowOnSideEffect = default,
-      [property: Newtonsoft.Json.JsonProperty("timeout")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timeout")]
       ChromeProtocol.Domains.Runtime.TimeDeltaType? Timeout = default,
-      [property: Newtonsoft.Json.JsonProperty("disableBreaks")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disableBreaks")]
       bool? DisableBreaks = default,
-      [property: Newtonsoft.Json.JsonProperty("replMode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("replMode")]
       bool? ReplMode = default,
-      [property: Newtonsoft.Json.JsonProperty("allowUnsafeEvalBlockedByCSP")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("allowUnsafeEvalBlockedByCSP")]
       bool? AllowUnsafeEvalBlockedByCSP = default,
-      [property: Newtonsoft.Json.JsonProperty("uniqueContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("uniqueContextId")]
       string? UniqueContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("serializationOptions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("serializationOptions")]
       ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default
     ) : ChromeProtocol.Core.ICommand<EvaluateRequestResult>
     {
@@ -949,15 +949,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">Evaluation result.</param>
     /// <param name="ExceptionDetails">Exception details.</param>
     public record EvaluateRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Result,
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType? ExceptionDetails = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns the isolate id.</summary>
-    public static ChromeProtocol.Domains.Runtime.GetIsolateIdRequest GetIsolateId()    
+    public static ChromeProtocol.Domains.Runtime.GetIsolateIdRequest GetIsolateId()
     {
       return new ChromeProtocol.Domains.Runtime.GetIsolateIdRequest();
     }
@@ -968,7 +968,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Id">The isolate id.</param>
     public record GetIsolateIdRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id
     ) : ChromeProtocol.Core.IType
     {
@@ -977,7 +977,7 @@ namespace ChromeProtocol.Domains
     /// Returns the JavaScript heap usage.<br/>
     /// It is the total usage of the corresponding isolate not scoped to a particular Runtime.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Runtime.GetHeapUsageRequest GetHeapUsage()    
+    public static ChromeProtocol.Domains.Runtime.GetHeapUsageRequest GetHeapUsage()
     {
       return new ChromeProtocol.Domains.Runtime.GetHeapUsageRequest();
     }
@@ -992,9 +992,9 @@ namespace ChromeProtocol.Domains
     /// <param name="UsedSize">Used heap size in bytes.</param>
     /// <param name="TotalSize">Allocated heap size in bytes.</param>
     public record GetHeapUsageRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("usedSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("usedSize")]
       double UsedSize,
-      [property: Newtonsoft.Json.JsonProperty("totalSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("totalSize")]
       double TotalSize
     ) : ChromeProtocol.Core.IType
     {
@@ -1014,7 +1014,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="GeneratePreview">Whether preview should be generated for the results.</param>
     /// <param name="NonIndexedPropertiesOnly">If true, returns non-indexed properties only.</param>
-    public static ChromeProtocol.Domains.Runtime.GetPropertiesRequest GetProperties(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, bool? OwnProperties = default, bool? AccessorPropertiesOnly = default, bool? GeneratePreview = default, bool? NonIndexedPropertiesOnly = default)    
+    public static ChromeProtocol.Domains.Runtime.GetPropertiesRequest GetProperties(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, bool? OwnProperties = default, bool? AccessorPropertiesOnly = default, bool? GeneratePreview = default, bool? NonIndexedPropertiesOnly = default)
     {
       return new ChromeProtocol.Domains.Runtime.GetPropertiesRequest(ObjectId, OwnProperties, AccessorPropertiesOnly, GeneratePreview, NonIndexedPropertiesOnly);
     }
@@ -1035,15 +1035,15 @@ namespace ChromeProtocol.Domains
     /// <param name="NonIndexedPropertiesOnly">If true, returns non-indexed properties only.</param>
     [ChromeProtocol.Core.MethodName("Runtime.getProperties")]
     public record GetPropertiesRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId,
-      [property: Newtonsoft.Json.JsonProperty("ownProperties")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownProperties")]
       bool? OwnProperties = default,
-      [property: Newtonsoft.Json.JsonProperty("accessorPropertiesOnly")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accessorPropertiesOnly")]
       bool? AccessorPropertiesOnly = default,
-      [property: Newtonsoft.Json.JsonProperty("generatePreview")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("generatePreview")]
       bool? GeneratePreview = default,
-      [property: Newtonsoft.Json.JsonProperty("nonIndexedPropertiesOnly")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nonIndexedPropertiesOnly")]
       bool? NonIndexedPropertiesOnly = default
     ) : ChromeProtocol.Core.ICommand<GetPropertiesRequestResult>
     {
@@ -1053,20 +1053,20 @@ namespace ChromeProtocol.Domains
     /// <param name="PrivateProperties">Object private properties.</param>
     /// <param name="ExceptionDetails">Exception details.</param>
     public record GetPropertiesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.PropertyDescriptorType> Result,
-      [property: Newtonsoft.Json.JsonProperty("internalProperties")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("internalProperties")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.InternalPropertyDescriptorType>? InternalProperties = default,
-      [property: Newtonsoft.Json.JsonProperty("privateProperties")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("privateProperties")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.PrivatePropertyDescriptorType>? PrivateProperties = default,
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType? ExceptionDetails = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns all let, const and class variables from global scope.</summary>
     /// <param name="ExecutionContextId">Specifies in which execution context to lookup global scope variables.</param>
-    public static ChromeProtocol.Domains.Runtime.GlobalLexicalScopeNamesRequest GlobalLexicalScopeNames(ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)    
+    public static ChromeProtocol.Domains.Runtime.GlobalLexicalScopeNamesRequest GlobalLexicalScopeNames(ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)
     {
       return new ChromeProtocol.Domains.Runtime.GlobalLexicalScopeNamesRequest(ExecutionContextId);
     }
@@ -1074,20 +1074,20 @@ namespace ChromeProtocol.Domains
     /// <param name="ExecutionContextId">Specifies in which execution context to lookup global scope variables.</param>
     [ChromeProtocol.Core.MethodName("Runtime.globalLexicalScopeNames")]
     public record GlobalLexicalScopeNamesRequest(
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default
     ) : ChromeProtocol.Core.ICommand<GlobalLexicalScopeNamesRequestResult>
     {
     }
     public record GlobalLexicalScopeNamesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("names")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("names")]
       System.Collections.Generic.IReadOnlyList<string> Names
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <param name="PrototypeObjectId">Identifier of the prototype to return objects for.</param>
     /// <param name="ObjectGroup">Symbolic group name that can be used to release the results.</param>
-    public static ChromeProtocol.Domains.Runtime.QueryObjectsRequest QueryObjects(ChromeProtocol.Domains.Runtime.RemoteObjectIdType PrototypeObjectId, string? ObjectGroup = default)    
+    public static ChromeProtocol.Domains.Runtime.QueryObjectsRequest QueryObjects(ChromeProtocol.Domains.Runtime.RemoteObjectIdType PrototypeObjectId, string? ObjectGroup = default)
     {
       return new ChromeProtocol.Domains.Runtime.QueryObjectsRequest(PrototypeObjectId, ObjectGroup);
     }
@@ -1095,23 +1095,23 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectGroup">Symbolic group name that can be used to release the results.</param>
     [ChromeProtocol.Core.MethodName("Runtime.queryObjects")]
     public record QueryObjectsRequest(
-      [property: Newtonsoft.Json.JsonProperty("prototypeObjectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("prototypeObjectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType PrototypeObjectId,
-      [property: Newtonsoft.Json.JsonProperty("objectGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectGroup")]
       string? ObjectGroup = default
     ) : ChromeProtocol.Core.ICommand<QueryObjectsRequestResult>
     {
     }
     /// <param name="Objects">Array with objects.</param>
     public record QueryObjectsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("objects")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objects")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Objects
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Releases remote object with given id.</summary>
     /// <param name="ObjectId">Identifier of the object to release.</param>
-    public static ChromeProtocol.Domains.Runtime.ReleaseObjectRequest ReleaseObject(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)    
+    public static ChromeProtocol.Domains.Runtime.ReleaseObjectRequest ReleaseObject(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)
     {
       return new ChromeProtocol.Domains.Runtime.ReleaseObjectRequest(ObjectId);
     }
@@ -1119,7 +1119,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">Identifier of the object to release.</param>
     [ChromeProtocol.Core.MethodName("Runtime.releaseObject")]
     public record ReleaseObjectRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId
     ) : ChromeProtocol.Core.ICommand<ReleaseObjectRequestResult>
     {
@@ -1129,7 +1129,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Releases all remote objects that belong to a given group.</summary>
     /// <param name="ObjectGroup">Symbolic object group name.</param>
-    public static ChromeProtocol.Domains.Runtime.ReleaseObjectGroupRequest ReleaseObjectGroup(string ObjectGroup)    
+    public static ChromeProtocol.Domains.Runtime.ReleaseObjectGroupRequest ReleaseObjectGroup(string ObjectGroup)
     {
       return new ChromeProtocol.Domains.Runtime.ReleaseObjectGroupRequest(ObjectGroup);
     }
@@ -1137,7 +1137,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectGroup">Symbolic object group name.</param>
     [ChromeProtocol.Core.MethodName("Runtime.releaseObjectGroup")]
     public record ReleaseObjectGroupRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectGroup")]
       string ObjectGroup
     ) : ChromeProtocol.Core.ICommand<ReleaseObjectGroupRequestResult>
     {
@@ -1146,7 +1146,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Tells inspected instance to run if it was waiting for debugger to attach.</summary>
-    public static ChromeProtocol.Domains.Runtime.RunIfWaitingForDebuggerRequest RunIfWaitingForDebugger()    
+    public static ChromeProtocol.Domains.Runtime.RunIfWaitingForDebuggerRequest RunIfWaitingForDebugger()
     {
       return new ChromeProtocol.Domains.Runtime.RunIfWaitingForDebuggerRequest();
     }
@@ -1176,7 +1176,7 @@ namespace ChromeProtocol.Domains
     /// Whether execution should `await` for resulting value and return once awaited promise is<br/>
     /// resolved.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.RunScriptRequest RunScript(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ObjectGroup = default, bool? Silent = default, bool? IncludeCommandLineAPI = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? AwaitPromise = default)    
+    public static ChromeProtocol.Domains.Runtime.RunScriptRequest RunScript(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ObjectGroup = default, bool? Silent = default, bool? IncludeCommandLineAPI = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? AwaitPromise = default)
     {
       return new ChromeProtocol.Domains.Runtime.RunScriptRequest(ScriptId, ExecutionContextId, ObjectGroup, Silent, IncludeCommandLineAPI, ReturnByValue, GeneratePreview, AwaitPromise);
     }
@@ -1200,21 +1200,21 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Runtime.runScript")]
     public record RunScriptRequest(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectGroup")]
       string? ObjectGroup = default,
-      [property: Newtonsoft.Json.JsonProperty("silent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("silent")]
       bool? Silent = default,
-      [property: Newtonsoft.Json.JsonProperty("includeCommandLineAPI")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeCommandLineAPI")]
       bool? IncludeCommandLineAPI = default,
-      [property: Newtonsoft.Json.JsonProperty("returnByValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("returnByValue")]
       bool? ReturnByValue = default,
-      [property: Newtonsoft.Json.JsonProperty("generatePreview")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("generatePreview")]
       bool? GeneratePreview = default,
-      [property: Newtonsoft.Json.JsonProperty("awaitPromise")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("awaitPromise")]
       bool? AwaitPromise = default
     ) : ChromeProtocol.Core.ICommand<RunScriptRequestResult>
     {
@@ -1222,9 +1222,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">Run result.</param>
     /// <param name="ExceptionDetails">Exception details.</param>
     public record RunScriptRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Result,
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType? ExceptionDetails = default
     ) : ChromeProtocol.Core.IType
     {
@@ -1234,7 +1234,7 @@ namespace ChromeProtocol.Domains
     /// Maximum depth of async call stacks. Setting to `0` will effectively disable collecting async<br/>
     /// call stacks (default).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.SetAsyncCallStackDepthRequest SetAsyncCallStackDepth(int MaxDepth)    
+    public static ChromeProtocol.Domains.Runtime.SetAsyncCallStackDepthRequest SetAsyncCallStackDepth(int MaxDepth)
     {
       return new ChromeProtocol.Domains.Runtime.SetAsyncCallStackDepthRequest(MaxDepth);
     }
@@ -1245,7 +1245,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Runtime.setAsyncCallStackDepth")]
     public record SetAsyncCallStackDepthRequest(
-      [property: Newtonsoft.Json.JsonProperty("maxDepth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxDepth")]
       int MaxDepth
     ) : ChromeProtocol.Core.ICommand<SetAsyncCallStackDepthRequestResult>
     {
@@ -1253,13 +1253,13 @@ namespace ChromeProtocol.Domains
     public record SetAsyncCallStackDepthRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Runtime.SetCustomObjectFormatterEnabledRequest SetCustomObjectFormatterEnabled(bool Enabled)    
+    public static ChromeProtocol.Domains.Runtime.SetCustomObjectFormatterEnabledRequest SetCustomObjectFormatterEnabled(bool Enabled)
     {
       return new ChromeProtocol.Domains.Runtime.SetCustomObjectFormatterEnabledRequest(Enabled);
     }
     [ChromeProtocol.Core.MethodName("Runtime.setCustomObjectFormatterEnabled")]
     public record SetCustomObjectFormatterEnabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetCustomObjectFormatterEnabledRequestResult>
     {
@@ -1267,13 +1267,13 @@ namespace ChromeProtocol.Domains
     public record SetCustomObjectFormatterEnabledRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Runtime.SetMaxCallStackSizeToCaptureRequest SetMaxCallStackSizeToCapture(int Size)    
+    public static ChromeProtocol.Domains.Runtime.SetMaxCallStackSizeToCaptureRequest SetMaxCallStackSizeToCapture(int Size)
     {
       return new ChromeProtocol.Domains.Runtime.SetMaxCallStackSizeToCaptureRequest(Size);
     }
     [ChromeProtocol.Core.MethodName("Runtime.setMaxCallStackSizeToCapture")]
     public record SetMaxCallStackSizeToCaptureRequest(
-      [property: Newtonsoft.Json.JsonProperty("size")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("size")]
       int Size
     ) : ChromeProtocol.Core.ICommand<SetMaxCallStackSizeToCaptureRequestResult>
     {
@@ -1285,7 +1285,7 @@ namespace ChromeProtocol.Domains
     /// Terminate current or next JavaScript execution.<br/>
     /// Will cancel the termination when the outer-most script execution ends.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Runtime.TerminateExecutionRequest TerminateExecution()    
+    public static ChromeProtocol.Domains.Runtime.TerminateExecutionRequest TerminateExecution()
     {
       return new ChromeProtocol.Domains.Runtime.TerminateExecutionRequest();
     }
@@ -1324,7 +1324,7 @@ namespace ChromeProtocol.Domains
     /// `Page.addScriptToEvaluateOnNewDocument`.<br/>
     /// This parameter is mutually exclusive with `executionContextId`.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.AddBindingRequest AddBinding(string Name, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ExecutionContextName = default)    
+    public static ChromeProtocol.Domains.Runtime.AddBindingRequest AddBinding(string Name, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ExecutionContextName = default)
     {
       return new ChromeProtocol.Domains.Runtime.AddBindingRequest(Name, ExecutionContextId, ExecutionContextName);
     }
@@ -1354,12 +1354,12 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Runtime.addBinding")]
     public record AddBindingRequest(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("executionContextName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextName")]
       string? ExecutionContextName = default
     ) : ChromeProtocol.Core.ICommand<AddBindingRequestResult>
     {
@@ -1371,7 +1371,7 @@ namespace ChromeProtocol.Domains
     /// This method does not remove binding function from global object but<br/>
     /// unsubscribes current runtime agent from Runtime.bindingCalled notifications.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Runtime.RemoveBindingRequest RemoveBinding(string Name)    
+    public static ChromeProtocol.Domains.Runtime.RemoveBindingRequest RemoveBinding(string Name)
     {
       return new ChromeProtocol.Domains.Runtime.RemoveBindingRequest(Name);
     }
@@ -1381,7 +1381,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Runtime.removeBinding")]
     public record RemoveBindingRequest(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name
     ) : ChromeProtocol.Core.ICommand<RemoveBindingRequestResult>
     {
@@ -1397,7 +1397,7 @@ namespace ChromeProtocol.Domains
     /// Error was thrown.<br/>
     /// </summary>
     /// <param name="ErrorObjectId">The error object for which to resolve the exception details.</param>
-    public static ChromeProtocol.Domains.Runtime.GetExceptionDetailsRequest GetExceptionDetails(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ErrorObjectId)    
+    public static ChromeProtocol.Domains.Runtime.GetExceptionDetailsRequest GetExceptionDetails(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ErrorObjectId)
     {
       return new ChromeProtocol.Domains.Runtime.GetExceptionDetailsRequest(ErrorObjectId);
     }
@@ -1411,13 +1411,13 @@ namespace ChromeProtocol.Domains
     /// <param name="ErrorObjectId">The error object for which to resolve the exception details.</param>
     [ChromeProtocol.Core.MethodName("Runtime.getExceptionDetails")]
     public record GetExceptionDetailsRequest(
-      [property: Newtonsoft.Json.JsonProperty("errorObjectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorObjectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType ErrorObjectId
     ) : ChromeProtocol.Core.ICommand<GetExceptionDetailsRequestResult>
     {
     }
     public record GetExceptionDetailsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType? ExceptionDetails = default
     ) : ChromeProtocol.Core.IType
     {

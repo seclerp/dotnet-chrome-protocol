@@ -5,7 +5,7 @@ namespace ChromeProtocol.Domains
 {
   public static partial class ServiceWorker
   {
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record RegistrationIDType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -13,22 +13,22 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>ServiceWorker registration.</summary>
     public record ServiceWorkerRegistrationType(
-      [property: Newtonsoft.Json.JsonProperty("registrationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("registrationId")]
       ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId,
-      [property: Newtonsoft.Json.JsonProperty("scopeURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scopeURL")]
       string ScopeURL,
-      [property: Newtonsoft.Json.JsonProperty("isDeleted")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isDeleted")]
       bool IsDeleted
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ServiceWorkerVersionRunningStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ServiceWorkerVersionStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -41,78 +41,78 @@ namespace ChromeProtocol.Domains
     /// For cached script it is the last time the cache entry was validated.<br/>
     /// </param>
     public record ServiceWorkerVersionType(
-      [property: Newtonsoft.Json.JsonProperty("versionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("versionId")]
       string VersionId,
-      [property: Newtonsoft.Json.JsonProperty("registrationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("registrationId")]
       ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId,
-      [property: Newtonsoft.Json.JsonProperty("scriptURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptURL")]
       string ScriptURL,
-      [property: Newtonsoft.Json.JsonProperty("runningStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("runningStatus")]
       ChromeProtocol.Domains.ServiceWorker.ServiceWorkerVersionRunningStatusType RunningStatus,
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       ChromeProtocol.Domains.ServiceWorker.ServiceWorkerVersionStatusType Status,
-      [property: Newtonsoft.Json.JsonProperty("scriptLastModified")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptLastModified")]
       double? ScriptLastModified = default,
-      [property: Newtonsoft.Json.JsonProperty("scriptResponseTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptResponseTime")]
       double? ScriptResponseTime = default,
-      [property: Newtonsoft.Json.JsonProperty("controlledClients")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("controlledClients")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Target.TargetIDType>? ControlledClients = default,
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType? TargetId = default,
-      [property: Newtonsoft.Json.JsonProperty("routerRules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("routerRules")]
       string? RouterRules = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>ServiceWorker error message.</summary>
     public record ServiceWorkerErrorMessageType(
-      [property: Newtonsoft.Json.JsonProperty("errorMessage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorMessage")]
       string ErrorMessage,
-      [property: Newtonsoft.Json.JsonProperty("registrationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("registrationId")]
       ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId,
-      [property: Newtonsoft.Json.JsonProperty("versionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("versionId")]
       string VersionId,
-      [property: Newtonsoft.Json.JsonProperty("sourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceURL")]
       string SourceURL,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int ColumnNumber
     ) : ChromeProtocol.Core.IType
     {
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.workerErrorReported")]
     public record WorkerErrorReported(
-      [property: Newtonsoft.Json.JsonProperty("errorMessage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorMessage")]
       ChromeProtocol.Domains.ServiceWorker.ServiceWorkerErrorMessageType ErrorMessage
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.workerRegistrationUpdated")]
     public record WorkerRegistrationUpdated(
-      [property: Newtonsoft.Json.JsonProperty("registrations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("registrations")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.ServiceWorker.ServiceWorkerRegistrationType> Registrations
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.workerVersionUpdated")]
     public record WorkerVersionUpdated(
-      [property: Newtonsoft.Json.JsonProperty("versions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("versions")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.ServiceWorker.ServiceWorkerVersionType> Versions
     ) : ChromeProtocol.Core.IEvent
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.DeliverPushMessageRequest DeliverPushMessage(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Data)    
+    public static ChromeProtocol.Domains.ServiceWorker.DeliverPushMessageRequest DeliverPushMessage(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Data)
     {
       return new ChromeProtocol.Domains.ServiceWorker.DeliverPushMessageRequest(Origin, RegistrationId, Data);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.deliverPushMessage")]
     public record DeliverPushMessageRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("registrationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("registrationId")]
       ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId,
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data
     ) : ChromeProtocol.Core.ICommand<DeliverPushMessageRequestResult>
     {
@@ -120,7 +120,7 @@ namespace ChromeProtocol.Domains
     public record DeliverPushMessageRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.ServiceWorker.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.ServiceWorker.DisableRequest();
     }
@@ -131,19 +131,19 @@ namespace ChromeProtocol.Domains
     public record DisableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.DispatchSyncEventRequest DispatchSyncEvent(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Tag, bool LastChance)    
+    public static ChromeProtocol.Domains.ServiceWorker.DispatchSyncEventRequest DispatchSyncEvent(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Tag, bool LastChance)
     {
       return new ChromeProtocol.Domains.ServiceWorker.DispatchSyncEventRequest(Origin, RegistrationId, Tag, LastChance);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.dispatchSyncEvent")]
     public record DispatchSyncEventRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("registrationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("registrationId")]
       ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId,
-      [property: Newtonsoft.Json.JsonProperty("tag")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tag")]
       string Tag,
-      [property: Newtonsoft.Json.JsonProperty("lastChance")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lastChance")]
       bool LastChance
     ) : ChromeProtocol.Core.ICommand<DispatchSyncEventRequestResult>
     {
@@ -151,17 +151,17 @@ namespace ChromeProtocol.Domains
     public record DispatchSyncEventRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.DispatchPeriodicSyncEventRequest DispatchPeriodicSyncEvent(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Tag)    
+    public static ChromeProtocol.Domains.ServiceWorker.DispatchPeriodicSyncEventRequest DispatchPeriodicSyncEvent(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Tag)
     {
       return new ChromeProtocol.Domains.ServiceWorker.DispatchPeriodicSyncEventRequest(Origin, RegistrationId, Tag);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.dispatchPeriodicSyncEvent")]
     public record DispatchPeriodicSyncEventRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("registrationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("registrationId")]
       ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId,
-      [property: Newtonsoft.Json.JsonProperty("tag")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tag")]
       string Tag
     ) : ChromeProtocol.Core.ICommand<DispatchPeriodicSyncEventRequestResult>
     {
@@ -169,7 +169,7 @@ namespace ChromeProtocol.Domains
     public record DispatchPeriodicSyncEventRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.ServiceWorker.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.ServiceWorker.EnableRequest();
     }
@@ -180,13 +180,13 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.InspectWorkerRequest InspectWorker(string VersionId)    
+    public static ChromeProtocol.Domains.ServiceWorker.InspectWorkerRequest InspectWorker(string VersionId)
     {
       return new ChromeProtocol.Domains.ServiceWorker.InspectWorkerRequest(VersionId);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.inspectWorker")]
     public record InspectWorkerRequest(
-      [property: Newtonsoft.Json.JsonProperty("versionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("versionId")]
       string VersionId
     ) : ChromeProtocol.Core.ICommand<InspectWorkerRequestResult>
     {
@@ -194,13 +194,13 @@ namespace ChromeProtocol.Domains
     public record InspectWorkerRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.SetForceUpdateOnPageLoadRequest SetForceUpdateOnPageLoad(bool ForceUpdateOnPageLoad)    
+    public static ChromeProtocol.Domains.ServiceWorker.SetForceUpdateOnPageLoadRequest SetForceUpdateOnPageLoad(bool ForceUpdateOnPageLoad)
     {
       return new ChromeProtocol.Domains.ServiceWorker.SetForceUpdateOnPageLoadRequest(ForceUpdateOnPageLoad);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.setForceUpdateOnPageLoad")]
     public record SetForceUpdateOnPageLoadRequest(
-      [property: Newtonsoft.Json.JsonProperty("forceUpdateOnPageLoad")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("forceUpdateOnPageLoad")]
       bool ForceUpdateOnPageLoad
     ) : ChromeProtocol.Core.ICommand<SetForceUpdateOnPageLoadRequestResult>
     {
@@ -208,13 +208,13 @@ namespace ChromeProtocol.Domains
     public record SetForceUpdateOnPageLoadRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.SkipWaitingRequest SkipWaiting(string ScopeURL)    
+    public static ChromeProtocol.Domains.ServiceWorker.SkipWaitingRequest SkipWaiting(string ScopeURL)
     {
       return new ChromeProtocol.Domains.ServiceWorker.SkipWaitingRequest(ScopeURL);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.skipWaiting")]
     public record SkipWaitingRequest(
-      [property: Newtonsoft.Json.JsonProperty("scopeURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scopeURL")]
       string ScopeURL
     ) : ChromeProtocol.Core.ICommand<SkipWaitingRequestResult>
     {
@@ -222,13 +222,13 @@ namespace ChromeProtocol.Domains
     public record SkipWaitingRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.StartWorkerRequest StartWorker(string ScopeURL)    
+    public static ChromeProtocol.Domains.ServiceWorker.StartWorkerRequest StartWorker(string ScopeURL)
     {
       return new ChromeProtocol.Domains.ServiceWorker.StartWorkerRequest(ScopeURL);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.startWorker")]
     public record StartWorkerRequest(
-      [property: Newtonsoft.Json.JsonProperty("scopeURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scopeURL")]
       string ScopeURL
     ) : ChromeProtocol.Core.ICommand<StartWorkerRequestResult>
     {
@@ -236,7 +236,7 @@ namespace ChromeProtocol.Domains
     public record StartWorkerRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.StopAllWorkersRequest StopAllWorkers()    
+    public static ChromeProtocol.Domains.ServiceWorker.StopAllWorkersRequest StopAllWorkers()
     {
       return new ChromeProtocol.Domains.ServiceWorker.StopAllWorkersRequest();
     }
@@ -247,13 +247,13 @@ namespace ChromeProtocol.Domains
     public record StopAllWorkersRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.StopWorkerRequest StopWorker(string VersionId)    
+    public static ChromeProtocol.Domains.ServiceWorker.StopWorkerRequest StopWorker(string VersionId)
     {
       return new ChromeProtocol.Domains.ServiceWorker.StopWorkerRequest(VersionId);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.stopWorker")]
     public record StopWorkerRequest(
-      [property: Newtonsoft.Json.JsonProperty("versionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("versionId")]
       string VersionId
     ) : ChromeProtocol.Core.ICommand<StopWorkerRequestResult>
     {
@@ -261,13 +261,13 @@ namespace ChromeProtocol.Domains
     public record StopWorkerRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.UnregisterRequest Unregister(string ScopeURL)    
+    public static ChromeProtocol.Domains.ServiceWorker.UnregisterRequest Unregister(string ScopeURL)
     {
       return new ChromeProtocol.Domains.ServiceWorker.UnregisterRequest(ScopeURL);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.unregister")]
     public record UnregisterRequest(
-      [property: Newtonsoft.Json.JsonProperty("scopeURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scopeURL")]
       string ScopeURL
     ) : ChromeProtocol.Core.ICommand<UnregisterRequestResult>
     {
@@ -275,13 +275,13 @@ namespace ChromeProtocol.Domains
     public record UnregisterRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.UpdateRegistrationRequest UpdateRegistration(string ScopeURL)    
+    public static ChromeProtocol.Domains.ServiceWorker.UpdateRegistrationRequest UpdateRegistration(string ScopeURL)
     {
       return new ChromeProtocol.Domains.ServiceWorker.UpdateRegistrationRequest(ScopeURL);
     }
     [ChromeProtocol.Core.MethodName("ServiceWorker.updateRegistration")]
     public record UpdateRegistrationRequest(
-      [property: Newtonsoft.Json.JsonProperty("scopeURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scopeURL")]
       string ScopeURL
     ) : ChromeProtocol.Core.ICommand<UpdateRegistrationRequestResult>
     {

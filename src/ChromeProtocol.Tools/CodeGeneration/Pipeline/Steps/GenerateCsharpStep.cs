@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 using ChromeProtocol.Core;
 using ChromeProtocol.Tools.CodeGeneration.Builders;
 using ChromeProtocol.Tools.CodeGeneration.Emitting;
@@ -7,7 +8,6 @@ using ChromeProtocol.Tools.CodeGeneration.Pipeline.Models;
 using ChromeProtocol.Tools.CodeGeneration.Services;
 using ChromeProtocol.Tools.Extensions;
 using ChromeProtocol.Tools.Schema.Models;
-using Newtonsoft.Json;
 
 namespace ChromeProtocol.Tools.CodeGeneration.Pipeline.Steps;
 
@@ -77,7 +77,7 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
           {
             var valueType = CsharpTypeResolver.Resolve(@namespace, domain.Name, null, type.Kind, null, false);
             recordBuilder
-              .Attribute(CsharpTypeInfo.FromTypeName("Newtonsoft.Json", nameof(JsonConverter)),
+              .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", nameof(JsonConverterAttribute)),
                 attr => attr.Arguments("typeof(ChromeProtocol.Core.PrimitiveTypeConverter)"))
               .Modifiers("public")
               .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
@@ -174,7 +174,7 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
     propBuilder
       .ApplyIf(parameter.Deprecated, MarkDeprecated)
       .ApplyIf(parameter.Optional, _ => _.DefaultValue("default"))
-      .Attribute(CsharpTypeInfo.FromTypeName("Newtonsoft.Json", "JsonProperty"), attrBuilder => attrBuilder
+      .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", "JsonPropertyName"), attrBuilder => attrBuilder
         .Target("property")
         .Arguments($"\"{parameter.Name}\""));
 

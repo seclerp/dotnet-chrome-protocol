@@ -10,9 +10,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ParentOutlineColor">the color to outline the given element in.</param>
     /// <param name="ChildOutlineColor">the color to outline the child elements in.</param>
     public record SourceOrderConfigType(
-      [property: Newtonsoft.Json.JsonProperty("parentOutlineColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentOutlineColor")]
       ChromeProtocol.Domains.DOM.RGBAType ParentOutlineColor,
-      [property: Newtonsoft.Json.JsonProperty("childOutlineColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("childOutlineColor")]
       ChromeProtocol.Domains.DOM.RGBAType ChildOutlineColor
     ) : ChromeProtocol.Core.IType
     {
@@ -39,47 +39,47 @@ namespace ChromeProtocol.Domains
     /// <param name="AreaBorderColor">The named grid areas border color (Default: transparent).</param>
     /// <param name="GridBackgroundColor">The grid container background color (Default: transparent).</param>
     public record GridHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("showGridExtensionLines")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showGridExtensionLines")]
       bool? ShowGridExtensionLines = default,
-      [property: Newtonsoft.Json.JsonProperty("showPositiveLineNumbers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showPositiveLineNumbers")]
       bool? ShowPositiveLineNumbers = default,
-      [property: Newtonsoft.Json.JsonProperty("showNegativeLineNumbers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showNegativeLineNumbers")]
       bool? ShowNegativeLineNumbers = default,
-      [property: Newtonsoft.Json.JsonProperty("showAreaNames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showAreaNames")]
       bool? ShowAreaNames = default,
-      [property: Newtonsoft.Json.JsonProperty("showLineNames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showLineNames")]
       bool? ShowLineNames = default,
-      [property: Newtonsoft.Json.JsonProperty("showTrackSizes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showTrackSizes")]
       bool? ShowTrackSizes = default,
-      [property: Newtonsoft.Json.JsonProperty("gridBorderColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gridBorderColor")]
       ChromeProtocol.Domains.DOM.RGBAType? GridBorderColor = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("cellBorderColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cellBorderColor")]
       ChromeProtocol.Domains.DOM.RGBAType? CellBorderColor = default,
-      [property: Newtonsoft.Json.JsonProperty("rowLineColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rowLineColor")]
       ChromeProtocol.Domains.DOM.RGBAType? RowLineColor = default,
-      [property: Newtonsoft.Json.JsonProperty("columnLineColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnLineColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ColumnLineColor = default,
-      [property: Newtonsoft.Json.JsonProperty("gridBorderDash")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gridBorderDash")]
       bool? GridBorderDash = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("cellBorderDash")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cellBorderDash")]
       bool? CellBorderDash = default,
-      [property: Newtonsoft.Json.JsonProperty("rowLineDash")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rowLineDash")]
       bool? RowLineDash = default,
-      [property: Newtonsoft.Json.JsonProperty("columnLineDash")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnLineDash")]
       bool? ColumnLineDash = default,
-      [property: Newtonsoft.Json.JsonProperty("rowGapColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rowGapColor")]
       ChromeProtocol.Domains.DOM.RGBAType? RowGapColor = default,
-      [property: Newtonsoft.Json.JsonProperty("rowHatchColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rowHatchColor")]
       ChromeProtocol.Domains.DOM.RGBAType? RowHatchColor = default,
-      [property: Newtonsoft.Json.JsonProperty("columnGapColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnGapColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ColumnGapColor = default,
-      [property: Newtonsoft.Json.JsonProperty("columnHatchColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnHatchColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ColumnHatchColor = default,
-      [property: Newtonsoft.Json.JsonProperty("areaBorderColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("areaBorderColor")]
       ChromeProtocol.Domains.DOM.RGBAType? AreaBorderColor = default,
-      [property: Newtonsoft.Json.JsonProperty("gridBackgroundColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gridBackgroundColor")]
       ChromeProtocol.Domains.DOM.RGBAType? GridBackgroundColor = default
     ) : ChromeProtocol.Core.IType
     {
@@ -94,21 +94,21 @@ namespace ChromeProtocol.Domains
     /// <param name="ColumnGapSpace">Style of empty space caused by columns gaps (gap/column-gap).</param>
     /// <param name="CrossAlignment">Style of the self-alignment line (align-items).</param>
     public record FlexContainerHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("containerBorder")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containerBorder")]
       ChromeProtocol.Domains.Overlay.LineStyleType? ContainerBorder = default,
-      [property: Newtonsoft.Json.JsonProperty("lineSeparator")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineSeparator")]
       ChromeProtocol.Domains.Overlay.LineStyleType? LineSeparator = default,
-      [property: Newtonsoft.Json.JsonProperty("itemSeparator")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("itemSeparator")]
       ChromeProtocol.Domains.Overlay.LineStyleType? ItemSeparator = default,
-      [property: Newtonsoft.Json.JsonProperty("mainDistributedSpace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mainDistributedSpace")]
       ChromeProtocol.Domains.Overlay.BoxStyleType? MainDistributedSpace = default,
-      [property: Newtonsoft.Json.JsonProperty("crossDistributedSpace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("crossDistributedSpace")]
       ChromeProtocol.Domains.Overlay.BoxStyleType? CrossDistributedSpace = default,
-      [property: Newtonsoft.Json.JsonProperty("rowGapSpace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rowGapSpace")]
       ChromeProtocol.Domains.Overlay.BoxStyleType? RowGapSpace = default,
-      [property: Newtonsoft.Json.JsonProperty("columnGapSpace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnGapSpace")]
       ChromeProtocol.Domains.Overlay.BoxStyleType? ColumnGapSpace = default,
-      [property: Newtonsoft.Json.JsonProperty("crossAlignment")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("crossAlignment")]
       ChromeProtocol.Domains.Overlay.LineStyleType? CrossAlignment = default
     ) : ChromeProtocol.Core.IType
     {
@@ -118,11 +118,11 @@ namespace ChromeProtocol.Domains
     /// <param name="BaseSizeBorder">Style of the border around the box representing the item&#39;s base size</param>
     /// <param name="FlexibilityArrow">Style of the arrow representing if the item grew or shrank</param>
     public record FlexItemHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("baseSizeBox")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("baseSizeBox")]
       ChromeProtocol.Domains.Overlay.BoxStyleType? BaseSizeBox = default,
-      [property: Newtonsoft.Json.JsonProperty("baseSizeBorder")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("baseSizeBorder")]
       ChromeProtocol.Domains.Overlay.LineStyleType? BaseSizeBorder = default,
-      [property: Newtonsoft.Json.JsonProperty("flexibilityArrow")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("flexibilityArrow")]
       ChromeProtocol.Domains.Overlay.LineStyleType? FlexibilityArrow = default
     ) : ChromeProtocol.Core.IType
     {
@@ -131,9 +131,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Color">The color of the line (default: transparent)</param>
     /// <param name="Pattern">The line pattern (default: solid)</param>
     public record LineStyleType(
-      [property: Newtonsoft.Json.JsonProperty("color")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("color")]
       ChromeProtocol.Domains.DOM.RGBAType? Color = default,
-      [property: Newtonsoft.Json.JsonProperty("pattern")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pattern")]
       string? Pattern = default
     ) : ChromeProtocol.Core.IType
     {
@@ -142,14 +142,14 @@ namespace ChromeProtocol.Domains
     /// <param name="FillColor">The background color for the box (default: transparent)</param>
     /// <param name="HatchColor">The hatching color for the box (default: transparent)</param>
     public record BoxStyleType(
-      [property: Newtonsoft.Json.JsonProperty("fillColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fillColor")]
       ChromeProtocol.Domains.DOM.RGBAType? FillColor = default,
-      [property: Newtonsoft.Json.JsonProperty("hatchColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hatchColor")]
       ChromeProtocol.Domains.DOM.RGBAType? HatchColor = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ContrastAlgorithmType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -176,48 +176,48 @@ namespace ChromeProtocol.Domains
     /// <param name="ContrastAlgorithm">The contrast algorithm to use for the contrast ratio (default: aa).</param>
     /// <param name="ContainerQueryContainerHighlightConfig">The container query container highlight configuration (default: all transparent).</param>
     public record HighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("showInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showInfo")]
       bool? ShowInfo = default,
-      [property: Newtonsoft.Json.JsonProperty("showStyles")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showStyles")]
       bool? ShowStyles = default,
-      [property: Newtonsoft.Json.JsonProperty("showRulers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showRulers")]
       bool? ShowRulers = default,
-      [property: Newtonsoft.Json.JsonProperty("showAccessibilityInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showAccessibilityInfo")]
       bool? ShowAccessibilityInfo = default,
-      [property: Newtonsoft.Json.JsonProperty("showExtensionLines")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showExtensionLines")]
       bool? ShowExtensionLines = default,
-      [property: Newtonsoft.Json.JsonProperty("contentColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ContentColor = default,
-      [property: Newtonsoft.Json.JsonProperty("paddingColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paddingColor")]
       ChromeProtocol.Domains.DOM.RGBAType? PaddingColor = default,
-      [property: Newtonsoft.Json.JsonProperty("borderColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("borderColor")]
       ChromeProtocol.Domains.DOM.RGBAType? BorderColor = default,
-      [property: Newtonsoft.Json.JsonProperty("marginColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("marginColor")]
       ChromeProtocol.Domains.DOM.RGBAType? MarginColor = default,
-      [property: Newtonsoft.Json.JsonProperty("eventTargetColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventTargetColor")]
       ChromeProtocol.Domains.DOM.RGBAType? EventTargetColor = default,
-      [property: Newtonsoft.Json.JsonProperty("shapeColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("shapeColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ShapeColor = default,
-      [property: Newtonsoft.Json.JsonProperty("shapeMarginColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("shapeMarginColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ShapeMarginColor = default,
-      [property: Newtonsoft.Json.JsonProperty("cssGridColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssGridColor")]
       ChromeProtocol.Domains.DOM.RGBAType? CssGridColor = default,
-      [property: Newtonsoft.Json.JsonProperty("colorFormat")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("colorFormat")]
       ChromeProtocol.Domains.Overlay.ColorFormatType? ColorFormat = default,
-      [property: Newtonsoft.Json.JsonProperty("gridHighlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gridHighlightConfig")]
       ChromeProtocol.Domains.Overlay.GridHighlightConfigType? GridHighlightConfig = default,
-      [property: Newtonsoft.Json.JsonProperty("flexContainerHighlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("flexContainerHighlightConfig")]
       ChromeProtocol.Domains.Overlay.FlexContainerHighlightConfigType? FlexContainerHighlightConfig = default,
-      [property: Newtonsoft.Json.JsonProperty("flexItemHighlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("flexItemHighlightConfig")]
       ChromeProtocol.Domains.Overlay.FlexItemHighlightConfigType? FlexItemHighlightConfig = default,
-      [property: Newtonsoft.Json.JsonProperty("contrastAlgorithm")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contrastAlgorithm")]
       ChromeProtocol.Domains.Overlay.ContrastAlgorithmType? ContrastAlgorithm = default,
-      [property: Newtonsoft.Json.JsonProperty("containerQueryContainerHighlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containerQueryContainerHighlightConfig")]
       ChromeProtocol.Domains.Overlay.ContainerQueryContainerHighlightConfigType? ContainerQueryContainerHighlightConfig = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ColorFormatType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -227,9 +227,9 @@ namespace ChromeProtocol.Domains
     /// <param name="GridHighlightConfig">A descriptor for the highlight appearance.</param>
     /// <param name="NodeId">Identifier of the node to highlight.</param>
     public record GridNodeHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("gridHighlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gridHighlightConfig")]
       ChromeProtocol.Domains.Overlay.GridHighlightConfigType GridHighlightConfig,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -237,9 +237,9 @@ namespace ChromeProtocol.Domains
     /// <param name="FlexContainerHighlightConfig">A descriptor for the highlight appearance of flex containers.</param>
     /// <param name="NodeId">Identifier of the node to highlight.</param>
     public record FlexNodeHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("flexContainerHighlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("flexContainerHighlightConfig")]
       ChromeProtocol.Domains.Overlay.FlexContainerHighlightConfigType FlexContainerHighlightConfig,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -249,13 +249,13 @@ namespace ChromeProtocol.Domains
     /// <param name="ScrollMarginColor">The margin highlight fill color (default: transparent).</param>
     /// <param name="ScrollPaddingColor">The padding highlight fill color (default: transparent).</param>
     public record ScrollSnapContainerHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("snapportBorder")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("snapportBorder")]
       ChromeProtocol.Domains.Overlay.LineStyleType? SnapportBorder = default,
-      [property: Newtonsoft.Json.JsonProperty("snapAreaBorder")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("snapAreaBorder")]
       ChromeProtocol.Domains.Overlay.LineStyleType? SnapAreaBorder = default,
-      [property: Newtonsoft.Json.JsonProperty("scrollMarginColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollMarginColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ScrollMarginColor = default,
-      [property: Newtonsoft.Json.JsonProperty("scrollPaddingColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollPaddingColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ScrollPaddingColor = default
     ) : ChromeProtocol.Core.IType
     {
@@ -263,9 +263,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ScrollSnapContainerHighlightConfig">A descriptor for the highlight appearance of scroll snap containers.</param>
     /// <param name="NodeId">Identifier of the node to highlight.</param>
     public record ScrollSnapHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("scrollSnapContainerHighlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollSnapContainerHighlightConfig")]
       ChromeProtocol.Domains.Overlay.ScrollSnapContainerHighlightConfigType ScrollSnapContainerHighlightConfig,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -275,11 +275,11 @@ namespace ChromeProtocol.Domains
     /// <param name="ContentColor">The content box highlight fill color (default: a dark color).</param>
     /// <param name="OutlineColor">The content box highlight outline color (default: transparent).</param>
     public record HingeConfigType(
-      [property: Newtonsoft.Json.JsonProperty("rect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rect")]
       ChromeProtocol.Domains.DOM.RectType Rect,
-      [property: Newtonsoft.Json.JsonProperty("contentColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ContentColor = default,
-      [property: Newtonsoft.Json.JsonProperty("outlineColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("outlineColor")]
       ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default
     ) : ChromeProtocol.Core.IType
     {
@@ -289,11 +289,11 @@ namespace ChromeProtocol.Domains
     /// <param name="SelectedPlatform">Selected platforms to show the overlay.</param>
     /// <param name="ThemeColor">The theme color defined in app manifest.</param>
     public record WindowControlsOverlayConfigType(
-      [property: Newtonsoft.Json.JsonProperty("showCSS")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showCSS")]
       bool ShowCSS,
-      [property: Newtonsoft.Json.JsonProperty("selectedPlatform")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selectedPlatform")]
       string SelectedPlatform,
-      [property: Newtonsoft.Json.JsonProperty("themeColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("themeColor")]
       string ThemeColor
     ) : ChromeProtocol.Core.IType
     {
@@ -301,9 +301,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ContainerQueryContainerHighlightConfig">A descriptor for the highlight appearance of container query containers.</param>
     /// <param name="NodeId">Identifier of the container node to highlight.</param>
     public record ContainerQueryHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("containerQueryContainerHighlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containerQueryContainerHighlightConfig")]
       ChromeProtocol.Domains.Overlay.ContainerQueryContainerHighlightConfigType ContainerQueryContainerHighlightConfig,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -311,9 +311,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ContainerBorder">The style of the container border.</param>
     /// <param name="DescendantBorder">The style of the descendants&#39; borders.</param>
     public record ContainerQueryContainerHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("containerBorder")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containerBorder")]
       ChromeProtocol.Domains.Overlay.LineStyleType? ContainerBorder = default,
-      [property: Newtonsoft.Json.JsonProperty("descendantBorder")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("descendantBorder")]
       ChromeProtocol.Domains.Overlay.LineStyleType? DescendantBorder = default
     ) : ChromeProtocol.Core.IType
     {
@@ -321,9 +321,9 @@ namespace ChromeProtocol.Domains
     /// <param name="IsolationModeHighlightConfig">A descriptor for the highlight appearance of an element in isolation mode.</param>
     /// <param name="NodeId">Identifier of the isolated element to highlight.</param>
     public record IsolatedElementHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("isolationModeHighlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isolationModeHighlightConfig")]
       ChromeProtocol.Domains.Overlay.IsolationModeHighlightConfigType IsolationModeHighlightConfig,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -332,16 +332,16 @@ namespace ChromeProtocol.Domains
     /// <param name="ResizerHandleColor">The fill color for resizer handles (default: transparent).</param>
     /// <param name="MaskColor">The fill color for the mask covering non-isolated elements (default: transparent).</param>
     public record IsolationModeHighlightConfigType(
-      [property: Newtonsoft.Json.JsonProperty("resizerColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resizerColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ResizerColor = default,
-      [property: Newtonsoft.Json.JsonProperty("resizerHandleColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resizerHandleColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ResizerHandleColor = default,
-      [property: Newtonsoft.Json.JsonProperty("maskColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maskColor")]
       ChromeProtocol.Domains.DOM.RGBAType? MaskColor = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record InspectModeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -354,7 +354,7 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendNodeId">Id of the node to inspect.</param>
     [ChromeProtocol.Core.MethodName("Overlay.inspectNodeRequested")]
     public record InspectNodeRequested(
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType BackendNodeId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -362,7 +362,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Fired when the node should be highlighted. This happens after call to `setInspectMode`.</summary>
     [ChromeProtocol.Core.MethodName("Overlay.nodeHighlightRequested")]
     public record NodeHighlightRequested(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -371,7 +371,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Viewport">Viewport to capture, in device independent pixels (dip).</param>
     [ChromeProtocol.Core.MethodName("Overlay.screenshotRequested")]
     public record ScreenshotRequested(
-      [property: Newtonsoft.Json.JsonProperty("viewport")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("viewport")]
       ChromeProtocol.Domains.Page.ViewportType Viewport
     ) : ChromeProtocol.Core.IEvent
     {
@@ -382,7 +382,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables domain notifications.</summary>
-    public static ChromeProtocol.Domains.Overlay.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Overlay.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Overlay.DisableRequest();
     }
@@ -395,7 +395,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables domain notifications.</summary>
-    public static ChromeProtocol.Domains.Overlay.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Overlay.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Overlay.EnableRequest();
     }
@@ -413,7 +413,7 @@ namespace ChromeProtocol.Domains
     /// <param name="IncludeStyle">Whether to include style info.</param>
     /// <param name="ColorFormat">The color format to get config with (default: hex).</param>
     /// <param name="ShowAccessibilityInfo">Whether to show accessibility info (default: true).</param>
-    public static ChromeProtocol.Domains.Overlay.GetHighlightObjectForTestRequest GetHighlightObjectForTest(ChromeProtocol.Domains.DOM.NodeIdType NodeId, bool? IncludeDistance = default, bool? IncludeStyle = default, ChromeProtocol.Domains.Overlay.ColorFormatType? ColorFormat = default, bool? ShowAccessibilityInfo = default)    
+    public static ChromeProtocol.Domains.Overlay.GetHighlightObjectForTestRequest GetHighlightObjectForTest(ChromeProtocol.Domains.DOM.NodeIdType NodeId, bool? IncludeDistance = default, bool? IncludeStyle = default, ChromeProtocol.Domains.Overlay.ColorFormatType? ColorFormat = default, bool? ShowAccessibilityInfo = default)
     {
       return new ChromeProtocol.Domains.Overlay.GetHighlightObjectForTestRequest(NodeId, IncludeDistance, IncludeStyle, ColorFormat, ShowAccessibilityInfo);
     }
@@ -425,29 +425,29 @@ namespace ChromeProtocol.Domains
     /// <param name="ShowAccessibilityInfo">Whether to show accessibility info (default: true).</param>
     [ChromeProtocol.Core.MethodName("Overlay.getHighlightObjectForTest")]
     public record GetHighlightObjectForTestRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("includeDistance")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeDistance")]
       bool? IncludeDistance = default,
-      [property: Newtonsoft.Json.JsonProperty("includeStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeStyle")]
       bool? IncludeStyle = default,
-      [property: Newtonsoft.Json.JsonProperty("colorFormat")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("colorFormat")]
       ChromeProtocol.Domains.Overlay.ColorFormatType? ColorFormat = default,
-      [property: Newtonsoft.Json.JsonProperty("showAccessibilityInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("showAccessibilityInfo")]
       bool? ShowAccessibilityInfo = default
     ) : ChromeProtocol.Core.ICommand<GetHighlightObjectForTestRequestResult>
     {
     }
     /// <param name="Highlight">Highlight data for the node.</param>
     public record GetHighlightObjectForTestRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("highlight")]
-      Newtonsoft.Json.Linq.JObject Highlight
+      [property: System.Text.Json.Serialization.JsonPropertyName("highlight")]
+      System.Text.Json.Nodes.JsonObject Highlight
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>For Persistent Grid testing.</summary>
     /// <param name="NodeIds">Ids of the node to get highlight object for.</param>
-    public static ChromeProtocol.Domains.Overlay.GetGridHighlightObjectsForTestRequest GetGridHighlightObjectsForTest(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds)    
+    public static ChromeProtocol.Domains.Overlay.GetGridHighlightObjectsForTestRequest GetGridHighlightObjectsForTest(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds)
     {
       return new ChromeProtocol.Domains.Overlay.GetGridHighlightObjectsForTestRequest(NodeIds);
     }
@@ -455,21 +455,21 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeIds">Ids of the node to get highlight object for.</param>
     [ChromeProtocol.Core.MethodName("Overlay.getGridHighlightObjectsForTest")]
     public record GetGridHighlightObjectsForTestRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds
     ) : ChromeProtocol.Core.ICommand<GetGridHighlightObjectsForTestRequestResult>
     {
     }
     /// <param name="Highlights">Grid Highlight data for the node ids provided.</param>
     public record GetGridHighlightObjectsForTestRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("highlights")]
-      Newtonsoft.Json.Linq.JObject Highlights
+      [property: System.Text.Json.Serialization.JsonPropertyName("highlights")]
+      System.Text.Json.Nodes.JsonObject Highlights
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>For Source Order Viewer testing.</summary>
     /// <param name="NodeId">Id of the node to highlight.</param>
-    public static ChromeProtocol.Domains.Overlay.GetSourceOrderHighlightObjectForTestRequest GetSourceOrderHighlightObjectForTest(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.Overlay.GetSourceOrderHighlightObjectForTestRequest GetSourceOrderHighlightObjectForTest(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.Overlay.GetSourceOrderHighlightObjectForTestRequest(NodeId);
     }
@@ -477,20 +477,20 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Id of the node to highlight.</param>
     [ChromeProtocol.Core.MethodName("Overlay.getSourceOrderHighlightObjectForTest")]
     public record GetSourceOrderHighlightObjectForTestRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetSourceOrderHighlightObjectForTestRequestResult>
     {
     }
     /// <param name="Highlight">Source order highlight data for the node id provided.</param>
     public record GetSourceOrderHighlightObjectForTestRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("highlight")]
-      Newtonsoft.Json.Linq.JObject Highlight
+      [property: System.Text.Json.Serialization.JsonPropertyName("highlight")]
+      System.Text.Json.Nodes.JsonObject Highlight
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Hides any highlight.</summary>
-    public static ChromeProtocol.Domains.Overlay.HideHighlightRequest HideHighlight()    
+    public static ChromeProtocol.Domains.Overlay.HideHighlightRequest HideHighlight()
     {
       return new ChromeProtocol.Domains.Overlay.HideHighlightRequest();
     }
@@ -512,7 +512,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ContentColor">The content box highlight fill color (default: transparent).</param>
     /// <param name="ContentOutlineColor">The content box highlight outline color (default: transparent).</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Overlay.HighlightFrameRequest HighlightFrame(ChromeProtocol.Domains.Page.FrameIdType FrameId, ChromeProtocol.Domains.DOM.RGBAType? ContentColor = default, ChromeProtocol.Domains.DOM.RGBAType? ContentOutlineColor = default)    
+    public static ChromeProtocol.Domains.Overlay.HighlightFrameRequest HighlightFrame(ChromeProtocol.Domains.Page.FrameIdType FrameId, ChromeProtocol.Domains.DOM.RGBAType? ContentColor = default, ChromeProtocol.Domains.DOM.RGBAType? ContentOutlineColor = default)
     {
       return new ChromeProtocol.Domains.Overlay.HighlightFrameRequest(FrameId, ContentColor, ContentOutlineColor);
     }
@@ -528,11 +528,11 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Overlay.highlightFrame")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record HighlightFrameRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("contentColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ContentColor = default,
-      [property: Newtonsoft.Json.JsonProperty("contentOutlineColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentOutlineColor")]
       ChromeProtocol.Domains.DOM.RGBAType? ContentOutlineColor = default
     ) : ChromeProtocol.Core.ICommand<HighlightFrameRequestResult>
     {
@@ -550,7 +550,7 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendNodeId">Identifier of the backend node to highlight.</param>
     /// <param name="ObjectId">JavaScript object id of the node to be highlighted.</param>
     /// <param name="Selector">Selectors to highlight relevant nodes.</param>
-    public static ChromeProtocol.Domains.Overlay.HighlightNodeRequest HighlightNode(ChromeProtocol.Domains.Overlay.HighlightConfigType HighlightConfig, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, string? Selector = default)    
+    public static ChromeProtocol.Domains.Overlay.HighlightNodeRequest HighlightNode(ChromeProtocol.Domains.Overlay.HighlightConfigType HighlightConfig, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, string? Selector = default)
     {
       return new ChromeProtocol.Domains.Overlay.HighlightNodeRequest(HighlightConfig, NodeId, BackendNodeId, ObjectId, Selector);
     }
@@ -565,15 +565,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Selector">Selectors to highlight relevant nodes.</param>
     [ChromeProtocol.Core.MethodName("Overlay.highlightNode")]
     public record HighlightNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("highlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("highlightConfig")]
       ChromeProtocol.Domains.Overlay.HighlightConfigType HighlightConfig,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default,
-      [property: Newtonsoft.Json.JsonProperty("selector")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selector")]
       string? Selector = default
     ) : ChromeProtocol.Core.ICommand<HighlightNodeRequestResult>
     {
@@ -585,7 +585,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Quad">Quad to highlight</param>
     /// <param name="Color">The highlight fill color (default: transparent).</param>
     /// <param name="OutlineColor">The highlight outline color (default: transparent).</param>
-    public static ChromeProtocol.Domains.Overlay.HighlightQuadRequest HighlightQuad(ChromeProtocol.Domains.DOM.QuadType Quad, ChromeProtocol.Domains.DOM.RGBAType? Color = default, ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default)    
+    public static ChromeProtocol.Domains.Overlay.HighlightQuadRequest HighlightQuad(ChromeProtocol.Domains.DOM.QuadType Quad, ChromeProtocol.Domains.DOM.RGBAType? Color = default, ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default)
     {
       return new ChromeProtocol.Domains.Overlay.HighlightQuadRequest(Quad, Color, OutlineColor);
     }
@@ -595,11 +595,11 @@ namespace ChromeProtocol.Domains
     /// <param name="OutlineColor">The highlight outline color (default: transparent).</param>
     [ChromeProtocol.Core.MethodName("Overlay.highlightQuad")]
     public record HighlightQuadRequest(
-      [property: Newtonsoft.Json.JsonProperty("quad")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quad")]
       ChromeProtocol.Domains.DOM.QuadType Quad,
-      [property: Newtonsoft.Json.JsonProperty("color")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("color")]
       ChromeProtocol.Domains.DOM.RGBAType? Color = default,
-      [property: Newtonsoft.Json.JsonProperty("outlineColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("outlineColor")]
       ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default
     ) : ChromeProtocol.Core.ICommand<HighlightQuadRequestResult>
     {
@@ -614,7 +614,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Height">Rectangle height</param>
     /// <param name="Color">The highlight fill color (default: transparent).</param>
     /// <param name="OutlineColor">The highlight outline color (default: transparent).</param>
-    public static ChromeProtocol.Domains.Overlay.HighlightRectRequest HighlightRect(int X, int Y, int Width, int Height, ChromeProtocol.Domains.DOM.RGBAType? Color = default, ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default)    
+    public static ChromeProtocol.Domains.Overlay.HighlightRectRequest HighlightRect(int X, int Y, int Width, int Height, ChromeProtocol.Domains.DOM.RGBAType? Color = default, ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default)
     {
       return new ChromeProtocol.Domains.Overlay.HighlightRectRequest(X, Y, Width, Height, Color, OutlineColor);
     }
@@ -627,17 +627,17 @@ namespace ChromeProtocol.Domains
     /// <param name="OutlineColor">The highlight outline color (default: transparent).</param>
     [ChromeProtocol.Core.MethodName("Overlay.highlightRect")]
     public record HighlightRectRequest(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       int X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       int Y,
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       int Width,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       int Height,
-      [property: Newtonsoft.Json.JsonProperty("color")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("color")]
       ChromeProtocol.Domains.DOM.RGBAType? Color = default,
-      [property: Newtonsoft.Json.JsonProperty("outlineColor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("outlineColor")]
       ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default
     ) : ChromeProtocol.Core.ICommand<HighlightRectRequestResult>
     {
@@ -653,7 +653,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Identifier of the node to highlight.</param>
     /// <param name="BackendNodeId">Identifier of the backend node to highlight.</param>
     /// <param name="ObjectId">JavaScript object id of the node to be highlighted.</param>
-    public static ChromeProtocol.Domains.Overlay.HighlightSourceOrderRequest HighlightSourceOrder(ChromeProtocol.Domains.Overlay.SourceOrderConfigType SourceOrderConfig, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)    
+    public static ChromeProtocol.Domains.Overlay.HighlightSourceOrderRequest HighlightSourceOrder(ChromeProtocol.Domains.Overlay.SourceOrderConfigType SourceOrderConfig, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)
     {
       return new ChromeProtocol.Domains.Overlay.HighlightSourceOrderRequest(SourceOrderConfig, NodeId, BackendNodeId, ObjectId);
     }
@@ -667,13 +667,13 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id of the node to be highlighted.</param>
     [ChromeProtocol.Core.MethodName("Overlay.highlightSourceOrder")]
     public record HighlightSourceOrderRequest(
-      [property: Newtonsoft.Json.JsonProperty("sourceOrderConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceOrderConfig")]
       ChromeProtocol.Domains.Overlay.SourceOrderConfigType SourceOrderConfig,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default
     ) : ChromeProtocol.Core.ICommand<HighlightSourceOrderRequestResult>
     {
@@ -690,7 +690,7 @@ namespace ChromeProtocol.Domains
     /// A descriptor for the highlight appearance of hovered-over nodes. May be omitted if `enabled<br/>
     /// == false`.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Overlay.SetInspectModeRequest SetInspectMode(ChromeProtocol.Domains.Overlay.InspectModeType Mode, ChromeProtocol.Domains.Overlay.HighlightConfigType? HighlightConfig = default)    
+    public static ChromeProtocol.Domains.Overlay.SetInspectModeRequest SetInspectMode(ChromeProtocol.Domains.Overlay.InspectModeType Mode, ChromeProtocol.Domains.Overlay.HighlightConfigType? HighlightConfig = default)
     {
       return new ChromeProtocol.Domains.Overlay.SetInspectModeRequest(Mode, HighlightConfig);
     }
@@ -705,9 +705,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Overlay.setInspectMode")]
     public record SetInspectModeRequest(
-      [property: Newtonsoft.Json.JsonProperty("mode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mode")]
       ChromeProtocol.Domains.Overlay.InspectModeType Mode,
-      [property: Newtonsoft.Json.JsonProperty("highlightConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("highlightConfig")]
       ChromeProtocol.Domains.Overlay.HighlightConfigType? HighlightConfig = default
     ) : ChromeProtocol.Core.ICommand<SetInspectModeRequestResult>
     {
@@ -717,7 +717,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Highlights owner element of all frames detected to be ads.</summary>
     /// <param name="Show">True for showing ad highlights</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowAdHighlightsRequest SetShowAdHighlights(bool Show)    
+    public static ChromeProtocol.Domains.Overlay.SetShowAdHighlightsRequest SetShowAdHighlights(bool Show)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowAdHighlightsRequest(Show);
     }
@@ -725,7 +725,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Show">True for showing ad highlights</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowAdHighlights")]
     public record SetShowAdHighlightsRequest(
-      [property: Newtonsoft.Json.JsonProperty("show")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("show")]
       bool Show
     ) : ChromeProtocol.Core.ICommand<SetShowAdHighlightsRequestResult>
     {
@@ -734,14 +734,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="Message">The message to display, also triggers resume and step over controls.</param>
-    public static ChromeProtocol.Domains.Overlay.SetPausedInDebuggerMessageRequest SetPausedInDebuggerMessage(string? Message = default)    
+    public static ChromeProtocol.Domains.Overlay.SetPausedInDebuggerMessageRequest SetPausedInDebuggerMessage(string? Message = default)
     {
       return new ChromeProtocol.Domains.Overlay.SetPausedInDebuggerMessageRequest(Message);
     }
     /// <param name="Message">The message to display, also triggers resume and step over controls.</param>
     [ChromeProtocol.Core.MethodName("Overlay.setPausedInDebuggerMessage")]
     public record SetPausedInDebuggerMessageRequest(
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       string? Message = default
     ) : ChromeProtocol.Core.ICommand<SetPausedInDebuggerMessageRequestResult>
     {
@@ -751,7 +751,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows debug borders on layers</summary>
     /// <param name="Show">True for showing debug borders</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowDebugBordersRequest SetShowDebugBorders(bool Show)    
+    public static ChromeProtocol.Domains.Overlay.SetShowDebugBordersRequest SetShowDebugBorders(bool Show)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowDebugBordersRequest(Show);
     }
@@ -759,7 +759,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Show">True for showing debug borders</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowDebugBorders")]
     public record SetShowDebugBordersRequest(
-      [property: Newtonsoft.Json.JsonProperty("show")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("show")]
       bool Show
     ) : ChromeProtocol.Core.ICommand<SetShowDebugBordersRequestResult>
     {
@@ -769,7 +769,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows the FPS counter</summary>
     /// <param name="Show">True for showing the FPS counter</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowFPSCounterRequest SetShowFPSCounter(bool Show)    
+    public static ChromeProtocol.Domains.Overlay.SetShowFPSCounterRequest SetShowFPSCounter(bool Show)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowFPSCounterRequest(Show);
     }
@@ -777,7 +777,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Show">True for showing the FPS counter</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowFPSCounter")]
     public record SetShowFPSCounterRequest(
-      [property: Newtonsoft.Json.JsonProperty("show")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("show")]
       bool Show
     ) : ChromeProtocol.Core.ICommand<SetShowFPSCounterRequestResult>
     {
@@ -787,7 +787,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Highlight multiple elements with the CSS Grid overlay.</summary>
     /// <param name="GridNodeHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowGridOverlaysRequest SetShowGridOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.GridNodeHighlightConfigType> GridNodeHighlightConfigs)    
+    public static ChromeProtocol.Domains.Overlay.SetShowGridOverlaysRequest SetShowGridOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.GridNodeHighlightConfigType> GridNodeHighlightConfigs)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowGridOverlaysRequest(GridNodeHighlightConfigs);
     }
@@ -795,7 +795,7 @@ namespace ChromeProtocol.Domains
     /// <param name="GridNodeHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowGridOverlays")]
     public record SetShowGridOverlaysRequest(
-      [property: Newtonsoft.Json.JsonProperty("gridNodeHighlightConfigs")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gridNodeHighlightConfigs")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.GridNodeHighlightConfigType> GridNodeHighlightConfigs
     ) : ChromeProtocol.Core.ICommand<SetShowGridOverlaysRequestResult>
     {
@@ -804,14 +804,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="FlexNodeHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowFlexOverlaysRequest SetShowFlexOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.FlexNodeHighlightConfigType> FlexNodeHighlightConfigs)    
+    public static ChromeProtocol.Domains.Overlay.SetShowFlexOverlaysRequest SetShowFlexOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.FlexNodeHighlightConfigType> FlexNodeHighlightConfigs)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowFlexOverlaysRequest(FlexNodeHighlightConfigs);
     }
     /// <param name="FlexNodeHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowFlexOverlays")]
     public record SetShowFlexOverlaysRequest(
-      [property: Newtonsoft.Json.JsonProperty("flexNodeHighlightConfigs")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("flexNodeHighlightConfigs")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.FlexNodeHighlightConfigType> FlexNodeHighlightConfigs
     ) : ChromeProtocol.Core.ICommand<SetShowFlexOverlaysRequestResult>
     {
@@ -820,14 +820,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="ScrollSnapHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowScrollSnapOverlaysRequest SetShowScrollSnapOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ScrollSnapHighlightConfigType> ScrollSnapHighlightConfigs)    
+    public static ChromeProtocol.Domains.Overlay.SetShowScrollSnapOverlaysRequest SetShowScrollSnapOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ScrollSnapHighlightConfigType> ScrollSnapHighlightConfigs)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowScrollSnapOverlaysRequest(ScrollSnapHighlightConfigs);
     }
     /// <param name="ScrollSnapHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowScrollSnapOverlays")]
     public record SetShowScrollSnapOverlaysRequest(
-      [property: Newtonsoft.Json.JsonProperty("scrollSnapHighlightConfigs")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollSnapHighlightConfigs")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ScrollSnapHighlightConfigType> ScrollSnapHighlightConfigs
     ) : ChromeProtocol.Core.ICommand<SetShowScrollSnapOverlaysRequestResult>
     {
@@ -836,14 +836,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="ContainerQueryHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowContainerQueryOverlaysRequest SetShowContainerQueryOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ContainerQueryHighlightConfigType> ContainerQueryHighlightConfigs)    
+    public static ChromeProtocol.Domains.Overlay.SetShowContainerQueryOverlaysRequest SetShowContainerQueryOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ContainerQueryHighlightConfigType> ContainerQueryHighlightConfigs)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowContainerQueryOverlaysRequest(ContainerQueryHighlightConfigs);
     }
     /// <param name="ContainerQueryHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowContainerQueryOverlays")]
     public record SetShowContainerQueryOverlaysRequest(
-      [property: Newtonsoft.Json.JsonProperty("containerQueryHighlightConfigs")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containerQueryHighlightConfigs")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ContainerQueryHighlightConfigType> ContainerQueryHighlightConfigs
     ) : ChromeProtocol.Core.ICommand<SetShowContainerQueryOverlaysRequestResult>
     {
@@ -853,7 +853,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows paint rectangles</summary>
     /// <param name="Result">True for showing paint rectangles</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowPaintRectsRequest SetShowPaintRects(bool Result)    
+    public static ChromeProtocol.Domains.Overlay.SetShowPaintRectsRequest SetShowPaintRects(bool Result)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowPaintRectsRequest(Result);
     }
@@ -861,7 +861,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">True for showing paint rectangles</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowPaintRects")]
     public record SetShowPaintRectsRequest(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       bool Result
     ) : ChromeProtocol.Core.ICommand<SetShowPaintRectsRequestResult>
     {
@@ -871,7 +871,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows layout shift regions</summary>
     /// <param name="Result">True for showing layout shift regions</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowLayoutShiftRegionsRequest SetShowLayoutShiftRegions(bool Result)    
+    public static ChromeProtocol.Domains.Overlay.SetShowLayoutShiftRegionsRequest SetShowLayoutShiftRegions(bool Result)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowLayoutShiftRegionsRequest(Result);
     }
@@ -879,7 +879,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">True for showing layout shift regions</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowLayoutShiftRegions")]
     public record SetShowLayoutShiftRegionsRequest(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       bool Result
     ) : ChromeProtocol.Core.ICommand<SetShowLayoutShiftRegionsRequestResult>
     {
@@ -889,7 +889,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows scroll bottleneck rects</summary>
     /// <param name="Show">True for showing scroll bottleneck rects</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowScrollBottleneckRectsRequest SetShowScrollBottleneckRects(bool Show)    
+    public static ChromeProtocol.Domains.Overlay.SetShowScrollBottleneckRectsRequest SetShowScrollBottleneckRects(bool Show)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowScrollBottleneckRectsRequest(Show);
     }
@@ -897,7 +897,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Show">True for showing scroll bottleneck rects</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowScrollBottleneckRects")]
     public record SetShowScrollBottleneckRectsRequest(
-      [property: Newtonsoft.Json.JsonProperty("show")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("show")]
       bool Show
     ) : ChromeProtocol.Core.ICommand<SetShowScrollBottleneckRectsRequestResult>
     {
@@ -908,7 +908,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Deprecated, no longer has any effect.</summary>
     /// <param name="Show">True for showing hit-test borders</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Overlay.SetShowHitTestBordersRequest SetShowHitTestBorders(bool Show)    
+    public static ChromeProtocol.Domains.Overlay.SetShowHitTestBordersRequest SetShowHitTestBorders(bool Show)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowHitTestBordersRequest(Show);
     }
@@ -917,7 +917,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Overlay.setShowHitTestBorders")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetShowHitTestBordersRequest(
-      [property: Newtonsoft.Json.JsonProperty("show")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("show")]
       bool Show
     ) : ChromeProtocol.Core.ICommand<SetShowHitTestBordersRequestResult>
     {
@@ -927,14 +927,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Request that backend shows an overlay with web vital metrics.</summary>
-    public static ChromeProtocol.Domains.Overlay.SetShowWebVitalsRequest SetShowWebVitals(bool Show)    
+    public static ChromeProtocol.Domains.Overlay.SetShowWebVitalsRequest SetShowWebVitals(bool Show)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowWebVitalsRequest(Show);
     }
     /// <summary>Request that backend shows an overlay with web vital metrics.</summary>
     [ChromeProtocol.Core.MethodName("Overlay.setShowWebVitals")]
     public record SetShowWebVitalsRequest(
-      [property: Newtonsoft.Json.JsonProperty("show")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("show")]
       bool Show
     ) : ChromeProtocol.Core.ICommand<SetShowWebVitalsRequestResult>
     {
@@ -944,7 +944,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Paints viewport size upon main frame resize.</summary>
     /// <param name="Show">Whether to paint size or not.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowViewportSizeOnResizeRequest SetShowViewportSizeOnResize(bool Show)    
+    public static ChromeProtocol.Domains.Overlay.SetShowViewportSizeOnResizeRequest SetShowViewportSizeOnResize(bool Show)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowViewportSizeOnResizeRequest(Show);
     }
@@ -952,7 +952,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Show">Whether to paint size or not.</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowViewportSizeOnResize")]
     public record SetShowViewportSizeOnResizeRequest(
-      [property: Newtonsoft.Json.JsonProperty("show")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("show")]
       bool Show
     ) : ChromeProtocol.Core.ICommand<SetShowViewportSizeOnResizeRequestResult>
     {
@@ -962,7 +962,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Add a dual screen device hinge</summary>
     /// <param name="HingeConfig">hinge data, null means hideHinge</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowHingeRequest SetShowHinge(ChromeProtocol.Domains.Overlay.HingeConfigType? HingeConfig = default)    
+    public static ChromeProtocol.Domains.Overlay.SetShowHingeRequest SetShowHinge(ChromeProtocol.Domains.Overlay.HingeConfigType? HingeConfig = default)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowHingeRequest(HingeConfig);
     }
@@ -970,7 +970,7 @@ namespace ChromeProtocol.Domains
     /// <param name="HingeConfig">hinge data, null means hideHinge</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowHinge")]
     public record SetShowHingeRequest(
-      [property: Newtonsoft.Json.JsonProperty("hingeConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hingeConfig")]
       ChromeProtocol.Domains.Overlay.HingeConfigType? HingeConfig = default
     ) : ChromeProtocol.Core.ICommand<SetShowHingeRequestResult>
     {
@@ -980,7 +980,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Show elements in isolation mode with overlays.</summary>
     /// <param name="IsolatedElementHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowIsolatedElementsRequest SetShowIsolatedElements(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.IsolatedElementHighlightConfigType> IsolatedElementHighlightConfigs)    
+    public static ChromeProtocol.Domains.Overlay.SetShowIsolatedElementsRequest SetShowIsolatedElements(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.IsolatedElementHighlightConfigType> IsolatedElementHighlightConfigs)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowIsolatedElementsRequest(IsolatedElementHighlightConfigs);
     }
@@ -988,7 +988,7 @@ namespace ChromeProtocol.Domains
     /// <param name="IsolatedElementHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowIsolatedElements")]
     public record SetShowIsolatedElementsRequest(
-      [property: Newtonsoft.Json.JsonProperty("isolatedElementHighlightConfigs")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isolatedElementHighlightConfigs")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.IsolatedElementHighlightConfigType> IsolatedElementHighlightConfigs
     ) : ChromeProtocol.Core.ICommand<SetShowIsolatedElementsRequestResult>
     {
@@ -998,7 +998,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Show Window Controls Overlay for PWA</summary>
     /// <param name="WindowControlsOverlayConfig">Window Controls Overlay data, null means hide Window Controls Overlay</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowWindowControlsOverlayRequest SetShowWindowControlsOverlay(ChromeProtocol.Domains.Overlay.WindowControlsOverlayConfigType? WindowControlsOverlayConfig = default)    
+    public static ChromeProtocol.Domains.Overlay.SetShowWindowControlsOverlayRequest SetShowWindowControlsOverlay(ChromeProtocol.Domains.Overlay.WindowControlsOverlayConfigType? WindowControlsOverlayConfig = default)
     {
       return new ChromeProtocol.Domains.Overlay.SetShowWindowControlsOverlayRequest(WindowControlsOverlayConfig);
     }
@@ -1006,7 +1006,7 @@ namespace ChromeProtocol.Domains
     /// <param name="WindowControlsOverlayConfig">Window Controls Overlay data, null means hide Window Controls Overlay</param>
     [ChromeProtocol.Core.MethodName("Overlay.setShowWindowControlsOverlay")]
     public record SetShowWindowControlsOverlayRequest(
-      [property: Newtonsoft.Json.JsonProperty("windowControlsOverlayConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("windowControlsOverlayConfig")]
       ChromeProtocol.Domains.Overlay.WindowControlsOverlayConfigType? WindowControlsOverlayConfig = default
     ) : ChromeProtocol.Core.ICommand<SetShowWindowControlsOverlayRequestResult>
     {

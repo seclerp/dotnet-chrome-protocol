@@ -10,56 +10,56 @@ namespace ChromeProtocol.Domains
   public static partial class WebAudio
   {
     /// <summary>An unique ID for a graph object (AudioContext, AudioNode, AudioParam) in Web Audio API</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record GraphObjectIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of BaseAudioContext types</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ContextTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of AudioContextState from the spec</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ContextStateType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of AudioNode types</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record NodeTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of AudioNode::ChannelCountMode from the spec</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ChannelCountModeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of AudioNode::ChannelInterpretation from the spec</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ChannelInterpretationType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of AudioParam types</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ParamTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of AudioParam::AutomationRate from the spec</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AutomationRateType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -75,13 +75,13 @@ namespace ChromeProtocol.Domains
     /// <param name="CallbackIntervalMean">A running mean of callback interval.</param>
     /// <param name="CallbackIntervalVariance">A running variance of callback interval.</param>
     public record ContextRealtimeDataType(
-      [property: Newtonsoft.Json.JsonProperty("currentTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("currentTime")]
       double CurrentTime,
-      [property: Newtonsoft.Json.JsonProperty("renderCapacity")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("renderCapacity")]
       double RenderCapacity,
-      [property: Newtonsoft.Json.JsonProperty("callbackIntervalMean")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callbackIntervalMean")]
       double CallbackIntervalMean,
-      [property: Newtonsoft.Json.JsonProperty("callbackIntervalVariance")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callbackIntervalVariance")]
       double CallbackIntervalVariance
     ) : ChromeProtocol.Core.IType
     {
@@ -91,70 +91,70 @@ namespace ChromeProtocol.Domains
     /// <param name="MaxOutputChannelCount">Number of output channels supported by audio hardware in use.</param>
     /// <param name="SampleRate">Context sample rate.</param>
     public record BaseAudioContextType(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("contextType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextType")]
       ChromeProtocol.Domains.WebAudio.ContextTypeType ContextType,
-      [property: Newtonsoft.Json.JsonProperty("contextState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextState")]
       ChromeProtocol.Domains.WebAudio.ContextStateType ContextState,
-      [property: Newtonsoft.Json.JsonProperty("callbackBufferSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callbackBufferSize")]
       double CallbackBufferSize,
-      [property: Newtonsoft.Json.JsonProperty("maxOutputChannelCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxOutputChannelCount")]
       double MaxOutputChannelCount,
-      [property: Newtonsoft.Json.JsonProperty("sampleRate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sampleRate")]
       double SampleRate,
-      [property: Newtonsoft.Json.JsonProperty("realtimeData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("realtimeData")]
       ChromeProtocol.Domains.WebAudio.ContextRealtimeDataType? RealtimeData = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Protocol object for AudioListener</summary>
     public record AudioListenerType(
-      [property: Newtonsoft.Json.JsonProperty("listenerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("listenerId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ListenerId,
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Protocol object for AudioNode</summary>
     public record AudioNodeType(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("nodeType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeType")]
       ChromeProtocol.Domains.WebAudio.NodeTypeType NodeType,
-      [property: Newtonsoft.Json.JsonProperty("numberOfInputs")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("numberOfInputs")]
       double NumberOfInputs,
-      [property: Newtonsoft.Json.JsonProperty("numberOfOutputs")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("numberOfOutputs")]
       double NumberOfOutputs,
-      [property: Newtonsoft.Json.JsonProperty("channelCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("channelCount")]
       double ChannelCount,
-      [property: Newtonsoft.Json.JsonProperty("channelCountMode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("channelCountMode")]
       ChromeProtocol.Domains.WebAudio.ChannelCountModeType ChannelCountMode,
-      [property: Newtonsoft.Json.JsonProperty("channelInterpretation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("channelInterpretation")]
       ChromeProtocol.Domains.WebAudio.ChannelInterpretationType ChannelInterpretation
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Protocol object for AudioParam</summary>
     public record AudioParamType(
-      [property: Newtonsoft.Json.JsonProperty("paramId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paramId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ParamId,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("paramType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paramType")]
       ChromeProtocol.Domains.WebAudio.ParamTypeType ParamType,
-      [property: Newtonsoft.Json.JsonProperty("rate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rate")]
       ChromeProtocol.Domains.WebAudio.AutomationRateType Rate,
-      [property: Newtonsoft.Json.JsonProperty("defaultValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("defaultValue")]
       double DefaultValue,
-      [property: Newtonsoft.Json.JsonProperty("minValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("minValue")]
       double MinValue,
-      [property: Newtonsoft.Json.JsonProperty("maxValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxValue")]
       double MaxValue
     ) : ChromeProtocol.Core.IType
     {
@@ -162,7 +162,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that a new BaseAudioContext has been created.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.contextCreated")]
     public record ContextCreated(
-      [property: Newtonsoft.Json.JsonProperty("context")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("context")]
       ChromeProtocol.Domains.WebAudio.BaseAudioContextType Context
     ) : ChromeProtocol.Core.IEvent
     {
@@ -170,7 +170,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that an existing BaseAudioContext will be destroyed.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.contextWillBeDestroyed")]
     public record ContextWillBeDestroyed(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -178,7 +178,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that existing BaseAudioContext has changed some properties (id stays the same)..</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.contextChanged")]
     public record ContextChanged(
-      [property: Newtonsoft.Json.JsonProperty("context")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("context")]
       ChromeProtocol.Domains.WebAudio.BaseAudioContextType Context
     ) : ChromeProtocol.Core.IEvent
     {
@@ -186,7 +186,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that the construction of an AudioListener has finished.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.audioListenerCreated")]
     public record AudioListenerCreated(
-      [property: Newtonsoft.Json.JsonProperty("listener")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("listener")]
       ChromeProtocol.Domains.WebAudio.AudioListenerType Listener
     ) : ChromeProtocol.Core.IEvent
     {
@@ -194,9 +194,9 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that a new AudioListener has been created.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.audioListenerWillBeDestroyed")]
     public record AudioListenerWillBeDestroyed(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("listenerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("listenerId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ListenerId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -204,7 +204,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that a new AudioNode has been created.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.audioNodeCreated")]
     public record AudioNodeCreated(
-      [property: Newtonsoft.Json.JsonProperty("node")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("node")]
       ChromeProtocol.Domains.WebAudio.AudioNodeType Node
     ) : ChromeProtocol.Core.IEvent
     {
@@ -212,9 +212,9 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that an existing AudioNode has been destroyed.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.audioNodeWillBeDestroyed")]
     public record AudioNodeWillBeDestroyed(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType NodeId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -222,7 +222,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that a new AudioParam has been created.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.audioParamCreated")]
     public record AudioParamCreated(
-      [property: Newtonsoft.Json.JsonProperty("param")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("param")]
       ChromeProtocol.Domains.WebAudio.AudioParamType Param
     ) : ChromeProtocol.Core.IEvent
     {
@@ -230,11 +230,11 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that an existing AudioParam has been destroyed.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.audioParamWillBeDestroyed")]
     public record AudioParamWillBeDestroyed(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("paramId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paramId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ParamId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -242,15 +242,15 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that two AudioNodes are connected.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.nodesConnected")]
     public record NodesConnected(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("sourceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType SourceId,
-      [property: Newtonsoft.Json.JsonProperty("destinationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("destinationId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType DestinationId,
-      [property: Newtonsoft.Json.JsonProperty("sourceOutputIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceOutputIndex")]
       double? SourceOutputIndex = default,
-      [property: Newtonsoft.Json.JsonProperty("destinationInputIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("destinationInputIndex")]
       double? DestinationInputIndex = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -258,15 +258,15 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that AudioNodes are disconnected. The destination can be null, and it means all the outgoing connections from the source are disconnected.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.nodesDisconnected")]
     public record NodesDisconnected(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("sourceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType SourceId,
-      [property: Newtonsoft.Json.JsonProperty("destinationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("destinationId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType DestinationId,
-      [property: Newtonsoft.Json.JsonProperty("sourceOutputIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceOutputIndex")]
       double? SourceOutputIndex = default,
-      [property: Newtonsoft.Json.JsonProperty("destinationInputIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("destinationInputIndex")]
       double? DestinationInputIndex = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -274,13 +274,13 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that an AudioNode is connected to an AudioParam.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.nodeParamConnected")]
     public record NodeParamConnected(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("sourceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType SourceId,
-      [property: Newtonsoft.Json.JsonProperty("destinationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("destinationId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType DestinationId,
-      [property: Newtonsoft.Json.JsonProperty("sourceOutputIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceOutputIndex")]
       double? SourceOutputIndex = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -288,19 +288,19 @@ namespace ChromeProtocol.Domains
     /// <summary>Notifies that an AudioNode is disconnected to an AudioParam.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.nodeParamDisconnected")]
     public record NodeParamDisconnected(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId,
-      [property: Newtonsoft.Json.JsonProperty("sourceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType SourceId,
-      [property: Newtonsoft.Json.JsonProperty("destinationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("destinationId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType DestinationId,
-      [property: Newtonsoft.Json.JsonProperty("sourceOutputIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceOutputIndex")]
       double? SourceOutputIndex = default
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Enables the WebAudio domain and starts sending context lifetime events.</summary>
-    public static ChromeProtocol.Domains.WebAudio.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.WebAudio.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.WebAudio.EnableRequest();
     }
@@ -313,7 +313,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables the WebAudio domain.</summary>
-    public static ChromeProtocol.Domains.WebAudio.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.WebAudio.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.WebAudio.DisableRequest();
     }
@@ -326,20 +326,20 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Fetch the realtime data from the registered contexts.</summary>
-    public static ChromeProtocol.Domains.WebAudio.GetRealtimeDataRequest GetRealtimeData(ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId)    
+    public static ChromeProtocol.Domains.WebAudio.GetRealtimeDataRequest GetRealtimeData(ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId)
     {
       return new ChromeProtocol.Domains.WebAudio.GetRealtimeDataRequest(ContextId);
     }
     /// <summary>Fetch the realtime data from the registered contexts.</summary>
     [ChromeProtocol.Core.MethodName("WebAudio.getRealtimeData")]
     public record GetRealtimeDataRequest(
-      [property: Newtonsoft.Json.JsonProperty("contextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contextId")]
       ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId
     ) : ChromeProtocol.Core.ICommand<GetRealtimeDataRequestResult>
     {
     }
     public record GetRealtimeDataRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("realtimeData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("realtimeData")]
       ChromeProtocol.Domains.WebAudio.ContextRealtimeDataType RealtimeData
     ) : ChromeProtocol.Core.IType
     {

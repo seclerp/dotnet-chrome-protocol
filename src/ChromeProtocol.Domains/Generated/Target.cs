@@ -6,14 +6,14 @@ namespace ChromeProtocol.Domains
   /// <summary>Supports additional targets discovery and allows to attach to them.</summary>
   public static partial class Target
   {
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record TargetIDType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Unique identifier of attached debugging session.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SessionIDType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -29,25 +29,25 @@ namespace ChromeProtocol.Domains
     /// the type of &quot;page&quot;, this may be set to &quot;portal&quot; or &quot;prerender&quot;.<br/>
     /// </param>
     public record TargetInfoType(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType TargetId,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       string Title,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("attached")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attached")]
       bool Attached,
-      [property: Newtonsoft.Json.JsonProperty("canAccessOpener")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("canAccessOpener")]
       bool CanAccessOpener,
-      [property: Newtonsoft.Json.JsonProperty("openerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("openerId")]
       ChromeProtocol.Domains.Target.TargetIDType? OpenerId = default,
-      [property: Newtonsoft.Json.JsonProperty("openerFrameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("openerFrameId")]
       ChromeProtocol.Domains.Page.FrameIdType? OpenerFrameId = default,
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("subtype")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subtype")]
       string? Subtype = default
     ) : ChromeProtocol.Core.IType
     {
@@ -56,9 +56,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Exclude">If set, causes exclusion of matching targets from the list.</param>
     /// <param name="Type">If not present, matches any type.</param>
     public record FilterEntryType(
-      [property: Newtonsoft.Json.JsonProperty("exclude")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exclude")]
       bool? Exclude = default,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string? Type = default
     ) : ChromeProtocol.Core.IType
     {
@@ -75,9 +75,9 @@ namespace ChromeProtocol.Domains
     {
     }
     public record RemoteLocationType(
-      [property: Newtonsoft.Json.JsonProperty("host")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("host")]
       string Host,
-      [property: Newtonsoft.Json.JsonProperty("port")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("port")]
       int Port
     ) : ChromeProtocol.Core.IType
     {
@@ -86,11 +86,11 @@ namespace ChromeProtocol.Domains
     /// <param name="SessionId">Identifier assigned to the session used to send/receive messages.</param>
     [ChromeProtocol.Core.MethodName("Target.attachedToTarget")]
     public record AttachedToTarget(
-      [property: Newtonsoft.Json.JsonProperty("sessionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sessionId")]
       ChromeProtocol.Domains.Target.SessionIDType SessionId,
-      [property: Newtonsoft.Json.JsonProperty("targetInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetInfo")]
       ChromeProtocol.Domains.Target.TargetInfoType TargetInfo,
-      [property: Newtonsoft.Json.JsonProperty("waitingForDebugger")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("waitingForDebugger")]
       bool WaitingForDebugger
     ) : ChromeProtocol.Core.IEvent
     {
@@ -103,10 +103,10 @@ namespace ChromeProtocol.Domains
     /// <param name="TargetId">Deprecated.</param>
     [ChromeProtocol.Core.MethodName("Target.detachedFromTarget")]
     public record DetachedFromTarget(
-      [property: Newtonsoft.Json.JsonProperty("sessionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sessionId")]
       ChromeProtocol.Domains.Target.SessionIDType SessionId,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType? TargetId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -119,12 +119,12 @@ namespace ChromeProtocol.Domains
     /// <param name="TargetId">Deprecated.</param>
     [ChromeProtocol.Core.MethodName("Target.receivedMessageFromTarget")]
     public record ReceivedMessageFromTarget(
-      [property: Newtonsoft.Json.JsonProperty("sessionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sessionId")]
       ChromeProtocol.Domains.Target.SessionIDType SessionId,
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       string Message,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType? TargetId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -132,7 +132,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Issued when a possible inspection target is created.</summary>
     [ChromeProtocol.Core.MethodName("Target.targetCreated")]
     public record TargetCreated(
-      [property: Newtonsoft.Json.JsonProperty("targetInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetInfo")]
       ChromeProtocol.Domains.Target.TargetInfoType TargetInfo
     ) : ChromeProtocol.Core.IEvent
     {
@@ -140,7 +140,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Issued when a target is destroyed.</summary>
     [ChromeProtocol.Core.MethodName("Target.targetDestroyed")]
     public record TargetDestroyed(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType TargetId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -150,11 +150,11 @@ namespace ChromeProtocol.Domains
     /// <param name="ErrorCode">Termination error code.</param>
     [ChromeProtocol.Core.MethodName("Target.targetCrashed")]
     public record TargetCrashed(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType TargetId,
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       string Status,
-      [property: Newtonsoft.Json.JsonProperty("errorCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorCode")]
       int ErrorCode
     ) : ChromeProtocol.Core.IEvent
     {
@@ -165,20 +165,20 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Target.targetInfoChanged")]
     public record TargetInfoChanged(
-      [property: Newtonsoft.Json.JsonProperty("targetInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetInfo")]
       ChromeProtocol.Domains.Target.TargetInfoType TargetInfo
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Activates (focuses) the target.</summary>
-    public static ChromeProtocol.Domains.Target.ActivateTargetRequest ActivateTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId)    
+    public static ChromeProtocol.Domains.Target.ActivateTargetRequest ActivateTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId)
     {
       return new ChromeProtocol.Domains.Target.ActivateTargetRequest(TargetId);
     }
     /// <summary>Activates (focuses) the target.</summary>
     [ChromeProtocol.Core.MethodName("Target.activateTarget")]
     public record ActivateTargetRequest(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType TargetId
     ) : ChromeProtocol.Core.ICommand<ActivateTargetRequestResult>
     {
@@ -192,7 +192,7 @@ namespace ChromeProtocol.Domains
     /// We plan to make this the default, deprecate non-flattened mode,<br/>
     /// and eventually retire it. See crbug.com/991325.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Target.AttachToTargetRequest AttachToTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId, bool? Flatten = default)    
+    public static ChromeProtocol.Domains.Target.AttachToTargetRequest AttachToTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId, bool? Flatten = default)
     {
       return new ChromeProtocol.Domains.Target.AttachToTargetRequest(TargetId, Flatten);
     }
@@ -204,22 +204,22 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Target.attachToTarget")]
     public record AttachToTargetRequest(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType TargetId,
-      [property: Newtonsoft.Json.JsonProperty("flatten")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("flatten")]
       bool? Flatten = default
     ) : ChromeProtocol.Core.ICommand<AttachToTargetRequestResult>
     {
     }
     /// <param name="SessionId">Id assigned to the session.</param>
     public record AttachToTargetRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("sessionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sessionId")]
       ChromeProtocol.Domains.Target.SessionIDType SessionId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Attaches to the browser target, only uses flat sessionId mode.</summary>
-    public static ChromeProtocol.Domains.Target.AttachToBrowserTargetRequest AttachToBrowserTarget()    
+    public static ChromeProtocol.Domains.Target.AttachToBrowserTargetRequest AttachToBrowserTarget()
     {
       return new ChromeProtocol.Domains.Target.AttachToBrowserTargetRequest();
     }
@@ -230,20 +230,20 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="SessionId">Id assigned to the session.</param>
     public record AttachToBrowserTargetRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("sessionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sessionId")]
       ChromeProtocol.Domains.Target.SessionIDType SessionId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Closes the target. If the target is a page that gets closed too.</summary>
-    public static ChromeProtocol.Domains.Target.CloseTargetRequest CloseTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId)    
+    public static ChromeProtocol.Domains.Target.CloseTargetRequest CloseTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId)
     {
       return new ChromeProtocol.Domains.Target.CloseTargetRequest(TargetId);
     }
     /// <summary>Closes the target. If the target is a page that gets closed too.</summary>
     [ChromeProtocol.Core.MethodName("Target.closeTarget")]
     public record CloseTargetRequest(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType TargetId
     ) : ChromeProtocol.Core.ICommand<CloseTargetRequestResult>
     {
@@ -251,7 +251,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Success">Always set to true. If an error occurs, the response indicates protocol error.</param>
     public record CloseTargetRequestResult(
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("success")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("success")]
       bool Success
     ) : ChromeProtocol.Core.IType
     {
@@ -265,7 +265,7 @@ namespace ChromeProtocol.Domains
     /// - `binding.onmessage = json =&gt; handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.<br/>
     /// </summary>
     /// <param name="BindingName">Binding name, &#39;cdp&#39; if not specified.</param>
-    public static ChromeProtocol.Domains.Target.ExposeDevToolsProtocolRequest ExposeDevToolsProtocol(ChromeProtocol.Domains.Target.TargetIDType TargetId, string? BindingName = default)    
+    public static ChromeProtocol.Domains.Target.ExposeDevToolsProtocolRequest ExposeDevToolsProtocol(ChromeProtocol.Domains.Target.TargetIDType TargetId, string? BindingName = default)
     {
       return new ChromeProtocol.Domains.Target.ExposeDevToolsProtocolRequest(TargetId, BindingName);
     }
@@ -280,9 +280,9 @@ namespace ChromeProtocol.Domains
     /// <param name="BindingName">Binding name, &#39;cdp&#39; if not specified.</param>
     [ChromeProtocol.Core.MethodName("Target.exposeDevToolsProtocol")]
     public record ExposeDevToolsProtocolRequest(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType TargetId,
-      [property: Newtonsoft.Json.JsonProperty("bindingName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bindingName")]
       string? BindingName = default
     ) : ChromeProtocol.Core.ICommand<ExposeDevToolsProtocolRequestResult>
     {
@@ -301,7 +301,7 @@ namespace ChromeProtocol.Domains
     /// An optional list of origins to grant unlimited cross-origin access to.<br/>
     /// Parts of the URL other than those constituting origin are ignored.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Target.CreateBrowserContextRequest CreateBrowserContext(bool? DisposeOnDetach = default, string? ProxyServer = default, string? ProxyBypassList = default, System.Collections.Generic.IReadOnlyList<string>? OriginsWithUniversalNetworkAccess = default)    
+    public static ChromeProtocol.Domains.Target.CreateBrowserContextRequest CreateBrowserContext(bool? DisposeOnDetach = default, string? ProxyServer = default, string? ProxyBypassList = default, System.Collections.Generic.IReadOnlyList<string>? OriginsWithUniversalNetworkAccess = default)
     {
       return new ChromeProtocol.Domains.Target.CreateBrowserContextRequest(DisposeOnDetach, ProxyServer, ProxyBypassList, OriginsWithUniversalNetworkAccess);
     }
@@ -318,26 +318,26 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Target.createBrowserContext")]
     public record CreateBrowserContextRequest(
-      [property: Newtonsoft.Json.JsonProperty("disposeOnDetach")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disposeOnDetach")]
       bool? DisposeOnDetach = default,
-      [property: Newtonsoft.Json.JsonProperty("proxyServer")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("proxyServer")]
       string? ProxyServer = default,
-      [property: Newtonsoft.Json.JsonProperty("proxyBypassList")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("proxyBypassList")]
       string? ProxyBypassList = default,
-      [property: Newtonsoft.Json.JsonProperty("originsWithUniversalNetworkAccess")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("originsWithUniversalNetworkAccess")]
       System.Collections.Generic.IReadOnlyList<string>? OriginsWithUniversalNetworkAccess = default
     ) : ChromeProtocol.Core.ICommand<CreateBrowserContextRequestResult>
     {
     }
     /// <param name="BrowserContextId">The id of the context created.</param>
     public record CreateBrowserContextRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType BrowserContextId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns all browser contexts created with `Target.createBrowserContext` method.</summary>
-    public static ChromeProtocol.Domains.Target.GetBrowserContextsRequest GetBrowserContexts()    
+    public static ChromeProtocol.Domains.Target.GetBrowserContextsRequest GetBrowserContexts()
     {
       return new ChromeProtocol.Domains.Target.GetBrowserContextsRequest();
     }
@@ -348,7 +348,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="BrowserContextIds">An array of browser context ids.</param>
     public record GetBrowserContextsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("browserContextIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Browser.BrowserContextIDType> BrowserContextIds
     ) : ChromeProtocol.Core.IType
     {
@@ -368,7 +368,7 @@ namespace ChromeProtocol.Domains
     /// false by default).<br/>
     /// </param>
     /// <param name="ForTab">Whether to create the target of type &quot;tab&quot;.</param>
-    public static ChromeProtocol.Domains.Target.CreateTargetRequest CreateTarget(string Url, int? Width = default, int? Height = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default, bool? EnableBeginFrameControl = default, bool? NewWindow = default, bool? Background = default, bool? ForTab = default)    
+    public static ChromeProtocol.Domains.Target.CreateTargetRequest CreateTarget(string Url, int? Width = default, int? Height = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default, bool? EnableBeginFrameControl = default, bool? NewWindow = default, bool? Background = default, bool? ForTab = default)
     {
       return new ChromeProtocol.Domains.Target.CreateTargetRequest(Url, Width, Height, BrowserContextId, EnableBeginFrameControl, NewWindow, Background, ForTab);
     }
@@ -389,28 +389,28 @@ namespace ChromeProtocol.Domains
     /// <param name="ForTab">Whether to create the target of type &quot;tab&quot;.</param>
     [ChromeProtocol.Core.MethodName("Target.createTarget")]
     public record CreateTargetRequest(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       int? Width = default,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       int? Height = default,
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("enableBeginFrameControl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enableBeginFrameControl")]
       bool? EnableBeginFrameControl = default,
-      [property: Newtonsoft.Json.JsonProperty("newWindow")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("newWindow")]
       bool? NewWindow = default,
-      [property: Newtonsoft.Json.JsonProperty("background")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("background")]
       bool? Background = default,
-      [property: Newtonsoft.Json.JsonProperty("forTab")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("forTab")]
       bool? ForTab = default
     ) : ChromeProtocol.Core.ICommand<CreateTargetRequestResult>
     {
     }
     /// <param name="TargetId">The id of the page opened.</param>
     public record CreateTargetRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType TargetId
     ) : ChromeProtocol.Core.IType
     {
@@ -418,7 +418,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Detaches session with given id.</summary>
     /// <param name="SessionId">Session to detach.</param>
     /// <param name="TargetId">Deprecated.</param>
-    public static ChromeProtocol.Domains.Target.DetachFromTargetRequest DetachFromTarget(ChromeProtocol.Domains.Target.SessionIDType? SessionId = default, ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)    
+    public static ChromeProtocol.Domains.Target.DetachFromTargetRequest DetachFromTarget(ChromeProtocol.Domains.Target.SessionIDType? SessionId = default, ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)
     {
       return new ChromeProtocol.Domains.Target.DetachFromTargetRequest(SessionId, TargetId);
     }
@@ -427,10 +427,10 @@ namespace ChromeProtocol.Domains
     /// <param name="TargetId">Deprecated.</param>
     [ChromeProtocol.Core.MethodName("Target.detachFromTarget")]
     public record DetachFromTargetRequest(
-      [property: Newtonsoft.Json.JsonProperty("sessionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sessionId")]
       ChromeProtocol.Domains.Target.SessionIDType? SessionId = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType? TargetId = default
     ) : ChromeProtocol.Core.ICommand<DetachFromTargetRequestResult>
     {
@@ -442,7 +442,7 @@ namespace ChromeProtocol.Domains
     /// Deletes a BrowserContext. All the belonging pages will be closed without calling their<br/>
     /// beforeunload hooks.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Target.DisposeBrowserContextRequest DisposeBrowserContext(ChromeProtocol.Domains.Browser.BrowserContextIDType BrowserContextId)    
+    public static ChromeProtocol.Domains.Target.DisposeBrowserContextRequest DisposeBrowserContext(ChromeProtocol.Domains.Browser.BrowserContextIDType BrowserContextId)
     {
       return new ChromeProtocol.Domains.Target.DisposeBrowserContextRequest(BrowserContextId);
     }
@@ -452,7 +452,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Target.disposeBrowserContext")]
     public record DisposeBrowserContextRequest(
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType BrowserContextId
     ) : ChromeProtocol.Core.ICommand<DisposeBrowserContextRequestResult>
     {
@@ -461,20 +461,20 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns information about a target.</summary>
-    public static ChromeProtocol.Domains.Target.GetTargetInfoRequest GetTargetInfo(ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)    
+    public static ChromeProtocol.Domains.Target.GetTargetInfoRequest GetTargetInfo(ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)
     {
       return new ChromeProtocol.Domains.Target.GetTargetInfoRequest(TargetId);
     }
     /// <summary>Returns information about a target.</summary>
     [ChromeProtocol.Core.MethodName("Target.getTargetInfo")]
     public record GetTargetInfoRequest(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType? TargetId = default
     ) : ChromeProtocol.Core.ICommand<GetTargetInfoRequestResult>
     {
     }
     public record GetTargetInfoRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("targetInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetInfo")]
       ChromeProtocol.Domains.Target.TargetInfoType TargetInfo
     ) : ChromeProtocol.Core.IType
     {
@@ -485,7 +485,7 @@ namespace ChromeProtocol.Domains
     /// and target discovery is currently enabled, a filter used for target discovery<br/>
     /// is used for consistency.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Target.GetTargetsRequest GetTargets(ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)    
+    public static ChromeProtocol.Domains.Target.GetTargetsRequest GetTargets(ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)
     {
       return new ChromeProtocol.Domains.Target.GetTargetsRequest(Filter);
     }
@@ -497,14 +497,14 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Target.getTargets")]
     public record GetTargetsRequest(
-      [property: Newtonsoft.Json.JsonProperty("filter")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filter")]
       ChromeProtocol.Domains.Target.TargetFilterType? Filter = default
     ) : ChromeProtocol.Core.ICommand<GetTargetsRequestResult>
     {
     }
     /// <param name="TargetInfos">The list of targets.</param>
     public record GetTargetsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("targetInfos")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetInfos")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Target.TargetInfoType> TargetInfos
     ) : ChromeProtocol.Core.IType
     {
@@ -517,7 +517,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SessionId">Identifier of the session.</param>
     /// <param name="TargetId">Deprecated.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Target.SendMessageToTargetRequest SendMessageToTarget(string Message, ChromeProtocol.Domains.Target.SessionIDType? SessionId = default, ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)    
+    public static ChromeProtocol.Domains.Target.SendMessageToTargetRequest SendMessageToTarget(string Message, ChromeProtocol.Domains.Target.SessionIDType? SessionId = default, ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)
     {
       return new ChromeProtocol.Domains.Target.SendMessageToTargetRequest(Message, SessionId, TargetId);
     }
@@ -531,12 +531,12 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Target.sendMessageToTarget")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SendMessageToTargetRequest(
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       string Message,
-      [property: Newtonsoft.Json.JsonProperty("sessionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sessionId")]
       ChromeProtocol.Domains.Target.SessionIDType? SessionId = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType? TargetId = default
     ) : ChromeProtocol.Core.ICommand<SendMessageToTargetRequestResult>
     {
@@ -563,7 +563,7 @@ namespace ChromeProtocol.Domains
     /// and eventually retire it. See crbug.com/991325.<br/>
     /// </param>
     /// <param name="Filter">Only targets matching filter will be attached.</param>
-    public static ChromeProtocol.Domains.Target.SetAutoAttachRequest SetAutoAttach(bool AutoAttach, bool WaitForDebuggerOnStart, bool? Flatten = default, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)    
+    public static ChromeProtocol.Domains.Target.SetAutoAttachRequest SetAutoAttach(bool AutoAttach, bool WaitForDebuggerOnStart, bool? Flatten = default, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)
     {
       return new ChromeProtocol.Domains.Target.SetAutoAttachRequest(AutoAttach, WaitForDebuggerOnStart, Flatten, Filter);
     }
@@ -587,13 +587,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Filter">Only targets matching filter will be attached.</param>
     [ChromeProtocol.Core.MethodName("Target.setAutoAttach")]
     public record SetAutoAttachRequest(
-      [property: Newtonsoft.Json.JsonProperty("autoAttach")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("autoAttach")]
       bool AutoAttach,
-      [property: Newtonsoft.Json.JsonProperty("waitForDebuggerOnStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("waitForDebuggerOnStart")]
       bool WaitForDebuggerOnStart,
-      [property: Newtonsoft.Json.JsonProperty("flatten")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("flatten")]
       bool? Flatten = default,
-      [property: Newtonsoft.Json.JsonProperty("filter")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filter")]
       ChromeProtocol.Domains.Target.TargetFilterType? Filter = default
     ) : ChromeProtocol.Core.ICommand<SetAutoAttachRequestResult>
     {
@@ -613,7 +613,7 @@ namespace ChromeProtocol.Domains
     /// to run paused targets.<br/>
     /// </param>
     /// <param name="Filter">Only targets matching filter will be attached.</param>
-    public static ChromeProtocol.Domains.Target.AutoAttachRelatedRequest AutoAttachRelated(ChromeProtocol.Domains.Target.TargetIDType TargetId, bool WaitForDebuggerOnStart, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)    
+    public static ChromeProtocol.Domains.Target.AutoAttachRelatedRequest AutoAttachRelated(ChromeProtocol.Domains.Target.TargetIDType TargetId, bool WaitForDebuggerOnStart, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)
     {
       return new ChromeProtocol.Domains.Target.AutoAttachRelatedRequest(TargetId, WaitForDebuggerOnStart, Filter);
     }
@@ -631,11 +631,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Filter">Only targets matching filter will be attached.</param>
     [ChromeProtocol.Core.MethodName("Target.autoAttachRelated")]
     public record AutoAttachRelatedRequest(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType TargetId,
-      [property: Newtonsoft.Json.JsonProperty("waitForDebuggerOnStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("waitForDebuggerOnStart")]
       bool WaitForDebuggerOnStart,
-      [property: Newtonsoft.Json.JsonProperty("filter")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filter")]
       ChromeProtocol.Domains.Target.TargetFilterType? Filter = default
     ) : ChromeProtocol.Core.ICommand<AutoAttachRelatedRequestResult>
     {
@@ -652,7 +652,7 @@ namespace ChromeProtocol.Domains
     /// Only targets matching filter will be attached. If `discover` is false,<br/>
     /// `filter` must be omitted or empty.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Target.SetDiscoverTargetsRequest SetDiscoverTargets(bool Discover, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)    
+    public static ChromeProtocol.Domains.Target.SetDiscoverTargetsRequest SetDiscoverTargets(bool Discover, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)
     {
       return new ChromeProtocol.Domains.Target.SetDiscoverTargetsRequest(Discover, Filter);
     }
@@ -667,9 +667,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Target.setDiscoverTargets")]
     public record SetDiscoverTargetsRequest(
-      [property: Newtonsoft.Json.JsonProperty("discover")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("discover")]
       bool Discover,
-      [property: Newtonsoft.Json.JsonProperty("filter")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filter")]
       ChromeProtocol.Domains.Target.TargetFilterType? Filter = default
     ) : ChromeProtocol.Core.ICommand<SetDiscoverTargetsRequestResult>
     {
@@ -682,7 +682,7 @@ namespace ChromeProtocol.Domains
     /// `true`.<br/>
     /// </summary>
     /// <param name="Locations">List of remote locations.</param>
-    public static ChromeProtocol.Domains.Target.SetRemoteLocationsRequest SetRemoteLocations(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Target.RemoteLocationType> Locations)    
+    public static ChromeProtocol.Domains.Target.SetRemoteLocationsRequest SetRemoteLocations(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Target.RemoteLocationType> Locations)
     {
       return new ChromeProtocol.Domains.Target.SetRemoteLocationsRequest(Locations);
     }
@@ -693,7 +693,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Locations">List of remote locations.</param>
     [ChromeProtocol.Core.MethodName("Target.setRemoteLocations")]
     public record SetRemoteLocationsRequest(
-      [property: Newtonsoft.Json.JsonProperty("locations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("locations")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Target.RemoteLocationType> Locations
     ) : ChromeProtocol.Core.ICommand<SetRemoteLocationsRequestResult>
     {

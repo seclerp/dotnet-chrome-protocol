@@ -7,7 +7,7 @@ namespace ChromeProtocol.Domains
   public static partial class Fetch
   {
     /// <summary>Unique request identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record RequestIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -18,7 +18,7 @@ namespace ChromeProtocol.Domains
     /// sent. Response will intercept after the response is received (but before response<br/>
     /// body is received).<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record RequestStageType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -31,20 +31,20 @@ namespace ChromeProtocol.Domains
     /// <param name="ResourceType">If set, only requests for matching resource types will be intercepted.</param>
     /// <param name="RequestStage">Stage at which to begin intercepting requests. Default is Request.</param>
     public record RequestPatternType(
-      [property: Newtonsoft.Json.JsonProperty("urlPattern")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("urlPattern")]
       string? UrlPattern = default,
-      [property: Newtonsoft.Json.JsonProperty("resourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resourceType")]
       ChromeProtocol.Domains.Network.ResourceTypeType? ResourceType = default,
-      [property: Newtonsoft.Json.JsonProperty("requestStage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestStage")]
       ChromeProtocol.Domains.Fetch.RequestStageType? RequestStage = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Response HTTP header entry</summary>
     public record HeaderEntryType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
@@ -55,13 +55,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Realm">The realm of the challenge. May be empty.</param>
     /// <param name="Source">Source of the authentication challenge.</param>
     public record AuthChallengeType(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("scheme")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scheme")]
       string Scheme,
-      [property: Newtonsoft.Json.JsonProperty("realm")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("realm")]
       string Realm,
-      [property: Newtonsoft.Json.JsonProperty("source")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
       string? Source = default
     ) : ChromeProtocol.Core.IType
     {
@@ -81,11 +81,11 @@ namespace ChromeProtocol.Domains
     /// ProvideCredentials.<br/>
     /// </param>
     public record AuthChallengeResponseType(
-      [property: Newtonsoft.Json.JsonProperty("response")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("response")]
       string Response,
-      [property: Newtonsoft.Json.JsonProperty("username")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("username")]
       string? Username = default,
-      [property: Newtonsoft.Json.JsonProperty("password")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("password")]
       string? Password = default
     ) : ChromeProtocol.Core.IType
     {
@@ -121,25 +121,25 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Fetch.requestPaused")]
     public record RequestPaused(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Network.RequestType Request,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("resourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resourceType")]
       ChromeProtocol.Domains.Network.ResourceTypeType ResourceType,
-      [property: Newtonsoft.Json.JsonProperty("responseErrorReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseErrorReason")]
       ChromeProtocol.Domains.Network.ErrorReasonType? ResponseErrorReason = default,
-      [property: Newtonsoft.Json.JsonProperty("responseStatusCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseStatusCode")]
       int? ResponseStatusCode = default,
-      [property: Newtonsoft.Json.JsonProperty("responseStatusText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseStatusText")]
       string? ResponseStatusText = default,
-      [property: Newtonsoft.Json.JsonProperty("responseHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseHeaders")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default,
-      [property: Newtonsoft.Json.JsonProperty("networkId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("networkId")]
       ChromeProtocol.Domains.Network.RequestIdType? NetworkId = default,
-      [property: Newtonsoft.Json.JsonProperty("redirectedRequestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("redirectedRequestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType? RedirectedRequestId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -159,21 +159,21 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Fetch.authRequired")]
     public record AuthRequired(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Network.RequestType Request,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("resourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resourceType")]
       ChromeProtocol.Domains.Network.ResourceTypeType ResourceType,
-      [property: Newtonsoft.Json.JsonProperty("authChallenge")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authChallenge")]
       ChromeProtocol.Domains.Fetch.AuthChallengeType AuthChallenge
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Disables the fetch domain.</summary>
-    public static ChromeProtocol.Domains.Fetch.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Fetch.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Fetch.DisableRequest();
     }
@@ -198,7 +198,7 @@ namespace ChromeProtocol.Domains
     /// If true, authRequired events will be issued and requests will be paused<br/>
     /// expecting a call to continueWithAuth.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Fetch.EnableRequest Enable(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.RequestPatternType>? Patterns = default, bool? HandleAuthRequests = default)    
+    public static ChromeProtocol.Domains.Fetch.EnableRequest Enable(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.RequestPatternType>? Patterns = default, bool? HandleAuthRequests = default)
     {
       return new ChromeProtocol.Domains.Fetch.EnableRequest(Patterns, HandleAuthRequests);
     }
@@ -217,9 +217,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Fetch.enable")]
     public record EnableRequest(
-      [property: Newtonsoft.Json.JsonProperty("patterns")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("patterns")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.RequestPatternType>? Patterns = default,
-      [property: Newtonsoft.Json.JsonProperty("handleAuthRequests")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("handleAuthRequests")]
       bool? HandleAuthRequests = default
     ) : ChromeProtocol.Core.ICommand<EnableRequestResult>
     {
@@ -230,7 +230,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Causes the request to fail with specified reason.</summary>
     /// <param name="RequestId">An id the client received in requestPaused event.</param>
     /// <param name="ErrorReason">Causes the request to fail with the given reason.</param>
-    public static ChromeProtocol.Domains.Fetch.FailRequestRequest FailRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, ChromeProtocol.Domains.Network.ErrorReasonType ErrorReason)    
+    public static ChromeProtocol.Domains.Fetch.FailRequestRequest FailRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, ChromeProtocol.Domains.Network.ErrorReasonType ErrorReason)
     {
       return new ChromeProtocol.Domains.Fetch.FailRequestRequest(RequestId, ErrorReason);
     }
@@ -239,9 +239,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ErrorReason">Causes the request to fail with the given reason.</param>
     [ChromeProtocol.Core.MethodName("Fetch.failRequest")]
     public record FailRequestRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("errorReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorReason")]
       ChromeProtocol.Domains.Network.ErrorReasonType ErrorReason
     ) : ChromeProtocol.Core.ICommand<FailRequestRequestResult>
     {
@@ -268,7 +268,7 @@ namespace ChromeProtocol.Domains
     /// A textual representation of responseCode.<br/>
     /// If absent, a standard phrase matching responseCode is used.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Fetch.FulfillRequestRequest FulfillRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, int ResponseCode, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default, string? BinaryResponseHeaders = default, string? Body = default, string? ResponsePhrase = default)    
+    public static ChromeProtocol.Domains.Fetch.FulfillRequestRequest FulfillRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, int ResponseCode, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default, string? BinaryResponseHeaders = default, string? Body = default, string? ResponsePhrase = default)
     {
       return new ChromeProtocol.Domains.Fetch.FulfillRequestRequest(RequestId, ResponseCode, ResponseHeaders, BinaryResponseHeaders, Body, ResponsePhrase);
     }
@@ -293,17 +293,17 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Fetch.fulfillRequest")]
     public record FulfillRequestRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("responseCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseCode")]
       int ResponseCode,
-      [property: Newtonsoft.Json.JsonProperty("responseHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseHeaders")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default,
-      [property: Newtonsoft.Json.JsonProperty("binaryResponseHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("binaryResponseHeaders")]
       string? BinaryResponseHeaders = default,
-      [property: Newtonsoft.Json.JsonProperty("body")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("body")]
       string? Body = default,
-      [property: Newtonsoft.Json.JsonProperty("responsePhrase")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responsePhrase")]
       string? ResponsePhrase = default
     ) : ChromeProtocol.Core.ICommand<FulfillRequestRequestResult>
     {
@@ -322,7 +322,7 @@ namespace ChromeProtocol.Domains
     /// may be applied to a different request produced by a redirect.<br/>
     /// </param>
     /// <param name="InterceptResponse">If set, overrides response interception behavior for this request.</param>
-    public static ChromeProtocol.Domains.Fetch.ContinueRequestRequest ContinueRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, string? Url = default, string? Method = default, string? PostData = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? Headers = default, bool? InterceptResponse = default)    
+    public static ChromeProtocol.Domains.Fetch.ContinueRequestRequest ContinueRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, string? Url = default, string? Method = default, string? PostData = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? Headers = default, bool? InterceptResponse = default)
     {
       return new ChromeProtocol.Domains.Fetch.ContinueRequestRequest(RequestId, Url, Method, PostData, Headers, InterceptResponse);
     }
@@ -339,17 +339,17 @@ namespace ChromeProtocol.Domains
     /// <param name="InterceptResponse">If set, overrides response interception behavior for this request.</param>
     [ChromeProtocol.Core.MethodName("Fetch.continueRequest")]
     public record ContinueRequestRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("method")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("method")]
       string? Method = default,
-      [property: Newtonsoft.Json.JsonProperty("postData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("postData")]
       string? PostData = default,
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? Headers = default,
-      [property: Newtonsoft.Json.JsonProperty("interceptResponse")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("interceptResponse")]
       bool? InterceptResponse = default
     ) : ChromeProtocol.Core.ICommand<ContinueRequestRequestResult>
     {
@@ -360,7 +360,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Continues a request supplying authChallengeResponse following authRequired event.</summary>
     /// <param name="RequestId">An id the client received in authRequired event.</param>
     /// <param name="AuthChallengeResponse">Response to  with an authChallenge.</param>
-    public static ChromeProtocol.Domains.Fetch.ContinueWithAuthRequest ContinueWithAuth(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, ChromeProtocol.Domains.Fetch.AuthChallengeResponseType AuthChallengeResponse)    
+    public static ChromeProtocol.Domains.Fetch.ContinueWithAuthRequest ContinueWithAuth(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, ChromeProtocol.Domains.Fetch.AuthChallengeResponseType AuthChallengeResponse)
     {
       return new ChromeProtocol.Domains.Fetch.ContinueWithAuthRequest(RequestId, AuthChallengeResponse);
     }
@@ -369,9 +369,9 @@ namespace ChromeProtocol.Domains
     /// <param name="AuthChallengeResponse">Response to  with an authChallenge.</param>
     [ChromeProtocol.Core.MethodName("Fetch.continueWithAuth")]
     public record ContinueWithAuthRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("authChallengeResponse")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authChallengeResponse")]
       ChromeProtocol.Domains.Fetch.AuthChallengeResponseType AuthChallengeResponse
     ) : ChromeProtocol.Core.ICommand<ContinueWithAuthRequestResult>
     {
@@ -397,7 +397,7 @@ namespace ChromeProtocol.Domains
     /// need to represent some non-UTF8 values that can&#39;t be transmitted<br/>
     /// over the protocol as text. (Encoded as a base64 string when passed over JSON)<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Fetch.ContinueResponseRequest ContinueResponse(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, int? ResponseCode = default, string? ResponsePhrase = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default, string? BinaryResponseHeaders = default)    
+    public static ChromeProtocol.Domains.Fetch.ContinueResponseRequest ContinueResponse(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, int? ResponseCode = default, string? ResponsePhrase = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default, string? BinaryResponseHeaders = default)
     {
       return new ChromeProtocol.Domains.Fetch.ContinueResponseRequest(RequestId, ResponseCode, ResponsePhrase, ResponseHeaders, BinaryResponseHeaders);
     }
@@ -421,15 +421,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Fetch.continueResponse")]
     public record ContinueResponseRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("responseCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseCode")]
       int? ResponseCode = default,
-      [property: Newtonsoft.Json.JsonProperty("responsePhrase")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responsePhrase")]
       string? ResponsePhrase = default,
-      [property: Newtonsoft.Json.JsonProperty("responseHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseHeaders")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default,
-      [property: Newtonsoft.Json.JsonProperty("binaryResponseHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("binaryResponseHeaders")]
       string? BinaryResponseHeaders = default
     ) : ChromeProtocol.Core.ICommand<ContinueResponseRequestResult>
     {
@@ -450,7 +450,7 @@ namespace ChromeProtocol.Domains
     /// comments to `requestPaused` for details.<br/>
     /// </summary>
     /// <param name="RequestId">Identifier for the intercepted request to get body for.</param>
-    public static ChromeProtocol.Domains.Fetch.GetResponseBodyRequest GetResponseBody(ChromeProtocol.Domains.Fetch.RequestIdType RequestId)    
+    public static ChromeProtocol.Domains.Fetch.GetResponseBodyRequest GetResponseBody(ChromeProtocol.Domains.Fetch.RequestIdType RequestId)
     {
       return new ChromeProtocol.Domains.Fetch.GetResponseBodyRequest(RequestId);
     }
@@ -469,7 +469,7 @@ namespace ChromeProtocol.Domains
     /// <param name="RequestId">Identifier for the intercepted request to get body for.</param>
     [ChromeProtocol.Core.MethodName("Fetch.getResponseBody")]
     public record GetResponseBodyRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType RequestId
     ) : ChromeProtocol.Core.ICommand<GetResponseBodyRequestResult>
     {
@@ -477,9 +477,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Body">Response body.</param>
     /// <param name="Base64Encoded">True, if content was sent as base64.</param>
     public record GetResponseBodyRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("body")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("body")]
       string Body,
-      [property: Newtonsoft.Json.JsonProperty("base64Encoded")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("base64Encoded")]
       bool Base64Encoded
     ) : ChromeProtocol.Core.IType
     {
@@ -496,7 +496,7 @@ namespace ChromeProtocol.Domains
     /// Calling other methods that affect the request or disabling fetch<br/>
     /// domain before body is received results in an undefined behavior.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Fetch.TakeResponseBodyAsStreamRequest TakeResponseBodyAsStream(ChromeProtocol.Domains.Fetch.RequestIdType RequestId)    
+    public static ChromeProtocol.Domains.Fetch.TakeResponseBodyAsStreamRequest TakeResponseBodyAsStream(ChromeProtocol.Domains.Fetch.RequestIdType RequestId)
     {
       return new ChromeProtocol.Domains.Fetch.TakeResponseBodyAsStreamRequest(RequestId);
     }
@@ -514,13 +514,13 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Fetch.takeResponseBodyAsStream")]
     public record TakeResponseBodyAsStreamRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Fetch.RequestIdType RequestId
     ) : ChromeProtocol.Core.ICommand<TakeResponseBodyAsStreamRequestResult>
     {
     }
     public record TakeResponseBodyAsStreamRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("stream")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stream")]
       ChromeProtocol.Domains.IO.StreamHandleType Stream
     ) : ChromeProtocol.Core.IType
     {

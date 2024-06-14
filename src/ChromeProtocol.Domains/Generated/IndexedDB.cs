@@ -13,11 +13,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="ObjectStores">Object stores in this database.</param>
     public record DatabaseWithObjectStoresType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("version")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("version")]
       double Version,
-      [property: Newtonsoft.Json.JsonProperty("objectStores")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectStores")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.IndexedDB.ObjectStoreType> ObjectStores
     ) : ChromeProtocol.Core.IType
     {
@@ -28,13 +28,13 @@ namespace ChromeProtocol.Domains
     /// <param name="AutoIncrement">If true, object store has auto increment flag set.</param>
     /// <param name="Indexes">Indexes in this object store.</param>
     public record ObjectStoreType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("keyPath")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyPath")]
       ChromeProtocol.Domains.IndexedDB.KeyPathType KeyPath,
-      [property: Newtonsoft.Json.JsonProperty("autoIncrement")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("autoIncrement")]
       bool AutoIncrement,
-      [property: Newtonsoft.Json.JsonProperty("indexes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("indexes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.IndexedDB.ObjectStoreIndexType> Indexes
     ) : ChromeProtocol.Core.IType
     {
@@ -45,13 +45,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Unique">If true, index is unique.</param>
     /// <param name="MultiEntry">If true, index allows multiple entries for a key.</param>
     public record ObjectStoreIndexType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("keyPath")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyPath")]
       ChromeProtocol.Domains.IndexedDB.KeyPathType KeyPath,
-      [property: Newtonsoft.Json.JsonProperty("unique")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("unique")]
       bool Unique,
-      [property: Newtonsoft.Json.JsonProperty("multiEntry")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("multiEntry")]
       bool MultiEntry
     ) : ChromeProtocol.Core.IType
     {
@@ -63,15 +63,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Date">Date value.</param>
     /// <param name="Array">Array value.</param>
     public record KeyType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("number")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("number")]
       double? Number = default,
-      [property: Newtonsoft.Json.JsonProperty("string")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("string")]
       string? String = default,
-      [property: Newtonsoft.Json.JsonProperty("date")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("date")]
       double? Date = default,
-      [property: Newtonsoft.Json.JsonProperty("array")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("array")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.IndexedDB.KeyType>? Array = default
     ) : ChromeProtocol.Core.IType
     {
@@ -82,13 +82,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Lower">Lower bound.</param>
     /// <param name="Upper">Upper bound.</param>
     public record KeyRangeType(
-      [property: Newtonsoft.Json.JsonProperty("lowerOpen")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lowerOpen")]
       bool LowerOpen,
-      [property: Newtonsoft.Json.JsonProperty("upperOpen")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("upperOpen")]
       bool UpperOpen,
-      [property: Newtonsoft.Json.JsonProperty("lower")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lower")]
       ChromeProtocol.Domains.IndexedDB.KeyType? Lower = default,
-      [property: Newtonsoft.Json.JsonProperty("upper")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("upper")]
       ChromeProtocol.Domains.IndexedDB.KeyType? Upper = default
     ) : ChromeProtocol.Core.IType
     {
@@ -98,11 +98,11 @@ namespace ChromeProtocol.Domains
     /// <param name="PrimaryKey">Primary key object.</param>
     /// <param name="Value">Value object.</param>
     public record DataEntryType(
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Key,
-      [property: Newtonsoft.Json.JsonProperty("primaryKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("primaryKey")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType PrimaryKey,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Value
     ) : ChromeProtocol.Core.IType
     {
@@ -112,11 +112,11 @@ namespace ChromeProtocol.Domains
     /// <param name="String">String value.</param>
     /// <param name="Array">Array value.</param>
     public record KeyPathType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("string")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("string")]
       string? String = default,
-      [property: Newtonsoft.Json.JsonProperty("array")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("array")]
       System.Collections.Generic.IReadOnlyList<string>? Array = default
     ) : ChromeProtocol.Core.IType
     {
@@ -130,7 +130,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.ClearObjectStoreRequest ClearObjectStore(string DatabaseName, string ObjectStoreName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
+    public static ChromeProtocol.Domains.IndexedDB.ClearObjectStoreRequest ClearObjectStore(string DatabaseName, string ObjectStoreName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
     {
       return new ChromeProtocol.Domains.IndexedDB.ClearObjectStoreRequest(DatabaseName, ObjectStoreName, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -145,15 +145,15 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
     [ChromeProtocol.Core.MethodName("IndexedDB.clearObjectStore")]
     public record ClearObjectStoreRequest(
-      [property: Newtonsoft.Json.JsonProperty("databaseName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseName")]
       string DatabaseName,
-      [property: Newtonsoft.Json.JsonProperty("objectStoreName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectStoreName")]
       string ObjectStoreName,
-      [property: Newtonsoft.Json.JsonProperty("securityOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityOrigin")]
       string? SecurityOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string? StorageKey = default,
-      [property: Newtonsoft.Json.JsonProperty("storageBucket")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageBucket")]
       ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default
     ) : ChromeProtocol.Core.ICommand<ClearObjectStoreRequestResult>
     {
@@ -169,7 +169,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.DeleteDatabaseRequest DeleteDatabase(string DatabaseName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
+    public static ChromeProtocol.Domains.IndexedDB.DeleteDatabaseRequest DeleteDatabase(string DatabaseName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
     {
       return new ChromeProtocol.Domains.IndexedDB.DeleteDatabaseRequest(DatabaseName, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -183,13 +183,13 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
     [ChromeProtocol.Core.MethodName("IndexedDB.deleteDatabase")]
     public record DeleteDatabaseRequest(
-      [property: Newtonsoft.Json.JsonProperty("databaseName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseName")]
       string DatabaseName,
-      [property: Newtonsoft.Json.JsonProperty("securityOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityOrigin")]
       string? SecurityOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string? StorageKey = default,
-      [property: Newtonsoft.Json.JsonProperty("storageBucket")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageBucket")]
       ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default
     ) : ChromeProtocol.Core.ICommand<DeleteDatabaseRequestResult>
     {
@@ -205,7 +205,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.DeleteObjectStoreEntriesRequest DeleteObjectStoreEntries(string DatabaseName, string ObjectStoreName, ChromeProtocol.Domains.IndexedDB.KeyRangeType KeyRange, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
+    public static ChromeProtocol.Domains.IndexedDB.DeleteObjectStoreEntriesRequest DeleteObjectStoreEntries(string DatabaseName, string ObjectStoreName, ChromeProtocol.Domains.IndexedDB.KeyRangeType KeyRange, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
     {
       return new ChromeProtocol.Domains.IndexedDB.DeleteObjectStoreEntriesRequest(DatabaseName, ObjectStoreName, KeyRange, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -219,17 +219,17 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
     [ChromeProtocol.Core.MethodName("IndexedDB.deleteObjectStoreEntries")]
     public record DeleteObjectStoreEntriesRequest(
-      [property: Newtonsoft.Json.JsonProperty("databaseName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseName")]
       string DatabaseName,
-      [property: Newtonsoft.Json.JsonProperty("objectStoreName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectStoreName")]
       string ObjectStoreName,
-      [property: Newtonsoft.Json.JsonProperty("keyRange")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyRange")]
       ChromeProtocol.Domains.IndexedDB.KeyRangeType KeyRange,
-      [property: Newtonsoft.Json.JsonProperty("securityOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityOrigin")]
       string? SecurityOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string? StorageKey = default,
-      [property: Newtonsoft.Json.JsonProperty("storageBucket")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageBucket")]
       ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default
     ) : ChromeProtocol.Core.ICommand<DeleteObjectStoreEntriesRequestResult>
     {
@@ -238,7 +238,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables events from backend.</summary>
-    public static ChromeProtocol.Domains.IndexedDB.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.IndexedDB.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.IndexedDB.DisableRequest();
     }
@@ -251,7 +251,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables events from backend.</summary>
-    public static ChromeProtocol.Domains.IndexedDB.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.IndexedDB.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.IndexedDB.EnableRequest();
     }
@@ -276,7 +276,7 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
     /// <param name="KeyRange">Key range.</param>
-    public static ChromeProtocol.Domains.IndexedDB.RequestDataRequest RequestData(string DatabaseName, string ObjectStoreName, string IndexName, int SkipCount, int PageSize, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default, ChromeProtocol.Domains.IndexedDB.KeyRangeType? KeyRange = default)    
+    public static ChromeProtocol.Domains.IndexedDB.RequestDataRequest RequestData(string DatabaseName, string ObjectStoreName, string IndexName, int SkipCount, int PageSize, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default, ChromeProtocol.Domains.IndexedDB.KeyRangeType? KeyRange = default)
     {
       return new ChromeProtocol.Domains.IndexedDB.RequestDataRequest(DatabaseName, ObjectStoreName, IndexName, SkipCount, PageSize, SecurityOrigin, StorageKey, StorageBucket, KeyRange);
     }
@@ -295,23 +295,23 @@ namespace ChromeProtocol.Domains
     /// <param name="KeyRange">Key range.</param>
     [ChromeProtocol.Core.MethodName("IndexedDB.requestData")]
     public record RequestDataRequest(
-      [property: Newtonsoft.Json.JsonProperty("databaseName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseName")]
       string DatabaseName,
-      [property: Newtonsoft.Json.JsonProperty("objectStoreName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectStoreName")]
       string ObjectStoreName,
-      [property: Newtonsoft.Json.JsonProperty("indexName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("indexName")]
       string IndexName,
-      [property: Newtonsoft.Json.JsonProperty("skipCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("skipCount")]
       int SkipCount,
-      [property: Newtonsoft.Json.JsonProperty("pageSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pageSize")]
       int PageSize,
-      [property: Newtonsoft.Json.JsonProperty("securityOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityOrigin")]
       string? SecurityOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string? StorageKey = default,
-      [property: Newtonsoft.Json.JsonProperty("storageBucket")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageBucket")]
       ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default,
-      [property: Newtonsoft.Json.JsonProperty("keyRange")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyRange")]
       ChromeProtocol.Domains.IndexedDB.KeyRangeType? KeyRange = default
     ) : ChromeProtocol.Core.ICommand<RequestDataRequestResult>
     {
@@ -319,9 +319,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectStoreDataEntries">Array of object store data entries.</param>
     /// <param name="HasMore">If true, there are more entries to fetch in the given range.</param>
     public record RequestDataRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("objectStoreDataEntries")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectStoreDataEntries")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.IndexedDB.DataEntryType> ObjectStoreDataEntries,
-      [property: Newtonsoft.Json.JsonProperty("hasMore")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasMore")]
       bool HasMore
     ) : ChromeProtocol.Core.IType
     {
@@ -335,7 +335,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.GetMetadataRequest GetMetadata(string DatabaseName, string ObjectStoreName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
+    public static ChromeProtocol.Domains.IndexedDB.GetMetadataRequest GetMetadata(string DatabaseName, string ObjectStoreName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
     {
       return new ChromeProtocol.Domains.IndexedDB.GetMetadataRequest(DatabaseName, ObjectStoreName, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -350,15 +350,15 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
     [ChromeProtocol.Core.MethodName("IndexedDB.getMetadata")]
     public record GetMetadataRequest(
-      [property: Newtonsoft.Json.JsonProperty("databaseName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseName")]
       string DatabaseName,
-      [property: Newtonsoft.Json.JsonProperty("objectStoreName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectStoreName")]
       string ObjectStoreName,
-      [property: Newtonsoft.Json.JsonProperty("securityOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityOrigin")]
       string? SecurityOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string? StorageKey = default,
-      [property: Newtonsoft.Json.JsonProperty("storageBucket")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageBucket")]
       ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default
     ) : ChromeProtocol.Core.ICommand<GetMetadataRequestResult>
     {
@@ -370,9 +370,9 @@ namespace ChromeProtocol.Domains
     /// is true.<br/>
     /// </param>
     public record GetMetadataRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("entriesCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("entriesCount")]
       double EntriesCount,
-      [property: Newtonsoft.Json.JsonProperty("keyGeneratorValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyGeneratorValue")]
       double KeyGeneratorValue
     ) : ChromeProtocol.Core.IType
     {
@@ -385,7 +385,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.RequestDatabaseRequest RequestDatabase(string DatabaseName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
+    public static ChromeProtocol.Domains.IndexedDB.RequestDatabaseRequest RequestDatabase(string DatabaseName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
     {
       return new ChromeProtocol.Domains.IndexedDB.RequestDatabaseRequest(DatabaseName, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -399,20 +399,20 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
     [ChromeProtocol.Core.MethodName("IndexedDB.requestDatabase")]
     public record RequestDatabaseRequest(
-      [property: Newtonsoft.Json.JsonProperty("databaseName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseName")]
       string DatabaseName,
-      [property: Newtonsoft.Json.JsonProperty("securityOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityOrigin")]
       string? SecurityOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string? StorageKey = default,
-      [property: Newtonsoft.Json.JsonProperty("storageBucket")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageBucket")]
       ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default
     ) : ChromeProtocol.Core.ICommand<RequestDatabaseRequestResult>
     {
     }
     /// <param name="DatabaseWithObjectStores">Database with an array of object stores.</param>
     public record RequestDatabaseRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("databaseWithObjectStores")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseWithObjectStores")]
       ChromeProtocol.Domains.IndexedDB.DatabaseWithObjectStoresType DatabaseWithObjectStores
     ) : ChromeProtocol.Core.IType
     {
@@ -424,7 +424,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.RequestDatabaseNamesRequest RequestDatabaseNames(string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
+    public static ChromeProtocol.Domains.IndexedDB.RequestDatabaseNamesRequest RequestDatabaseNames(string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
     {
       return new ChromeProtocol.Domains.IndexedDB.RequestDatabaseNamesRequest(SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -437,18 +437,18 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
     [ChromeProtocol.Core.MethodName("IndexedDB.requestDatabaseNames")]
     public record RequestDatabaseNamesRequest(
-      [property: Newtonsoft.Json.JsonProperty("securityOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityOrigin")]
       string? SecurityOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string? StorageKey = default,
-      [property: Newtonsoft.Json.JsonProperty("storageBucket")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageBucket")]
       ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default
     ) : ChromeProtocol.Core.ICommand<RequestDatabaseNamesRequestResult>
     {
     }
     /// <param name="DatabaseNames">Database names for origin.</param>
     public record RequestDatabaseNamesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("databaseNames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseNames")]
       System.Collections.Generic.IReadOnlyList<string> DatabaseNames
     ) : ChromeProtocol.Core.IType
     {

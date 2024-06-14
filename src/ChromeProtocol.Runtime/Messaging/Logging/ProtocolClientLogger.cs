@@ -1,8 +1,8 @@
 using System.Collections.Concurrent;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using ChromeProtocol.Core;
 using ChromeProtocol.Runtime.Messaging.Json;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace ChromeProtocol.Runtime.Messaging.Logging;
 
@@ -44,12 +44,12 @@ public abstract class ProtocolClientLogger : IDisposable
   {
     var sessionId = GetPresentableSessionId(request.SessionId);
     var serializedMessage =
-      TruncateIfNeeded(JsonConvert.SerializeObject(request.Params, JsonProtocolSerialization.Settings));
+      TruncateIfNeeded(JsonSerializer.Serialize(request.Params, JsonProtocolSerialization.Settings));
     LogOutgoingRequest($"-> ({request.Id}) [{request.Method}] {{{sessionId}}}: {serializedMessage}");
     _methodNamesMapping.AddOrUpdate(request.Id, request.Method, (_, _) => request.Method);
   }
 
-  private void ProcessIncomingResponse(object sender, ProtocolResponse<JObject> response)
+  private void ProcessIncomingResponse(object sender, ProtocolResponse<JsonObject> response)
   {
     var sessionId = GetPresentableSessionId(response.SessionId);
     if (!_methodNamesMapping.TryGetValue(response.Id, out var methodName))
@@ -57,20 +57,20 @@ public abstract class ProtocolClientLogger : IDisposable
     else if (response.Result is { } result)
     {
       var serializedMessage =
-        TruncateIfNeeded(JsonConvert.SerializeObject(result, JsonProtocolSerialization.Settings));
+        TruncateIfNeeded(JsonSerializer.Serialize(result, JsonProtocolSerialization.Settings));
       LogIncomingResponse($"<- ({response.Id}) [{methodName}] {{{sessionId}}}: {serializedMessage}");
     }
     else if (response.Error is { } error)
     {
       var serializedMessage =
-        TruncateIfNeeded(JsonConvert.SerializeObject(error, JsonProtocolSerialization.Settings));
+        TruncateIfNeeded(JsonSerializer.Serialize(error, JsonProtocolSerialization.Settings));
       LogIncomingError($"<! ({response.Id}) [{methodName}] {{{sessionId}}}: {serializedMessage}");
     }
   }
 
-  private void ProcessIncomingEvent(object sender, ProtocolEvent<JObject> @event)
+  private void ProcessIncomingEvent(object sender, ProtocolEvent<JsonObject> @event)
   {
-    LogIncomingEvent($"<~ [{@event.Method}] {{{GetPresentableSessionId(@event.SessionId)}}}: {JsonConvert.SerializeObject(@event.Params, JsonProtocolSerialization.Settings)}");
+    LogIncomingEvent($"<~ [{@event.Method}] {{{GetPresentableSessionId(@event.SessionId)}}}: {JsonSerializer.Serialize(@event.Params, JsonProtocolSerialization.Settings)}");
   }
 
   public void Dispose()

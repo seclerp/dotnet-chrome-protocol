@@ -15,17 +15,17 @@ namespace ChromeProtocol.Domains
     /// <param name="Line">Line number in the resource that generated this message (1-based).</param>
     /// <param name="Column">Column number in the resource that generated this message (1-based).</param>
     public record ConsoleMessageType(
-      [property: Newtonsoft.Json.JsonProperty("source")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
       string Source,
-      [property: Newtonsoft.Json.JsonProperty("level")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("level")]
       string Level,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("line")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("line")]
       int? Line = default,
-      [property: Newtonsoft.Json.JsonProperty("column")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("column")]
       int? Column = default
     ) : ChromeProtocol.Core.IType
     {
@@ -34,13 +34,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Message">Console message that has been added.</param>
     [ChromeProtocol.Core.MethodName("Console.messageAdded")]
     public record MessageAdded(
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       ChromeProtocol.Domains.Console.ConsoleMessageType Message
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Does nothing.</summary>
-    public static ChromeProtocol.Domains.Console.ClearMessagesRequest ClearMessages()    
+    public static ChromeProtocol.Domains.Console.ClearMessagesRequest ClearMessages()
     {
       return new ChromeProtocol.Domains.Console.ClearMessagesRequest();
     }
@@ -53,7 +53,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables console domain, prevents further console messages from being reported to the client.</summary>
-    public static ChromeProtocol.Domains.Console.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Console.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Console.DisableRequest();
     }
@@ -69,7 +69,7 @@ namespace ChromeProtocol.Domains
     /// Enables console domain, sends the messages collected so far to the client by means of the<br/>
     /// `messageAdded` notification.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Console.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Console.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Console.EnableRequest();
     }

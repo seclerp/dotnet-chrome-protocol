@@ -1,9 +1,10 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using ChromeProtocol.Core.Extensions;
-using Newtonsoft.Json;
 
 namespace ChromeProtocol.Core;
 
-public class PrimitiveTypeConverter : JsonConverter
+public class PrimitiveTypeConverter : JsonConverter<object>
 {
   static Type? GetValueType(Type objectType) =>
     objectType
@@ -12,21 +13,24 @@ public class PrimitiveTypeConverter : JsonConverter
       .Select(t => t.GetGenericArguments()[0])
       .FirstOrDefault();
 
-  public override bool CanConvert(Type objectType) => GetValueType(objectType) != null;
+  public override bool CanConvert(Type objectType)
+    => GetValueType(objectType) != null;
 
-  public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+  /// <inheritdoc />
+  public override object? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
   {
-    if (reader.TokenType == JsonToken.Null)
-      return Activator.CreateInstance(objectType, null);
+    var valueType = GetValueType(typeToConvert);
 
-    var valueType = GetValueType(objectType);
-    var value = serializer.Deserialize(reader, valueType);
+    if (reader.TokenType == JsonTokenType.Null || valueType is null)
+      return Activator.CreateInstance(typeToConvert, null);
 
-    return Activator.CreateInstance(objectType, value);
+    var value = JsonSerializer.Deserialize(ref reader, valueType, options);
+    return Activator.CreateInstance(typeToConvert, value);
   }
 
-  public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+  /// <inheritdoc />
+  public override void Write(Utf8JsonWriter writer, object? value, JsonSerializerOptions options)
   {
-    serializer.Serialize(writer, ((IPrimitiveType?)value)?.RawValue);
+    JsonSerializer.Serialize(writer, ((IPrimitiveType?)value)?.RawValue);
   }
 }

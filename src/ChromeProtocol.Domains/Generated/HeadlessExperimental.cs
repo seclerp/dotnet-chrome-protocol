@@ -11,11 +11,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Quality">Compression quality from range [0..100] (jpeg and webp only).</param>
     /// <param name="OptimizeForSpeed">Optimize image encoding for speed, not for resulting size (defaults to false)</param>
     public record ScreenshotParamsType(
-      [property: Newtonsoft.Json.JsonProperty("format")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("format")]
       string? Format = default,
-      [property: Newtonsoft.Json.JsonProperty("quality")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quality")]
       int? Quality = default,
-      [property: Newtonsoft.Json.JsonProperty("optimizeForSpeed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("optimizeForSpeed")]
       bool? OptimizeForSpeed = default
     ) : ChromeProtocol.Core.IType
     {
@@ -44,7 +44,7 @@ namespace ChromeProtocol.Domains
     /// no screenshot will be captured. Note that capturing a screenshot can fail, for example,<br/>
     /// during renderer initialization. In such a case, no screenshot data will be returned.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.HeadlessExperimental.BeginFrameRequest BeginFrame(double? FrameTimeTicks = default, double? Interval = default, bool? NoDisplayUpdates = default, ChromeProtocol.Domains.HeadlessExperimental.ScreenshotParamsType? Screenshot = default)    
+    public static ChromeProtocol.Domains.HeadlessExperimental.BeginFrameRequest BeginFrame(double? FrameTimeTicks = default, double? Interval = default, bool? NoDisplayUpdates = default, ChromeProtocol.Domains.HeadlessExperimental.ScreenshotParamsType? Screenshot = default)
     {
       return new ChromeProtocol.Domains.HeadlessExperimental.BeginFrameRequest(FrameTimeTicks, Interval, NoDisplayUpdates, Screenshot);
     }
@@ -74,13 +74,13 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("HeadlessExperimental.beginFrame")]
     public record BeginFrameRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameTimeTicks")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameTimeTicks")]
       double? FrameTimeTicks = default,
-      [property: Newtonsoft.Json.JsonProperty("interval")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("interval")]
       double? Interval = default,
-      [property: Newtonsoft.Json.JsonProperty("noDisplayUpdates")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("noDisplayUpdates")]
       bool? NoDisplayUpdates = default,
-      [property: Newtonsoft.Json.JsonProperty("screenshot")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("screenshot")]
       ChromeProtocol.Domains.HeadlessExperimental.ScreenshotParamsType? Screenshot = default
     ) : ChromeProtocol.Core.ICommand<BeginFrameRequestResult>
     {
@@ -91,16 +91,16 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="ScreenshotData">Base64-encoded image data of the screenshot, if one was requested and successfully taken. (Encoded as a base64 string when passed over JSON)</param>
     public record BeginFrameRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("hasDamage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasDamage")]
       bool HasDamage,
-      [property: Newtonsoft.Json.JsonProperty("screenshotData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("screenshotData")]
       string? ScreenshotData = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Disables headless events for the target.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.HeadlessExperimental.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.HeadlessExperimental.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.HeadlessExperimental.DisableRequest();
     }
@@ -116,7 +116,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enables headless events for the target.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.HeadlessExperimental.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.HeadlessExperimental.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.HeadlessExperimental.EnableRequest();
     }

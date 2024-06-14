@@ -6,7 +6,7 @@ namespace ChromeProtocol.Domains
   public static partial class Memory
   {
     /// <summary>Memory pressure level.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PressureLevelType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -17,20 +17,20 @@ namespace ChromeProtocol.Domains
     /// <param name="Total">Total bytes attributed to this sample.</param>
     /// <param name="Stack">Execution stack at the point of allocation.</param>
     public record SamplingProfileNodeType(
-      [property: Newtonsoft.Json.JsonProperty("size")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("size")]
       double Size,
-      [property: Newtonsoft.Json.JsonProperty("total")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("total")]
       double Total,
-      [property: Newtonsoft.Json.JsonProperty("stack")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stack")]
       System.Collections.Generic.IReadOnlyList<string> Stack
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Array of heap profile samples.</summary>
     public record SamplingProfileType(
-      [property: Newtonsoft.Json.JsonProperty("samples")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("samples")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Memory.SamplingProfileNodeType> Samples,
-      [property: Newtonsoft.Json.JsonProperty("modules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("modules")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Memory.ModuleType> Modules
     ) : ChromeProtocol.Core.IType
     {
@@ -44,18 +44,18 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="Size">Size of the module in bytes.</param>
     public record ModuleType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("uuid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("uuid")]
       string Uuid,
-      [property: Newtonsoft.Json.JsonProperty("baseAddress")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("baseAddress")]
       string BaseAddress,
-      [property: Newtonsoft.Json.JsonProperty("size")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("size")]
       double Size
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Memory.GetDOMCountersRequest GetDOMCounters()    
+    public static ChromeProtocol.Domains.Memory.GetDOMCountersRequest GetDOMCounters()
     {
       return new ChromeProtocol.Domains.Memory.GetDOMCountersRequest();
     }
@@ -64,16 +64,16 @@ namespace ChromeProtocol.Domains
     {
     }
     public record GetDOMCountersRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("documents")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("documents")]
       int Documents,
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       int Nodes,
-      [property: Newtonsoft.Json.JsonProperty("jsEventListeners")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("jsEventListeners")]
       int JsEventListeners
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Memory.PrepareForLeakDetectionRequest PrepareForLeakDetection()    
+    public static ChromeProtocol.Domains.Memory.PrepareForLeakDetectionRequest PrepareForLeakDetection()
     {
       return new ChromeProtocol.Domains.Memory.PrepareForLeakDetectionRequest();
     }
@@ -85,7 +85,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Simulate OomIntervention by purging V8 memory.</summary>
-    public static ChromeProtocol.Domains.Memory.ForciblyPurgeJavaScriptMemoryRequest ForciblyPurgeJavaScriptMemory()    
+    public static ChromeProtocol.Domains.Memory.ForciblyPurgeJavaScriptMemoryRequest ForciblyPurgeJavaScriptMemory()
     {
       return new ChromeProtocol.Domains.Memory.ForciblyPurgeJavaScriptMemoryRequest();
     }
@@ -99,7 +99,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enable/disable suppressing memory pressure notifications in all processes.</summary>
     /// <param name="Suppressed">If true, memory pressure notifications will be suppressed.</param>
-    public static ChromeProtocol.Domains.Memory.SetPressureNotificationsSuppressedRequest SetPressureNotificationsSuppressed(bool Suppressed)    
+    public static ChromeProtocol.Domains.Memory.SetPressureNotificationsSuppressedRequest SetPressureNotificationsSuppressed(bool Suppressed)
     {
       return new ChromeProtocol.Domains.Memory.SetPressureNotificationsSuppressedRequest(Suppressed);
     }
@@ -107,7 +107,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Suppressed">If true, memory pressure notifications will be suppressed.</param>
     [ChromeProtocol.Core.MethodName("Memory.setPressureNotificationsSuppressed")]
     public record SetPressureNotificationsSuppressedRequest(
-      [property: Newtonsoft.Json.JsonProperty("suppressed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("suppressed")]
       bool Suppressed
     ) : ChromeProtocol.Core.ICommand<SetPressureNotificationsSuppressedRequestResult>
     {
@@ -117,7 +117,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Simulate a memory pressure notification in all processes.</summary>
     /// <param name="Level">Memory pressure level of the notification.</param>
-    public static ChromeProtocol.Domains.Memory.SimulatePressureNotificationRequest SimulatePressureNotification(ChromeProtocol.Domains.Memory.PressureLevelType Level)    
+    public static ChromeProtocol.Domains.Memory.SimulatePressureNotificationRequest SimulatePressureNotification(ChromeProtocol.Domains.Memory.PressureLevelType Level)
     {
       return new ChromeProtocol.Domains.Memory.SimulatePressureNotificationRequest(Level);
     }
@@ -125,7 +125,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Level">Memory pressure level of the notification.</param>
     [ChromeProtocol.Core.MethodName("Memory.simulatePressureNotification")]
     public record SimulatePressureNotificationRequest(
-      [property: Newtonsoft.Json.JsonProperty("level")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("level")]
       ChromeProtocol.Domains.Memory.PressureLevelType Level
     ) : ChromeProtocol.Core.ICommand<SimulatePressureNotificationRequestResult>
     {
@@ -136,7 +136,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Start collecting native memory profile.</summary>
     /// <param name="SamplingInterval">Average number of bytes between samples.</param>
     /// <param name="SuppressRandomness">Do not randomize intervals between samples.</param>
-    public static ChromeProtocol.Domains.Memory.StartSamplingRequest StartSampling(int? SamplingInterval = default, bool? SuppressRandomness = default)    
+    public static ChromeProtocol.Domains.Memory.StartSamplingRequest StartSampling(int? SamplingInterval = default, bool? SuppressRandomness = default)
     {
       return new ChromeProtocol.Domains.Memory.StartSamplingRequest(SamplingInterval, SuppressRandomness);
     }
@@ -145,9 +145,9 @@ namespace ChromeProtocol.Domains
     /// <param name="SuppressRandomness">Do not randomize intervals between samples.</param>
     [ChromeProtocol.Core.MethodName("Memory.startSampling")]
     public record StartSamplingRequest(
-      [property: Newtonsoft.Json.JsonProperty("samplingInterval")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("samplingInterval")]
       int? SamplingInterval = default,
-      [property: Newtonsoft.Json.JsonProperty("suppressRandomness")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("suppressRandomness")]
       bool? SuppressRandomness = default
     ) : ChromeProtocol.Core.ICommand<StartSamplingRequestResult>
     {
@@ -156,7 +156,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Stop collecting native memory profile.</summary>
-    public static ChromeProtocol.Domains.Memory.StopSamplingRequest StopSampling()    
+    public static ChromeProtocol.Domains.Memory.StopSamplingRequest StopSampling()
     {
       return new ChromeProtocol.Domains.Memory.StopSamplingRequest();
     }
@@ -172,7 +172,7 @@ namespace ChromeProtocol.Domains
     /// Retrieve native memory allocations profile<br/>
     /// collected since renderer process startup.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Memory.GetAllTimeSamplingProfileRequest GetAllTimeSamplingProfile()    
+    public static ChromeProtocol.Domains.Memory.GetAllTimeSamplingProfileRequest GetAllTimeSamplingProfile()
     {
       return new ChromeProtocol.Domains.Memory.GetAllTimeSamplingProfileRequest();
     }
@@ -185,7 +185,7 @@ namespace ChromeProtocol.Domains
     {
     }
     public record GetAllTimeSamplingProfileRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("profile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("profile")]
       ChromeProtocol.Domains.Memory.SamplingProfileType Profile
     ) : ChromeProtocol.Core.IType
     {
@@ -194,7 +194,7 @@ namespace ChromeProtocol.Domains
     /// Retrieve native memory allocations profile<br/>
     /// collected since browser process startup.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Memory.GetBrowserSamplingProfileRequest GetBrowserSamplingProfile()    
+    public static ChromeProtocol.Domains.Memory.GetBrowserSamplingProfileRequest GetBrowserSamplingProfile()
     {
       return new ChromeProtocol.Domains.Memory.GetBrowserSamplingProfileRequest();
     }
@@ -207,7 +207,7 @@ namespace ChromeProtocol.Domains
     {
     }
     public record GetBrowserSamplingProfileRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("profile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("profile")]
       ChromeProtocol.Domains.Memory.SamplingProfileType Profile
     ) : ChromeProtocol.Core.IType
     {
@@ -216,7 +216,7 @@ namespace ChromeProtocol.Domains
     /// Retrieve native memory allocations profile collected since last<br/>
     /// `startSampling` call.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Memory.GetSamplingProfileRequest GetSamplingProfile()    
+    public static ChromeProtocol.Domains.Memory.GetSamplingProfileRequest GetSamplingProfile()
     {
       return new ChromeProtocol.Domains.Memory.GetSamplingProfileRequest();
     }
@@ -229,7 +229,7 @@ namespace ChromeProtocol.Domains
     {
     }
     public record GetSamplingProfileRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("profile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("profile")]
       ChromeProtocol.Domains.Memory.SamplingProfileType Profile
     ) : ChromeProtocol.Core.IType
     {

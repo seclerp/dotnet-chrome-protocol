@@ -22,23 +22,23 @@ namespace ChromeProtocol.Domains
     /// <param name="SyntheticDelays">Configuration to synthesize the delays in tracing.</param>
     /// <param name="MemoryDumpConfig">Configuration for memory dump triggers. Used only when &quot;memory-infra&quot; category is enabled.</param>
     public record TraceConfigType(
-      [property: Newtonsoft.Json.JsonProperty("recordMode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("recordMode")]
       string? RecordMode = default,
-      [property: Newtonsoft.Json.JsonProperty("traceBufferSizeInKb")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("traceBufferSizeInKb")]
       double? TraceBufferSizeInKb = default,
-      [property: Newtonsoft.Json.JsonProperty("enableSampling")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enableSampling")]
       bool? EnableSampling = default,
-      [property: Newtonsoft.Json.JsonProperty("enableSystrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enableSystrace")]
       bool? EnableSystrace = default,
-      [property: Newtonsoft.Json.JsonProperty("enableArgumentFilter")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enableArgumentFilter")]
       bool? EnableArgumentFilter = default,
-      [property: Newtonsoft.Json.JsonProperty("includedCategories")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includedCategories")]
       System.Collections.Generic.IReadOnlyList<string>? IncludedCategories = default,
-      [property: Newtonsoft.Json.JsonProperty("excludedCategories")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("excludedCategories")]
       System.Collections.Generic.IReadOnlyList<string>? ExcludedCategories = default,
-      [property: Newtonsoft.Json.JsonProperty("syntheticDelays")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("syntheticDelays")]
       System.Collections.Generic.IReadOnlyList<string>? SyntheticDelays = default,
-      [property: Newtonsoft.Json.JsonProperty("memoryDumpConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("memoryDumpConfig")]
       ChromeProtocol.Domains.Tracing.MemoryDumpConfigType? MemoryDumpConfig = default
     ) : ChromeProtocol.Core.IType
     {
@@ -47,14 +47,14 @@ namespace ChromeProtocol.Domains
     /// Data format of a trace. Can be either the legacy JSON format or the<br/>
     /// protocol buffer format. Note that the JSON format will be deprecated soon.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record StreamFormatType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Compression type to use for traces returned via streams.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record StreamCompressionType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -65,7 +65,7 @@ namespace ChromeProtocol.Domains
     /// Keep consistent with memory_dump_request_args.h and<br/>
     /// memory_instrumentation.mojom<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record MemoryDumpLevelOfDetailType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -78,7 +78,7 @@ namespace ChromeProtocol.Domains
     /// `auto` chooses `system` when the perfettoConfig provided to Tracing.start<br/>
     /// specifies at least one non-Chrome data source; otherwise uses `chrome`.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record TracingBackendType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -95,11 +95,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Tracing.bufferUsage")]
     public record BufferUsage(
-      [property: Newtonsoft.Json.JsonProperty("percentFull")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("percentFull")]
       double? PercentFull = default,
-      [property: Newtonsoft.Json.JsonProperty("eventCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventCount")]
       double? EventCount = default,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       double? Value = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -110,8 +110,8 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Tracing.dataCollected")]
     public record DataCollected(
-      [property: Newtonsoft.Json.JsonProperty("value")]
-      System.Collections.Generic.IReadOnlyList<Newtonsoft.Json.Linq.JObject> Value
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
+      System.Collections.Generic.IReadOnlyList<System.Text.Json.Nodes.JsonObject> Value
     ) : ChromeProtocol.Core.IEvent
     {
     }
@@ -128,19 +128,19 @@ namespace ChromeProtocol.Domains
     /// <param name="StreamCompression">Compression format of returned stream.</param>
     [ChromeProtocol.Core.MethodName("Tracing.tracingComplete")]
     public record TracingComplete(
-      [property: Newtonsoft.Json.JsonProperty("dataLossOccurred")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dataLossOccurred")]
       bool DataLossOccurred,
-      [property: Newtonsoft.Json.JsonProperty("stream")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stream")]
       ChromeProtocol.Domains.IO.StreamHandleType? Stream = default,
-      [property: Newtonsoft.Json.JsonProperty("traceFormat")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("traceFormat")]
       ChromeProtocol.Domains.Tracing.StreamFormatType? TraceFormat = default,
-      [property: Newtonsoft.Json.JsonProperty("streamCompression")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("streamCompression")]
       ChromeProtocol.Domains.Tracing.StreamCompressionType? StreamCompression = default
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Stop trace events collection.</summary>
-    public static ChromeProtocol.Domains.Tracing.EndRequest End()    
+    public static ChromeProtocol.Domains.Tracing.EndRequest End()
     {
       return new ChromeProtocol.Domains.Tracing.EndRequest();
     }
@@ -153,7 +153,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Gets supported tracing categories.</summary>
-    public static ChromeProtocol.Domains.Tracing.GetCategoriesRequest GetCategories()    
+    public static ChromeProtocol.Domains.Tracing.GetCategoriesRequest GetCategories()
     {
       return new ChromeProtocol.Domains.Tracing.GetCategoriesRequest();
     }
@@ -164,14 +164,14 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Categories">A list of supported tracing categories.</param>
     public record GetCategoriesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("categories")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("categories")]
       System.Collections.Generic.IReadOnlyList<string> Categories
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Record a clock sync marker in the trace.</summary>
     /// <param name="SyncId">The ID of this clock sync marker</param>
-    public static ChromeProtocol.Domains.Tracing.RecordClockSyncMarkerRequest RecordClockSyncMarker(string SyncId)    
+    public static ChromeProtocol.Domains.Tracing.RecordClockSyncMarkerRequest RecordClockSyncMarker(string SyncId)
     {
       return new ChromeProtocol.Domains.Tracing.RecordClockSyncMarkerRequest(SyncId);
     }
@@ -179,7 +179,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SyncId">The ID of this clock sync marker</param>
     [ChromeProtocol.Core.MethodName("Tracing.recordClockSyncMarker")]
     public record RecordClockSyncMarkerRequest(
-      [property: Newtonsoft.Json.JsonProperty("syncId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("syncId")]
       string SyncId
     ) : ChromeProtocol.Core.ICommand<RecordClockSyncMarkerRequestResult>
     {
@@ -190,7 +190,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Request a global memory dump.</summary>
     /// <param name="Deterministic">Enables more deterministic results by forcing garbage collection</param>
     /// <param name="LevelOfDetail">Specifies level of details in memory dump. Defaults to &quot;detailed&quot;.</param>
-    public static ChromeProtocol.Domains.Tracing.RequestMemoryDumpRequest RequestMemoryDump(bool? Deterministic = default, ChromeProtocol.Domains.Tracing.MemoryDumpLevelOfDetailType? LevelOfDetail = default)    
+    public static ChromeProtocol.Domains.Tracing.RequestMemoryDumpRequest RequestMemoryDump(bool? Deterministic = default, ChromeProtocol.Domains.Tracing.MemoryDumpLevelOfDetailType? LevelOfDetail = default)
     {
       return new ChromeProtocol.Domains.Tracing.RequestMemoryDumpRequest(Deterministic, LevelOfDetail);
     }
@@ -199,9 +199,9 @@ namespace ChromeProtocol.Domains
     /// <param name="LevelOfDetail">Specifies level of details in memory dump. Defaults to &quot;detailed&quot;.</param>
     [ChromeProtocol.Core.MethodName("Tracing.requestMemoryDump")]
     public record RequestMemoryDumpRequest(
-      [property: Newtonsoft.Json.JsonProperty("deterministic")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deterministic")]
       bool? Deterministic = default,
-      [property: Newtonsoft.Json.JsonProperty("levelOfDetail")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("levelOfDetail")]
       ChromeProtocol.Domains.Tracing.MemoryDumpLevelOfDetailType? LevelOfDetail = default
     ) : ChromeProtocol.Core.ICommand<RequestMemoryDumpRequestResult>
     {
@@ -209,9 +209,9 @@ namespace ChromeProtocol.Domains
     /// <param name="DumpGuid">GUID of the resulting global memory dump.</param>
     /// <param name="Success">True iff the global memory dump succeeded.</param>
     public record RequestMemoryDumpRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("dumpGuid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dumpGuid")]
       string DumpGuid,
-      [property: Newtonsoft.Json.JsonProperty("success")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("success")]
       bool Success
     ) : ChromeProtocol.Core.IType
     {
@@ -238,7 +238,7 @@ namespace ChromeProtocol.Domains
     /// are ignored. (Encoded as a base64 string when passed over JSON)<br/>
     /// </param>
     /// <param name="TracingBackend">Backend type (defaults to `auto`)</param>
-    public static ChromeProtocol.Domains.Tracing.StartRequest Start(string? Categories = default, string? Options = default, double? BufferUsageReportingInterval = default, string? TransferMode = default, ChromeProtocol.Domains.Tracing.StreamFormatType? StreamFormat = default, ChromeProtocol.Domains.Tracing.StreamCompressionType? StreamCompression = default, ChromeProtocol.Domains.Tracing.TraceConfigType? TraceConfig = default, string? PerfettoConfig = default, ChromeProtocol.Domains.Tracing.TracingBackendType? TracingBackend = default)    
+    public static ChromeProtocol.Domains.Tracing.StartRequest Start(string? Categories = default, string? Options = default, double? BufferUsageReportingInterval = default, string? TransferMode = default, ChromeProtocol.Domains.Tracing.StreamFormatType? StreamFormat = default, ChromeProtocol.Domains.Tracing.StreamCompressionType? StreamCompression = default, ChromeProtocol.Domains.Tracing.TraceConfigType? TraceConfig = default, string? PerfettoConfig = default, ChromeProtocol.Domains.Tracing.TracingBackendType? TracingBackend = default)
     {
       return new ChromeProtocol.Domains.Tracing.StartRequest(Categories, Options, BufferUsageReportingInterval, TransferMode, StreamFormat, StreamCompression, TraceConfig, PerfettoConfig, TracingBackend);
     }
@@ -267,24 +267,24 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Tracing.start")]
     public record StartRequest(
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("categories")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("categories")]
       string? Categories = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("options")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("options")]
       string? Options = default,
-      [property: Newtonsoft.Json.JsonProperty("bufferUsageReportingInterval")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bufferUsageReportingInterval")]
       double? BufferUsageReportingInterval = default,
-      [property: Newtonsoft.Json.JsonProperty("transferMode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("transferMode")]
       string? TransferMode = default,
-      [property: Newtonsoft.Json.JsonProperty("streamFormat")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("streamFormat")]
       ChromeProtocol.Domains.Tracing.StreamFormatType? StreamFormat = default,
-      [property: Newtonsoft.Json.JsonProperty("streamCompression")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("streamCompression")]
       ChromeProtocol.Domains.Tracing.StreamCompressionType? StreamCompression = default,
-      [property: Newtonsoft.Json.JsonProperty("traceConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("traceConfig")]
       ChromeProtocol.Domains.Tracing.TraceConfigType? TraceConfig = default,
-      [property: Newtonsoft.Json.JsonProperty("perfettoConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("perfettoConfig")]
       string? PerfettoConfig = default,
-      [property: Newtonsoft.Json.JsonProperty("tracingBackend")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tracingBackend")]
       ChromeProtocol.Domains.Tracing.TracingBackendType? TracingBackend = default
     ) : ChromeProtocol.Core.ICommand<StartRequestResult>
     {

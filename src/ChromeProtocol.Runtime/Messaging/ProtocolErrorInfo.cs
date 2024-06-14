@@ -1,10 +1,10 @@
-using Newtonsoft.Json.Linq;
+using System.Text.Json.Nodes;
 
 namespace ChromeProtocol.Runtime.Messaging;
 
 public record ProtocolErrorInfo(
   int Code,
-  JObject? Result,
+  JsonObject? Result,
   string? Message,
   string? Data
 );

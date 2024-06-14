@@ -18,27 +18,27 @@ namespace ChromeProtocol.Domains
     /// <param name="WorkerId">Identifier of the worker associated with this entry.</param>
     /// <param name="Args">Call arguments.</param>
     public record LogEntryType(
-      [property: Newtonsoft.Json.JsonProperty("source")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
       string Source,
-      [property: Newtonsoft.Json.JsonProperty("level")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("level")]
       string Level,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Runtime.TimestampType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("category")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("category")]
       string? Category = default,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int? LineNumber = default,
-      [property: Newtonsoft.Json.JsonProperty("stackTrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stackTrace")]
       ChromeProtocol.Domains.Runtime.StackTraceType? StackTrace = default,
-      [property: Newtonsoft.Json.JsonProperty("networkRequestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("networkRequestId")]
       ChromeProtocol.Domains.Network.RequestIdType? NetworkRequestId = default,
-      [property: Newtonsoft.Json.JsonProperty("workerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("workerId")]
       string? WorkerId = default,
-      [property: Newtonsoft.Json.JsonProperty("args")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("args")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.RemoteObjectType>? Args = default
     ) : ChromeProtocol.Core.IType
     {
@@ -47,9 +47,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Violation type.</param>
     /// <param name="Threshold">Time threshold to trigger upon.</param>
     public record ViolationSettingType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("threshold")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("threshold")]
       double Threshold
     ) : ChromeProtocol.Core.IType
     {
@@ -58,13 +58,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Entry">The entry.</param>
     [ChromeProtocol.Core.MethodName("Log.entryAdded")]
     public record EntryAdded(
-      [property: Newtonsoft.Json.JsonProperty("entry")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("entry")]
       ChromeProtocol.Domains.Log.LogEntryType Entry
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Clears the log.</summary>
-    public static ChromeProtocol.Domains.Log.ClearRequest Clear()    
+    public static ChromeProtocol.Domains.Log.ClearRequest Clear()
     {
       return new ChromeProtocol.Domains.Log.ClearRequest();
     }
@@ -77,7 +77,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables log domain, prevents further log entries from being reported to the client.</summary>
-    public static ChromeProtocol.Domains.Log.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Log.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Log.DisableRequest();
     }
@@ -93,7 +93,7 @@ namespace ChromeProtocol.Domains
     /// Enables log domain, sends the entries collected so far to the client by means of the<br/>
     /// `entryAdded` notification.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Log.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Log.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Log.EnableRequest();
     }
@@ -110,7 +110,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>start violation reporting.</summary>
     /// <param name="Config">Configuration for violations.</param>
-    public static ChromeProtocol.Domains.Log.StartViolationsReportRequest StartViolationsReport(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Log.ViolationSettingType> Config)    
+    public static ChromeProtocol.Domains.Log.StartViolationsReportRequest StartViolationsReport(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Log.ViolationSettingType> Config)
     {
       return new ChromeProtocol.Domains.Log.StartViolationsReportRequest(Config);
     }
@@ -118,7 +118,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Config">Configuration for violations.</param>
     [ChromeProtocol.Core.MethodName("Log.startViolationsReport")]
     public record StartViolationsReportRequest(
-      [property: Newtonsoft.Json.JsonProperty("config")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("config")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Log.ViolationSettingType> Config
     ) : ChromeProtocol.Core.ICommand<StartViolationsReportRequestResult>
     {
@@ -127,7 +127,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Stop violation reporting.</summary>
-    public static ChromeProtocol.Domains.Log.StopViolationsReportRequest StopViolationsReport()    
+    public static ChromeProtocol.Domains.Log.StopViolationsReportRequest StopViolationsReport()
     {
       return new ChromeProtocol.Domains.Log.StopViolationsReportRequest();
     }

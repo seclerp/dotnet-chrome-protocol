@@ -51,61 +51,61 @@ namespace ChromeProtocol.Domains
     /// <param name="OriginURL">The url of the script (if any) that generates this node.</param>
     /// <param name="ScrollOffsetX">Scroll offsets, set when this node is a Document.</param>
     public record DOMNodeType(
-      [property: Newtonsoft.Json.JsonProperty("nodeType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeType")]
       int NodeType,
-      [property: Newtonsoft.Json.JsonProperty("nodeName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeName")]
       string NodeName,
-      [property: Newtonsoft.Json.JsonProperty("nodeValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeValue")]
       string NodeValue,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType BackendNodeId,
-      [property: Newtonsoft.Json.JsonProperty("textValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("textValue")]
       string? TextValue = default,
-      [property: Newtonsoft.Json.JsonProperty("inputValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inputValue")]
       string? InputValue = default,
-      [property: Newtonsoft.Json.JsonProperty("inputChecked")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inputChecked")]
       bool? InputChecked = default,
-      [property: Newtonsoft.Json.JsonProperty("optionSelected")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("optionSelected")]
       bool? OptionSelected = default,
-      [property: Newtonsoft.Json.JsonProperty("childNodeIndexes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("childNodeIndexes")]
       System.Collections.Generic.IReadOnlyList<int>? ChildNodeIndexes = default,
-      [property: Newtonsoft.Json.JsonProperty("attributes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attributes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.NameValueType>? Attributes = default,
-      [property: Newtonsoft.Json.JsonProperty("pseudoElementIndexes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoElementIndexes")]
       System.Collections.Generic.IReadOnlyList<int>? PseudoElementIndexes = default,
-      [property: Newtonsoft.Json.JsonProperty("layoutNodeIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layoutNodeIndex")]
       int? LayoutNodeIndex = default,
-      [property: Newtonsoft.Json.JsonProperty("documentURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("documentURL")]
       string? DocumentURL = default,
-      [property: Newtonsoft.Json.JsonProperty("baseURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("baseURL")]
       string? BaseURL = default,
-      [property: Newtonsoft.Json.JsonProperty("contentLanguage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentLanguage")]
       string? ContentLanguage = default,
-      [property: Newtonsoft.Json.JsonProperty("documentEncoding")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("documentEncoding")]
       string? DocumentEncoding = default,
-      [property: Newtonsoft.Json.JsonProperty("publicId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("publicId")]
       string? PublicId = default,
-      [property: Newtonsoft.Json.JsonProperty("systemId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("systemId")]
       string? SystemId = default,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default,
-      [property: Newtonsoft.Json.JsonProperty("contentDocumentIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentDocumentIndex")]
       int? ContentDocumentIndex = default,
-      [property: Newtonsoft.Json.JsonProperty("pseudoType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoType")]
       ChromeProtocol.Domains.DOM.PseudoTypeType? PseudoType = default,
-      [property: Newtonsoft.Json.JsonProperty("shadowRootType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("shadowRootType")]
       ChromeProtocol.Domains.DOM.ShadowRootTypeType? ShadowRootType = default,
-      [property: Newtonsoft.Json.JsonProperty("isClickable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isClickable")]
       bool? IsClickable = default,
-      [property: Newtonsoft.Json.JsonProperty("eventListeners")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventListeners")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMDebugger.EventListenerType>? EventListeners = default,
-      [property: Newtonsoft.Json.JsonProperty("currentSourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("currentSourceURL")]
       string? CurrentSourceURL = default,
-      [property: Newtonsoft.Json.JsonProperty("originURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("originURL")]
       string? OriginURL = default,
-      [property: Newtonsoft.Json.JsonProperty("scrollOffsetX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollOffsetX")]
       double? ScrollOffsetX = default,
-      [property: Newtonsoft.Json.JsonProperty("scrollOffsetY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollOffsetY")]
       double? ScrollOffsetY = default
     ) : ChromeProtocol.Core.IType
     {
@@ -124,11 +124,11 @@ namespace ChromeProtocol.Domains
     /// represented as a surrogate pair in UTF-16 have length 2.<br/>
     /// </param>
     public record InlineTextBoxType(
-      [property: Newtonsoft.Json.JsonProperty("boundingBox")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("boundingBox")]
       ChromeProtocol.Domains.DOM.RectType BoundingBox,
-      [property: Newtonsoft.Json.JsonProperty("startCharacterIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startCharacterIndex")]
       int StartCharacterIndex,
-      [property: Newtonsoft.Json.JsonProperty("numCharacters")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("numCharacters")]
       int NumCharacters
     ) : ChromeProtocol.Core.IType
     {
@@ -146,19 +146,19 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="IsStackingContext">Set to true to indicate the element begins a new stacking context.</param>
     public record LayoutTreeNodeType(
-      [property: Newtonsoft.Json.JsonProperty("domNodeIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domNodeIndex")]
       int DomNodeIndex,
-      [property: Newtonsoft.Json.JsonProperty("boundingBox")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("boundingBox")]
       ChromeProtocol.Domains.DOM.RectType BoundingBox,
-      [property: Newtonsoft.Json.JsonProperty("layoutText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layoutText")]
       string? LayoutText = default,
-      [property: Newtonsoft.Json.JsonProperty("inlineTextNodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inlineTextNodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.InlineTextBoxType>? InlineTextNodes = default,
-      [property: Newtonsoft.Json.JsonProperty("styleIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleIndex")]
       int? StyleIndex = default,
-      [property: Newtonsoft.Json.JsonProperty("paintOrder")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paintOrder")]
       int? PaintOrder = default,
-      [property: Newtonsoft.Json.JsonProperty("isStackingContext")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isStackingContext")]
       bool? IsStackingContext = default
     ) : ChromeProtocol.Core.IType
     {
@@ -166,7 +166,7 @@ namespace ChromeProtocol.Domains
     /// <summary>A subset of the full ComputedStyle as defined by the request whitelist.</summary>
     /// <param name="Properties">Name/value pairs of computed style properties.</param>
     public record ComputedStyleType(
-      [property: Newtonsoft.Json.JsonProperty("properties")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("properties")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.NameValueType> Properties
     ) : ChromeProtocol.Core.IType
     {
@@ -175,15 +175,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Attribute/property name.</param>
     /// <param name="Value">Attribute/property value.</param>
     public record NameValueType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Index of the string in the strings table.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record StringIndexType(
       int Value
     ) : ChromeProtocol.Core.PrimitiveType<int>(Value)
@@ -195,23 +195,23 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Data that is only present on rare nodes.</summary>
     public record RareStringDataType(
-      [property: Newtonsoft.Json.JsonProperty("index")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("index")]
       System.Collections.Generic.IReadOnlyList<int> Index,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.StringIndexType> Value
     ) : ChromeProtocol.Core.IType
     {
     }
     public record RareBooleanDataType(
-      [property: Newtonsoft.Json.JsonProperty("index")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("index")]
       System.Collections.Generic.IReadOnlyList<int> Index
     ) : ChromeProtocol.Core.IType
     {
     }
     public record RareIntegerDataType(
-      [property: Newtonsoft.Json.JsonProperty("index")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("index")]
       System.Collections.Generic.IReadOnlyList<int> Index,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       System.Collections.Generic.IReadOnlyList<int> Value
     ) : ChromeProtocol.Core.IType
     {
@@ -236,35 +236,35 @@ namespace ChromeProtocol.Domains
     /// <param name="ContentWidth">Document content width.</param>
     /// <param name="ContentHeight">Document content height.</param>
     public record DocumentSnapshotType(
-      [property: Newtonsoft.Json.JsonProperty("documentURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("documentURL")]
       ChromeProtocol.Domains.DOMSnapshot.StringIndexType DocumentURL,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       ChromeProtocol.Domains.DOMSnapshot.StringIndexType Title,
-      [property: Newtonsoft.Json.JsonProperty("baseURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("baseURL")]
       ChromeProtocol.Domains.DOMSnapshot.StringIndexType BaseURL,
-      [property: Newtonsoft.Json.JsonProperty("contentLanguage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentLanguage")]
       ChromeProtocol.Domains.DOMSnapshot.StringIndexType ContentLanguage,
-      [property: Newtonsoft.Json.JsonProperty("encodingName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("encodingName")]
       ChromeProtocol.Domains.DOMSnapshot.StringIndexType EncodingName,
-      [property: Newtonsoft.Json.JsonProperty("publicId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("publicId")]
       ChromeProtocol.Domains.DOMSnapshot.StringIndexType PublicId,
-      [property: Newtonsoft.Json.JsonProperty("systemId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("systemId")]
       ChromeProtocol.Domains.DOMSnapshot.StringIndexType SystemId,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.DOMSnapshot.StringIndexType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       ChromeProtocol.Domains.DOMSnapshot.NodeTreeSnapshotType Nodes,
-      [property: Newtonsoft.Json.JsonProperty("layout")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layout")]
       ChromeProtocol.Domains.DOMSnapshot.LayoutTreeSnapshotType Layout,
-      [property: Newtonsoft.Json.JsonProperty("textBoxes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("textBoxes")]
       ChromeProtocol.Domains.DOMSnapshot.TextBoxSnapshotType TextBoxes,
-      [property: Newtonsoft.Json.JsonProperty("scrollOffsetX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollOffsetX")]
       double? ScrollOffsetX = default,
-      [property: Newtonsoft.Json.JsonProperty("scrollOffsetY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollOffsetY")]
       double? ScrollOffsetY = default,
-      [property: Newtonsoft.Json.JsonProperty("contentWidth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentWidth")]
       double? ContentWidth = default,
-      [property: Newtonsoft.Json.JsonProperty("contentHeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentHeight")]
       double? ContentHeight = default
     ) : ChromeProtocol.Core.IType
     {
@@ -295,39 +295,39 @@ namespace ChromeProtocol.Domains
     /// <param name="CurrentSourceURL">The selected url for nodes with a srcset attribute.</param>
     /// <param name="OriginURL">The url of the script (if any) that generates this node.</param>
     public record NodeTreeSnapshotType(
-      [property: Newtonsoft.Json.JsonProperty("parentIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentIndex")]
       System.Collections.Generic.IReadOnlyList<int>? ParentIndex = default,
-      [property: Newtonsoft.Json.JsonProperty("nodeType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeType")]
       System.Collections.Generic.IReadOnlyList<int>? NodeType = default,
-      [property: Newtonsoft.Json.JsonProperty("shadowRootType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("shadowRootType")]
       ChromeProtocol.Domains.DOMSnapshot.RareStringDataType? ShadowRootType = default,
-      [property: Newtonsoft.Json.JsonProperty("nodeName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeName")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.StringIndexType>? NodeName = default,
-      [property: Newtonsoft.Json.JsonProperty("nodeValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeValue")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.StringIndexType>? NodeValue = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.BackendNodeIdType>? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("attributes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attributes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.ArrayOfStringsType>? Attributes = default,
-      [property: Newtonsoft.Json.JsonProperty("textValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("textValue")]
       ChromeProtocol.Domains.DOMSnapshot.RareStringDataType? TextValue = default,
-      [property: Newtonsoft.Json.JsonProperty("inputValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inputValue")]
       ChromeProtocol.Domains.DOMSnapshot.RareStringDataType? InputValue = default,
-      [property: Newtonsoft.Json.JsonProperty("inputChecked")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inputChecked")]
       ChromeProtocol.Domains.DOMSnapshot.RareBooleanDataType? InputChecked = default,
-      [property: Newtonsoft.Json.JsonProperty("optionSelected")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("optionSelected")]
       ChromeProtocol.Domains.DOMSnapshot.RareBooleanDataType? OptionSelected = default,
-      [property: Newtonsoft.Json.JsonProperty("contentDocumentIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentDocumentIndex")]
       ChromeProtocol.Domains.DOMSnapshot.RareIntegerDataType? ContentDocumentIndex = default,
-      [property: Newtonsoft.Json.JsonProperty("pseudoType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoType")]
       ChromeProtocol.Domains.DOMSnapshot.RareStringDataType? PseudoType = default,
-      [property: Newtonsoft.Json.JsonProperty("pseudoIdentifier")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoIdentifier")]
       ChromeProtocol.Domains.DOMSnapshot.RareStringDataType? PseudoIdentifier = default,
-      [property: Newtonsoft.Json.JsonProperty("isClickable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isClickable")]
       ChromeProtocol.Domains.DOMSnapshot.RareBooleanDataType? IsClickable = default,
-      [property: Newtonsoft.Json.JsonProperty("currentSourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("currentSourceURL")]
       ChromeProtocol.Domains.DOMSnapshot.RareStringDataType? CurrentSourceURL = default,
-      [property: Newtonsoft.Json.JsonProperty("originURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("originURL")]
       ChromeProtocol.Domains.DOMSnapshot.RareStringDataType? OriginURL = default
     ) : ChromeProtocol.Core.IType
     {
@@ -349,27 +349,27 @@ namespace ChromeProtocol.Domains
     /// <param name="BlendedBackgroundColors">The list of background colors that are blended with colors of overlapping elements.</param>
     /// <param name="TextColorOpacities">The list of computed text opacities.</param>
     public record LayoutTreeSnapshotType(
-      [property: Newtonsoft.Json.JsonProperty("nodeIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIndex")]
       System.Collections.Generic.IReadOnlyList<int> NodeIndex,
-      [property: Newtonsoft.Json.JsonProperty("styles")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styles")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.ArrayOfStringsType> Styles,
-      [property: Newtonsoft.Json.JsonProperty("bounds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bounds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.RectangleType> Bounds,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.StringIndexType> Text,
-      [property: Newtonsoft.Json.JsonProperty("stackingContexts")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stackingContexts")]
       ChromeProtocol.Domains.DOMSnapshot.RareBooleanDataType StackingContexts,
-      [property: Newtonsoft.Json.JsonProperty("paintOrders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paintOrders")]
       System.Collections.Generic.IReadOnlyList<int>? PaintOrders = default,
-      [property: Newtonsoft.Json.JsonProperty("offsetRects")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offsetRects")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.RectangleType>? OffsetRects = default,
-      [property: Newtonsoft.Json.JsonProperty("scrollRects")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollRects")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.RectangleType>? ScrollRects = default,
-      [property: Newtonsoft.Json.JsonProperty("clientRects")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clientRects")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.RectangleType>? ClientRects = default,
-      [property: Newtonsoft.Json.JsonProperty("blendedBackgroundColors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("blendedBackgroundColors")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.StringIndexType>? BlendedBackgroundColors = default,
-      [property: Newtonsoft.Json.JsonProperty("textColorOpacities")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("textColorOpacities")]
       System.Collections.Generic.IReadOnlyList<double>? TextColorOpacities = default
     ) : ChromeProtocol.Core.IType
     {
@@ -389,19 +389,19 @@ namespace ChromeProtocol.Domains
     /// represented as a surrogate pair in UTF-16 have length 2.<br/>
     /// </param>
     public record TextBoxSnapshotType(
-      [property: Newtonsoft.Json.JsonProperty("layoutIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layoutIndex")]
       System.Collections.Generic.IReadOnlyList<int> LayoutIndex,
-      [property: Newtonsoft.Json.JsonProperty("bounds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bounds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.RectangleType> Bounds,
-      [property: Newtonsoft.Json.JsonProperty("start")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("start")]
       System.Collections.Generic.IReadOnlyList<int> Start,
-      [property: Newtonsoft.Json.JsonProperty("length")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("length")]
       System.Collections.Generic.IReadOnlyList<int> Length
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Disables DOM snapshot agent for the given page.</summary>
-    public static ChromeProtocol.Domains.DOMSnapshot.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.DOMSnapshot.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.DOMSnapshot.DisableRequest();
     }
@@ -414,7 +414,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables DOM snapshot agent for the given page.</summary>
-    public static ChromeProtocol.Domains.DOMSnapshot.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.DOMSnapshot.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.DOMSnapshot.EnableRequest();
     }
@@ -437,7 +437,7 @@ namespace ChromeProtocol.Domains
     /// <param name="IncludePaintOrder">Whether to determine and include the paint order index of LayoutTreeNodes (default false).</param>
     /// <param name="IncludeUserAgentShadowTree">Whether to include UA shadow tree in the snapshot (default false).</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.DOMSnapshot.GetSnapshotRequest GetSnapshot(System.Collections.Generic.IReadOnlyList<string> ComputedStyleWhitelist, bool? IncludeEventListeners = default, bool? IncludePaintOrder = default, bool? IncludeUserAgentShadowTree = default)    
+    public static ChromeProtocol.Domains.DOMSnapshot.GetSnapshotRequest GetSnapshot(System.Collections.Generic.IReadOnlyList<string> ComputedStyleWhitelist, bool? IncludeEventListeners = default, bool? IncludePaintOrder = default, bool? IncludeUserAgentShadowTree = default)
     {
       return new ChromeProtocol.Domains.DOMSnapshot.GetSnapshotRequest(ComputedStyleWhitelist, IncludeEventListeners, IncludePaintOrder, IncludeUserAgentShadowTree);
     }
@@ -454,13 +454,13 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("DOMSnapshot.getSnapshot")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record GetSnapshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("computedStyleWhitelist")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("computedStyleWhitelist")]
       System.Collections.Generic.IReadOnlyList<string> ComputedStyleWhitelist,
-      [property: Newtonsoft.Json.JsonProperty("includeEventListeners")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeEventListeners")]
       bool? IncludeEventListeners = default,
-      [property: Newtonsoft.Json.JsonProperty("includePaintOrder")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includePaintOrder")]
       bool? IncludePaintOrder = default,
-      [property: Newtonsoft.Json.JsonProperty("includeUserAgentShadowTree")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeUserAgentShadowTree")]
       bool? IncludeUserAgentShadowTree = default
     ) : ChromeProtocol.Core.ICommand<GetSnapshotRequestResult>
     {
@@ -470,11 +470,11 @@ namespace ChromeProtocol.Domains
     /// <param name="ComputedStyles">Whitelisted ComputedStyle properties for each node in the layout tree.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record GetSnapshotRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("domNodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domNodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.DOMNodeType> DomNodes,
-      [property: Newtonsoft.Json.JsonProperty("layoutTreeNodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layoutTreeNodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.LayoutTreeNodeType> LayoutTreeNodes,
-      [property: Newtonsoft.Json.JsonProperty("computedStyles")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("computedStyles")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.ComputedStyleType> ComputedStyles
     ) : ChromeProtocol.Core.IType
     {
@@ -498,7 +498,7 @@ namespace ChromeProtocol.Domains
     /// An element might have the opacity property set that affects the text color of the element.<br/>
     /// The final text color opacity is computed based on the opacity of all overlapping elements.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOMSnapshot.CaptureSnapshotRequest CaptureSnapshot(System.Collections.Generic.IReadOnlyList<string> ComputedStyles, bool? IncludePaintOrder = default, bool? IncludeDOMRects = default, bool? IncludeBlendedBackgroundColors = default, bool? IncludeTextColorOpacities = default)    
+    public static ChromeProtocol.Domains.DOMSnapshot.CaptureSnapshotRequest CaptureSnapshot(System.Collections.Generic.IReadOnlyList<string> ComputedStyles, bool? IncludePaintOrder = default, bool? IncludeDOMRects = default, bool? IncludeBlendedBackgroundColors = default, bool? IncludeTextColorOpacities = default)
     {
       return new ChromeProtocol.Domains.DOMSnapshot.CaptureSnapshotRequest(ComputedStyles, IncludePaintOrder, IncludeDOMRects, IncludeBlendedBackgroundColors, IncludeTextColorOpacities);
     }
@@ -523,15 +523,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOMSnapshot.captureSnapshot")]
     public record CaptureSnapshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("computedStyles")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("computedStyles")]
       System.Collections.Generic.IReadOnlyList<string> ComputedStyles,
-      [property: Newtonsoft.Json.JsonProperty("includePaintOrder")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includePaintOrder")]
       bool? IncludePaintOrder = default,
-      [property: Newtonsoft.Json.JsonProperty("includeDOMRects")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeDOMRects")]
       bool? IncludeDOMRects = default,
-      [property: Newtonsoft.Json.JsonProperty("includeBlendedBackgroundColors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeBlendedBackgroundColors")]
       bool? IncludeBlendedBackgroundColors = default,
-      [property: Newtonsoft.Json.JsonProperty("includeTextColorOpacities")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeTextColorOpacities")]
       bool? IncludeTextColorOpacities = default
     ) : ChromeProtocol.Core.ICommand<CaptureSnapshotRequestResult>
     {
@@ -539,9 +539,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Documents">The nodes in the DOM tree. The DOMNode at index 0 corresponds to the root document.</param>
     /// <param name="Strings">Shared string table that all string properties refer to with indexes.</param>
     public record CaptureSnapshotRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("documents")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("documents")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMSnapshot.DocumentSnapshotType> Documents,
-      [property: Newtonsoft.Json.JsonProperty("strings")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("strings")]
       System.Collections.Generic.IReadOnlyList<string> Strings
     ) : ChromeProtocol.Core.IType
     {

@@ -1,5 +1,5 @@
+using System.Text.Json.Serialization;
 using ChromeProtocol.Core;
-using Newtonsoft.Json;
 
 namespace ChromeProtocol.Runtime.Tests.Protocol;
 

@@ -10,49 +10,49 @@ namespace ChromeProtocol.Domains
   public static partial class Network
   {
     /// <summary>Resource type as it was perceived by the rendering engine.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ResourceTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Unique loader identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record LoaderIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Unique request identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record RequestIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Unique intercepted request identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record InterceptionIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Network level fetch failure reason.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ErrorReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>UTC time in seconds, counted from January 1, 1970.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record TimeSinceEpochType(
       double Value
     ) : ChromeProtocol.Core.PrimitiveType<double>(Value)
     {
     }
     /// <summary>Monotonically increasing time in seconds since an arbitrary point in the past.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record MonotonicTimeType(
       double Value
     ) : ChromeProtocol.Core.PrimitiveType<double>(Value)
@@ -63,7 +63,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>The underlying connection technology that the browser is supposedly using.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ConnectionTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -73,7 +73,7 @@ namespace ChromeProtocol.Domains
     /// Represents the cookie&#39;s &#39;SameSite&#39; status:<br/>
     /// https://tools.ietf.org/html/draft-west-first-party-cookies<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CookieSameSiteType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -83,7 +83,7 @@ namespace ChromeProtocol.Domains
     /// Represents the cookie&#39;s &#39;Priority&#39; status:<br/>
     /// https://tools.ietf.org/html/draft-west-cookie-priority-00<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CookiePriorityType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -94,7 +94,7 @@ namespace ChromeProtocol.Domains
     /// A value of &quot;Unset&quot; allows protocol clients to emulate legacy cookie scope for the scheme.<br/>
     /// This is a temporary ability and it will be removed in the future.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CookieSourceSchemeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -124,49 +124,49 @@ namespace ChromeProtocol.Domains
     /// <param name="ReceiveHeadersStart">Started receiving response headers.</param>
     /// <param name="ReceiveHeadersEnd">Finished receiving response headers.</param>
     public record ResourceTimingType(
-      [property: Newtonsoft.Json.JsonProperty("requestTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestTime")]
       double RequestTime,
-      [property: Newtonsoft.Json.JsonProperty("proxyStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("proxyStart")]
       double ProxyStart,
-      [property: Newtonsoft.Json.JsonProperty("proxyEnd")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("proxyEnd")]
       double ProxyEnd,
-      [property: Newtonsoft.Json.JsonProperty("dnsStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dnsStart")]
       double DnsStart,
-      [property: Newtonsoft.Json.JsonProperty("dnsEnd")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dnsEnd")]
       double DnsEnd,
-      [property: Newtonsoft.Json.JsonProperty("connectStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("connectStart")]
       double ConnectStart,
-      [property: Newtonsoft.Json.JsonProperty("connectEnd")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("connectEnd")]
       double ConnectEnd,
-      [property: Newtonsoft.Json.JsonProperty("sslStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sslStart")]
       double SslStart,
-      [property: Newtonsoft.Json.JsonProperty("sslEnd")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sslEnd")]
       double SslEnd,
-      [property: Newtonsoft.Json.JsonProperty("workerStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("workerStart")]
       double WorkerStart,
-      [property: Newtonsoft.Json.JsonProperty("workerReady")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("workerReady")]
       double WorkerReady,
-      [property: Newtonsoft.Json.JsonProperty("workerFetchStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("workerFetchStart")]
       double WorkerFetchStart,
-      [property: Newtonsoft.Json.JsonProperty("workerRespondWithSettled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("workerRespondWithSettled")]
       double WorkerRespondWithSettled,
-      [property: Newtonsoft.Json.JsonProperty("sendStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sendStart")]
       double SendStart,
-      [property: Newtonsoft.Json.JsonProperty("sendEnd")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sendEnd")]
       double SendEnd,
-      [property: Newtonsoft.Json.JsonProperty("pushStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pushStart")]
       double PushStart,
-      [property: Newtonsoft.Json.JsonProperty("pushEnd")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pushEnd")]
       double PushEnd,
-      [property: Newtonsoft.Json.JsonProperty("receiveHeadersStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("receiveHeadersStart")]
       double ReceiveHeadersStart,
-      [property: Newtonsoft.Json.JsonProperty("receiveHeadersEnd")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("receiveHeadersEnd")]
       double ReceiveHeadersEnd
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Loading priority of a resource request.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ResourcePriorityType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -174,7 +174,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Post data entry for HTTP request</summary>
     public record PostDataEntryType(
-      [property: Newtonsoft.Json.JsonProperty("bytes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bytes")]
       string? Bytes = default
     ) : ChromeProtocol.Core.IType
     {
@@ -200,31 +200,31 @@ namespace ChromeProtocol.Domains
     /// request corresponding to the main frame.<br/>
     /// </param>
     public record RequestType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("method")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("method")]
       string Method,
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       ChromeProtocol.Domains.Network.HeadersType Headers,
-      [property: Newtonsoft.Json.JsonProperty("initialPriority")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initialPriority")]
       ChromeProtocol.Domains.Network.ResourcePriorityType InitialPriority,
-      [property: Newtonsoft.Json.JsonProperty("referrerPolicy")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("referrerPolicy")]
       string ReferrerPolicy,
-      [property: Newtonsoft.Json.JsonProperty("urlFragment")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("urlFragment")]
       string? UrlFragment = default,
-      [property: Newtonsoft.Json.JsonProperty("postData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("postData")]
       string? PostData = default,
-      [property: Newtonsoft.Json.JsonProperty("hasPostData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasPostData")]
       bool? HasPostData = default,
-      [property: Newtonsoft.Json.JsonProperty("postDataEntries")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("postDataEntries")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.PostDataEntryType>? PostDataEntries = default,
-      [property: Newtonsoft.Json.JsonProperty("mixedContentType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mixedContentType")]
       ChromeProtocol.Domains.Security.MixedContentTypeType? MixedContentType = default,
-      [property: Newtonsoft.Json.JsonProperty("isLinkPreload")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isLinkPreload")]
       bool? IsLinkPreload = default,
-      [property: Newtonsoft.Json.JsonProperty("trustTokenParams")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("trustTokenParams")]
       ChromeProtocol.Domains.Network.TrustTokenParamsType? TrustTokenParams = default,
-      [property: Newtonsoft.Json.JsonProperty("isSameSite")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isSameSite")]
       bool? IsSameSite = default
     ) : ChromeProtocol.Core.IType
     {
@@ -242,21 +242,21 @@ namespace ChromeProtocol.Domains
     /// <param name="SignatureAlgorithm">Signature algorithm.</param>
     /// <param name="SignatureData">Signature data.</param>
     public record SignedCertificateTimestampType(
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       string Status,
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("logDescription")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("logDescription")]
       string LogDescription,
-      [property: Newtonsoft.Json.JsonProperty("logId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("logId")]
       string LogId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       double Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("hashAlgorithm")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hashAlgorithm")]
       string HashAlgorithm,
-      [property: Newtonsoft.Json.JsonProperty("signatureAlgorithm")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("signatureAlgorithm")]
       string SignatureAlgorithm,
-      [property: Newtonsoft.Json.JsonProperty("signatureData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("signatureData")]
       string SignatureData
     ) : ChromeProtocol.Core.IType
     {
@@ -282,70 +282,70 @@ namespace ChromeProtocol.Domains
     /// applicable or not known.<br/>
     /// </param>
     public record SecurityDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("protocol")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("protocol")]
       string Protocol,
-      [property: Newtonsoft.Json.JsonProperty("keyExchange")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyExchange")]
       string KeyExchange,
-      [property: Newtonsoft.Json.JsonProperty("cipher")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cipher")]
       string Cipher,
-      [property: Newtonsoft.Json.JsonProperty("certificateId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certificateId")]
       ChromeProtocol.Domains.Security.CertificateIdType CertificateId,
-      [property: Newtonsoft.Json.JsonProperty("subjectName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subjectName")]
       string SubjectName,
-      [property: Newtonsoft.Json.JsonProperty("sanList")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sanList")]
       System.Collections.Generic.IReadOnlyList<string> SanList,
-      [property: Newtonsoft.Json.JsonProperty("issuer")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issuer")]
       string Issuer,
-      [property: Newtonsoft.Json.JsonProperty("validFrom")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("validFrom")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType ValidFrom,
-      [property: Newtonsoft.Json.JsonProperty("validTo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("validTo")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType ValidTo,
-      [property: Newtonsoft.Json.JsonProperty("signedCertificateTimestampList")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("signedCertificateTimestampList")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.SignedCertificateTimestampType> SignedCertificateTimestampList,
-      [property: Newtonsoft.Json.JsonProperty("certificateTransparencyCompliance")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certificateTransparencyCompliance")]
       ChromeProtocol.Domains.Network.CertificateTransparencyComplianceType CertificateTransparencyCompliance,
-      [property: Newtonsoft.Json.JsonProperty("encryptedClientHello")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("encryptedClientHello")]
       bool EncryptedClientHello,
-      [property: Newtonsoft.Json.JsonProperty("keyExchangeGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyExchangeGroup")]
       string? KeyExchangeGroup = default,
-      [property: Newtonsoft.Json.JsonProperty("mac")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mac")]
       string? Mac = default,
-      [property: Newtonsoft.Json.JsonProperty("serverSignatureAlgorithm")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("serverSignatureAlgorithm")]
       int? ServerSignatureAlgorithm = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Whether the request complied with Certificate Transparency policy.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CertificateTransparencyComplianceType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>The reason why request was blocked.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record BlockedReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>The reason why request was blocked.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CorsErrorType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record CorsErrorStatusType(
-      [property: Newtonsoft.Json.JsonProperty("corsError")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("corsError")]
       ChromeProtocol.Domains.Network.CorsErrorType CorsError,
-      [property: Newtonsoft.Json.JsonProperty("failedParameter")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("failedParameter")]
       string FailedParameter
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Source of serviceworker response.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ServiceWorkerResponseSourceType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -365,39 +365,39 @@ namespace ChromeProtocol.Domains
     /// records.<br/>
     /// </param>
     public record TrustTokenParamsType(
-      [property: Newtonsoft.Json.JsonProperty("operation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("operation")]
       ChromeProtocol.Domains.Network.TrustTokenOperationTypeType Operation,
-      [property: Newtonsoft.Json.JsonProperty("refreshPolicy")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("refreshPolicy")]
       string RefreshPolicy,
-      [property: Newtonsoft.Json.JsonProperty("issuers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issuers")]
       System.Collections.Generic.IReadOnlyList<string>? Issuers = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record TrustTokenOperationTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>The reason why Chrome uses a specific transport protocol for HTTP semantics.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AlternateProtocolUsageType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Source of service worker router.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ServiceWorkerRouterSourceType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record ServiceWorkerRouterInfoType(
-      [property: Newtonsoft.Json.JsonProperty("ruleIdMatched")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ruleIdMatched")]
       int RuleIdMatched,
-      [property: Newtonsoft.Json.JsonProperty("matchedSourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("matchedSourceType")]
       ChromeProtocol.Domains.Network.ServiceWorkerRouterSourceType MatchedSourceType
     ) : ChromeProtocol.Core.IType
     {
@@ -430,59 +430,59 @@ namespace ChromeProtocol.Domains
     /// <param name="AlternateProtocolUsage">The reason why Chrome uses a specific transport protocol for HTTP semantics.</param>
     /// <param name="SecurityDetails">Security details for the request.</param>
     public record ResponseType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       int Status,
-      [property: Newtonsoft.Json.JsonProperty("statusText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("statusText")]
       string StatusText,
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       ChromeProtocol.Domains.Network.HeadersType Headers,
-      [property: Newtonsoft.Json.JsonProperty("mimeType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mimeType")]
       string MimeType,
-      [property: Newtonsoft.Json.JsonProperty("charset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("charset")]
       string Charset,
-      [property: Newtonsoft.Json.JsonProperty("connectionReused")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("connectionReused")]
       bool ConnectionReused,
-      [property: Newtonsoft.Json.JsonProperty("connectionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("connectionId")]
       double ConnectionId,
-      [property: Newtonsoft.Json.JsonProperty("encodedDataLength")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("encodedDataLength")]
       double EncodedDataLength,
-      [property: Newtonsoft.Json.JsonProperty("securityState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityState")]
       ChromeProtocol.Domains.Security.SecurityStateType SecurityState,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("headersText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headersText")]
       string? HeadersText = default,
-      [property: Newtonsoft.Json.JsonProperty("requestHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestHeaders")]
       ChromeProtocol.Domains.Network.HeadersType? RequestHeaders = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("requestHeadersText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestHeadersText")]
       string? RequestHeadersText = default,
-      [property: Newtonsoft.Json.JsonProperty("remoteIPAddress")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("remoteIPAddress")]
       string? RemoteIPAddress = default,
-      [property: Newtonsoft.Json.JsonProperty("remotePort")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("remotePort")]
       int? RemotePort = default,
-      [property: Newtonsoft.Json.JsonProperty("fromDiskCache")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fromDiskCache")]
       bool? FromDiskCache = default,
-      [property: Newtonsoft.Json.JsonProperty("fromServiceWorker")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fromServiceWorker")]
       bool? FromServiceWorker = default,
-      [property: Newtonsoft.Json.JsonProperty("fromPrefetchCache")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fromPrefetchCache")]
       bool? FromPrefetchCache = default,
-      [property: Newtonsoft.Json.JsonProperty("serviceWorkerRouterInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("serviceWorkerRouterInfo")]
       ChromeProtocol.Domains.Network.ServiceWorkerRouterInfoType? ServiceWorkerRouterInfo = default,
-      [property: Newtonsoft.Json.JsonProperty("timing")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timing")]
       ChromeProtocol.Domains.Network.ResourceTimingType? Timing = default,
-      [property: Newtonsoft.Json.JsonProperty("serviceWorkerResponseSource")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("serviceWorkerResponseSource")]
       ChromeProtocol.Domains.Network.ServiceWorkerResponseSourceType? ServiceWorkerResponseSource = default,
-      [property: Newtonsoft.Json.JsonProperty("responseTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType? ResponseTime = default,
-      [property: Newtonsoft.Json.JsonProperty("cacheStorageCacheName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cacheStorageCacheName")]
       string? CacheStorageCacheName = default,
-      [property: Newtonsoft.Json.JsonProperty("protocol")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("protocol")]
       string? Protocol = default,
-      [property: Newtonsoft.Json.JsonProperty("alternateProtocolUsage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("alternateProtocolUsage")]
       ChromeProtocol.Domains.Network.AlternateProtocolUsageType? AlternateProtocolUsage = default,
-      [property: Newtonsoft.Json.JsonProperty("securityDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityDetails")]
       ChromeProtocol.Domains.Network.SecurityDetailsType? SecurityDetails = default
     ) : ChromeProtocol.Core.IType
     {
@@ -490,7 +490,7 @@ namespace ChromeProtocol.Domains
     /// <summary>WebSocket request data.</summary>
     /// <param name="Headers">HTTP request headers.</param>
     public record WebSocketRequestType(
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       ChromeProtocol.Domains.Network.HeadersType Headers
     ) : ChromeProtocol.Core.IType
     {
@@ -503,17 +503,17 @@ namespace ChromeProtocol.Domains
     /// <param name="RequestHeaders">HTTP request headers.</param>
     /// <param name="RequestHeadersText">HTTP request headers text.</param>
     public record WebSocketResponseType(
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       int Status,
-      [property: Newtonsoft.Json.JsonProperty("statusText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("statusText")]
       string StatusText,
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       ChromeProtocol.Domains.Network.HeadersType Headers,
-      [property: Newtonsoft.Json.JsonProperty("headersText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headersText")]
       string? HeadersText = default,
-      [property: Newtonsoft.Json.JsonProperty("requestHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestHeaders")]
       ChromeProtocol.Domains.Network.HeadersType? RequestHeaders = default,
-      [property: Newtonsoft.Json.JsonProperty("requestHeadersText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestHeadersText")]
       string? RequestHeadersText = default
     ) : ChromeProtocol.Core.IType
     {
@@ -527,11 +527,11 @@ namespace ChromeProtocol.Domains
     /// If the opcode isn&#39;t 1, then payloadData is a base64 encoded string representing binary data.<br/>
     /// </param>
     public record WebSocketFrameType(
-      [property: Newtonsoft.Json.JsonProperty("opcode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("opcode")]
       double Opcode,
-      [property: Newtonsoft.Json.JsonProperty("mask")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mask")]
       bool Mask,
-      [property: Newtonsoft.Json.JsonProperty("payloadData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("payloadData")]
       string PayloadData
     ) : ChromeProtocol.Core.IType
     {
@@ -542,13 +542,13 @@ namespace ChromeProtocol.Domains
     /// <param name="BodySize">Cached response body size.</param>
     /// <param name="Response">Cached response data.</param>
     public record CachedResourceType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Network.ResourceTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("bodySize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bodySize")]
       double BodySize,
-      [property: Newtonsoft.Json.JsonProperty("response")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("response")]
       ChromeProtocol.Domains.Network.ResponseType? Response = default
     ) : ChromeProtocol.Core.IType
     {
@@ -567,17 +567,17 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="RequestId">Set if another request triggered this request (e.g. preflight).</param>
     public record InitiatorType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("stack")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stack")]
       ChromeProtocol.Domains.Runtime.StackTraceType? Stack = default,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       double? LineNumber = default,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       double? ColumnNumber = default,
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType? RequestId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -607,58 +607,58 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="PartitionKeyOpaque">True if cookie partition key is opaque.</param>
     public record CookieType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value,
-      [property: Newtonsoft.Json.JsonProperty("domain")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domain")]
       string Domain,
-      [property: Newtonsoft.Json.JsonProperty("path")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("path")]
       string Path,
-      [property: Newtonsoft.Json.JsonProperty("expires")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expires")]
       double Expires,
-      [property: Newtonsoft.Json.JsonProperty("size")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("size")]
       int Size,
-      [property: Newtonsoft.Json.JsonProperty("httpOnly")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("httpOnly")]
       bool HttpOnly,
-      [property: Newtonsoft.Json.JsonProperty("secure")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("secure")]
       bool Secure,
-      [property: Newtonsoft.Json.JsonProperty("session")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("session")]
       bool Session,
-      [property: Newtonsoft.Json.JsonProperty("priority")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("priority")]
       ChromeProtocol.Domains.Network.CookiePriorityType Priority,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("sameParty")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sameParty")]
       bool SameParty,
-      [property: Newtonsoft.Json.JsonProperty("sourceScheme")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceScheme")]
       ChromeProtocol.Domains.Network.CookieSourceSchemeType SourceScheme,
-      [property: Newtonsoft.Json.JsonProperty("sourcePort")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourcePort")]
       int SourcePort,
-      [property: Newtonsoft.Json.JsonProperty("sameSite")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sameSite")]
       ChromeProtocol.Domains.Network.CookieSameSiteType? SameSite = default,
-      [property: Newtonsoft.Json.JsonProperty("partitionKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("partitionKey")]
       string? PartitionKey = default,
-      [property: Newtonsoft.Json.JsonProperty("partitionKeyOpaque")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("partitionKeyOpaque")]
       bool? PartitionKeyOpaque = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Types of reasons why a cookie may not be stored from a response.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SetCookieBlockedReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Types of reasons why a cookie may not be sent with a request.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CookieBlockedReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CookieExemptionReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -676,11 +676,11 @@ namespace ChromeProtocol.Domains
     /// errors.<br/>
     /// </param>
     public record BlockedSetCookieWithReasonType(
-      [property: Newtonsoft.Json.JsonProperty("blockedReasons")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("blockedReasons")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.SetCookieBlockedReasonType> BlockedReasons,
-      [property: Newtonsoft.Json.JsonProperty("cookieLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookieLine")]
       string CookieLine,
-      [property: Newtonsoft.Json.JsonProperty("cookie")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookie")]
       ChromeProtocol.Domains.Network.CookieType? Cookie = default
     ) : ChromeProtocol.Core.IType
     {
@@ -692,9 +692,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ExemptionReason">The reason the cookie was exempted.</param>
     /// <param name="Cookie">The cookie object representing the cookie.</param>
     public record ExemptedSetCookieWithReasonType(
-      [property: Newtonsoft.Json.JsonProperty("exemptionReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exemptionReason")]
       ChromeProtocol.Domains.Network.CookieExemptionReasonType ExemptionReason,
-      [property: Newtonsoft.Json.JsonProperty("cookie")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookie")]
       ChromeProtocol.Domains.Network.CookieType Cookie
     ) : ChromeProtocol.Core.IType
     {
@@ -710,11 +710,11 @@ namespace ChromeProtocol.Domains
     /// only have at most one exemption reason.<br/>
     /// </param>
     public record AssociatedCookieType(
-      [property: Newtonsoft.Json.JsonProperty("cookie")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookie")]
       ChromeProtocol.Domains.Network.CookieType Cookie,
-      [property: Newtonsoft.Json.JsonProperty("blockedReasons")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("blockedReasons")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieBlockedReasonType> BlockedReasons,
-      [property: Newtonsoft.Json.JsonProperty("exemptionReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exemptionReason")]
       ChromeProtocol.Domains.Network.CookieExemptionReasonType? ExemptionReason = default
     ) : ChromeProtocol.Core.IType
     {
@@ -746,33 +746,33 @@ namespace ChromeProtocol.Domains
     /// If not set, the cookie will be set as not partitioned.<br/>
     /// </param>
     public record CookieParamType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("domain")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domain")]
       string? Domain = default,
-      [property: Newtonsoft.Json.JsonProperty("path")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("path")]
       string? Path = default,
-      [property: Newtonsoft.Json.JsonProperty("secure")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("secure")]
       bool? Secure = default,
-      [property: Newtonsoft.Json.JsonProperty("httpOnly")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("httpOnly")]
       bool? HttpOnly = default,
-      [property: Newtonsoft.Json.JsonProperty("sameSite")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sameSite")]
       ChromeProtocol.Domains.Network.CookieSameSiteType? SameSite = default,
-      [property: Newtonsoft.Json.JsonProperty("expires")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expires")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType? Expires = default,
-      [property: Newtonsoft.Json.JsonProperty("priority")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("priority")]
       ChromeProtocol.Domains.Network.CookiePriorityType? Priority = default,
-      [property: Newtonsoft.Json.JsonProperty("sameParty")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sameParty")]
       bool? SameParty = default,
-      [property: Newtonsoft.Json.JsonProperty("sourceScheme")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceScheme")]
       ChromeProtocol.Domains.Network.CookieSourceSchemeType? SourceScheme = default,
-      [property: Newtonsoft.Json.JsonProperty("sourcePort")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourcePort")]
       int? SourcePort = default,
-      [property: Newtonsoft.Json.JsonProperty("partitionKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("partitionKey")]
       string? PartitionKey = default
     ) : ChromeProtocol.Core.IType
     {
@@ -783,13 +783,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Realm">The realm of the challenge. May be empty.</param>
     /// <param name="Source">Source of the authentication challenge.</param>
     public record AuthChallengeType(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("scheme")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scheme")]
       string Scheme,
-      [property: Newtonsoft.Json.JsonProperty("realm")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("realm")]
       string Realm,
-      [property: Newtonsoft.Json.JsonProperty("source")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
       string? Source = default
     ) : ChromeProtocol.Core.IType
     {
@@ -809,11 +809,11 @@ namespace ChromeProtocol.Domains
     /// ProvideCredentials.<br/>
     /// </param>
     public record AuthChallengeResponseType(
-      [property: Newtonsoft.Json.JsonProperty("response")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("response")]
       string Response,
-      [property: Newtonsoft.Json.JsonProperty("username")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("username")]
       string? Username = default,
-      [property: Newtonsoft.Json.JsonProperty("password")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("password")]
       string? Password = default
     ) : ChromeProtocol.Core.IType
     {
@@ -822,7 +822,7 @@ namespace ChromeProtocol.Domains
     /// Stages of the interception to begin intercepting. Request will intercept before the request is<br/>
     /// sent. Response will intercept after the response is received.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record InterceptionStageType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -836,11 +836,11 @@ namespace ChromeProtocol.Domains
     /// <param name="ResourceType">If set, only requests for matching resource types will be intercepted.</param>
     /// <param name="InterceptionStage">Stage at which to begin intercepting requests. Default is Request.</param>
     public record RequestPatternType(
-      [property: Newtonsoft.Json.JsonProperty("urlPattern")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("urlPattern")]
       string? UrlPattern = default,
-      [property: Newtonsoft.Json.JsonProperty("resourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resourceType")]
       ChromeProtocol.Domains.Network.ResourceTypeType? ResourceType = default,
-      [property: Newtonsoft.Json.JsonProperty("interceptionStage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("interceptionStage")]
       ChromeProtocol.Domains.Network.InterceptionStageType? InterceptionStage = default
     ) : ChromeProtocol.Core.IType
     {
@@ -859,23 +859,23 @@ namespace ChromeProtocol.Domains
     /// <param name="CertSha256">The hex string of signed exchange signature cert sha256.</param>
     /// <param name="Certificates">The encoded certificates.</param>
     public record SignedExchangeSignatureType(
-      [property: Newtonsoft.Json.JsonProperty("label")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("label")]
       string Label,
-      [property: Newtonsoft.Json.JsonProperty("signature")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("signature")]
       string Signature,
-      [property: Newtonsoft.Json.JsonProperty("integrity")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("integrity")]
       string Integrity,
-      [property: Newtonsoft.Json.JsonProperty("validityUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("validityUrl")]
       string ValidityUrl,
-      [property: Newtonsoft.Json.JsonProperty("date")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("date")]
       int Date,
-      [property: Newtonsoft.Json.JsonProperty("expires")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expires")]
       int Expires,
-      [property: Newtonsoft.Json.JsonProperty("certUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certUrl")]
       string? CertUrl = default,
-      [property: Newtonsoft.Json.JsonProperty("certSha256")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certSha256")]
       string? CertSha256 = default,
-      [property: Newtonsoft.Json.JsonProperty("certificates")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("certificates")]
       System.Collections.Generic.IReadOnlyList<string>? Certificates = default
     ) : ChromeProtocol.Core.IType
     {
@@ -890,21 +890,21 @@ namespace ChromeProtocol.Domains
     /// <param name="Signatures">Signed exchange response signature.</param>
     /// <param name="HeaderIntegrity">Signed exchange header integrity hash in the form of `sha256-&lt;base64-hash-value&gt;`.</param>
     public record SignedExchangeHeaderType(
-      [property: Newtonsoft.Json.JsonProperty("requestUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestUrl")]
       string RequestUrl,
-      [property: Newtonsoft.Json.JsonProperty("responseCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseCode")]
       int ResponseCode,
-      [property: Newtonsoft.Json.JsonProperty("responseHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseHeaders")]
       ChromeProtocol.Domains.Network.HeadersType ResponseHeaders,
-      [property: Newtonsoft.Json.JsonProperty("signatures")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("signatures")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.SignedExchangeSignatureType> Signatures,
-      [property: Newtonsoft.Json.JsonProperty("headerIntegrity")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headerIntegrity")]
       string HeaderIntegrity
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Field type for a signed exchange related error.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SignedExchangeErrorFieldType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -915,11 +915,11 @@ namespace ChromeProtocol.Domains
     /// <param name="SignatureIndex">The index of the signature which caused the error.</param>
     /// <param name="ErrorField">The field which caused the error.</param>
     public record SignedExchangeErrorType(
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       string Message,
-      [property: Newtonsoft.Json.JsonProperty("signatureIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("signatureIndex")]
       int? SignatureIndex = default,
-      [property: Newtonsoft.Json.JsonProperty("errorField")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorField")]
       ChromeProtocol.Domains.Network.SignedExchangeErrorFieldType? ErrorField = default
     ) : ChromeProtocol.Core.IType
     {
@@ -930,31 +930,31 @@ namespace ChromeProtocol.Domains
     /// <param name="SecurityDetails">Security details for the signed exchange header.</param>
     /// <param name="Errors">Errors occurred while handling the signed exchange.</param>
     public record SignedExchangeInfoType(
-      [property: Newtonsoft.Json.JsonProperty("outerResponse")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("outerResponse")]
       ChromeProtocol.Domains.Network.ResponseType OuterResponse,
-      [property: Newtonsoft.Json.JsonProperty("header")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("header")]
       ChromeProtocol.Domains.Network.SignedExchangeHeaderType? Header = default,
-      [property: Newtonsoft.Json.JsonProperty("securityDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityDetails")]
       ChromeProtocol.Domains.Network.SecurityDetailsType? SecurityDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("errors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errors")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.SignedExchangeErrorType>? Errors = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>List of content encodings supported by the backend.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ContentEncodingType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PrivateNetworkRequestPolicyType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record IPAddressSpaceType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -966,91 +966,91 @@ namespace ChromeProtocol.Domains
     /// the same request (but not for redirected requests).<br/>
     /// </param>
     public record ConnectTimingType(
-      [property: Newtonsoft.Json.JsonProperty("requestTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestTime")]
       double RequestTime
     ) : ChromeProtocol.Core.IType
     {
     }
     public record ClientSecurityStateType(
-      [property: Newtonsoft.Json.JsonProperty("initiatorIsSecureContext")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initiatorIsSecureContext")]
       bool InitiatorIsSecureContext,
-      [property: Newtonsoft.Json.JsonProperty("initiatorIPAddressSpace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initiatorIPAddressSpace")]
       ChromeProtocol.Domains.Network.IPAddressSpaceType InitiatorIPAddressSpace,
-      [property: Newtonsoft.Json.JsonProperty("privateNetworkRequestPolicy")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("privateNetworkRequestPolicy")]
       ChromeProtocol.Domains.Network.PrivateNetworkRequestPolicyType PrivateNetworkRequestPolicy
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CrossOriginOpenerPolicyValueType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record CrossOriginOpenerPolicyStatusType(
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Network.CrossOriginOpenerPolicyValueType Value,
-      [property: Newtonsoft.Json.JsonProperty("reportOnlyValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportOnlyValue")]
       ChromeProtocol.Domains.Network.CrossOriginOpenerPolicyValueType ReportOnlyValue,
-      [property: Newtonsoft.Json.JsonProperty("reportingEndpoint")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportingEndpoint")]
       string? ReportingEndpoint = default,
-      [property: Newtonsoft.Json.JsonProperty("reportOnlyReportingEndpoint")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportOnlyReportingEndpoint")]
       string? ReportOnlyReportingEndpoint = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CrossOriginEmbedderPolicyValueType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record CrossOriginEmbedderPolicyStatusType(
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Network.CrossOriginEmbedderPolicyValueType Value,
-      [property: Newtonsoft.Json.JsonProperty("reportOnlyValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportOnlyValue")]
       ChromeProtocol.Domains.Network.CrossOriginEmbedderPolicyValueType ReportOnlyValue,
-      [property: Newtonsoft.Json.JsonProperty("reportingEndpoint")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportingEndpoint")]
       string? ReportingEndpoint = default,
-      [property: Newtonsoft.Json.JsonProperty("reportOnlyReportingEndpoint")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportOnlyReportingEndpoint")]
       string? ReportOnlyReportingEndpoint = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ContentSecurityPolicySourceType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record ContentSecurityPolicyStatusType(
-      [property: Newtonsoft.Json.JsonProperty("effectiveDirectives")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("effectiveDirectives")]
       string EffectiveDirectives,
-      [property: Newtonsoft.Json.JsonProperty("isEnforced")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isEnforced")]
       bool IsEnforced,
-      [property: Newtonsoft.Json.JsonProperty("source")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
       ChromeProtocol.Domains.Network.ContentSecurityPolicySourceType Source
     ) : ChromeProtocol.Core.IType
     {
     }
     public record SecurityIsolationStatusType(
-      [property: Newtonsoft.Json.JsonProperty("coop")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("coop")]
       ChromeProtocol.Domains.Network.CrossOriginOpenerPolicyStatusType? Coop = default,
-      [property: Newtonsoft.Json.JsonProperty("coep")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("coep")]
       ChromeProtocol.Domains.Network.CrossOriginEmbedderPolicyStatusType? Coep = default,
-      [property: Newtonsoft.Json.JsonProperty("csp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("csp")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.ContentSecurityPolicyStatusType>? Csp = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>The status of a Reporting API report.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ReportStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ReportIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -1064,23 +1064,23 @@ namespace ChromeProtocol.Domains
     /// <param name="Depth">How many uploads deep the related request was.</param>
     /// <param name="CompletedAttempts">The number of delivery attempts made so far, not including an active attempt.</param>
     public record ReportingApiReportType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.Network.ReportIdType Id,
-      [property: Newtonsoft.Json.JsonProperty("initiatorUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initiatorUrl")]
       string InitiatorUrl,
-      [property: Newtonsoft.Json.JsonProperty("destination")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("destination")]
       string Destination,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("depth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("depth")]
       int Depth,
-      [property: Newtonsoft.Json.JsonProperty("completedAttempts")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("completedAttempts")]
       int CompletedAttempts,
-      [property: Newtonsoft.Json.JsonProperty("body")]
-      Newtonsoft.Json.Linq.JObject Body,
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("body")]
+      System.Text.Json.Nodes.JsonObject Body,
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       ChromeProtocol.Domains.Network.ReportStatusType Status
     ) : ChromeProtocol.Core.IType
     {
@@ -1088,9 +1088,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Url">The URL of the endpoint to which reports may be delivered.</param>
     /// <param name="GroupName">Name of the endpoint group.</param>
     public record ReportingApiEndpointType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("groupName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("groupName")]
       string GroupName
     ) : ChromeProtocol.Core.IType
     {
@@ -1100,17 +1100,17 @@ namespace ChromeProtocol.Domains
     /// <param name="Stream">If successful, one of the following two fields holds the result.</param>
     /// <param name="Headers">Response headers.</param>
     public record LoadNetworkResourcePageResultType(
-      [property: Newtonsoft.Json.JsonProperty("success")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("success")]
       bool Success,
-      [property: Newtonsoft.Json.JsonProperty("netError")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("netError")]
       double? NetError = default,
-      [property: Newtonsoft.Json.JsonProperty("netErrorName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("netErrorName")]
       string? NetErrorName = default,
-      [property: Newtonsoft.Json.JsonProperty("httpStatusCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("httpStatusCode")]
       double? HttpStatusCode = default,
-      [property: Newtonsoft.Json.JsonProperty("stream")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stream")]
       ChromeProtocol.Domains.IO.StreamHandleType? Stream = default,
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       ChromeProtocol.Domains.Network.HeadersType? Headers = default
     ) : ChromeProtocol.Core.IType
     {
@@ -1120,9 +1120,9 @@ namespace ChromeProtocol.Domains
     /// CORB and streaming.<br/>
     /// </summary>
     public record LoadNetworkResourceOptionsType(
-      [property: Newtonsoft.Json.JsonProperty("disableCache")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disableCache")]
       bool DisableCache,
-      [property: Newtonsoft.Json.JsonProperty("includeCredentials")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeCredentials")]
       bool IncludeCredentials
     ) : ChromeProtocol.Core.IType
     {
@@ -1135,15 +1135,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Data">Data that was received. (Encoded as a base64 string when passed over JSON)</param>
     [ChromeProtocol.Core.MethodName("Network.dataReceived")]
     public record DataReceived(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("dataLength")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dataLength")]
       int DataLength,
-      [property: Newtonsoft.Json.JsonProperty("encodedDataLength")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("encodedDataLength")]
       int EncodedDataLength,
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string? Data = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1156,15 +1156,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Data">Message content.</param>
     [ChromeProtocol.Core.MethodName("Network.eventSourceMessageReceived")]
     public record EventSourceMessageReceived(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("eventName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventName")]
       string EventName,
-      [property: Newtonsoft.Json.JsonProperty("eventId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventId")]
       string EventId,
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1179,19 +1179,19 @@ namespace ChromeProtocol.Domains
     /// <param name="CorsErrorStatus">The reason why loading was blocked by CORS, if any.</param>
     [ChromeProtocol.Core.MethodName("Network.loadingFailed")]
     public record LoadingFailed(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Network.ResourceTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("errorText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorText")]
       string ErrorText,
-      [property: Newtonsoft.Json.JsonProperty("canceled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("canceled")]
       bool? Canceled = default,
-      [property: Newtonsoft.Json.JsonProperty("blockedReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("blockedReason")]
       ChromeProtocol.Domains.Network.BlockedReasonType? BlockedReason = default,
-      [property: Newtonsoft.Json.JsonProperty("corsErrorStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("corsErrorStatus")]
       ChromeProtocol.Domains.Network.CorsErrorStatusType? CorsErrorStatus = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1202,11 +1202,11 @@ namespace ChromeProtocol.Domains
     /// <param name="EncodedDataLength">Total number of bytes received for this request.</param>
     [ChromeProtocol.Core.MethodName("Network.loadingFinished")]
     public record LoadingFinished(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("encodedDataLength")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("encodedDataLength")]
       double EncodedDataLength
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1252,29 +1252,29 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Network.requestIntercepted")]
     [System.Obsolete("This event marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record RequestIntercepted(
-      [property: Newtonsoft.Json.JsonProperty("interceptionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("interceptionId")]
       ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Network.RequestType Request,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("resourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resourceType")]
       ChromeProtocol.Domains.Network.ResourceTypeType ResourceType,
-      [property: Newtonsoft.Json.JsonProperty("isNavigationRequest")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isNavigationRequest")]
       bool IsNavigationRequest,
-      [property: Newtonsoft.Json.JsonProperty("isDownload")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isDownload")]
       bool? IsDownload = default,
-      [property: Newtonsoft.Json.JsonProperty("redirectUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("redirectUrl")]
       string? RedirectUrl = default,
-      [property: Newtonsoft.Json.JsonProperty("authChallenge")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authChallenge")]
       ChromeProtocol.Domains.Network.AuthChallengeType? AuthChallenge = default,
-      [property: Newtonsoft.Json.JsonProperty("responseErrorReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseErrorReason")]
       ChromeProtocol.Domains.Network.ErrorReasonType? ResponseErrorReason = default,
-      [property: Newtonsoft.Json.JsonProperty("responseStatusCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseStatusCode")]
       int? ResponseStatusCode = default,
-      [property: Newtonsoft.Json.JsonProperty("responseHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("responseHeaders")]
       ChromeProtocol.Domains.Network.HeadersType? ResponseHeaders = default,
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType? RequestId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1283,7 +1283,7 @@ namespace ChromeProtocol.Domains
     /// <param name="RequestId">Request identifier.</param>
     [ChromeProtocol.Core.MethodName("Network.requestServedFromCache")]
     public record RequestServedFromCache(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1307,29 +1307,29 @@ namespace ChromeProtocol.Domains
     /// <param name="HasUserGesture">Whether the request is initiated by a user gesture. Defaults to false.</param>
     [ChromeProtocol.Core.MethodName("Network.requestWillBeSent")]
     public record RequestWillBeSent(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType LoaderId,
-      [property: Newtonsoft.Json.JsonProperty("documentURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("documentURL")]
       string DocumentURL,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Network.RequestType Request,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("wallTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("wallTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType WallTime,
-      [property: Newtonsoft.Json.JsonProperty("initiator")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initiator")]
       ChromeProtocol.Domains.Network.InitiatorType Initiator,
-      [property: Newtonsoft.Json.JsonProperty("redirectHasExtraInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("redirectHasExtraInfo")]
       bool RedirectHasExtraInfo,
-      [property: Newtonsoft.Json.JsonProperty("redirectResponse")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("redirectResponse")]
       ChromeProtocol.Domains.Network.ResponseType? RedirectResponse = default,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Network.ResourceTypeType? Type = default,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default,
-      [property: Newtonsoft.Json.JsonProperty("hasUserGesture")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasUserGesture")]
       bool? HasUserGesture = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1340,11 +1340,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Timestamp">Timestamp.</param>
     [ChromeProtocol.Core.MethodName("Network.resourceChangedPriority")]
     public record ResourceChangedPriority(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("newPriority")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("newPriority")]
       ChromeProtocol.Domains.Network.ResourcePriorityType NewPriority,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1354,9 +1354,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Info">Information about the signed exchange response.</param>
     [ChromeProtocol.Core.MethodName("Network.signedExchangeReceived")]
     public record SignedExchangeReceived(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("info")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("info")]
       ChromeProtocol.Domains.Network.SignedExchangeInfoType Info
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1374,19 +1374,19 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">Frame identifier.</param>
     [ChromeProtocol.Core.MethodName("Network.responseReceived")]
     public record ResponseReceived(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType LoaderId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Network.ResourceTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("response")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("response")]
       ChromeProtocol.Domains.Network.ResponseType Response,
-      [property: Newtonsoft.Json.JsonProperty("hasExtraInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasExtraInfo")]
       bool HasExtraInfo,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1396,9 +1396,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Timestamp">Timestamp.</param>
     [ChromeProtocol.Core.MethodName("Network.webSocketClosed")]
     public record WebSocketClosed(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1409,11 +1409,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Initiator">Request initiator.</param>
     [ChromeProtocol.Core.MethodName("Network.webSocketCreated")]
     public record WebSocketCreated(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("initiator")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initiator")]
       ChromeProtocol.Domains.Network.InitiatorType? Initiator = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1424,11 +1424,11 @@ namespace ChromeProtocol.Domains
     /// <param name="ErrorMessage">WebSocket error message.</param>
     [ChromeProtocol.Core.MethodName("Network.webSocketFrameError")]
     public record WebSocketFrameError(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("errorMessage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorMessage")]
       string ErrorMessage
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1439,11 +1439,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Response">WebSocket response data.</param>
     [ChromeProtocol.Core.MethodName("Network.webSocketFrameReceived")]
     public record WebSocketFrameReceived(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("response")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("response")]
       ChromeProtocol.Domains.Network.WebSocketFrameType Response
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1454,11 +1454,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Response">WebSocket response data.</param>
     [ChromeProtocol.Core.MethodName("Network.webSocketFrameSent")]
     public record WebSocketFrameSent(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("response")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("response")]
       ChromeProtocol.Domains.Network.WebSocketFrameType Response
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1469,11 +1469,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Response">WebSocket response data.</param>
     [ChromeProtocol.Core.MethodName("Network.webSocketHandshakeResponseReceived")]
     public record WebSocketHandshakeResponseReceived(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("response")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("response")]
       ChromeProtocol.Domains.Network.WebSocketResponseType Response
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1485,13 +1485,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Request">WebSocket request data.</param>
     [ChromeProtocol.Core.MethodName("Network.webSocketWillSendHandshakeRequest")]
     public record WebSocketWillSendHandshakeRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("wallTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("wallTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType WallTime,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Network.WebSocketRequestType Request
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1503,13 +1503,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Initiator">Request initiator.</param>
     [ChromeProtocol.Core.MethodName("Network.webTransportCreated")]
     public record WebTransportCreated(
-      [property: Newtonsoft.Json.JsonProperty("transportId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("transportId")]
       ChromeProtocol.Domains.Network.RequestIdType TransportId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("initiator")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initiator")]
       ChromeProtocol.Domains.Network.InitiatorType? Initiator = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1519,9 +1519,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Timestamp">Timestamp.</param>
     [ChromeProtocol.Core.MethodName("Network.webTransportConnectionEstablished")]
     public record WebTransportConnectionEstablished(
-      [property: Newtonsoft.Json.JsonProperty("transportId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("transportId")]
       ChromeProtocol.Domains.Network.RequestIdType TransportId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1531,9 +1531,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Timestamp">Timestamp.</param>
     [ChromeProtocol.Core.MethodName("Network.webTransportClosed")]
     public record WebTransportClosed(
-      [property: Newtonsoft.Json.JsonProperty("transportId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("transportId")]
       ChromeProtocol.Domains.Network.RequestIdType TransportId,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.MonotonicTimeType Timestamp
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1555,17 +1555,17 @@ namespace ChromeProtocol.Domains
     /// <param name="SiteHasCookieInOtherPartition">Whether the site has partitioned cookies stored in a partition different than the current one.</param>
     [ChromeProtocol.Core.MethodName("Network.requestWillBeSentExtraInfo")]
     public record RequestWillBeSentExtraInfo(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("associatedCookies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("associatedCookies")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.AssociatedCookieType> AssociatedCookies,
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       ChromeProtocol.Domains.Network.HeadersType Headers,
-      [property: Newtonsoft.Json.JsonProperty("connectTiming")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("connectTiming")]
       ChromeProtocol.Domains.Network.ConnectTimingType ConnectTiming,
-      [property: Newtonsoft.Json.JsonProperty("clientSecurityState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clientSecurityState")]
       ChromeProtocol.Domains.Network.ClientSecurityStateType? ClientSecurityState = default,
-      [property: Newtonsoft.Json.JsonProperty("siteHasCookieInOtherPartition")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("siteHasCookieInOtherPartition")]
       bool? SiteHasCookieInOtherPartition = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1606,23 +1606,23 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Network.responseReceivedExtraInfo")]
     public record ResponseReceivedExtraInfo(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("blockedCookies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("blockedCookies")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.BlockedSetCookieWithReasonType> BlockedCookies,
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       ChromeProtocol.Domains.Network.HeadersType Headers,
-      [property: Newtonsoft.Json.JsonProperty("resourceIPAddressSpace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resourceIPAddressSpace")]
       ChromeProtocol.Domains.Network.IPAddressSpaceType ResourceIPAddressSpace,
-      [property: Newtonsoft.Json.JsonProperty("statusCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("statusCode")]
       int StatusCode,
-      [property: Newtonsoft.Json.JsonProperty("headersText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headersText")]
       string? HeadersText = default,
-      [property: Newtonsoft.Json.JsonProperty("cookiePartitionKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookiePartitionKey")]
       string? CookiePartitionKey = default,
-      [property: Newtonsoft.Json.JsonProperty("cookiePartitionKeyOpaque")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookiePartitionKeyOpaque")]
       bool? CookiePartitionKeyOpaque = default,
-      [property: Newtonsoft.Json.JsonProperty("exemptedCookies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exemptedCookies")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.ExemptedSetCookieWithReasonType>? ExemptedCookies = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1644,17 +1644,17 @@ namespace ChromeProtocol.Domains
     /// <param name="IssuedTokenCount">The number of obtained Trust Tokens on a successful &quot;Issuance&quot; operation.</param>
     [ChromeProtocol.Core.MethodName("Network.trustTokenOperationDone")]
     public record TrustTokenOperationDone(
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       string Status,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Network.TrustTokenOperationTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("topLevelOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("topLevelOrigin")]
       string? TopLevelOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("issuerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issuerOrigin")]
       string? IssuerOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("issuedTokenCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issuedTokenCount")]
       int? IssuedTokenCount = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1667,9 +1667,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Urls">A list of URLs of resources in the subresource Web Bundle.</param>
     [ChromeProtocol.Core.MethodName("Network.subresourceWebBundleMetadataReceived")]
     public record SubresourceWebBundleMetadataReceived(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("urls")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("urls")]
       System.Collections.Generic.IReadOnlyList<string> Urls
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1679,9 +1679,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ErrorMessage">Error message</param>
     [ChromeProtocol.Core.MethodName("Network.subresourceWebBundleMetadataError")]
     public record SubresourceWebBundleMetadataError(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("errorMessage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorMessage")]
       string ErrorMessage
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1699,11 +1699,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Network.subresourceWebBundleInnerResponseParsed")]
     public record SubresourceWebBundleInnerResponseParsed(
-      [property: Newtonsoft.Json.JsonProperty("innerRequestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("innerRequestId")]
       ChromeProtocol.Domains.Network.RequestIdType InnerRequestId,
-      [property: Newtonsoft.Json.JsonProperty("innerRequestURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("innerRequestURL")]
       string InnerRequestURL,
-      [property: Newtonsoft.Json.JsonProperty("bundleRequestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bundleRequestId")]
       ChromeProtocol.Domains.Network.RequestIdType? BundleRequestId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1719,13 +1719,13 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Network.subresourceWebBundleInnerResponseError")]
     public record SubresourceWebBundleInnerResponseError(
-      [property: Newtonsoft.Json.JsonProperty("innerRequestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("innerRequestId")]
       ChromeProtocol.Domains.Network.RequestIdType InnerRequestId,
-      [property: Newtonsoft.Json.JsonProperty("innerRequestURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("innerRequestURL")]
       string InnerRequestURL,
-      [property: Newtonsoft.Json.JsonProperty("errorMessage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorMessage")]
       string ErrorMessage,
-      [property: Newtonsoft.Json.JsonProperty("bundleRequestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bundleRequestId")]
       ChromeProtocol.Domains.Network.RequestIdType? BundleRequestId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1736,14 +1736,14 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Network.reportingApiReportAdded")]
     public record ReportingApiReportAdded(
-      [property: Newtonsoft.Json.JsonProperty("report")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("report")]
       ChromeProtocol.Domains.Network.ReportingApiReportType Report
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("Network.reportingApiReportUpdated")]
     public record ReportingApiReportUpdated(
-      [property: Newtonsoft.Json.JsonProperty("report")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("report")]
       ChromeProtocol.Domains.Network.ReportingApiReportType Report
     ) : ChromeProtocol.Core.IEvent
     {
@@ -1751,16 +1751,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Origin">Origin of the document(s) which configured the endpoints.</param>
     [ChromeProtocol.Core.MethodName("Network.reportingApiEndpointsChangedForOrigin")]
     public record ReportingApiEndpointsChangedForOrigin(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("endpoints")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endpoints")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.ReportingApiEndpointType> Endpoints
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.</summary>
     /// <param name="Encodings">List of accepted content encodings.</param>
-    public static ChromeProtocol.Domains.Network.SetAcceptedEncodingsRequest SetAcceptedEncodings(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.ContentEncodingType> Encodings)    
+    public static ChromeProtocol.Domains.Network.SetAcceptedEncodingsRequest SetAcceptedEncodings(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.ContentEncodingType> Encodings)
     {
       return new ChromeProtocol.Domains.Network.SetAcceptedEncodingsRequest(Encodings);
     }
@@ -1768,7 +1768,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Encodings">List of accepted content encodings.</param>
     [ChromeProtocol.Core.MethodName("Network.setAcceptedEncodings")]
     public record SetAcceptedEncodingsRequest(
-      [property: Newtonsoft.Json.JsonProperty("encodings")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("encodings")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.ContentEncodingType> Encodings
     ) : ChromeProtocol.Core.ICommand<SetAcceptedEncodingsRequestResult>
     {
@@ -1777,7 +1777,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears accepted encodings set by setAcceptedEncodings</summary>
-    public static ChromeProtocol.Domains.Network.ClearAcceptedEncodingsOverrideRequest ClearAcceptedEncodingsOverride()    
+    public static ChromeProtocol.Domains.Network.ClearAcceptedEncodingsOverrideRequest ClearAcceptedEncodingsOverride()
     {
       return new ChromeProtocol.Domains.Network.ClearAcceptedEncodingsOverrideRequest();
     }
@@ -1791,7 +1791,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Tells whether clearing browser cache is supported.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.CanClearBrowserCacheRequest CanClearBrowserCache()    
+    public static ChromeProtocol.Domains.Network.CanClearBrowserCacheRequest CanClearBrowserCache()
     {
       return new ChromeProtocol.Domains.Network.CanClearBrowserCacheRequest();
     }
@@ -1804,14 +1804,14 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">True if browser cache can be cleared.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record CanClearBrowserCacheRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       bool Result
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Tells whether clearing browser cookies is supported.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.CanClearBrowserCookiesRequest CanClearBrowserCookies()    
+    public static ChromeProtocol.Domains.Network.CanClearBrowserCookiesRequest CanClearBrowserCookies()
     {
       return new ChromeProtocol.Domains.Network.CanClearBrowserCookiesRequest();
     }
@@ -1824,14 +1824,14 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">True if browser cookies can be cleared.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record CanClearBrowserCookiesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       bool Result
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Tells whether emulation of network conditions is supported.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.CanEmulateNetworkConditionsRequest CanEmulateNetworkConditions()    
+    public static ChromeProtocol.Domains.Network.CanEmulateNetworkConditionsRequest CanEmulateNetworkConditions()
     {
       return new ChromeProtocol.Domains.Network.CanEmulateNetworkConditionsRequest();
     }
@@ -1844,13 +1844,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">True if emulation of network conditions is supported.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record CanEmulateNetworkConditionsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       bool Result
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Clears browser cache.</summary>
-    public static ChromeProtocol.Domains.Network.ClearBrowserCacheRequest ClearBrowserCache()    
+    public static ChromeProtocol.Domains.Network.ClearBrowserCacheRequest ClearBrowserCache()
     {
       return new ChromeProtocol.Domains.Network.ClearBrowserCacheRequest();
     }
@@ -1863,7 +1863,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears browser cookies.</summary>
-    public static ChromeProtocol.Domains.Network.ClearBrowserCookiesRequest ClearBrowserCookies()    
+    public static ChromeProtocol.Domains.Network.ClearBrowserCookiesRequest ClearBrowserCookies()
     {
       return new ChromeProtocol.Domains.Network.ClearBrowserCookiesRequest();
     }
@@ -1906,7 +1906,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="AuthChallengeResponse">Response to a requestIntercepted with an authChallenge. Must not be set otherwise.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.ContinueInterceptedRequestRequest ContinueInterceptedRequest(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId, ChromeProtocol.Domains.Network.ErrorReasonType? ErrorReason = default, string? RawResponse = default, string? Url = default, string? Method = default, string? PostData = default, ChromeProtocol.Domains.Network.HeadersType? Headers = default, ChromeProtocol.Domains.Network.AuthChallengeResponseType? AuthChallengeResponse = default)    
+    public static ChromeProtocol.Domains.Network.ContinueInterceptedRequestRequest ContinueInterceptedRequest(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId, ChromeProtocol.Domains.Network.ErrorReasonType? ErrorReason = default, string? RawResponse = default, string? Url = default, string? Method = default, string? PostData = default, ChromeProtocol.Domains.Network.HeadersType? Headers = default, ChromeProtocol.Domains.Network.AuthChallengeResponseType? AuthChallengeResponse = default)
     {
       return new ChromeProtocol.Domains.Network.ContinueInterceptedRequestRequest(InterceptionId, ErrorReason, RawResponse, Url, Method, PostData, Headers, AuthChallengeResponse);
     }
@@ -1943,21 +1943,21 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Network.continueInterceptedRequest")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record ContinueInterceptedRequestRequest(
-      [property: Newtonsoft.Json.JsonProperty("interceptionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("interceptionId")]
       ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId,
-      [property: Newtonsoft.Json.JsonProperty("errorReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorReason")]
       ChromeProtocol.Domains.Network.ErrorReasonType? ErrorReason = default,
-      [property: Newtonsoft.Json.JsonProperty("rawResponse")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rawResponse")]
       string? RawResponse = default,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("method")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("method")]
       string? Method = default,
-      [property: Newtonsoft.Json.JsonProperty("postData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("postData")]
       string? PostData = default,
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       ChromeProtocol.Domains.Network.HeadersType? Headers = default,
-      [property: Newtonsoft.Json.JsonProperty("authChallengeResponse")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authChallengeResponse")]
       ChromeProtocol.Domains.Network.AuthChallengeResponseType? AuthChallengeResponse = default
     ) : ChromeProtocol.Core.ICommand<ContinueInterceptedRequestRequestResult>
     {
@@ -1978,7 +1978,7 @@ namespace ChromeProtocol.Domains
     /// If specified, deletes only cookies with the the given name and partitionKey where domain<br/>
     /// matches provided URL.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Network.DeleteCookiesRequest DeleteCookies(string Name, string? Url = default, string? Domain = default, string? Path = default, string? PartitionKey = default)    
+    public static ChromeProtocol.Domains.Network.DeleteCookiesRequest DeleteCookies(string Name, string? Url = default, string? Domain = default, string? Path = default, string? PartitionKey = default)
     {
       return new ChromeProtocol.Domains.Network.DeleteCookiesRequest(Name, Url, Domain, Path, PartitionKey);
     }
@@ -1996,15 +1996,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Network.deleteCookies")]
     public record DeleteCookiesRequest(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("domain")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domain")]
       string? Domain = default,
-      [property: Newtonsoft.Json.JsonProperty("path")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("path")]
       string? Path = default,
-      [property: Newtonsoft.Json.JsonProperty("partitionKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("partitionKey")]
       string? PartitionKey = default
     ) : ChromeProtocol.Core.ICommand<DeleteCookiesRequestResult>
     {
@@ -2013,7 +2013,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables network tracking, prevents network events from being sent to the client.</summary>
-    public static ChromeProtocol.Domains.Network.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Network.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Network.DisableRequest();
     }
@@ -2031,7 +2031,7 @@ namespace ChromeProtocol.Domains
     /// <param name="DownloadThroughput">Maximal aggregated download throughput (bytes/sec). -1 disables download throttling.</param>
     /// <param name="UploadThroughput">Maximal aggregated upload throughput (bytes/sec).  -1 disables upload throttling.</param>
     /// <param name="ConnectionType">Connection type if known.</param>
-    public static ChromeProtocol.Domains.Network.EmulateNetworkConditionsRequest EmulateNetworkConditions(bool Offline, double Latency, double DownloadThroughput, double UploadThroughput, ChromeProtocol.Domains.Network.ConnectionTypeType? ConnectionType = default)    
+    public static ChromeProtocol.Domains.Network.EmulateNetworkConditionsRequest EmulateNetworkConditions(bool Offline, double Latency, double DownloadThroughput, double UploadThroughput, ChromeProtocol.Domains.Network.ConnectionTypeType? ConnectionType = default)
     {
       return new ChromeProtocol.Domains.Network.EmulateNetworkConditionsRequest(Offline, Latency, DownloadThroughput, UploadThroughput, ConnectionType);
     }
@@ -2043,15 +2043,15 @@ namespace ChromeProtocol.Domains
     /// <param name="ConnectionType">Connection type if known.</param>
     [ChromeProtocol.Core.MethodName("Network.emulateNetworkConditions")]
     public record EmulateNetworkConditionsRequest(
-      [property: Newtonsoft.Json.JsonProperty("offline")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offline")]
       bool Offline,
-      [property: Newtonsoft.Json.JsonProperty("latency")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("latency")]
       double Latency,
-      [property: Newtonsoft.Json.JsonProperty("downloadThroughput")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("downloadThroughput")]
       double DownloadThroughput,
-      [property: Newtonsoft.Json.JsonProperty("uploadThroughput")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("uploadThroughput")]
       double UploadThroughput,
-      [property: Newtonsoft.Json.JsonProperty("connectionType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("connectionType")]
       ChromeProtocol.Domains.Network.ConnectionTypeType? ConnectionType = default
     ) : ChromeProtocol.Core.ICommand<EmulateNetworkConditionsRequestResult>
     {
@@ -2063,7 +2063,7 @@ namespace ChromeProtocol.Domains
     /// <param name="MaxTotalBufferSize">Buffer size in bytes to use when preserving network payloads (XHRs, etc).</param>
     /// <param name="MaxResourceBufferSize">Per-resource buffer size in bytes to use when preserving network payloads (XHRs, etc).</param>
     /// <param name="MaxPostDataSize">Longest post body size (in bytes) that would be included in requestWillBeSent notification</param>
-    public static ChromeProtocol.Domains.Network.EnableRequest Enable(int? MaxTotalBufferSize = default, int? MaxResourceBufferSize = default, int? MaxPostDataSize = default)    
+    public static ChromeProtocol.Domains.Network.EnableRequest Enable(int? MaxTotalBufferSize = default, int? MaxResourceBufferSize = default, int? MaxPostDataSize = default)
     {
       return new ChromeProtocol.Domains.Network.EnableRequest(MaxTotalBufferSize, MaxResourceBufferSize, MaxPostDataSize);
     }
@@ -2073,11 +2073,11 @@ namespace ChromeProtocol.Domains
     /// <param name="MaxPostDataSize">Longest post body size (in bytes) that would be included in requestWillBeSent notification</param>
     [ChromeProtocol.Core.MethodName("Network.enable")]
     public record EnableRequest(
-      [property: Newtonsoft.Json.JsonProperty("maxTotalBufferSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxTotalBufferSize")]
       int? MaxTotalBufferSize = default,
-      [property: Newtonsoft.Json.JsonProperty("maxResourceBufferSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxResourceBufferSize")]
       int? MaxResourceBufferSize = default,
-      [property: Newtonsoft.Json.JsonProperty("maxPostDataSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxPostDataSize")]
       int? MaxPostDataSize = default
     ) : ChromeProtocol.Core.ICommand<EnableRequestResult>
     {
@@ -2091,7 +2091,7 @@ namespace ChromeProtocol.Domains
     /// Deprecated. Use Storage.getCookies instead.<br/>
     /// </summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.GetAllCookiesRequest GetAllCookies()    
+    public static ChromeProtocol.Domains.Network.GetAllCookiesRequest GetAllCookies()
     {
       return new ChromeProtocol.Domains.Network.GetAllCookiesRequest();
     }
@@ -2108,14 +2108,14 @@ namespace ChromeProtocol.Domains
     /// <param name="Cookies">Array of cookie objects.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record GetAllCookiesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("cookies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookies")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieType> Cookies
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns the DER-encoded certificate.</summary>
     /// <param name="Origin">Origin to get certificate for.</param>
-    public static ChromeProtocol.Domains.Network.GetCertificateRequest GetCertificate(string Origin)    
+    public static ChromeProtocol.Domains.Network.GetCertificateRequest GetCertificate(string Origin)
     {
       return new ChromeProtocol.Domains.Network.GetCertificateRequest(Origin);
     }
@@ -2123,13 +2123,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Origin">Origin to get certificate for.</param>
     [ChromeProtocol.Core.MethodName("Network.getCertificate")]
     public record GetCertificateRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin
     ) : ChromeProtocol.Core.ICommand<GetCertificateRequestResult>
     {
     }
     public record GetCertificateRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("tableNames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tableNames")]
       System.Collections.Generic.IReadOnlyList<string> TableNames
     ) : ChromeProtocol.Core.IType
     {
@@ -2143,7 +2143,7 @@ namespace ChromeProtocol.Domains
     /// If not specified, it&#39;s assumed to be set to the list containing<br/>
     /// the URLs of the page and all of its subframes.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Network.GetCookiesRequest GetCookies(System.Collections.Generic.IReadOnlyList<string>? Urls = default)    
+    public static ChromeProtocol.Domains.Network.GetCookiesRequest GetCookies(System.Collections.Generic.IReadOnlyList<string>? Urls = default)
     {
       return new ChromeProtocol.Domains.Network.GetCookiesRequest(Urls);
     }
@@ -2158,21 +2158,21 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Network.getCookies")]
     public record GetCookiesRequest(
-      [property: Newtonsoft.Json.JsonProperty("urls")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("urls")]
       System.Collections.Generic.IReadOnlyList<string>? Urls = default
     ) : ChromeProtocol.Core.ICommand<GetCookiesRequestResult>
     {
     }
     /// <param name="Cookies">Array of cookie objects.</param>
     public record GetCookiesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("cookies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookies")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieType> Cookies
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns content served for the given request.</summary>
     /// <param name="RequestId">Identifier of the network request to get content for.</param>
-    public static ChromeProtocol.Domains.Network.GetResponseBodyRequest GetResponseBody(ChromeProtocol.Domains.Network.RequestIdType RequestId)    
+    public static ChromeProtocol.Domains.Network.GetResponseBodyRequest GetResponseBody(ChromeProtocol.Domains.Network.RequestIdType RequestId)
     {
       return new ChromeProtocol.Domains.Network.GetResponseBodyRequest(RequestId);
     }
@@ -2180,7 +2180,7 @@ namespace ChromeProtocol.Domains
     /// <param name="RequestId">Identifier of the network request to get content for.</param>
     [ChromeProtocol.Core.MethodName("Network.getResponseBody")]
     public record GetResponseBodyRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId
     ) : ChromeProtocol.Core.ICommand<GetResponseBodyRequestResult>
     {
@@ -2188,16 +2188,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Body">Response body.</param>
     /// <param name="Base64Encoded">True, if content was sent as base64.</param>
     public record GetResponseBodyRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("body")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("body")]
       string Body,
-      [property: Newtonsoft.Json.JsonProperty("base64Encoded")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("base64Encoded")]
       bool Base64Encoded
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns post data sent with the request. Returns an error when no data was sent with the request.</summary>
     /// <param name="RequestId">Identifier of the network request to get content for.</param>
-    public static ChromeProtocol.Domains.Network.GetRequestPostDataRequest GetRequestPostData(ChromeProtocol.Domains.Network.RequestIdType RequestId)    
+    public static ChromeProtocol.Domains.Network.GetRequestPostDataRequest GetRequestPostData(ChromeProtocol.Domains.Network.RequestIdType RequestId)
     {
       return new ChromeProtocol.Domains.Network.GetRequestPostDataRequest(RequestId);
     }
@@ -2205,21 +2205,21 @@ namespace ChromeProtocol.Domains
     /// <param name="RequestId">Identifier of the network request to get content for.</param>
     [ChromeProtocol.Core.MethodName("Network.getRequestPostData")]
     public record GetRequestPostDataRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId
     ) : ChromeProtocol.Core.ICommand<GetRequestPostDataRequestResult>
     {
     }
     /// <param name="PostData">Request body string, omitting files from multipart requests</param>
     public record GetRequestPostDataRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("postData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("postData")]
       string PostData
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns content served for the given currently intercepted request.</summary>
     /// <param name="InterceptionId">Identifier for the intercepted request to get body for.</param>
-    public static ChromeProtocol.Domains.Network.GetResponseBodyForInterceptionRequest GetResponseBodyForInterception(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId)    
+    public static ChromeProtocol.Domains.Network.GetResponseBodyForInterceptionRequest GetResponseBodyForInterception(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId)
     {
       return new ChromeProtocol.Domains.Network.GetResponseBodyForInterceptionRequest(InterceptionId);
     }
@@ -2227,7 +2227,7 @@ namespace ChromeProtocol.Domains
     /// <param name="InterceptionId">Identifier for the intercepted request to get body for.</param>
     [ChromeProtocol.Core.MethodName("Network.getResponseBodyForInterception")]
     public record GetResponseBodyForInterceptionRequest(
-      [property: Newtonsoft.Json.JsonProperty("interceptionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("interceptionId")]
       ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId
     ) : ChromeProtocol.Core.ICommand<GetResponseBodyForInterceptionRequestResult>
     {
@@ -2235,9 +2235,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Body">Response body.</param>
     /// <param name="Base64Encoded">True, if content was sent as base64.</param>
     public record GetResponseBodyForInterceptionRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("body")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("body")]
       string Body,
-      [property: Newtonsoft.Json.JsonProperty("base64Encoded")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("base64Encoded")]
       bool Base64Encoded
     ) : ChromeProtocol.Core.IType
     {
@@ -2248,7 +2248,7 @@ namespace ChromeProtocol.Domains
     /// the response body. The stream only supports sequential read, IO.read will fail if the position<br/>
     /// is specified.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Network.TakeResponseBodyForInterceptionAsStreamRequest TakeResponseBodyForInterceptionAsStream(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId)    
+    public static ChromeProtocol.Domains.Network.TakeResponseBodyForInterceptionAsStreamRequest TakeResponseBodyForInterceptionAsStream(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId)
     {
       return new ChromeProtocol.Domains.Network.TakeResponseBodyForInterceptionAsStreamRequest(InterceptionId);
     }
@@ -2260,13 +2260,13 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Network.takeResponseBodyForInterceptionAsStream")]
     public record TakeResponseBodyForInterceptionAsStreamRequest(
-      [property: Newtonsoft.Json.JsonProperty("interceptionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("interceptionId")]
       ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId
     ) : ChromeProtocol.Core.ICommand<TakeResponseBodyForInterceptionAsStreamRequestResult>
     {
     }
     public record TakeResponseBodyForInterceptionAsStreamRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("stream")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stream")]
       ChromeProtocol.Domains.IO.StreamHandleType Stream
     ) : ChromeProtocol.Core.IType
     {
@@ -2277,7 +2277,7 @@ namespace ChromeProtocol.Domains
     /// attribute, user, password.<br/>
     /// </summary>
     /// <param name="RequestId">Identifier of XHR to replay.</param>
-    public static ChromeProtocol.Domains.Network.ReplayXHRRequest ReplayXHR(ChromeProtocol.Domains.Network.RequestIdType RequestId)    
+    public static ChromeProtocol.Domains.Network.ReplayXHRRequest ReplayXHR(ChromeProtocol.Domains.Network.RequestIdType RequestId)
     {
       return new ChromeProtocol.Domains.Network.ReplayXHRRequest(RequestId);
     }
@@ -2289,7 +2289,7 @@ namespace ChromeProtocol.Domains
     /// <param name="RequestId">Identifier of XHR to replay.</param>
     [ChromeProtocol.Core.MethodName("Network.replayXHR")]
     public record ReplayXHRRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId
     ) : ChromeProtocol.Core.ICommand<ReplayXHRRequestResult>
     {
@@ -2302,7 +2302,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Query">String to search for.</param>
     /// <param name="CaseSensitive">If true, search is case sensitive.</param>
     /// <param name="IsRegex">If true, treats string parameter as regex.</param>
-    public static ChromeProtocol.Domains.Network.SearchInResponseBodyRequest SearchInResponseBody(ChromeProtocol.Domains.Network.RequestIdType RequestId, string Query, bool? CaseSensitive = default, bool? IsRegex = default)    
+    public static ChromeProtocol.Domains.Network.SearchInResponseBodyRequest SearchInResponseBody(ChromeProtocol.Domains.Network.RequestIdType RequestId, string Query, bool? CaseSensitive = default, bool? IsRegex = default)
     {
       return new ChromeProtocol.Domains.Network.SearchInResponseBodyRequest(RequestId, Query, CaseSensitive, IsRegex);
     }
@@ -2313,27 +2313,27 @@ namespace ChromeProtocol.Domains
     /// <param name="IsRegex">If true, treats string parameter as regex.</param>
     [ChromeProtocol.Core.MethodName("Network.searchInResponseBody")]
     public record SearchInResponseBodyRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("query")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("query")]
       string Query,
-      [property: Newtonsoft.Json.JsonProperty("caseSensitive")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("caseSensitive")]
       bool? CaseSensitive = default,
-      [property: Newtonsoft.Json.JsonProperty("isRegex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isRegex")]
       bool? IsRegex = default
     ) : ChromeProtocol.Core.ICommand<SearchInResponseBodyRequestResult>
     {
     }
     /// <param name="Result">List of search matches.</param>
     public record SearchInResponseBodyRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.SearchMatchType> Result
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Blocks URLs from loading.</summary>
     /// <param name="Urls">URL patterns to block. Wildcards (&#39;*&#39;) are allowed.</param>
-    public static ChromeProtocol.Domains.Network.SetBlockedURLsRequest SetBlockedURLs(System.Collections.Generic.IReadOnlyList<string> Urls)    
+    public static ChromeProtocol.Domains.Network.SetBlockedURLsRequest SetBlockedURLs(System.Collections.Generic.IReadOnlyList<string> Urls)
     {
       return new ChromeProtocol.Domains.Network.SetBlockedURLsRequest(Urls);
     }
@@ -2341,7 +2341,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Urls">URL patterns to block. Wildcards (&#39;*&#39;) are allowed.</param>
     [ChromeProtocol.Core.MethodName("Network.setBlockedURLs")]
     public record SetBlockedURLsRequest(
-      [property: Newtonsoft.Json.JsonProperty("urls")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("urls")]
       System.Collections.Generic.IReadOnlyList<string> Urls
     ) : ChromeProtocol.Core.ICommand<SetBlockedURLsRequestResult>
     {
@@ -2351,7 +2351,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Toggles ignoring of service worker for each request.</summary>
     /// <param name="Bypass">Bypass service worker and load from network.</param>
-    public static ChromeProtocol.Domains.Network.SetBypassServiceWorkerRequest SetBypassServiceWorker(bool Bypass)    
+    public static ChromeProtocol.Domains.Network.SetBypassServiceWorkerRequest SetBypassServiceWorker(bool Bypass)
     {
       return new ChromeProtocol.Domains.Network.SetBypassServiceWorkerRequest(Bypass);
     }
@@ -2359,7 +2359,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Bypass">Bypass service worker and load from network.</param>
     [ChromeProtocol.Core.MethodName("Network.setBypassServiceWorker")]
     public record SetBypassServiceWorkerRequest(
-      [property: Newtonsoft.Json.JsonProperty("bypass")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bypass")]
       bool Bypass
     ) : ChromeProtocol.Core.ICommand<SetBypassServiceWorkerRequestResult>
     {
@@ -2369,7 +2369,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Toggles ignoring cache for each request. If `true`, cache will not be used.</summary>
     /// <param name="CacheDisabled">Cache disabled state.</param>
-    public static ChromeProtocol.Domains.Network.SetCacheDisabledRequest SetCacheDisabled(bool CacheDisabled)    
+    public static ChromeProtocol.Domains.Network.SetCacheDisabledRequest SetCacheDisabled(bool CacheDisabled)
     {
       return new ChromeProtocol.Domains.Network.SetCacheDisabledRequest(CacheDisabled);
     }
@@ -2377,7 +2377,7 @@ namespace ChromeProtocol.Domains
     /// <param name="CacheDisabled">Cache disabled state.</param>
     [ChromeProtocol.Core.MethodName("Network.setCacheDisabled")]
     public record SetCacheDisabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("cacheDisabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cacheDisabled")]
       bool CacheDisabled
     ) : ChromeProtocol.Core.ICommand<SetCacheDisabledRequestResult>
     {
@@ -2411,7 +2411,7 @@ namespace ChromeProtocol.Domains
     /// of the request to the endpoint that set the cookie.<br/>
     /// If not set, the cookie will be set as not partitioned.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Network.SetCookieRequest SetCookie(string Name, string Value, string? Url = default, string? Domain = default, string? Path = default, bool? Secure = default, bool? HttpOnly = default, ChromeProtocol.Domains.Network.CookieSameSiteType? SameSite = default, ChromeProtocol.Domains.Network.TimeSinceEpochType? Expires = default, ChromeProtocol.Domains.Network.CookiePriorityType? Priority = default, bool? SameParty = default, ChromeProtocol.Domains.Network.CookieSourceSchemeType? SourceScheme = default, int? SourcePort = default, string? PartitionKey = default)    
+    public static ChromeProtocol.Domains.Network.SetCookieRequest SetCookie(string Name, string Value, string? Url = default, string? Domain = default, string? Path = default, bool? Secure = default, bool? HttpOnly = default, ChromeProtocol.Domains.Network.CookieSameSiteType? SameSite = default, ChromeProtocol.Domains.Network.TimeSinceEpochType? Expires = default, ChromeProtocol.Domains.Network.CookiePriorityType? Priority = default, bool? SameParty = default, ChromeProtocol.Domains.Network.CookieSourceSchemeType? SourceScheme = default, int? SourcePort = default, string? PartitionKey = default)
     {
       return new ChromeProtocol.Domains.Network.SetCookieRequest(Name, Value, Url, Domain, Path, Secure, HttpOnly, SameSite, Expires, Priority, SameParty, SourceScheme, SourcePort, PartitionKey);
     }
@@ -2443,33 +2443,33 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Network.setCookie")]
     public record SetCookieRequest(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("domain")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domain")]
       string? Domain = default,
-      [property: Newtonsoft.Json.JsonProperty("path")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("path")]
       string? Path = default,
-      [property: Newtonsoft.Json.JsonProperty("secure")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("secure")]
       bool? Secure = default,
-      [property: Newtonsoft.Json.JsonProperty("httpOnly")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("httpOnly")]
       bool? HttpOnly = default,
-      [property: Newtonsoft.Json.JsonProperty("sameSite")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sameSite")]
       ChromeProtocol.Domains.Network.CookieSameSiteType? SameSite = default,
-      [property: Newtonsoft.Json.JsonProperty("expires")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expires")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType? Expires = default,
-      [property: Newtonsoft.Json.JsonProperty("priority")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("priority")]
       ChromeProtocol.Domains.Network.CookiePriorityType? Priority = default,
-      [property: Newtonsoft.Json.JsonProperty("sameParty")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sameParty")]
       bool? SameParty = default,
-      [property: Newtonsoft.Json.JsonProperty("sourceScheme")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceScheme")]
       ChromeProtocol.Domains.Network.CookieSourceSchemeType? SourceScheme = default,
-      [property: Newtonsoft.Json.JsonProperty("sourcePort")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourcePort")]
       int? SourcePort = default,
-      [property: Newtonsoft.Json.JsonProperty("partitionKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("partitionKey")]
       string? PartitionKey = default
     ) : ChromeProtocol.Core.ICommand<SetCookieRequestResult>
     {
@@ -2477,14 +2477,14 @@ namespace ChromeProtocol.Domains
     /// <param name="Success">Always set to true. If an error occurs, the response indicates protocol error.</param>
     public record SetCookieRequestResult(
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("success")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("success")]
       bool Success
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Sets given cookies.</summary>
     /// <param name="Cookies">Cookies to be set.</param>
-    public static ChromeProtocol.Domains.Network.SetCookiesRequest SetCookies(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieParamType> Cookies)    
+    public static ChromeProtocol.Domains.Network.SetCookiesRequest SetCookies(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieParamType> Cookies)
     {
       return new ChromeProtocol.Domains.Network.SetCookiesRequest(Cookies);
     }
@@ -2492,7 +2492,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Cookies">Cookies to be set.</param>
     [ChromeProtocol.Core.MethodName("Network.setCookies")]
     public record SetCookiesRequest(
-      [property: Newtonsoft.Json.JsonProperty("cookies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookies")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieParamType> Cookies
     ) : ChromeProtocol.Core.ICommand<SetCookiesRequestResult>
     {
@@ -2502,7 +2502,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Specifies whether to always send extra HTTP headers with the requests from this page.</summary>
     /// <param name="Headers">Map with extra HTTP headers.</param>
-    public static ChromeProtocol.Domains.Network.SetExtraHTTPHeadersRequest SetExtraHTTPHeaders(ChromeProtocol.Domains.Network.HeadersType Headers)    
+    public static ChromeProtocol.Domains.Network.SetExtraHTTPHeadersRequest SetExtraHTTPHeaders(ChromeProtocol.Domains.Network.HeadersType Headers)
     {
       return new ChromeProtocol.Domains.Network.SetExtraHTTPHeadersRequest(Headers);
     }
@@ -2510,7 +2510,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Headers">Map with extra HTTP headers.</param>
     [ChromeProtocol.Core.MethodName("Network.setExtraHTTPHeaders")]
     public record SetExtraHTTPHeadersRequest(
-      [property: Newtonsoft.Json.JsonProperty("headers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
       ChromeProtocol.Domains.Network.HeadersType Headers
     ) : ChromeProtocol.Core.ICommand<SetExtraHTTPHeadersRequestResult>
     {
@@ -2520,7 +2520,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Specifies whether to attach a page script stack id in requests</summary>
     /// <param name="Enabled">Whether to attach a page script stack for debugging purpose.</param>
-    public static ChromeProtocol.Domains.Network.SetAttachDebugStackRequest SetAttachDebugStack(bool Enabled)    
+    public static ChromeProtocol.Domains.Network.SetAttachDebugStackRequest SetAttachDebugStack(bool Enabled)
     {
       return new ChromeProtocol.Domains.Network.SetAttachDebugStackRequest(Enabled);
     }
@@ -2528,7 +2528,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enabled">Whether to attach a page script stack for debugging purpose.</param>
     [ChromeProtocol.Core.MethodName("Network.setAttachDebugStack")]
     public record SetAttachDebugStackRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetAttachDebugStackRequestResult>
     {
@@ -2545,7 +2545,7 @@ namespace ChromeProtocol.Domains
     /// continueInterceptedRequest call.<br/>
     /// </param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.SetRequestInterceptionRequest SetRequestInterception(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.RequestPatternType> Patterns)    
+    public static ChromeProtocol.Domains.Network.SetRequestInterceptionRequest SetRequestInterception(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.RequestPatternType> Patterns)
     {
       return new ChromeProtocol.Domains.Network.SetRequestInterceptionRequest(Patterns);
     }
@@ -2560,7 +2560,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Network.setRequestInterception")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetRequestInterceptionRequest(
-      [property: Newtonsoft.Json.JsonProperty("patterns")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("patterns")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.RequestPatternType> Patterns
     ) : ChromeProtocol.Core.ICommand<SetRequestInterceptionRequestResult>
     {
@@ -2574,7 +2574,7 @@ namespace ChromeProtocol.Domains
     /// <param name="AcceptLanguage">Browser language to emulate.</param>
     /// <param name="Platform">The platform navigator.platform should return.</param>
     /// <param name="UserAgentMetadata">To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData</param>
-    public static ChromeProtocol.Domains.Network.SetUserAgentOverrideRequest SetUserAgentOverride(string UserAgent, string? AcceptLanguage = default, string? Platform = default, ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default)    
+    public static ChromeProtocol.Domains.Network.SetUserAgentOverrideRequest SetUserAgentOverride(string UserAgent, string? AcceptLanguage = default, string? Platform = default, ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default)
     {
       return new ChromeProtocol.Domains.Network.SetUserAgentOverrideRequest(UserAgent, AcceptLanguage, Platform, UserAgentMetadata);
     }
@@ -2585,13 +2585,13 @@ namespace ChromeProtocol.Domains
     /// <param name="UserAgentMetadata">To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData</param>
     [ChromeProtocol.Core.MethodName("Network.setUserAgentOverride")]
     public record SetUserAgentOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("userAgent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userAgent")]
       string UserAgent,
-      [property: Newtonsoft.Json.JsonProperty("acceptLanguage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("acceptLanguage")]
       string? AcceptLanguage = default,
-      [property: Newtonsoft.Json.JsonProperty("platform")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("platform")]
       string? Platform = default,
-      [property: Newtonsoft.Json.JsonProperty("userAgentMetadata")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userAgentMetadata")]
       ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default
     ) : ChromeProtocol.Core.ICommand<SetUserAgentOverrideRequestResult>
     {
@@ -2604,7 +2604,7 @@ namespace ChromeProtocol.Domains
     /// If enabled, the dataReceived event contains the data that was received during streaming.<br/>
     /// </summary>
     /// <param name="RequestId">Identifier of the request to stream.</param>
-    public static ChromeProtocol.Domains.Network.StreamResourceContentRequest StreamResourceContent(ChromeProtocol.Domains.Network.RequestIdType RequestId)    
+    public static ChromeProtocol.Domains.Network.StreamResourceContentRequest StreamResourceContent(ChromeProtocol.Domains.Network.RequestIdType RequestId)
     {
       return new ChromeProtocol.Domains.Network.StreamResourceContentRequest(RequestId);
     }
@@ -2615,21 +2615,21 @@ namespace ChromeProtocol.Domains
     /// <param name="RequestId">Identifier of the request to stream.</param>
     [ChromeProtocol.Core.MethodName("Network.streamResourceContent")]
     public record StreamResourceContentRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId
     ) : ChromeProtocol.Core.ICommand<StreamResourceContentRequestResult>
     {
     }
     /// <param name="BufferedData">Data that has been buffered until streaming is enabled. (Encoded as a base64 string when passed over JSON)</param>
     public record StreamResourceContentRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("bufferedData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bufferedData")]
       string BufferedData
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns information about the COEP/COOP isolation status.</summary>
     /// <param name="FrameId">If no frameId is provided, the status of the target is provided.</param>
-    public static ChromeProtocol.Domains.Network.GetSecurityIsolationStatusRequest GetSecurityIsolationStatus(ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)    
+    public static ChromeProtocol.Domains.Network.GetSecurityIsolationStatusRequest GetSecurityIsolationStatus(ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)
     {
       return new ChromeProtocol.Domains.Network.GetSecurityIsolationStatusRequest(FrameId);
     }
@@ -2637,13 +2637,13 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">If no frameId is provided, the status of the target is provided.</param>
     [ChromeProtocol.Core.MethodName("Network.getSecurityIsolationStatus")]
     public record GetSecurityIsolationStatusRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default
     ) : ChromeProtocol.Core.ICommand<GetSecurityIsolationStatusRequestResult>
     {
     }
     public record GetSecurityIsolationStatusRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       ChromeProtocol.Domains.Network.SecurityIsolationStatusType Status
     ) : ChromeProtocol.Core.IType
     {
@@ -2653,7 +2653,7 @@ namespace ChromeProtocol.Domains
     /// Enabling triggers &#39;reportingApiReportAdded&#39; for all existing reports.<br/>
     /// </summary>
     /// <param name="Enable">Whether to enable or disable events for the Reporting API</param>
-    public static ChromeProtocol.Domains.Network.EnableReportingApiRequest EnableReportingApi(bool Enable)    
+    public static ChromeProtocol.Domains.Network.EnableReportingApiRequest EnableReportingApi(bool Enable)
     {
       return new ChromeProtocol.Domains.Network.EnableReportingApiRequest(Enable);
     }
@@ -2664,7 +2664,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enable">Whether to enable or disable events for the Reporting API</param>
     [ChromeProtocol.Core.MethodName("Network.enableReportingApi")]
     public record EnableReportingApiRequest(
-      [property: Newtonsoft.Json.JsonProperty("enable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enable")]
       bool Enable
     ) : ChromeProtocol.Core.ICommand<EnableReportingApiRequestResult>
     {
@@ -2679,7 +2679,7 @@ namespace ChromeProtocol.Domains
     /// Frame id to get the resource for. Mandatory for frame targets, and<br/>
     /// should be omitted for worker targets.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Network.LoadNetworkResourceRequest LoadNetworkResource(string Url, ChromeProtocol.Domains.Network.LoadNetworkResourceOptionsType Options, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)    
+    public static ChromeProtocol.Domains.Network.LoadNetworkResourceRequest LoadNetworkResource(string Url, ChromeProtocol.Domains.Network.LoadNetworkResourceOptionsType Options, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)
     {
       return new ChromeProtocol.Domains.Network.LoadNetworkResourceRequest(Url, Options, FrameId);
     }
@@ -2692,17 +2692,17 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Network.loadNetworkResource")]
     public record LoadNetworkResourceRequest(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("options")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("options")]
       ChromeProtocol.Domains.Network.LoadNetworkResourceOptionsType Options,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default
     ) : ChromeProtocol.Core.ICommand<LoadNetworkResourceRequestResult>
     {
     }
     public record LoadNetworkResourceRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("resource")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resource")]
       ChromeProtocol.Domains.Network.LoadNetworkResourcePageResultType Resource
     ) : ChromeProtocol.Core.IType
     {

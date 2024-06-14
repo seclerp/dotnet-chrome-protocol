@@ -11,7 +11,7 @@ namespace ChromeProtocol.Domains
     /// Every Background Service operates independently, but they share the same<br/>
     /// API.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ServiceNameType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -19,9 +19,9 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>A key-value pair for additional event information to pass along.</summary>
     public record EventMetadataType(
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
@@ -35,21 +35,21 @@ namespace ChromeProtocol.Domains
     /// <param name="EventMetadata">A list of event-specific information.</param>
     /// <param name="StorageKey">Storage key this event belongs to.</param>
     public record BackgroundServiceEventType(
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("serviceWorkerRegistrationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("serviceWorkerRegistrationId")]
       ChromeProtocol.Domains.ServiceWorker.RegistrationIDType ServiceWorkerRegistrationId,
-      [property: Newtonsoft.Json.JsonProperty("service")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("service")]
       ChromeProtocol.Domains.BackgroundService.ServiceNameType Service,
-      [property: Newtonsoft.Json.JsonProperty("eventName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventName")]
       string EventName,
-      [property: Newtonsoft.Json.JsonProperty("instanceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("instanceId")]
       string InstanceId,
-      [property: Newtonsoft.Json.JsonProperty("eventMetadata")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventMetadata")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.BackgroundService.EventMetadataType> EventMetadata,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey
     ) : ChromeProtocol.Core.IType
     {
@@ -57,9 +57,9 @@ namespace ChromeProtocol.Domains
     /// <summary>Called when the recording state for the service has been updated.</summary>
     [ChromeProtocol.Core.MethodName("BackgroundService.recordingStateChanged")]
     public record RecordingStateChanged(
-      [property: Newtonsoft.Json.JsonProperty("isRecording")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isRecording")]
       bool IsRecording,
-      [property: Newtonsoft.Json.JsonProperty("service")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("service")]
       ChromeProtocol.Domains.BackgroundService.ServiceNameType Service
     ) : ChromeProtocol.Core.IEvent
     {
@@ -70,20 +70,20 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("BackgroundService.backgroundServiceEventReceived")]
     public record BackgroundServiceEventReceived(
-      [property: Newtonsoft.Json.JsonProperty("backgroundServiceEvent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backgroundServiceEvent")]
       ChromeProtocol.Domains.BackgroundService.BackgroundServiceEventType BackgroundServiceEvent
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Enables event updates for the service.</summary>
-    public static ChromeProtocol.Domains.BackgroundService.StartObservingRequest StartObserving(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)    
+    public static ChromeProtocol.Domains.BackgroundService.StartObservingRequest StartObserving(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)
     {
       return new ChromeProtocol.Domains.BackgroundService.StartObservingRequest(Service);
     }
     /// <summary>Enables event updates for the service.</summary>
     [ChromeProtocol.Core.MethodName("BackgroundService.startObserving")]
     public record StartObservingRequest(
-      [property: Newtonsoft.Json.JsonProperty("service")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("service")]
       ChromeProtocol.Domains.BackgroundService.ServiceNameType Service
     ) : ChromeProtocol.Core.ICommand<StartObservingRequestResult>
     {
@@ -92,14 +92,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables event updates for the service.</summary>
-    public static ChromeProtocol.Domains.BackgroundService.StopObservingRequest StopObserving(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)    
+    public static ChromeProtocol.Domains.BackgroundService.StopObservingRequest StopObserving(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)
     {
       return new ChromeProtocol.Domains.BackgroundService.StopObservingRequest(Service);
     }
     /// <summary>Disables event updates for the service.</summary>
     [ChromeProtocol.Core.MethodName("BackgroundService.stopObserving")]
     public record StopObservingRequest(
-      [property: Newtonsoft.Json.JsonProperty("service")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("service")]
       ChromeProtocol.Domains.BackgroundService.ServiceNameType Service
     ) : ChromeProtocol.Core.ICommand<StopObservingRequestResult>
     {
@@ -108,16 +108,16 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Set the recording state for the service.</summary>
-    public static ChromeProtocol.Domains.BackgroundService.SetRecordingRequest SetRecording(bool ShouldRecord, ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)    
+    public static ChromeProtocol.Domains.BackgroundService.SetRecordingRequest SetRecording(bool ShouldRecord, ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)
     {
       return new ChromeProtocol.Domains.BackgroundService.SetRecordingRequest(ShouldRecord, Service);
     }
     /// <summary>Set the recording state for the service.</summary>
     [ChromeProtocol.Core.MethodName("BackgroundService.setRecording")]
     public record SetRecordingRequest(
-      [property: Newtonsoft.Json.JsonProperty("shouldRecord")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("shouldRecord")]
       bool ShouldRecord,
-      [property: Newtonsoft.Json.JsonProperty("service")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("service")]
       ChromeProtocol.Domains.BackgroundService.ServiceNameType Service
     ) : ChromeProtocol.Core.ICommand<SetRecordingRequestResult>
     {
@@ -126,14 +126,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears all stored data for the service.</summary>
-    public static ChromeProtocol.Domains.BackgroundService.ClearEventsRequest ClearEvents(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)    
+    public static ChromeProtocol.Domains.BackgroundService.ClearEventsRequest ClearEvents(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)
     {
       return new ChromeProtocol.Domains.BackgroundService.ClearEventsRequest(Service);
     }
     /// <summary>Clears all stored data for the service.</summary>
     [ChromeProtocol.Core.MethodName("BackgroundService.clearEvents")]
     public record ClearEventsRequest(
-      [property: Newtonsoft.Json.JsonProperty("service")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("service")]
       ChromeProtocol.Domains.BackgroundService.ServiceNameType Service
     ) : ChromeProtocol.Core.ICommand<ClearEventsRequestResult>
     {

@@ -9,11 +9,11 @@ namespace ChromeProtocol.Domains
     /// <summary>Information about a cookie that is affected by an inspector issue.</summary>
     /// <param name="Name">The following three properties uniquely identify a cookie</param>
     public record AffectedCookieType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("path")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("path")]
       string Path,
-      [property: Newtonsoft.Json.JsonProperty("domain")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domain")]
       string Domain
     ) : ChromeProtocol.Core.IType
     {
@@ -21,33 +21,33 @@ namespace ChromeProtocol.Domains
     /// <summary>Information about a request that is affected by an inspector issue.</summary>
     /// <param name="RequestId">The unique request id.</param>
     public record AffectedRequestType(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Information about the frame affected by an inspector issue.</summary>
     public record AffectedFrameType(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CookieExclusionReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CookieWarningReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CookieOperationType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -69,32 +69,32 @@ namespace ChromeProtocol.Domains
     /// that no valid cookie could be created.<br/>
     /// </param>
     public record CookieIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("cookieWarningReasons")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookieWarningReasons")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Audits.CookieWarningReasonType> CookieWarningReasons,
-      [property: Newtonsoft.Json.JsonProperty("cookieExclusionReasons")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookieExclusionReasons")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Audits.CookieExclusionReasonType> CookieExclusionReasons,
-      [property: Newtonsoft.Json.JsonProperty("operation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("operation")]
       ChromeProtocol.Domains.Audits.CookieOperationType Operation,
-      [property: Newtonsoft.Json.JsonProperty("cookie")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookie")]
       ChromeProtocol.Domains.Audits.AffectedCookieType? Cookie = default,
-      [property: Newtonsoft.Json.JsonProperty("rawCookieLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rawCookieLine")]
       string? RawCookieLine = default,
-      [property: Newtonsoft.Json.JsonProperty("siteForCookies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("siteForCookies")]
       string? SiteForCookies = default,
-      [property: Newtonsoft.Json.JsonProperty("cookieUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookieUrl")]
       string? CookieUrl = default,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Audits.AffectedRequestType? Request = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record MixedContentResolutionStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record MixedContentResourceTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -115,17 +115,17 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="Frame">Optional because not every mixed content issue is necessarily linked to a frame.</param>
     public record MixedContentIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("resolutionStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resolutionStatus")]
       ChromeProtocol.Domains.Audits.MixedContentResolutionStatusType ResolutionStatus,
-      [property: Newtonsoft.Json.JsonProperty("insecureURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("insecureURL")]
       string InsecureURL,
-      [property: Newtonsoft.Json.JsonProperty("mainResourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mainResourceURL")]
       string MainResourceURL,
-      [property: Newtonsoft.Json.JsonProperty("resourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resourceType")]
       ChromeProtocol.Domains.Audits.MixedContentResourceTypeType? ResourceType = default,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Audits.AffectedRequestType? Request = default,
-      [property: Newtonsoft.Json.JsonProperty("frame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frame")]
       ChromeProtocol.Domains.Audits.AffectedFrameType? Frame = default
     ) : ChromeProtocol.Core.IType
     {
@@ -134,7 +134,7 @@ namespace ChromeProtocol.Domains
     /// Enum indicating the reason a response has been blocked. These reasons are<br/>
     /// refinements of the net error BLOCKED_BY_RESPONSE.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record BlockedByResponseReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -146,24 +146,24 @@ namespace ChromeProtocol.Domains
     /// some CSP errors in the future.<br/>
     /// </summary>
     public record BlockedByResponseIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Audits.AffectedRequestType Request,
-      [property: Newtonsoft.Json.JsonProperty("reason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reason")]
       ChromeProtocol.Domains.Audits.BlockedByResponseReasonType Reason,
-      [property: Newtonsoft.Json.JsonProperty("parentFrame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentFrame")]
       ChromeProtocol.Domains.Audits.AffectedFrameType? ParentFrame = default,
-      [property: Newtonsoft.Json.JsonProperty("blockedFrame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("blockedFrame")]
       ChromeProtocol.Domains.Audits.AffectedFrameType? BlockedFrame = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record HeavyAdResolutionStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record HeavyAdReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -173,29 +173,29 @@ namespace ChromeProtocol.Domains
     /// <param name="Reason">The reason the ad was blocked, total network or cpu or peak cpu.</param>
     /// <param name="Frame">The frame that was blocked.</param>
     public record HeavyAdIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("resolution")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resolution")]
       ChromeProtocol.Domains.Audits.HeavyAdResolutionStatusType Resolution,
-      [property: Newtonsoft.Json.JsonProperty("reason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reason")]
       ChromeProtocol.Domains.Audits.HeavyAdReasonType Reason,
-      [property: Newtonsoft.Json.JsonProperty("frame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frame")]
       ChromeProtocol.Domains.Audits.AffectedFrameType Frame
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ContentSecurityPolicyViolationTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record SourceCodeLocationType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int ColumnNumber,
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType? ScriptId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -203,24 +203,24 @@ namespace ChromeProtocol.Domains
     /// <param name="ViolatedDirective">Specific directive that is violated, causing the CSP issue.</param>
     /// <param name="BlockedURL">The url not included in allowed sources.</param>
     public record ContentSecurityPolicyIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("violatedDirective")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("violatedDirective")]
       string ViolatedDirective,
-      [property: Newtonsoft.Json.JsonProperty("isReportOnly")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isReportOnly")]
       bool IsReportOnly,
-      [property: Newtonsoft.Json.JsonProperty("contentSecurityPolicyViolationType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentSecurityPolicyViolationType")]
       ChromeProtocol.Domains.Audits.ContentSecurityPolicyViolationTypeType ContentSecurityPolicyViolationType,
-      [property: Newtonsoft.Json.JsonProperty("blockedURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("blockedURL")]
       string? BlockedURL = default,
-      [property: Newtonsoft.Json.JsonProperty("frameAncestor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameAncestor")]
       ChromeProtocol.Domains.Audits.AffectedFrameType? FrameAncestor = default,
-      [property: Newtonsoft.Json.JsonProperty("sourceCodeLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceCodeLocation")]
       ChromeProtocol.Domains.Audits.SourceCodeLocationType? SourceCodeLocation = default,
-      [property: Newtonsoft.Json.JsonProperty("violatingNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("violatingNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? ViolatingNodeId = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SharedArrayBufferIssueTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -231,29 +231,29 @@ namespace ChromeProtocol.Domains
     /// transferred to a context that is not cross-origin isolated.<br/>
     /// </summary>
     public record SharedArrayBufferIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("sourceCodeLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceCodeLocation")]
       ChromeProtocol.Domains.Audits.SourceCodeLocationType SourceCodeLocation,
-      [property: Newtonsoft.Json.JsonProperty("isWarning")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isWarning")]
       bool IsWarning,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Audits.SharedArrayBufferIssueTypeType Type
     ) : ChromeProtocol.Core.IType
     {
     }
     public record LowTextContrastIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("violatingNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("violatingNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType ViolatingNodeId,
-      [property: Newtonsoft.Json.JsonProperty("violatingNodeSelector")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("violatingNodeSelector")]
       string ViolatingNodeSelector,
-      [property: Newtonsoft.Json.JsonProperty("contrastRatio")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contrastRatio")]
       double ContrastRatio,
-      [property: Newtonsoft.Json.JsonProperty("thresholdAA")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("thresholdAA")]
       double ThresholdAA,
-      [property: Newtonsoft.Json.JsonProperty("thresholdAAA")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("thresholdAAA")]
       double ThresholdAAA,
-      [property: Newtonsoft.Json.JsonProperty("fontSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontSize")]
       string FontSize,
-      [property: Newtonsoft.Json.JsonProperty("fontWeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontWeight")]
       string FontWeight
     ) : ChromeProtocol.Core.IType
     {
@@ -263,24 +263,24 @@ namespace ChromeProtocol.Domains
     /// CORS RFC1918 enforcement.<br/>
     /// </summary>
     public record CorsIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("corsErrorStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("corsErrorStatus")]
       ChromeProtocol.Domains.Network.CorsErrorStatusType CorsErrorStatus,
-      [property: Newtonsoft.Json.JsonProperty("isWarning")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isWarning")]
       bool IsWarning,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Audits.AffectedRequestType Request,
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.Audits.SourceCodeLocationType? Location = default,
-      [property: Newtonsoft.Json.JsonProperty("initiatorOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initiatorOrigin")]
       string? InitiatorOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("resourceIPAddressSpace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resourceIPAddressSpace")]
       ChromeProtocol.Domains.Network.IPAddressSpaceType? ResourceIPAddressSpace = default,
-      [property: Newtonsoft.Json.JsonProperty("clientSecurityState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clientSecurityState")]
       ChromeProtocol.Domains.Network.ClientSecurityStateType? ClientSecurityState = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AttributionReportingIssueTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -291,13 +291,13 @@ namespace ChromeProtocol.Domains
     /// Explainer: https://github.com/WICG/attribution-reporting-api<br/>
     /// </summary>
     public record AttributionReportingIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("violationType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("violationType")]
       ChromeProtocol.Domains.Audits.AttributionReportingIssueTypeType ViolationType,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Audits.AffectedRequestType? Request = default,
-      [property: Newtonsoft.Json.JsonProperty("violatingNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("violatingNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? ViolatingNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("invalidParameter")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("invalidParameter")]
       string? InvalidParameter = default
     ) : ChromeProtocol.Core.IType
     {
@@ -311,29 +311,29 @@ namespace ChromeProtocol.Domains
     /// instead of &quot;limited-quirks&quot;.<br/>
     /// </param>
     public record QuirksModeIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("isLimitedQuirksMode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isLimitedQuirksMode")]
       bool IsLimitedQuirksMode,
-      [property: Newtonsoft.Json.JsonProperty("documentNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("documentNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType DocumentNodeId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType LoaderId
     ) : ChromeProtocol.Core.IType
     {
     }
     [System.Obsolete("This type marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record NavigatorUserAgentIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.Audits.SourceCodeLocationType? Location = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record GenericIssueErrorTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -342,15 +342,15 @@ namespace ChromeProtocol.Domains
     /// <summary>Depending on the concrete errorType, different properties are set.</summary>
     /// <param name="ErrorType">Issues with the same errorType are aggregated in the frontend.</param>
     public record GenericIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("errorType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorType")]
       ChromeProtocol.Domains.Audits.GenericIssueErrorTypeType ErrorType,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default,
-      [property: Newtonsoft.Json.JsonProperty("violatingNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("violatingNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? ViolatingNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("violatingNodeAttribute")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("violatingNodeAttribute")]
       string? ViolatingNodeAttribute = default,
-      [property: Newtonsoft.Json.JsonProperty("request")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
       ChromeProtocol.Domains.Audits.AffectedRequestType? Request = default
     ) : ChromeProtocol.Core.IType
     {
@@ -361,11 +361,11 @@ namespace ChromeProtocol.Domains
     /// </summary>
     /// <param name="Type">One of the deprecation names from third_party/blink/renderer/core/frame/deprecation/deprecation.json5</param>
     public record DeprecationIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("sourceCodeLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceCodeLocation")]
       ChromeProtocol.Domains.Audits.SourceCodeLocationType SourceCodeLocation,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("affectedFrame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("affectedFrame")]
       ChromeProtocol.Domains.Audits.AffectedFrameType? AffectedFrame = default
     ) : ChromeProtocol.Core.IType
     {
@@ -378,7 +378,7 @@ namespace ChromeProtocol.Domains
     /// redirect chain, the site reported would be `example.test`.<br/>
     /// </summary>
     public record BounceTrackingIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("trackingSites")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("trackingSites")]
       System.Collections.Generic.IReadOnlyList<string> TrackingSites
     ) : ChromeProtocol.Core.IType
     {
@@ -391,19 +391,19 @@ namespace ChromeProtocol.Domains
     /// would be `example.test`.<br/>
     /// </summary>
     public record CookieDeprecationMetadataIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("allowedSites")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("allowedSites")]
       System.Collections.Generic.IReadOnlyList<string> AllowedSites
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ClientHintIssueReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record FederatedAuthRequestIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("federatedAuthRequestIssueReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("federatedAuthRequestIssueReason")]
       ChromeProtocol.Domains.Audits.FederatedAuthRequestIssueReasonType FederatedAuthRequestIssueReason
     ) : ChromeProtocol.Core.IType
     {
@@ -414,14 +414,14 @@ namespace ChromeProtocol.Domains
     /// third_party/blink/public/mojom/devtools/inspector_issue.mojom to include<br/>
     /// all cases except for success.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record FederatedAuthRequestIssueReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record FederatedAuthUserInfoRequestIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("federatedAuthUserInfoRequestIssueReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("federatedAuthUserInfoRequestIssueReason")]
       ChromeProtocol.Domains.Audits.FederatedAuthUserInfoRequestIssueReasonType FederatedAuthUserInfoRequestIssueReason
     ) : ChromeProtocol.Core.IType
     {
@@ -431,7 +431,7 @@ namespace ChromeProtocol.Domains
     /// Should be updated alongside FederatedAuthUserInfoRequestResult in<br/>
     /// third_party/blink/public/mojom/devtools/inspector_issue.mojom.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record FederatedAuthUserInfoRequestIssueReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -442,9 +442,9 @@ namespace ChromeProtocol.Domains
     /// features, encourage the use of new ones, and provide general guidance.<br/>
     /// </summary>
     public record ClientHintIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("sourceCodeLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceCodeLocation")]
       ChromeProtocol.Domains.Audits.SourceCodeLocationType SourceCodeLocation,
-      [property: Newtonsoft.Json.JsonProperty("clientHintIssueReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clientHintIssueReason")]
       ChromeProtocol.Domains.Audits.ClientHintIssueReasonType ClientHintIssueReason
     ) : ChromeProtocol.Core.IType
     {
@@ -452,16 +452,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Url">The URL that failed to load.</param>
     /// <param name="FailureMessage">The failure message for the failed request.</param>
     public record FailedRequestInfoType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("failureMessage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("failureMessage")]
       string FailureMessage,
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType? RequestId = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record StyleSheetLoadingIssueReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -472,16 +472,16 @@ namespace ChromeProtocol.Domains
     /// <param name="StyleSheetLoadingIssueReason">Reason why the stylesheet couldn&#39;t be loaded.</param>
     /// <param name="FailedRequestInfo">Contains additional info when the failure was due to a request.</param>
     public record StylesheetLoadingIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("sourceCodeLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceCodeLocation")]
       ChromeProtocol.Domains.Audits.SourceCodeLocationType SourceCodeLocation,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetLoadingIssueReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetLoadingIssueReason")]
       ChromeProtocol.Domains.Audits.StyleSheetLoadingIssueReasonType StyleSheetLoadingIssueReason,
-      [property: Newtonsoft.Json.JsonProperty("failedRequestInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("failedRequestInfo")]
       ChromeProtocol.Domains.Audits.FailedRequestInfoType? FailedRequestInfo = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PropertyRuleIssueReasonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -495,11 +495,11 @@ namespace ChromeProtocol.Domains
     /// <param name="PropertyRuleIssueReason">Reason why the property rule was discarded.</param>
     /// <param name="PropertyValue">The value of the property rule property that failed to parse</param>
     public record PropertyRuleIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("sourceCodeLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceCodeLocation")]
       ChromeProtocol.Domains.Audits.SourceCodeLocationType SourceCodeLocation,
-      [property: Newtonsoft.Json.JsonProperty("propertyRuleIssueReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("propertyRuleIssueReason")]
       ChromeProtocol.Domains.Audits.PropertyRuleIssueReasonType PropertyRuleIssueReason,
-      [property: Newtonsoft.Json.JsonProperty("propertyValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("propertyValue")]
       string? PropertyValue = default
     ) : ChromeProtocol.Core.IType
     {
@@ -509,7 +509,7 @@ namespace ChromeProtocol.Domains
     /// optional fields in InspectorIssueDetails to convey more specific<br/>
     /// information about the kind of issue.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record InspectorIssueCodeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -521,46 +521,46 @@ namespace ChromeProtocol.Domains
     /// add a new optional field to this type.<br/>
     /// </summary>
     public record InspectorIssueDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("cookieIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookieIssueDetails")]
       ChromeProtocol.Domains.Audits.CookieIssueDetailsType? CookieIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("mixedContentIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mixedContentIssueDetails")]
       ChromeProtocol.Domains.Audits.MixedContentIssueDetailsType? MixedContentIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("blockedByResponseIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("blockedByResponseIssueDetails")]
       ChromeProtocol.Domains.Audits.BlockedByResponseIssueDetailsType? BlockedByResponseIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("heavyAdIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("heavyAdIssueDetails")]
       ChromeProtocol.Domains.Audits.HeavyAdIssueDetailsType? HeavyAdIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("contentSecurityPolicyIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentSecurityPolicyIssueDetails")]
       ChromeProtocol.Domains.Audits.ContentSecurityPolicyIssueDetailsType? ContentSecurityPolicyIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("sharedArrayBufferIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sharedArrayBufferIssueDetails")]
       ChromeProtocol.Domains.Audits.SharedArrayBufferIssueDetailsType? SharedArrayBufferIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("lowTextContrastIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lowTextContrastIssueDetails")]
       ChromeProtocol.Domains.Audits.LowTextContrastIssueDetailsType? LowTextContrastIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("corsIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("corsIssueDetails")]
       ChromeProtocol.Domains.Audits.CorsIssueDetailsType? CorsIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("attributionReportingIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attributionReportingIssueDetails")]
       ChromeProtocol.Domains.Audits.AttributionReportingIssueDetailsType? AttributionReportingIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("quirksModeIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quirksModeIssueDetails")]
       ChromeProtocol.Domains.Audits.QuirksModeIssueDetailsType? QuirksModeIssueDetails = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("navigatorUserAgentIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("navigatorUserAgentIssueDetails")]
       ChromeProtocol.Domains.Audits.NavigatorUserAgentIssueDetailsType? NavigatorUserAgentIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("genericIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("genericIssueDetails")]
       ChromeProtocol.Domains.Audits.GenericIssueDetailsType? GenericIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("deprecationIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deprecationIssueDetails")]
       ChromeProtocol.Domains.Audits.DeprecationIssueDetailsType? DeprecationIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("clientHintIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clientHintIssueDetails")]
       ChromeProtocol.Domains.Audits.ClientHintIssueDetailsType? ClientHintIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("federatedAuthRequestIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("federatedAuthRequestIssueDetails")]
       ChromeProtocol.Domains.Audits.FederatedAuthRequestIssueDetailsType? FederatedAuthRequestIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("bounceTrackingIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bounceTrackingIssueDetails")]
       ChromeProtocol.Domains.Audits.BounceTrackingIssueDetailsType? BounceTrackingIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("cookieDeprecationMetadataIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookieDeprecationMetadataIssueDetails")]
       ChromeProtocol.Domains.Audits.CookieDeprecationMetadataIssueDetailsType? CookieDeprecationMetadataIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("stylesheetLoadingIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stylesheetLoadingIssueDetails")]
       ChromeProtocol.Domains.Audits.StylesheetLoadingIssueDetailsType? StylesheetLoadingIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("propertyRuleIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("propertyRuleIssueDetails")]
       ChromeProtocol.Domains.Audits.PropertyRuleIssueDetailsType? PropertyRuleIssueDetails = default,
-      [property: Newtonsoft.Json.JsonProperty("federatedAuthUserInfoRequestIssueDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("federatedAuthUserInfoRequestIssueDetails")]
       ChromeProtocol.Domains.Audits.FederatedAuthUserInfoRequestIssueDetailsType? FederatedAuthUserInfoRequestIssueDetails = default
     ) : ChromeProtocol.Core.IType
     {
@@ -569,7 +569,7 @@ namespace ChromeProtocol.Domains
     /// A unique id for a DevTools inspector issue. Allows other entities (e.g.<br/>
     /// exceptions, CDP message, console messages, etc.) to reference an issue.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record IssueIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -581,18 +581,18 @@ namespace ChromeProtocol.Domains
     /// exception, CDP message, etc.) is referencing this issue.<br/>
     /// </param>
     public record InspectorIssueType(
-      [property: Newtonsoft.Json.JsonProperty("code")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("code")]
       ChromeProtocol.Domains.Audits.InspectorIssueCodeType Code,
-      [property: Newtonsoft.Json.JsonProperty("details")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("details")]
       ChromeProtocol.Domains.Audits.InspectorIssueDetailsType Details,
-      [property: Newtonsoft.Json.JsonProperty("issueId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issueId")]
       ChromeProtocol.Domains.Audits.IssueIdType? IssueId = default
     ) : ChromeProtocol.Core.IType
     {
     }
     [ChromeProtocol.Core.MethodName("Audits.issueAdded")]
     public record IssueAdded(
-      [property: Newtonsoft.Json.JsonProperty("issue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issue")]
       ChromeProtocol.Domains.Audits.InspectorIssueType Issue
     ) : ChromeProtocol.Core.IEvent
     {
@@ -605,7 +605,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Encoding">The encoding to use.</param>
     /// <param name="Quality">The quality of the encoding (0-1). (defaults to 1)</param>
     /// <param name="SizeOnly">Whether to only return the size information (defaults to false).</param>
-    public static ChromeProtocol.Domains.Audits.GetEncodedResponseRequest GetEncodedResponse(ChromeProtocol.Domains.Network.RequestIdType RequestId, string Encoding, double? Quality = default, bool? SizeOnly = default)    
+    public static ChromeProtocol.Domains.Audits.GetEncodedResponseRequest GetEncodedResponse(ChromeProtocol.Domains.Network.RequestIdType RequestId, string Encoding, double? Quality = default, bool? SizeOnly = default)
     {
       return new ChromeProtocol.Domains.Audits.GetEncodedResponseRequest(RequestId, Encoding, Quality, SizeOnly);
     }
@@ -619,13 +619,13 @@ namespace ChromeProtocol.Domains
     /// <param name="SizeOnly">Whether to only return the size information (defaults to false).</param>
     [ChromeProtocol.Core.MethodName("Audits.getEncodedResponse")]
     public record GetEncodedResponseRequest(
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("encoding")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("encoding")]
       string Encoding,
-      [property: Newtonsoft.Json.JsonProperty("quality")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quality")]
       double? Quality = default,
-      [property: Newtonsoft.Json.JsonProperty("sizeOnly")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sizeOnly")]
       bool? SizeOnly = default
     ) : ChromeProtocol.Core.ICommand<GetEncodedResponseRequestResult>
     {
@@ -634,17 +634,17 @@ namespace ChromeProtocol.Domains
     /// <param name="EncodedSize">Size after re-encoding.</param>
     /// <param name="Body">The encoded body as a base64 string. Omitted if sizeOnly is true. (Encoded as a base64 string when passed over JSON)</param>
     public record GetEncodedResponseRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("originalSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("originalSize")]
       int OriginalSize,
-      [property: Newtonsoft.Json.JsonProperty("encodedSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("encodedSize")]
       int EncodedSize,
-      [property: Newtonsoft.Json.JsonProperty("body")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("body")]
       string? Body = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Disables issues domain, prevents further issues from being reported to the client.</summary>
-    public static ChromeProtocol.Domains.Audits.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Audits.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Audits.DisableRequest();
     }
@@ -660,7 +660,7 @@ namespace ChromeProtocol.Domains
     /// Enables issues domain, sends the issues collected so far to the client by means of the<br/>
     /// `issueAdded` event.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Audits.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Audits.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Audits.EnableRequest();
     }
@@ -680,7 +680,7 @@ namespace ChromeProtocol.Domains
     /// using Audits.issueAdded event.<br/>
     /// </summary>
     /// <param name="ReportAAA">Whether to report WCAG AAA level issues. Default is false.</param>
-    public static ChromeProtocol.Domains.Audits.CheckContrastRequest CheckContrast(bool? ReportAAA = default)    
+    public static ChromeProtocol.Domains.Audits.CheckContrastRequest CheckContrast(bool? ReportAAA = default)
     {
       return new ChromeProtocol.Domains.Audits.CheckContrastRequest(ReportAAA);
     }
@@ -691,7 +691,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ReportAAA">Whether to report WCAG AAA level issues. Default is false.</param>
     [ChromeProtocol.Core.MethodName("Audits.checkContrast")]
     public record CheckContrastRequest(
-      [property: Newtonsoft.Json.JsonProperty("reportAAA")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportAAA")]
       bool? ReportAAA = default
     ) : ChromeProtocol.Core.ICommand<CheckContrastRequestResult>
     {
@@ -703,7 +703,7 @@ namespace ChromeProtocol.Domains
     /// Runs the form issues check for the target page. Found issues are reported<br/>
     /// using Audits.issueAdded event.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Audits.CheckFormsIssuesRequest CheckFormsIssues()    
+    public static ChromeProtocol.Domains.Audits.CheckFormsIssuesRequest CheckFormsIssues()
     {
       return new ChromeProtocol.Domains.Audits.CheckFormsIssuesRequest();
     }
@@ -716,7 +716,7 @@ namespace ChromeProtocol.Domains
     {
     }
     public record CheckFormsIssuesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("formIssues")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("formIssues")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Audits.GenericIssueDetailsType> FormIssues
     ) : ChromeProtocol.Core.IType
     {

@@ -10,14 +10,14 @@ namespace ChromeProtocol.Domains
   public static partial class Debugger
   {
     /// <summary>Breakpoint identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record BreakpointIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Call frame identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CallFrameIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -28,31 +28,31 @@ namespace ChromeProtocol.Domains
     /// <param name="LineNumber">Line number in the script (0-based).</param>
     /// <param name="ColumnNumber">Column number in the script (0-based).</param>
     public record LocationType(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int? ColumnNumber = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Location in the source code.</summary>
     public record ScriptPositionType(
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int ColumnNumber
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Location range within one script.</summary>
     public record LocationRangeType(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("start")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("start")]
       ChromeProtocol.Domains.Debugger.ScriptPositionType Start,
-      [property: Newtonsoft.Json.JsonProperty("end")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("end")]
       ChromeProtocol.Domains.Debugger.ScriptPositionType End
     ) : ChromeProtocol.Core.IType
     {
@@ -77,24 +77,24 @@ namespace ChromeProtocol.Domains
     /// successful, but it is very likely.<br/>
     /// </param>
     public record CallFrameType(
-      [property: Newtonsoft.Json.JsonProperty("callFrameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrameId")]
       ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId,
-      [property: Newtonsoft.Json.JsonProperty("functionName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("functionName")]
       string FunctionName,
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.Debugger.LocationType Location,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("scopeChain")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scopeChain")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.ScopeType> ScopeChain,
-      [property: Newtonsoft.Json.JsonProperty("this")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("this")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType This,
-      [property: Newtonsoft.Json.JsonProperty("functionLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("functionLocation")]
       ChromeProtocol.Domains.Debugger.LocationType? FunctionLocation = default,
-      [property: Newtonsoft.Json.JsonProperty("returnValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("returnValue")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? ReturnValue = default,
-      [property: Newtonsoft.Json.JsonProperty("canBeRestarted")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("canBeRestarted")]
       bool? CanBeRestarted = default
     ) : ChromeProtocol.Core.IType
     {
@@ -109,15 +109,15 @@ namespace ChromeProtocol.Domains
     /// <param name="StartLocation">Location in the source code where scope starts</param>
     /// <param name="EndLocation">Location in the source code where scope ends</param>
     public record ScopeType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("object")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("object")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Object,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string? Name = default,
-      [property: Newtonsoft.Json.JsonProperty("startLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startLocation")]
       ChromeProtocol.Domains.Debugger.LocationType? StartLocation = default,
-      [property: Newtonsoft.Json.JsonProperty("endLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endLocation")]
       ChromeProtocol.Domains.Debugger.LocationType? EndLocation = default
     ) : ChromeProtocol.Core.IType
     {
@@ -126,9 +126,9 @@ namespace ChromeProtocol.Domains
     /// <param name="LineNumber">Line number in resource content.</param>
     /// <param name="LineContent">Line with match content.</param>
     public record SearchMatchType(
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       double LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("lineContent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineContent")]
       string LineContent
     ) : ChromeProtocol.Core.IType
     {
@@ -137,13 +137,13 @@ namespace ChromeProtocol.Domains
     /// <param name="LineNumber">Line number in the script (0-based).</param>
     /// <param name="ColumnNumber">Column number in the script (0-based).</param>
     public record BreakLocationType(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int? ColumnNumber = default,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string? Type = default
     ) : ChromeProtocol.Core.IType
     {
@@ -151,15 +151,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Lines">The next chunk of disassembled lines.</param>
     /// <param name="BytecodeOffsets">The bytecode offsets describing the start of each line.</param>
     public record WasmDisassemblyChunkType(
-      [property: Newtonsoft.Json.JsonProperty("lines")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lines")]
       System.Collections.Generic.IReadOnlyList<string> Lines,
-      [property: Newtonsoft.Json.JsonProperty("bytecodeOffsets")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bytecodeOffsets")]
       System.Collections.Generic.IReadOnlyList<int> BytecodeOffsets
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Enum of possible script languages.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ScriptLanguageType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -169,9 +169,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Type">Type of the debug symbols.</param>
     /// <param name="ExternalURL">URL of the external symbol source.</param>
     public record DebugSymbolsType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("externalURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("externalURL")]
       string? ExternalURL = default
     ) : ChromeProtocol.Core.IType
     {
@@ -181,9 +181,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Location">Actual breakpoint location.</param>
     [ChromeProtocol.Core.MethodName("Debugger.breakpointResolved")]
     public record BreakpointResolved(
-      [property: Newtonsoft.Json.JsonProperty("breakpointId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("breakpointId")]
       ChromeProtocol.Domains.Debugger.BreakpointIdType BreakpointId,
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.Debugger.LocationType Location
     ) : ChromeProtocol.Core.IEvent
     {
@@ -198,20 +198,20 @@ namespace ChromeProtocol.Domains
     /// <param name="AsyncCallStackTraceId">Never present, will be removed.</param>
     [ChromeProtocol.Core.MethodName("Debugger.paused")]
     public record Paused(
-      [property: Newtonsoft.Json.JsonProperty("callFrames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrames")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.CallFrameType> CallFrames,
-      [property: Newtonsoft.Json.JsonProperty("reason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reason")]
       string Reason,
-      [property: Newtonsoft.Json.JsonProperty("data")]
-      Newtonsoft.Json.Linq.JObject? Data = default,
-      [property: Newtonsoft.Json.JsonProperty("hitBreakpoints")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
+      System.Text.Json.Nodes.JsonObject? Data = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("hitBreakpoints")]
       System.Collections.Generic.IReadOnlyList<string>? HitBreakpoints = default,
-      [property: Newtonsoft.Json.JsonProperty("asyncStackTrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("asyncStackTrace")]
       ChromeProtocol.Domains.Runtime.StackTraceType? AsyncStackTrace = default,
-      [property: Newtonsoft.Json.JsonProperty("asyncStackTraceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("asyncStackTraceId")]
       ChromeProtocol.Domains.Runtime.StackTraceIdType? AsyncStackTraceId = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("asyncCallStackTraceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("asyncCallStackTraceId")]
       ChromeProtocol.Domains.Runtime.StackTraceIdType? AsyncCallStackTraceId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -241,39 +241,39 @@ namespace ChromeProtocol.Domains
     /// <param name="EmbedderName">The name the embedder supplied for this script.</param>
     [ChromeProtocol.Core.MethodName("Debugger.scriptFailedToParse")]
     public record ScriptFailedToParse(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("startLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startLine")]
       int StartLine,
-      [property: Newtonsoft.Json.JsonProperty("startColumn")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startColumn")]
       int StartColumn,
-      [property: Newtonsoft.Json.JsonProperty("endLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endLine")]
       int EndLine,
-      [property: Newtonsoft.Json.JsonProperty("endColumn")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endColumn")]
       int EndColumn,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType ExecutionContextId,
-      [property: Newtonsoft.Json.JsonProperty("hash")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hash")]
       string Hash,
-      [property: Newtonsoft.Json.JsonProperty("executionContextAuxData")]
-      Newtonsoft.Json.Linq.JObject? ExecutionContextAuxData = default,
-      [property: Newtonsoft.Json.JsonProperty("sourceMapURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextAuxData")]
+      System.Text.Json.Nodes.JsonObject? ExecutionContextAuxData = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceMapURL")]
       string? SourceMapURL = default,
-      [property: Newtonsoft.Json.JsonProperty("hasSourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasSourceURL")]
       bool? HasSourceURL = default,
-      [property: Newtonsoft.Json.JsonProperty("isModule")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isModule")]
       bool? IsModule = default,
-      [property: Newtonsoft.Json.JsonProperty("length")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("length")]
       int? Length = default,
-      [property: Newtonsoft.Json.JsonProperty("stackTrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stackTrace")]
       ChromeProtocol.Domains.Runtime.StackTraceType? StackTrace = default,
-      [property: Newtonsoft.Json.JsonProperty("codeOffset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("codeOffset")]
       int? CodeOffset = default,
-      [property: Newtonsoft.Json.JsonProperty("scriptLanguage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptLanguage")]
       ChromeProtocol.Domains.Debugger.ScriptLanguageType? ScriptLanguage = default,
-      [property: Newtonsoft.Json.JsonProperty("embedderName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("embedderName")]
       string? EmbedderName = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -303,50 +303,50 @@ namespace ChromeProtocol.Domains
     /// <param name="EmbedderName">The name the embedder supplied for this script.</param>
     [ChromeProtocol.Core.MethodName("Debugger.scriptParsed")]
     public record ScriptParsed(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("startLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startLine")]
       int StartLine,
-      [property: Newtonsoft.Json.JsonProperty("startColumn")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startColumn")]
       int StartColumn,
-      [property: Newtonsoft.Json.JsonProperty("endLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endLine")]
       int EndLine,
-      [property: Newtonsoft.Json.JsonProperty("endColumn")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endColumn")]
       int EndColumn,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType ExecutionContextId,
-      [property: Newtonsoft.Json.JsonProperty("hash")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hash")]
       string Hash,
-      [property: Newtonsoft.Json.JsonProperty("executionContextAuxData")]
-      Newtonsoft.Json.Linq.JObject? ExecutionContextAuxData = default,
-      [property: Newtonsoft.Json.JsonProperty("isLiveEdit")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextAuxData")]
+      System.Text.Json.Nodes.JsonObject? ExecutionContextAuxData = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("isLiveEdit")]
       bool? IsLiveEdit = default,
-      [property: Newtonsoft.Json.JsonProperty("sourceMapURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceMapURL")]
       string? SourceMapURL = default,
-      [property: Newtonsoft.Json.JsonProperty("hasSourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasSourceURL")]
       bool? HasSourceURL = default,
-      [property: Newtonsoft.Json.JsonProperty("isModule")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isModule")]
       bool? IsModule = default,
-      [property: Newtonsoft.Json.JsonProperty("length")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("length")]
       int? Length = default,
-      [property: Newtonsoft.Json.JsonProperty("stackTrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stackTrace")]
       ChromeProtocol.Domains.Runtime.StackTraceType? StackTrace = default,
-      [property: Newtonsoft.Json.JsonProperty("codeOffset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("codeOffset")]
       int? CodeOffset = default,
-      [property: Newtonsoft.Json.JsonProperty("scriptLanguage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptLanguage")]
       ChromeProtocol.Domains.Debugger.ScriptLanguageType? ScriptLanguage = default,
-      [property: Newtonsoft.Json.JsonProperty("debugSymbols")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("debugSymbols")]
       ChromeProtocol.Domains.Debugger.DebugSymbolsType? DebugSymbols = default,
-      [property: Newtonsoft.Json.JsonProperty("embedderName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("embedderName")]
       string? EmbedderName = default
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Continues execution until specific location is reached.</summary>
     /// <param name="Location">Location to continue to.</param>
-    public static ChromeProtocol.Domains.Debugger.ContinueToLocationRequest ContinueToLocation(ChromeProtocol.Domains.Debugger.LocationType Location, string? TargetCallFrames = default)    
+    public static ChromeProtocol.Domains.Debugger.ContinueToLocationRequest ContinueToLocation(ChromeProtocol.Domains.Debugger.LocationType Location, string? TargetCallFrames = default)
     {
       return new ChromeProtocol.Domains.Debugger.ContinueToLocationRequest(Location, TargetCallFrames);
     }
@@ -354,9 +354,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Location">Location to continue to.</param>
     [ChromeProtocol.Core.MethodName("Debugger.continueToLocation")]
     public record ContinueToLocationRequest(
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.Debugger.LocationType Location,
-      [property: Newtonsoft.Json.JsonProperty("targetCallFrames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetCallFrames")]
       string? TargetCallFrames = default
     ) : ChromeProtocol.Core.ICommand<ContinueToLocationRequestResult>
     {
@@ -365,7 +365,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables debugger for given page.</summary>
-    public static ChromeProtocol.Domains.Debugger.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Debugger.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Debugger.DisableRequest();
     }
@@ -385,7 +385,7 @@ namespace ChromeProtocol.Domains
     /// The maximum size in bytes of collected scripts (not referenced by other heap objects)<br/>
     /// the debugger can hold. Puts no limit if parameter is omitted.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Debugger.EnableRequest Enable(double? MaxScriptsCacheSize = default)    
+    public static ChromeProtocol.Domains.Debugger.EnableRequest Enable(double? MaxScriptsCacheSize = default)
     {
       return new ChromeProtocol.Domains.Debugger.EnableRequest(MaxScriptsCacheSize);
     }
@@ -399,14 +399,14 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Debugger.enable")]
     public record EnableRequest(
-      [property: Newtonsoft.Json.JsonProperty("maxScriptsCacheSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxScriptsCacheSize")]
       double? MaxScriptsCacheSize = default
     ) : ChromeProtocol.Core.ICommand<EnableRequestResult>
     {
     }
     /// <param name="DebuggerId">Unique identifier of the debugger.</param>
     public record EnableRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("debuggerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("debuggerId")]
       ChromeProtocol.Domains.Runtime.UniqueDebuggerIdType DebuggerId
     ) : ChromeProtocol.Core.IType
     {
@@ -430,7 +430,7 @@ namespace ChromeProtocol.Domains
     /// <param name="GeneratePreview">Whether preview should be generated for the result.</param>
     /// <param name="ThrowOnSideEffect">Whether to throw an exception if side effect cannot be ruled out during evaluation.</param>
     /// <param name="Timeout">Terminate execution after timing out (number of milliseconds).</param>
-    public static ChromeProtocol.Domains.Debugger.EvaluateOnCallFrameRequest EvaluateOnCallFrame(ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId, string Expression, string? ObjectGroup = default, bool? IncludeCommandLineAPI = default, bool? Silent = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? ThrowOnSideEffect = default, ChromeProtocol.Domains.Runtime.TimeDeltaType? Timeout = default)    
+    public static ChromeProtocol.Domains.Debugger.EvaluateOnCallFrameRequest EvaluateOnCallFrame(ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId, string Expression, string? ObjectGroup = default, bool? IncludeCommandLineAPI = default, bool? Silent = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? ThrowOnSideEffect = default, ChromeProtocol.Domains.Runtime.TimeDeltaType? Timeout = default)
     {
       return new ChromeProtocol.Domains.Debugger.EvaluateOnCallFrameRequest(CallFrameId, Expression, ObjectGroup, IncludeCommandLineAPI, Silent, ReturnByValue, GeneratePreview, ThrowOnSideEffect, Timeout);
     }
@@ -455,23 +455,23 @@ namespace ChromeProtocol.Domains
     /// <param name="Timeout">Terminate execution after timing out (number of milliseconds).</param>
     [ChromeProtocol.Core.MethodName("Debugger.evaluateOnCallFrame")]
     public record EvaluateOnCallFrameRequest(
-      [property: Newtonsoft.Json.JsonProperty("callFrameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrameId")]
       ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId,
-      [property: Newtonsoft.Json.JsonProperty("expression")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expression")]
       string Expression,
-      [property: Newtonsoft.Json.JsonProperty("objectGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectGroup")]
       string? ObjectGroup = default,
-      [property: Newtonsoft.Json.JsonProperty("includeCommandLineAPI")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeCommandLineAPI")]
       bool? IncludeCommandLineAPI = default,
-      [property: Newtonsoft.Json.JsonProperty("silent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("silent")]
       bool? Silent = default,
-      [property: Newtonsoft.Json.JsonProperty("returnByValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("returnByValue")]
       bool? ReturnByValue = default,
-      [property: Newtonsoft.Json.JsonProperty("generatePreview")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("generatePreview")]
       bool? GeneratePreview = default,
-      [property: Newtonsoft.Json.JsonProperty("throwOnSideEffect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("throwOnSideEffect")]
       bool? ThrowOnSideEffect = default,
-      [property: Newtonsoft.Json.JsonProperty("timeout")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timeout")]
       ChromeProtocol.Domains.Runtime.TimeDeltaType? Timeout = default
     ) : ChromeProtocol.Core.ICommand<EvaluateOnCallFrameRequestResult>
     {
@@ -479,9 +479,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">Object wrapper for the evaluation result.</param>
     /// <param name="ExceptionDetails">Exception details.</param>
     public record EvaluateOnCallFrameRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Result,
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType? ExceptionDetails = default
     ) : ChromeProtocol.Core.IType
     {
@@ -496,7 +496,7 @@ namespace ChromeProtocol.Domains
     /// of scripts is used as end of range.<br/>
     /// </param>
     /// <param name="RestrictToFunction">Only consider locations which are in the same (non-nested) function as start.</param>
-    public static ChromeProtocol.Domains.Debugger.GetPossibleBreakpointsRequest GetPossibleBreakpoints(ChromeProtocol.Domains.Debugger.LocationType Start, ChromeProtocol.Domains.Debugger.LocationType? End = default, bool? RestrictToFunction = default)    
+    public static ChromeProtocol.Domains.Debugger.GetPossibleBreakpointsRequest GetPossibleBreakpoints(ChromeProtocol.Domains.Debugger.LocationType Start, ChromeProtocol.Domains.Debugger.LocationType? End = default, bool? RestrictToFunction = default)
     {
       return new ChromeProtocol.Domains.Debugger.GetPossibleBreakpointsRequest(Start, End, RestrictToFunction);
     }
@@ -512,25 +512,25 @@ namespace ChromeProtocol.Domains
     /// <param name="RestrictToFunction">Only consider locations which are in the same (non-nested) function as start.</param>
     [ChromeProtocol.Core.MethodName("Debugger.getPossibleBreakpoints")]
     public record GetPossibleBreakpointsRequest(
-      [property: Newtonsoft.Json.JsonProperty("start")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("start")]
       ChromeProtocol.Domains.Debugger.LocationType Start,
-      [property: Newtonsoft.Json.JsonProperty("end")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("end")]
       ChromeProtocol.Domains.Debugger.LocationType? End = default,
-      [property: Newtonsoft.Json.JsonProperty("restrictToFunction")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("restrictToFunction")]
       bool? RestrictToFunction = default
     ) : ChromeProtocol.Core.ICommand<GetPossibleBreakpointsRequestResult>
     {
     }
     /// <param name="Locations">List of the possible breakpoint locations.</param>
     public record GetPossibleBreakpointsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("locations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("locations")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.BreakLocationType> Locations
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns source for the script with given id.</summary>
     /// <param name="ScriptId">Id of the script to get source for.</param>
-    public static ChromeProtocol.Domains.Debugger.GetScriptSourceRequest GetScriptSource(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId)    
+    public static ChromeProtocol.Domains.Debugger.GetScriptSourceRequest GetScriptSource(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId)
     {
       return new ChromeProtocol.Domains.Debugger.GetScriptSourceRequest(ScriptId);
     }
@@ -538,7 +538,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ScriptId">Id of the script to get source for.</param>
     [ChromeProtocol.Core.MethodName("Debugger.getScriptSource")]
     public record GetScriptSourceRequest(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId
     ) : ChromeProtocol.Core.ICommand<GetScriptSourceRequestResult>
     {
@@ -546,22 +546,22 @@ namespace ChromeProtocol.Domains
     /// <param name="ScriptSource">Script source (empty in case of Wasm bytecode).</param>
     /// <param name="Bytecode">Wasm bytecode. (Encoded as a base64 string when passed over JSON)</param>
     public record GetScriptSourceRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("scriptSource")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptSource")]
       string ScriptSource,
-      [property: Newtonsoft.Json.JsonProperty("bytecode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bytecode")]
       string? Bytecode = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <param name="ScriptId">Id of the script to disassemble</param>
-    public static ChromeProtocol.Domains.Debugger.DisassembleWasmModuleRequest DisassembleWasmModule(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId)    
+    public static ChromeProtocol.Domains.Debugger.DisassembleWasmModuleRequest DisassembleWasmModule(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId)
     {
       return new ChromeProtocol.Domains.Debugger.DisassembleWasmModuleRequest(ScriptId);
     }
     /// <param name="ScriptId">Id of the script to disassemble</param>
     [ChromeProtocol.Core.MethodName("Debugger.disassembleWasmModule")]
     public record DisassembleWasmModuleRequest(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId
     ) : ChromeProtocol.Core.ICommand<DisassembleWasmModuleRequestResult>
     {
@@ -577,13 +577,13 @@ namespace ChromeProtocol.Domains
     /// disassembly can be read successively.<br/>
     /// </param>
     public record DisassembleWasmModuleRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("totalNumberOfLines")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("totalNumberOfLines")]
       int TotalNumberOfLines,
-      [property: Newtonsoft.Json.JsonProperty("functionBodyOffsets")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("functionBodyOffsets")]
       System.Collections.Generic.IReadOnlyList<int> FunctionBodyOffsets,
-      [property: Newtonsoft.Json.JsonProperty("chunk")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("chunk")]
       ChromeProtocol.Domains.Debugger.WasmDisassemblyChunkType Chunk,
-      [property: Newtonsoft.Json.JsonProperty("streamId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("streamId")]
       string? StreamId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -594,7 +594,7 @@ namespace ChromeProtocol.Domains
     /// and return an empty chunk. Any subsequent calls for the now invalid stream<br/>
     /// will return errors.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Debugger.NextWasmDisassemblyChunkRequest NextWasmDisassemblyChunk(string StreamId)    
+    public static ChromeProtocol.Domains.Debugger.NextWasmDisassemblyChunkRequest NextWasmDisassemblyChunk(string StreamId)
     {
       return new ChromeProtocol.Domains.Debugger.NextWasmDisassemblyChunkRequest(StreamId);
     }
@@ -606,14 +606,14 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Debugger.nextWasmDisassemblyChunk")]
     public record NextWasmDisassemblyChunkRequest(
-      [property: Newtonsoft.Json.JsonProperty("streamId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("streamId")]
       string StreamId
     ) : ChromeProtocol.Core.ICommand<NextWasmDisassemblyChunkRequestResult>
     {
     }
     /// <param name="Chunk">The next chunk of disassembly.</param>
     public record NextWasmDisassemblyChunkRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("chunk")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("chunk")]
       ChromeProtocol.Domains.Debugger.WasmDisassemblyChunkType Chunk
     ) : ChromeProtocol.Core.IType
     {
@@ -621,7 +621,7 @@ namespace ChromeProtocol.Domains
     /// <summary>This command is deprecated. Use getScriptSource instead.</summary>
     /// <param name="ScriptId">Id of the Wasm script to get source for.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Debugger.GetWasmBytecodeRequest GetWasmBytecode(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId)    
+    public static ChromeProtocol.Domains.Debugger.GetWasmBytecodeRequest GetWasmBytecode(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId)
     {
       return new ChromeProtocol.Domains.Debugger.GetWasmBytecodeRequest(ScriptId);
     }
@@ -630,7 +630,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Debugger.getWasmBytecode")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record GetWasmBytecodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId
     ) : ChromeProtocol.Core.ICommand<GetWasmBytecodeRequestResult>
     {
@@ -638,32 +638,32 @@ namespace ChromeProtocol.Domains
     /// <param name="Bytecode">Script source. (Encoded as a base64 string when passed over JSON)</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record GetWasmBytecodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("bytecode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bytecode")]
       string Bytecode
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns stack trace with given `stackTraceId`.</summary>
-    public static ChromeProtocol.Domains.Debugger.GetStackTraceRequest GetStackTrace(ChromeProtocol.Domains.Runtime.StackTraceIdType StackTraceId)    
+    public static ChromeProtocol.Domains.Debugger.GetStackTraceRequest GetStackTrace(ChromeProtocol.Domains.Runtime.StackTraceIdType StackTraceId)
     {
       return new ChromeProtocol.Domains.Debugger.GetStackTraceRequest(StackTraceId);
     }
     /// <summary>Returns stack trace with given `stackTraceId`.</summary>
     [ChromeProtocol.Core.MethodName("Debugger.getStackTrace")]
     public record GetStackTraceRequest(
-      [property: Newtonsoft.Json.JsonProperty("stackTraceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stackTraceId")]
       ChromeProtocol.Domains.Runtime.StackTraceIdType StackTraceId
     ) : ChromeProtocol.Core.ICommand<GetStackTraceRequestResult>
     {
     }
     public record GetStackTraceRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("stackTrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stackTrace")]
       ChromeProtocol.Domains.Runtime.StackTraceType StackTrace
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Stops on the next JavaScript statement.</summary>
-    public static ChromeProtocol.Domains.Debugger.PauseRequest Pause()    
+    public static ChromeProtocol.Domains.Debugger.PauseRequest Pause()
     {
       return new ChromeProtocol.Domains.Debugger.PauseRequest();
     }
@@ -677,7 +677,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="ParentStackTraceId">Debugger will pause when async call with given stack trace is started.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Debugger.PauseOnAsyncCallRequest PauseOnAsyncCall(ChromeProtocol.Domains.Runtime.StackTraceIdType ParentStackTraceId)    
+    public static ChromeProtocol.Domains.Debugger.PauseOnAsyncCallRequest PauseOnAsyncCall(ChromeProtocol.Domains.Runtime.StackTraceIdType ParentStackTraceId)
     {
       return new ChromeProtocol.Domains.Debugger.PauseOnAsyncCallRequest(ParentStackTraceId);
     }
@@ -685,7 +685,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Debugger.pauseOnAsyncCall")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record PauseOnAsyncCallRequest(
-      [property: Newtonsoft.Json.JsonProperty("parentStackTraceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentStackTraceId")]
       ChromeProtocol.Domains.Runtime.StackTraceIdType ParentStackTraceId
     ) : ChromeProtocol.Core.ICommand<PauseOnAsyncCallRequestResult>
     {
@@ -695,14 +695,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Removes JavaScript breakpoint.</summary>
-    public static ChromeProtocol.Domains.Debugger.RemoveBreakpointRequest RemoveBreakpoint(ChromeProtocol.Domains.Debugger.BreakpointIdType BreakpointId)    
+    public static ChromeProtocol.Domains.Debugger.RemoveBreakpointRequest RemoveBreakpoint(ChromeProtocol.Domains.Debugger.BreakpointIdType BreakpointId)
     {
       return new ChromeProtocol.Domains.Debugger.RemoveBreakpointRequest(BreakpointId);
     }
     /// <summary>Removes JavaScript breakpoint.</summary>
     [ChromeProtocol.Core.MethodName("Debugger.removeBreakpoint")]
     public record RemoveBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("breakpointId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("breakpointId")]
       ChromeProtocol.Domains.Debugger.BreakpointIdType BreakpointId
     ) : ChromeProtocol.Core.ICommand<RemoveBreakpointRequestResult>
     {
@@ -728,7 +728,7 @@ namespace ChromeProtocol.Domains
     /// The `mode` parameter must be present and set to &#39;StepInto&#39;, otherwise<br/>
     /// `restartFrame` will error out.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Debugger.RestartFrameRequest RestartFrame(ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId, string? Mode = default)    
+    public static ChromeProtocol.Domains.Debugger.RestartFrameRequest RestartFrame(ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId, string? Mode = default)
     {
       return new ChromeProtocol.Domains.Debugger.RestartFrameRequest(CallFrameId, Mode);
     }
@@ -752,9 +752,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Debugger.restartFrame")]
     public record RestartFrameRequest(
-      [property: Newtonsoft.Json.JsonProperty("callFrameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrameId")]
       ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId,
-      [property: Newtonsoft.Json.JsonProperty("mode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mode")]
       string? Mode = default
     ) : ChromeProtocol.Core.ICommand<RestartFrameRequestResult>
     {
@@ -764,13 +764,13 @@ namespace ChromeProtocol.Domains
     /// <param name="AsyncStackTraceId">Async stack trace, if any.</param>
     public record RestartFrameRequestResult(
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("callFrames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrames")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.CallFrameType> CallFrames,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("asyncStackTrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("asyncStackTrace")]
       ChromeProtocol.Domains.Runtime.StackTraceType? AsyncStackTrace = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("asyncStackTraceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("asyncStackTraceId")]
       ChromeProtocol.Domains.Runtime.StackTraceIdType? AsyncStackTraceId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -783,7 +783,7 @@ namespace ChromeProtocol.Domains
     /// is actually resumed, at which point termination is triggered.<br/>
     /// If execution is currently not paused, this parameter has no effect.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Debugger.ResumeRequest Resume(bool? TerminateOnResume = default)    
+    public static ChromeProtocol.Domains.Debugger.ResumeRequest Resume(bool? TerminateOnResume = default)
     {
       return new ChromeProtocol.Domains.Debugger.ResumeRequest(TerminateOnResume);
     }
@@ -797,7 +797,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Debugger.resume")]
     public record ResumeRequest(
-      [property: Newtonsoft.Json.JsonProperty("terminateOnResume")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("terminateOnResume")]
       bool? TerminateOnResume = default
     ) : ChromeProtocol.Core.ICommand<ResumeRequestResult>
     {
@@ -810,7 +810,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Query">String to search for.</param>
     /// <param name="CaseSensitive">If true, search is case sensitive.</param>
     /// <param name="IsRegex">If true, treats string parameter as regex.</param>
-    public static ChromeProtocol.Domains.Debugger.SearchInContentRequest SearchInContent(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, string Query, bool? CaseSensitive = default, bool? IsRegex = default)    
+    public static ChromeProtocol.Domains.Debugger.SearchInContentRequest SearchInContent(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, string Query, bool? CaseSensitive = default, bool? IsRegex = default)
     {
       return new ChromeProtocol.Domains.Debugger.SearchInContentRequest(ScriptId, Query, CaseSensitive, IsRegex);
     }
@@ -821,20 +821,20 @@ namespace ChromeProtocol.Domains
     /// <param name="IsRegex">If true, treats string parameter as regex.</param>
     [ChromeProtocol.Core.MethodName("Debugger.searchInContent")]
     public record SearchInContentRequest(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("query")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("query")]
       string Query,
-      [property: Newtonsoft.Json.JsonProperty("caseSensitive")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("caseSensitive")]
       bool? CaseSensitive = default,
-      [property: Newtonsoft.Json.JsonProperty("isRegex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isRegex")]
       bool? IsRegex = default
     ) : ChromeProtocol.Core.ICommand<SearchInContentRequestResult>
     {
     }
     /// <param name="Result">List of search matches.</param>
     public record SearchInContentRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.SearchMatchType> Result
     ) : ChromeProtocol.Core.IType
     {
@@ -844,7 +844,7 @@ namespace ChromeProtocol.Domains
     /// Maximum depth of async call stacks. Setting to `0` will effectively disable collecting async<br/>
     /// call stacks (default).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Debugger.SetAsyncCallStackDepthRequest SetAsyncCallStackDepth(int MaxDepth)    
+    public static ChromeProtocol.Domains.Debugger.SetAsyncCallStackDepthRequest SetAsyncCallStackDepth(int MaxDepth)
     {
       return new ChromeProtocol.Domains.Debugger.SetAsyncCallStackDepthRequest(MaxDepth);
     }
@@ -855,7 +855,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Debugger.setAsyncCallStackDepth")]
     public record SetAsyncCallStackDepthRequest(
-      [property: Newtonsoft.Json.JsonProperty("maxDepth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxDepth")]
       int MaxDepth
     ) : ChromeProtocol.Core.ICommand<SetAsyncCallStackDepthRequestResult>
     {
@@ -869,7 +869,7 @@ namespace ChromeProtocol.Domains
     /// performing &#39;step in&#39; several times, finally resorting to &#39;step out&#39; if unsuccessful.<br/>
     /// </summary>
     /// <param name="Patterns">Array of regexps that will be used to check script url for blackbox state.</param>
-    public static ChromeProtocol.Domains.Debugger.SetBlackboxPatternsRequest SetBlackboxPatterns(System.Collections.Generic.IReadOnlyList<string> Patterns)    
+    public static ChromeProtocol.Domains.Debugger.SetBlackboxPatternsRequest SetBlackboxPatterns(System.Collections.Generic.IReadOnlyList<string> Patterns)
     {
       return new ChromeProtocol.Domains.Debugger.SetBlackboxPatternsRequest(Patterns);
     }
@@ -881,7 +881,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Patterns">Array of regexps that will be used to check script url for blackbox state.</param>
     [ChromeProtocol.Core.MethodName("Debugger.setBlackboxPatterns")]
     public record SetBlackboxPatternsRequest(
-      [property: Newtonsoft.Json.JsonProperty("patterns")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("patterns")]
       System.Collections.Generic.IReadOnlyList<string> Patterns
     ) : ChromeProtocol.Core.ICommand<SetBlackboxPatternsRequestResult>
     {
@@ -896,7 +896,7 @@ namespace ChromeProtocol.Domains
     /// blackboxed. Array should be sorted.<br/>
     /// </summary>
     /// <param name="ScriptId">Id of the script.</param>
-    public static ChromeProtocol.Domains.Debugger.SetBlackboxedRangesRequest SetBlackboxedRanges(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.ScriptPositionType> Positions)    
+    public static ChromeProtocol.Domains.Debugger.SetBlackboxedRangesRequest SetBlackboxedRanges(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.ScriptPositionType> Positions)
     {
       return new ChromeProtocol.Domains.Debugger.SetBlackboxedRangesRequest(ScriptId, Positions);
     }
@@ -909,9 +909,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ScriptId">Id of the script.</param>
     [ChromeProtocol.Core.MethodName("Debugger.setBlackboxedRanges")]
     public record SetBlackboxedRangesRequest(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("positions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("positions")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.ScriptPositionType> Positions
     ) : ChromeProtocol.Core.ICommand<SetBlackboxedRangesRequestResult>
     {
@@ -925,7 +925,7 @@ namespace ChromeProtocol.Domains
     /// Expression to use as a breakpoint condition. When specified, debugger will only stop on the<br/>
     /// breakpoint if this expression evaluates to true.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Debugger.SetBreakpointRequest SetBreakpoint(ChromeProtocol.Domains.Debugger.LocationType Location, string? Condition = default)    
+    public static ChromeProtocol.Domains.Debugger.SetBreakpointRequest SetBreakpoint(ChromeProtocol.Domains.Debugger.LocationType Location, string? Condition = default)
     {
       return new ChromeProtocol.Domains.Debugger.SetBreakpointRequest(Location, Condition);
     }
@@ -937,9 +937,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Debugger.setBreakpoint")]
     public record SetBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.Debugger.LocationType Location,
-      [property: Newtonsoft.Json.JsonProperty("condition")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("condition")]
       string? Condition = default
     ) : ChromeProtocol.Core.ICommand<SetBreakpointRequestResult>
     {
@@ -947,16 +947,16 @@ namespace ChromeProtocol.Domains
     /// <param name="BreakpointId">Id of the created breakpoint for further reference.</param>
     /// <param name="ActualLocation">Location this breakpoint resolved into.</param>
     public record SetBreakpointRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("breakpointId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("breakpointId")]
       ChromeProtocol.Domains.Debugger.BreakpointIdType BreakpointId,
-      [property: Newtonsoft.Json.JsonProperty("actualLocation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("actualLocation")]
       ChromeProtocol.Domains.Debugger.LocationType ActualLocation
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Sets instrumentation breakpoint.</summary>
     /// <param name="Instrumentation">Instrumentation name.</param>
-    public static ChromeProtocol.Domains.Debugger.SetInstrumentationBreakpointRequest SetInstrumentationBreakpoint(string Instrumentation)    
+    public static ChromeProtocol.Domains.Debugger.SetInstrumentationBreakpointRequest SetInstrumentationBreakpoint(string Instrumentation)
     {
       return new ChromeProtocol.Domains.Debugger.SetInstrumentationBreakpointRequest(Instrumentation);
     }
@@ -964,14 +964,14 @@ namespace ChromeProtocol.Domains
     /// <param name="Instrumentation">Instrumentation name.</param>
     [ChromeProtocol.Core.MethodName("Debugger.setInstrumentationBreakpoint")]
     public record SetInstrumentationBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("instrumentation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("instrumentation")]
       string Instrumentation
     ) : ChromeProtocol.Core.ICommand<SetInstrumentationBreakpointRequestResult>
     {
     }
     /// <param name="BreakpointId">Id of the created breakpoint for further reference.</param>
     public record SetInstrumentationBreakpointRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("breakpointId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("breakpointId")]
       ChromeProtocol.Domains.Debugger.BreakpointIdType BreakpointId
     ) : ChromeProtocol.Core.IType
     {
@@ -994,7 +994,7 @@ namespace ChromeProtocol.Domains
     /// Expression to use as a breakpoint condition. When specified, debugger will only stop on the<br/>
     /// breakpoint if this expression evaluates to true.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Debugger.SetBreakpointByUrlRequest SetBreakpointByUrl(int LineNumber, string? Url = default, string? UrlRegex = default, string? ScriptHash = default, int? ColumnNumber = default, string? Condition = default)    
+    public static ChromeProtocol.Domains.Debugger.SetBreakpointByUrlRequest SetBreakpointByUrl(int LineNumber, string? Url = default, string? UrlRegex = default, string? ScriptHash = default, int? ColumnNumber = default, string? Condition = default)
     {
       return new ChromeProtocol.Domains.Debugger.SetBreakpointByUrlRequest(LineNumber, Url, UrlRegex, ScriptHash, ColumnNumber, Condition);
     }
@@ -1018,17 +1018,17 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Debugger.setBreakpointByUrl")]
     public record SetBreakpointByUrlRequest(
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("urlRegex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("urlRegex")]
       string? UrlRegex = default,
-      [property: Newtonsoft.Json.JsonProperty("scriptHash")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptHash")]
       string? ScriptHash = default,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int? ColumnNumber = default,
-      [property: Newtonsoft.Json.JsonProperty("condition")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("condition")]
       string? Condition = default
     ) : ChromeProtocol.Core.ICommand<SetBreakpointByUrlRequestResult>
     {
@@ -1036,9 +1036,9 @@ namespace ChromeProtocol.Domains
     /// <param name="BreakpointId">Id of the created breakpoint for further reference.</param>
     /// <param name="Locations">List of the locations this breakpoint resolved into upon addition.</param>
     public record SetBreakpointByUrlRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("breakpointId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("breakpointId")]
       ChromeProtocol.Domains.Debugger.BreakpointIdType BreakpointId,
-      [property: Newtonsoft.Json.JsonProperty("locations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("locations")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.LocationType> Locations
     ) : ChromeProtocol.Core.IType
     {
@@ -1053,7 +1053,7 @@ namespace ChromeProtocol.Domains
     /// Expression to use as a breakpoint condition. When specified, debugger will<br/>
     /// stop on the breakpoint if this expression evaluates to true.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Debugger.SetBreakpointOnFunctionCallRequest SetBreakpointOnFunctionCall(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, string? Condition = default)    
+    public static ChromeProtocol.Domains.Debugger.SetBreakpointOnFunctionCallRequest SetBreakpointOnFunctionCall(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, string? Condition = default)
     {
       return new ChromeProtocol.Domains.Debugger.SetBreakpointOnFunctionCallRequest(ObjectId, Condition);
     }
@@ -1069,23 +1069,23 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Debugger.setBreakpointOnFunctionCall")]
     public record SetBreakpointOnFunctionCallRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId,
-      [property: Newtonsoft.Json.JsonProperty("condition")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("condition")]
       string? Condition = default
     ) : ChromeProtocol.Core.ICommand<SetBreakpointOnFunctionCallRequestResult>
     {
     }
     /// <param name="BreakpointId">Id of the created breakpoint for further reference.</param>
     public record SetBreakpointOnFunctionCallRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("breakpointId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("breakpointId")]
       ChromeProtocol.Domains.Debugger.BreakpointIdType BreakpointId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Activates / deactivates all breakpoints on the page.</summary>
     /// <param name="Active">New value for breakpoints active state.</param>
-    public static ChromeProtocol.Domains.Debugger.SetBreakpointsActiveRequest SetBreakpointsActive(bool Active)    
+    public static ChromeProtocol.Domains.Debugger.SetBreakpointsActiveRequest SetBreakpointsActive(bool Active)
     {
       return new ChromeProtocol.Domains.Debugger.SetBreakpointsActiveRequest(Active);
     }
@@ -1093,7 +1093,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Active">New value for breakpoints active state.</param>
     [ChromeProtocol.Core.MethodName("Debugger.setBreakpointsActive")]
     public record SetBreakpointsActiveRequest(
-      [property: Newtonsoft.Json.JsonProperty("active")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("active")]
       bool Active
     ) : ChromeProtocol.Core.ICommand<SetBreakpointsActiveRequestResult>
     {
@@ -1106,7 +1106,7 @@ namespace ChromeProtocol.Domains
     /// or caught exceptions, no exceptions. Initial pause on exceptions state is `none`.<br/>
     /// </summary>
     /// <param name="State">Pause on exceptions mode.</param>
-    public static ChromeProtocol.Domains.Debugger.SetPauseOnExceptionsRequest SetPauseOnExceptions(string State)    
+    public static ChromeProtocol.Domains.Debugger.SetPauseOnExceptionsRequest SetPauseOnExceptions(string State)
     {
       return new ChromeProtocol.Domains.Debugger.SetPauseOnExceptionsRequest(State);
     }
@@ -1117,7 +1117,7 @@ namespace ChromeProtocol.Domains
     /// <param name="State">Pause on exceptions mode.</param>
     [ChromeProtocol.Core.MethodName("Debugger.setPauseOnExceptions")]
     public record SetPauseOnExceptionsRequest(
-      [property: Newtonsoft.Json.JsonProperty("state")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("state")]
       string State
     ) : ChromeProtocol.Core.ICommand<SetPauseOnExceptionsRequestResult>
     {
@@ -1127,7 +1127,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Changes return value in top frame. Available only at return break position.</summary>
     /// <param name="NewValue">New return value.</param>
-    public static ChromeProtocol.Domains.Debugger.SetReturnValueRequest SetReturnValue(ChromeProtocol.Domains.Runtime.CallArgumentType NewValue)    
+    public static ChromeProtocol.Domains.Debugger.SetReturnValueRequest SetReturnValue(ChromeProtocol.Domains.Runtime.CallArgumentType NewValue)
     {
       return new ChromeProtocol.Domains.Debugger.SetReturnValueRequest(NewValue);
     }
@@ -1135,7 +1135,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NewValue">New return value.</param>
     [ChromeProtocol.Core.MethodName("Debugger.setReturnValue")]
     public record SetReturnValueRequest(
-      [property: Newtonsoft.Json.JsonProperty("newValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("newValue")]
       ChromeProtocol.Domains.Runtime.CallArgumentType NewValue
     ) : ChromeProtocol.Core.ICommand<SetReturnValueRequestResult>
     {
@@ -1161,7 +1161,7 @@ namespace ChromeProtocol.Domains
     /// If true, then `scriptSource` is allowed to change the function on top of the stack<br/>
     /// as long as the top-most stack frame is the only activation of that function.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Debugger.SetScriptSourceRequest SetScriptSource(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, string ScriptSource, bool? DryRun = default, bool? AllowTopFrameEditing = default)    
+    public static ChromeProtocol.Domains.Debugger.SetScriptSourceRequest SetScriptSource(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, string ScriptSource, bool? DryRun = default, bool? AllowTopFrameEditing = default)
     {
       return new ChromeProtocol.Domains.Debugger.SetScriptSourceRequest(ScriptId, ScriptSource, DryRun, AllowTopFrameEditing);
     }
@@ -1185,13 +1185,13 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Debugger.setScriptSource")]
     public record SetScriptSourceRequest(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("scriptSource")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptSource")]
       string ScriptSource,
-      [property: Newtonsoft.Json.JsonProperty("dryRun")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dryRun")]
       bool? DryRun = default,
-      [property: Newtonsoft.Json.JsonProperty("allowTopFrameEditing")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("allowTopFrameEditing")]
       bool? AllowTopFrameEditing = default
     ) : ChromeProtocol.Core.ICommand<SetScriptSourceRequestResult>
     {
@@ -1207,28 +1207,28 @@ namespace ChromeProtocol.Domains
     /// <param name="AsyncStackTraceId">Async stack trace, if any.</param>
     /// <param name="ExceptionDetails">Exception details if any. Only present when `status` is `CompileError`.</param>
     public record SetScriptSourceRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       string Status,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("callFrames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrames")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.CallFrameType>? CallFrames = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("stackChanged")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stackChanged")]
       bool? StackChanged = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("asyncStackTrace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("asyncStackTrace")]
       ChromeProtocol.Domains.Runtime.StackTraceType? AsyncStackTrace = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("asyncStackTraceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("asyncStackTraceId")]
       ChromeProtocol.Domains.Runtime.StackTraceIdType? AsyncStackTraceId = default,
-      [property: Newtonsoft.Json.JsonProperty("exceptionDetails")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exceptionDetails")]
       ChromeProtocol.Domains.Runtime.ExceptionDetailsType? ExceptionDetails = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Makes page not interrupt on any pauses (breakpoint, exception, dom exception etc).</summary>
     /// <param name="Skip">New value for skip pauses state.</param>
-    public static ChromeProtocol.Domains.Debugger.SetSkipAllPausesRequest SetSkipAllPauses(bool Skip)    
+    public static ChromeProtocol.Domains.Debugger.SetSkipAllPausesRequest SetSkipAllPauses(bool Skip)
     {
       return new ChromeProtocol.Domains.Debugger.SetSkipAllPausesRequest(Skip);
     }
@@ -1236,7 +1236,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Skip">New value for skip pauses state.</param>
     [ChromeProtocol.Core.MethodName("Debugger.setSkipAllPauses")]
     public record SetSkipAllPausesRequest(
-      [property: Newtonsoft.Json.JsonProperty("skip")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("skip")]
       bool Skip
     ) : ChromeProtocol.Core.ICommand<SetSkipAllPausesRequestResult>
     {
@@ -1255,7 +1255,7 @@ namespace ChromeProtocol.Domains
     /// <param name="VariableName">Variable name.</param>
     /// <param name="NewValue">New variable value.</param>
     /// <param name="CallFrameId">Id of callframe that holds variable.</param>
-    public static ChromeProtocol.Domains.Debugger.SetVariableValueRequest SetVariableValue(int ScopeNumber, string VariableName, ChromeProtocol.Domains.Runtime.CallArgumentType NewValue, ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId)    
+    public static ChromeProtocol.Domains.Debugger.SetVariableValueRequest SetVariableValue(int ScopeNumber, string VariableName, ChromeProtocol.Domains.Runtime.CallArgumentType NewValue, ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId)
     {
       return new ChromeProtocol.Domains.Debugger.SetVariableValueRequest(ScopeNumber, VariableName, NewValue, CallFrameId);
     }
@@ -1272,13 +1272,13 @@ namespace ChromeProtocol.Domains
     /// <param name="CallFrameId">Id of callframe that holds variable.</param>
     [ChromeProtocol.Core.MethodName("Debugger.setVariableValue")]
     public record SetVariableValueRequest(
-      [property: Newtonsoft.Json.JsonProperty("scopeNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scopeNumber")]
       int ScopeNumber,
-      [property: Newtonsoft.Json.JsonProperty("variableName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("variableName")]
       string VariableName,
-      [property: Newtonsoft.Json.JsonProperty("newValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("newValue")]
       ChromeProtocol.Domains.Runtime.CallArgumentType NewValue,
-      [property: Newtonsoft.Json.JsonProperty("callFrameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrameId")]
       ChromeProtocol.Domains.Debugger.CallFrameIdType CallFrameId
     ) : ChromeProtocol.Core.ICommand<SetVariableValueRequestResult>
     {
@@ -1292,7 +1292,7 @@ namespace ChromeProtocol.Domains
     /// before next pause.<br/>
     /// </param>
     /// <param name="SkipList">The skipList specifies location ranges that should be skipped on step into.</param>
-    public static ChromeProtocol.Domains.Debugger.StepIntoRequest StepInto(bool? BreakOnAsyncCall = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.LocationRangeType>? SkipList = default)    
+    public static ChromeProtocol.Domains.Debugger.StepIntoRequest StepInto(bool? BreakOnAsyncCall = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.LocationRangeType>? SkipList = default)
     {
       return new ChromeProtocol.Domains.Debugger.StepIntoRequest(BreakOnAsyncCall, SkipList);
     }
@@ -1304,9 +1304,9 @@ namespace ChromeProtocol.Domains
     /// <param name="SkipList">The skipList specifies location ranges that should be skipped on step into.</param>
     [ChromeProtocol.Core.MethodName("Debugger.stepInto")]
     public record StepIntoRequest(
-      [property: Newtonsoft.Json.JsonProperty("breakOnAsyncCall")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("breakOnAsyncCall")]
       bool? BreakOnAsyncCall = default,
-      [property: Newtonsoft.Json.JsonProperty("skipList")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("skipList")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.LocationRangeType>? SkipList = default
     ) : ChromeProtocol.Core.ICommand<StepIntoRequestResult>
     {
@@ -1315,7 +1315,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Steps out of the function call.</summary>
-    public static ChromeProtocol.Domains.Debugger.StepOutRequest StepOut()    
+    public static ChromeProtocol.Domains.Debugger.StepOutRequest StepOut()
     {
       return new ChromeProtocol.Domains.Debugger.StepOutRequest();
     }
@@ -1329,7 +1329,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Steps over the statement.</summary>
     /// <param name="SkipList">The skipList specifies location ranges that should be skipped on step over.</param>
-    public static ChromeProtocol.Domains.Debugger.StepOverRequest StepOver(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.LocationRangeType>? SkipList = default)    
+    public static ChromeProtocol.Domains.Debugger.StepOverRequest StepOver(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.LocationRangeType>? SkipList = default)
     {
       return new ChromeProtocol.Domains.Debugger.StepOverRequest(SkipList);
     }
@@ -1337,7 +1337,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SkipList">The skipList specifies location ranges that should be skipped on step over.</param>
     [ChromeProtocol.Core.MethodName("Debugger.stepOver")]
     public record StepOverRequest(
-      [property: Newtonsoft.Json.JsonProperty("skipList")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("skipList")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Debugger.LocationRangeType>? SkipList = default
     ) : ChromeProtocol.Core.ICommand<StepOverRequestResult>
     {
