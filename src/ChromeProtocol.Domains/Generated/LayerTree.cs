@@ -120,7 +120,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Array of timings, one per paint step.</summary>
     [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
     public record PaintProfileType(
-      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken?> Items
+      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken> Items
     ) : ChromeProtocol.Core.IArrayType
     {
     }

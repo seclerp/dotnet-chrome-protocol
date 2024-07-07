@@ -192,7 +192,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Index of the string in the strings table.</summary>
     [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
     public record ArrayOfStringsType(
-      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken?> Items
+      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken> Items
     ) : ChromeProtocol.Core.IArrayType
     {
     }
@@ -221,7 +221,7 @@ namespace ChromeProtocol.Domains
     }
     [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
     public record RectangleType(
-      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken?> Items
+      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken> Items
     ) : ChromeProtocol.Core.IArrayType
     {
     }

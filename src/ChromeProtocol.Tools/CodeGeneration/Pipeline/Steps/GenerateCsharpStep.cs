@@ -104,7 +104,7 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
 
       case { Kind: TypeKind.Array }:
         var itemsType = CsharpTypeInfo.FromGenericType("System.Collections.Generic", "IReadOnlyCollection",
-          CsharpTypeInfo.MakeNullable(CsharpTypeInfo.FromTypeName("Newtonsoft.Json.Linq", "JToken")));
+          CsharpTypeInfo.FromTypeName("Newtonsoft.Json.Linq", "JToken"));
         return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
           recordBuilder => recordBuilder.Modifiers("public")
             .Attribute(CsharpTypeInfo.FromTypeName("Newtonsoft.Json", nameof(JsonConverter)),

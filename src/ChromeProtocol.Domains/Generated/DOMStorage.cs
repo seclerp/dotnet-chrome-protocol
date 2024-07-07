@@ -29,7 +29,7 @@ namespace ChromeProtocol.Domains
     /// <summary>DOM Storage item.</summary>
     [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
     public record ItemType(
-      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken?> Items
+      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken> Items
     ) : ChromeProtocol.Core.IArrayType
     {
     }

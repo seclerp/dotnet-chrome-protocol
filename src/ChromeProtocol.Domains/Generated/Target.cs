@@ -73,7 +73,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
     public record TargetFilterType(
-      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken?> Items
+      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken> Items
     ) : ChromeProtocol.Core.IArrayType
     {
     }
