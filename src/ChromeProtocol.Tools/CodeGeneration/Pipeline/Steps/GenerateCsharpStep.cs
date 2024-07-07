@@ -87,22 +87,34 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
                 p => p.Argument("Value"))
               .Apply(_ => XmlDocumentationDecorator.AddXmlDocs(_, type, _ => throw new UnreachableException()));
           });
+
       case { Kind: TypeKind.Object, Properties.Length: 0 }:
-        return classBuilder.Class(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
+        var propertiesType = CsharpTypeInfo.FromGenericType("System.Collections.Generic", "IReadOnlyDictionary",
+          CsharpTypeInfo.FromTypeName("System", nameof(String)),
+          CsharpTypeInfo.MakeNullable(CsharpTypeInfo.FromTypeName("Newtonsoft.Json.Linq", "JToken")));
+        return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
           recordBuilder => recordBuilder.Modifiers("public")
+            .Attribute(CsharpTypeInfo.FromTypeName("Newtonsoft.Json", nameof(JsonConverter)),
+              attr => attr.Arguments("typeof(ChromeProtocol.Core.ObjectTypeConverter)"))
             .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
-            .Inherit(CsharpTypeInfo.FromTypeName("Newtonsoft.Json.Linq", nameof(JObject)))
-            .Inherit(CsharpTypeInfo.FromTypeName("ChromeProtocol.Core", nameof(IType)))
+            .Inherit(CsharpTypeInfo.FromTypeName("ChromeProtocol.Core", nameof(IObjectType)))
+            .Parameters(paramsBuilder => paramsBuilder.Parameter("Properties", propertiesType))
             .Apply(_ => XmlDocumentationDecorator.AddXmlDocs(_, type,
               propName => CsharpNameResolver.Resolve(propName, ItemKind.PropertyName, recordBuilder.Node.Name))));
+
       case { Kind: TypeKind.Array }:
-        return classBuilder.Class(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
+        var itemsType = CsharpTypeInfo.FromGenericType("System.Collections.Generic", "IReadOnlyCollection",
+          CsharpTypeInfo.MakeNullable(CsharpTypeInfo.FromTypeName("Newtonsoft.Json.Linq", "JToken")));
+        return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
           recordBuilder => recordBuilder.Modifiers("public")
+            .Attribute(CsharpTypeInfo.FromTypeName("Newtonsoft.Json", nameof(JsonConverter)),
+              attr => attr.Arguments("typeof(ChromeProtocol.Core.ArrayTypeConverter)"))
             .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
-            .Inherit(CsharpTypeInfo.FromTypeName("Newtonsoft.Json.Linq", nameof(JArray)))
-            .Inherit(CsharpTypeInfo.FromTypeName("ChromeProtocol.Core", nameof(IType)))
+            .Inherit(CsharpTypeInfo.FromTypeName("ChromeProtocol.Core", nameof(IArrayType)))
+            .Parameters(paramsBuilder => paramsBuilder.Parameter("Items", itemsType))
             .Apply(_ => XmlDocumentationDecorator.AddXmlDocs(_, type,
               propName => CsharpNameResolver.Resolve(propName, ItemKind.PropertyName, recordBuilder.Node.Name))));
+
       default:
         return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
           recordBuilder => recordBuilder.Modifiers("public")

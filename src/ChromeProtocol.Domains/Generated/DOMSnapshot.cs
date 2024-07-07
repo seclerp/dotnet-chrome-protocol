@@ -190,7 +190,10 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Index of the string in the strings table.</summary>
-    public class ArrayOfStringsType : Newtonsoft.Json.Linq.JArray, ChromeProtocol.Core.IType
+    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    public record ArrayOfStringsType(
+      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken?> Items
+    ) : ChromeProtocol.Core.IArrayType
     {
     }
     /// <summary>Data that is only present on rare nodes.</summary>
@@ -216,7 +219,10 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IType
     {
     }
-    public class RectangleType : Newtonsoft.Json.Linq.JArray, ChromeProtocol.Core.IType
+    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    public record RectangleType(
+      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken?> Items
+    ) : ChromeProtocol.Core.IArrayType
     {
     }
     /// <summary>Document snapshot.</summary>
