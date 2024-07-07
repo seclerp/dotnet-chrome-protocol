@@ -13,7 +13,7 @@ public class ObjectTypeConverter : JsonConverter
   public override void WriteJson(JsonWriter writer, object? instance, JsonSerializer serializer)
   {
     var type = instance?.GetType();
-    var properties = type.GetProperty(nameof(IObjectType.Properties)).GetValue(instance) as IDictionary<string, JToken?>;
+    var properties = type.GetProperty(nameof(IObjectType.Properties)).GetValue(instance) as IReadOnlyDictionary<string, JToken?>;
     var jObject = new JObject(properties);
 
     jObject.WriteTo(writer);
@@ -22,7 +22,7 @@ public class ObjectTypeConverter : JsonConverter
   public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
   {
     var jObject = JObject.Load(reader);
-    var instance = existingValue ?? Activator.CreateInstance(objectType, jObject);
+    var instance = existingValue ?? Activator.CreateInstance(objectType, jObject.ToObject<IReadOnlyDictionary<string, JToken?>>());
 
     return instance;
   }
