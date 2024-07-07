@@ -27,7 +27,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>DOM Storage item.</summary>
-    public record ItemType() : ChromeProtocol.Core.IType
+    public class ItemType : Newtonsoft.Json.Linq.JArray, ChromeProtocol.Core.IType
     {
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.domStorageItemAdded")]

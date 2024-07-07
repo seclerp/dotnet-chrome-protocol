@@ -71,7 +71,7 @@ namespace ChromeProtocol.Domains
     /// [{type: &quot;browser&quot;, exclude: true}, {type: &quot;tab&quot;, exclude: true}, {}]<br/>
     /// (i.e. include everything but `browser` and `tab`).<br/>
     /// </summary>
-    public record TargetFilterType() : ChromeProtocol.Core.IType
+    public class TargetFilterType : Newtonsoft.Json.Linq.JArray, ChromeProtocol.Core.IType
     {
     }
     public record RemoteLocationType(

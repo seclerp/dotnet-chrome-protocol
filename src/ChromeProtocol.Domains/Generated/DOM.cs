@@ -215,7 +215,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>An array of quad vertices, x immediately followed by y for each point, points clock-wise.</summary>
-    public record QuadType() : ChromeProtocol.Core.IType
+    public class QuadType : Newtonsoft.Json.Linq.JArray, ChromeProtocol.Core.IType
     {
     }
     /// <summary>Box model.</summary>

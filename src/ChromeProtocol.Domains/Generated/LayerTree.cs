@@ -118,7 +118,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Array of timings, one per paint step.</summary>
-    public record PaintProfileType() : ChromeProtocol.Core.IType
+    public class PaintProfileType : Newtonsoft.Json.Linq.JArray, ChromeProtocol.Core.IType
     {
     }
     /// <param name="LayerId">The id of the painted layer.</param>
