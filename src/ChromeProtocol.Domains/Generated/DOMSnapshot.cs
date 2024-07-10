@@ -190,7 +190,10 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Index of the string in the strings table.</summary>
-    public record ArrayOfStringsType() : ChromeProtocol.Core.IType
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    public record ArrayOfStringsType(
+      System.Collections.Generic.IReadOnlyCollection<System.Text.Json.Nodes.JsonNode> Items
+    ) : ChromeProtocol.Core.IArrayType
     {
     }
     /// <summary>Data that is only present on rare nodes.</summary>
@@ -216,7 +219,10 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IType
     {
     }
-    public record RectangleType() : ChromeProtocol.Core.IType
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    public record RectangleType(
+      System.Collections.Generic.IReadOnlyCollection<System.Text.Json.Nodes.JsonNode> Items
+    ) : ChromeProtocol.Core.IArrayType
     {
     }
     /// <summary>Document snapshot.</summary>

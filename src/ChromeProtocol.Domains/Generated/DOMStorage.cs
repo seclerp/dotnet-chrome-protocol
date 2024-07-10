@@ -27,7 +27,10 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>DOM Storage item.</summary>
-    public record ItemType() : ChromeProtocol.Core.IType
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    public record ItemType(
+      System.Collections.Generic.IReadOnlyCollection<System.Text.Json.Nodes.JsonNode> Items
+    ) : ChromeProtocol.Core.IArrayType
     {
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.domStorageItemAdded")]

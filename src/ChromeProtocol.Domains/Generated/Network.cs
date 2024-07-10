@@ -59,7 +59,10 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Request / response headers as keys / values of JSON object.</summary>
-    public record HeadersType() : ChromeProtocol.Core.IType
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ObjectTypeConverter))]
+    public record HeadersType(
+      System.Collections.Generic.IReadOnlyDictionary<System.String, System.Text.Json.Nodes.JsonNode?> Properties
+    ) : ChromeProtocol.Core.IObjectType
     {
     }
     /// <summary>The underlying connection technology that the browser is supposedly using.</summary>

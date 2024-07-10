@@ -57,7 +57,7 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
 
   private static CsharpClassDeclBuilder GenerateType(ValidatedType type, ValidatedDomain domain, string @namespace, CsharpClassDeclBuilder classBuilder)
   {
-    return type switch
+    switch (type)
     {
       // { Kind: TypeKind.Object } =>
       //   classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
@@ -71,8 +71,8 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
       //         XmlDocumentationDecorator.AddXmlDocs(_, type, propName =>
       //           CsharpNameResolver.Resolve(propName, ItemKind.PropertyName, recordBuilder.Node.Name)))),
       // { Kind: TypeKind.String, Enum: not null } => throw new NotImplementedException(),
-      { Kind: not TypeKind.Object and not TypeKind.Array } =>
-        classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
+      case { Kind: not TypeKind.Object and not TypeKind.Array }:
+        return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
           recordBuilder =>
           {
             var valueType = CsharpTypeResolver.Resolve(@namespace, domain.Name, null, type.Kind, null, false);
@@ -82,22 +82,48 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
               .Modifiers("public")
               .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
               .Parameters(paramsBuilder => paramsBuilder.Parameter("Value", valueType))
-              .Inherit(CsharpTypeInfo.FromGenericType("ChromeProtocol.Core", "PrimitiveType", valueType), p => p.Argument("Value"))
-              .Apply(_ =>
-                XmlDocumentationDecorator.AddXmlDocs(_, type, _ => throw new UnreachableException()));
-          }),
-      _ =>
-        classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
-          recordBuilder => recordBuilder
-            .Modifiers("public")
+              .Inherit(CsharpTypeInfo.FromGenericType("ChromeProtocol.Core", "PrimitiveType", valueType),
+                p => p.Argument("Value"))
+              .Apply(_ => XmlDocumentationDecorator.AddXmlDocs(_, type, _ => throw new UnreachableException()));
+          });
+
+      case { Kind: TypeKind.Object, Properties.Length: 0 }:
+        var propertiesType = CsharpTypeInfo.FromGenericType("System.Collections.Generic", "IReadOnlyDictionary",
+          CsharpTypeInfo.FromTypeName("System", nameof(String)),
+          CsharpTypeInfo.MakeNullable(CsharpTypeInfo.FromTypeName("System.Text.Json.Nodes", "JsonNode")));
+        return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
+          recordBuilder => recordBuilder.Modifiers("public")
+            .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", nameof(JsonConverterAttribute)),
+              attr => attr.Arguments("typeof(ChromeProtocol.Core.ObjectTypeConverter)"))
+            .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
+            .Inherit(CsharpTypeInfo.FromTypeName("ChromeProtocol.Core", nameof(IObjectType)))
+            .Parameters(paramsBuilder => paramsBuilder.Parameter("Properties", propertiesType))
+            .Apply(_ => XmlDocumentationDecorator.AddXmlDocs(_, type,
+              propName => CsharpNameResolver.Resolve(propName, ItemKind.PropertyName, recordBuilder.Node.Name))));
+
+      case { Kind: TypeKind.Array }:
+        var itemsType = CsharpTypeInfo.FromGenericType("System.Collections.Generic", "IReadOnlyCollection",
+          CsharpTypeInfo.FromTypeName("System.Text.Json.Nodes", "JsonNode"));
+        return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
+          recordBuilder => recordBuilder.Modifiers("public")
+            .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", nameof(JsonConverterAttribute)),
+              attr => attr.Arguments("typeof(ChromeProtocol.Core.ArrayTypeConverter)"))
+            .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
+            .Inherit(CsharpTypeInfo.FromTypeName("ChromeProtocol.Core", nameof(IArrayType)))
+            .Parameters(paramsBuilder => paramsBuilder.Parameter("Items", itemsType))
+            .Apply(_ => XmlDocumentationDecorator.AddXmlDocs(_, type,
+              propName => CsharpNameResolver.Resolve(propName, ItemKind.PropertyName, recordBuilder.Node.Name))));
+
+      default:
+        return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
+          recordBuilder => recordBuilder.Modifiers("public")
             .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
             .Parameters(paramsBuilder =>
               GenerateParameters(paramsBuilder, type.Properties, domain, @namespace, recordBuilder.Node.Name))
             .Inherit(CsharpTypeInfo.FromTypeName("ChromeProtocol.Core", nameof(IType)))
-            .Apply(_ =>
-              XmlDocumentationDecorator.AddXmlDocs(_, type, propName =>
-                CsharpNameResolver.Resolve(propName, ItemKind.PropertyName, recordBuilder.Node.Name)))),
-    };
+            .Apply(_ => XmlDocumentationDecorator.AddXmlDocs(_, type,
+              propName => CsharpNameResolver.Resolve(propName, ItemKind.PropertyName, recordBuilder.Node.Name))));
+    }
   }
 
   private static CsharpClassDeclBuilder GenerateEvent(ValidatedEvent @event, ValidatedDomain domain, string @namespace, CsharpClassDeclBuilder classBuilder) =>

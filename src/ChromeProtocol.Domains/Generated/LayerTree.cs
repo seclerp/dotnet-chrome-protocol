@@ -118,7 +118,10 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Array of timings, one per paint step.</summary>
-    public record PaintProfileType() : ChromeProtocol.Core.IType
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    public record PaintProfileType(
+      System.Collections.Generic.IReadOnlyCollection<System.Text.Json.Nodes.JsonNode> Items
+    ) : ChromeProtocol.Core.IArrayType
     {
     }
     /// <param name="LayerId">The id of the painted layer.</param>

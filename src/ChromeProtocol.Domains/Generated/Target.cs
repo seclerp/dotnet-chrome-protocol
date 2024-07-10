@@ -71,7 +71,10 @@ namespace ChromeProtocol.Domains
     /// [{type: &quot;browser&quot;, exclude: true}, {type: &quot;tab&quot;, exclude: true}, {}]<br/>
     /// (i.e. include everything but `browser` and `tab`).<br/>
     /// </summary>
-    public record TargetFilterType() : ChromeProtocol.Core.IType
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    public record TargetFilterType(
+      System.Collections.Generic.IReadOnlyCollection<System.Text.Json.Nodes.JsonNode> Items
+    ) : ChromeProtocol.Core.IArrayType
     {
     }
     public record RemoteLocationType(

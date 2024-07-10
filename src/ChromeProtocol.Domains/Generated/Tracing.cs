@@ -6,7 +6,10 @@ namespace ChromeProtocol.Domains
   public static partial class Tracing
   {
     /// <summary>Configuration for memory dump. Used only when &quot;memory-infra&quot; category is enabled.</summary>
-    public record MemoryDumpConfigType() : ChromeProtocol.Core.IType
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ObjectTypeConverter))]
+    public record MemoryDumpConfigType(
+      System.Collections.Generic.IReadOnlyDictionary<System.String, System.Text.Json.Nodes.JsonNode?> Properties
+    ) : ChromeProtocol.Core.IObjectType
     {
     }
     /// <param name="RecordMode">Controls how the trace buffer stores data.</param>
