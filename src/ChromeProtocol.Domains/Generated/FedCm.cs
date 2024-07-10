@@ -10,28 +10,28 @@ namespace ChromeProtocol.Domains
     /// Whether this is a sign-up or sign-in action for this account, i.e.<br/>
     /// whether this account has ever been used to sign in to this RP before.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record LoginStateType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>The types of FedCM dialogs.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record DialogTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>The buttons on the FedCM dialog.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record DialogButtonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>The URLs that each account has</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AccountUrlTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -40,25 +40,25 @@ namespace ChromeProtocol.Domains
     /// <summary>Corresponds to IdentityRequestAccount</summary>
     /// <param name="TermsOfServiceUrl">These two are only set if the loginState is signUp</param>
     public record AccountType(
-      [property: Newtonsoft.Json.JsonProperty("accountId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accountId")]
       string AccountId,
-      [property: Newtonsoft.Json.JsonProperty("email")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("email")]
       string Email,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("givenName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("givenName")]
       string GivenName,
-      [property: Newtonsoft.Json.JsonProperty("pictureUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pictureUrl")]
       string PictureUrl,
-      [property: Newtonsoft.Json.JsonProperty("idpConfigUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("idpConfigUrl")]
       string IdpConfigUrl,
-      [property: Newtonsoft.Json.JsonProperty("idpLoginUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("idpLoginUrl")]
       string IdpLoginUrl,
-      [property: Newtonsoft.Json.JsonProperty("loginState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loginState")]
       ChromeProtocol.Domains.FedCm.LoginStateType LoginState,
-      [property: Newtonsoft.Json.JsonProperty("termsOfServiceUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("termsOfServiceUrl")]
       string? TermsOfServiceUrl = default,
-      [property: Newtonsoft.Json.JsonProperty("privacyPolicyUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("privacyPolicyUrl")]
       string? PrivacyPolicyUrl = default
     ) : ChromeProtocol.Core.IType
     {
@@ -69,15 +69,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("FedCm.dialogShown")]
     public record DialogShown(
-      [property: Newtonsoft.Json.JsonProperty("dialogId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dialogId")]
       string DialogId,
-      [property: Newtonsoft.Json.JsonProperty("dialogType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dialogType")]
       ChromeProtocol.Domains.FedCm.DialogTypeType DialogType,
-      [property: Newtonsoft.Json.JsonProperty("accounts")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accounts")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.FedCm.AccountType> Accounts,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       string Title,
-      [property: Newtonsoft.Json.JsonProperty("subtitle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subtitle")]
       string? Subtitle = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -88,7 +88,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("FedCm.dialogClosed")]
     public record DialogClosed(
-      [property: Newtonsoft.Json.JsonProperty("dialogId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dialogId")]
       string DialogId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -98,7 +98,7 @@ namespace ChromeProtocol.Domains
     /// normally happen, if this is unimportant to what&#39;s being tested.<br/>
     /// (step 4 of https://fedidcg.github.io/FedCM/#browser-api-rp-sign-in)<br/>
     /// </param>
-    public static ChromeProtocol.Domains.FedCm.EnableRequest Enable(bool? DisableRejectionDelay = default)    
+    public static ChromeProtocol.Domains.FedCm.EnableRequest Enable(bool? DisableRejectionDelay = default)
     {
       return new ChromeProtocol.Domains.FedCm.EnableRequest(DisableRejectionDelay);
     }
@@ -109,7 +109,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("FedCm.enable")]
     public record EnableRequest(
-      [property: Newtonsoft.Json.JsonProperty("disableRejectionDelay")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disableRejectionDelay")]
       bool? DisableRejectionDelay = default
     ) : ChromeProtocol.Core.ICommand<EnableRequestResult>
     {
@@ -117,7 +117,7 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.FedCm.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.FedCm.DisableRequest();
     }
@@ -128,15 +128,15 @@ namespace ChromeProtocol.Domains
     public record DisableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.SelectAccountRequest SelectAccount(string DialogId, int AccountIndex)    
+    public static ChromeProtocol.Domains.FedCm.SelectAccountRequest SelectAccount(string DialogId, int AccountIndex)
     {
       return new ChromeProtocol.Domains.FedCm.SelectAccountRequest(DialogId, AccountIndex);
     }
     [ChromeProtocol.Core.MethodName("FedCm.selectAccount")]
     public record SelectAccountRequest(
-      [property: Newtonsoft.Json.JsonProperty("dialogId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dialogId")]
       string DialogId,
-      [property: Newtonsoft.Json.JsonProperty("accountIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accountIndex")]
       int AccountIndex
     ) : ChromeProtocol.Core.ICommand<SelectAccountRequestResult>
     {
@@ -144,15 +144,15 @@ namespace ChromeProtocol.Domains
     public record SelectAccountRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.ClickDialogButtonRequest ClickDialogButton(string DialogId, ChromeProtocol.Domains.FedCm.DialogButtonType DialogButton)    
+    public static ChromeProtocol.Domains.FedCm.ClickDialogButtonRequest ClickDialogButton(string DialogId, ChromeProtocol.Domains.FedCm.DialogButtonType DialogButton)
     {
       return new ChromeProtocol.Domains.FedCm.ClickDialogButtonRequest(DialogId, DialogButton);
     }
     [ChromeProtocol.Core.MethodName("FedCm.clickDialogButton")]
     public record ClickDialogButtonRequest(
-      [property: Newtonsoft.Json.JsonProperty("dialogId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dialogId")]
       string DialogId,
-      [property: Newtonsoft.Json.JsonProperty("dialogButton")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dialogButton")]
       ChromeProtocol.Domains.FedCm.DialogButtonType DialogButton
     ) : ChromeProtocol.Core.ICommand<ClickDialogButtonRequestResult>
     {
@@ -160,17 +160,17 @@ namespace ChromeProtocol.Domains
     public record ClickDialogButtonRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.OpenUrlRequest OpenUrl(string DialogId, int AccountIndex, ChromeProtocol.Domains.FedCm.AccountUrlTypeType AccountUrlType)    
+    public static ChromeProtocol.Domains.FedCm.OpenUrlRequest OpenUrl(string DialogId, int AccountIndex, ChromeProtocol.Domains.FedCm.AccountUrlTypeType AccountUrlType)
     {
       return new ChromeProtocol.Domains.FedCm.OpenUrlRequest(DialogId, AccountIndex, AccountUrlType);
     }
     [ChromeProtocol.Core.MethodName("FedCm.openUrl")]
     public record OpenUrlRequest(
-      [property: Newtonsoft.Json.JsonProperty("dialogId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dialogId")]
       string DialogId,
-      [property: Newtonsoft.Json.JsonProperty("accountIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accountIndex")]
       int AccountIndex,
-      [property: Newtonsoft.Json.JsonProperty("accountUrlType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accountUrlType")]
       ChromeProtocol.Domains.FedCm.AccountUrlTypeType AccountUrlType
     ) : ChromeProtocol.Core.ICommand<OpenUrlRequestResult>
     {
@@ -178,15 +178,15 @@ namespace ChromeProtocol.Domains
     public record OpenUrlRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.DismissDialogRequest DismissDialog(string DialogId, bool? TriggerCooldown = default)    
+    public static ChromeProtocol.Domains.FedCm.DismissDialogRequest DismissDialog(string DialogId, bool? TriggerCooldown = default)
     {
       return new ChromeProtocol.Domains.FedCm.DismissDialogRequest(DialogId, TriggerCooldown);
     }
     [ChromeProtocol.Core.MethodName("FedCm.dismissDialog")]
     public record DismissDialogRequest(
-      [property: Newtonsoft.Json.JsonProperty("dialogId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dialogId")]
       string DialogId,
-      [property: Newtonsoft.Json.JsonProperty("triggerCooldown")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("triggerCooldown")]
       bool? TriggerCooldown = default
     ) : ChromeProtocol.Core.ICommand<DismissDialogRequestResult>
     {
@@ -198,7 +198,7 @@ namespace ChromeProtocol.Domains
     /// Resets the cooldown time, if any, to allow the next FedCM call to show<br/>
     /// a dialog even if one was recently dismissed by the user.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.FedCm.ResetCooldownRequest ResetCooldown()    
+    public static ChromeProtocol.Domains.FedCm.ResetCooldownRequest ResetCooldown()
     {
       return new ChromeProtocol.Domains.FedCm.ResetCooldownRequest();
     }

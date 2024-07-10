@@ -5,14 +5,14 @@ namespace ChromeProtocol.Domains
 {
   public static partial class Storage
   {
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SerializedStorageKeyType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of possible storage types.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record StorageTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -22,9 +22,9 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageType">Name of storage type.</param>
     /// <param name="Usage">Storage usage (bytes).</param>
     public record UsageForTypeType(
-      [property: Newtonsoft.Json.JsonProperty("storageType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageType")]
       ChromeProtocol.Domains.Storage.StorageTypeType StorageType,
-      [property: Newtonsoft.Json.JsonProperty("usage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("usage")]
       double Usage
     ) : ChromeProtocol.Core.IType
     {
@@ -34,36 +34,36 @@ namespace ChromeProtocol.Domains
     /// Tokens from that issuer.<br/>
     /// </summary>
     public record TrustTokensType(
-      [property: Newtonsoft.Json.JsonProperty("issuerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issuerOrigin")]
       string IssuerOrigin,
-      [property: Newtonsoft.Json.JsonProperty("count")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("count")]
       double Count
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Protected audience interest group auction identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record InterestGroupAuctionIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of interest group access types.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record InterestGroupAccessTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of auction events.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record InterestGroupAuctionEventTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of network fetches auctions can do.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record InterestGroupAuctionFetchTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -71,44 +71,44 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Ad advertising element inside an interest group.</summary>
     public record InterestGroupAdType(
-      [property: Newtonsoft.Json.JsonProperty("renderURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("renderURL")]
       string RenderURL,
-      [property: Newtonsoft.Json.JsonProperty("metadata")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("metadata")]
       string? Metadata = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>The full details of an interest group.</summary>
     public record InterestGroupDetailsType(
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("expirationTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expirationTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType ExpirationTime,
-      [property: Newtonsoft.Json.JsonProperty("joiningOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("joiningOrigin")]
       string JoiningOrigin,
-      [property: Newtonsoft.Json.JsonProperty("trustedBiddingSignalsKeys")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("trustedBiddingSignalsKeys")]
       System.Collections.Generic.IReadOnlyList<string> TrustedBiddingSignalsKeys,
-      [property: Newtonsoft.Json.JsonProperty("ads")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ads")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.InterestGroupAdType> Ads,
-      [property: Newtonsoft.Json.JsonProperty("adComponents")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("adComponents")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.InterestGroupAdType> AdComponents,
-      [property: Newtonsoft.Json.JsonProperty("biddingLogicURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("biddingLogicURL")]
       string? BiddingLogicURL = default,
-      [property: Newtonsoft.Json.JsonProperty("biddingWasmHelperURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("biddingWasmHelperURL")]
       string? BiddingWasmHelperURL = default,
-      [property: Newtonsoft.Json.JsonProperty("updateURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("updateURL")]
       string? UpdateURL = default,
-      [property: Newtonsoft.Json.JsonProperty("trustedBiddingSignalsURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("trustedBiddingSignalsURL")]
       string? TrustedBiddingSignalsURL = default,
-      [property: Newtonsoft.Json.JsonProperty("userBiddingSignals")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userBiddingSignals")]
       string? UserBiddingSignals = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Enum of shared storage access types.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SharedStorageAccessTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -116,9 +116,9 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Struct for a single key-value pair in an origin&#39;s shared storage.</summary>
     public record SharedStorageEntryType(
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
@@ -132,22 +132,22 @@ namespace ChromeProtocol.Domains
     /// storage.<br/>
     /// </param>
     public record SharedStorageMetadataType(
-      [property: Newtonsoft.Json.JsonProperty("creationTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("creationTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType CreationTime,
-      [property: Newtonsoft.Json.JsonProperty("length")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("length")]
       int Length,
-      [property: Newtonsoft.Json.JsonProperty("remainingBudget")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("remainingBudget")]
       double RemainingBudget,
-      [property: Newtonsoft.Json.JsonProperty("bytesUsed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bytesUsed")]
       int BytesUsed
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Pair of reporting metadata details for a candidate URL for `selectURL()`.</summary>
     public record SharedStorageReportingMetadataType(
-      [property: Newtonsoft.Json.JsonProperty("eventType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventType")]
       string EventType,
-      [property: Newtonsoft.Json.JsonProperty("reportingUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportingUrl")]
       string ReportingUrl
     ) : ChromeProtocol.Core.IType
     {
@@ -156,9 +156,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Url">Spec of candidate URL.</param>
     /// <param name="ReportingMetadata">Any associated reporting metadata.</param>
     public record SharedStorageUrlWithMetadataType(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("reportingMetadata")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportingMetadata")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.SharedStorageReportingMetadataType> ReportingMetadata
     ) : ChromeProtocol.Core.IType
     {
@@ -208,24 +208,24 @@ namespace ChromeProtocol.Domains
     /// SharedStorageAccessType.workletSet.<br/>
     /// </param>
     public record SharedStorageAccessParamsType(
-      [property: Newtonsoft.Json.JsonProperty("scriptSourceUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptSourceUrl")]
       string? ScriptSourceUrl = default,
-      [property: Newtonsoft.Json.JsonProperty("operationName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("operationName")]
       string? OperationName = default,
-      [property: Newtonsoft.Json.JsonProperty("serializedData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("serializedData")]
       string? SerializedData = default,
-      [property: Newtonsoft.Json.JsonProperty("urlsWithMetadata")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("urlsWithMetadata")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.SharedStorageUrlWithMetadataType>? UrlsWithMetadata = default,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string? Key = default,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("ignoreIfPresent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ignoreIfPresent")]
       bool? IgnoreIfPresent = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record StorageBucketsDurabilityType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -233,83 +233,83 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Name">If not specified, it is the default bucket of the storageKey.</param>
     public record StorageBucketType(
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       ChromeProtocol.Domains.Storage.SerializedStorageKeyType StorageKey,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string? Name = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <param name="Quota">Storage quota (bytes).</param>
     public record StorageBucketInfoType(
-      [property: Newtonsoft.Json.JsonProperty("bucket")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bucket")]
       ChromeProtocol.Domains.Storage.StorageBucketType Bucket,
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id,
-      [property: Newtonsoft.Json.JsonProperty("expiration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expiration")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType Expiration,
-      [property: Newtonsoft.Json.JsonProperty("quota")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quota")]
       double Quota,
-      [property: Newtonsoft.Json.JsonProperty("persistent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("persistent")]
       bool Persistent,
-      [property: Newtonsoft.Json.JsonProperty("durability")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("durability")]
       ChromeProtocol.Domains.Storage.StorageBucketsDurabilityType Durability
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AttributionReportingSourceTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record UnsignedInt64AsBase10Type(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record UnsignedInt128AsBase16Type(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SignedInt64AsBase10Type(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record AttributionReportingFilterDataEntryType(
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key,
-      [property: Newtonsoft.Json.JsonProperty("values")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("values")]
       System.Collections.Generic.IReadOnlyList<string> Values
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <param name="LookbackWindow">duration in seconds</param>
     public record AttributionReportingFilterConfigType(
-      [property: Newtonsoft.Json.JsonProperty("filterValues")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filterValues")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingFilterDataEntryType> FilterValues,
-      [property: Newtonsoft.Json.JsonProperty("lookbackWindow")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lookbackWindow")]
       int? LookbackWindow = default
     ) : ChromeProtocol.Core.IType
     {
     }
     public record AttributionReportingFilterPairType(
-      [property: Newtonsoft.Json.JsonProperty("filters")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filters")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingFilterConfigType> Filters,
-      [property: Newtonsoft.Json.JsonProperty("notFilters")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("notFilters")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingFilterConfigType> NotFilters
     ) : ChromeProtocol.Core.IType
     {
     }
     public record AttributionReportingAggregationKeysEntryType(
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Storage.UnsignedInt128AsBase16Type Value
     ) : ChromeProtocol.Core.IType
     {
@@ -317,9 +317,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Start">duration in seconds</param>
     /// <param name="Ends">duration in seconds</param>
     public record AttributionReportingEventReportWindowsType(
-      [property: Newtonsoft.Json.JsonProperty("start")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("start")]
       int Start,
-      [property: Newtonsoft.Json.JsonProperty("ends")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ends")]
       System.Collections.Generic.IReadOnlyList<int> Ends
     ) : ChromeProtocol.Core.IType
     {
@@ -329,14 +329,14 @@ namespace ChromeProtocol.Domains
     /// int<br/>
     /// </param>
     public record AttributionReportingTriggerSpecType(
-      [property: Newtonsoft.Json.JsonProperty("triggerData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("triggerData")]
       System.Collections.Generic.IReadOnlyList<double> TriggerData,
-      [property: Newtonsoft.Json.JsonProperty("eventReportWindows")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventReportWindows")]
       ChromeProtocol.Domains.Storage.AttributionReportingEventReportWindowsType EventReportWindows
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AttributionReportingTriggerDataMatchingType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -345,44 +345,44 @@ namespace ChromeProtocol.Domains
     /// <param name="Expiry">duration in seconds</param>
     /// <param name="AggregatableReportWindow">duration in seconds</param>
     public record AttributionReportingSourceRegistrationType(
-      [property: Newtonsoft.Json.JsonProperty("time")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("time")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType Time,
-      [property: Newtonsoft.Json.JsonProperty("expiry")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expiry")]
       int Expiry,
-      [property: Newtonsoft.Json.JsonProperty("triggerSpecs")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("triggerSpecs")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingTriggerSpecType> TriggerSpecs,
-      [property: Newtonsoft.Json.JsonProperty("aggregatableReportWindow")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("aggregatableReportWindow")]
       int AggregatableReportWindow,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Storage.AttributionReportingSourceTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("sourceOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceOrigin")]
       string SourceOrigin,
-      [property: Newtonsoft.Json.JsonProperty("reportingOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportingOrigin")]
       string ReportingOrigin,
-      [property: Newtonsoft.Json.JsonProperty("destinationSites")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("destinationSites")]
       System.Collections.Generic.IReadOnlyList<string> DestinationSites,
-      [property: Newtonsoft.Json.JsonProperty("eventId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventId")]
       ChromeProtocol.Domains.Storage.UnsignedInt64AsBase10Type EventId,
-      [property: Newtonsoft.Json.JsonProperty("priority")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("priority")]
       ChromeProtocol.Domains.Storage.SignedInt64AsBase10Type Priority,
-      [property: Newtonsoft.Json.JsonProperty("filterData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filterData")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingFilterDataEntryType> FilterData,
-      [property: Newtonsoft.Json.JsonProperty("aggregationKeys")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("aggregationKeys")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingAggregationKeysEntryType> AggregationKeys,
-      [property: Newtonsoft.Json.JsonProperty("triggerDataMatching")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("triggerDataMatching")]
       ChromeProtocol.Domains.Storage.AttributionReportingTriggerDataMatchingType TriggerDataMatching,
-      [property: Newtonsoft.Json.JsonProperty("debugKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("debugKey")]
       ChromeProtocol.Domains.Storage.UnsignedInt64AsBase10Type? DebugKey = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AttributionReportingSourceRegistrationResultType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AttributionReportingSourceRegistrationTimeConfigType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -393,82 +393,82 @@ namespace ChromeProtocol.Domains
     /// int<br/>
     /// </param>
     public record AttributionReportingAggregatableValueDictEntryType(
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       double Value
     ) : ChromeProtocol.Core.IType
     {
     }
     public record AttributionReportingAggregatableValueEntryType(
-      [property: Newtonsoft.Json.JsonProperty("values")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("values")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingAggregatableValueDictEntryType> Values,
-      [property: Newtonsoft.Json.JsonProperty("filters")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filters")]
       ChromeProtocol.Domains.Storage.AttributionReportingFilterPairType Filters
     ) : ChromeProtocol.Core.IType
     {
     }
     public record AttributionReportingEventTriggerDataType(
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       ChromeProtocol.Domains.Storage.UnsignedInt64AsBase10Type Data,
-      [property: Newtonsoft.Json.JsonProperty("priority")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("priority")]
       ChromeProtocol.Domains.Storage.SignedInt64AsBase10Type Priority,
-      [property: Newtonsoft.Json.JsonProperty("filters")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filters")]
       ChromeProtocol.Domains.Storage.AttributionReportingFilterPairType Filters,
-      [property: Newtonsoft.Json.JsonProperty("dedupKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dedupKey")]
       ChromeProtocol.Domains.Storage.UnsignedInt64AsBase10Type? DedupKey = default
     ) : ChromeProtocol.Core.IType
     {
     }
     public record AttributionReportingAggregatableTriggerDataType(
-      [property: Newtonsoft.Json.JsonProperty("keyPiece")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyPiece")]
       ChromeProtocol.Domains.Storage.UnsignedInt128AsBase16Type KeyPiece,
-      [property: Newtonsoft.Json.JsonProperty("sourceKeys")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceKeys")]
       System.Collections.Generic.IReadOnlyList<string> SourceKeys,
-      [property: Newtonsoft.Json.JsonProperty("filters")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filters")]
       ChromeProtocol.Domains.Storage.AttributionReportingFilterPairType Filters
     ) : ChromeProtocol.Core.IType
     {
     }
     public record AttributionReportingAggregatableDedupKeyType(
-      [property: Newtonsoft.Json.JsonProperty("filters")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filters")]
       ChromeProtocol.Domains.Storage.AttributionReportingFilterPairType Filters,
-      [property: Newtonsoft.Json.JsonProperty("dedupKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dedupKey")]
       ChromeProtocol.Domains.Storage.UnsignedInt64AsBase10Type? DedupKey = default
     ) : ChromeProtocol.Core.IType
     {
     }
     public record AttributionReportingTriggerRegistrationType(
-      [property: Newtonsoft.Json.JsonProperty("filters")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filters")]
       ChromeProtocol.Domains.Storage.AttributionReportingFilterPairType Filters,
-      [property: Newtonsoft.Json.JsonProperty("aggregatableDedupKeys")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("aggregatableDedupKeys")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingAggregatableDedupKeyType> AggregatableDedupKeys,
-      [property: Newtonsoft.Json.JsonProperty("eventTriggerData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventTriggerData")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingEventTriggerDataType> EventTriggerData,
-      [property: Newtonsoft.Json.JsonProperty("aggregatableTriggerData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("aggregatableTriggerData")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingAggregatableTriggerDataType> AggregatableTriggerData,
-      [property: Newtonsoft.Json.JsonProperty("aggregatableValues")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("aggregatableValues")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.AttributionReportingAggregatableValueEntryType> AggregatableValues,
-      [property: Newtonsoft.Json.JsonProperty("debugReporting")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("debugReporting")]
       bool DebugReporting,
-      [property: Newtonsoft.Json.JsonProperty("sourceRegistrationTimeConfig")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceRegistrationTimeConfig")]
       ChromeProtocol.Domains.Storage.AttributionReportingSourceRegistrationTimeConfigType SourceRegistrationTimeConfig,
-      [property: Newtonsoft.Json.JsonProperty("debugKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("debugKey")]
       ChromeProtocol.Domains.Storage.UnsignedInt64AsBase10Type? DebugKey = default,
-      [property: Newtonsoft.Json.JsonProperty("aggregationCoordinatorOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("aggregationCoordinatorOrigin")]
       string? AggregationCoordinatorOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("triggerContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("triggerContextId")]
       string? TriggerContextId = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AttributionReportingEventLevelResultType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AttributionReportingAggregatableResultType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -481,13 +481,13 @@ namespace ChromeProtocol.Domains
     /// <param name="CacheName">Name of cache in origin.</param>
     [ChromeProtocol.Core.MethodName("Storage.cacheStorageContentUpdated")]
     public record CacheStorageContentUpdated(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey,
-      [property: Newtonsoft.Json.JsonProperty("bucketId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bucketId")]
       string BucketId,
-      [property: Newtonsoft.Json.JsonProperty("cacheName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cacheName")]
       string CacheName
     ) : ChromeProtocol.Core.IEvent
     {
@@ -498,11 +498,11 @@ namespace ChromeProtocol.Domains
     /// <param name="BucketId">Storage bucket to update.</param>
     [ChromeProtocol.Core.MethodName("Storage.cacheStorageListUpdated")]
     public record CacheStorageListUpdated(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey,
-      [property: Newtonsoft.Json.JsonProperty("bucketId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bucketId")]
       string BucketId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -515,15 +515,15 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectStoreName">ObjectStore to update.</param>
     [ChromeProtocol.Core.MethodName("Storage.indexedDBContentUpdated")]
     public record IndexedDBContentUpdated(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey,
-      [property: Newtonsoft.Json.JsonProperty("bucketId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bucketId")]
       string BucketId,
-      [property: Newtonsoft.Json.JsonProperty("databaseName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseName")]
       string DatabaseName,
-      [property: Newtonsoft.Json.JsonProperty("objectStoreName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectStoreName")]
       string ObjectStoreName
     ) : ChromeProtocol.Core.IEvent
     {
@@ -534,11 +534,11 @@ namespace ChromeProtocol.Domains
     /// <param name="BucketId">Storage bucket to update.</param>
     [ChromeProtocol.Core.MethodName("Storage.indexedDBListUpdated")]
     public record IndexedDBListUpdated(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey,
-      [property: Newtonsoft.Json.JsonProperty("bucketId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bucketId")]
       string BucketId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -555,21 +555,21 @@ namespace ChromeProtocol.Domains
     /// <param name="UniqueAuctionId">For non-global events --- links to interestGroupAuctionEvent</param>
     [ChromeProtocol.Core.MethodName("Storage.interestGroupAccessed")]
     public record InterestGroupAccessed(
-      [property: Newtonsoft.Json.JsonProperty("accessTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accessTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType AccessTime,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Storage.InterestGroupAccessTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("componentSellerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("componentSellerOrigin")]
       string? ComponentSellerOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("bid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bid")]
       double? Bid = default,
-      [property: Newtonsoft.Json.JsonProperty("bidCurrency")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bidCurrency")]
       string? BidCurrency = default,
-      [property: Newtonsoft.Json.JsonProperty("uniqueAuctionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("uniqueAuctionId")]
       ChromeProtocol.Domains.Storage.InterestGroupAuctionIdType? UniqueAuctionId = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -582,16 +582,16 @@ namespace ChromeProtocol.Domains
     /// <param name="AuctionConfig">Set for started and configResolved</param>
     [ChromeProtocol.Core.MethodName("Storage.interestGroupAuctionEventOccurred")]
     public record InterestGroupAuctionEventOccurred(
-      [property: Newtonsoft.Json.JsonProperty("eventTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType EventTime,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Storage.InterestGroupAuctionEventTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("uniqueAuctionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("uniqueAuctionId")]
       ChromeProtocol.Domains.Storage.InterestGroupAuctionIdType UniqueAuctionId,
-      [property: Newtonsoft.Json.JsonProperty("parentAuctionId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentAuctionId")]
       ChromeProtocol.Domains.Storage.InterestGroupAuctionIdType? ParentAuctionId = default,
-      [property: Newtonsoft.Json.JsonProperty("auctionConfig")]
-      Newtonsoft.Json.Linq.JObject? AuctionConfig = default
+      [property: System.Text.Json.Serialization.JsonPropertyName("auctionConfig")]
+      System.Text.Json.Nodes.JsonObject? AuctionConfig = default
     ) : ChromeProtocol.Core.IEvent
     {
     }
@@ -608,11 +608,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Storage.interestGroupAuctionNetworkRequestCreated")]
     public record InterestGroupAuctionNetworkRequestCreated(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Storage.InterestGroupAuctionFetchTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId,
-      [property: Newtonsoft.Json.JsonProperty("auctions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("auctions")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.InterestGroupAuctionIdType> Auctions
     ) : ChromeProtocol.Core.IEvent
     {
@@ -631,68 +631,68 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Storage.sharedStorageAccessed")]
     public record SharedStorageAccessed(
-      [property: Newtonsoft.Json.JsonProperty("accessTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accessTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType AccessTime,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Storage.SharedStorageAccessTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("mainFrameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mainFrameId")]
       ChromeProtocol.Domains.Page.FrameIdType MainFrameId,
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin,
-      [property: Newtonsoft.Json.JsonProperty("params")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("params")]
       ChromeProtocol.Domains.Storage.SharedStorageAccessParamsType Params
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("Storage.storageBucketCreatedOrUpdated")]
     public record StorageBucketCreatedOrUpdated(
-      [property: Newtonsoft.Json.JsonProperty("bucketInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bucketInfo")]
       ChromeProtocol.Domains.Storage.StorageBucketInfoType BucketInfo
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("Storage.storageBucketDeleted")]
     public record StorageBucketDeleted(
-      [property: Newtonsoft.Json.JsonProperty("bucketId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bucketId")]
       string BucketId
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("Storage.attributionReportingSourceRegistered")]
     public record AttributionReportingSourceRegistered(
-      [property: Newtonsoft.Json.JsonProperty("registration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("registration")]
       ChromeProtocol.Domains.Storage.AttributionReportingSourceRegistrationType Registration,
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       ChromeProtocol.Domains.Storage.AttributionReportingSourceRegistrationResultType Result
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("Storage.attributionReportingTriggerRegistered")]
     public record AttributionReportingTriggerRegistered(
-      [property: Newtonsoft.Json.JsonProperty("registration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("registration")]
       ChromeProtocol.Domains.Storage.AttributionReportingTriggerRegistrationType Registration,
-      [property: Newtonsoft.Json.JsonProperty("eventLevel")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventLevel")]
       ChromeProtocol.Domains.Storage.AttributionReportingEventLevelResultType EventLevel,
-      [property: Newtonsoft.Json.JsonProperty("aggregatable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("aggregatable")]
       ChromeProtocol.Domains.Storage.AttributionReportingAggregatableResultType Aggregatable
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Returns a storage key given a frame id.</summary>
-    public static ChromeProtocol.Domains.Storage.GetStorageKeyForFrameRequest GetStorageKeyForFrame(ChromeProtocol.Domains.Page.FrameIdType FrameId)    
+    public static ChromeProtocol.Domains.Storage.GetStorageKeyForFrameRequest GetStorageKeyForFrame(ChromeProtocol.Domains.Page.FrameIdType FrameId)
     {
       return new ChromeProtocol.Domains.Storage.GetStorageKeyForFrameRequest(FrameId);
     }
     /// <summary>Returns a storage key given a frame id.</summary>
     [ChromeProtocol.Core.MethodName("Storage.getStorageKeyForFrame")]
     public record GetStorageKeyForFrameRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.ICommand<GetStorageKeyForFrameRequestResult>
     {
     }
     public record GetStorageKeyForFrameRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       ChromeProtocol.Domains.Storage.SerializedStorageKeyType StorageKey
     ) : ChromeProtocol.Core.IType
     {
@@ -700,7 +700,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Clears storage for origin.</summary>
     /// <param name="Origin">Security origin.</param>
     /// <param name="StorageTypes">Comma separated list of StorageType to clear.</param>
-    public static ChromeProtocol.Domains.Storage.ClearDataForOriginRequest ClearDataForOrigin(string Origin, string StorageTypes)    
+    public static ChromeProtocol.Domains.Storage.ClearDataForOriginRequest ClearDataForOrigin(string Origin, string StorageTypes)
     {
       return new ChromeProtocol.Domains.Storage.ClearDataForOriginRequest(Origin, StorageTypes);
     }
@@ -709,9 +709,9 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageTypes">Comma separated list of StorageType to clear.</param>
     [ChromeProtocol.Core.MethodName("Storage.clearDataForOrigin")]
     public record ClearDataForOriginRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("storageTypes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageTypes")]
       string StorageTypes
     ) : ChromeProtocol.Core.ICommand<ClearDataForOriginRequestResult>
     {
@@ -722,7 +722,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Clears storage for storage key.</summary>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageTypes">Comma separated list of StorageType to clear.</param>
-    public static ChromeProtocol.Domains.Storage.ClearDataForStorageKeyRequest ClearDataForStorageKey(string StorageKey, string StorageTypes)    
+    public static ChromeProtocol.Domains.Storage.ClearDataForStorageKeyRequest ClearDataForStorageKey(string StorageKey, string StorageTypes)
     {
       return new ChromeProtocol.Domains.Storage.ClearDataForStorageKeyRequest(StorageKey, StorageTypes);
     }
@@ -731,9 +731,9 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageTypes">Comma separated list of StorageType to clear.</param>
     [ChromeProtocol.Core.MethodName("Storage.clearDataForStorageKey")]
     public record ClearDataForStorageKeyRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey,
-      [property: Newtonsoft.Json.JsonProperty("storageTypes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageTypes")]
       string StorageTypes
     ) : ChromeProtocol.Core.ICommand<ClearDataForStorageKeyRequestResult>
     {
@@ -743,7 +743,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns all browser cookies.</summary>
     /// <param name="BrowserContextId">Browser context to use when called on the browser endpoint.</param>
-    public static ChromeProtocol.Domains.Storage.GetCookiesRequest GetCookies(ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
+    public static ChromeProtocol.Domains.Storage.GetCookiesRequest GetCookies(ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
     {
       return new ChromeProtocol.Domains.Storage.GetCookiesRequest(BrowserContextId);
     }
@@ -751,14 +751,14 @@ namespace ChromeProtocol.Domains
     /// <param name="BrowserContextId">Browser context to use when called on the browser endpoint.</param>
     [ChromeProtocol.Core.MethodName("Storage.getCookies")]
     public record GetCookiesRequest(
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default
     ) : ChromeProtocol.Core.ICommand<GetCookiesRequestResult>
     {
     }
     /// <param name="Cookies">Array of cookie objects.</param>
     public record GetCookiesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("cookies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookies")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieType> Cookies
     ) : ChromeProtocol.Core.IType
     {
@@ -766,7 +766,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets given cookies.</summary>
     /// <param name="Cookies">Cookies to be set.</param>
     /// <param name="BrowserContextId">Browser context to use when called on the browser endpoint.</param>
-    public static ChromeProtocol.Domains.Storage.SetCookiesRequest SetCookies(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieParamType> Cookies, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
+    public static ChromeProtocol.Domains.Storage.SetCookiesRequest SetCookies(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieParamType> Cookies, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
     {
       return new ChromeProtocol.Domains.Storage.SetCookiesRequest(Cookies, BrowserContextId);
     }
@@ -775,9 +775,9 @@ namespace ChromeProtocol.Domains
     /// <param name="BrowserContextId">Browser context to use when called on the browser endpoint.</param>
     [ChromeProtocol.Core.MethodName("Storage.setCookies")]
     public record SetCookiesRequest(
-      [property: Newtonsoft.Json.JsonProperty("cookies")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookies")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieParamType> Cookies,
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default
     ) : ChromeProtocol.Core.ICommand<SetCookiesRequestResult>
     {
@@ -787,7 +787,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Clears cookies.</summary>
     /// <param name="BrowserContextId">Browser context to use when called on the browser endpoint.</param>
-    public static ChromeProtocol.Domains.Storage.ClearCookiesRequest ClearCookies(ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
+    public static ChromeProtocol.Domains.Storage.ClearCookiesRequest ClearCookies(ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
     {
       return new ChromeProtocol.Domains.Storage.ClearCookiesRequest(BrowserContextId);
     }
@@ -795,7 +795,7 @@ namespace ChromeProtocol.Domains
     /// <param name="BrowserContextId">Browser context to use when called on the browser endpoint.</param>
     [ChromeProtocol.Core.MethodName("Storage.clearCookies")]
     public record ClearCookiesRequest(
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default
     ) : ChromeProtocol.Core.ICommand<ClearCookiesRequestResult>
     {
@@ -805,7 +805,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns usage and quota in bytes.</summary>
     /// <param name="Origin">Security origin.</param>
-    public static ChromeProtocol.Domains.Storage.GetUsageAndQuotaRequest GetUsageAndQuota(string Origin)    
+    public static ChromeProtocol.Domains.Storage.GetUsageAndQuotaRequest GetUsageAndQuota(string Origin)
     {
       return new ChromeProtocol.Domains.Storage.GetUsageAndQuotaRequest(Origin);
     }
@@ -813,7 +813,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Origin">Security origin.</param>
     [ChromeProtocol.Core.MethodName("Storage.getUsageAndQuota")]
     public record GetUsageAndQuotaRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin
     ) : ChromeProtocol.Core.ICommand<GetUsageAndQuotaRequestResult>
     {
@@ -823,13 +823,13 @@ namespace ChromeProtocol.Domains
     /// <param name="OverrideActive">Whether or not the origin has an active storage quota override</param>
     /// <param name="UsageBreakdown">Storage usage per type (bytes).</param>
     public record GetUsageAndQuotaRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("usage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("usage")]
       double Usage,
-      [property: Newtonsoft.Json.JsonProperty("quota")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quota")]
       double Quota,
-      [property: Newtonsoft.Json.JsonProperty("overrideActive")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("overrideActive")]
       bool OverrideActive,
-      [property: Newtonsoft.Json.JsonProperty("usageBreakdown")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("usageBreakdown")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.UsageForTypeType> UsageBreakdown
     ) : ChromeProtocol.Core.IType
     {
@@ -845,7 +845,7 @@ namespace ChromeProtocol.Domains
     /// origins, the override will be maintained for each origin until it is<br/>
     /// disabled (called without a quotaSize).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Storage.OverrideQuotaForOriginRequest OverrideQuotaForOrigin(string Origin, double? QuotaSize = default)    
+    public static ChromeProtocol.Domains.Storage.OverrideQuotaForOriginRequest OverrideQuotaForOrigin(string Origin, double? QuotaSize = default)
     {
       return new ChromeProtocol.Domains.Storage.OverrideQuotaForOriginRequest(Origin, QuotaSize);
     }
@@ -862,9 +862,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Storage.overrideQuotaForOrigin")]
     public record OverrideQuotaForOriginRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin,
-      [property: Newtonsoft.Json.JsonProperty("quotaSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quotaSize")]
       double? QuotaSize = default
     ) : ChromeProtocol.Core.ICommand<OverrideQuotaForOriginRequestResult>
     {
@@ -874,7 +874,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Registers origin to be notified when an update occurs to its cache storage list.</summary>
     /// <param name="Origin">Security origin.</param>
-    public static ChromeProtocol.Domains.Storage.TrackCacheStorageForOriginRequest TrackCacheStorageForOrigin(string Origin)    
+    public static ChromeProtocol.Domains.Storage.TrackCacheStorageForOriginRequest TrackCacheStorageForOrigin(string Origin)
     {
       return new ChromeProtocol.Domains.Storage.TrackCacheStorageForOriginRequest(Origin);
     }
@@ -882,7 +882,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Origin">Security origin.</param>
     [ChromeProtocol.Core.MethodName("Storage.trackCacheStorageForOrigin")]
     public record TrackCacheStorageForOriginRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin
     ) : ChromeProtocol.Core.ICommand<TrackCacheStorageForOriginRequestResult>
     {
@@ -892,7 +892,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Registers storage key to be notified when an update occurs to its cache storage list.</summary>
     /// <param name="StorageKey">Storage key.</param>
-    public static ChromeProtocol.Domains.Storage.TrackCacheStorageForStorageKeyRequest TrackCacheStorageForStorageKey(string StorageKey)    
+    public static ChromeProtocol.Domains.Storage.TrackCacheStorageForStorageKeyRequest TrackCacheStorageForStorageKey(string StorageKey)
     {
       return new ChromeProtocol.Domains.Storage.TrackCacheStorageForStorageKeyRequest(StorageKey);
     }
@@ -900,7 +900,7 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageKey">Storage key.</param>
     [ChromeProtocol.Core.MethodName("Storage.trackCacheStorageForStorageKey")]
     public record TrackCacheStorageForStorageKeyRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey
     ) : ChromeProtocol.Core.ICommand<TrackCacheStorageForStorageKeyRequestResult>
     {
@@ -910,7 +910,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Registers origin to be notified when an update occurs to its IndexedDB.</summary>
     /// <param name="Origin">Security origin.</param>
-    public static ChromeProtocol.Domains.Storage.TrackIndexedDBForOriginRequest TrackIndexedDBForOrigin(string Origin)    
+    public static ChromeProtocol.Domains.Storage.TrackIndexedDBForOriginRequest TrackIndexedDBForOrigin(string Origin)
     {
       return new ChromeProtocol.Domains.Storage.TrackIndexedDBForOriginRequest(Origin);
     }
@@ -918,7 +918,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Origin">Security origin.</param>
     [ChromeProtocol.Core.MethodName("Storage.trackIndexedDBForOrigin")]
     public record TrackIndexedDBForOriginRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin
     ) : ChromeProtocol.Core.ICommand<TrackIndexedDBForOriginRequestResult>
     {
@@ -928,7 +928,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Registers storage key to be notified when an update occurs to its IndexedDB.</summary>
     /// <param name="StorageKey">Storage key.</param>
-    public static ChromeProtocol.Domains.Storage.TrackIndexedDBForStorageKeyRequest TrackIndexedDBForStorageKey(string StorageKey)    
+    public static ChromeProtocol.Domains.Storage.TrackIndexedDBForStorageKeyRequest TrackIndexedDBForStorageKey(string StorageKey)
     {
       return new ChromeProtocol.Domains.Storage.TrackIndexedDBForStorageKeyRequest(StorageKey);
     }
@@ -936,7 +936,7 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageKey">Storage key.</param>
     [ChromeProtocol.Core.MethodName("Storage.trackIndexedDBForStorageKey")]
     public record TrackIndexedDBForStorageKeyRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey
     ) : ChromeProtocol.Core.ICommand<TrackIndexedDBForStorageKeyRequestResult>
     {
@@ -946,7 +946,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Unregisters origin from receiving notifications for cache storage.</summary>
     /// <param name="Origin">Security origin.</param>
-    public static ChromeProtocol.Domains.Storage.UntrackCacheStorageForOriginRequest UntrackCacheStorageForOrigin(string Origin)    
+    public static ChromeProtocol.Domains.Storage.UntrackCacheStorageForOriginRequest UntrackCacheStorageForOrigin(string Origin)
     {
       return new ChromeProtocol.Domains.Storage.UntrackCacheStorageForOriginRequest(Origin);
     }
@@ -954,7 +954,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Origin">Security origin.</param>
     [ChromeProtocol.Core.MethodName("Storage.untrackCacheStorageForOrigin")]
     public record UntrackCacheStorageForOriginRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin
     ) : ChromeProtocol.Core.ICommand<UntrackCacheStorageForOriginRequestResult>
     {
@@ -964,7 +964,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Unregisters storage key from receiving notifications for cache storage.</summary>
     /// <param name="StorageKey">Storage key.</param>
-    public static ChromeProtocol.Domains.Storage.UntrackCacheStorageForStorageKeyRequest UntrackCacheStorageForStorageKey(string StorageKey)    
+    public static ChromeProtocol.Domains.Storage.UntrackCacheStorageForStorageKeyRequest UntrackCacheStorageForStorageKey(string StorageKey)
     {
       return new ChromeProtocol.Domains.Storage.UntrackCacheStorageForStorageKeyRequest(StorageKey);
     }
@@ -972,7 +972,7 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageKey">Storage key.</param>
     [ChromeProtocol.Core.MethodName("Storage.untrackCacheStorageForStorageKey")]
     public record UntrackCacheStorageForStorageKeyRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey
     ) : ChromeProtocol.Core.ICommand<UntrackCacheStorageForStorageKeyRequestResult>
     {
@@ -982,7 +982,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Unregisters origin from receiving notifications for IndexedDB.</summary>
     /// <param name="Origin">Security origin.</param>
-    public static ChromeProtocol.Domains.Storage.UntrackIndexedDBForOriginRequest UntrackIndexedDBForOrigin(string Origin)    
+    public static ChromeProtocol.Domains.Storage.UntrackIndexedDBForOriginRequest UntrackIndexedDBForOrigin(string Origin)
     {
       return new ChromeProtocol.Domains.Storage.UntrackIndexedDBForOriginRequest(Origin);
     }
@@ -990,7 +990,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Origin">Security origin.</param>
     [ChromeProtocol.Core.MethodName("Storage.untrackIndexedDBForOrigin")]
     public record UntrackIndexedDBForOriginRequest(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string Origin
     ) : ChromeProtocol.Core.ICommand<UntrackIndexedDBForOriginRequestResult>
     {
@@ -1000,7 +1000,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Unregisters storage key from receiving notifications for IndexedDB.</summary>
     /// <param name="StorageKey">Storage key.</param>
-    public static ChromeProtocol.Domains.Storage.UntrackIndexedDBForStorageKeyRequest UntrackIndexedDBForStorageKey(string StorageKey)    
+    public static ChromeProtocol.Domains.Storage.UntrackIndexedDBForStorageKeyRequest UntrackIndexedDBForStorageKey(string StorageKey)
     {
       return new ChromeProtocol.Domains.Storage.UntrackIndexedDBForStorageKeyRequest(StorageKey);
     }
@@ -1008,7 +1008,7 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageKey">Storage key.</param>
     [ChromeProtocol.Core.MethodName("Storage.untrackIndexedDBForStorageKey")]
     public record UntrackIndexedDBForStorageKeyRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey
     ) : ChromeProtocol.Core.ICommand<UntrackIndexedDBForStorageKeyRequestResult>
     {
@@ -1020,7 +1020,7 @@ namespace ChromeProtocol.Domains
     /// Returns the number of stored Trust Tokens per issuer for the<br/>
     /// current browsing context.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Storage.GetTrustTokensRequest GetTrustTokens()    
+    public static ChromeProtocol.Domains.Storage.GetTrustTokensRequest GetTrustTokens()
     {
       return new ChromeProtocol.Domains.Storage.GetTrustTokensRequest();
     }
@@ -1033,7 +1033,7 @@ namespace ChromeProtocol.Domains
     {
     }
     public record GetTrustTokensRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("tokens")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tokens")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.TrustTokensType> Tokens
     ) : ChromeProtocol.Core.IType
     {
@@ -1042,7 +1042,7 @@ namespace ChromeProtocol.Domains
     /// Removes all Trust Tokens issued by the provided issuerOrigin.<br/>
     /// Leaves other stored data, including the issuer&#39;s Redemption Records, intact.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Storage.ClearTrustTokensRequest ClearTrustTokens(string IssuerOrigin)    
+    public static ChromeProtocol.Domains.Storage.ClearTrustTokensRequest ClearTrustTokens(string IssuerOrigin)
     {
       return new ChromeProtocol.Domains.Storage.ClearTrustTokensRequest(IssuerOrigin);
     }
@@ -1052,48 +1052,48 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Storage.clearTrustTokens")]
     public record ClearTrustTokensRequest(
-      [property: Newtonsoft.Json.JsonProperty("issuerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("issuerOrigin")]
       string IssuerOrigin
     ) : ChromeProtocol.Core.ICommand<ClearTrustTokensRequestResult>
     {
     }
     /// <param name="DidDeleteTokens">True if any tokens were deleted, false otherwise.</param>
     public record ClearTrustTokensRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("didDeleteTokens")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("didDeleteTokens")]
       bool DidDeleteTokens
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Gets details for a named interest group.</summary>
-    public static ChromeProtocol.Domains.Storage.GetInterestGroupDetailsRequest GetInterestGroupDetails(string OwnerOrigin, string Name)    
+    public static ChromeProtocol.Domains.Storage.GetInterestGroupDetailsRequest GetInterestGroupDetails(string OwnerOrigin, string Name)
     {
       return new ChromeProtocol.Domains.Storage.GetInterestGroupDetailsRequest(OwnerOrigin, Name);
     }
     /// <summary>Gets details for a named interest group.</summary>
     [ChromeProtocol.Core.MethodName("Storage.getInterestGroupDetails")]
     public record GetInterestGroupDetailsRequest(
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name
     ) : ChromeProtocol.Core.ICommand<GetInterestGroupDetailsRequestResult>
     {
     }
     public record GetInterestGroupDetailsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("details")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("details")]
       ChromeProtocol.Domains.Storage.InterestGroupDetailsType Details
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Enables/Disables issuing of interestGroupAccessed events.</summary>
-    public static ChromeProtocol.Domains.Storage.SetInterestGroupTrackingRequest SetInterestGroupTracking(bool Enable)    
+    public static ChromeProtocol.Domains.Storage.SetInterestGroupTrackingRequest SetInterestGroupTracking(bool Enable)
     {
       return new ChromeProtocol.Domains.Storage.SetInterestGroupTrackingRequest(Enable);
     }
     /// <summary>Enables/Disables issuing of interestGroupAccessed events.</summary>
     [ChromeProtocol.Core.MethodName("Storage.setInterestGroupTracking")]
     public record SetInterestGroupTrackingRequest(
-      [property: Newtonsoft.Json.JsonProperty("enable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enable")]
       bool Enable
     ) : ChromeProtocol.Core.ICommand<SetInterestGroupTrackingRequestResult>
     {
@@ -1105,7 +1105,7 @@ namespace ChromeProtocol.Domains
     /// Enables/Disables issuing of interestGroupAuctionEventOccurred and<br/>
     /// interestGroupAuctionNetworkRequestCreated.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Storage.SetInterestGroupAuctionTrackingRequest SetInterestGroupAuctionTracking(bool Enable)    
+    public static ChromeProtocol.Domains.Storage.SetInterestGroupAuctionTrackingRequest SetInterestGroupAuctionTracking(bool Enable)
     {
       return new ChromeProtocol.Domains.Storage.SetInterestGroupAuctionTrackingRequest(Enable);
     }
@@ -1115,7 +1115,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Storage.setInterestGroupAuctionTracking")]
     public record SetInterestGroupAuctionTrackingRequest(
-      [property: Newtonsoft.Json.JsonProperty("enable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enable")]
       bool Enable
     ) : ChromeProtocol.Core.ICommand<SetInterestGroupAuctionTrackingRequestResult>
     {
@@ -1124,39 +1124,39 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Gets metadata for an origin&#39;s shared storage.</summary>
-    public static ChromeProtocol.Domains.Storage.GetSharedStorageMetadataRequest GetSharedStorageMetadata(string OwnerOrigin)    
+    public static ChromeProtocol.Domains.Storage.GetSharedStorageMetadataRequest GetSharedStorageMetadata(string OwnerOrigin)
     {
       return new ChromeProtocol.Domains.Storage.GetSharedStorageMetadataRequest(OwnerOrigin);
     }
     /// <summary>Gets metadata for an origin&#39;s shared storage.</summary>
     [ChromeProtocol.Core.MethodName("Storage.getSharedStorageMetadata")]
     public record GetSharedStorageMetadataRequest(
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin
     ) : ChromeProtocol.Core.ICommand<GetSharedStorageMetadataRequestResult>
     {
     }
     public record GetSharedStorageMetadataRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("metadata")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("metadata")]
       ChromeProtocol.Domains.Storage.SharedStorageMetadataType Metadata
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Gets the entries in an given origin&#39;s shared storage.</summary>
-    public static ChromeProtocol.Domains.Storage.GetSharedStorageEntriesRequest GetSharedStorageEntries(string OwnerOrigin)    
+    public static ChromeProtocol.Domains.Storage.GetSharedStorageEntriesRequest GetSharedStorageEntries(string OwnerOrigin)
     {
       return new ChromeProtocol.Domains.Storage.GetSharedStorageEntriesRequest(OwnerOrigin);
     }
     /// <summary>Gets the entries in an given origin&#39;s shared storage.</summary>
     [ChromeProtocol.Core.MethodName("Storage.getSharedStorageEntries")]
     public record GetSharedStorageEntriesRequest(
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin
     ) : ChromeProtocol.Core.ICommand<GetSharedStorageEntriesRequestResult>
     {
     }
     public record GetSharedStorageEntriesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("entries")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("entries")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Storage.SharedStorageEntryType> Entries
     ) : ChromeProtocol.Core.IType
     {
@@ -1166,7 +1166,7 @@ namespace ChromeProtocol.Domains
     /// If `ignoreIfPresent` is included and true, then only sets the entry if<br/>
     /// `key` doesn&#39;t already exist.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Storage.SetSharedStorageEntryRequest SetSharedStorageEntry(string OwnerOrigin, string Key, string Value, bool? IgnoreIfPresent = default)    
+    public static ChromeProtocol.Domains.Storage.SetSharedStorageEntryRequest SetSharedStorageEntry(string OwnerOrigin, string Key, string Value, bool? IgnoreIfPresent = default)
     {
       return new ChromeProtocol.Domains.Storage.SetSharedStorageEntryRequest(OwnerOrigin, Key, Value, IgnoreIfPresent);
     }
@@ -1177,13 +1177,13 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Storage.setSharedStorageEntry")]
     public record SetSharedStorageEntryRequest(
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value,
-      [property: Newtonsoft.Json.JsonProperty("ignoreIfPresent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ignoreIfPresent")]
       bool? IgnoreIfPresent = default
     ) : ChromeProtocol.Core.ICommand<SetSharedStorageEntryRequestResult>
     {
@@ -1192,16 +1192,16 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Deletes entry for `key` (if it exists) for a given origin&#39;s shared storage.</summary>
-    public static ChromeProtocol.Domains.Storage.DeleteSharedStorageEntryRequest DeleteSharedStorageEntry(string OwnerOrigin, string Key)    
+    public static ChromeProtocol.Domains.Storage.DeleteSharedStorageEntryRequest DeleteSharedStorageEntry(string OwnerOrigin, string Key)
     {
       return new ChromeProtocol.Domains.Storage.DeleteSharedStorageEntryRequest(OwnerOrigin, Key);
     }
     /// <summary>Deletes entry for `key` (if it exists) for a given origin&#39;s shared storage.</summary>
     [ChromeProtocol.Core.MethodName("Storage.deleteSharedStorageEntry")]
     public record DeleteSharedStorageEntryRequest(
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key
     ) : ChromeProtocol.Core.ICommand<DeleteSharedStorageEntryRequestResult>
     {
@@ -1210,14 +1210,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears all entries for a given origin&#39;s shared storage.</summary>
-    public static ChromeProtocol.Domains.Storage.ClearSharedStorageEntriesRequest ClearSharedStorageEntries(string OwnerOrigin)    
+    public static ChromeProtocol.Domains.Storage.ClearSharedStorageEntriesRequest ClearSharedStorageEntries(string OwnerOrigin)
     {
       return new ChromeProtocol.Domains.Storage.ClearSharedStorageEntriesRequest(OwnerOrigin);
     }
     /// <summary>Clears all entries for a given origin&#39;s shared storage.</summary>
     [ChromeProtocol.Core.MethodName("Storage.clearSharedStorageEntries")]
     public record ClearSharedStorageEntriesRequest(
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin
     ) : ChromeProtocol.Core.ICommand<ClearSharedStorageEntriesRequestResult>
     {
@@ -1226,14 +1226,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Resets the budget for `ownerOrigin` by clearing all budget withdrawals.</summary>
-    public static ChromeProtocol.Domains.Storage.ResetSharedStorageBudgetRequest ResetSharedStorageBudget(string OwnerOrigin)    
+    public static ChromeProtocol.Domains.Storage.ResetSharedStorageBudgetRequest ResetSharedStorageBudget(string OwnerOrigin)
     {
       return new ChromeProtocol.Domains.Storage.ResetSharedStorageBudgetRequest(OwnerOrigin);
     }
     /// <summary>Resets the budget for `ownerOrigin` by clearing all budget withdrawals.</summary>
     [ChromeProtocol.Core.MethodName("Storage.resetSharedStorageBudget")]
     public record ResetSharedStorageBudgetRequest(
-      [property: Newtonsoft.Json.JsonProperty("ownerOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerOrigin")]
       string OwnerOrigin
     ) : ChromeProtocol.Core.ICommand<ResetSharedStorageBudgetRequestResult>
     {
@@ -1242,14 +1242,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables/disables issuing of sharedStorageAccessed events.</summary>
-    public static ChromeProtocol.Domains.Storage.SetSharedStorageTrackingRequest SetSharedStorageTracking(bool Enable)    
+    public static ChromeProtocol.Domains.Storage.SetSharedStorageTrackingRequest SetSharedStorageTracking(bool Enable)
     {
       return new ChromeProtocol.Domains.Storage.SetSharedStorageTrackingRequest(Enable);
     }
     /// <summary>Enables/disables issuing of sharedStorageAccessed events.</summary>
     [ChromeProtocol.Core.MethodName("Storage.setSharedStorageTracking")]
     public record SetSharedStorageTrackingRequest(
-      [property: Newtonsoft.Json.JsonProperty("enable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enable")]
       bool Enable
     ) : ChromeProtocol.Core.ICommand<SetSharedStorageTrackingRequestResult>
     {
@@ -1258,16 +1258,16 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Set tracking for a storage key&#39;s buckets.</summary>
-    public static ChromeProtocol.Domains.Storage.SetStorageBucketTrackingRequest SetStorageBucketTracking(string StorageKey, bool Enable)    
+    public static ChromeProtocol.Domains.Storage.SetStorageBucketTrackingRequest SetStorageBucketTracking(string StorageKey, bool Enable)
     {
       return new ChromeProtocol.Domains.Storage.SetStorageBucketTrackingRequest(StorageKey, Enable);
     }
     /// <summary>Set tracking for a storage key&#39;s buckets.</summary>
     [ChromeProtocol.Core.MethodName("Storage.setStorageBucketTracking")]
     public record SetStorageBucketTrackingRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       string StorageKey,
-      [property: Newtonsoft.Json.JsonProperty("enable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enable")]
       bool Enable
     ) : ChromeProtocol.Core.ICommand<SetStorageBucketTrackingRequestResult>
     {
@@ -1276,14 +1276,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Deletes the Storage Bucket with the given storage key and bucket name.</summary>
-    public static ChromeProtocol.Domains.Storage.DeleteStorageBucketRequest DeleteStorageBucket(ChromeProtocol.Domains.Storage.StorageBucketType Bucket)    
+    public static ChromeProtocol.Domains.Storage.DeleteStorageBucketRequest DeleteStorageBucket(ChromeProtocol.Domains.Storage.StorageBucketType Bucket)
     {
       return new ChromeProtocol.Domains.Storage.DeleteStorageBucketRequest(Bucket);
     }
     /// <summary>Deletes the Storage Bucket with the given storage key and bucket name.</summary>
     [ChromeProtocol.Core.MethodName("Storage.deleteStorageBucket")]
     public record DeleteStorageBucketRequest(
-      [property: Newtonsoft.Json.JsonProperty("bucket")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bucket")]
       ChromeProtocol.Domains.Storage.StorageBucketType Bucket
     ) : ChromeProtocol.Core.ICommand<DeleteStorageBucketRequestResult>
     {
@@ -1292,7 +1292,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Deletes state for sites identified as potential bounce trackers, immediately.</summary>
-    public static ChromeProtocol.Domains.Storage.RunBounceTrackingMitigationsRequest RunBounceTrackingMitigations()    
+    public static ChromeProtocol.Domains.Storage.RunBounceTrackingMitigationsRequest RunBounceTrackingMitigations()
     {
       return new ChromeProtocol.Domains.Storage.RunBounceTrackingMitigationsRequest();
     }
@@ -1302,14 +1302,14 @@ namespace ChromeProtocol.Domains
     {
     }
     public record RunBounceTrackingMitigationsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("deletedSites")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deletedSites")]
       System.Collections.Generic.IReadOnlyList<string> DeletedSites
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>https://wicg.github.io/attribution-reporting-api/</summary>
     /// <param name="Enabled">If enabled, noise is suppressed and reports are sent immediately.</param>
-    public static ChromeProtocol.Domains.Storage.SetAttributionReportingLocalTestingModeRequest SetAttributionReportingLocalTestingMode(bool Enabled)    
+    public static ChromeProtocol.Domains.Storage.SetAttributionReportingLocalTestingModeRequest SetAttributionReportingLocalTestingMode(bool Enabled)
     {
       return new ChromeProtocol.Domains.Storage.SetAttributionReportingLocalTestingModeRequest(Enabled);
     }
@@ -1317,7 +1317,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enabled">If enabled, noise is suppressed and reports are sent immediately.</param>
     [ChromeProtocol.Core.MethodName("Storage.setAttributionReportingLocalTestingMode")]
     public record SetAttributionReportingLocalTestingModeRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetAttributionReportingLocalTestingModeRequestResult>
     {
@@ -1326,14 +1326,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables/disables issuing of Attribution Reporting events.</summary>
-    public static ChromeProtocol.Domains.Storage.SetAttributionReportingTrackingRequest SetAttributionReportingTracking(bool Enable)    
+    public static ChromeProtocol.Domains.Storage.SetAttributionReportingTrackingRequest SetAttributionReportingTracking(bool Enable)
     {
       return new ChromeProtocol.Domains.Storage.SetAttributionReportingTrackingRequest(Enable);
     }
     /// <summary>Enables/disables issuing of Attribution Reporting events.</summary>
     [ChromeProtocol.Core.MethodName("Storage.setAttributionReportingTracking")]
     public record SetAttributionReportingTrackingRequest(
-      [property: Newtonsoft.Json.JsonProperty("enable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enable")]
       bool Enable
     ) : ChromeProtocol.Core.ICommand<SetAttributionReportingTrackingRequestResult>
     {

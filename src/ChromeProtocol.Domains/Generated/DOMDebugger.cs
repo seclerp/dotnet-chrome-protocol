@@ -10,14 +10,14 @@ namespace ChromeProtocol.Domains
   public static partial class DOMDebugger
   {
     /// <summary>DOM breakpoint type.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record DOMBreakpointTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>CSP Violation type.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CSPViolationTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -35,25 +35,25 @@ namespace ChromeProtocol.Domains
     /// <param name="OriginalHandler">Event original handler function value.</param>
     /// <param name="BackendNodeId">Node the listener is added to (if any).</param>
     public record EventListenerType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("useCapture")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("useCapture")]
       bool UseCapture,
-      [property: Newtonsoft.Json.JsonProperty("passive")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("passive")]
       bool Passive,
-      [property: Newtonsoft.Json.JsonProperty("once")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("once")]
       bool Once,
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int ColumnNumber,
-      [property: Newtonsoft.Json.JsonProperty("handler")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("handler")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? Handler = default,
-      [property: Newtonsoft.Json.JsonProperty("originalHandler")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("originalHandler")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType? OriginalHandler = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -68,7 +68,7 @@ namespace ChromeProtocol.Domains
     /// Whether or not iframes and shadow roots should be traversed when returning the subtree<br/>
     /// (default is false). Reports listeners for all contexts if pierce is enabled.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOMDebugger.GetEventListenersRequest GetEventListeners(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, int? Depth = default, bool? Pierce = default)    
+    public static ChromeProtocol.Domains.DOMDebugger.GetEventListenersRequest GetEventListeners(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, int? Depth = default, bool? Pierce = default)
     {
       return new ChromeProtocol.Domains.DOMDebugger.GetEventListenersRequest(ObjectId, Depth, Pierce);
     }
@@ -84,18 +84,18 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOMDebugger.getEventListeners")]
     public record GetEventListenersRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId,
-      [property: Newtonsoft.Json.JsonProperty("depth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("depth")]
       int? Depth = default,
-      [property: Newtonsoft.Json.JsonProperty("pierce")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pierce")]
       bool? Pierce = default
     ) : ChromeProtocol.Core.ICommand<GetEventListenersRequestResult>
     {
     }
     /// <param name="Listeners">Array of relevant listeners.</param>
     public record GetEventListenersRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("listeners")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("listeners")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMDebugger.EventListenerType> Listeners
     ) : ChromeProtocol.Core.IType
     {
@@ -103,7 +103,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Removes DOM breakpoint that was set using `setDOMBreakpoint`.</summary>
     /// <param name="NodeId">Identifier of the node to remove breakpoint from.</param>
     /// <param name="Type">Type of the breakpoint to remove.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.RemoveDOMBreakpointRequest RemoveDOMBreakpoint(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type)    
+    public static ChromeProtocol.Domains.DOMDebugger.RemoveDOMBreakpointRequest RemoveDOMBreakpoint(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type)
     {
       return new ChromeProtocol.Domains.DOMDebugger.RemoveDOMBreakpointRequest(NodeId, Type);
     }
@@ -112,9 +112,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Type">Type of the breakpoint to remove.</param>
     [ChromeProtocol.Core.MethodName("DOMDebugger.removeDOMBreakpoint")]
     public record RemoveDOMBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type
     ) : ChromeProtocol.Core.ICommand<RemoveDOMBreakpointRequestResult>
     {
@@ -125,7 +125,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Removes breakpoint on particular DOM event.</summary>
     /// <param name="EventName">Event name.</param>
     /// <param name="TargetName">EventTarget interface name.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.RemoveEventListenerBreakpointRequest RemoveEventListenerBreakpoint(string EventName, string? TargetName = default)    
+    public static ChromeProtocol.Domains.DOMDebugger.RemoveEventListenerBreakpointRequest RemoveEventListenerBreakpoint(string EventName, string? TargetName = default)
     {
       return new ChromeProtocol.Domains.DOMDebugger.RemoveEventListenerBreakpointRequest(EventName, TargetName);
     }
@@ -134,9 +134,9 @@ namespace ChromeProtocol.Domains
     /// <param name="TargetName">EventTarget interface name.</param>
     [ChromeProtocol.Core.MethodName("DOMDebugger.removeEventListenerBreakpoint")]
     public record RemoveEventListenerBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("eventName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventName")]
       string EventName,
-      [property: Newtonsoft.Json.JsonProperty("targetName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetName")]
       string? TargetName = default
     ) : ChromeProtocol.Core.ICommand<RemoveEventListenerBreakpointRequestResult>
     {
@@ -147,7 +147,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Removes breakpoint on particular native event.</summary>
     /// <param name="EventName">Instrumentation name to stop on.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.DOMDebugger.RemoveInstrumentationBreakpointRequest RemoveInstrumentationBreakpoint(string EventName)    
+    public static ChromeProtocol.Domains.DOMDebugger.RemoveInstrumentationBreakpointRequest RemoveInstrumentationBreakpoint(string EventName)
     {
       return new ChromeProtocol.Domains.DOMDebugger.RemoveInstrumentationBreakpointRequest(EventName);
     }
@@ -156,7 +156,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("DOMDebugger.removeInstrumentationBreakpoint")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record RemoveInstrumentationBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("eventName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventName")]
       string EventName
     ) : ChromeProtocol.Core.ICommand<RemoveInstrumentationBreakpointRequestResult>
     {
@@ -167,7 +167,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Removes breakpoint from XMLHttpRequest.</summary>
     /// <param name="Url">Resource URL substring.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.RemoveXHRBreakpointRequest RemoveXHRBreakpoint(string Url)    
+    public static ChromeProtocol.Domains.DOMDebugger.RemoveXHRBreakpointRequest RemoveXHRBreakpoint(string Url)
     {
       return new ChromeProtocol.Domains.DOMDebugger.RemoveXHRBreakpointRequest(Url);
     }
@@ -175,7 +175,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Url">Resource URL substring.</param>
     [ChromeProtocol.Core.MethodName("DOMDebugger.removeXHRBreakpoint")]
     public record RemoveXHRBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url
     ) : ChromeProtocol.Core.ICommand<RemoveXHRBreakpointRequestResult>
     {
@@ -185,7 +185,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets breakpoint on particular CSP violations.</summary>
     /// <param name="ViolationTypes">CSP Violations to stop upon.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.SetBreakOnCSPViolationRequest SetBreakOnCSPViolation(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMDebugger.CSPViolationTypeType> ViolationTypes)    
+    public static ChromeProtocol.Domains.DOMDebugger.SetBreakOnCSPViolationRequest SetBreakOnCSPViolation(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMDebugger.CSPViolationTypeType> ViolationTypes)
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetBreakOnCSPViolationRequest(ViolationTypes);
     }
@@ -193,7 +193,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ViolationTypes">CSP Violations to stop upon.</param>
     [ChromeProtocol.Core.MethodName("DOMDebugger.setBreakOnCSPViolation")]
     public record SetBreakOnCSPViolationRequest(
-      [property: Newtonsoft.Json.JsonProperty("violationTypes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("violationTypes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMDebugger.CSPViolationTypeType> ViolationTypes
     ) : ChromeProtocol.Core.ICommand<SetBreakOnCSPViolationRequestResult>
     {
@@ -204,7 +204,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets breakpoint on particular operation with DOM.</summary>
     /// <param name="NodeId">Identifier of the node to set breakpoint on.</param>
     /// <param name="Type">Type of the operation to stop upon.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.SetDOMBreakpointRequest SetDOMBreakpoint(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type)    
+    public static ChromeProtocol.Domains.DOMDebugger.SetDOMBreakpointRequest SetDOMBreakpoint(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type)
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetDOMBreakpointRequest(NodeId, Type);
     }
@@ -213,9 +213,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Type">Type of the operation to stop upon.</param>
     [ChromeProtocol.Core.MethodName("DOMDebugger.setDOMBreakpoint")]
     public record SetDOMBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type
     ) : ChromeProtocol.Core.ICommand<SetDOMBreakpointRequestResult>
     {
@@ -229,7 +229,7 @@ namespace ChromeProtocol.Domains
     /// EventTarget interface name to stop on. If equal to `&quot;*&quot;` or not provided, will stop on any<br/>
     /// EventTarget.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOMDebugger.SetEventListenerBreakpointRequest SetEventListenerBreakpoint(string EventName, string? TargetName = default)    
+    public static ChromeProtocol.Domains.DOMDebugger.SetEventListenerBreakpointRequest SetEventListenerBreakpoint(string EventName, string? TargetName = default)
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetEventListenerBreakpointRequest(EventName, TargetName);
     }
@@ -241,9 +241,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOMDebugger.setEventListenerBreakpoint")]
     public record SetEventListenerBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("eventName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventName")]
       string EventName,
-      [property: Newtonsoft.Json.JsonProperty("targetName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetName")]
       string? TargetName = default
     ) : ChromeProtocol.Core.ICommand<SetEventListenerBreakpointRequestResult>
     {
@@ -254,7 +254,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets breakpoint on particular native event.</summary>
     /// <param name="EventName">Instrumentation name to stop on.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.DOMDebugger.SetInstrumentationBreakpointRequest SetInstrumentationBreakpoint(string EventName)    
+    public static ChromeProtocol.Domains.DOMDebugger.SetInstrumentationBreakpointRequest SetInstrumentationBreakpoint(string EventName)
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetInstrumentationBreakpointRequest(EventName);
     }
@@ -263,7 +263,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("DOMDebugger.setInstrumentationBreakpoint")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetInstrumentationBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("eventName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventName")]
       string EventName
     ) : ChromeProtocol.Core.ICommand<SetInstrumentationBreakpointRequestResult>
     {
@@ -274,7 +274,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets breakpoint on XMLHttpRequest.</summary>
     /// <param name="Url">Resource URL substring. All XHRs having this substring in the URL will get stopped upon.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.SetXHRBreakpointRequest SetXHRBreakpoint(string Url)    
+    public static ChromeProtocol.Domains.DOMDebugger.SetXHRBreakpointRequest SetXHRBreakpoint(string Url)
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetXHRBreakpointRequest(Url);
     }
@@ -282,7 +282,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Url">Resource URL substring. All XHRs having this substring in the URL will get stopped upon.</param>
     [ChromeProtocol.Core.MethodName("DOMDebugger.setXHRBreakpoint")]
     public record SetXHRBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url
     ) : ChromeProtocol.Core.ICommand<SetXHRBreakpointRequestResult>
     {

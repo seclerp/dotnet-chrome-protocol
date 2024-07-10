@@ -10,9 +10,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Type">Orientation type.</param>
     /// <param name="Angle">Orientation angle.</param>
     public record ScreenOrientationType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("angle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("angle")]
       int Angle
     ) : ChromeProtocol.Core.IType
     {
@@ -28,26 +28,26 @@ namespace ChromeProtocol.Domains
     /// A display feature that only splits content will have a 0 mask_length.<br/>
     /// </param>
     public record DisplayFeatureType(
-      [property: Newtonsoft.Json.JsonProperty("orientation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("orientation")]
       string Orientation,
-      [property: Newtonsoft.Json.JsonProperty("offset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offset")]
       int Offset,
-      [property: Newtonsoft.Json.JsonProperty("maskLength")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maskLength")]
       int MaskLength
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <param name="Type">Current posture of the device</param>
     public record DevicePostureType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type
     ) : ChromeProtocol.Core.IType
     {
     }
     public record MediaFeatureType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
@@ -58,7 +58,7 @@ namespace ChromeProtocol.Domains
     /// pauseIfNetworkFetchesPending: The virtual time base may not advance if there are any pending<br/>
     /// resource fetches.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record VirtualTimePolicyType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -66,9 +66,9 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints</summary>
     public record UserAgentBrandVersionType(
-      [property: Newtonsoft.Json.JsonProperty("brand")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("brand")]
       string Brand,
-      [property: Newtonsoft.Json.JsonProperty("version")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("version")]
       string Version
     ) : ChromeProtocol.Core.IType
     {
@@ -80,26 +80,26 @@ namespace ChromeProtocol.Domains
     /// <param name="Brands">Brands appearing in Sec-CH-UA.</param>
     /// <param name="FullVersionList">Brands appearing in Sec-CH-UA-Full-Version-List.</param>
     public record UserAgentMetadataType(
-      [property: Newtonsoft.Json.JsonProperty("platform")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("platform")]
       string Platform,
-      [property: Newtonsoft.Json.JsonProperty("platformVersion")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("platformVersion")]
       string PlatformVersion,
-      [property: Newtonsoft.Json.JsonProperty("architecture")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("architecture")]
       string Architecture,
-      [property: Newtonsoft.Json.JsonProperty("model")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("model")]
       string Model,
-      [property: Newtonsoft.Json.JsonProperty("mobile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mobile")]
       bool Mobile,
-      [property: Newtonsoft.Json.JsonProperty("brands")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("brands")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.UserAgentBrandVersionType>? Brands = default,
-      [property: Newtonsoft.Json.JsonProperty("fullVersionList")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fullVersionList")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.UserAgentBrandVersionType>? FullVersionList = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("fullVersion")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fullVersion")]
       string? FullVersion = default,
-      [property: Newtonsoft.Json.JsonProperty("bitness")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bitness")]
       string? Bitness = default,
-      [property: Newtonsoft.Json.JsonProperty("wow64")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("wow64")]
       bool? Wow64 = default
     ) : ChromeProtocol.Core.IType
     {
@@ -108,62 +108,62 @@ namespace ChromeProtocol.Domains
     /// Used to specify sensor types to emulate.<br/>
     /// See https://w3c.github.io/sensors/#automation for more information.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SensorTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     public record SensorMetadataType(
-      [property: Newtonsoft.Json.JsonProperty("available")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("available")]
       bool? Available = default,
-      [property: Newtonsoft.Json.JsonProperty("minimumFrequency")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("minimumFrequency")]
       double? MinimumFrequency = default,
-      [property: Newtonsoft.Json.JsonProperty("maximumFrequency")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maximumFrequency")]
       double? MaximumFrequency = default
     ) : ChromeProtocol.Core.IType
     {
     }
     public record SensorReadingSingleType(
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       double Value
     ) : ChromeProtocol.Core.IType
     {
     }
     public record SensorReadingXYZType(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("z")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("z")]
       double Z
     ) : ChromeProtocol.Core.IType
     {
     }
     public record SensorReadingQuaternionType(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("z")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("z")]
       double Z,
-      [property: Newtonsoft.Json.JsonProperty("w")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("w")]
       double W
     ) : ChromeProtocol.Core.IType
     {
     }
     public record SensorReadingType(
-      [property: Newtonsoft.Json.JsonProperty("single")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("single")]
       ChromeProtocol.Domains.Emulation.SensorReadingSingleType? Single = default,
-      [property: Newtonsoft.Json.JsonProperty("xyz")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("xyz")]
       ChromeProtocol.Domains.Emulation.SensorReadingXYZType? Xyz = default,
-      [property: Newtonsoft.Json.JsonProperty("quaternion")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quaternion")]
       ChromeProtocol.Domains.Emulation.SensorReadingQuaternionType? Quaternion = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Enum of image types that can be disabled.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record DisabledImageTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -176,7 +176,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Tells whether emulation is supported.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Emulation.CanEmulateRequest CanEmulate()    
+    public static ChromeProtocol.Domains.Emulation.CanEmulateRequest CanEmulate()
     {
       return new ChromeProtocol.Domains.Emulation.CanEmulateRequest();
     }
@@ -189,13 +189,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Result">True if emulation is supported.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record CanEmulateRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       bool Result
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Clears the overridden device metrics.</summary>
-    public static ChromeProtocol.Domains.Emulation.ClearDeviceMetricsOverrideRequest ClearDeviceMetricsOverride()    
+    public static ChromeProtocol.Domains.Emulation.ClearDeviceMetricsOverrideRequest ClearDeviceMetricsOverride()
     {
       return new ChromeProtocol.Domains.Emulation.ClearDeviceMetricsOverrideRequest();
     }
@@ -208,7 +208,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears the overridden Geolocation Position and Error.</summary>
-    public static ChromeProtocol.Domains.Emulation.ClearGeolocationOverrideRequest ClearGeolocationOverride()    
+    public static ChromeProtocol.Domains.Emulation.ClearGeolocationOverrideRequest ClearGeolocationOverride()
     {
       return new ChromeProtocol.Domains.Emulation.ClearGeolocationOverrideRequest();
     }
@@ -221,7 +221,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Requests that page scale factor is reset to initial values.</summary>
-    public static ChromeProtocol.Domains.Emulation.ResetPageScaleFactorRequest ResetPageScaleFactor()    
+    public static ChromeProtocol.Domains.Emulation.ResetPageScaleFactorRequest ResetPageScaleFactor()
     {
       return new ChromeProtocol.Domains.Emulation.ResetPageScaleFactorRequest();
     }
@@ -235,7 +235,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enables or disables simulating a focused and active page.</summary>
     /// <param name="Enabled">Whether to enable to disable focus emulation.</param>
-    public static ChromeProtocol.Domains.Emulation.SetFocusEmulationEnabledRequest SetFocusEmulationEnabled(bool Enabled)    
+    public static ChromeProtocol.Domains.Emulation.SetFocusEmulationEnabledRequest SetFocusEmulationEnabled(bool Enabled)
     {
       return new ChromeProtocol.Domains.Emulation.SetFocusEmulationEnabledRequest(Enabled);
     }
@@ -243,7 +243,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enabled">Whether to enable to disable focus emulation.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setFocusEmulationEnabled")]
     public record SetFocusEmulationEnabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetFocusEmulationEnabledRequestResult>
     {
@@ -256,7 +256,7 @@ namespace ChromeProtocol.Domains
     /// Whether to enable or disable automatic dark mode.<br/>
     /// If not specified, any existing override will be cleared.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetAutoDarkModeOverrideRequest SetAutoDarkModeOverride(bool? Enabled = default)    
+    public static ChromeProtocol.Domains.Emulation.SetAutoDarkModeOverrideRequest SetAutoDarkModeOverride(bool? Enabled = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetAutoDarkModeOverrideRequest(Enabled);
     }
@@ -267,7 +267,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Emulation.setAutoDarkModeOverride")]
     public record SetAutoDarkModeOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool? Enabled = default
     ) : ChromeProtocol.Core.ICommand<SetAutoDarkModeOverrideRequestResult>
     {
@@ -277,7 +277,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enables CPU throttling to emulate slow CPUs.</summary>
     /// <param name="Rate">Throttling rate as a slowdown factor (1 is no throttle, 2 is 2x slowdown, etc).</param>
-    public static ChromeProtocol.Domains.Emulation.SetCPUThrottlingRateRequest SetCPUThrottlingRate(double Rate)    
+    public static ChromeProtocol.Domains.Emulation.SetCPUThrottlingRateRequest SetCPUThrottlingRate(double Rate)
     {
       return new ChromeProtocol.Domains.Emulation.SetCPUThrottlingRateRequest(Rate);
     }
@@ -285,7 +285,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Rate">Throttling rate as a slowdown factor (1 is no throttle, 2 is 2x slowdown, etc).</param>
     [ChromeProtocol.Core.MethodName("Emulation.setCPUThrottlingRate")]
     public record SetCPUThrottlingRateRequest(
-      [property: Newtonsoft.Json.JsonProperty("rate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rate")]
       double Rate
     ) : ChromeProtocol.Core.ICommand<SetCPUThrottlingRateRequestResult>
     {
@@ -301,7 +301,7 @@ namespace ChromeProtocol.Domains
     /// RGBA of the default background color. If not specified, any existing override will be<br/>
     /// cleared.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetDefaultBackgroundColorOverrideRequest SetDefaultBackgroundColorOverride(ChromeProtocol.Domains.DOM.RGBAType? Color = default)    
+    public static ChromeProtocol.Domains.Emulation.SetDefaultBackgroundColorOverrideRequest SetDefaultBackgroundColorOverride(ChromeProtocol.Domains.DOM.RGBAType? Color = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetDefaultBackgroundColorOverrideRequest(Color);
     }
@@ -315,7 +315,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Emulation.setDefaultBackgroundColorOverride")]
     public record SetDefaultBackgroundColorOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("color")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("color")]
       ChromeProtocol.Domains.DOM.RGBAType? Color = default
     ) : ChromeProtocol.Core.ICommand<SetDefaultBackgroundColorOverrideRequestResult>
     {
@@ -354,7 +354,7 @@ namespace ChromeProtocol.Domains
     /// If set, the posture of a foldable device. If not set the posture is set<br/>
     /// to continuous.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetDeviceMetricsOverrideRequest SetDeviceMetricsOverride(int Width, int Height, double DeviceScaleFactor, bool Mobile, double? Scale = default, int? ScreenWidth = default, int? ScreenHeight = default, int? PositionX = default, int? PositionY = default, bool? DontSetVisibleSize = default, ChromeProtocol.Domains.Emulation.ScreenOrientationType? ScreenOrientation = default, ChromeProtocol.Domains.Page.ViewportType? Viewport = default, ChromeProtocol.Domains.Emulation.DisplayFeatureType? DisplayFeature = default, ChromeProtocol.Domains.Emulation.DevicePostureType? DevicePosture = default)    
+    public static ChromeProtocol.Domains.Emulation.SetDeviceMetricsOverrideRequest SetDeviceMetricsOverride(int Width, int Height, double DeviceScaleFactor, bool Mobile, double? Scale = default, int? ScreenWidth = default, int? ScreenHeight = default, int? PositionX = default, int? PositionY = default, bool? DontSetVisibleSize = default, ChromeProtocol.Domains.Emulation.ScreenOrientationType? ScreenOrientation = default, ChromeProtocol.Domains.Page.ViewportType? Viewport = default, ChromeProtocol.Domains.Emulation.DisplayFeatureType? DisplayFeature = default, ChromeProtocol.Domains.Emulation.DevicePostureType? DevicePosture = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetDeviceMetricsOverrideRequest(Width, Height, DeviceScaleFactor, Mobile, Scale, ScreenWidth, ScreenHeight, PositionX, PositionY, DontSetVisibleSize, ScreenOrientation, Viewport, DisplayFeature, DevicePosture);
     }
@@ -391,33 +391,33 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Emulation.setDeviceMetricsOverride")]
     public record SetDeviceMetricsOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       int Width,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       int Height,
-      [property: Newtonsoft.Json.JsonProperty("deviceScaleFactor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deviceScaleFactor")]
       double DeviceScaleFactor,
-      [property: Newtonsoft.Json.JsonProperty("mobile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mobile")]
       bool Mobile,
-      [property: Newtonsoft.Json.JsonProperty("scale")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scale")]
       double? Scale = default,
-      [property: Newtonsoft.Json.JsonProperty("screenWidth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("screenWidth")]
       int? ScreenWidth = default,
-      [property: Newtonsoft.Json.JsonProperty("screenHeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("screenHeight")]
       int? ScreenHeight = default,
-      [property: Newtonsoft.Json.JsonProperty("positionX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("positionX")]
       int? PositionX = default,
-      [property: Newtonsoft.Json.JsonProperty("positionY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("positionY")]
       int? PositionY = default,
-      [property: Newtonsoft.Json.JsonProperty("dontSetVisibleSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dontSetVisibleSize")]
       bool? DontSetVisibleSize = default,
-      [property: Newtonsoft.Json.JsonProperty("screenOrientation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("screenOrientation")]
       ChromeProtocol.Domains.Emulation.ScreenOrientationType? ScreenOrientation = default,
-      [property: Newtonsoft.Json.JsonProperty("viewport")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("viewport")]
       ChromeProtocol.Domains.Page.ViewportType? Viewport = default,
-      [property: Newtonsoft.Json.JsonProperty("displayFeature")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("displayFeature")]
       ChromeProtocol.Domains.Emulation.DisplayFeatureType? DisplayFeature = default,
-      [property: Newtonsoft.Json.JsonProperty("devicePosture")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("devicePosture")]
       ChromeProtocol.Domains.Emulation.DevicePostureType? DevicePosture = default
     ) : ChromeProtocol.Core.ICommand<SetDeviceMetricsOverrideRequestResult>
     {
@@ -426,14 +426,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="Hidden">Whether scrollbars should be always hidden.</param>
-    public static ChromeProtocol.Domains.Emulation.SetScrollbarsHiddenRequest SetScrollbarsHidden(bool Hidden)    
+    public static ChromeProtocol.Domains.Emulation.SetScrollbarsHiddenRequest SetScrollbarsHidden(bool Hidden)
     {
       return new ChromeProtocol.Domains.Emulation.SetScrollbarsHiddenRequest(Hidden);
     }
     /// <param name="Hidden">Whether scrollbars should be always hidden.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setScrollbarsHidden")]
     public record SetScrollbarsHiddenRequest(
-      [property: Newtonsoft.Json.JsonProperty("hidden")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hidden")]
       bool Hidden
     ) : ChromeProtocol.Core.ICommand<SetScrollbarsHiddenRequestResult>
     {
@@ -442,14 +442,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="Disabled">Whether document.coookie API should be disabled.</param>
-    public static ChromeProtocol.Domains.Emulation.SetDocumentCookieDisabledRequest SetDocumentCookieDisabled(bool Disabled)    
+    public static ChromeProtocol.Domains.Emulation.SetDocumentCookieDisabledRequest SetDocumentCookieDisabled(bool Disabled)
     {
       return new ChromeProtocol.Domains.Emulation.SetDocumentCookieDisabledRequest(Disabled);
     }
     /// <param name="Disabled">Whether document.coookie API should be disabled.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setDocumentCookieDisabled")]
     public record SetDocumentCookieDisabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("disabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disabled")]
       bool Disabled
     ) : ChromeProtocol.Core.ICommand<SetDocumentCookieDisabledRequestResult>
     {
@@ -459,7 +459,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Enabled">Whether touch emulation based on mouse input should be enabled.</param>
     /// <param name="Configuration">Touch/gesture events configuration. Default: current platform.</param>
-    public static ChromeProtocol.Domains.Emulation.SetEmitTouchEventsForMouseRequest SetEmitTouchEventsForMouse(bool Enabled, string? Configuration = default)    
+    public static ChromeProtocol.Domains.Emulation.SetEmitTouchEventsForMouseRequest SetEmitTouchEventsForMouse(bool Enabled, string? Configuration = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetEmitTouchEventsForMouseRequest(Enabled, Configuration);
     }
@@ -467,9 +467,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Configuration">Touch/gesture events configuration. Default: current platform.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setEmitTouchEventsForMouse")]
     public record SetEmitTouchEventsForMouseRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled,
-      [property: Newtonsoft.Json.JsonProperty("configuration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("configuration")]
       string? Configuration = default
     ) : ChromeProtocol.Core.ICommand<SetEmitTouchEventsForMouseRequestResult>
     {
@@ -480,7 +480,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Emulates the given media type or media feature for CSS media queries.</summary>
     /// <param name="Media">Media type to emulate. Empty string disables the override.</param>
     /// <param name="Features">Media features to emulate.</param>
-    public static ChromeProtocol.Domains.Emulation.SetEmulatedMediaRequest SetEmulatedMedia(string? Media = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.MediaFeatureType>? Features = default)    
+    public static ChromeProtocol.Domains.Emulation.SetEmulatedMediaRequest SetEmulatedMedia(string? Media = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.MediaFeatureType>? Features = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetEmulatedMediaRequest(Media, Features);
     }
@@ -489,9 +489,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Features">Media features to emulate.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setEmulatedMedia")]
     public record SetEmulatedMediaRequest(
-      [property: Newtonsoft.Json.JsonProperty("media")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("media")]
       string? Media = default,
-      [property: Newtonsoft.Json.JsonProperty("features")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("features")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.MediaFeatureType>? Features = default
     ) : ChromeProtocol.Core.ICommand<SetEmulatedMediaRequestResult>
     {
@@ -504,7 +504,7 @@ namespace ChromeProtocol.Domains
     /// Vision deficiency to emulate. Order: best-effort emulations come first, followed by any<br/>
     /// physiologically accurate emulations for medically recognized color vision deficiencies.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetEmulatedVisionDeficiencyRequest SetEmulatedVisionDeficiency(string Type)    
+    public static ChromeProtocol.Domains.Emulation.SetEmulatedVisionDeficiencyRequest SetEmulatedVisionDeficiency(string Type)
     {
       return new ChromeProtocol.Domains.Emulation.SetEmulatedVisionDeficiencyRequest(Type);
     }
@@ -515,7 +515,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Emulation.setEmulatedVisionDeficiency")]
     public record SetEmulatedVisionDeficiencyRequest(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type
     ) : ChromeProtocol.Core.ICommand<SetEmulatedVisionDeficiencyRequestResult>
     {
@@ -530,7 +530,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Latitude">Mock latitude</param>
     /// <param name="Longitude">Mock longitude</param>
     /// <param name="Accuracy">Mock accuracy</param>
-    public static ChromeProtocol.Domains.Emulation.SetGeolocationOverrideRequest SetGeolocationOverride(double? Latitude = default, double? Longitude = default, double? Accuracy = default)    
+    public static ChromeProtocol.Domains.Emulation.SetGeolocationOverrideRequest SetGeolocationOverride(double? Latitude = default, double? Longitude = default, double? Accuracy = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetGeolocationOverrideRequest(Latitude, Longitude, Accuracy);
     }
@@ -543,11 +543,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Accuracy">Mock accuracy</param>
     [ChromeProtocol.Core.MethodName("Emulation.setGeolocationOverride")]
     public record SetGeolocationOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("latitude")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("latitude")]
       double? Latitude = default,
-      [property: Newtonsoft.Json.JsonProperty("longitude")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("longitude")]
       double? Longitude = default,
-      [property: Newtonsoft.Json.JsonProperty("accuracy")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accuracy")]
       double? Accuracy = default
     ) : ChromeProtocol.Core.ICommand<SetGeolocationOverrideRequestResult>
     {
@@ -555,19 +555,19 @@ namespace ChromeProtocol.Domains
     public record SetGeolocationOverrideRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Emulation.GetOverriddenSensorInformationRequest GetOverriddenSensorInformation(ChromeProtocol.Domains.Emulation.SensorTypeType Type)    
+    public static ChromeProtocol.Domains.Emulation.GetOverriddenSensorInformationRequest GetOverriddenSensorInformation(ChromeProtocol.Domains.Emulation.SensorTypeType Type)
     {
       return new ChromeProtocol.Domains.Emulation.GetOverriddenSensorInformationRequest(Type);
     }
     [ChromeProtocol.Core.MethodName("Emulation.getOverriddenSensorInformation")]
     public record GetOverriddenSensorInformationRequest(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Emulation.SensorTypeType Type
     ) : ChromeProtocol.Core.ICommand<GetOverriddenSensorInformationRequestResult>
     {
     }
     public record GetOverriddenSensorInformationRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("requestedSamplingFrequency")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestedSamplingFrequency")]
       double RequestedSamplingFrequency
     ) : ChromeProtocol.Core.IType
     {
@@ -579,7 +579,7 @@ namespace ChromeProtocol.Domains
     /// sensor-backend Sensor objects will fire an error event and new calls to<br/>
     /// Sensor.start() will attempt to use a real sensor instead.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Emulation.SetSensorOverrideEnabledRequest SetSensorOverrideEnabled(bool Enabled, ChromeProtocol.Domains.Emulation.SensorTypeType Type, ChromeProtocol.Domains.Emulation.SensorMetadataType? Metadata = default)    
+    public static ChromeProtocol.Domains.Emulation.SetSensorOverrideEnabledRequest SetSensorOverrideEnabled(bool Enabled, ChromeProtocol.Domains.Emulation.SensorTypeType Type, ChromeProtocol.Domains.Emulation.SensorMetadataType? Metadata = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetSensorOverrideEnabledRequest(Enabled, Type, Metadata);
     }
@@ -592,11 +592,11 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Emulation.setSensorOverrideEnabled")]
     public record SetSensorOverrideEnabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Emulation.SensorTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("metadata")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("metadata")]
       ChromeProtocol.Domains.Emulation.SensorMetadataType? Metadata = default
     ) : ChromeProtocol.Core.ICommand<SetSensorOverrideEnabledRequestResult>
     {
@@ -608,7 +608,7 @@ namespace ChromeProtocol.Domains
     /// Updates the sensor readings reported by a sensor type previously overridden<br/>
     /// by setSensorOverrideEnabled.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Emulation.SetSensorOverrideReadingsRequest SetSensorOverrideReadings(ChromeProtocol.Domains.Emulation.SensorTypeType Type, ChromeProtocol.Domains.Emulation.SensorReadingType Reading)    
+    public static ChromeProtocol.Domains.Emulation.SetSensorOverrideReadingsRequest SetSensorOverrideReadings(ChromeProtocol.Domains.Emulation.SensorTypeType Type, ChromeProtocol.Domains.Emulation.SensorReadingType Reading)
     {
       return new ChromeProtocol.Domains.Emulation.SetSensorOverrideReadingsRequest(Type, Reading);
     }
@@ -618,9 +618,9 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Emulation.setSensorOverrideReadings")]
     public record SetSensorOverrideReadingsRequest(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Emulation.SensorTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("reading")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reading")]
       ChromeProtocol.Domains.Emulation.SensorReadingType Reading
     ) : ChromeProtocol.Core.ICommand<SetSensorOverrideReadingsRequestResult>
     {
@@ -631,7 +631,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Overrides the Idle state.</summary>
     /// <param name="IsUserActive">Mock isUserActive</param>
     /// <param name="IsScreenUnlocked">Mock isScreenUnlocked</param>
-    public static ChromeProtocol.Domains.Emulation.SetIdleOverrideRequest SetIdleOverride(bool IsUserActive, bool IsScreenUnlocked)    
+    public static ChromeProtocol.Domains.Emulation.SetIdleOverrideRequest SetIdleOverride(bool IsUserActive, bool IsScreenUnlocked)
     {
       return new ChromeProtocol.Domains.Emulation.SetIdleOverrideRequest(IsUserActive, IsScreenUnlocked);
     }
@@ -640,9 +640,9 @@ namespace ChromeProtocol.Domains
     /// <param name="IsScreenUnlocked">Mock isScreenUnlocked</param>
     [ChromeProtocol.Core.MethodName("Emulation.setIdleOverride")]
     public record SetIdleOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("isUserActive")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isUserActive")]
       bool IsUserActive,
-      [property: Newtonsoft.Json.JsonProperty("isScreenUnlocked")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isScreenUnlocked")]
       bool IsScreenUnlocked
     ) : ChromeProtocol.Core.ICommand<SetIdleOverrideRequestResult>
     {
@@ -651,7 +651,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears Idle state overrides.</summary>
-    public static ChromeProtocol.Domains.Emulation.ClearIdleOverrideRequest ClearIdleOverride()    
+    public static ChromeProtocol.Domains.Emulation.ClearIdleOverrideRequest ClearIdleOverride()
     {
       return new ChromeProtocol.Domains.Emulation.ClearIdleOverrideRequest();
     }
@@ -666,7 +666,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Overrides value returned by the javascript navigator object.</summary>
     /// <param name="Platform">The platform navigator.platform should return.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Emulation.SetNavigatorOverridesRequest SetNavigatorOverrides(string Platform)    
+    public static ChromeProtocol.Domains.Emulation.SetNavigatorOverridesRequest SetNavigatorOverrides(string Platform)
     {
       return new ChromeProtocol.Domains.Emulation.SetNavigatorOverridesRequest(Platform);
     }
@@ -675,7 +675,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Emulation.setNavigatorOverrides")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetNavigatorOverridesRequest(
-      [property: Newtonsoft.Json.JsonProperty("platform")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("platform")]
       string Platform
     ) : ChromeProtocol.Core.ICommand<SetNavigatorOverridesRequestResult>
     {
@@ -686,7 +686,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets a specified page scale factor.</summary>
     /// <param name="PageScaleFactor">Page scale factor.</param>
-    public static ChromeProtocol.Domains.Emulation.SetPageScaleFactorRequest SetPageScaleFactor(double PageScaleFactor)    
+    public static ChromeProtocol.Domains.Emulation.SetPageScaleFactorRequest SetPageScaleFactor(double PageScaleFactor)
     {
       return new ChromeProtocol.Domains.Emulation.SetPageScaleFactorRequest(PageScaleFactor);
     }
@@ -694,7 +694,7 @@ namespace ChromeProtocol.Domains
     /// <param name="PageScaleFactor">Page scale factor.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setPageScaleFactor")]
     public record SetPageScaleFactorRequest(
-      [property: Newtonsoft.Json.JsonProperty("pageScaleFactor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pageScaleFactor")]
       double PageScaleFactor
     ) : ChromeProtocol.Core.ICommand<SetPageScaleFactorRequestResult>
     {
@@ -704,7 +704,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Switches script execution in the page.</summary>
     /// <param name="Value">Whether script execution should be disabled in the page.</param>
-    public static ChromeProtocol.Domains.Emulation.SetScriptExecutionDisabledRequest SetScriptExecutionDisabled(bool Value)    
+    public static ChromeProtocol.Domains.Emulation.SetScriptExecutionDisabledRequest SetScriptExecutionDisabled(bool Value)
     {
       return new ChromeProtocol.Domains.Emulation.SetScriptExecutionDisabledRequest(Value);
     }
@@ -712,7 +712,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Value">Whether script execution should be disabled in the page.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setScriptExecutionDisabled")]
     public record SetScriptExecutionDisabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       bool Value
     ) : ChromeProtocol.Core.ICommand<SetScriptExecutionDisabledRequestResult>
     {
@@ -723,7 +723,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Enables touch on platforms which do not support them.</summary>
     /// <param name="Enabled">Whether the touch event emulation should be enabled.</param>
     /// <param name="MaxTouchPoints">Maximum touch points supported. Defaults to one.</param>
-    public static ChromeProtocol.Domains.Emulation.SetTouchEmulationEnabledRequest SetTouchEmulationEnabled(bool Enabled, int? MaxTouchPoints = default)    
+    public static ChromeProtocol.Domains.Emulation.SetTouchEmulationEnabledRequest SetTouchEmulationEnabled(bool Enabled, int? MaxTouchPoints = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetTouchEmulationEnabledRequest(Enabled, MaxTouchPoints);
     }
@@ -732,9 +732,9 @@ namespace ChromeProtocol.Domains
     /// <param name="MaxTouchPoints">Maximum touch points supported. Defaults to one.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setTouchEmulationEnabled")]
     public record SetTouchEmulationEnabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled,
-      [property: Newtonsoft.Json.JsonProperty("maxTouchPoints")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxTouchPoints")]
       int? MaxTouchPoints = default
     ) : ChromeProtocol.Core.ICommand<SetTouchEmulationEnabledRequestResult>
     {
@@ -755,7 +755,7 @@ namespace ChromeProtocol.Domains
     /// forwards to prevent deadlock.<br/>
     /// </param>
     /// <param name="InitialVirtualTime">If set, base::Time::Now will be overridden to initially return this value.</param>
-    public static ChromeProtocol.Domains.Emulation.SetVirtualTimePolicyRequest SetVirtualTimePolicy(ChromeProtocol.Domains.Emulation.VirtualTimePolicyType Policy, double? Budget = default, int? MaxVirtualTimeTaskStarvationCount = default, ChromeProtocol.Domains.Network.TimeSinceEpochType? InitialVirtualTime = default)    
+    public static ChromeProtocol.Domains.Emulation.SetVirtualTimePolicyRequest SetVirtualTimePolicy(ChromeProtocol.Domains.Emulation.VirtualTimePolicyType Policy, double? Budget = default, int? MaxVirtualTimeTaskStarvationCount = default, ChromeProtocol.Domains.Network.TimeSinceEpochType? InitialVirtualTime = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetVirtualTimePolicyRequest(Policy, Budget, MaxVirtualTimeTaskStarvationCount, InitialVirtualTime);
     }
@@ -774,20 +774,20 @@ namespace ChromeProtocol.Domains
     /// <param name="InitialVirtualTime">If set, base::Time::Now will be overridden to initially return this value.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setVirtualTimePolicy")]
     public record SetVirtualTimePolicyRequest(
-      [property: Newtonsoft.Json.JsonProperty("policy")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("policy")]
       ChromeProtocol.Domains.Emulation.VirtualTimePolicyType Policy,
-      [property: Newtonsoft.Json.JsonProperty("budget")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("budget")]
       double? Budget = default,
-      [property: Newtonsoft.Json.JsonProperty("maxVirtualTimeTaskStarvationCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxVirtualTimeTaskStarvationCount")]
       int? MaxVirtualTimeTaskStarvationCount = default,
-      [property: Newtonsoft.Json.JsonProperty("initialVirtualTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initialVirtualTime")]
       ChromeProtocol.Domains.Network.TimeSinceEpochType? InitialVirtualTime = default
     ) : ChromeProtocol.Core.ICommand<SetVirtualTimePolicyRequestResult>
     {
     }
     /// <param name="VirtualTimeTicksBase">Absolute timestamp at which virtual time was first enabled (up time in milliseconds).</param>
     public record SetVirtualTimePolicyRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("virtualTimeTicksBase")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("virtualTimeTicksBase")]
       double VirtualTimeTicksBase
     ) : ChromeProtocol.Core.IType
     {
@@ -797,7 +797,7 @@ namespace ChromeProtocol.Domains
     /// ICU style C locale (e.g. &quot;en_US&quot;). If not specified or empty, disables the override and<br/>
     /// restores default host system locale.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetLocaleOverrideRequest SetLocaleOverride(string? Locale = default)    
+    public static ChromeProtocol.Domains.Emulation.SetLocaleOverrideRequest SetLocaleOverride(string? Locale = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetLocaleOverrideRequest(Locale);
     }
@@ -808,7 +808,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Emulation.setLocaleOverride")]
     public record SetLocaleOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("locale")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("locale")]
       string? Locale = default
     ) : ChromeProtocol.Core.ICommand<SetLocaleOverrideRequestResult>
     {
@@ -822,7 +822,7 @@ namespace ChromeProtocol.Domains
     /// https://source.chromium.org/chromium/chromium/deps/icu.git/+/faee8bc70570192d82d2978a71e2a615788597d1:source/data/misc/metaZones.txt<br/>
     /// If empty, disables the override and restores default host system timezone.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetTimezoneOverrideRequest SetTimezoneOverride(string TimezoneId)    
+    public static ChromeProtocol.Domains.Emulation.SetTimezoneOverrideRequest SetTimezoneOverride(string TimezoneId)
     {
       return new ChromeProtocol.Domains.Emulation.SetTimezoneOverrideRequest(TimezoneId);
     }
@@ -834,7 +834,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Emulation.setTimezoneOverride")]
     public record SetTimezoneOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("timezoneId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timezoneId")]
       string TimezoneId
     ) : ChromeProtocol.Core.ICommand<SetTimezoneOverrideRequestResult>
     {
@@ -850,7 +850,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Width">Frame width (DIP).</param>
     /// <param name="Height">Frame height (DIP).</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Emulation.SetVisibleSizeRequest SetVisibleSize(int Width, int Height)    
+    public static ChromeProtocol.Domains.Emulation.SetVisibleSizeRequest SetVisibleSize(int Width, int Height)
     {
       return new ChromeProtocol.Domains.Emulation.SetVisibleSizeRequest(Width, Height);
     }
@@ -864,9 +864,9 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Emulation.setVisibleSize")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetVisibleSizeRequest(
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       int Width,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       int Height
     ) : ChromeProtocol.Core.ICommand<SetVisibleSizeRequestResult>
     {
@@ -876,14 +876,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="ImageTypes">Image types to disable.</param>
-    public static ChromeProtocol.Domains.Emulation.SetDisabledImageTypesRequest SetDisabledImageTypes(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.DisabledImageTypeType> ImageTypes)    
+    public static ChromeProtocol.Domains.Emulation.SetDisabledImageTypesRequest SetDisabledImageTypes(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.DisabledImageTypeType> ImageTypes)
     {
       return new ChromeProtocol.Domains.Emulation.SetDisabledImageTypesRequest(ImageTypes);
     }
     /// <param name="ImageTypes">Image types to disable.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setDisabledImageTypes")]
     public record SetDisabledImageTypesRequest(
-      [property: Newtonsoft.Json.JsonProperty("imageTypes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("imageTypes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.DisabledImageTypeType> ImageTypes
     ) : ChromeProtocol.Core.ICommand<SetDisabledImageTypesRequestResult>
     {
@@ -892,14 +892,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="HardwareConcurrency">Hardware concurrency to report</param>
-    public static ChromeProtocol.Domains.Emulation.SetHardwareConcurrencyOverrideRequest SetHardwareConcurrencyOverride(int HardwareConcurrency)    
+    public static ChromeProtocol.Domains.Emulation.SetHardwareConcurrencyOverrideRequest SetHardwareConcurrencyOverride(int HardwareConcurrency)
     {
       return new ChromeProtocol.Domains.Emulation.SetHardwareConcurrencyOverrideRequest(HardwareConcurrency);
     }
     /// <param name="HardwareConcurrency">Hardware concurrency to report</param>
     [ChromeProtocol.Core.MethodName("Emulation.setHardwareConcurrencyOverride")]
     public record SetHardwareConcurrencyOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("hardwareConcurrency")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hardwareConcurrency")]
       int HardwareConcurrency
     ) : ChromeProtocol.Core.ICommand<SetHardwareConcurrencyOverrideRequestResult>
     {
@@ -915,7 +915,7 @@ namespace ChromeProtocol.Domains
     /// <param name="AcceptLanguage">Browser language to emulate.</param>
     /// <param name="Platform">The platform navigator.platform should return.</param>
     /// <param name="UserAgentMetadata">To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData</param>
-    public static ChromeProtocol.Domains.Emulation.SetUserAgentOverrideRequest SetUserAgentOverride(string UserAgent, string? AcceptLanguage = default, string? Platform = default, ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default)    
+    public static ChromeProtocol.Domains.Emulation.SetUserAgentOverrideRequest SetUserAgentOverride(string UserAgent, string? AcceptLanguage = default, string? Platform = default, ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default)
     {
       return new ChromeProtocol.Domains.Emulation.SetUserAgentOverrideRequest(UserAgent, AcceptLanguage, Platform, UserAgentMetadata);
     }
@@ -929,13 +929,13 @@ namespace ChromeProtocol.Domains
     /// <param name="UserAgentMetadata">To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData</param>
     [ChromeProtocol.Core.MethodName("Emulation.setUserAgentOverride")]
     public record SetUserAgentOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("userAgent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userAgent")]
       string UserAgent,
-      [property: Newtonsoft.Json.JsonProperty("acceptLanguage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("acceptLanguage")]
       string? AcceptLanguage = default,
-      [property: Newtonsoft.Json.JsonProperty("platform")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("platform")]
       string? Platform = default,
-      [property: Newtonsoft.Json.JsonProperty("userAgentMetadata")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userAgentMetadata")]
       ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default
     ) : ChromeProtocol.Core.ICommand<SetUserAgentOverrideRequestResult>
     {
@@ -945,7 +945,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Allows overriding the automation flag.</summary>
     /// <param name="Enabled">Whether the override should be enabled.</param>
-    public static ChromeProtocol.Domains.Emulation.SetAutomationOverrideRequest SetAutomationOverride(bool Enabled)    
+    public static ChromeProtocol.Domains.Emulation.SetAutomationOverrideRequest SetAutomationOverride(bool Enabled)
     {
       return new ChromeProtocol.Domains.Emulation.SetAutomationOverrideRequest(Enabled);
     }
@@ -953,7 +953,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enabled">Whether the override should be enabled.</param>
     [ChromeProtocol.Core.MethodName("Emulation.setAutomationOverride")]
     public record SetAutomationOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetAutomationOverrideRequestResult>
     {

@@ -9,7 +9,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Reason">The reason why connection has been terminated.</param>
     [ChromeProtocol.Core.MethodName("Inspector.detached")]
     public record Detached(
-      [property: Newtonsoft.Json.JsonProperty("reason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reason")]
       string Reason
     ) : ChromeProtocol.Core.IEvent
     {
@@ -25,7 +25,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables inspector domain notifications.</summary>
-    public static ChromeProtocol.Domains.Inspector.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Inspector.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Inspector.DisableRequest();
     }
@@ -38,7 +38,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables inspector domain notifications.</summary>
-    public static ChromeProtocol.Domains.Inspector.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Inspector.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Inspector.EnableRequest();
     }

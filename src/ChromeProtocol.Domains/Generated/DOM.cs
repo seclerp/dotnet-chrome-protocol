@@ -15,7 +15,7 @@ namespace ChromeProtocol.Domains
   public static partial class DOM
   {
     /// <summary>Unique DOM node identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record NodeIdType(
       int Value
     ) : ChromeProtocol.Core.PrimitiveType<int>(Value)
@@ -25,7 +25,7 @@ namespace ChromeProtocol.Domains
     /// Unique DOM node identifier used to reference a node that may not have been pushed to the<br/>
     /// front-end.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record BackendNodeIdType(
       int Value
     ) : ChromeProtocol.Core.PrimitiveType<int>(Value)
@@ -35,52 +35,52 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeType">`Node`&#39;s nodeType.</param>
     /// <param name="NodeName">`Node`&#39;s nodeName.</param>
     public record BackendNodeType(
-      [property: Newtonsoft.Json.JsonProperty("nodeType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeType")]
       int NodeType,
-      [property: Newtonsoft.Json.JsonProperty("nodeName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeName")]
       string NodeName,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType BackendNodeId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Pseudo element type.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PseudoTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Shadow root type.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ShadowRootTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Document compatibility mode.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CompatibilityModeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>ContainerSelector physical axes</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PhysicalAxesType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>ContainerSelector logical axes</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record LogicalAxesType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Physical scroll orientation</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ScrollOrientationType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -131,68 +131,68 @@ namespace ChromeProtocol.Domains
     /// <param name="DistributedNodes">Distributed nodes for given insertion point.</param>
     /// <param name="IsSVG">Whether the node is SVG.</param>
     public record NodeType(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType BackendNodeId,
-      [property: Newtonsoft.Json.JsonProperty("nodeType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeType")]
       int NodeTypeProperty,
-      [property: Newtonsoft.Json.JsonProperty("nodeName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeName")]
       string NodeName,
-      [property: Newtonsoft.Json.JsonProperty("localName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("localName")]
       string LocalName,
-      [property: Newtonsoft.Json.JsonProperty("nodeValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeValue")]
       string NodeValue,
-      [property: Newtonsoft.Json.JsonProperty("parentId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentId")]
       ChromeProtocol.Domains.DOM.NodeIdType? ParentId = default,
-      [property: Newtonsoft.Json.JsonProperty("childNodeCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("childNodeCount")]
       int? ChildNodeCount = default,
-      [property: Newtonsoft.Json.JsonProperty("children")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("children")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeType>? Children = default,
-      [property: Newtonsoft.Json.JsonProperty("attributes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attributes")]
       System.Collections.Generic.IReadOnlyList<string>? Attributes = default,
-      [property: Newtonsoft.Json.JsonProperty("documentURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("documentURL")]
       string? DocumentURL = default,
-      [property: Newtonsoft.Json.JsonProperty("baseURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("baseURL")]
       string? BaseURL = default,
-      [property: Newtonsoft.Json.JsonProperty("publicId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("publicId")]
       string? PublicId = default,
-      [property: Newtonsoft.Json.JsonProperty("systemId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("systemId")]
       string? SystemId = default,
-      [property: Newtonsoft.Json.JsonProperty("internalSubset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("internalSubset")]
       string? InternalSubset = default,
-      [property: Newtonsoft.Json.JsonProperty("xmlVersion")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("xmlVersion")]
       string? XmlVersion = default,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string? Name = default,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("pseudoType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoType")]
       ChromeProtocol.Domains.DOM.PseudoTypeType? PseudoType = default,
-      [property: Newtonsoft.Json.JsonProperty("pseudoIdentifier")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoIdentifier")]
       string? PseudoIdentifier = default,
-      [property: Newtonsoft.Json.JsonProperty("shadowRootType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("shadowRootType")]
       ChromeProtocol.Domains.DOM.ShadowRootTypeType? ShadowRootType = default,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default,
-      [property: Newtonsoft.Json.JsonProperty("contentDocument")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("contentDocument")]
       ChromeProtocol.Domains.DOM.NodeType? ContentDocument = default,
-      [property: Newtonsoft.Json.JsonProperty("shadowRoots")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("shadowRoots")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeType>? ShadowRoots = default,
-      [property: Newtonsoft.Json.JsonProperty("templateContent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("templateContent")]
       ChromeProtocol.Domains.DOM.NodeType? TemplateContent = default,
-      [property: Newtonsoft.Json.JsonProperty("pseudoElements")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoElements")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeType>? PseudoElements = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("importedDocument")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("importedDocument")]
       ChromeProtocol.Domains.DOM.NodeType? ImportedDocument = default,
-      [property: Newtonsoft.Json.JsonProperty("distributedNodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("distributedNodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.BackendNodeType>? DistributedNodes = default,
-      [property: Newtonsoft.Json.JsonProperty("isSVG")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isSVG")]
       bool? IsSVG = default,
-      [property: Newtonsoft.Json.JsonProperty("compatibilityMode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("compatibilityMode")]
       ChromeProtocol.Domains.DOM.CompatibilityModeType? CompatibilityMode = default,
-      [property: Newtonsoft.Json.JsonProperty("assignedSlot")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("assignedSlot")]
       ChromeProtocol.Domains.DOM.BackendNodeType? AssignedSlot = default
     ) : ChromeProtocol.Core.IType
     {
@@ -203,21 +203,21 @@ namespace ChromeProtocol.Domains
     /// <param name="B">The blue component, in the [0-255] range.</param>
     /// <param name="A">The alpha component, in the [0-1] range (default: 1).</param>
     public record RGBAType(
-      [property: Newtonsoft.Json.JsonProperty("r")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("r")]
       int R,
-      [property: Newtonsoft.Json.JsonProperty("g")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("g")]
       int G,
-      [property: Newtonsoft.Json.JsonProperty("b")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("b")]
       int B,
-      [property: Newtonsoft.Json.JsonProperty("a")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("a")]
       double? A = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>An array of quad vertices, x immediately followed by y for each point, points clock-wise.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
     public record QuadType(
-      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken> Items
+      System.Collections.Generic.IReadOnlyCollection<System.Text.Json.Nodes.JsonNode> Items
     ) : ChromeProtocol.Core.IArrayType
     {
     }
@@ -230,19 +230,19 @@ namespace ChromeProtocol.Domains
     /// <param name="Height">Node height</param>
     /// <param name="ShapeOutside">Shape outside coordinates</param>
     public record BoxModelType(
-      [property: Newtonsoft.Json.JsonProperty("content")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("content")]
       ChromeProtocol.Domains.DOM.QuadType Content,
-      [property: Newtonsoft.Json.JsonProperty("padding")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("padding")]
       ChromeProtocol.Domains.DOM.QuadType Padding,
-      [property: Newtonsoft.Json.JsonProperty("border")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("border")]
       ChromeProtocol.Domains.DOM.QuadType Border,
-      [property: Newtonsoft.Json.JsonProperty("margin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("margin")]
       ChromeProtocol.Domains.DOM.QuadType Margin,
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       int Width,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       int Height,
-      [property: Newtonsoft.Json.JsonProperty("shapeOutside")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("shapeOutside")]
       ChromeProtocol.Domains.DOM.ShapeOutsideInfoType? ShapeOutside = default
     ) : ChromeProtocol.Core.IType
     {
@@ -252,12 +252,12 @@ namespace ChromeProtocol.Domains
     /// <param name="Shape">Shape coordinate details</param>
     /// <param name="MarginShape">Margin shape bounds</param>
     public record ShapeOutsideInfoType(
-      [property: Newtonsoft.Json.JsonProperty("bounds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bounds")]
       ChromeProtocol.Domains.DOM.QuadType Bounds,
-      [property: Newtonsoft.Json.JsonProperty("shape")]
-      System.Collections.Generic.IReadOnlyList<Newtonsoft.Json.Linq.JToken> Shape,
-      [property: Newtonsoft.Json.JsonProperty("marginShape")]
-      System.Collections.Generic.IReadOnlyList<Newtonsoft.Json.Linq.JToken> MarginShape
+      [property: System.Text.Json.Serialization.JsonPropertyName("shape")]
+      System.Collections.Generic.IReadOnlyList<System.Text.Json.Nodes.JsonNode> Shape,
+      [property: System.Text.Json.Serialization.JsonPropertyName("marginShape")]
+      System.Collections.Generic.IReadOnlyList<System.Text.Json.Nodes.JsonNode> MarginShape
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -267,13 +267,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Width">Rectangle width</param>
     /// <param name="Height">Rectangle height</param>
     public record RectType(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       double Width,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       double Height
     ) : ChromeProtocol.Core.IType
     {
@@ -281,9 +281,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Computed style property name.</param>
     /// <param name="Value">Computed style property value.</param>
     public record CSSComputedStylePropertyType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
@@ -294,11 +294,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Value">Attribute value.</param>
     [ChromeProtocol.Core.MethodName("DOM.attributeModified")]
     public record AttributeModified(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IEvent
     {
@@ -308,9 +308,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">A ttribute name.</param>
     [ChromeProtocol.Core.MethodName("DOM.attributeRemoved")]
     public record AttributeRemoved(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name
     ) : ChromeProtocol.Core.IEvent
     {
@@ -320,9 +320,9 @@ namespace ChromeProtocol.Domains
     /// <param name="CharacterData">New text value.</param>
     [ChromeProtocol.Core.MethodName("DOM.characterDataModified")]
     public record CharacterDataModified(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("characterData")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("characterData")]
       string CharacterData
     ) : ChromeProtocol.Core.IEvent
     {
@@ -332,9 +332,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ChildNodeCount">New node count.</param>
     [ChromeProtocol.Core.MethodName("DOM.childNodeCountUpdated")]
     public record ChildNodeCountUpdated(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("childNodeCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("childNodeCount")]
       int ChildNodeCount
     ) : ChromeProtocol.Core.IEvent
     {
@@ -345,11 +345,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Node">Inserted node data.</param>
     [ChromeProtocol.Core.MethodName("DOM.childNodeInserted")]
     public record ChildNodeInserted(
-      [property: Newtonsoft.Json.JsonProperty("parentNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentNodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType ParentNodeId,
-      [property: Newtonsoft.Json.JsonProperty("previousNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("previousNodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType PreviousNodeId,
-      [property: Newtonsoft.Json.JsonProperty("node")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("node")]
       ChromeProtocol.Domains.DOM.NodeType Node
     ) : ChromeProtocol.Core.IEvent
     {
@@ -359,9 +359,9 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Id of the node that has been removed.</param>
     [ChromeProtocol.Core.MethodName("DOM.childNodeRemoved")]
     public record ChildNodeRemoved(
-      [property: Newtonsoft.Json.JsonProperty("parentNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentNodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType ParentNodeId,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -371,9 +371,9 @@ namespace ChromeProtocol.Domains
     /// <param name="DistributedNodes">Distributed nodes for given insertion point.</param>
     [ChromeProtocol.Core.MethodName("DOM.distributedNodesUpdated")]
     public record DistributedNodesUpdated(
-      [property: Newtonsoft.Json.JsonProperty("insertionPointId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("insertionPointId")]
       ChromeProtocol.Domains.DOM.NodeIdType InsertionPointId,
-      [property: Newtonsoft.Json.JsonProperty("distributedNodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("distributedNodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.BackendNodeType> DistributedNodes
     ) : ChromeProtocol.Core.IEvent
     {
@@ -387,7 +387,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeIds">Ids of the nodes for which the inline styles have been invalidated.</param>
     [ChromeProtocol.Core.MethodName("DOM.inlineStyleInvalidated")]
     public record InlineStyleInvalidated(
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds
     ) : ChromeProtocol.Core.IEvent
     {
@@ -397,9 +397,9 @@ namespace ChromeProtocol.Domains
     /// <param name="PseudoElement">The added pseudo element.</param>
     [ChromeProtocol.Core.MethodName("DOM.pseudoElementAdded")]
     public record PseudoElementAdded(
-      [property: Newtonsoft.Json.JsonProperty("parentId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentId")]
       ChromeProtocol.Domains.DOM.NodeIdType ParentId,
-      [property: Newtonsoft.Json.JsonProperty("pseudoElement")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoElement")]
       ChromeProtocol.Domains.DOM.NodeType PseudoElement
     ) : ChromeProtocol.Core.IEvent
     {
@@ -414,9 +414,9 @@ namespace ChromeProtocol.Domains
     /// <param name="PseudoElementId">The removed pseudo element id.</param>
     [ChromeProtocol.Core.MethodName("DOM.pseudoElementRemoved")]
     public record PseudoElementRemoved(
-      [property: Newtonsoft.Json.JsonProperty("parentId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentId")]
       ChromeProtocol.Domains.DOM.NodeIdType ParentId,
-      [property: Newtonsoft.Json.JsonProperty("pseudoElementId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoElementId")]
       ChromeProtocol.Domains.DOM.NodeIdType PseudoElementId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -429,9 +429,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Nodes">Child nodes array.</param>
     [ChromeProtocol.Core.MethodName("DOM.setChildNodes")]
     public record SetChildNodes(
-      [property: Newtonsoft.Json.JsonProperty("parentId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentId")]
       ChromeProtocol.Domains.DOM.NodeIdType ParentId,
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeType> Nodes
     ) : ChromeProtocol.Core.IEvent
     {
@@ -441,9 +441,9 @@ namespace ChromeProtocol.Domains
     /// <param name="RootId">Shadow root id.</param>
     [ChromeProtocol.Core.MethodName("DOM.shadowRootPopped")]
     public record ShadowRootPopped(
-      [property: Newtonsoft.Json.JsonProperty("hostId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hostId")]
       ChromeProtocol.Domains.DOM.NodeIdType HostId,
-      [property: Newtonsoft.Json.JsonProperty("rootId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rootId")]
       ChromeProtocol.Domains.DOM.NodeIdType RootId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -453,16 +453,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Root">Shadow root.</param>
     [ChromeProtocol.Core.MethodName("DOM.shadowRootPushed")]
     public record ShadowRootPushed(
-      [property: Newtonsoft.Json.JsonProperty("hostId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hostId")]
       ChromeProtocol.Domains.DOM.NodeIdType HostId,
-      [property: Newtonsoft.Json.JsonProperty("root")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("root")]
       ChromeProtocol.Domains.DOM.NodeType Root
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Collects class names for the node with given id and all of it&#39;s child nodes.</summary>
     /// <param name="NodeId">Id of the node to collect class names.</param>
-    public static ChromeProtocol.Domains.DOM.CollectClassNamesFromSubtreeRequest CollectClassNamesFromSubtree(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.DOM.CollectClassNamesFromSubtreeRequest CollectClassNamesFromSubtree(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.DOM.CollectClassNamesFromSubtreeRequest(NodeId);
     }
@@ -470,14 +470,14 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Id of the node to collect class names.</param>
     [ChromeProtocol.Core.MethodName("DOM.collectClassNamesFromSubtree")]
     public record CollectClassNamesFromSubtreeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<CollectClassNamesFromSubtreeRequestResult>
     {
     }
     /// <param name="ClassNames">Class name list.</param>
     public record CollectClassNamesFromSubtreeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("classNames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("classNames")]
       System.Collections.Generic.IReadOnlyList<string> ClassNames
     ) : ChromeProtocol.Core.IType
     {
@@ -492,7 +492,7 @@ namespace ChromeProtocol.Domains
     /// Drop the copy before this node (if absent, the copy becomes the last child of<br/>
     /// `targetNodeId`).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOM.CopyToRequest CopyTo(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOM.NodeIdType TargetNodeId, ChromeProtocol.Domains.DOM.NodeIdType? InsertBeforeNodeId = default)    
+    public static ChromeProtocol.Domains.DOM.CopyToRequest CopyTo(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOM.NodeIdType TargetNodeId, ChromeProtocol.Domains.DOM.NodeIdType? InsertBeforeNodeId = default)
     {
       return new ChromeProtocol.Domains.DOM.CopyToRequest(NodeId, TargetNodeId, InsertBeforeNodeId);
     }
@@ -508,18 +508,18 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOM.copyTo")]
     public record CopyToRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("targetNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetNodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType TargetNodeId,
-      [property: Newtonsoft.Json.JsonProperty("insertBeforeNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("insertBeforeNodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? InsertBeforeNodeId = default
     ) : ChromeProtocol.Core.ICommand<CopyToRequestResult>
     {
     }
     /// <param name="NodeId">Id of the node clone.</param>
     public record CopyToRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -539,7 +539,7 @@ namespace ChromeProtocol.Domains
     /// Whether or not iframes and shadow roots should be traversed when returning the subtree<br/>
     /// (default is false).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOM.DescribeNodeRequest DescribeNode(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, int? Depth = default, bool? Pierce = default)    
+    public static ChromeProtocol.Domains.DOM.DescribeNodeRequest DescribeNode(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, int? Depth = default, bool? Pierce = default)
     {
       return new ChromeProtocol.Domains.DOM.DescribeNodeRequest(NodeId, BackendNodeId, ObjectId, Depth, Pierce);
     }
@@ -560,22 +560,22 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOM.describeNode")]
     public record DescribeNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default,
-      [property: Newtonsoft.Json.JsonProperty("depth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("depth")]
       int? Depth = default,
-      [property: Newtonsoft.Json.JsonProperty("pierce")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pierce")]
       bool? Pierce = default
     ) : ChromeProtocol.Core.ICommand<DescribeNodeRequestResult>
     {
     }
     /// <param name="Node">Node description.</param>
     public record DescribeNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("node")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("node")]
       ChromeProtocol.Domains.DOM.NodeType Node
     ) : ChromeProtocol.Core.IType
     {
@@ -592,7 +592,7 @@ namespace ChromeProtocol.Domains
     /// The rect to be scrolled into view, relative to the node&#39;s border box, in CSS pixels.<br/>
     /// When omitted, center of the node will be used, similar to Element.scrollIntoView.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOM.ScrollIntoViewIfNeededRequest ScrollIntoViewIfNeeded(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, ChromeProtocol.Domains.DOM.RectType? Rect = default)    
+    public static ChromeProtocol.Domains.DOM.ScrollIntoViewIfNeededRequest ScrollIntoViewIfNeeded(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, ChromeProtocol.Domains.DOM.RectType? Rect = default)
     {
       return new ChromeProtocol.Domains.DOM.ScrollIntoViewIfNeededRequest(NodeId, BackendNodeId, ObjectId, Rect);
     }
@@ -610,13 +610,13 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOM.scrollIntoViewIfNeeded")]
     public record ScrollIntoViewIfNeededRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default,
-      [property: Newtonsoft.Json.JsonProperty("rect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rect")]
       ChromeProtocol.Domains.DOM.RectType? Rect = default
     ) : ChromeProtocol.Core.ICommand<ScrollIntoViewIfNeededRequestResult>
     {
@@ -625,7 +625,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables DOM agent for the given page.</summary>
-    public static ChromeProtocol.Domains.DOM.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.DOM.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.DOM.DisableRequest();
     }
@@ -642,7 +642,7 @@ namespace ChromeProtocol.Domains
     /// be called for that search.<br/>
     /// </summary>
     /// <param name="SearchId">Unique search session identifier.</param>
-    public static ChromeProtocol.Domains.DOM.DiscardSearchResultsRequest DiscardSearchResults(string SearchId)    
+    public static ChromeProtocol.Domains.DOM.DiscardSearchResultsRequest DiscardSearchResults(string SearchId)
     {
       return new ChromeProtocol.Domains.DOM.DiscardSearchResultsRequest(SearchId);
     }
@@ -653,7 +653,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SearchId">Unique search session identifier.</param>
     [ChromeProtocol.Core.MethodName("DOM.discardSearchResults")]
     public record DiscardSearchResultsRequest(
-      [property: Newtonsoft.Json.JsonProperty("searchId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("searchId")]
       string SearchId
     ) : ChromeProtocol.Core.ICommand<DiscardSearchResultsRequestResult>
     {
@@ -663,7 +663,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enables DOM agent for the given page.</summary>
     /// <param name="IncludeWhitespace">Whether to include whitespaces in the children array of returned Nodes.</param>
-    public static ChromeProtocol.Domains.DOM.EnableRequest Enable(string? IncludeWhitespace = default)    
+    public static ChromeProtocol.Domains.DOM.EnableRequest Enable(string? IncludeWhitespace = default)
     {
       return new ChromeProtocol.Domains.DOM.EnableRequest(IncludeWhitespace);
     }
@@ -671,7 +671,7 @@ namespace ChromeProtocol.Domains
     /// <param name="IncludeWhitespace">Whether to include whitespaces in the children array of returned Nodes.</param>
     [ChromeProtocol.Core.MethodName("DOM.enable")]
     public record EnableRequest(
-      [property: Newtonsoft.Json.JsonProperty("includeWhitespace")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeWhitespace")]
       string? IncludeWhitespace = default
     ) : ChromeProtocol.Core.ICommand<EnableRequestResult>
     {
@@ -683,7 +683,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Identifier of the node.</param>
     /// <param name="BackendNodeId">Identifier of the backend node.</param>
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
-    public static ChromeProtocol.Domains.DOM.FocusRequest Focus(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)    
+    public static ChromeProtocol.Domains.DOM.FocusRequest Focus(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)
     {
       return new ChromeProtocol.Domains.DOM.FocusRequest(NodeId, BackendNodeId, ObjectId);
     }
@@ -693,11 +693,11 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
     [ChromeProtocol.Core.MethodName("DOM.focus")]
     public record FocusRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default
     ) : ChromeProtocol.Core.ICommand<FocusRequestResult>
     {
@@ -707,7 +707,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns attributes for the specified node.</summary>
     /// <param name="NodeId">Id of the node to retrieve attributes for.</param>
-    public static ChromeProtocol.Domains.DOM.GetAttributesRequest GetAttributes(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.DOM.GetAttributesRequest GetAttributes(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.DOM.GetAttributesRequest(NodeId);
     }
@@ -715,14 +715,14 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Id of the node to retrieve attributes for.</param>
     [ChromeProtocol.Core.MethodName("DOM.getAttributes")]
     public record GetAttributesRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetAttributesRequestResult>
     {
     }
     /// <param name="Attributes">An interleaved array of node attribute names and values.</param>
     public record GetAttributesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("attributes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attributes")]
       System.Collections.Generic.IReadOnlyList<string> Attributes
     ) : ChromeProtocol.Core.IType
     {
@@ -731,7 +731,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Identifier of the node.</param>
     /// <param name="BackendNodeId">Identifier of the backend node.</param>
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
-    public static ChromeProtocol.Domains.DOM.GetBoxModelRequest GetBoxModel(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)    
+    public static ChromeProtocol.Domains.DOM.GetBoxModelRequest GetBoxModel(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)
     {
       return new ChromeProtocol.Domains.DOM.GetBoxModelRequest(NodeId, BackendNodeId, ObjectId);
     }
@@ -741,18 +741,18 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
     [ChromeProtocol.Core.MethodName("DOM.getBoxModel")]
     public record GetBoxModelRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default
     ) : ChromeProtocol.Core.ICommand<GetBoxModelRequestResult>
     {
     }
     /// <param name="Model">Box model for the node.</param>
     public record GetBoxModelRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("model")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("model")]
       ChromeProtocol.Domains.DOM.BoxModelType Model
     ) : ChromeProtocol.Core.IType
     {
@@ -764,7 +764,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Identifier of the node.</param>
     /// <param name="BackendNodeId">Identifier of the backend node.</param>
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
-    public static ChromeProtocol.Domains.DOM.GetContentQuadsRequest GetContentQuads(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)    
+    public static ChromeProtocol.Domains.DOM.GetContentQuadsRequest GetContentQuads(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)
     {
       return new ChromeProtocol.Domains.DOM.GetContentQuadsRequest(NodeId, BackendNodeId, ObjectId);
     }
@@ -777,18 +777,18 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
     [ChromeProtocol.Core.MethodName("DOM.getContentQuads")]
     public record GetContentQuadsRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default
     ) : ChromeProtocol.Core.ICommand<GetContentQuadsRequestResult>
     {
     }
     /// <param name="Quads">Quads that describe node layout relative to viewport.</param>
     public record GetContentQuadsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("quads")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("quads")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.QuadType> Quads
     ) : ChromeProtocol.Core.IType
     {
@@ -805,7 +805,7 @@ namespace ChromeProtocol.Domains
     /// Whether or not iframes and shadow roots should be traversed when returning the subtree<br/>
     /// (default is false).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOM.GetDocumentRequest GetDocument(int? Depth = default, bool? Pierce = default)    
+    public static ChromeProtocol.Domains.DOM.GetDocumentRequest GetDocument(int? Depth = default, bool? Pierce = default)
     {
       return new ChromeProtocol.Domains.DOM.GetDocumentRequest(Depth, Pierce);
     }
@@ -823,16 +823,16 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOM.getDocument")]
     public record GetDocumentRequest(
-      [property: Newtonsoft.Json.JsonProperty("depth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("depth")]
       int? Depth = default,
-      [property: Newtonsoft.Json.JsonProperty("pierce")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pierce")]
       bool? Pierce = default
     ) : ChromeProtocol.Core.ICommand<GetDocumentRequestResult>
     {
     }
     /// <param name="Root">Resulting node.</param>
     public record GetDocumentRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("root")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("root")]
       ChromeProtocol.Domains.DOM.NodeType Root
     ) : ChromeProtocol.Core.IType
     {
@@ -851,7 +851,7 @@ namespace ChromeProtocol.Domains
     /// (default is false).<br/>
     /// </param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.DOM.GetFlattenedDocumentRequest GetFlattenedDocument(int? Depth = default, bool? Pierce = default)    
+    public static ChromeProtocol.Domains.DOM.GetFlattenedDocumentRequest GetFlattenedDocument(int? Depth = default, bool? Pierce = default)
     {
       return new ChromeProtocol.Domains.DOM.GetFlattenedDocumentRequest(Depth, Pierce);
     }
@@ -871,9 +871,9 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("DOM.getFlattenedDocument")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record GetFlattenedDocumentRequest(
-      [property: Newtonsoft.Json.JsonProperty("depth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("depth")]
       int? Depth = default,
-      [property: Newtonsoft.Json.JsonProperty("pierce")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pierce")]
       bool? Pierce = default
     ) : ChromeProtocol.Core.ICommand<GetFlattenedDocumentRequestResult>
     {
@@ -881,7 +881,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Nodes">Resulting node.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record GetFlattenedDocumentRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeType> Nodes
     ) : ChromeProtocol.Core.IType
     {
@@ -893,7 +893,7 @@ namespace ChromeProtocol.Domains
     /// Whether or not iframes and shadow roots in the same target should be traversed when returning the<br/>
     /// results (default is false).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOM.GetNodesForSubtreeByStyleRequest GetNodesForSubtreeByStyle(ChromeProtocol.Domains.DOM.NodeIdType NodeId, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.CSSComputedStylePropertyType> ComputedStyles, bool? Pierce = default)    
+    public static ChromeProtocol.Domains.DOM.GetNodesForSubtreeByStyleRequest GetNodesForSubtreeByStyle(ChromeProtocol.Domains.DOM.NodeIdType NodeId, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.CSSComputedStylePropertyType> ComputedStyles, bool? Pierce = default)
     {
       return new ChromeProtocol.Domains.DOM.GetNodesForSubtreeByStyleRequest(NodeId, ComputedStyles, Pierce);
     }
@@ -906,18 +906,18 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOM.getNodesForSubtreeByStyle")]
     public record GetNodesForSubtreeByStyleRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("computedStyles")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("computedStyles")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.CSSComputedStylePropertyType> ComputedStyles,
-      [property: Newtonsoft.Json.JsonProperty("pierce")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pierce")]
       bool? Pierce = default
     ) : ChromeProtocol.Core.ICommand<GetNodesForSubtreeByStyleRequestResult>
     {
     }
     /// <param name="NodeIds">Resulting nodes.</param>
     public record GetNodesForSubtreeByStyleRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds
     ) : ChromeProtocol.Core.IType
     {
@@ -930,7 +930,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Y">Y coordinate.</param>
     /// <param name="IncludeUserAgentShadowDOM">False to skip to the nearest non-UA shadow root ancestor (default: false).</param>
     /// <param name="IgnorePointerEventsNone">Whether to ignore pointer-events: none on elements and hit test them.</param>
-    public static ChromeProtocol.Domains.DOM.GetNodeForLocationRequest GetNodeForLocation(int X, int Y, bool? IncludeUserAgentShadowDOM = default, bool? IgnorePointerEventsNone = default)    
+    public static ChromeProtocol.Domains.DOM.GetNodeForLocationRequest GetNodeForLocation(int X, int Y, bool? IncludeUserAgentShadowDOM = default, bool? IgnorePointerEventsNone = default)
     {
       return new ChromeProtocol.Domains.DOM.GetNodeForLocationRequest(X, Y, IncludeUserAgentShadowDOM, IgnorePointerEventsNone);
     }
@@ -944,13 +944,13 @@ namespace ChromeProtocol.Domains
     /// <param name="IgnorePointerEventsNone">Whether to ignore pointer-events: none on elements and hit test them.</param>
     [ChromeProtocol.Core.MethodName("DOM.getNodeForLocation")]
     public record GetNodeForLocationRequest(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       int X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       int Y,
-      [property: Newtonsoft.Json.JsonProperty("includeUserAgentShadowDOM")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeUserAgentShadowDOM")]
       bool? IncludeUserAgentShadowDOM = default,
-      [property: Newtonsoft.Json.JsonProperty("ignorePointerEventsNone")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ignorePointerEventsNone")]
       bool? IgnorePointerEventsNone = default
     ) : ChromeProtocol.Core.ICommand<GetNodeForLocationRequestResult>
     {
@@ -959,11 +959,11 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">Frame this node belongs to.</param>
     /// <param name="NodeId">Id of the node at given coordinates, only when enabled and requested document.</param>
     public record GetNodeForLocationRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType BackendNodeId,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -972,7 +972,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Identifier of the node.</param>
     /// <param name="BackendNodeId">Identifier of the backend node.</param>
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
-    public static ChromeProtocol.Domains.DOM.GetOuterHTMLRequest GetOuterHTML(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)    
+    public static ChromeProtocol.Domains.DOM.GetOuterHTMLRequest GetOuterHTML(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)
     {
       return new ChromeProtocol.Domains.DOM.GetOuterHTMLRequest(NodeId, BackendNodeId, ObjectId);
     }
@@ -982,25 +982,25 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
     [ChromeProtocol.Core.MethodName("DOM.getOuterHTML")]
     public record GetOuterHTMLRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default
     ) : ChromeProtocol.Core.ICommand<GetOuterHTMLRequestResult>
     {
     }
     /// <param name="OuterHTML">Outer HTML markup.</param>
     public record GetOuterHTMLRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("outerHTML")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("outerHTML")]
       string OuterHTML
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns the id of the nearest ancestor that is a relayout boundary.</summary>
     /// <param name="NodeId">Id of the node.</param>
-    public static ChromeProtocol.Domains.DOM.GetRelayoutBoundaryRequest GetRelayoutBoundary(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.DOM.GetRelayoutBoundaryRequest GetRelayoutBoundary(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.DOM.GetRelayoutBoundaryRequest(NodeId);
     }
@@ -1008,14 +1008,14 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Id of the node.</param>
     [ChromeProtocol.Core.MethodName("DOM.getRelayoutBoundary")]
     public record GetRelayoutBoundaryRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetRelayoutBoundaryRequestResult>
     {
     }
     /// <param name="NodeId">Relayout boundary node id for the given node.</param>
     public record GetRelayoutBoundaryRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -1027,7 +1027,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SearchId">Unique search session identifier.</param>
     /// <param name="FromIndex">Start index of the search result to be returned.</param>
     /// <param name="ToIndex">End index of the search result to be returned.</param>
-    public static ChromeProtocol.Domains.DOM.GetSearchResultsRequest GetSearchResults(string SearchId, int FromIndex, int ToIndex)    
+    public static ChromeProtocol.Domains.DOM.GetSearchResultsRequest GetSearchResults(string SearchId, int FromIndex, int ToIndex)
     {
       return new ChromeProtocol.Domains.DOM.GetSearchResultsRequest(SearchId, FromIndex, ToIndex);
     }
@@ -1040,24 +1040,24 @@ namespace ChromeProtocol.Domains
     /// <param name="ToIndex">End index of the search result to be returned.</param>
     [ChromeProtocol.Core.MethodName("DOM.getSearchResults")]
     public record GetSearchResultsRequest(
-      [property: Newtonsoft.Json.JsonProperty("searchId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("searchId")]
       string SearchId,
-      [property: Newtonsoft.Json.JsonProperty("fromIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fromIndex")]
       int FromIndex,
-      [property: Newtonsoft.Json.JsonProperty("toIndex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("toIndex")]
       int ToIndex
     ) : ChromeProtocol.Core.ICommand<GetSearchResultsRequestResult>
     {
     }
     /// <param name="NodeIds">Ids of the search result nodes.</param>
     public record GetSearchResultsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Hides any highlight.</summary>
-    public static ChromeProtocol.Domains.DOM.HideHighlightRequest HideHighlight()    
+    public static ChromeProtocol.Domains.DOM.HideHighlightRequest HideHighlight()
     {
       return new ChromeProtocol.Domains.DOM.HideHighlightRequest();
     }
@@ -1070,7 +1070,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Highlights DOM node.</summary>
-    public static ChromeProtocol.Domains.DOM.HighlightNodeRequest HighlightNode()    
+    public static ChromeProtocol.Domains.DOM.HighlightNodeRequest HighlightNode()
     {
       return new ChromeProtocol.Domains.DOM.HighlightNodeRequest();
     }
@@ -1083,7 +1083,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Highlights given rectangle.</summary>
-    public static ChromeProtocol.Domains.DOM.HighlightRectRequest HighlightRect()    
+    public static ChromeProtocol.Domains.DOM.HighlightRectRequest HighlightRect()
     {
       return new ChromeProtocol.Domains.DOM.HighlightRectRequest();
     }
@@ -1096,7 +1096,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Marks last undoable state.</summary>
-    public static ChromeProtocol.Domains.DOM.MarkUndoableStateRequest MarkUndoableState()    
+    public static ChromeProtocol.Domains.DOM.MarkUndoableStateRequest MarkUndoableState()
     {
       return new ChromeProtocol.Domains.DOM.MarkUndoableStateRequest();
     }
@@ -1115,7 +1115,7 @@ namespace ChromeProtocol.Domains
     /// Drop node before this one (if absent, the moved node becomes the last child of<br/>
     /// `targetNodeId`).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOM.MoveToRequest MoveTo(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOM.NodeIdType TargetNodeId, ChromeProtocol.Domains.DOM.NodeIdType? InsertBeforeNodeId = default)    
+    public static ChromeProtocol.Domains.DOM.MoveToRequest MoveTo(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOM.NodeIdType TargetNodeId, ChromeProtocol.Domains.DOM.NodeIdType? InsertBeforeNodeId = default)
     {
       return new ChromeProtocol.Domains.DOM.MoveToRequest(NodeId, TargetNodeId, InsertBeforeNodeId);
     }
@@ -1128,18 +1128,18 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOM.moveTo")]
     public record MoveToRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("targetNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetNodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType TargetNodeId,
-      [property: Newtonsoft.Json.JsonProperty("insertBeforeNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("insertBeforeNodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? InsertBeforeNodeId = default
     ) : ChromeProtocol.Core.ICommand<MoveToRequestResult>
     {
     }
     /// <param name="NodeId">New id of the moved node.</param>
     public record MoveToRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -1150,7 +1150,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     /// <param name="Query">Plain text or query selector or XPath search query.</param>
     /// <param name="IncludeUserAgentShadowDOM">True to search in user agent shadow DOM.</param>
-    public static ChromeProtocol.Domains.DOM.PerformSearchRequest PerformSearch(string Query, bool? IncludeUserAgentShadowDOM = default)    
+    public static ChromeProtocol.Domains.DOM.PerformSearchRequest PerformSearch(string Query, bool? IncludeUserAgentShadowDOM = default)
     {
       return new ChromeProtocol.Domains.DOM.PerformSearchRequest(Query, IncludeUserAgentShadowDOM);
     }
@@ -1162,9 +1162,9 @@ namespace ChromeProtocol.Domains
     /// <param name="IncludeUserAgentShadowDOM">True to search in user agent shadow DOM.</param>
     [ChromeProtocol.Core.MethodName("DOM.performSearch")]
     public record PerformSearchRequest(
-      [property: Newtonsoft.Json.JsonProperty("query")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("query")]
       string Query,
-      [property: Newtonsoft.Json.JsonProperty("includeUserAgentShadowDOM")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeUserAgentShadowDOM")]
       bool? IncludeUserAgentShadowDOM = default
     ) : ChromeProtocol.Core.ICommand<PerformSearchRequestResult>
     {
@@ -1172,16 +1172,16 @@ namespace ChromeProtocol.Domains
     /// <param name="SearchId">Unique search session identifier.</param>
     /// <param name="ResultCount">Number of search results.</param>
     public record PerformSearchRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("searchId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("searchId")]
       string SearchId,
-      [property: Newtonsoft.Json.JsonProperty("resultCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("resultCount")]
       int ResultCount
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Requests that the node is sent to the caller given its path. // FIXME, use XPath</summary>
     /// <param name="Path">Path to node in the proprietary format.</param>
-    public static ChromeProtocol.Domains.DOM.PushNodeByPathToFrontendRequest PushNodeByPathToFrontend(string Path)    
+    public static ChromeProtocol.Domains.DOM.PushNodeByPathToFrontendRequest PushNodeByPathToFrontend(string Path)
     {
       return new ChromeProtocol.Domains.DOM.PushNodeByPathToFrontendRequest(Path);
     }
@@ -1189,21 +1189,21 @@ namespace ChromeProtocol.Domains
     /// <param name="Path">Path to node in the proprietary format.</param>
     [ChromeProtocol.Core.MethodName("DOM.pushNodeByPathToFrontend")]
     public record PushNodeByPathToFrontendRequest(
-      [property: Newtonsoft.Json.JsonProperty("path")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("path")]
       string Path
     ) : ChromeProtocol.Core.ICommand<PushNodeByPathToFrontendRequestResult>
     {
     }
     /// <param name="NodeId">Id of the node for given path.</param>
     public record PushNodeByPathToFrontendRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Requests that a batch of nodes is sent to the caller given their backend node ids.</summary>
     /// <param name="BackendNodeIds">The array of backend node ids.</param>
-    public static ChromeProtocol.Domains.DOM.PushNodesByBackendIdsToFrontendRequest PushNodesByBackendIdsToFrontend(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.BackendNodeIdType> BackendNodeIds)    
+    public static ChromeProtocol.Domains.DOM.PushNodesByBackendIdsToFrontendRequest PushNodesByBackendIdsToFrontend(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.BackendNodeIdType> BackendNodeIds)
     {
       return new ChromeProtocol.Domains.DOM.PushNodesByBackendIdsToFrontendRequest(BackendNodeIds);
     }
@@ -1211,7 +1211,7 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendNodeIds">The array of backend node ids.</param>
     [ChromeProtocol.Core.MethodName("DOM.pushNodesByBackendIdsToFrontend")]
     public record PushNodesByBackendIdsToFrontendRequest(
-      [property: Newtonsoft.Json.JsonProperty("backendNodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.BackendNodeIdType> BackendNodeIds
     ) : ChromeProtocol.Core.ICommand<PushNodesByBackendIdsToFrontendRequestResult>
     {
@@ -1221,7 +1221,7 @@ namespace ChromeProtocol.Domains
     /// backendNodeIds.<br/>
     /// </param>
     public record PushNodesByBackendIdsToFrontendRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds
     ) : ChromeProtocol.Core.IType
     {
@@ -1229,7 +1229,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Executes `querySelector` on a given node.</summary>
     /// <param name="NodeId">Id of the node to query upon.</param>
     /// <param name="Selector">Selector string.</param>
-    public static ChromeProtocol.Domains.DOM.QuerySelectorRequest QuerySelector(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Selector)    
+    public static ChromeProtocol.Domains.DOM.QuerySelectorRequest QuerySelector(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Selector)
     {
       return new ChromeProtocol.Domains.DOM.QuerySelectorRequest(NodeId, Selector);
     }
@@ -1238,16 +1238,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Selector">Selector string.</param>
     [ChromeProtocol.Core.MethodName("DOM.querySelector")]
     public record QuerySelectorRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("selector")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selector")]
       string Selector
     ) : ChromeProtocol.Core.ICommand<QuerySelectorRequestResult>
     {
     }
     /// <param name="NodeId">Query selector result.</param>
     public record QuerySelectorRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -1255,7 +1255,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Executes `querySelectorAll` on a given node.</summary>
     /// <param name="NodeId">Id of the node to query upon.</param>
     /// <param name="Selector">Selector string.</param>
-    public static ChromeProtocol.Domains.DOM.QuerySelectorAllRequest QuerySelectorAll(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Selector)    
+    public static ChromeProtocol.Domains.DOM.QuerySelectorAllRequest QuerySelectorAll(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Selector)
     {
       return new ChromeProtocol.Domains.DOM.QuerySelectorAllRequest(NodeId, Selector);
     }
@@ -1264,16 +1264,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Selector">Selector string.</param>
     [ChromeProtocol.Core.MethodName("DOM.querySelectorAll")]
     public record QuerySelectorAllRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("selector")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selector")]
       string Selector
     ) : ChromeProtocol.Core.ICommand<QuerySelectorAllRequestResult>
     {
     }
     /// <param name="NodeIds">Query selector result.</param>
     public record QuerySelectorAllRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds
     ) : ChromeProtocol.Core.IType
     {
@@ -1283,7 +1283,7 @@ namespace ChromeProtocol.Domains
     /// Top layer is rendered closest to the user within a viewport, therefore its elements always<br/>
     /// appear on top of all other content.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.DOM.GetTopLayerElementsRequest GetTopLayerElements()    
+    public static ChromeProtocol.Domains.DOM.GetTopLayerElementsRequest GetTopLayerElements()
     {
       return new ChromeProtocol.Domains.DOM.GetTopLayerElementsRequest();
     }
@@ -1298,13 +1298,13 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="NodeIds">NodeIds of top layer elements</param>
     public record GetTopLayerElementsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Re-does the last undone action.</summary>
-    public static ChromeProtocol.Domains.DOM.RedoRequest Redo()    
+    public static ChromeProtocol.Domains.DOM.RedoRequest Redo()
     {
       return new ChromeProtocol.Domains.DOM.RedoRequest();
     }
@@ -1319,7 +1319,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Removes attribute with given name from an element with given id.</summary>
     /// <param name="NodeId">Id of the element to remove attribute from.</param>
     /// <param name="Name">Name of the attribute to remove.</param>
-    public static ChromeProtocol.Domains.DOM.RemoveAttributeRequest RemoveAttribute(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Name)    
+    public static ChromeProtocol.Domains.DOM.RemoveAttributeRequest RemoveAttribute(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Name)
     {
       return new ChromeProtocol.Domains.DOM.RemoveAttributeRequest(NodeId, Name);
     }
@@ -1328,9 +1328,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Name of the attribute to remove.</param>
     [ChromeProtocol.Core.MethodName("DOM.removeAttribute")]
     public record RemoveAttributeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name
     ) : ChromeProtocol.Core.ICommand<RemoveAttributeRequestResult>
     {
@@ -1340,7 +1340,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Removes node with given id.</summary>
     /// <param name="NodeId">Id of the node to remove.</param>
-    public static ChromeProtocol.Domains.DOM.RemoveNodeRequest RemoveNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.DOM.RemoveNodeRequest RemoveNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.DOM.RemoveNodeRequest(NodeId);
     }
@@ -1348,7 +1348,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Id of the node to remove.</param>
     [ChromeProtocol.Core.MethodName("DOM.removeNode")]
     public record RemoveNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<RemoveNodeRequestResult>
     {
@@ -1370,7 +1370,7 @@ namespace ChromeProtocol.Domains
     /// Whether or not iframes and shadow roots should be traversed when returning the sub-tree<br/>
     /// (default is false).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOM.RequestChildNodesRequest RequestChildNodes(ChromeProtocol.Domains.DOM.NodeIdType NodeId, int? Depth = default, bool? Pierce = default)    
+    public static ChromeProtocol.Domains.DOM.RequestChildNodesRequest RequestChildNodes(ChromeProtocol.Domains.DOM.NodeIdType NodeId, int? Depth = default, bool? Pierce = default)
     {
       return new ChromeProtocol.Domains.DOM.RequestChildNodesRequest(NodeId, Depth, Pierce);
     }
@@ -1390,11 +1390,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOM.requestChildNodes")]
     public record RequestChildNodesRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("depth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("depth")]
       int? Depth = default,
-      [property: Newtonsoft.Json.JsonProperty("pierce")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pierce")]
       bool? Pierce = default
     ) : ChromeProtocol.Core.ICommand<RequestChildNodesRequestResult>
     {
@@ -1408,7 +1408,7 @@ namespace ChromeProtocol.Domains
     /// `setChildNodes` notifications.<br/>
     /// </summary>
     /// <param name="ObjectId">JavaScript object id to convert into node.</param>
-    public static ChromeProtocol.Domains.DOM.RequestNodeRequest RequestNode(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)    
+    public static ChromeProtocol.Domains.DOM.RequestNodeRequest RequestNode(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)
     {
       return new ChromeProtocol.Domains.DOM.RequestNodeRequest(ObjectId);
     }
@@ -1420,14 +1420,14 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id to convert into node.</param>
     [ChromeProtocol.Core.MethodName("DOM.requestNode")]
     public record RequestNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId
     ) : ChromeProtocol.Core.ICommand<RequestNodeRequestResult>
     {
     }
     /// <param name="NodeId">Node id for given object.</param>
     public record RequestNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -1437,7 +1437,7 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendNodeId">Backend identifier of the node to resolve.</param>
     /// <param name="ObjectGroup">Symbolic group name that can be used to release multiple objects.</param>
     /// <param name="ExecutionContextId">Execution context in which to resolve the node.</param>
-    public static ChromeProtocol.Domains.DOM.ResolveNodeRequest ResolveNode(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, string? ObjectGroup = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)    
+    public static ChromeProtocol.Domains.DOM.ResolveNodeRequest ResolveNode(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, string? ObjectGroup = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)
     {
       return new ChromeProtocol.Domains.DOM.ResolveNodeRequest(NodeId, BackendNodeId, ObjectGroup, ExecutionContextId);
     }
@@ -1448,20 +1448,20 @@ namespace ChromeProtocol.Domains
     /// <param name="ExecutionContextId">Execution context in which to resolve the node.</param>
     [ChromeProtocol.Core.MethodName("DOM.resolveNode")]
     public record ResolveNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectGroup")]
       string? ObjectGroup = default,
-      [property: Newtonsoft.Json.JsonProperty("executionContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("executionContextId")]
       ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default
     ) : ChromeProtocol.Core.ICommand<ResolveNodeRequestResult>
     {
     }
     /// <param name="Object">JavaScript object wrapper for given node.</param>
     public record ResolveNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("object")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("object")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Object
     ) : ChromeProtocol.Core.IType
     {
@@ -1470,7 +1470,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Id of the element to set attribute for.</param>
     /// <param name="Name">Attribute name.</param>
     /// <param name="Value">Attribute value.</param>
-    public static ChromeProtocol.Domains.DOM.SetAttributeValueRequest SetAttributeValue(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Name, string Value)    
+    public static ChromeProtocol.Domains.DOM.SetAttributeValueRequest SetAttributeValue(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Name, string Value)
     {
       return new ChromeProtocol.Domains.DOM.SetAttributeValueRequest(NodeId, Name, Value);
     }
@@ -1480,11 +1480,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Value">Attribute value.</param>
     [ChromeProtocol.Core.MethodName("DOM.setAttributeValue")]
     public record SetAttributeValueRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.ICommand<SetAttributeValueRequestResult>
     {
@@ -1502,7 +1502,7 @@ namespace ChromeProtocol.Domains
     /// Attribute name to replace with new attributes derived from text in case text parsed<br/>
     /// successfully.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOM.SetAttributesAsTextRequest SetAttributesAsText(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Text, string? Name = default)    
+    public static ChromeProtocol.Domains.DOM.SetAttributesAsTextRequest SetAttributesAsText(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Text, string? Name = default)
     {
       return new ChromeProtocol.Domains.DOM.SetAttributesAsTextRequest(NodeId, Text, Name);
     }
@@ -1518,11 +1518,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("DOM.setAttributesAsText")]
     public record SetAttributesAsTextRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string? Name = default
     ) : ChromeProtocol.Core.ICommand<SetAttributesAsTextRequestResult>
     {
@@ -1535,7 +1535,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Identifier of the node.</param>
     /// <param name="BackendNodeId">Identifier of the backend node.</param>
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
-    public static ChromeProtocol.Domains.DOM.SetFileInputFilesRequest SetFileInputFiles(System.Collections.Generic.IReadOnlyList<string> Files, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)    
+    public static ChromeProtocol.Domains.DOM.SetFileInputFilesRequest SetFileInputFiles(System.Collections.Generic.IReadOnlyList<string> Files, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)
     {
       return new ChromeProtocol.Domains.DOM.SetFileInputFilesRequest(Files, NodeId, BackendNodeId, ObjectId);
     }
@@ -1546,13 +1546,13 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
     [ChromeProtocol.Core.MethodName("DOM.setFileInputFiles")]
     public record SetFileInputFilesRequest(
-      [property: Newtonsoft.Json.JsonProperty("files")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("files")]
       System.Collections.Generic.IReadOnlyList<string> Files,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default
     ) : ChromeProtocol.Core.ICommand<SetFileInputFilesRequestResult>
     {
@@ -1562,7 +1562,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.</summary>
     /// <param name="Enable">Enable or disable.</param>
-    public static ChromeProtocol.Domains.DOM.SetNodeStackTracesEnabledRequest SetNodeStackTracesEnabled(bool Enable)    
+    public static ChromeProtocol.Domains.DOM.SetNodeStackTracesEnabledRequest SetNodeStackTracesEnabled(bool Enable)
     {
       return new ChromeProtocol.Domains.DOM.SetNodeStackTracesEnabledRequest(Enable);
     }
@@ -1570,7 +1570,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enable">Enable or disable.</param>
     [ChromeProtocol.Core.MethodName("DOM.setNodeStackTracesEnabled")]
     public record SetNodeStackTracesEnabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("enable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enable")]
       bool Enable
     ) : ChromeProtocol.Core.ICommand<SetNodeStackTracesEnabledRequestResult>
     {
@@ -1580,7 +1580,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.</summary>
     /// <param name="NodeId">Id of the node to get stack traces for.</param>
-    public static ChromeProtocol.Domains.DOM.GetNodeStackTracesRequest GetNodeStackTraces(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.DOM.GetNodeStackTracesRequest GetNodeStackTraces(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.DOM.GetNodeStackTracesRequest(NodeId);
     }
@@ -1588,14 +1588,14 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Id of the node to get stack traces for.</param>
     [ChromeProtocol.Core.MethodName("DOM.getNodeStackTraces")]
     public record GetNodeStackTracesRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetNodeStackTracesRequestResult>
     {
     }
     /// <param name="Creation">Creation stack trace, if available.</param>
     public record GetNodeStackTracesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("creation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("creation")]
       ChromeProtocol.Domains.Runtime.StackTraceType? Creation = default
     ) : ChromeProtocol.Core.IType
     {
@@ -1605,7 +1605,7 @@ namespace ChromeProtocol.Domains
     /// File wrapper.<br/>
     /// </summary>
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
-    public static ChromeProtocol.Domains.DOM.GetFileInfoRequest GetFileInfo(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)    
+    public static ChromeProtocol.Domains.DOM.GetFileInfoRequest GetFileInfo(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)
     {
       return new ChromeProtocol.Domains.DOM.GetFileInfoRequest(ObjectId);
     }
@@ -1616,13 +1616,13 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id of the node wrapper.</param>
     [ChromeProtocol.Core.MethodName("DOM.getFileInfo")]
     public record GetFileInfoRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId
     ) : ChromeProtocol.Core.ICommand<GetFileInfoRequestResult>
     {
     }
     public record GetFileInfoRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("path")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("path")]
       string Path
     ) : ChromeProtocol.Core.IType
     {
@@ -1632,7 +1632,7 @@ namespace ChromeProtocol.Domains
     /// $x functions).<br/>
     /// </summary>
     /// <param name="NodeId">DOM node id to be accessible by means of $x command line API.</param>
-    public static ChromeProtocol.Domains.DOM.SetInspectedNodeRequest SetInspectedNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.DOM.SetInspectedNodeRequest SetInspectedNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.DOM.SetInspectedNodeRequest(NodeId);
     }
@@ -1643,7 +1643,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">DOM node id to be accessible by means of $x command line API.</param>
     [ChromeProtocol.Core.MethodName("DOM.setInspectedNode")]
     public record SetInspectedNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<SetInspectedNodeRequestResult>
     {
@@ -1654,7 +1654,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets node name for a node with given id.</summary>
     /// <param name="NodeId">Id of the node to set name for.</param>
     /// <param name="Name">New node&#39;s name.</param>
-    public static ChromeProtocol.Domains.DOM.SetNodeNameRequest SetNodeName(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Name)    
+    public static ChromeProtocol.Domains.DOM.SetNodeNameRequest SetNodeName(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Name)
     {
       return new ChromeProtocol.Domains.DOM.SetNodeNameRequest(NodeId, Name);
     }
@@ -1663,16 +1663,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">New node&#39;s name.</param>
     [ChromeProtocol.Core.MethodName("DOM.setNodeName")]
     public record SetNodeNameRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name
     ) : ChromeProtocol.Core.ICommand<SetNodeNameRequestResult>
     {
     }
     /// <param name="NodeId">New node&#39;s id.</param>
     public record SetNodeNameRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.IType
     {
@@ -1680,7 +1680,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets node value for a node with given id.</summary>
     /// <param name="NodeId">Id of the node to set value for.</param>
     /// <param name="Value">New node&#39;s value.</param>
-    public static ChromeProtocol.Domains.DOM.SetNodeValueRequest SetNodeValue(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Value)    
+    public static ChromeProtocol.Domains.DOM.SetNodeValueRequest SetNodeValue(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string Value)
     {
       return new ChromeProtocol.Domains.DOM.SetNodeValueRequest(NodeId, Value);
     }
@@ -1689,9 +1689,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Value">New node&#39;s value.</param>
     [ChromeProtocol.Core.MethodName("DOM.setNodeValue")]
     public record SetNodeValueRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.ICommand<SetNodeValueRequestResult>
     {
@@ -1702,7 +1702,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets node HTML markup, returns new node id.</summary>
     /// <param name="NodeId">Id of the node to set markup for.</param>
     /// <param name="OuterHTML">Outer HTML markup to set.</param>
-    public static ChromeProtocol.Domains.DOM.SetOuterHTMLRequest SetOuterHTML(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string OuterHTML)    
+    public static ChromeProtocol.Domains.DOM.SetOuterHTMLRequest SetOuterHTML(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string OuterHTML)
     {
       return new ChromeProtocol.Domains.DOM.SetOuterHTMLRequest(NodeId, OuterHTML);
     }
@@ -1711,9 +1711,9 @@ namespace ChromeProtocol.Domains
     /// <param name="OuterHTML">Outer HTML markup to set.</param>
     [ChromeProtocol.Core.MethodName("DOM.setOuterHTML")]
     public record SetOuterHTMLRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("outerHTML")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("outerHTML")]
       string OuterHTML
     ) : ChromeProtocol.Core.ICommand<SetOuterHTMLRequestResult>
     {
@@ -1722,7 +1722,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Undoes the last performed action.</summary>
-    public static ChromeProtocol.Domains.DOM.UndoRequest Undo()    
+    public static ChromeProtocol.Domains.DOM.UndoRequest Undo()
     {
       return new ChromeProtocol.Domains.DOM.UndoRequest();
     }
@@ -1735,14 +1735,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns iframe node that owns iframe with the given domain.</summary>
-    public static ChromeProtocol.Domains.DOM.GetFrameOwnerRequest GetFrameOwner(ChromeProtocol.Domains.Page.FrameIdType FrameId)    
+    public static ChromeProtocol.Domains.DOM.GetFrameOwnerRequest GetFrameOwner(ChromeProtocol.Domains.Page.FrameIdType FrameId)
     {
       return new ChromeProtocol.Domains.DOM.GetFrameOwnerRequest(FrameId);
     }
     /// <summary>Returns iframe node that owns iframe with the given domain.</summary>
     [ChromeProtocol.Core.MethodName("DOM.getFrameOwner")]
     public record GetFrameOwnerRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.ICommand<GetFrameOwnerRequestResult>
     {
@@ -1750,9 +1750,9 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendNodeId">Resulting node.</param>
     /// <param name="NodeId">Id of the node at given coordinates, only when enabled and requested document.</param>
     public record GetFrameOwnerRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType BackendNodeId,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -1763,7 +1763,7 @@ namespace ChromeProtocol.Domains
     /// provided, the style container is returned, which is the direct parent or the<br/>
     /// closest element with a matching container-name.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.DOM.GetContainerForNodeRequest GetContainerForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string? ContainerName = default, ChromeProtocol.Domains.DOM.PhysicalAxesType? PhysicalAxes = default, ChromeProtocol.Domains.DOM.LogicalAxesType? LogicalAxes = default)    
+    public static ChromeProtocol.Domains.DOM.GetContainerForNodeRequest GetContainerForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string? ContainerName = default, ChromeProtocol.Domains.DOM.PhysicalAxesType? PhysicalAxes = default, ChromeProtocol.Domains.DOM.LogicalAxesType? LogicalAxes = default)
     {
       return new ChromeProtocol.Domains.DOM.GetContainerForNodeRequest(NodeId, ContainerName, PhysicalAxes, LogicalAxes);
     }
@@ -1775,20 +1775,20 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("DOM.getContainerForNode")]
     public record GetContainerForNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("containerName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containerName")]
       string? ContainerName = default,
-      [property: Newtonsoft.Json.JsonProperty("physicalAxes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("physicalAxes")]
       ChromeProtocol.Domains.DOM.PhysicalAxesType? PhysicalAxes = default,
-      [property: Newtonsoft.Json.JsonProperty("logicalAxes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("logicalAxes")]
       ChromeProtocol.Domains.DOM.LogicalAxesType? LogicalAxes = default
     ) : ChromeProtocol.Core.ICommand<GetContainerForNodeRequestResult>
     {
     }
     /// <param name="NodeId">The container node for the given node, or null if not found.</param>
     public record GetContainerForNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -1798,7 +1798,7 @@ namespace ChromeProtocol.Domains
     /// container queries against this container.<br/>
     /// </summary>
     /// <param name="NodeId">Id of the container node to find querying descendants from.</param>
-    public static ChromeProtocol.Domains.DOM.GetQueryingDescendantsForContainerRequest GetQueryingDescendantsForContainer(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.DOM.GetQueryingDescendantsForContainerRequest GetQueryingDescendantsForContainer(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.DOM.GetQueryingDescendantsForContainerRequest(NodeId);
     }
@@ -1809,14 +1809,14 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Id of the container node to find querying descendants from.</param>
     [ChromeProtocol.Core.MethodName("DOM.getQueryingDescendantsForContainer")]
     public record GetQueryingDescendantsForContainerRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetQueryingDescendantsForContainerRequestResult>
     {
     }
     /// <param name="NodeIds">Descendant nodes with container queries against the given container.</param>
     public record GetQueryingDescendantsForContainerRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds
     ) : ChromeProtocol.Core.IType
     {

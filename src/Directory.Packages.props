@@ -4,7 +4,7 @@
   </PropertyGroup>
   <!-- Common -->
   <ItemGroup Label="Common">
-    <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageVersion Include="System.Text.Json" Version="7.0.0" />
   </ItemGroup>
   <!-- Design-time -->
   <ItemGroup>

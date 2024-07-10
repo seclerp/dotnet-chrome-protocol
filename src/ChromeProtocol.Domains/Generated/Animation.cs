@@ -26,27 +26,27 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="ViewOrScrollTimeline">View or scroll timeline</param>
     public record AnimationType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("pausedState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pausedState")]
       bool PausedState,
-      [property: Newtonsoft.Json.JsonProperty("playState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("playState")]
       string PlayState,
-      [property: Newtonsoft.Json.JsonProperty("playbackRate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("playbackRate")]
       double PlaybackRate,
-      [property: Newtonsoft.Json.JsonProperty("startTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startTime")]
       double StartTime,
-      [property: Newtonsoft.Json.JsonProperty("currentTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("currentTime")]
       double CurrentTime,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("source")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
       ChromeProtocol.Domains.Animation.AnimationEffectType? Source = default,
-      [property: Newtonsoft.Json.JsonProperty("cssId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssId")]
       string? CssId = default,
-      [property: Newtonsoft.Json.JsonProperty("viewOrScrollTimeline")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("viewOrScrollTimeline")]
       ChromeProtocol.Domains.Animation.ViewOrScrollTimelineType? ViewOrScrollTimeline = default
     ) : ChromeProtocol.Core.IType
     {
@@ -68,15 +68,15 @@ namespace ChromeProtocol.Domains
     /// Does not exist for animations with ScrollTimeline<br/>
     /// </param>
     public record ViewOrScrollTimelineType(
-      [property: Newtonsoft.Json.JsonProperty("axis")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("axis")]
       ChromeProtocol.Domains.DOM.ScrollOrientationType Axis,
-      [property: Newtonsoft.Json.JsonProperty("sourceNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? SourceNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("startOffset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startOffset")]
       double? StartOffset = default,
-      [property: Newtonsoft.Json.JsonProperty("endOffset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endOffset")]
       double? EndOffset = default,
-      [property: Newtonsoft.Json.JsonProperty("subjectNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subjectNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? SubjectNodeId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -98,25 +98,25 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendNodeId">`AnimationEffect`&#39;s target node.</param>
     /// <param name="KeyframesRule">`AnimationEffect`&#39;s keyframes.</param>
     public record AnimationEffectType(
-      [property: Newtonsoft.Json.JsonProperty("delay")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("delay")]
       double Delay,
-      [property: Newtonsoft.Json.JsonProperty("endDelay")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endDelay")]
       double EndDelay,
-      [property: Newtonsoft.Json.JsonProperty("iterationStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("iterationStart")]
       double IterationStart,
-      [property: Newtonsoft.Json.JsonProperty("iterations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("iterations")]
       double Iterations,
-      [property: Newtonsoft.Json.JsonProperty("duration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("duration")]
       double Duration,
-      [property: Newtonsoft.Json.JsonProperty("direction")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("direction")]
       string Direction,
-      [property: Newtonsoft.Json.JsonProperty("fill")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fill")]
       string Fill,
-      [property: Newtonsoft.Json.JsonProperty("easing")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("easing")]
       string Easing,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("keyframesRule")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyframesRule")]
       ChromeProtocol.Domains.Animation.KeyframesRuleType? KeyframesRule = default
     ) : ChromeProtocol.Core.IType
     {
@@ -125,9 +125,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Keyframes">List of animation keyframes.</param>
     /// <param name="Name">CSS keyframed animation&#39;s name.</param>
     public record KeyframesRuleType(
-      [property: Newtonsoft.Json.JsonProperty("keyframes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyframes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Animation.KeyframeStyleType> Keyframes,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string? Name = default
     ) : ChromeProtocol.Core.IType
     {
@@ -136,9 +136,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Offset">Keyframe&#39;s time offset.</param>
     /// <param name="Easing">`AnimationEffect`&#39;s timing function.</param>
     public record KeyframeStyleType(
-      [property: Newtonsoft.Json.JsonProperty("offset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offset")]
       string Offset,
-      [property: Newtonsoft.Json.JsonProperty("easing")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("easing")]
       string Easing
     ) : ChromeProtocol.Core.IType
     {
@@ -147,7 +147,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Id">Id of the animation that was cancelled.</param>
     [ChromeProtocol.Core.MethodName("Animation.animationCanceled")]
     public record AnimationCanceled(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id
     ) : ChromeProtocol.Core.IEvent
     {
@@ -156,7 +156,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Id">Id of the animation that was created.</param>
     [ChromeProtocol.Core.MethodName("Animation.animationCreated")]
     public record AnimationCreated(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id
     ) : ChromeProtocol.Core.IEvent
     {
@@ -165,13 +165,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Animation">Animation that was started.</param>
     [ChromeProtocol.Core.MethodName("Animation.animationStarted")]
     public record AnimationStarted(
-      [property: Newtonsoft.Json.JsonProperty("animation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("animation")]
       ChromeProtocol.Domains.Animation.AnimationType Animation
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Disables animation domain notifications.</summary>
-    public static ChromeProtocol.Domains.Animation.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Animation.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Animation.DisableRequest();
     }
@@ -184,7 +184,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables animation domain notifications.</summary>
-    public static ChromeProtocol.Domains.Animation.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Animation.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Animation.EnableRequest();
     }
@@ -198,7 +198,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns the current time of the an animation.</summary>
     /// <param name="Id">Id of animation.</param>
-    public static ChromeProtocol.Domains.Animation.GetCurrentTimeRequest GetCurrentTime(string Id)    
+    public static ChromeProtocol.Domains.Animation.GetCurrentTimeRequest GetCurrentTime(string Id)
     {
       return new ChromeProtocol.Domains.Animation.GetCurrentTimeRequest(Id);
     }
@@ -206,20 +206,20 @@ namespace ChromeProtocol.Domains
     /// <param name="Id">Id of animation.</param>
     [ChromeProtocol.Core.MethodName("Animation.getCurrentTime")]
     public record GetCurrentTimeRequest(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id
     ) : ChromeProtocol.Core.ICommand<GetCurrentTimeRequestResult>
     {
     }
     /// <param name="CurrentTime">Current time of the page.</param>
     public record GetCurrentTimeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("currentTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("currentTime")]
       double CurrentTime
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Gets the playback rate of the document timeline.</summary>
-    public static ChromeProtocol.Domains.Animation.GetPlaybackRateRequest GetPlaybackRate()    
+    public static ChromeProtocol.Domains.Animation.GetPlaybackRateRequest GetPlaybackRate()
     {
       return new ChromeProtocol.Domains.Animation.GetPlaybackRateRequest();
     }
@@ -230,14 +230,14 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="PlaybackRate">Playback rate for animations on page.</param>
     public record GetPlaybackRateRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("playbackRate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("playbackRate")]
       double PlaybackRate
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Releases a set of animations to no longer be manipulated.</summary>
     /// <param name="Animations">List of animation ids to seek.</param>
-    public static ChromeProtocol.Domains.Animation.ReleaseAnimationsRequest ReleaseAnimations(System.Collections.Generic.IReadOnlyList<string> Animations)    
+    public static ChromeProtocol.Domains.Animation.ReleaseAnimationsRequest ReleaseAnimations(System.Collections.Generic.IReadOnlyList<string> Animations)
     {
       return new ChromeProtocol.Domains.Animation.ReleaseAnimationsRequest(Animations);
     }
@@ -245,7 +245,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Animations">List of animation ids to seek.</param>
     [ChromeProtocol.Core.MethodName("Animation.releaseAnimations")]
     public record ReleaseAnimationsRequest(
-      [property: Newtonsoft.Json.JsonProperty("animations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("animations")]
       System.Collections.Generic.IReadOnlyList<string> Animations
     ) : ChromeProtocol.Core.ICommand<ReleaseAnimationsRequestResult>
     {
@@ -255,7 +255,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Gets the remote object of the Animation.</summary>
     /// <param name="AnimationId">Animation id.</param>
-    public static ChromeProtocol.Domains.Animation.ResolveAnimationRequest ResolveAnimation(string AnimationId)    
+    public static ChromeProtocol.Domains.Animation.ResolveAnimationRequest ResolveAnimation(string AnimationId)
     {
       return new ChromeProtocol.Domains.Animation.ResolveAnimationRequest(AnimationId);
     }
@@ -263,14 +263,14 @@ namespace ChromeProtocol.Domains
     /// <param name="AnimationId">Animation id.</param>
     [ChromeProtocol.Core.MethodName("Animation.resolveAnimation")]
     public record ResolveAnimationRequest(
-      [property: Newtonsoft.Json.JsonProperty("animationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("animationId")]
       string AnimationId
     ) : ChromeProtocol.Core.ICommand<ResolveAnimationRequestResult>
     {
     }
     /// <param name="RemoteObject">Corresponding remote object.</param>
     public record ResolveAnimationRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("remoteObject")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("remoteObject")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType RemoteObject
     ) : ChromeProtocol.Core.IType
     {
@@ -278,7 +278,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Seek a set of animations to a particular time within each animation.</summary>
     /// <param name="Animations">List of animation ids to seek.</param>
     /// <param name="CurrentTime">Set the current time of each animation.</param>
-    public static ChromeProtocol.Domains.Animation.SeekAnimationsRequest SeekAnimations(System.Collections.Generic.IReadOnlyList<string> Animations, double CurrentTime)    
+    public static ChromeProtocol.Domains.Animation.SeekAnimationsRequest SeekAnimations(System.Collections.Generic.IReadOnlyList<string> Animations, double CurrentTime)
     {
       return new ChromeProtocol.Domains.Animation.SeekAnimationsRequest(Animations, CurrentTime);
     }
@@ -287,9 +287,9 @@ namespace ChromeProtocol.Domains
     /// <param name="CurrentTime">Set the current time of each animation.</param>
     [ChromeProtocol.Core.MethodName("Animation.seekAnimations")]
     public record SeekAnimationsRequest(
-      [property: Newtonsoft.Json.JsonProperty("animations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("animations")]
       System.Collections.Generic.IReadOnlyList<string> Animations,
-      [property: Newtonsoft.Json.JsonProperty("currentTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("currentTime")]
       double CurrentTime
     ) : ChromeProtocol.Core.ICommand<SeekAnimationsRequestResult>
     {
@@ -300,7 +300,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets the paused state of a set of animations.</summary>
     /// <param name="Animations">Animations to set the pause state of.</param>
     /// <param name="Paused">Paused state to set to.</param>
-    public static ChromeProtocol.Domains.Animation.SetPausedRequest SetPaused(System.Collections.Generic.IReadOnlyList<string> Animations, bool Paused)    
+    public static ChromeProtocol.Domains.Animation.SetPausedRequest SetPaused(System.Collections.Generic.IReadOnlyList<string> Animations, bool Paused)
     {
       return new ChromeProtocol.Domains.Animation.SetPausedRequest(Animations, Paused);
     }
@@ -309,9 +309,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Paused">Paused state to set to.</param>
     [ChromeProtocol.Core.MethodName("Animation.setPaused")]
     public record SetPausedRequest(
-      [property: Newtonsoft.Json.JsonProperty("animations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("animations")]
       System.Collections.Generic.IReadOnlyList<string> Animations,
-      [property: Newtonsoft.Json.JsonProperty("paused")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paused")]
       bool Paused
     ) : ChromeProtocol.Core.ICommand<SetPausedRequestResult>
     {
@@ -321,7 +321,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets the playback rate of the document timeline.</summary>
     /// <param name="PlaybackRate">Playback rate for animations on page</param>
-    public static ChromeProtocol.Domains.Animation.SetPlaybackRateRequest SetPlaybackRate(double PlaybackRate)    
+    public static ChromeProtocol.Domains.Animation.SetPlaybackRateRequest SetPlaybackRate(double PlaybackRate)
     {
       return new ChromeProtocol.Domains.Animation.SetPlaybackRateRequest(PlaybackRate);
     }
@@ -329,7 +329,7 @@ namespace ChromeProtocol.Domains
     /// <param name="PlaybackRate">Playback rate for animations on page</param>
     [ChromeProtocol.Core.MethodName("Animation.setPlaybackRate")]
     public record SetPlaybackRateRequest(
-      [property: Newtonsoft.Json.JsonProperty("playbackRate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("playbackRate")]
       double PlaybackRate
     ) : ChromeProtocol.Core.ICommand<SetPlaybackRateRequestResult>
     {
@@ -341,7 +341,7 @@ namespace ChromeProtocol.Domains
     /// <param name="AnimationId">Animation id.</param>
     /// <param name="Duration">Duration of the animation.</param>
     /// <param name="Delay">Delay of the animation.</param>
-    public static ChromeProtocol.Domains.Animation.SetTimingRequest SetTiming(string AnimationId, double Duration, double Delay)    
+    public static ChromeProtocol.Domains.Animation.SetTimingRequest SetTiming(string AnimationId, double Duration, double Delay)
     {
       return new ChromeProtocol.Domains.Animation.SetTimingRequest(AnimationId, Duration, Delay);
     }
@@ -351,11 +351,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Delay">Delay of the animation.</param>
     [ChromeProtocol.Core.MethodName("Animation.setTiming")]
     public record SetTimingRequest(
-      [property: Newtonsoft.Json.JsonProperty("animationId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("animationId")]
       string AnimationId,
-      [property: Newtonsoft.Json.JsonProperty("duration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("duration")]
       double Duration,
-      [property: Newtonsoft.Json.JsonProperty("delay")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("delay")]
       double Delay
     ) : ChromeProtocol.Core.ICommand<SetTimingRequestResult>
     {

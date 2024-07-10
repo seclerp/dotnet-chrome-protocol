@@ -6,7 +6,7 @@ namespace ChromeProtocol.Domains
   public static partial class HeapProfiler
   {
     /// <summary>Heap snapshot object id.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record HeapSnapshotObjectIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -18,13 +18,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Id">Node id. Ids are unique across all profiles collected between startSampling and stopSampling.</param>
     /// <param name="Children">Child nodes.</param>
     public record SamplingHeapProfileNodeType(
-      [property: Newtonsoft.Json.JsonProperty("callFrame")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("callFrame")]
       ChromeProtocol.Domains.Runtime.CallFrameType CallFrame,
-      [property: Newtonsoft.Json.JsonProperty("selfSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selfSize")]
       double SelfSize,
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       int Id,
-      [property: Newtonsoft.Json.JsonProperty("children")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("children")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.HeapProfiler.SamplingHeapProfileNodeType> Children
     ) : ChromeProtocol.Core.IType
     {
@@ -37,27 +37,27 @@ namespace ChromeProtocol.Domains
     /// between startSampling and stopSampling.<br/>
     /// </param>
     public record SamplingHeapProfileSampleType(
-      [property: Newtonsoft.Json.JsonProperty("size")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("size")]
       double Size,
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       int NodeId,
-      [property: Newtonsoft.Json.JsonProperty("ordinal")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ordinal")]
       double Ordinal
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Sampling profile.</summary>
     public record SamplingHeapProfileType(
-      [property: Newtonsoft.Json.JsonProperty("head")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("head")]
       ChromeProtocol.Domains.HeapProfiler.SamplingHeapProfileNodeType Head,
-      [property: Newtonsoft.Json.JsonProperty("samples")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("samples")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.HeapProfiler.SamplingHeapProfileSampleType> Samples
     ) : ChromeProtocol.Core.IType
     {
     }
     [ChromeProtocol.Core.MethodName("HeapProfiler.addHeapSnapshotChunk")]
     public record AddHeapSnapshotChunk(
-      [property: Newtonsoft.Json.JsonProperty("chunk")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("chunk")]
       string Chunk
     ) : ChromeProtocol.Core.IEvent
     {
@@ -70,7 +70,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("HeapProfiler.heapStatsUpdate")]
     public record HeapStatsUpdate(
-      [property: Newtonsoft.Json.JsonProperty("statsUpdate")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("statsUpdate")]
       System.Collections.Generic.IReadOnlyList<int> StatsUpdate
     ) : ChromeProtocol.Core.IEvent
     {
@@ -82,20 +82,20 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("HeapProfiler.lastSeenObjectId")]
     public record LastSeenObjectId(
-      [property: Newtonsoft.Json.JsonProperty("lastSeenObjectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lastSeenObjectId")]
       int LastSeenObjectIdProperty,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       double Timestamp
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("HeapProfiler.reportHeapSnapshotProgress")]
     public record ReportHeapSnapshotProgress(
-      [property: Newtonsoft.Json.JsonProperty("done")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("done")]
       int Done,
-      [property: Newtonsoft.Json.JsonProperty("total")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("total")]
       int Total,
-      [property: Newtonsoft.Json.JsonProperty("finished")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("finished")]
       bool? Finished = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -109,7 +109,7 @@ namespace ChromeProtocol.Domains
     /// $x functions).<br/>
     /// </summary>
     /// <param name="HeapObjectId">Heap snapshot object id to be accessible by means of $x command line API.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.AddInspectedHeapObjectRequest AddInspectedHeapObject(ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType HeapObjectId)    
+    public static ChromeProtocol.Domains.HeapProfiler.AddInspectedHeapObjectRequest AddInspectedHeapObject(ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType HeapObjectId)
     {
       return new ChromeProtocol.Domains.HeapProfiler.AddInspectedHeapObjectRequest(HeapObjectId);
     }
@@ -120,7 +120,7 @@ namespace ChromeProtocol.Domains
     /// <param name="HeapObjectId">Heap snapshot object id to be accessible by means of $x command line API.</param>
     [ChromeProtocol.Core.MethodName("HeapProfiler.addInspectedHeapObject")]
     public record AddInspectedHeapObjectRequest(
-      [property: Newtonsoft.Json.JsonProperty("heapObjectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("heapObjectId")]
       ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType HeapObjectId
     ) : ChromeProtocol.Core.ICommand<AddInspectedHeapObjectRequestResult>
     {
@@ -128,7 +128,7 @@ namespace ChromeProtocol.Domains
     public record AddInspectedHeapObjectRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.CollectGarbageRequest CollectGarbage()    
+    public static ChromeProtocol.Domains.HeapProfiler.CollectGarbageRequest CollectGarbage()
     {
       return new ChromeProtocol.Domains.HeapProfiler.CollectGarbageRequest();
     }
@@ -139,7 +139,7 @@ namespace ChromeProtocol.Domains
     public record CollectGarbageRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.HeapProfiler.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.HeapProfiler.DisableRequest();
     }
@@ -150,7 +150,7 @@ namespace ChromeProtocol.Domains
     public record DisableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.HeapProfiler.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.HeapProfiler.EnableRequest();
     }
@@ -162,48 +162,48 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="ObjectId">Identifier of the object to get heap object id for.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.GetHeapObjectIdRequest GetHeapObjectId(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)    
+    public static ChromeProtocol.Domains.HeapProfiler.GetHeapObjectIdRequest GetHeapObjectId(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)
     {
       return new ChromeProtocol.Domains.HeapProfiler.GetHeapObjectIdRequest(ObjectId);
     }
     /// <param name="ObjectId">Identifier of the object to get heap object id for.</param>
     [ChromeProtocol.Core.MethodName("HeapProfiler.getHeapObjectId")]
     public record GetHeapObjectIdRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId
     ) : ChromeProtocol.Core.ICommand<GetHeapObjectIdRequestResult>
     {
     }
     /// <param name="HeapSnapshotObjectId">Id of the heap snapshot object corresponding to the passed remote object id.</param>
     public record GetHeapObjectIdRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("heapSnapshotObjectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("heapSnapshotObjectId")]
       ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType HeapSnapshotObjectId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <param name="ObjectGroup">Symbolic group name that can be used to release multiple objects.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.GetObjectByHeapObjectIdRequest GetObjectByHeapObjectId(ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType ObjectId, string? ObjectGroup = default)    
+    public static ChromeProtocol.Domains.HeapProfiler.GetObjectByHeapObjectIdRequest GetObjectByHeapObjectId(ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType ObjectId, string? ObjectGroup = default)
     {
       return new ChromeProtocol.Domains.HeapProfiler.GetObjectByHeapObjectIdRequest(ObjectId, ObjectGroup);
     }
     /// <param name="ObjectGroup">Symbolic group name that can be used to release multiple objects.</param>
     [ChromeProtocol.Core.MethodName("HeapProfiler.getObjectByHeapObjectId")]
     public record GetObjectByHeapObjectIdRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType ObjectId,
-      [property: Newtonsoft.Json.JsonProperty("objectGroup")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectGroup")]
       string? ObjectGroup = default
     ) : ChromeProtocol.Core.ICommand<GetObjectByHeapObjectIdRequestResult>
     {
     }
     /// <param name="Result">Evaluation result.</param>
     public record GetObjectByHeapObjectIdRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
       ChromeProtocol.Domains.Runtime.RemoteObjectType Result
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.GetSamplingProfileRequest GetSamplingProfile()    
+    public static ChromeProtocol.Domains.HeapProfiler.GetSamplingProfileRequest GetSamplingProfile()
     {
       return new ChromeProtocol.Domains.HeapProfiler.GetSamplingProfileRequest();
     }
@@ -213,7 +213,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Profile">Return the sampling profile being collected.</param>
     public record GetSamplingProfileRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("profile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("profile")]
       ChromeProtocol.Domains.HeapProfiler.SamplingHeapProfileType Profile
     ) : ChromeProtocol.Core.IType
     {
@@ -240,7 +240,7 @@ namespace ChromeProtocol.Domains
     /// minor GC, which is useful when tuning a latency-sensitive application<br/>
     /// for minimal GC activity.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.HeapProfiler.StartSamplingRequest StartSampling(double? SamplingInterval = default, bool? IncludeObjectsCollectedByMajorGC = default, bool? IncludeObjectsCollectedByMinorGC = default)    
+    public static ChromeProtocol.Domains.HeapProfiler.StartSamplingRequest StartSampling(double? SamplingInterval = default, bool? IncludeObjectsCollectedByMajorGC = default, bool? IncludeObjectsCollectedByMinorGC = default)
     {
       return new ChromeProtocol.Domains.HeapProfiler.StartSamplingRequest(SamplingInterval, IncludeObjectsCollectedByMajorGC, IncludeObjectsCollectedByMinorGC);
     }
@@ -268,11 +268,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("HeapProfiler.startSampling")]
     public record StartSamplingRequest(
-      [property: Newtonsoft.Json.JsonProperty("samplingInterval")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("samplingInterval")]
       double? SamplingInterval = default,
-      [property: Newtonsoft.Json.JsonProperty("includeObjectsCollectedByMajorGC")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeObjectsCollectedByMajorGC")]
       bool? IncludeObjectsCollectedByMajorGC = default,
-      [property: Newtonsoft.Json.JsonProperty("includeObjectsCollectedByMinorGC")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("includeObjectsCollectedByMinorGC")]
       bool? IncludeObjectsCollectedByMinorGC = default
     ) : ChromeProtocol.Core.ICommand<StartSamplingRequestResult>
     {
@@ -280,13 +280,13 @@ namespace ChromeProtocol.Domains
     public record StartSamplingRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.StartTrackingHeapObjectsRequest StartTrackingHeapObjects(bool? TrackAllocations = default)    
+    public static ChromeProtocol.Domains.HeapProfiler.StartTrackingHeapObjectsRequest StartTrackingHeapObjects(bool? TrackAllocations = default)
     {
       return new ChromeProtocol.Domains.HeapProfiler.StartTrackingHeapObjectsRequest(TrackAllocations);
     }
     [ChromeProtocol.Core.MethodName("HeapProfiler.startTrackingHeapObjects")]
     public record StartTrackingHeapObjectsRequest(
-      [property: Newtonsoft.Json.JsonProperty("trackAllocations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("trackAllocations")]
       bool? TrackAllocations = default
     ) : ChromeProtocol.Core.ICommand<StartTrackingHeapObjectsRequestResult>
     {
@@ -294,7 +294,7 @@ namespace ChromeProtocol.Domains
     public record StartTrackingHeapObjectsRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.StopSamplingRequest StopSampling()    
+    public static ChromeProtocol.Domains.HeapProfiler.StopSamplingRequest StopSampling()
     {
       return new ChromeProtocol.Domains.HeapProfiler.StopSamplingRequest();
     }
@@ -304,7 +304,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Profile">Recorded sampling heap profile.</param>
     public record StopSamplingRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("profile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("profile")]
       ChromeProtocol.Domains.HeapProfiler.SamplingHeapProfileType Profile
     ) : ChromeProtocol.Core.IType
     {
@@ -316,7 +316,7 @@ namespace ChromeProtocol.Domains
     /// <param name="TreatGlobalObjectsAsRoots">Deprecated in favor of `exposeInternals`.</param>
     /// <param name="CaptureNumericValue">If true, numerical values are included in the snapshot</param>
     /// <param name="ExposeInternals">If true, exposes internals of the snapshot.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.StopTrackingHeapObjectsRequest StopTrackingHeapObjects(bool? ReportProgress = default, bool? TreatGlobalObjectsAsRoots = default, bool? CaptureNumericValue = default, bool? ExposeInternals = default)    
+    public static ChromeProtocol.Domains.HeapProfiler.StopTrackingHeapObjectsRequest StopTrackingHeapObjects(bool? ReportProgress = default, bool? TreatGlobalObjectsAsRoots = default, bool? CaptureNumericValue = default, bool? ExposeInternals = default)
     {
       return new ChromeProtocol.Domains.HeapProfiler.StopTrackingHeapObjectsRequest(ReportProgress, TreatGlobalObjectsAsRoots, CaptureNumericValue, ExposeInternals);
     }
@@ -329,14 +329,14 @@ namespace ChromeProtocol.Domains
     /// <param name="ExposeInternals">If true, exposes internals of the snapshot.</param>
     [ChromeProtocol.Core.MethodName("HeapProfiler.stopTrackingHeapObjects")]
     public record StopTrackingHeapObjectsRequest(
-      [property: Newtonsoft.Json.JsonProperty("reportProgress")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportProgress")]
       bool? ReportProgress = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("treatGlobalObjectsAsRoots")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("treatGlobalObjectsAsRoots")]
       bool? TreatGlobalObjectsAsRoots = default,
-      [property: Newtonsoft.Json.JsonProperty("captureNumericValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("captureNumericValue")]
       bool? CaptureNumericValue = default,
-      [property: Newtonsoft.Json.JsonProperty("exposeInternals")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exposeInternals")]
       bool? ExposeInternals = default
     ) : ChromeProtocol.Core.ICommand<StopTrackingHeapObjectsRequestResult>
     {
@@ -351,7 +351,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="CaptureNumericValue">If true, numerical values are included in the snapshot</param>
     /// <param name="ExposeInternals">If true, exposes internals of the snapshot.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.TakeHeapSnapshotRequest TakeHeapSnapshot(bool? ReportProgress = default, bool? TreatGlobalObjectsAsRoots = default, bool? CaptureNumericValue = default, bool? ExposeInternals = default)    
+    public static ChromeProtocol.Domains.HeapProfiler.TakeHeapSnapshotRequest TakeHeapSnapshot(bool? ReportProgress = default, bool? TreatGlobalObjectsAsRoots = default, bool? CaptureNumericValue = default, bool? ExposeInternals = default)
     {
       return new ChromeProtocol.Domains.HeapProfiler.TakeHeapSnapshotRequest(ReportProgress, TreatGlobalObjectsAsRoots, CaptureNumericValue, ExposeInternals);
     }
@@ -364,14 +364,14 @@ namespace ChromeProtocol.Domains
     /// <param name="ExposeInternals">If true, exposes internals of the snapshot.</param>
     [ChromeProtocol.Core.MethodName("HeapProfiler.takeHeapSnapshot")]
     public record TakeHeapSnapshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("reportProgress")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("reportProgress")]
       bool? ReportProgress = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("treatGlobalObjectsAsRoots")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("treatGlobalObjectsAsRoots")]
       bool? TreatGlobalObjectsAsRoots = default,
-      [property: Newtonsoft.Json.JsonProperty("captureNumericValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("captureNumericValue")]
       bool? CaptureNumericValue = default,
-      [property: Newtonsoft.Json.JsonProperty("exposeInternals")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("exposeInternals")]
       bool? ExposeInternals = default
     ) : ChromeProtocol.Core.ICommand<TakeHeapSnapshotRequestResult>
     {

@@ -11,15 +11,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Domain name.</param>
     /// <param name="Version">Domain version.</param>
     public record DomainType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("version")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("version")]
       string Version
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns supported domains.</summary>
-    public static ChromeProtocol.Domains.Schema.GetDomainsRequest GetDomains()    
+    public static ChromeProtocol.Domains.Schema.GetDomainsRequest GetDomains()
     {
       return new ChromeProtocol.Domains.Schema.GetDomainsRequest();
     }
@@ -30,7 +30,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Domains">List of supported domains.</param>
     public record GetDomainsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("domains")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domains")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Schema.DomainType> Domains
     ) : ChromeProtocol.Core.IType
     {

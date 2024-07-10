@@ -9,25 +9,25 @@ namespace ChromeProtocol.Domains
   /// </summary>
   public static partial class WebAuthn
   {
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AuthenticatorIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AuthenticatorProtocolType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record Ctap2VersionType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AuthenticatorTransportType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -75,31 +75,31 @@ namespace ChromeProtocol.Domains
     /// https://w3c.github.io/webauthn/#sctn-credential-backup<br/>
     /// </param>
     public record VirtualAuthenticatorOptionsType(
-      [property: Newtonsoft.Json.JsonProperty("protocol")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("protocol")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorProtocolType Protocol,
-      [property: Newtonsoft.Json.JsonProperty("transport")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("transport")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorTransportType Transport,
-      [property: Newtonsoft.Json.JsonProperty("ctap2Version")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ctap2Version")]
       ChromeProtocol.Domains.WebAuthn.Ctap2VersionType? Ctap2Version = default,
-      [property: Newtonsoft.Json.JsonProperty("hasResidentKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasResidentKey")]
       bool? HasResidentKey = default,
-      [property: Newtonsoft.Json.JsonProperty("hasUserVerification")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasUserVerification")]
       bool? HasUserVerification = default,
-      [property: Newtonsoft.Json.JsonProperty("hasLargeBlob")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasLargeBlob")]
       bool? HasLargeBlob = default,
-      [property: Newtonsoft.Json.JsonProperty("hasCredBlob")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasCredBlob")]
       bool? HasCredBlob = default,
-      [property: Newtonsoft.Json.JsonProperty("hasMinPinLength")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasMinPinLength")]
       bool? HasMinPinLength = default,
-      [property: Newtonsoft.Json.JsonProperty("hasPrf")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasPrf")]
       bool? HasPrf = default,
-      [property: Newtonsoft.Json.JsonProperty("automaticPresenceSimulation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("automaticPresenceSimulation")]
       bool? AutomaticPresenceSimulation = default,
-      [property: Newtonsoft.Json.JsonProperty("isUserVerified")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isUserVerified")]
       bool? IsUserVerified = default,
-      [property: Newtonsoft.Json.JsonProperty("defaultBackupEligibility")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("defaultBackupEligibility")]
       bool? DefaultBackupEligibility = default,
-      [property: Newtonsoft.Json.JsonProperty("defaultBackupState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("defaultBackupState")]
       bool? DefaultBackupState = default
     ) : ChromeProtocol.Core.IType
     {
@@ -133,23 +133,23 @@ namespace ChromeProtocol.Domains
     /// defaultBackupState value.<br/>
     /// </param>
     public record CredentialType(
-      [property: Newtonsoft.Json.JsonProperty("credentialId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("credentialId")]
       string CredentialId,
-      [property: Newtonsoft.Json.JsonProperty("isResidentCredential")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isResidentCredential")]
       bool IsResidentCredential,
-      [property: Newtonsoft.Json.JsonProperty("privateKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("privateKey")]
       string PrivateKey,
-      [property: Newtonsoft.Json.JsonProperty("signCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("signCount")]
       int SignCount,
-      [property: Newtonsoft.Json.JsonProperty("rpId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rpId")]
       string? RpId = default,
-      [property: Newtonsoft.Json.JsonProperty("userHandle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userHandle")]
       string? UserHandle = default,
-      [property: Newtonsoft.Json.JsonProperty("largeBlob")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("largeBlob")]
       string? LargeBlob = default,
-      [property: Newtonsoft.Json.JsonProperty("backupEligibility")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backupEligibility")]
       bool? BackupEligibility = default,
-      [property: Newtonsoft.Json.JsonProperty("backupState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backupState")]
       bool? BackupState = default
     ) : ChromeProtocol.Core.IType
     {
@@ -157,9 +157,9 @@ namespace ChromeProtocol.Domains
     /// <summary>Triggered when a credential is added to an authenticator.</summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.credentialAdded")]
     public record CredentialAdded(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId,
-      [property: Newtonsoft.Json.JsonProperty("credential")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("credential")]
       ChromeProtocol.Domains.WebAuthn.CredentialType Credential
     ) : ChromeProtocol.Core.IEvent
     {
@@ -167,9 +167,9 @@ namespace ChromeProtocol.Domains
     /// <summary>Triggered when a credential is used in a webauthn assertion.</summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.credentialAsserted")]
     public record CredentialAsserted(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId,
-      [property: Newtonsoft.Json.JsonProperty("credential")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("credential")]
       ChromeProtocol.Domains.WebAuthn.CredentialType Credential
     ) : ChromeProtocol.Core.IEvent
     {
@@ -185,7 +185,7 @@ namespace ChromeProtocol.Domains
     /// Supported at the embedder&#39;s discretion if UI is available.<br/>
     /// Defaults to false.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.WebAuthn.EnableRequest Enable(bool? EnableUI = default)    
+    public static ChromeProtocol.Domains.WebAuthn.EnableRequest Enable(bool? EnableUI = default)
     {
       return new ChromeProtocol.Domains.WebAuthn.EnableRequest(EnableUI);
     }
@@ -202,7 +202,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("WebAuthn.enable")]
     public record EnableRequest(
-      [property: Newtonsoft.Json.JsonProperty("enableUI")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enableUI")]
       bool? EnableUI = default
     ) : ChromeProtocol.Core.ICommand<EnableRequestResult>
     {
@@ -211,7 +211,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disable the WebAuthn domain.</summary>
-    public static ChromeProtocol.Domains.WebAuthn.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.WebAuthn.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.WebAuthn.DisableRequest();
     }
@@ -224,20 +224,20 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Creates and adds a virtual authenticator.</summary>
-    public static ChromeProtocol.Domains.WebAuthn.AddVirtualAuthenticatorRequest AddVirtualAuthenticator(ChromeProtocol.Domains.WebAuthn.VirtualAuthenticatorOptionsType Options)    
+    public static ChromeProtocol.Domains.WebAuthn.AddVirtualAuthenticatorRequest AddVirtualAuthenticator(ChromeProtocol.Domains.WebAuthn.VirtualAuthenticatorOptionsType Options)
     {
       return new ChromeProtocol.Domains.WebAuthn.AddVirtualAuthenticatorRequest(Options);
     }
     /// <summary>Creates and adds a virtual authenticator.</summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.addVirtualAuthenticator")]
     public record AddVirtualAuthenticatorRequest(
-      [property: Newtonsoft.Json.JsonProperty("options")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("options")]
       ChromeProtocol.Domains.WebAuthn.VirtualAuthenticatorOptionsType Options
     ) : ChromeProtocol.Core.ICommand<AddVirtualAuthenticatorRequestResult>
     {
     }
     public record AddVirtualAuthenticatorRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId
     ) : ChromeProtocol.Core.IType
     {
@@ -255,7 +255,7 @@ namespace ChromeProtocol.Domains
     /// If isBadUP is set, overrides the UP bit in the flags in the authenticator response to<br/>
     /// be zero. Defaults to false.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.WebAuthn.SetResponseOverrideBitsRequest SetResponseOverrideBits(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, bool? IsBogusSignature = default, bool? IsBadUV = default, bool? IsBadUP = default)    
+    public static ChromeProtocol.Domains.WebAuthn.SetResponseOverrideBitsRequest SetResponseOverrideBits(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, bool? IsBogusSignature = default, bool? IsBadUV = default, bool? IsBadUP = default)
     {
       return new ChromeProtocol.Domains.WebAuthn.SetResponseOverrideBitsRequest(AuthenticatorId, IsBogusSignature, IsBadUV, IsBadUP);
     }
@@ -274,13 +274,13 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("WebAuthn.setResponseOverrideBits")]
     public record SetResponseOverrideBitsRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId,
-      [property: Newtonsoft.Json.JsonProperty("isBogusSignature")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isBogusSignature")]
       bool? IsBogusSignature = default,
-      [property: Newtonsoft.Json.JsonProperty("isBadUV")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isBadUV")]
       bool? IsBadUV = default,
-      [property: Newtonsoft.Json.JsonProperty("isBadUP")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isBadUP")]
       bool? IsBadUP = default
     ) : ChromeProtocol.Core.ICommand<SetResponseOverrideBitsRequestResult>
     {
@@ -289,14 +289,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Removes the given authenticator.</summary>
-    public static ChromeProtocol.Domains.WebAuthn.RemoveVirtualAuthenticatorRequest RemoveVirtualAuthenticator(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId)    
+    public static ChromeProtocol.Domains.WebAuthn.RemoveVirtualAuthenticatorRequest RemoveVirtualAuthenticator(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId)
     {
       return new ChromeProtocol.Domains.WebAuthn.RemoveVirtualAuthenticatorRequest(AuthenticatorId);
     }
     /// <summary>Removes the given authenticator.</summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.removeVirtualAuthenticator")]
     public record RemoveVirtualAuthenticatorRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId
     ) : ChromeProtocol.Core.ICommand<RemoveVirtualAuthenticatorRequestResult>
     {
@@ -305,16 +305,16 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Adds the credential to the specified authenticator.</summary>
-    public static ChromeProtocol.Domains.WebAuthn.AddCredentialRequest AddCredential(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, ChromeProtocol.Domains.WebAuthn.CredentialType Credential)    
+    public static ChromeProtocol.Domains.WebAuthn.AddCredentialRequest AddCredential(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, ChromeProtocol.Domains.WebAuthn.CredentialType Credential)
     {
       return new ChromeProtocol.Domains.WebAuthn.AddCredentialRequest(AuthenticatorId, Credential);
     }
     /// <summary>Adds the credential to the specified authenticator.</summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.addCredential")]
     public record AddCredentialRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId,
-      [property: Newtonsoft.Json.JsonProperty("credential")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("credential")]
       ChromeProtocol.Domains.WebAuthn.CredentialType Credential
     ) : ChromeProtocol.Core.ICommand<AddCredentialRequestResult>
     {
@@ -326,7 +326,7 @@ namespace ChromeProtocol.Domains
     /// Returns a single credential stored in the given virtual authenticator that<br/>
     /// matches the credential ID.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.WebAuthn.GetCredentialRequest GetCredential(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, string CredentialId)    
+    public static ChromeProtocol.Domains.WebAuthn.GetCredentialRequest GetCredential(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, string CredentialId)
     {
       return new ChromeProtocol.Domains.WebAuthn.GetCredentialRequest(AuthenticatorId, CredentialId);
     }
@@ -336,49 +336,49 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.getCredential")]
     public record GetCredentialRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId,
-      [property: Newtonsoft.Json.JsonProperty("credentialId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("credentialId")]
       string CredentialId
     ) : ChromeProtocol.Core.ICommand<GetCredentialRequestResult>
     {
     }
     public record GetCredentialRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("credential")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("credential")]
       ChromeProtocol.Domains.WebAuthn.CredentialType Credential
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns all the credentials stored in the given virtual authenticator.</summary>
-    public static ChromeProtocol.Domains.WebAuthn.GetCredentialsRequest GetCredentials(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId)    
+    public static ChromeProtocol.Domains.WebAuthn.GetCredentialsRequest GetCredentials(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId)
     {
       return new ChromeProtocol.Domains.WebAuthn.GetCredentialsRequest(AuthenticatorId);
     }
     /// <summary>Returns all the credentials stored in the given virtual authenticator.</summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.getCredentials")]
     public record GetCredentialsRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId
     ) : ChromeProtocol.Core.ICommand<GetCredentialsRequestResult>
     {
     }
     public record GetCredentialsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("credentials")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("credentials")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.WebAuthn.CredentialType> Credentials
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Removes a credential from the authenticator.</summary>
-    public static ChromeProtocol.Domains.WebAuthn.RemoveCredentialRequest RemoveCredential(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, string CredentialId)    
+    public static ChromeProtocol.Domains.WebAuthn.RemoveCredentialRequest RemoveCredential(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, string CredentialId)
     {
       return new ChromeProtocol.Domains.WebAuthn.RemoveCredentialRequest(AuthenticatorId, CredentialId);
     }
     /// <summary>Removes a credential from the authenticator.</summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.removeCredential")]
     public record RemoveCredentialRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId,
-      [property: Newtonsoft.Json.JsonProperty("credentialId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("credentialId")]
       string CredentialId
     ) : ChromeProtocol.Core.ICommand<RemoveCredentialRequestResult>
     {
@@ -387,14 +387,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears all the credentials from the specified device.</summary>
-    public static ChromeProtocol.Domains.WebAuthn.ClearCredentialsRequest ClearCredentials(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId)    
+    public static ChromeProtocol.Domains.WebAuthn.ClearCredentialsRequest ClearCredentials(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId)
     {
       return new ChromeProtocol.Domains.WebAuthn.ClearCredentialsRequest(AuthenticatorId);
     }
     /// <summary>Clears all the credentials from the specified device.</summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.clearCredentials")]
     public record ClearCredentialsRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId
     ) : ChromeProtocol.Core.ICommand<ClearCredentialsRequestResult>
     {
@@ -406,7 +406,7 @@ namespace ChromeProtocol.Domains
     /// Sets whether User Verification succeeds or fails for an authenticator.<br/>
     /// The default is true.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.WebAuthn.SetUserVerifiedRequest SetUserVerified(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, bool IsUserVerified)    
+    public static ChromeProtocol.Domains.WebAuthn.SetUserVerifiedRequest SetUserVerified(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, bool IsUserVerified)
     {
       return new ChromeProtocol.Domains.WebAuthn.SetUserVerifiedRequest(AuthenticatorId, IsUserVerified);
     }
@@ -416,9 +416,9 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.setUserVerified")]
     public record SetUserVerifiedRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId,
-      [property: Newtonsoft.Json.JsonProperty("isUserVerified")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isUserVerified")]
       bool IsUserVerified
     ) : ChromeProtocol.Core.ICommand<SetUserVerifiedRequestResult>
     {
@@ -430,7 +430,7 @@ namespace ChromeProtocol.Domains
     /// Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.<br/>
     /// The default is true.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.WebAuthn.SetAutomaticPresenceSimulationRequest SetAutomaticPresenceSimulation(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, bool Enabled)    
+    public static ChromeProtocol.Domains.WebAuthn.SetAutomaticPresenceSimulationRequest SetAutomaticPresenceSimulation(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, bool Enabled)
     {
       return new ChromeProtocol.Domains.WebAuthn.SetAutomaticPresenceSimulationRequest(AuthenticatorId, Enabled);
     }
@@ -440,9 +440,9 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.setAutomaticPresenceSimulation")]
     public record SetAutomaticPresenceSimulationRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId,
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetAutomaticPresenceSimulationRequestResult>
     {
@@ -454,7 +454,7 @@ namespace ChromeProtocol.Domains
     /// Allows setting credential properties.<br/>
     /// https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.WebAuthn.SetCredentialPropertiesRequest SetCredentialProperties(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, string CredentialId, bool? BackupEligibility = default, bool? BackupState = default)    
+    public static ChromeProtocol.Domains.WebAuthn.SetCredentialPropertiesRequest SetCredentialProperties(ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId, string CredentialId, bool? BackupEligibility = default, bool? BackupState = default)
     {
       return new ChromeProtocol.Domains.WebAuthn.SetCredentialPropertiesRequest(AuthenticatorId, CredentialId, BackupEligibility, BackupState);
     }
@@ -464,13 +464,13 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("WebAuthn.setCredentialProperties")]
     public record SetCredentialPropertiesRequest(
-      [property: Newtonsoft.Json.JsonProperty("authenticatorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("authenticatorId")]
       ChromeProtocol.Domains.WebAuthn.AuthenticatorIdType AuthenticatorId,
-      [property: Newtonsoft.Json.JsonProperty("credentialId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("credentialId")]
       string CredentialId,
-      [property: Newtonsoft.Json.JsonProperty("backupEligibility")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backupEligibility")]
       bool? BackupEligibility = default,
-      [property: Newtonsoft.Json.JsonProperty("backupState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backupState")]
       bool? BackupState = default
     ) : ChromeProtocol.Core.ICommand<SetCredentialPropertiesRequestResult>
     {

@@ -6,28 +6,28 @@ namespace ChromeProtocol.Domains
   public static partial class Accessibility
   {
     /// <summary>Unique accessibility node identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AXNodeIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of possible property types.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AXValueTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of possible property sources.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AXValueSourceTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Enum of possible native property sources (as a subtype of a particular AXValueSourceType).</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AXValueNativeSourceTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -44,23 +44,23 @@ namespace ChromeProtocol.Domains
     /// <param name="Invalid">Whether the value for this property is invalid.</param>
     /// <param name="InvalidReason">Reason for the value being invalid, if it is.</param>
     public record AXValueSourceType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Accessibility.AXValueSourceTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Accessibility.AXValueType? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("attribute")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attribute")]
       string? Attribute = default,
-      [property: Newtonsoft.Json.JsonProperty("attributeValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attributeValue")]
       ChromeProtocol.Domains.Accessibility.AXValueType? AttributeValue = default,
-      [property: Newtonsoft.Json.JsonProperty("superseded")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("superseded")]
       bool? Superseded = default,
-      [property: Newtonsoft.Json.JsonProperty("nativeSource")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nativeSource")]
       ChromeProtocol.Domains.Accessibility.AXValueNativeSourceTypeType? NativeSource = default,
-      [property: Newtonsoft.Json.JsonProperty("nativeSourceValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nativeSourceValue")]
       ChromeProtocol.Domains.Accessibility.AXValueType? NativeSourceValue = default,
-      [property: Newtonsoft.Json.JsonProperty("invalid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("invalid")]
       bool? Invalid = default,
-      [property: Newtonsoft.Json.JsonProperty("invalidReason")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("invalidReason")]
       string? InvalidReason = default
     ) : ChromeProtocol.Core.IType
     {
@@ -69,11 +69,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Idref">The IDRef value provided, if any.</param>
     /// <param name="Text">The text alternative of this node in the current context.</param>
     public record AXRelatedNodeType(
-      [property: Newtonsoft.Json.JsonProperty("backendDOMNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendDOMNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType BackendDOMNodeId,
-      [property: Newtonsoft.Json.JsonProperty("idref")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("idref")]
       string? Idref = default,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string? Text = default
     ) : ChromeProtocol.Core.IType
     {
@@ -81,9 +81,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">The name of this property.</param>
     /// <param name="Value">The value of this property.</param>
     public record AXPropertyType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       ChromeProtocol.Domains.Accessibility.AXPropertyNameType Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Accessibility.AXValueType Value
     ) : ChromeProtocol.Core.IType
     {
@@ -94,13 +94,13 @@ namespace ChromeProtocol.Domains
     /// <param name="RelatedNodes">One or more related nodes, if applicable.</param>
     /// <param name="Sources">The sources which contributed to the computation of this property.</param>
     public record AXValueType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       ChromeProtocol.Domains.Accessibility.AXValueTypeType Type,
-      [property: Newtonsoft.Json.JsonProperty("value")]
-      Newtonsoft.Json.Linq.JToken? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("relatedNodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
+      System.Text.Json.Nodes.JsonNode? Value = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("relatedNodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXRelatedNodeType>? RelatedNodes = default,
-      [property: Newtonsoft.Json.JsonProperty("sources")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sources")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXValueSourceType>? Sources = default
     ) : ChromeProtocol.Core.IType
     {
@@ -113,7 +113,7 @@ namespace ChromeProtocol.Domains
     /// - from &#39;checked&#39; to &#39;selected&#39;: states which apply to widgets<br/>
     /// - from &#39;activedescendant&#39; to &#39;owns&#39; - relationships between elements other than parent/child/sibling.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record AXPropertyNameType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -134,31 +134,31 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendDOMNodeId">The backend ID for the associated DOM node, if any.</param>
     /// <param name="FrameId">The frame ID for the frame associated with this nodes document.</param>
     public record AXNodeType(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.Accessibility.AXNodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("ignored")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ignored")]
       bool Ignored,
-      [property: Newtonsoft.Json.JsonProperty("ignoredReasons")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ignoredReasons")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXPropertyType>? IgnoredReasons = default,
-      [property: Newtonsoft.Json.JsonProperty("role")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("role")]
       ChromeProtocol.Domains.Accessibility.AXValueType? Role = default,
-      [property: Newtonsoft.Json.JsonProperty("chromeRole")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("chromeRole")]
       ChromeProtocol.Domains.Accessibility.AXValueType? ChromeRole = default,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       ChromeProtocol.Domains.Accessibility.AXValueType? Name = default,
-      [property: Newtonsoft.Json.JsonProperty("description")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("description")]
       ChromeProtocol.Domains.Accessibility.AXValueType? Description = default,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       ChromeProtocol.Domains.Accessibility.AXValueType? Value = default,
-      [property: Newtonsoft.Json.JsonProperty("properties")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("properties")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXPropertyType>? Properties = default,
-      [property: Newtonsoft.Json.JsonProperty("parentId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentId")]
       ChromeProtocol.Domains.Accessibility.AXNodeIdType? ParentId = default,
-      [property: Newtonsoft.Json.JsonProperty("childIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("childIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXNodeIdType>? ChildIds = default,
-      [property: Newtonsoft.Json.JsonProperty("backendDOMNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendDOMNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendDOMNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -170,7 +170,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Root">New document root node.</param>
     [ChromeProtocol.Core.MethodName("Accessibility.loadComplete")]
     public record LoadComplete(
-      [property: Newtonsoft.Json.JsonProperty("root")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("root")]
       ChromeProtocol.Domains.Accessibility.AXNodeType Root
     ) : ChromeProtocol.Core.IEvent
     {
@@ -179,13 +179,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Nodes">Updated node data.</param>
     [ChromeProtocol.Core.MethodName("Accessibility.nodesUpdated")]
     public record NodesUpdated(
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXNodeType> Nodes
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Disables the accessibility domain.</summary>
-    public static ChromeProtocol.Domains.Accessibility.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Accessibility.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Accessibility.DisableRequest();
     }
@@ -201,7 +201,7 @@ namespace ChromeProtocol.Domains
     /// Enables the accessibility domain which causes `AXNodeId`s to remain consistent between method calls.<br/>
     /// This turns on accessibility for the page, which can impact performance until accessibility is disabled.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Accessibility.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Accessibility.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Accessibility.EnableRequest();
     }
@@ -221,7 +221,7 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendNodeId">Identifier of the backend node to get the partial accessibility tree for.</param>
     /// <param name="ObjectId">JavaScript object id of the node wrapper to get the partial accessibility tree for.</param>
     /// <param name="FetchRelatives">Whether to fetch this node&#39;s ancestors, siblings and children. Defaults to true.</param>
-    public static ChromeProtocol.Domains.Accessibility.GetPartialAXTreeRequest GetPartialAXTree(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, bool? FetchRelatives = default)    
+    public static ChromeProtocol.Domains.Accessibility.GetPartialAXTreeRequest GetPartialAXTree(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, bool? FetchRelatives = default)
     {
       return new ChromeProtocol.Domains.Accessibility.GetPartialAXTreeRequest(NodeId, BackendNodeId, ObjectId, FetchRelatives);
     }
@@ -232,13 +232,13 @@ namespace ChromeProtocol.Domains
     /// <param name="FetchRelatives">Whether to fetch this node&#39;s ancestors, siblings and children. Defaults to true.</param>
     [ChromeProtocol.Core.MethodName("Accessibility.getPartialAXTree")]
     public record GetPartialAXTreeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default,
-      [property: Newtonsoft.Json.JsonProperty("fetchRelatives")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fetchRelatives")]
       bool? FetchRelatives = default
     ) : ChromeProtocol.Core.ICommand<GetPartialAXTreeRequestResult>
     {
@@ -248,7 +248,7 @@ namespace ChromeProtocol.Domains
     /// children, if requested.<br/>
     /// </param>
     public record GetPartialAXTreeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXNodeType> Nodes
     ) : ChromeProtocol.Core.IType
     {
@@ -262,7 +262,7 @@ namespace ChromeProtocol.Domains
     /// The frame for whose document the AX tree should be retrieved.<br/>
     /// If omitted, the root frame is used.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Accessibility.GetFullAXTreeRequest GetFullAXTree(int? Depth = default, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)    
+    public static ChromeProtocol.Domains.Accessibility.GetFullAXTreeRequest GetFullAXTree(int? Depth = default, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)
     {
       return new ChromeProtocol.Domains.Accessibility.GetFullAXTreeRequest(Depth, FrameId);
     }
@@ -277,15 +277,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Accessibility.getFullAXTree")]
     public record GetFullAXTreeRequest(
-      [property: Newtonsoft.Json.JsonProperty("depth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("depth")]
       int? Depth = default,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default
     ) : ChromeProtocol.Core.ICommand<GetFullAXTreeRequestResult>
     {
     }
     public record GetFullAXTreeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXNodeType> Nodes
     ) : ChromeProtocol.Core.IType
     {
@@ -298,7 +298,7 @@ namespace ChromeProtocol.Domains
     /// The frame in whose document the node resides.<br/>
     /// If omitted, the root frame is used.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Accessibility.GetRootAXNodeRequest GetRootAXNode(ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)    
+    public static ChromeProtocol.Domains.Accessibility.GetRootAXNodeRequest GetRootAXNode(ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)
     {
       return new ChromeProtocol.Domains.Accessibility.GetRootAXNodeRequest(FrameId);
     }
@@ -312,13 +312,13 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Accessibility.getRootAXNode")]
     public record GetRootAXNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default
     ) : ChromeProtocol.Core.ICommand<GetRootAXNodeRequestResult>
     {
     }
     public record GetRootAXNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("node")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("node")]
       ChromeProtocol.Domains.Accessibility.AXNodeType Node
     ) : ChromeProtocol.Core.IType
     {
@@ -330,7 +330,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Identifier of the node to get.</param>
     /// <param name="BackendNodeId">Identifier of the backend node to get.</param>
     /// <param name="ObjectId">JavaScript object id of the node wrapper to get.</param>
-    public static ChromeProtocol.Domains.Accessibility.GetAXNodeAndAncestorsRequest GetAXNodeAndAncestors(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)    
+    public static ChromeProtocol.Domains.Accessibility.GetAXNodeAndAncestorsRequest GetAXNodeAndAncestors(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)
     {
       return new ChromeProtocol.Domains.Accessibility.GetAXNodeAndAncestorsRequest(NodeId, BackendNodeId, ObjectId);
     }
@@ -343,17 +343,17 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id of the node wrapper to get.</param>
     [ChromeProtocol.Core.MethodName("Accessibility.getAXNodeAndAncestors")]
     public record GetAXNodeAndAncestorsRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default
     ) : ChromeProtocol.Core.ICommand<GetAXNodeAndAncestorsRequestResult>
     {
     }
     public record GetAXNodeAndAncestorsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXNodeType> Nodes
     ) : ChromeProtocol.Core.IType
     {
@@ -366,7 +366,7 @@ namespace ChromeProtocol.Domains
     /// The frame in whose document the node resides.<br/>
     /// If omitted, the root frame is used.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Accessibility.GetChildAXNodesRequest GetChildAXNodes(ChromeProtocol.Domains.Accessibility.AXNodeIdType Id, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)    
+    public static ChromeProtocol.Domains.Accessibility.GetChildAXNodesRequest GetChildAXNodes(ChromeProtocol.Domains.Accessibility.AXNodeIdType Id, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)
     {
       return new ChromeProtocol.Domains.Accessibility.GetChildAXNodesRequest(Id, FrameId);
     }
@@ -380,15 +380,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Accessibility.getChildAXNodes")]
     public record GetChildAXNodesRequest(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.Accessibility.AXNodeIdType Id,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default
     ) : ChromeProtocol.Core.ICommand<GetChildAXNodesRequestResult>
     {
     }
     public record GetChildAXNodesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXNodeType> Nodes
     ) : ChromeProtocol.Core.IType
     {
@@ -405,7 +405,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">JavaScript object id of the node wrapper for the root to query.</param>
     /// <param name="AccessibleName">Find nodes with this computed name.</param>
     /// <param name="Role">Find nodes with this computed role.</param>
-    public static ChromeProtocol.Domains.Accessibility.QueryAXTreeRequest QueryAXTree(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, string? AccessibleName = default, string? Role = default)    
+    public static ChromeProtocol.Domains.Accessibility.QueryAXTreeRequest QueryAXTree(ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, string? AccessibleName = default, string? Role = default)
     {
       return new ChromeProtocol.Domains.Accessibility.QueryAXTreeRequest(NodeId, BackendNodeId, ObjectId, AccessibleName, Role);
     }
@@ -423,15 +423,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Role">Find nodes with this computed role.</param>
     [ChromeProtocol.Core.MethodName("Accessibility.queryAXTree")]
     public record QueryAXTreeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default,
-      [property: Newtonsoft.Json.JsonProperty("accessibleName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("accessibleName")]
       string? AccessibleName = default,
-      [property: Newtonsoft.Json.JsonProperty("role")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("role")]
       string? Role = default
     ) : ChromeProtocol.Core.ICommand<QueryAXTreeRequestResult>
     {
@@ -441,7 +441,7 @@ namespace ChromeProtocol.Domains
     /// including nodes that are ignored for accessibility.<br/>
     /// </param>
     public record QueryAXTreeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Accessibility.AXNodeType> Nodes
     ) : ChromeProtocol.Core.IType
     {

@@ -19,10 +19,10 @@ public static class CsharpTypeResolver
           "Properties of type 'array' without 'items' specified are not supported."),
         (TypeKind.Array, _) => CsharpTypeInfo.FromGenericType("System.Collections.Generic", "IReadOnlyList",
           Resolve(@namespace, domainName, items.Ref, items.Type, null, false)),
-        (TypeKind.Object, null or "") => CsharpTypeInfo.FromTypeName("Newtonsoft.Json.Linq", "JObject"),
+        (TypeKind.Object, null or "") => CsharpTypeInfo.FromTypeName("System.Text.Json.Nodes", "JsonObject"),
         (_, not null and not "") => CsharpTypeInfo.FromTypeName(@namespace,
           CsharpNameResolver.Resolve(typeRef.Contains('.') ? typeRef : $"{domainName}.{typeRef}", ItemKind.TypeName, domainName)),
-        (TypeKind.Any, null or "") => CsharpTypeInfo.FromTypeName("Newtonsoft.Json.Linq", "JToken"),
+        (TypeKind.Any, null or "") => CsharpTypeInfo.FromTypeName("System.Text.Json.Nodes", "JsonNode"),
         _ => throw new ArgumentOutOfRangeException($"({nameof(kind)}, {nameof(typeRef)})")
       };
 

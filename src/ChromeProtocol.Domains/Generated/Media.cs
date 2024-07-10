@@ -7,13 +7,13 @@ namespace ChromeProtocol.Domains
   public static partial class Media
   {
     /// <summary>Players will get an ID that is unique within the agent context.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PlayerIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record TimestampType(
       double Value
     ) : ChromeProtocol.Core.PrimitiveType<double>(Value)
@@ -35,27 +35,27 @@ namespace ChromeProtocol.Domains
     /// the error log level into the PlayerError type.<br/>
     /// </param>
     public record PlayerMessageType(
-      [property: Newtonsoft.Json.JsonProperty("level")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("level")]
       string Level,
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       string Message
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Corresponds to kMediaPropertyChange</summary>
     public record PlayerPropertyType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Corresponds to kMediaEventTriggered</summary>
     public record PlayerEventType(
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Media.TimestampType Timestamp,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
@@ -65,9 +65,9 @@ namespace ChromeProtocol.Domains
     /// NOTE: file and line are from chromium c++ implementation code, not js.<br/>
     /// </summary>
     public record PlayerErrorSourceLocationType(
-      [property: Newtonsoft.Json.JsonProperty("file")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("file")]
       string File,
-      [property: Newtonsoft.Json.JsonProperty("line")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("line")]
       int Line
     ) : ChromeProtocol.Core.IType
     {
@@ -84,16 +84,16 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="Data">Extra data attached to an error, such as an HRESULT, Video Codec, etc.</param>
     public record PlayerErrorType(
-      [property: Newtonsoft.Json.JsonProperty("errorType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorType")]
       string ErrorType,
-      [property: Newtonsoft.Json.JsonProperty("code")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("code")]
       int Code,
-      [property: Newtonsoft.Json.JsonProperty("stack")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stack")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Media.PlayerErrorSourceLocationType> Stack,
-      [property: Newtonsoft.Json.JsonProperty("cause")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cause")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Media.PlayerErrorType> Cause,
-      [property: Newtonsoft.Json.JsonProperty("data")]
-      Newtonsoft.Json.Linq.JObject Data
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
+      System.Text.Json.Nodes.JsonObject Data
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -103,9 +103,9 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Media.playerPropertiesChanged")]
     public record PlayerPropertiesChanged(
-      [property: Newtonsoft.Json.JsonProperty("playerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("playerId")]
       ChromeProtocol.Domains.Media.PlayerIdType PlayerId,
-      [property: Newtonsoft.Json.JsonProperty("properties")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("properties")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Media.PlayerPropertyType> Properties
     ) : ChromeProtocol.Core.IEvent
     {
@@ -116,9 +116,9 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Media.playerEventsAdded")]
     public record PlayerEventsAdded(
-      [property: Newtonsoft.Json.JsonProperty("playerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("playerId")]
       ChromeProtocol.Domains.Media.PlayerIdType PlayerId,
-      [property: Newtonsoft.Json.JsonProperty("events")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("events")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Media.PlayerEventType> Events
     ) : ChromeProtocol.Core.IEvent
     {
@@ -126,9 +126,9 @@ namespace ChromeProtocol.Domains
     /// <summary>Send a list of any messages that need to be delivered.</summary>
     [ChromeProtocol.Core.MethodName("Media.playerMessagesLogged")]
     public record PlayerMessagesLogged(
-      [property: Newtonsoft.Json.JsonProperty("playerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("playerId")]
       ChromeProtocol.Domains.Media.PlayerIdType PlayerId,
-      [property: Newtonsoft.Json.JsonProperty("messages")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("messages")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Media.PlayerMessageType> Messages
     ) : ChromeProtocol.Core.IEvent
     {
@@ -136,9 +136,9 @@ namespace ChromeProtocol.Domains
     /// <summary>Send a list of any errors that need to be delivered.</summary>
     [ChromeProtocol.Core.MethodName("Media.playerErrorsRaised")]
     public record PlayerErrorsRaised(
-      [property: Newtonsoft.Json.JsonProperty("playerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("playerId")]
       ChromeProtocol.Domains.Media.PlayerIdType PlayerId,
-      [property: Newtonsoft.Json.JsonProperty("errors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errors")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Media.PlayerErrorType> Errors
     ) : ChromeProtocol.Core.IEvent
     {
@@ -150,13 +150,13 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Media.playersCreated")]
     public record PlayersCreated(
-      [property: Newtonsoft.Json.JsonProperty("players")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("players")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Media.PlayerIdType> Players
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Enables the Media domain</summary>
-    public static ChromeProtocol.Domains.Media.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Media.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Media.EnableRequest();
     }
@@ -169,7 +169,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables the Media domain.</summary>
-    public static ChromeProtocol.Domains.Media.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Media.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Media.DisableRequest();
     }

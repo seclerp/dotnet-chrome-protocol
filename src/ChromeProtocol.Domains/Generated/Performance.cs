@@ -9,9 +9,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Metric name.</param>
     /// <param name="Value">Metric value.</param>
     public record MetricType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       double Value
     ) : ChromeProtocol.Core.IType
     {
@@ -21,15 +21,15 @@ namespace ChromeProtocol.Domains
     /// <param name="Title">Timestamp title.</param>
     [ChromeProtocol.Core.MethodName("Performance.metrics")]
     public record Metrics(
-      [property: Newtonsoft.Json.JsonProperty("metrics")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("metrics")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Performance.MetricType> MetricsProperty,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       string Title
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Disable collecting and reporting metrics.</summary>
-    public static ChromeProtocol.Domains.Performance.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Performance.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Performance.DisableRequest();
     }
@@ -43,7 +43,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enable collecting and reporting metrics.</summary>
     /// <param name="TimeDomain">Time domain to use for collecting and reporting duration metrics.</param>
-    public static ChromeProtocol.Domains.Performance.EnableRequest Enable(string? TimeDomain = default)    
+    public static ChromeProtocol.Domains.Performance.EnableRequest Enable(string? TimeDomain = default)
     {
       return new ChromeProtocol.Domains.Performance.EnableRequest(TimeDomain);
     }
@@ -51,7 +51,7 @@ namespace ChromeProtocol.Domains
     /// <param name="TimeDomain">Time domain to use for collecting and reporting duration metrics.</param>
     [ChromeProtocol.Core.MethodName("Performance.enable")]
     public record EnableRequest(
-      [property: Newtonsoft.Json.JsonProperty("timeDomain")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timeDomain")]
       string? TimeDomain = default
     ) : ChromeProtocol.Core.ICommand<EnableRequestResult>
     {
@@ -66,7 +66,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     /// <param name="TimeDomain">Time domain</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Performance.SetTimeDomainRequest SetTimeDomain(string TimeDomain)    
+    public static ChromeProtocol.Domains.Performance.SetTimeDomainRequest SetTimeDomain(string TimeDomain)
     {
       return new ChromeProtocol.Domains.Performance.SetTimeDomainRequest(TimeDomain);
     }
@@ -79,7 +79,7 @@ namespace ChromeProtocol.Domains
     [ChromeProtocol.Core.MethodName("Performance.setTimeDomain")]
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetTimeDomainRequest(
-      [property: Newtonsoft.Json.JsonProperty("timeDomain")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timeDomain")]
       string TimeDomain
     ) : ChromeProtocol.Core.ICommand<SetTimeDomainRequestResult>
     {
@@ -89,7 +89,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Retrieve current values of run-time metrics.</summary>
-    public static ChromeProtocol.Domains.Performance.GetMetricsRequest GetMetrics()    
+    public static ChromeProtocol.Domains.Performance.GetMetricsRequest GetMetrics()
     {
       return new ChromeProtocol.Domains.Performance.GetMetricsRequest();
     }
@@ -100,7 +100,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Metrics">Current values for run-time metrics.</param>
     public record GetMetricsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("metrics")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("metrics")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Performance.MetricType> Metrics
     ) : ChromeProtocol.Core.IType
     {

@@ -25,19 +25,19 @@ namespace Protocol.Generated
     /// <param name="MethodName">TBD</param>
     [ChromeProtocol.Core.MethodName("DotnetRuntime.callFunctionOn")]
     public record CallFunctionOnRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       string ObjectId,
-      [property: Newtonsoft.Json.JsonProperty("typeName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("typeName")]
       string TypeName,
-      [property: Newtonsoft.Json.JsonProperty("methodName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("methodName")]
       string MethodName
     ) : ChromeProtocol.Core.ICommand<CallFunctionOnRequestResult>
     {
     }
     /// <param name="Result">TBD</param>
     public record CallFunctionOnRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("result")]
-      Newtonsoft.Json.Linq.JObject Result
+      [property: System.Text.Json.Serialization.JsonPropertyName("result")]
+      System.Text.Json.Nodes.JsonObject Result
     ) : ChromeProtocol.Core.IType
     {
     }
