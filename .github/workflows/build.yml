@@ -26,6 +26,8 @@ jobs:
       run: dotnet restore
     - name: 🏗 Build
       run: dotnet build --no-restore
+    - name: 📝 Test ChromeProtocol.Core
+      run: dotnet test --no-build --verbosity normal ChromeProtocol.Core.Tests
     - name: 📝 Test ChromeProtocol.Runtime
       run: dotnet test --no-build --verbosity normal ChromeProtocol.Runtime.Tests
     - name: 📝 Test ChromeProtocol.Tools
