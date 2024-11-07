@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Text.Json.Nodes;
 
 namespace ChromeProtocol.Core;
 
 public interface IObjectType
 {
-  public IReadOnlyDictionary<string, JToken?> Properties { get; }
+  public IReadOnlyDictionary<string, JsonNode?> Properties { get; }
 }

@@ -12,15 +12,15 @@ namespace ChromeProtocol.Domains
     /// <param name="ExpiryYear">4-digit expiry year.</param>
     /// <param name="Cvc">3-digit card verification code.</param>
     public record CreditCardType(
-      [property: Newtonsoft.Json.JsonProperty("number")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("number")]
       string Number,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("expiryMonth")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expiryMonth")]
       string ExpiryMonth,
-      [property: Newtonsoft.Json.JsonProperty("expiryYear")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expiryYear")]
       string ExpiryYear,
-      [property: Newtonsoft.Json.JsonProperty("cvc")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cvc")]
       string Cvc
     ) : ChromeProtocol.Core.IType
     {
@@ -28,23 +28,23 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">address field name, for example GIVEN_NAME.</param>
     /// <param name="Value">address field value, for example Jon Doe.</param>
     public record AddressFieldType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>A list of address fields.</summary>
     public record AddressFieldsType(
-      [property: Newtonsoft.Json.JsonProperty("fields")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fields")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Autofill.AddressFieldType> Fields
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <param name="Fields">fields and values defining an address.</param>
     public record AddressType(
-      [property: Newtonsoft.Json.JsonProperty("fields")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fields")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Autofill.AddressFieldType> Fields
     ) : ChromeProtocol.Core.IType
     {
@@ -60,13 +60,13 @@ namespace ChromeProtocol.Domains
     /// </summary>
     /// <param name="AddressFields">A two dimension array containing the representation of values from an address profile.</param>
     public record AddressUIType(
-      [property: Newtonsoft.Json.JsonProperty("addressFields")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("addressFields")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Autofill.AddressFieldsType> AddressFields
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Specified whether a filled field was done so by using the html autocomplete attribute or autofill heuristics.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record FillingStrategyType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -81,21 +81,21 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">The frame the field belongs to</param>
     /// <param name="FieldId">The form field&#39;s DOM node</param>
     public record FilledFieldType(
-      [property: Newtonsoft.Json.JsonProperty("htmlType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("htmlType")]
       string HtmlType,
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       string Id,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value,
-      [property: Newtonsoft.Json.JsonProperty("autofillType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("autofillType")]
       string AutofillType,
-      [property: Newtonsoft.Json.JsonProperty("fillingStrategy")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fillingStrategy")]
       ChromeProtocol.Domains.Autofill.FillingStrategyType FillingStrategy,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("fieldId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fieldId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType FieldId
     ) : ChromeProtocol.Core.IType
     {
@@ -108,9 +108,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Autofill.addressFormFilled")]
     public record AddressFormFilled(
-      [property: Newtonsoft.Json.JsonProperty("filledFields")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("filledFields")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Autofill.FilledFieldType> FilledFields,
-      [property: Newtonsoft.Json.JsonProperty("addressUi")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("addressUi")]
       ChromeProtocol.Domains.Autofill.AddressUIType AddressUi
     ) : ChromeProtocol.Core.IEvent
     {
@@ -122,7 +122,7 @@ namespace ChromeProtocol.Domains
     /// <param name="FieldId">Identifies a field that serves as an anchor for autofill.</param>
     /// <param name="Card">Credit card information to fill out the form. Credit card data is not saved.</param>
     /// <param name="FrameId">Identifies the frame that field belongs to.</param>
-    public static ChromeProtocol.Domains.Autofill.TriggerRequest Trigger(ChromeProtocol.Domains.DOM.BackendNodeIdType FieldId, ChromeProtocol.Domains.Autofill.CreditCardType Card, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)    
+    public static ChromeProtocol.Domains.Autofill.TriggerRequest Trigger(ChromeProtocol.Domains.DOM.BackendNodeIdType FieldId, ChromeProtocol.Domains.Autofill.CreditCardType Card, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)
     {
       return new ChromeProtocol.Domains.Autofill.TriggerRequest(FieldId, Card, FrameId);
     }
@@ -135,11 +135,11 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">Identifies the frame that field belongs to.</param>
     [ChromeProtocol.Core.MethodName("Autofill.trigger")]
     public record TriggerRequest(
-      [property: Newtonsoft.Json.JsonProperty("fieldId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fieldId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType FieldId,
-      [property: Newtonsoft.Json.JsonProperty("card")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("card")]
       ChromeProtocol.Domains.Autofill.CreditCardType Card,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType? FrameId = default
     ) : ChromeProtocol.Core.ICommand<TriggerRequestResult>
     {
@@ -148,14 +148,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Set addresses so that developers can verify their forms implementation.</summary>
-    public static ChromeProtocol.Domains.Autofill.SetAddressesRequest SetAddresses(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Autofill.AddressType> Addresses)    
+    public static ChromeProtocol.Domains.Autofill.SetAddressesRequest SetAddresses(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Autofill.AddressType> Addresses)
     {
       return new ChromeProtocol.Domains.Autofill.SetAddressesRequest(Addresses);
     }
     /// <summary>Set addresses so that developers can verify their forms implementation.</summary>
     [ChromeProtocol.Core.MethodName("Autofill.setAddresses")]
     public record SetAddressesRequest(
-      [property: Newtonsoft.Json.JsonProperty("addresses")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("addresses")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Autofill.AddressType> Addresses
     ) : ChromeProtocol.Core.ICommand<SetAddressesRequestResult>
     {
@@ -164,7 +164,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables autofill domain notifications.</summary>
-    public static ChromeProtocol.Domains.Autofill.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Autofill.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Autofill.DisableRequest();
     }
@@ -177,7 +177,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables autofill domain notifications.</summary>
-    public static ChromeProtocol.Domains.Autofill.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Autofill.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Autofill.EnableRequest();
     }

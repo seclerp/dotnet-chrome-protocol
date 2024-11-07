@@ -6,20 +6,20 @@ namespace ChromeProtocol.Domains
   /// <summary>The Browser domain defines methods and events for browser managing.</summary>
   public static partial class Browser
   {
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record BrowserContextIDType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record WindowIDType(
       int Value
     ) : ChromeProtocol.Core.PrimitiveType<int>(Value)
     {
     }
     /// <summary>The state of the browser window.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record WindowStateType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -32,26 +32,26 @@ namespace ChromeProtocol.Domains
     /// <param name="Height">The window height in pixels.</param>
     /// <param name="WindowState">The window state. Default to normal.</param>
     public record BoundsType(
-      [property: Newtonsoft.Json.JsonProperty("left")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("left")]
       int? Left = default,
-      [property: Newtonsoft.Json.JsonProperty("top")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("top")]
       int? Top = default,
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       int? Width = default,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       int? Height = default,
-      [property: Newtonsoft.Json.JsonProperty("windowState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("windowState")]
       ChromeProtocol.Domains.Browser.WindowStateType? WindowState = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PermissionTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PermissionSettingType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -73,21 +73,21 @@ namespace ChromeProtocol.Domains
     /// <param name="AllowWithoutSanitization">For &quot;clipboard&quot; permission, may specify allowWithoutSanitization.</param>
     /// <param name="PanTiltZoom">For &quot;camera&quot; permission, may specify panTiltZoom.</param>
     public record PermissionDescriptorType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("sysex")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sysex")]
       bool? Sysex = default,
-      [property: Newtonsoft.Json.JsonProperty("userVisibleOnly")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userVisibleOnly")]
       bool? UserVisibleOnly = default,
-      [property: Newtonsoft.Json.JsonProperty("allowWithoutSanitization")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("allowWithoutSanitization")]
       bool? AllowWithoutSanitization = default,
-      [property: Newtonsoft.Json.JsonProperty("panTiltZoom")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("panTiltZoom")]
       bool? PanTiltZoom = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Browser command ids used by executeBrowserCommand.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record BrowserCommandIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -98,11 +98,11 @@ namespace ChromeProtocol.Domains
     /// <param name="High">Maximum value (exclusive).</param>
     /// <param name="Count">Number of samples.</param>
     public record BucketType(
-      [property: Newtonsoft.Json.JsonProperty("low")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("low")]
       int Low,
-      [property: Newtonsoft.Json.JsonProperty("high")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("high")]
       int High,
-      [property: Newtonsoft.Json.JsonProperty("count")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("count")]
       int Count
     ) : ChromeProtocol.Core.IType
     {
@@ -113,13 +113,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Count">Total number of samples.</param>
     /// <param name="Buckets">Buckets.</param>
     public record HistogramType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("sum")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sum")]
       int Sum,
-      [property: Newtonsoft.Json.JsonProperty("count")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("count")]
       int Count,
-      [property: Newtonsoft.Json.JsonProperty("buckets")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("buckets")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Browser.BucketType> Buckets
     ) : ChromeProtocol.Core.IType
     {
@@ -131,13 +131,13 @@ namespace ChromeProtocol.Domains
     /// <param name="SuggestedFilename">Suggested file name of the resource (the actual name of the file saved on disk may differ).</param>
     [ChromeProtocol.Core.MethodName("Browser.downloadWillBegin")]
     public record DownloadWillBegin(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("guid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("guid")]
       string Guid,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("suggestedFilename")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("suggestedFilename")]
       string SuggestedFilename
     ) : ChromeProtocol.Core.IEvent
     {
@@ -149,13 +149,13 @@ namespace ChromeProtocol.Domains
     /// <param name="State">Download status.</param>
     [ChromeProtocol.Core.MethodName("Browser.downloadProgress")]
     public record DownloadProgress(
-      [property: Newtonsoft.Json.JsonProperty("guid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("guid")]
       string Guid,
-      [property: Newtonsoft.Json.JsonProperty("totalBytes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("totalBytes")]
       double TotalBytes,
-      [property: Newtonsoft.Json.JsonProperty("receivedBytes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("receivedBytes")]
       double ReceivedBytes,
-      [property: Newtonsoft.Json.JsonProperty("state")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("state")]
       string State
     ) : ChromeProtocol.Core.IEvent
     {
@@ -165,7 +165,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Setting">Setting of the permission.</param>
     /// <param name="Origin">Origin the permission applies to, all origins if not specified.</param>
     /// <param name="BrowserContextId">Context to override. When omitted, default browser context is used.</param>
-    public static ChromeProtocol.Domains.Browser.SetPermissionRequest SetPermission(ChromeProtocol.Domains.Browser.PermissionDescriptorType Permission, ChromeProtocol.Domains.Browser.PermissionSettingType Setting, string? Origin = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
+    public static ChromeProtocol.Domains.Browser.SetPermissionRequest SetPermission(ChromeProtocol.Domains.Browser.PermissionDescriptorType Permission, ChromeProtocol.Domains.Browser.PermissionSettingType Setting, string? Origin = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
     {
       return new ChromeProtocol.Domains.Browser.SetPermissionRequest(Permission, Setting, Origin, BrowserContextId);
     }
@@ -176,13 +176,13 @@ namespace ChromeProtocol.Domains
     /// <param name="BrowserContextId">Context to override. When omitted, default browser context is used.</param>
     [ChromeProtocol.Core.MethodName("Browser.setPermission")]
     public record SetPermissionRequest(
-      [property: Newtonsoft.Json.JsonProperty("permission")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("permission")]
       ChromeProtocol.Domains.Browser.PermissionDescriptorType Permission,
-      [property: Newtonsoft.Json.JsonProperty("setting")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("setting")]
       ChromeProtocol.Domains.Browser.PermissionSettingType Setting,
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string? Origin = default,
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default
     ) : ChromeProtocol.Core.ICommand<SetPermissionRequestResult>
     {
@@ -193,7 +193,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Grant specific permissions to the given origin and reject all others.</summary>
     /// <param name="Origin">Origin the permission applies to, all origins if not specified.</param>
     /// <param name="BrowserContextId">BrowserContext to override permissions. When omitted, default browser context is used.</param>
-    public static ChromeProtocol.Domains.Browser.GrantPermissionsRequest GrantPermissions(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Browser.PermissionTypeType> Permissions, string? Origin = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
+    public static ChromeProtocol.Domains.Browser.GrantPermissionsRequest GrantPermissions(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Browser.PermissionTypeType> Permissions, string? Origin = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
     {
       return new ChromeProtocol.Domains.Browser.GrantPermissionsRequest(Permissions, Origin, BrowserContextId);
     }
@@ -202,11 +202,11 @@ namespace ChromeProtocol.Domains
     /// <param name="BrowserContextId">BrowserContext to override permissions. When omitted, default browser context is used.</param>
     [ChromeProtocol.Core.MethodName("Browser.grantPermissions")]
     public record GrantPermissionsRequest(
-      [property: Newtonsoft.Json.JsonProperty("permissions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("permissions")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Browser.PermissionTypeType> Permissions,
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       string? Origin = default,
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default
     ) : ChromeProtocol.Core.ICommand<GrantPermissionsRequestResult>
     {
@@ -216,7 +216,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Reset all permission management for all origins.</summary>
     /// <param name="BrowserContextId">BrowserContext to reset permissions. When omitted, default browser context is used.</param>
-    public static ChromeProtocol.Domains.Browser.ResetPermissionsRequest ResetPermissions(ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
+    public static ChromeProtocol.Domains.Browser.ResetPermissionsRequest ResetPermissions(ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
     {
       return new ChromeProtocol.Domains.Browser.ResetPermissionsRequest(BrowserContextId);
     }
@@ -224,7 +224,7 @@ namespace ChromeProtocol.Domains
     /// <param name="BrowserContextId">BrowserContext to reset permissions. When omitted, default browser context is used.</param>
     [ChromeProtocol.Core.MethodName("Browser.resetPermissions")]
     public record ResetPermissionsRequest(
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default
     ) : ChromeProtocol.Core.ICommand<ResetPermissionsRequestResult>
     {
@@ -244,7 +244,7 @@ namespace ChromeProtocol.Domains
     /// or &#39;allowAndName&#39;.<br/>
     /// </param>
     /// <param name="EventsEnabled">Whether to emit download events (defaults to false).</param>
-    public static ChromeProtocol.Domains.Browser.SetDownloadBehaviorRequest SetDownloadBehavior(string Behavior, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default, string? DownloadPath = default, bool? EventsEnabled = default)    
+    public static ChromeProtocol.Domains.Browser.SetDownloadBehaviorRequest SetDownloadBehavior(string Behavior, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default, string? DownloadPath = default, bool? EventsEnabled = default)
     {
       return new ChromeProtocol.Domains.Browser.SetDownloadBehaviorRequest(Behavior, BrowserContextId, DownloadPath, EventsEnabled);
     }
@@ -262,13 +262,13 @@ namespace ChromeProtocol.Domains
     /// <param name="EventsEnabled">Whether to emit download events (defaults to false).</param>
     [ChromeProtocol.Core.MethodName("Browser.setDownloadBehavior")]
     public record SetDownloadBehaviorRequest(
-      [property: Newtonsoft.Json.JsonProperty("behavior")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("behavior")]
       string Behavior,
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default,
-      [property: Newtonsoft.Json.JsonProperty("downloadPath")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("downloadPath")]
       string? DownloadPath = default,
-      [property: Newtonsoft.Json.JsonProperty("eventsEnabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventsEnabled")]
       bool? EventsEnabled = default
     ) : ChromeProtocol.Core.ICommand<SetDownloadBehaviorRequestResult>
     {
@@ -279,7 +279,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Cancel a download if in progress</summary>
     /// <param name="Guid">Global unique identifier of the download.</param>
     /// <param name="BrowserContextId">BrowserContext to perform the action in. When omitted, default browser context is used.</param>
-    public static ChromeProtocol.Domains.Browser.CancelDownloadRequest CancelDownload(string Guid, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
+    public static ChromeProtocol.Domains.Browser.CancelDownloadRequest CancelDownload(string Guid, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
     {
       return new ChromeProtocol.Domains.Browser.CancelDownloadRequest(Guid, BrowserContextId);
     }
@@ -288,9 +288,9 @@ namespace ChromeProtocol.Domains
     /// <param name="BrowserContextId">BrowserContext to perform the action in. When omitted, default browser context is used.</param>
     [ChromeProtocol.Core.MethodName("Browser.cancelDownload")]
     public record CancelDownloadRequest(
-      [property: Newtonsoft.Json.JsonProperty("guid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("guid")]
       string Guid,
-      [property: Newtonsoft.Json.JsonProperty("browserContextId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("browserContextId")]
       ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default
     ) : ChromeProtocol.Core.ICommand<CancelDownloadRequestResult>
     {
@@ -299,7 +299,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Close browser gracefully.</summary>
-    public static ChromeProtocol.Domains.Browser.CloseRequest Close()    
+    public static ChromeProtocol.Domains.Browser.CloseRequest Close()
     {
       return new ChromeProtocol.Domains.Browser.CloseRequest();
     }
@@ -312,7 +312,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Crashes browser on the main thread.</summary>
-    public static ChromeProtocol.Domains.Browser.CrashRequest Crash()    
+    public static ChromeProtocol.Domains.Browser.CrashRequest Crash()
     {
       return new ChromeProtocol.Domains.Browser.CrashRequest();
     }
@@ -325,7 +325,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Crashes GPU process.</summary>
-    public static ChromeProtocol.Domains.Browser.CrashGpuProcessRequest CrashGpuProcess()    
+    public static ChromeProtocol.Domains.Browser.CrashGpuProcessRequest CrashGpuProcess()
     {
       return new ChromeProtocol.Domains.Browser.CrashGpuProcessRequest();
     }
@@ -338,7 +338,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns version information.</summary>
-    public static ChromeProtocol.Domains.Browser.GetVersionRequest GetVersion()    
+    public static ChromeProtocol.Domains.Browser.GetVersionRequest GetVersion()
     {
       return new ChromeProtocol.Domains.Browser.GetVersionRequest();
     }
@@ -353,15 +353,15 @@ namespace ChromeProtocol.Domains
     /// <param name="UserAgent">User-Agent.</param>
     /// <param name="JsVersion">V8 version.</param>
     public record GetVersionRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("protocolVersion")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("protocolVersion")]
       string ProtocolVersion,
-      [property: Newtonsoft.Json.JsonProperty("product")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("product")]
       string Product,
-      [property: Newtonsoft.Json.JsonProperty("revision")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("revision")]
       string Revision,
-      [property: Newtonsoft.Json.JsonProperty("userAgent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("userAgent")]
       string UserAgent,
-      [property: Newtonsoft.Json.JsonProperty("jsVersion")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("jsVersion")]
       string JsVersion
     ) : ChromeProtocol.Core.IType
     {
@@ -370,7 +370,7 @@ namespace ChromeProtocol.Domains
     /// Returns the command line switches for the browser process if, and only if<br/>
     /// --enable-automation is on the commandline.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Browser.GetBrowserCommandLineRequest GetBrowserCommandLine()    
+    public static ChromeProtocol.Domains.Browser.GetBrowserCommandLineRequest GetBrowserCommandLine()
     {
       return new ChromeProtocol.Domains.Browser.GetBrowserCommandLineRequest();
     }
@@ -384,7 +384,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Arguments">Commandline parameters</param>
     public record GetBrowserCommandLineRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("arguments")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("arguments")]
       System.Collections.Generic.IReadOnlyList<string> Arguments
     ) : ChromeProtocol.Core.IType
     {
@@ -396,7 +396,7 @@ namespace ChromeProtocol.Domains
     /// all histograms.<br/>
     /// </param>
     /// <param name="Delta">If true, retrieve delta since last delta call.</param>
-    public static ChromeProtocol.Domains.Browser.GetHistogramsRequest GetHistograms(string? Query = default, bool? Delta = default)    
+    public static ChromeProtocol.Domains.Browser.GetHistogramsRequest GetHistograms(string? Query = default, bool? Delta = default)
     {
       return new ChromeProtocol.Domains.Browser.GetHistogramsRequest(Query, Delta);
     }
@@ -409,16 +409,16 @@ namespace ChromeProtocol.Domains
     /// <param name="Delta">If true, retrieve delta since last delta call.</param>
     [ChromeProtocol.Core.MethodName("Browser.getHistograms")]
     public record GetHistogramsRequest(
-      [property: Newtonsoft.Json.JsonProperty("query")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("query")]
       string? Query = default,
-      [property: Newtonsoft.Json.JsonProperty("delta")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("delta")]
       bool? Delta = default
     ) : ChromeProtocol.Core.ICommand<GetHistogramsRequestResult>
     {
     }
     /// <param name="Histograms">Histograms.</param>
     public record GetHistogramsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("histograms")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("histograms")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Browser.HistogramType> Histograms
     ) : ChromeProtocol.Core.IType
     {
@@ -426,7 +426,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Get a Chrome histogram by name.</summary>
     /// <param name="Name">Requested histogram name.</param>
     /// <param name="Delta">If true, retrieve delta since last delta call.</param>
-    public static ChromeProtocol.Domains.Browser.GetHistogramRequest GetHistogram(string Name, bool? Delta = default)    
+    public static ChromeProtocol.Domains.Browser.GetHistogramRequest GetHistogram(string Name, bool? Delta = default)
     {
       return new ChromeProtocol.Domains.Browser.GetHistogramRequest(Name, Delta);
     }
@@ -435,23 +435,23 @@ namespace ChromeProtocol.Domains
     /// <param name="Delta">If true, retrieve delta since last delta call.</param>
     [ChromeProtocol.Core.MethodName("Browser.getHistogram")]
     public record GetHistogramRequest(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("delta")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("delta")]
       bool? Delta = default
     ) : ChromeProtocol.Core.ICommand<GetHistogramRequestResult>
     {
     }
     /// <param name="Histogram">Histogram.</param>
     public record GetHistogramRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("histogram")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("histogram")]
       ChromeProtocol.Domains.Browser.HistogramType Histogram
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Get position and size of the browser window.</summary>
     /// <param name="WindowId">Browser window id.</param>
-    public static ChromeProtocol.Domains.Browser.GetWindowBoundsRequest GetWindowBounds(ChromeProtocol.Domains.Browser.WindowIDType WindowId)    
+    public static ChromeProtocol.Domains.Browser.GetWindowBoundsRequest GetWindowBounds(ChromeProtocol.Domains.Browser.WindowIDType WindowId)
     {
       return new ChromeProtocol.Domains.Browser.GetWindowBoundsRequest(WindowId);
     }
@@ -459,7 +459,7 @@ namespace ChromeProtocol.Domains
     /// <param name="WindowId">Browser window id.</param>
     [ChromeProtocol.Core.MethodName("Browser.getWindowBounds")]
     public record GetWindowBoundsRequest(
-      [property: Newtonsoft.Json.JsonProperty("windowId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("windowId")]
       ChromeProtocol.Domains.Browser.WindowIDType WindowId
     ) : ChromeProtocol.Core.ICommand<GetWindowBoundsRequestResult>
     {
@@ -469,14 +469,14 @@ namespace ChromeProtocol.Domains
     /// position and size are returned.<br/>
     /// </param>
     public record GetWindowBoundsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("bounds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bounds")]
       ChromeProtocol.Domains.Browser.BoundsType Bounds
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Get the browser window that contains the devtools target.</summary>
     /// <param name="TargetId">Devtools agent host id. If called as a part of the session, associated targetId is used.</param>
-    public static ChromeProtocol.Domains.Browser.GetWindowForTargetRequest GetWindowForTarget(ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)    
+    public static ChromeProtocol.Domains.Browser.GetWindowForTargetRequest GetWindowForTarget(ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)
     {
       return new ChromeProtocol.Domains.Browser.GetWindowForTargetRequest(TargetId);
     }
@@ -484,7 +484,7 @@ namespace ChromeProtocol.Domains
     /// <param name="TargetId">Devtools agent host id. If called as a part of the session, associated targetId is used.</param>
     [ChromeProtocol.Core.MethodName("Browser.getWindowForTarget")]
     public record GetWindowForTargetRequest(
-      [property: Newtonsoft.Json.JsonProperty("targetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
       ChromeProtocol.Domains.Target.TargetIDType? TargetId = default
     ) : ChromeProtocol.Core.ICommand<GetWindowForTargetRequestResult>
     {
@@ -495,9 +495,9 @@ namespace ChromeProtocol.Domains
     /// position and size are returned.<br/>
     /// </param>
     public record GetWindowForTargetRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("windowId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("windowId")]
       ChromeProtocol.Domains.Browser.WindowIDType WindowId,
-      [property: Newtonsoft.Json.JsonProperty("bounds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bounds")]
       ChromeProtocol.Domains.Browser.BoundsType Bounds
     ) : ChromeProtocol.Core.IType
     {
@@ -508,7 +508,7 @@ namespace ChromeProtocol.Domains
     /// New window bounds. The &#39;minimized&#39;, &#39;maximized&#39; and &#39;fullscreen&#39; states cannot be combined<br/>
     /// with &#39;left&#39;, &#39;top&#39;, &#39;width&#39; or &#39;height&#39;. Leaves unspecified fields unchanged.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Browser.SetWindowBoundsRequest SetWindowBounds(ChromeProtocol.Domains.Browser.WindowIDType WindowId, ChromeProtocol.Domains.Browser.BoundsType Bounds)    
+    public static ChromeProtocol.Domains.Browser.SetWindowBoundsRequest SetWindowBounds(ChromeProtocol.Domains.Browser.WindowIDType WindowId, ChromeProtocol.Domains.Browser.BoundsType Bounds)
     {
       return new ChromeProtocol.Domains.Browser.SetWindowBoundsRequest(WindowId, Bounds);
     }
@@ -520,9 +520,9 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Browser.setWindowBounds")]
     public record SetWindowBoundsRequest(
-      [property: Newtonsoft.Json.JsonProperty("windowId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("windowId")]
       ChromeProtocol.Domains.Browser.WindowIDType WindowId,
-      [property: Newtonsoft.Json.JsonProperty("bounds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("bounds")]
       ChromeProtocol.Domains.Browser.BoundsType Bounds
     ) : ChromeProtocol.Core.ICommand<SetWindowBoundsRequestResult>
     {
@@ -532,7 +532,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Set dock tile details, platform-specific.</summary>
     /// <param name="Image">Png encoded image. (Encoded as a base64 string when passed over JSON)</param>
-    public static ChromeProtocol.Domains.Browser.SetDockTileRequest SetDockTile(string? BadgeLabel = default, string? Image = default)    
+    public static ChromeProtocol.Domains.Browser.SetDockTileRequest SetDockTile(string? BadgeLabel = default, string? Image = default)
     {
       return new ChromeProtocol.Domains.Browser.SetDockTileRequest(BadgeLabel, Image);
     }
@@ -540,9 +540,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Image">Png encoded image. (Encoded as a base64 string when passed over JSON)</param>
     [ChromeProtocol.Core.MethodName("Browser.setDockTile")]
     public record SetDockTileRequest(
-      [property: Newtonsoft.Json.JsonProperty("badgeLabel")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("badgeLabel")]
       string? BadgeLabel = default,
-      [property: Newtonsoft.Json.JsonProperty("image")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("image")]
       string? Image = default
     ) : ChromeProtocol.Core.ICommand<SetDockTileRequestResult>
     {
@@ -551,14 +551,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Invoke custom browser commands used by telemetry.</summary>
-    public static ChromeProtocol.Domains.Browser.ExecuteBrowserCommandRequest ExecuteBrowserCommand(ChromeProtocol.Domains.Browser.BrowserCommandIdType CommandId)    
+    public static ChromeProtocol.Domains.Browser.ExecuteBrowserCommandRequest ExecuteBrowserCommand(ChromeProtocol.Domains.Browser.BrowserCommandIdType CommandId)
     {
       return new ChromeProtocol.Domains.Browser.ExecuteBrowserCommandRequest(CommandId);
     }
     /// <summary>Invoke custom browser commands used by telemetry.</summary>
     [ChromeProtocol.Core.MethodName("Browser.executeBrowserCommand")]
     public record ExecuteBrowserCommandRequest(
-      [property: Newtonsoft.Json.JsonProperty("commandId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("commandId")]
       ChromeProtocol.Domains.Browser.BrowserCommandIdType CommandId
     ) : ChromeProtocol.Core.ICommand<ExecuteBrowserCommandRequestResult>
     {
@@ -570,7 +570,7 @@ namespace ChromeProtocol.Domains
     /// Allows a site to use privacy sandbox features that require enrollment<br/>
     /// without the site actually being enrolled. Only supported on page targets.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Browser.AddPrivacySandboxEnrollmentOverrideRequest AddPrivacySandboxEnrollmentOverride(string Url)    
+    public static ChromeProtocol.Domains.Browser.AddPrivacySandboxEnrollmentOverrideRequest AddPrivacySandboxEnrollmentOverride(string Url)
     {
       return new ChromeProtocol.Domains.Browser.AddPrivacySandboxEnrollmentOverrideRequest(Url);
     }
@@ -580,7 +580,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Browser.addPrivacySandboxEnrollmentOverride")]
     public record AddPrivacySandboxEnrollmentOverrideRequest(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url
     ) : ChromeProtocol.Core.ICommand<AddPrivacySandboxEnrollmentOverrideRequestResult>
     {

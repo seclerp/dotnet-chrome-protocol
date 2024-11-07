@@ -6,7 +6,7 @@ namespace ChromeProtocol.Domains
   /// <summary>Query and modify DOM storage.</summary>
   public static partial class DOMStorage
   {
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SerializedStorageKeyType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -17,69 +17,69 @@ namespace ChromeProtocol.Domains
     /// <param name="SecurityOrigin">Security origin for the storage.</param>
     /// <param name="StorageKey">Represents a key by which DOM Storage keys its CachedStorageAreas</param>
     public record StorageIdType(
-      [property: Newtonsoft.Json.JsonProperty("isLocalStorage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isLocalStorage")]
       bool IsLocalStorage,
-      [property: Newtonsoft.Json.JsonProperty("securityOrigin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("securityOrigin")]
       string? SecurityOrigin = default,
-      [property: Newtonsoft.Json.JsonProperty("storageKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageKey")]
       ChromeProtocol.Domains.DOMStorage.SerializedStorageKeyType? StorageKey = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>DOM Storage item.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
     public record ItemType(
-      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken> Items
+      System.Collections.Generic.IReadOnlyCollection<System.Text.Json.Nodes.JsonNode> Items
     ) : ChromeProtocol.Core.IArrayType
     {
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.domStorageItemAdded")]
     public record DomStorageItemAdded(
-      [property: Newtonsoft.Json.JsonProperty("storageId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageId")]
       ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key,
-      [property: Newtonsoft.Json.JsonProperty("newValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("newValue")]
       string NewValue
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.domStorageItemRemoved")]
     public record DomStorageItemRemoved(
-      [property: Newtonsoft.Json.JsonProperty("storageId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageId")]
       ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.domStorageItemUpdated")]
     public record DomStorageItemUpdated(
-      [property: Newtonsoft.Json.JsonProperty("storageId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageId")]
       ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key,
-      [property: Newtonsoft.Json.JsonProperty("oldValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("oldValue")]
       string OldValue,
-      [property: Newtonsoft.Json.JsonProperty("newValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("newValue")]
       string NewValue
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.domStorageItemsCleared")]
     public record DomStorageItemsCleared(
-      [property: Newtonsoft.Json.JsonProperty("storageId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageId")]
       ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId
     ) : ChromeProtocol.Core.IEvent
     {
     }
-    public static ChromeProtocol.Domains.DOMStorage.ClearRequest Clear(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId)    
+    public static ChromeProtocol.Domains.DOMStorage.ClearRequest Clear(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId)
     {
       return new ChromeProtocol.Domains.DOMStorage.ClearRequest(StorageId);
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.clear")]
     public record ClearRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageId")]
       ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId
     ) : ChromeProtocol.Core.ICommand<ClearRequestResult>
     {
@@ -88,7 +88,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables storage tracking, prevents storage events from being sent to the client.</summary>
-    public static ChromeProtocol.Domains.DOMStorage.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.DOMStorage.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.DOMStorage.DisableRequest();
     }
@@ -101,7 +101,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables storage tracking, storage events will now be delivered to the client.</summary>
-    public static ChromeProtocol.Domains.DOMStorage.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.DOMStorage.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.DOMStorage.EnableRequest();
     }
@@ -113,32 +113,32 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.DOMStorage.GetDOMStorageItemsRequest GetDOMStorageItems(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId)    
+    public static ChromeProtocol.Domains.DOMStorage.GetDOMStorageItemsRequest GetDOMStorageItems(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId)
     {
       return new ChromeProtocol.Domains.DOMStorage.GetDOMStorageItemsRequest(StorageId);
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.getDOMStorageItems")]
     public record GetDOMStorageItemsRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageId")]
       ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId
     ) : ChromeProtocol.Core.ICommand<GetDOMStorageItemsRequestResult>
     {
     }
     public record GetDOMStorageItemsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("entries")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("entries")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMStorage.ItemType> Entries
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.DOMStorage.RemoveDOMStorageItemRequest RemoveDOMStorageItem(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId, string Key)    
+    public static ChromeProtocol.Domains.DOMStorage.RemoveDOMStorageItemRequest RemoveDOMStorageItem(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId, string Key)
     {
       return new ChromeProtocol.Domains.DOMStorage.RemoveDOMStorageItemRequest(StorageId, Key);
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.removeDOMStorageItem")]
     public record RemoveDOMStorageItemRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageId")]
       ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key
     ) : ChromeProtocol.Core.ICommand<RemoveDOMStorageItemRequestResult>
     {
@@ -146,17 +146,17 @@ namespace ChromeProtocol.Domains
     public record RemoveDOMStorageItemRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.DOMStorage.SetDOMStorageItemRequest SetDOMStorageItem(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId, string Key, string Value)    
+    public static ChromeProtocol.Domains.DOMStorage.SetDOMStorageItemRequest SetDOMStorageItem(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId, string Key, string Value)
     {
       return new ChromeProtocol.Domains.DOMStorage.SetDOMStorageItemRequest(StorageId, Key, Value);
     }
     [ChromeProtocol.Core.MethodName("DOMStorage.setDOMStorageItem")]
     public record SetDOMStorageItemRequest(
-      [property: Newtonsoft.Json.JsonProperty("storageId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("storageId")]
       ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string Key,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.ICommand<SetDOMStorageItemRequestResult>
     {

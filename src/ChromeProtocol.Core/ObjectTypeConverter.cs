@@ -1,29 +1,28 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 
 namespace ChromeProtocol.Core;
 
-public class ObjectTypeConverter : JsonConverter
+public class ObjectTypeConverter : JsonConverter<IObjectType?>
 {
   public override bool CanConvert(Type objectType)
   {
     return typeof(IObjectType).IsAssignableFrom(objectType);
   }
 
-  public override void WriteJson(JsonWriter writer, object? instance, JsonSerializer serializer)
+  /// <inheritdoc />
+  public override void Write(Utf8JsonWriter writer, IObjectType? value, JsonSerializerOptions options)
   {
-    var type = instance?.GetType();
-    var properties = type.GetProperty(nameof(IObjectType.Properties)).GetValue(instance) as IReadOnlyDictionary<string, JToken?>;
-    var jObject = new JObject(properties);
+    var jsonObject = new JsonObject(value?.Properties ?? Enumerable.Empty<KeyValuePair<string, JsonNode?>>());
 
-    jObject.WriteTo(writer);
+    jsonObject.WriteTo(writer);
   }
 
-  public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+  /// <inheritdoc />
+  public override IObjectType? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
   {
-    var jObject = JObject.Load(reader);
-    var instance = existingValue ?? Activator.CreateInstance(objectType, jObject.ToObject<IReadOnlyDictionary<string, JToken?>>());
-
-    return instance;
+    var jsonNode = JsonNode.Parse(ref reader);
+    return Activator.CreateInstance(typeToConvert, jsonNode.Deserialize<IReadOnlyDictionary<string, JsonNode?>>()) as IObjectType;
   }
 }

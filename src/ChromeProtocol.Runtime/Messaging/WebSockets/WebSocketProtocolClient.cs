@@ -2,11 +2,11 @@ using System.Collections.Concurrent;
 using System.Net.WebSockets;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using ChromeProtocol.Core;
 using ChromeProtocol.Runtime.Messaging.Json;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace ChromeProtocol.Runtime.Messaging.WebSockets;
 
@@ -15,19 +15,17 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 {
   private readonly Uri _wsUri;
   private readonly ILogger _logger;
-  private readonly ConcurrentDictionary<(string? sessionId, string eventName), Func<ProtocolEvent<JObject>, Task>> _eventHandlers = new ();
-  private readonly ConcurrentDictionary<int, TaskCompletionSource<JObject>> _responseResolvers = new ();
+  private readonly ConcurrentDictionary<(string? sessionId, string eventName), Func<ProtocolEvent<JsonObject>, Task>> _eventHandlers = new ();
+  private readonly ConcurrentDictionary<int, TaskCompletionSource<JsonObject>> _responseResolvers = new ();
   private readonly TNativeClient _nativeClient;
   private CancellationTokenSource _connectionCancellation;
   private readonly BlockingCollection<ProtocolRequest<ICommand>> _outgoingMessages = new(new ConcurrentQueue<ProtocolRequest<ICommand>>());
   private int _currentId = 0;
   private bool _isDisposed = false;
 
-  private readonly JsonSerializer _serializer = JsonSerializer.Create(JsonProtocolSerialization.Settings);
-
   public event EventHandler<ProtocolRequest<ICommand>> OnRequestSent;
-  public event EventHandler<ProtocolResponse<JObject>> OnResponseReceived;
-  public event EventHandler<ProtocolEvent<JObject>> OnEventReceived;
+  public event EventHandler<ProtocolResponse<JsonObject>> OnResponseReceived;
+  public event EventHandler<ProtocolEvent<JsonObject>> OnEventReceived;
 
   public WebSocketProtocolClient(TNativeClient nativeClient, Uri wsUri, ILogger logger)
   {
@@ -94,10 +92,10 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   public IDisposable SubscribeAsync<TEvent>(AsyncDomainEventHandler<TEvent> handler, string? sessionId = default) where TEvent : IEvent
   {
-    Func<ProtocolEvent<JObject>, Task> HandleProtocolEvent(AsyncDomainEventHandler<TEvent> eventHandler) =>
+    Func<ProtocolEvent<JsonObject>, Task> HandleProtocolEvent(AsyncDomainEventHandler<TEvent> eventHandler) =>
       async rawEvent =>
       {
-        var eventItself = rawEvent.Params.ToObject<TEvent>();
+        var eventItself = rawEvent.Params.Deserialize<TEvent>(JsonProtocolSerialization.Settings);
         await eventHandler(eventItself).ConfigureAwait(false);
       };
 
@@ -106,10 +104,10 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   public IDisposable SubscribeSync<TEvent>(SyncDomainEventHandler<TEvent> handler, string? sessionId = default) where TEvent : IEvent
   {
-    Func<ProtocolEvent<JObject>, Task> HandleProtocolEvent(SyncDomainEventHandler<TEvent> eventHandler) =>
+    Func<ProtocolEvent<JsonObject>, Task> HandleProtocolEvent(SyncDomainEventHandler<TEvent> eventHandler) =>
       rawEvent =>
       {
-        var eventItself = rawEvent.Params.ToObject<TEvent>();
+        var eventItself = rawEvent.Params.Deserialize<TEvent>(JsonProtocolSerialization.Settings);
         return Task.Run(() => eventHandler(eventItself));
       };
 
@@ -123,12 +121,12 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     var id = Interlocked.Increment(ref _currentId);
     try
     {
-      var resolver = new TaskCompletionSource<JObject>();
+      var resolver = new TaskCompletionSource<JsonObject>();
       if (_responseResolvers.TryAdd(id, resolver))
       {
         await FireInternalAsync(id, GetMethodName(command.GetType()), command, sessionId).ConfigureAwait(false);
         var responseRaw = await resolver.Task.ConfigureAwait(false);
-        var response = responseRaw.ToObject<TResponse>(_serializer) ?? throw new ArgumentException(null, nameof(responseRaw));
+        var response = responseRaw.Deserialize<TResponse>(JsonProtocolSerialization.Settings) ?? throw new ArgumentException(null, nameof(responseRaw));
         return response;
       }
 
@@ -168,7 +166,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     }
   }
 
-  private IDisposable SubscribeInternal<TEvent>(Func<ProtocolEvent<JObject>, Task> rawHandler, string? sessionId) where TEvent : IEvent
+  private IDisposable SubscribeInternal<TEvent>(Func<ProtocolEvent<JsonObject>, Task> rawHandler, string? sessionId) where TEvent : IEvent
   {
     var eventName = GetMethodName(typeof(TEvent));
     var subscription = new ProtocolSubscription<TNativeClient>(sessionId, eventName, rawHandler, this);
@@ -245,30 +243,30 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   private IProtocolMessage DeserializeMessage(string message)
   {
-    var token = JToken.Parse(message) ?? throw new ArgumentException(null, nameof(message));
+    var node = JsonNode.Parse(message) ?? throw new ArgumentException(null, nameof(message));
 
-    if (token["id"] != null)
-      return token.ToObject<ProtocolResponse<JObject>>(_serializer) ?? throw new ArgumentException(null, nameof(token));
+    if (node["id"] != null)
+      return node.Deserialize<ProtocolResponse<JsonObject>>(JsonProtocolSerialization.Settings) ?? throw new ArgumentException(null, nameof(node));
 
-    return token.ToObject<ProtocolEvent<JObject>>(_serializer) ?? throw new ArgumentException(null, nameof(token));
+    return node.Deserialize<ProtocolEvent<JsonObject>>(JsonProtocolSerialization.Settings) ?? throw new ArgumentException(null, nameof(node));
   }
 
   private Task ProcessIncoming(string message) =>
     DeserializeMessage(message) switch
     {
-      ProtocolResponse<JObject> response => ProcessIncomingResponse(response),
-      ProtocolEvent<JObject> @event => ProcessIncomingEvent(@event),
+      ProtocolResponse<JsonObject> response => ProcessIncomingResponse(response),
+      ProtocolEvent<JsonObject> @event => ProcessIncomingEvent(@event),
       _ => Task.CompletedTask
     };
 
-  private async Task ProcessIncomingEvent(ProtocolEvent<JObject> @event)
+  private async Task ProcessIncomingEvent(ProtocolEvent<JsonObject> @event)
   {
     OnEventReceived?.Invoke(this, @event);
     if (_eventHandlers.TryGetValue((@event.SessionId, @event.Method), out var handler))
       await handler.Invoke(@event).ConfigureAwait(false);
   }
 
-  private async Task ProcessIncomingResponse(ProtocolResponse<JObject> response)
+  private async Task ProcessIncomingResponse(ProtocolResponse<JsonObject> response)
   {
     OnResponseReceived?.Invoke(this, response);
     _responseResolvers.TryRemove(response.Id, out var resolver);
@@ -282,7 +280,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   private async Task ProcessOutgoingRequest(ProtocolRequest<ICommand> request)
   {
-    var serialized = JsonConvert.SerializeObject(request, JsonProtocolSerialization.Settings);
+    var serialized = JsonSerializer.Serialize(request, JsonProtocolSerialization.Settings);
     var bytes = Encoding.UTF8.GetBytes(serialized);
     try
     {
@@ -304,10 +302,10 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
   {
     private readonly string? _sessionId;
     private readonly string _eventName;
-    private readonly Func<ProtocolEvent<JObject>, Task>? _wrappedHandler;
+    private readonly Func<ProtocolEvent<JsonObject>, Task>? _wrappedHandler;
     private readonly WebSocketProtocolClient<T> _client;
 
-    public ProtocolSubscription(string? sessionId, string eventName, Func<ProtocolEvent<JObject>,Task>? wrappedHandler, WebSocketProtocolClient<T> client)
+    public ProtocolSubscription(string? sessionId, string eventName, Func<ProtocolEvent<JsonObject>,Task>? wrappedHandler, WebSocketProtocolClient<T> client)
     {
       _sessionId = sessionId;
       _eventName = eventName;

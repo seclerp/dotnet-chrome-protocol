@@ -6,14 +6,14 @@ namespace ChromeProtocol.Domains
   public static partial class LayerTree
   {
     /// <summary>Unique Layer identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record LayerIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Unique snapshot identifier.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SnapshotIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -23,9 +23,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Rect">Rectangle itself.</param>
     /// <param name="Type">Reason for rectangle to force scrolling on the main thread</param>
     public record ScrollRectType(
-      [property: Newtonsoft.Json.JsonProperty("rect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rect")]
       ChromeProtocol.Domains.DOM.RectType Rect,
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type
     ) : ChromeProtocol.Core.IType
     {
@@ -36,13 +36,13 @@ namespace ChromeProtocol.Domains
     /// <param name="NearestLayerShiftingStickyBox">The nearest sticky layer that shifts the sticky box</param>
     /// <param name="NearestLayerShiftingContainingBlock">The nearest sticky layer that shifts the containing block</param>
     public record StickyPositionConstraintType(
-      [property: Newtonsoft.Json.JsonProperty("stickyBoxRect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stickyBoxRect")]
       ChromeProtocol.Domains.DOM.RectType StickyBoxRect,
-      [property: Newtonsoft.Json.JsonProperty("containingBlockRect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containingBlockRect")]
       ChromeProtocol.Domains.DOM.RectType ContainingBlockRect,
-      [property: Newtonsoft.Json.JsonProperty("nearestLayerShiftingStickyBox")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nearestLayerShiftingStickyBox")]
       ChromeProtocol.Domains.LayerTree.LayerIdType? NearestLayerShiftingStickyBox = default,
-      [property: Newtonsoft.Json.JsonProperty("nearestLayerShiftingContainingBlock")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nearestLayerShiftingContainingBlock")]
       ChromeProtocol.Domains.LayerTree.LayerIdType? NearestLayerShiftingContainingBlock = default
     ) : ChromeProtocol.Core.IType
     {
@@ -52,11 +52,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Y">Offset from owning layer top boundary</param>
     /// <param name="Picture">Base64-encoded snapshot data. (Encoded as a base64 string when passed over JSON)</param>
     public record PictureTileType(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("picture")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("picture")]
       string Picture
     ) : ChromeProtocol.Core.IType
     {
@@ -82,45 +82,45 @@ namespace ChromeProtocol.Domains
     /// <param name="ScrollRects">Rectangles scrolling on main thread only.</param>
     /// <param name="StickyPositionConstraint">Sticky position constraint information</param>
     public record LayerType(
-      [property: Newtonsoft.Json.JsonProperty("layerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layerId")]
       ChromeProtocol.Domains.LayerTree.LayerIdType LayerId,
-      [property: Newtonsoft.Json.JsonProperty("offsetX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offsetX")]
       double OffsetX,
-      [property: Newtonsoft.Json.JsonProperty("offsetY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offsetY")]
       double OffsetY,
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       double Width,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       double Height,
-      [property: Newtonsoft.Json.JsonProperty("paintCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("paintCount")]
       int PaintCount,
-      [property: Newtonsoft.Json.JsonProperty("drawsContent")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("drawsContent")]
       bool DrawsContent,
-      [property: Newtonsoft.Json.JsonProperty("parentLayerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentLayerId")]
       ChromeProtocol.Domains.LayerTree.LayerIdType? ParentLayerId = default,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("transform")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("transform")]
       System.Collections.Generic.IReadOnlyList<double>? Transform = default,
-      [property: Newtonsoft.Json.JsonProperty("anchorX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("anchorX")]
       double? AnchorX = default,
-      [property: Newtonsoft.Json.JsonProperty("anchorY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("anchorY")]
       double? AnchorY = default,
-      [property: Newtonsoft.Json.JsonProperty("anchorZ")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("anchorZ")]
       double? AnchorZ = default,
-      [property: Newtonsoft.Json.JsonProperty("invisible")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("invisible")]
       bool? Invisible = default,
-      [property: Newtonsoft.Json.JsonProperty("scrollRects")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scrollRects")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.LayerTree.ScrollRectType>? ScrollRects = default,
-      [property: Newtonsoft.Json.JsonProperty("stickyPositionConstraint")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("stickyPositionConstraint")]
       ChromeProtocol.Domains.LayerTree.StickyPositionConstraintType? StickyPositionConstraint = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Array of timings, one per paint step.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.ArrayTypeConverter))]
     public record PaintProfileType(
-      System.Collections.Generic.IReadOnlyCollection<Newtonsoft.Json.Linq.JToken> Items
+      System.Collections.Generic.IReadOnlyCollection<System.Text.Json.Nodes.JsonNode> Items
     ) : ChromeProtocol.Core.IArrayType
     {
     }
@@ -128,9 +128,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Clip">Clip rectangle.</param>
     [ChromeProtocol.Core.MethodName("LayerTree.layerPainted")]
     public record LayerPainted(
-      [property: Newtonsoft.Json.JsonProperty("layerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layerId")]
       ChromeProtocol.Domains.LayerTree.LayerIdType LayerId,
-      [property: Newtonsoft.Json.JsonProperty("clip")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clip")]
       ChromeProtocol.Domains.DOM.RectType Clip
     ) : ChromeProtocol.Core.IEvent
     {
@@ -138,14 +138,14 @@ namespace ChromeProtocol.Domains
     /// <param name="Layers">Layer tree, absent if not in the compositing mode.</param>
     [ChromeProtocol.Core.MethodName("LayerTree.layerTreeDidChange")]
     public record LayerTreeDidChange(
-      [property: Newtonsoft.Json.JsonProperty("layers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layers")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.LayerTree.LayerType>? Layers = default
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Provides the reasons why the given layer was composited.</summary>
     /// <param name="LayerId">The id of the layer for which we want to get the reasons it was composited.</param>
-    public static ChromeProtocol.Domains.LayerTree.CompositingReasonsRequest CompositingReasons(ChromeProtocol.Domains.LayerTree.LayerIdType LayerId)    
+    public static ChromeProtocol.Domains.LayerTree.CompositingReasonsRequest CompositingReasons(ChromeProtocol.Domains.LayerTree.LayerIdType LayerId)
     {
       return new ChromeProtocol.Domains.LayerTree.CompositingReasonsRequest(LayerId);
     }
@@ -153,7 +153,7 @@ namespace ChromeProtocol.Domains
     /// <param name="LayerId">The id of the layer for which we want to get the reasons it was composited.</param>
     [ChromeProtocol.Core.MethodName("LayerTree.compositingReasons")]
     public record CompositingReasonsRequest(
-      [property: Newtonsoft.Json.JsonProperty("layerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layerId")]
       ChromeProtocol.Domains.LayerTree.LayerIdType LayerId
     ) : ChromeProtocol.Core.ICommand<CompositingReasonsRequestResult>
     {
@@ -161,15 +161,15 @@ namespace ChromeProtocol.Domains
     /// <param name="CompositingReasons">A list of strings specifying reasons for the given layer to become composited.</param>
     /// <param name="CompositingReasonIds">A list of strings specifying reason IDs for the given layer to become composited.</param>
     public record CompositingReasonsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("compositingReasons")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("compositingReasons")]
       System.Collections.Generic.IReadOnlyList<string> CompositingReasons,
-      [property: Newtonsoft.Json.JsonProperty("compositingReasonIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("compositingReasonIds")]
       System.Collections.Generic.IReadOnlyList<string> CompositingReasonIds
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Disables compositing tree inspection.</summary>
-    public static ChromeProtocol.Domains.LayerTree.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.LayerTree.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.LayerTree.DisableRequest();
     }
@@ -182,7 +182,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables compositing tree inspection.</summary>
-    public static ChromeProtocol.Domains.LayerTree.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.LayerTree.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.LayerTree.EnableRequest();
     }
@@ -196,7 +196,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns the snapshot identifier.</summary>
     /// <param name="Tiles">An array of tiles composing the snapshot.</param>
-    public static ChromeProtocol.Domains.LayerTree.LoadSnapshotRequest LoadSnapshot(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.LayerTree.PictureTileType> Tiles)    
+    public static ChromeProtocol.Domains.LayerTree.LoadSnapshotRequest LoadSnapshot(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.LayerTree.PictureTileType> Tiles)
     {
       return new ChromeProtocol.Domains.LayerTree.LoadSnapshotRequest(Tiles);
     }
@@ -204,21 +204,21 @@ namespace ChromeProtocol.Domains
     /// <param name="Tiles">An array of tiles composing the snapshot.</param>
     [ChromeProtocol.Core.MethodName("LayerTree.loadSnapshot")]
     public record LoadSnapshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("tiles")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tiles")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.LayerTree.PictureTileType> Tiles
     ) : ChromeProtocol.Core.ICommand<LoadSnapshotRequestResult>
     {
     }
     /// <param name="SnapshotId">The id of the snapshot.</param>
     public record LoadSnapshotRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("snapshotId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("snapshotId")]
       ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns the layer snapshot identifier.</summary>
     /// <param name="LayerId">The id of the layer.</param>
-    public static ChromeProtocol.Domains.LayerTree.MakeSnapshotRequest MakeSnapshot(ChromeProtocol.Domains.LayerTree.LayerIdType LayerId)    
+    public static ChromeProtocol.Domains.LayerTree.MakeSnapshotRequest MakeSnapshot(ChromeProtocol.Domains.LayerTree.LayerIdType LayerId)
     {
       return new ChromeProtocol.Domains.LayerTree.MakeSnapshotRequest(LayerId);
     }
@@ -226,14 +226,14 @@ namespace ChromeProtocol.Domains
     /// <param name="LayerId">The id of the layer.</param>
     [ChromeProtocol.Core.MethodName("LayerTree.makeSnapshot")]
     public record MakeSnapshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("layerId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layerId")]
       ChromeProtocol.Domains.LayerTree.LayerIdType LayerId
     ) : ChromeProtocol.Core.ICommand<MakeSnapshotRequestResult>
     {
     }
     /// <param name="SnapshotId">The id of the layer snapshot.</param>
     public record MakeSnapshotRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("snapshotId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("snapshotId")]
       ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId
     ) : ChromeProtocol.Core.IType
     {
@@ -242,7 +242,7 @@ namespace ChromeProtocol.Domains
     /// <param name="MinRepeatCount">The maximum number of times to replay the snapshot (1, if not specified).</param>
     /// <param name="MinDuration">The minimum duration (in seconds) to replay the snapshot.</param>
     /// <param name="ClipRect">The clip rectangle to apply when replaying the snapshot.</param>
-    public static ChromeProtocol.Domains.LayerTree.ProfileSnapshotRequest ProfileSnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId, int? MinRepeatCount = default, double? MinDuration = default, ChromeProtocol.Domains.DOM.RectType? ClipRect = default)    
+    public static ChromeProtocol.Domains.LayerTree.ProfileSnapshotRequest ProfileSnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId, int? MinRepeatCount = default, double? MinDuration = default, ChromeProtocol.Domains.DOM.RectType? ClipRect = default)
     {
       return new ChromeProtocol.Domains.LayerTree.ProfileSnapshotRequest(SnapshotId, MinRepeatCount, MinDuration, ClipRect);
     }
@@ -252,27 +252,27 @@ namespace ChromeProtocol.Domains
     /// <param name="ClipRect">The clip rectangle to apply when replaying the snapshot.</param>
     [ChromeProtocol.Core.MethodName("LayerTree.profileSnapshot")]
     public record ProfileSnapshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("snapshotId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("snapshotId")]
       ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId,
-      [property: Newtonsoft.Json.JsonProperty("minRepeatCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("minRepeatCount")]
       int? MinRepeatCount = default,
-      [property: Newtonsoft.Json.JsonProperty("minDuration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("minDuration")]
       double? MinDuration = default,
-      [property: Newtonsoft.Json.JsonProperty("clipRect")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clipRect")]
       ChromeProtocol.Domains.DOM.RectType? ClipRect = default
     ) : ChromeProtocol.Core.ICommand<ProfileSnapshotRequestResult>
     {
     }
     /// <param name="Timings">The array of paint profiles, one per run.</param>
     public record ProfileSnapshotRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("timings")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timings")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.LayerTree.PaintProfileType> Timings
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Releases layer snapshot captured by the back-end.</summary>
     /// <param name="SnapshotId">The id of the layer snapshot.</param>
-    public static ChromeProtocol.Domains.LayerTree.ReleaseSnapshotRequest ReleaseSnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId)    
+    public static ChromeProtocol.Domains.LayerTree.ReleaseSnapshotRequest ReleaseSnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId)
     {
       return new ChromeProtocol.Domains.LayerTree.ReleaseSnapshotRequest(SnapshotId);
     }
@@ -280,7 +280,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SnapshotId">The id of the layer snapshot.</param>
     [ChromeProtocol.Core.MethodName("LayerTree.releaseSnapshot")]
     public record ReleaseSnapshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("snapshotId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("snapshotId")]
       ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId
     ) : ChromeProtocol.Core.ICommand<ReleaseSnapshotRequestResult>
     {
@@ -293,7 +293,7 @@ namespace ChromeProtocol.Domains
     /// <param name="FromStep">The first step to replay from (replay from the very start if not specified).</param>
     /// <param name="ToStep">The last step to replay to (replay till the end if not specified).</param>
     /// <param name="Scale">The scale to apply while replaying (defaults to 1).</param>
-    public static ChromeProtocol.Domains.LayerTree.ReplaySnapshotRequest ReplaySnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId, int? FromStep = default, int? ToStep = default, double? Scale = default)    
+    public static ChromeProtocol.Domains.LayerTree.ReplaySnapshotRequest ReplaySnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId, int? FromStep = default, int? ToStep = default, double? Scale = default)
     {
       return new ChromeProtocol.Domains.LayerTree.ReplaySnapshotRequest(SnapshotId, FromStep, ToStep, Scale);
     }
@@ -304,27 +304,27 @@ namespace ChromeProtocol.Domains
     /// <param name="Scale">The scale to apply while replaying (defaults to 1).</param>
     [ChromeProtocol.Core.MethodName("LayerTree.replaySnapshot")]
     public record ReplaySnapshotRequest(
-      [property: Newtonsoft.Json.JsonProperty("snapshotId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("snapshotId")]
       ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId,
-      [property: Newtonsoft.Json.JsonProperty("fromStep")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fromStep")]
       int? FromStep = default,
-      [property: Newtonsoft.Json.JsonProperty("toStep")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("toStep")]
       int? ToStep = default,
-      [property: Newtonsoft.Json.JsonProperty("scale")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scale")]
       double? Scale = default
     ) : ChromeProtocol.Core.ICommand<ReplaySnapshotRequestResult>
     {
     }
     /// <param name="DataURL">A data: URL for resulting image.</param>
     public record ReplaySnapshotRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("dataURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dataURL")]
       string DataURL
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Replays the layer snapshot and returns canvas log.</summary>
     /// <param name="SnapshotId">The id of the layer snapshot.</param>
-    public static ChromeProtocol.Domains.LayerTree.SnapshotCommandLogRequest SnapshotCommandLog(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId)    
+    public static ChromeProtocol.Domains.LayerTree.SnapshotCommandLogRequest SnapshotCommandLog(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId)
     {
       return new ChromeProtocol.Domains.LayerTree.SnapshotCommandLogRequest(SnapshotId);
     }
@@ -332,15 +332,15 @@ namespace ChromeProtocol.Domains
     /// <param name="SnapshotId">The id of the layer snapshot.</param>
     [ChromeProtocol.Core.MethodName("LayerTree.snapshotCommandLog")]
     public record SnapshotCommandLogRequest(
-      [property: Newtonsoft.Json.JsonProperty("snapshotId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("snapshotId")]
       ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId
     ) : ChromeProtocol.Core.ICommand<SnapshotCommandLogRequestResult>
     {
     }
     /// <param name="CommandLog">The array of canvas function calls.</param>
     public record SnapshotCommandLogRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("commandLog")]
-      System.Collections.Generic.IReadOnlyList<Newtonsoft.Json.Linq.JObject> CommandLog
+      [property: System.Text.Json.Serialization.JsonPropertyName("commandLog")]
+      System.Collections.Generic.IReadOnlyList<System.Text.Json.Nodes.JsonObject> CommandLog
     ) : ChromeProtocol.Core.IType
     {
     }

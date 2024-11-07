@@ -20,45 +20,45 @@ namespace ChromeProtocol.Domains
     /// <param name="Twist">The clockwise rotation of a pen stylus around its own major axis, in degrees in the range [0,359] (default: 0).</param>
     /// <param name="Id">Identifier used to track touch sources between events, must be unique within an event.</param>
     public record TouchPointType(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("radiusX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("radiusX")]
       double? RadiusX = default,
-      [property: Newtonsoft.Json.JsonProperty("radiusY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("radiusY")]
       double? RadiusY = default,
-      [property: Newtonsoft.Json.JsonProperty("rotationAngle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rotationAngle")]
       double? RotationAngle = default,
-      [property: Newtonsoft.Json.JsonProperty("force")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("force")]
       double? Force = default,
-      [property: Newtonsoft.Json.JsonProperty("tangentialPressure")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tangentialPressure")]
       double? TangentialPressure = default,
-      [property: Newtonsoft.Json.JsonProperty("tiltX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tiltX")]
       double? TiltX = default,
-      [property: Newtonsoft.Json.JsonProperty("tiltY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tiltY")]
       double? TiltY = default,
-      [property: Newtonsoft.Json.JsonProperty("twist")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("twist")]
       int? Twist = default,
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       double? Id = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record GestureSourceTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record MouseButtonType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>UTC time in seconds, counted from January 1, 1970.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record TimeSinceEpochType(
       double Value
     ) : ChromeProtocol.Core.PrimitiveType<double>(Value)
@@ -75,13 +75,13 @@ namespace ChromeProtocol.Domains
     /// == &quot;text/html&quot;.<br/>
     /// </param>
     public record DragDataItemType(
-      [property: Newtonsoft.Json.JsonProperty("mimeType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mimeType")]
       string MimeType,
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       string? Title = default,
-      [property: Newtonsoft.Json.JsonProperty("baseURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("baseURL")]
       string? BaseURL = default
     ) : ChromeProtocol.Core.IType
     {
@@ -89,11 +89,11 @@ namespace ChromeProtocol.Domains
     /// <param name="DragOperationsMask">Bit field representing allowed drag operations. Copy = 1, Link = 2, Move = 16</param>
     /// <param name="Files">List of filenames that should be included when dropping</param>
     public record DragDataType(
-      [property: Newtonsoft.Json.JsonProperty("items")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("items")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Input.DragDataItemType> Items,
-      [property: Newtonsoft.Json.JsonProperty("dragOperationsMask")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dragOperationsMask")]
       int DragOperationsMask,
-      [property: Newtonsoft.Json.JsonProperty("files")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("files")]
       System.Collections.Generic.IReadOnlyList<string>? Files = default
     ) : ChromeProtocol.Core.IType
     {
@@ -104,7 +104,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Input.dragIntercepted")]
     public record DragIntercepted(
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       ChromeProtocol.Domains.Input.DragDataType Data
     ) : ChromeProtocol.Core.IEvent
     {
@@ -120,7 +120,7 @@ namespace ChromeProtocol.Domains
     /// Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8<br/>
     /// (default: 0).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Input.DispatchDragEventRequest DispatchDragEvent(string Type, double X, double Y, ChromeProtocol.Domains.Input.DragDataType Data, int? Modifiers = default)    
+    public static ChromeProtocol.Domains.Input.DispatchDragEventRequest DispatchDragEvent(string Type, double X, double Y, ChromeProtocol.Domains.Input.DragDataType Data, int? Modifiers = default)
     {
       return new ChromeProtocol.Domains.Input.DispatchDragEventRequest(Type, X, Y, Data, Modifiers);
     }
@@ -137,15 +137,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Input.dispatchDragEvent")]
     public record DispatchDragEventRequest(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       ChromeProtocol.Domains.Input.DragDataType Data,
-      [property: Newtonsoft.Json.JsonProperty("modifiers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("modifiers")]
       int? Modifiers = default
     ) : ChromeProtocol.Core.ICommand<DispatchDragEventRequestResult>
     {
@@ -188,7 +188,7 @@ namespace ChromeProtocol.Domains
     /// These are related to but not equal the command names used in `document.execCommand` and NSStandardKeyBindingResponding.<br/>
     /// See https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/editing/commands/editor_command_names.h for valid command names.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Input.DispatchKeyEventRequest DispatchKeyEvent(string Type, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, string? Text = default, string? UnmodifiedText = default, string? KeyIdentifier = default, string? Code = default, string? Key = default, int? WindowsVirtualKeyCode = default, int? NativeVirtualKeyCode = default, bool? AutoRepeat = default, bool? IsKeypad = default, bool? IsSystemKey = default, int? Location = default, System.Collections.Generic.IReadOnlyList<string>? Commands = default)    
+    public static ChromeProtocol.Domains.Input.DispatchKeyEventRequest DispatchKeyEvent(string Type, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, string? Text = default, string? UnmodifiedText = default, string? KeyIdentifier = default, string? Code = default, string? Key = default, int? WindowsVirtualKeyCode = default, int? NativeVirtualKeyCode = default, bool? AutoRepeat = default, bool? IsKeypad = default, bool? IsSystemKey = default, int? Location = default, System.Collections.Generic.IReadOnlyList<string>? Commands = default)
     {
       return new ChromeProtocol.Domains.Input.DispatchKeyEventRequest(Type, Modifiers, Timestamp, Text, UnmodifiedText, KeyIdentifier, Code, Key, WindowsVirtualKeyCode, NativeVirtualKeyCode, AutoRepeat, IsKeypad, IsSystemKey, Location, Commands);
     }
@@ -229,35 +229,35 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Input.dispatchKeyEvent")]
     public record DispatchKeyEventRequest(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("modifiers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("modifiers")]
       int? Modifiers = default,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string? Text = default,
-      [property: Newtonsoft.Json.JsonProperty("unmodifiedText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("unmodifiedText")]
       string? UnmodifiedText = default,
-      [property: Newtonsoft.Json.JsonProperty("keyIdentifier")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyIdentifier")]
       string? KeyIdentifier = default,
-      [property: Newtonsoft.Json.JsonProperty("code")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("code")]
       string? Code = default,
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       string? Key = default,
-      [property: Newtonsoft.Json.JsonProperty("windowsVirtualKeyCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("windowsVirtualKeyCode")]
       int? WindowsVirtualKeyCode = default,
-      [property: Newtonsoft.Json.JsonProperty("nativeVirtualKeyCode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nativeVirtualKeyCode")]
       int? NativeVirtualKeyCode = default,
-      [property: Newtonsoft.Json.JsonProperty("autoRepeat")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("autoRepeat")]
       bool? AutoRepeat = default,
-      [property: Newtonsoft.Json.JsonProperty("isKeypad")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isKeypad")]
       bool? IsKeypad = default,
-      [property: Newtonsoft.Json.JsonProperty("isSystemKey")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isSystemKey")]
       bool? IsSystemKey = default,
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       int? Location = default,
-      [property: Newtonsoft.Json.JsonProperty("commands")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("commands")]
       System.Collections.Generic.IReadOnlyList<string>? Commands = default
     ) : ChromeProtocol.Core.ICommand<DispatchKeyEventRequestResult>
     {
@@ -270,7 +270,7 @@ namespace ChromeProtocol.Domains
     /// for example an emoji keyboard or an IME.<br/>
     /// </summary>
     /// <param name="Text">The text to insert.</param>
-    public static ChromeProtocol.Domains.Input.InsertTextRequest InsertText(string Text)    
+    public static ChromeProtocol.Domains.Input.InsertTextRequest InsertText(string Text)
     {
       return new ChromeProtocol.Domains.Input.InsertTextRequest(Text);
     }
@@ -281,7 +281,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Text">The text to insert.</param>
     [ChromeProtocol.Core.MethodName("Input.insertText")]
     public record InsertTextRequest(
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text
     ) : ChromeProtocol.Core.ICommand<InsertTextRequestResult>
     {
@@ -299,7 +299,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SelectionEnd">selection end</param>
     /// <param name="ReplacementStart">replacement start</param>
     /// <param name="ReplacementEnd">replacement end</param>
-    public static ChromeProtocol.Domains.Input.ImeSetCompositionRequest ImeSetComposition(string Text, int SelectionStart, int SelectionEnd, int? ReplacementStart = default, int? ReplacementEnd = default)    
+    public static ChromeProtocol.Domains.Input.ImeSetCompositionRequest ImeSetComposition(string Text, int SelectionStart, int SelectionEnd, int? ReplacementStart = default, int? ReplacementEnd = default)
     {
       return new ChromeProtocol.Domains.Input.ImeSetCompositionRequest(Text, SelectionStart, SelectionEnd, ReplacementStart, ReplacementEnd);
     }
@@ -315,15 +315,15 @@ namespace ChromeProtocol.Domains
     /// <param name="ReplacementEnd">replacement end</param>
     [ChromeProtocol.Core.MethodName("Input.imeSetComposition")]
     public record ImeSetCompositionRequest(
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("selectionStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selectionStart")]
       int SelectionStart,
-      [property: Newtonsoft.Json.JsonProperty("selectionEnd")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selectionEnd")]
       int SelectionEnd,
-      [property: Newtonsoft.Json.JsonProperty("replacementStart")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("replacementStart")]
       int? ReplacementStart = default,
-      [property: Newtonsoft.Json.JsonProperty("replacementEnd")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("replacementEnd")]
       int? ReplacementEnd = default
     ) : ChromeProtocol.Core.ICommand<ImeSetCompositionRequestResult>
     {
@@ -357,7 +357,7 @@ namespace ChromeProtocol.Domains
     /// <param name="DeltaX">X delta in CSS pixels for mouse wheel event (default: 0).</param>
     /// <param name="DeltaY">Y delta in CSS pixels for mouse wheel event (default: 0).</param>
     /// <param name="PointerType">Pointer type (default: &quot;mouse&quot;).</param>
-    public static ChromeProtocol.Domains.Input.DispatchMouseEventRequest DispatchMouseEvent(string Type, double X, double Y, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, ChromeProtocol.Domains.Input.MouseButtonType? Button = default, int? Buttons = default, int? ClickCount = default, double? Force = default, double? TangentialPressure = default, double? TiltX = default, double? TiltY = default, int? Twist = default, double? DeltaX = default, double? DeltaY = default, string? PointerType = default)    
+    public static ChromeProtocol.Domains.Input.DispatchMouseEventRequest DispatchMouseEvent(string Type, double X, double Y, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, ChromeProtocol.Domains.Input.MouseButtonType? Button = default, int? Buttons = default, int? ClickCount = default, double? Force = default, double? TangentialPressure = default, double? TiltX = default, double? TiltY = default, int? Twist = default, double? DeltaX = default, double? DeltaY = default, string? PointerType = default)
     {
       return new ChromeProtocol.Domains.Input.DispatchMouseEventRequest(Type, X, Y, Modifiers, Timestamp, Button, Buttons, ClickCount, Force, TangentialPressure, TiltX, TiltY, Twist, DeltaX, DeltaY, PointerType);
     }
@@ -389,37 +389,37 @@ namespace ChromeProtocol.Domains
     /// <param name="PointerType">Pointer type (default: &quot;mouse&quot;).</param>
     [ChromeProtocol.Core.MethodName("Input.dispatchMouseEvent")]
     public record DispatchMouseEventRequest(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("modifiers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("modifiers")]
       int? Modifiers = default,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default,
-      [property: Newtonsoft.Json.JsonProperty("button")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("button")]
       ChromeProtocol.Domains.Input.MouseButtonType? Button = default,
-      [property: Newtonsoft.Json.JsonProperty("buttons")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("buttons")]
       int? Buttons = default,
-      [property: Newtonsoft.Json.JsonProperty("clickCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clickCount")]
       int? ClickCount = default,
-      [property: Newtonsoft.Json.JsonProperty("force")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("force")]
       double? Force = default,
-      [property: Newtonsoft.Json.JsonProperty("tangentialPressure")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tangentialPressure")]
       double? TangentialPressure = default,
-      [property: Newtonsoft.Json.JsonProperty("tiltX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tiltX")]
       double? TiltX = default,
-      [property: Newtonsoft.Json.JsonProperty("tiltY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tiltY")]
       double? TiltY = default,
-      [property: Newtonsoft.Json.JsonProperty("twist")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("twist")]
       int? Twist = default,
-      [property: Newtonsoft.Json.JsonProperty("deltaX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deltaX")]
       double? DeltaX = default,
-      [property: Newtonsoft.Json.JsonProperty("deltaY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deltaY")]
       double? DeltaY = default,
-      [property: Newtonsoft.Json.JsonProperty("pointerType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pointerType")]
       string? PointerType = default
     ) : ChromeProtocol.Core.ICommand<DispatchMouseEventRequestResult>
     {
@@ -442,7 +442,7 @@ namespace ChromeProtocol.Domains
     /// (default: 0).<br/>
     /// </param>
     /// <param name="Timestamp">Time at which the event occurred.</param>
-    public static ChromeProtocol.Domains.Input.DispatchTouchEventRequest DispatchTouchEvent(string Type, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Input.TouchPointType> TouchPoints, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default)    
+    public static ChromeProtocol.Domains.Input.DispatchTouchEventRequest DispatchTouchEvent(string Type, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Input.TouchPointType> TouchPoints, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default)
     {
       return new ChromeProtocol.Domains.Input.DispatchTouchEventRequest(Type, TouchPoints, Modifiers, Timestamp);
     }
@@ -463,13 +463,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Timestamp">Time at which the event occurred.</param>
     [ChromeProtocol.Core.MethodName("Input.dispatchTouchEvent")]
     public record DispatchTouchEventRequest(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("touchPoints")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("touchPoints")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Input.TouchPointType> TouchPoints,
-      [property: Newtonsoft.Json.JsonProperty("modifiers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("modifiers")]
       int? Modifiers = default,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default
     ) : ChromeProtocol.Core.ICommand<DispatchTouchEventRequestResult>
     {
@@ -478,7 +478,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Cancels any active dragging in the page.</summary>
-    public static ChromeProtocol.Domains.Input.CancelDraggingRequest CancelDragging()    
+    public static ChromeProtocol.Domains.Input.CancelDraggingRequest CancelDragging()
     {
       return new ChromeProtocol.Domains.Input.CancelDraggingRequest();
     }
@@ -503,7 +503,7 @@ namespace ChromeProtocol.Domains
     /// (default: 0).<br/>
     /// </param>
     /// <param name="ClickCount">Number of times the mouse button was clicked (default: 0).</param>
-    public static ChromeProtocol.Domains.Input.EmulateTouchFromMouseEventRequest EmulateTouchFromMouseEvent(string Type, int X, int Y, ChromeProtocol.Domains.Input.MouseButtonType Button, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, double? DeltaX = default, double? DeltaY = default, int? Modifiers = default, int? ClickCount = default)    
+    public static ChromeProtocol.Domains.Input.EmulateTouchFromMouseEventRequest EmulateTouchFromMouseEvent(string Type, int X, int Y, ChromeProtocol.Domains.Input.MouseButtonType Button, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, double? DeltaX = default, double? DeltaY = default, int? Modifiers = default, int? ClickCount = default)
     {
       return new ChromeProtocol.Domains.Input.EmulateTouchFromMouseEventRequest(Type, X, Y, Button, Timestamp, DeltaX, DeltaY, Modifiers, ClickCount);
     }
@@ -522,23 +522,23 @@ namespace ChromeProtocol.Domains
     /// <param name="ClickCount">Number of times the mouse button was clicked (default: 0).</param>
     [ChromeProtocol.Core.MethodName("Input.emulateTouchFromMouseEvent")]
     public record EmulateTouchFromMouseEventRequest(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       int X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       int Y,
-      [property: Newtonsoft.Json.JsonProperty("button")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("button")]
       ChromeProtocol.Domains.Input.MouseButtonType Button,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default,
-      [property: Newtonsoft.Json.JsonProperty("deltaX")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deltaX")]
       double? DeltaX = default,
-      [property: Newtonsoft.Json.JsonProperty("deltaY")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deltaY")]
       double? DeltaY = default,
-      [property: Newtonsoft.Json.JsonProperty("modifiers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("modifiers")]
       int? Modifiers = default,
-      [property: Newtonsoft.Json.JsonProperty("clickCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("clickCount")]
       int? ClickCount = default
     ) : ChromeProtocol.Core.ICommand<EmulateTouchFromMouseEventRequestResult>
     {
@@ -548,7 +548,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Ignores input events (useful while auditing page).</summary>
     /// <param name="Ignore">Ignores input events processing when set to true.</param>
-    public static ChromeProtocol.Domains.Input.SetIgnoreInputEventsRequest SetIgnoreInputEvents(bool Ignore)    
+    public static ChromeProtocol.Domains.Input.SetIgnoreInputEventsRequest SetIgnoreInputEvents(bool Ignore)
     {
       return new ChromeProtocol.Domains.Input.SetIgnoreInputEventsRequest(Ignore);
     }
@@ -556,7 +556,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Ignore">Ignores input events processing when set to true.</param>
     [ChromeProtocol.Core.MethodName("Input.setIgnoreInputEvents")]
     public record SetIgnoreInputEventsRequest(
-      [property: Newtonsoft.Json.JsonProperty("ignore")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ignore")]
       bool Ignore
     ) : ChromeProtocol.Core.ICommand<SetIgnoreInputEventsRequestResult>
     {
@@ -568,7 +568,7 @@ namespace ChromeProtocol.Domains
     /// Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.<br/>
     /// Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Input.SetInterceptDragsRequest SetInterceptDrags(bool Enabled)    
+    public static ChromeProtocol.Domains.Input.SetInterceptDragsRequest SetInterceptDrags(bool Enabled)
     {
       return new ChromeProtocol.Domains.Input.SetInterceptDragsRequest(Enabled);
     }
@@ -578,7 +578,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("Input.setInterceptDrags")]
     public record SetInterceptDragsRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetInterceptDragsRequestResult>
     {
@@ -595,7 +595,7 @@ namespace ChromeProtocol.Domains
     /// Which type of input events to be generated (default: &#39;default&#39;, which queries the platform<br/>
     /// for the preferred input type).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Input.SynthesizePinchGestureRequest SynthesizePinchGesture(double X, double Y, double ScaleFactor, int? RelativeSpeed = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default)    
+    public static ChromeProtocol.Domains.Input.SynthesizePinchGestureRequest SynthesizePinchGesture(double X, double Y, double ScaleFactor, int? RelativeSpeed = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default)
     {
       return new ChromeProtocol.Domains.Input.SynthesizePinchGestureRequest(X, Y, ScaleFactor, RelativeSpeed, GestureSourceType);
     }
@@ -610,15 +610,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Input.synthesizePinchGesture")]
     public record SynthesizePinchGestureRequest(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("scaleFactor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scaleFactor")]
       double ScaleFactor,
-      [property: Newtonsoft.Json.JsonProperty("relativeSpeed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("relativeSpeed")]
       int? RelativeSpeed = default,
-      [property: Newtonsoft.Json.JsonProperty("gestureSourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gestureSourceType")]
       ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default
     ) : ChromeProtocol.Core.ICommand<SynthesizePinchGestureRequestResult>
     {
@@ -648,7 +648,7 @@ namespace ChromeProtocol.Domains
     /// <param name="RepeatCount">The number of times to repeat the gesture (default: 0).</param>
     /// <param name="RepeatDelayMs">The number of milliseconds delay between each repeat. (default: 250).</param>
     /// <param name="InteractionMarkerName">The name of the interaction markers to generate, if not empty (default: &quot;&quot;).</param>
-    public static ChromeProtocol.Domains.Input.SynthesizeScrollGestureRequest SynthesizeScrollGesture(double X, double Y, double? XDistance = default, double? YDistance = default, double? XOverscroll = default, double? YOverscroll = default, bool? PreventFling = default, int? Speed = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default, int? RepeatCount = default, int? RepeatDelayMs = default, string? InteractionMarkerName = default)    
+    public static ChromeProtocol.Domains.Input.SynthesizeScrollGestureRequest SynthesizeScrollGesture(double X, double Y, double? XDistance = default, double? YDistance = default, double? XOverscroll = default, double? YOverscroll = default, bool? PreventFling = default, int? Speed = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default, int? RepeatCount = default, int? RepeatDelayMs = default, string? InteractionMarkerName = default)
     {
       return new ChromeProtocol.Domains.Input.SynthesizeScrollGestureRequest(X, Y, XDistance, YDistance, XOverscroll, YOverscroll, PreventFling, Speed, GestureSourceType, RepeatCount, RepeatDelayMs, InteractionMarkerName);
     }
@@ -676,29 +676,29 @@ namespace ChromeProtocol.Domains
     /// <param name="InteractionMarkerName">The name of the interaction markers to generate, if not empty (default: &quot;&quot;).</param>
     [ChromeProtocol.Core.MethodName("Input.synthesizeScrollGesture")]
     public record SynthesizeScrollGestureRequest(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("xDistance")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("xDistance")]
       double? XDistance = default,
-      [property: Newtonsoft.Json.JsonProperty("yDistance")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("yDistance")]
       double? YDistance = default,
-      [property: Newtonsoft.Json.JsonProperty("xOverscroll")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("xOverscroll")]
       double? XOverscroll = default,
-      [property: Newtonsoft.Json.JsonProperty("yOverscroll")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("yOverscroll")]
       double? YOverscroll = default,
-      [property: Newtonsoft.Json.JsonProperty("preventFling")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("preventFling")]
       bool? PreventFling = default,
-      [property: Newtonsoft.Json.JsonProperty("speed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("speed")]
       int? Speed = default,
-      [property: Newtonsoft.Json.JsonProperty("gestureSourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gestureSourceType")]
       ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default,
-      [property: Newtonsoft.Json.JsonProperty("repeatCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("repeatCount")]
       int? RepeatCount = default,
-      [property: Newtonsoft.Json.JsonProperty("repeatDelayMs")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("repeatDelayMs")]
       int? RepeatDelayMs = default,
-      [property: Newtonsoft.Json.JsonProperty("interactionMarkerName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("interactionMarkerName")]
       string? InteractionMarkerName = default
     ) : ChromeProtocol.Core.ICommand<SynthesizeScrollGestureRequestResult>
     {
@@ -715,7 +715,7 @@ namespace ChromeProtocol.Domains
     /// Which type of input events to be generated (default: &#39;default&#39;, which queries the platform<br/>
     /// for the preferred input type).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Input.SynthesizeTapGestureRequest SynthesizeTapGesture(double X, double Y, int? Duration = default, int? TapCount = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default)    
+    public static ChromeProtocol.Domains.Input.SynthesizeTapGestureRequest SynthesizeTapGesture(double X, double Y, int? Duration = default, int? TapCount = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default)
     {
       return new ChromeProtocol.Domains.Input.SynthesizeTapGestureRequest(X, Y, Duration, TapCount, GestureSourceType);
     }
@@ -730,15 +730,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Input.synthesizeTapGesture")]
     public record SynthesizeTapGestureRequest(
-      [property: Newtonsoft.Json.JsonProperty("x")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("x")]
       double X,
-      [property: Newtonsoft.Json.JsonProperty("y")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("y")]
       double Y,
-      [property: Newtonsoft.Json.JsonProperty("duration")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("duration")]
       int? Duration = default,
-      [property: Newtonsoft.Json.JsonProperty("tapCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tapCount")]
       int? TapCount = default,
-      [property: Newtonsoft.Json.JsonProperty("gestureSourceType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gestureSourceType")]
       ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default
     ) : ChromeProtocol.Core.ICommand<SynthesizeTapGestureRequestResult>
     {

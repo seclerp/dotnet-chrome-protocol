@@ -13,7 +13,7 @@ namespace ChromeProtocol.Domains
   /// </summary>
   public static partial class CSS
   {
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record StyleSheetIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -24,7 +24,7 @@ namespace ChromeProtocol.Domains
     /// stylesheets, &quot;inspector&quot; for stylesheets created by the inspector (i.e. those holding the &quot;via<br/>
     /// inspector&quot; rules), &quot;regular&quot; for regular stylesheets.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record StyleSheetOriginType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -35,11 +35,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Matches">Matches of CSS rules applicable to the pseudo style.</param>
     /// <param name="PseudoIdentifier">Pseudo element custom ident.</param>
     public record PseudoElementMatchesType(
-      [property: Newtonsoft.Json.JsonProperty("pseudoType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoType")]
       ChromeProtocol.Domains.DOM.PseudoTypeType PseudoType,
-      [property: Newtonsoft.Json.JsonProperty("matches")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("matches")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.RuleMatchType> Matches,
-      [property: Newtonsoft.Json.JsonProperty("pseudoIdentifier")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoIdentifier")]
       string? PseudoIdentifier = default
     ) : ChromeProtocol.Core.IType
     {
@@ -48,9 +48,9 @@ namespace ChromeProtocol.Domains
     /// <param name="MatchedCSSRules">Matches of CSS rules matching the ancestor node in the style inheritance chain.</param>
     /// <param name="InlineStyle">The ancestor node&#39;s inline style, if any, in the style inheritance chain.</param>
     public record InheritedStyleEntryType(
-      [property: Newtonsoft.Json.JsonProperty("matchedCSSRules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("matchedCSSRules")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.RuleMatchType> MatchedCSSRules,
-      [property: Newtonsoft.Json.JsonProperty("inlineStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inlineStyle")]
       ChromeProtocol.Domains.CSS.CSSStyleType? InlineStyle = default
     ) : ChromeProtocol.Core.IType
     {
@@ -58,7 +58,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Inherited pseudo element matches from pseudos of an ancestor node.</summary>
     /// <param name="PseudoElements">Matches of pseudo styles from the pseudos of an ancestor node.</param>
     public record InheritedPseudoElementMatchesType(
-      [property: Newtonsoft.Json.JsonProperty("pseudoElements")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoElements")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.PseudoElementMatchesType> PseudoElements
     ) : ChromeProtocol.Core.IType
     {
@@ -67,9 +67,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Rule">CSS rule in the match.</param>
     /// <param name="MatchingSelectors">Matching selector indices in the rule&#39;s selectorList selectors (0-based).</param>
     public record RuleMatchType(
-      [property: Newtonsoft.Json.JsonProperty("rule")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rule")]
       ChromeProtocol.Domains.CSS.CSSRuleType Rule,
-      [property: Newtonsoft.Json.JsonProperty("matchingSelectors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("matchingSelectors")]
       System.Collections.Generic.IReadOnlyList<int> MatchingSelectors
     ) : ChromeProtocol.Core.IType
     {
@@ -79,11 +79,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Range">Value range in the underlying resource (if available).</param>
     /// <param name="Specificity">Specificity of the selector.</param>
     public record ValueType(
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType? Range = default,
-      [property: Newtonsoft.Json.JsonProperty("specificity")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("specificity")]
       ChromeProtocol.Domains.CSS.SpecificityType? Specificity = default
     ) : ChromeProtocol.Core.IType
     {
@@ -99,11 +99,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="C">The c component, which represents the number of type selectors and pseudo-elements.</param>
     public record SpecificityType(
-      [property: Newtonsoft.Json.JsonProperty("a")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("a")]
       int A,
-      [property: Newtonsoft.Json.JsonProperty("b")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("b")]
       int B,
-      [property: Newtonsoft.Json.JsonProperty("c")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("c")]
       int C
     ) : ChromeProtocol.Core.IType
     {
@@ -112,9 +112,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Selectors">Selectors in the list.</param>
     /// <param name="Text">Rule selector text.</param>
     public record SelectorListType(
-      [property: Newtonsoft.Json.JsonProperty("selectors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selectors")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.ValueType> Selectors,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text
     ) : ChromeProtocol.Core.IType
     {
@@ -154,41 +154,41 @@ namespace ChromeProtocol.Domains
     /// <param name="HasSourceURL">Whether the sourceURL field value comes from the sourceURL comment.</param>
     /// <param name="LoadingFailed">If the style sheet was loaded from a network resource, this indicates when the resource failed to load</param>
     public record CSSStyleSheetHeaderType(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId,
-      [property: Newtonsoft.Json.JsonProperty("sourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceURL")]
       string SourceURL,
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       ChromeProtocol.Domains.CSS.StyleSheetOriginType Origin,
-      [property: Newtonsoft.Json.JsonProperty("title")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("title")]
       string Title,
-      [property: Newtonsoft.Json.JsonProperty("disabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disabled")]
       bool Disabled,
-      [property: Newtonsoft.Json.JsonProperty("isInline")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isInline")]
       bool IsInline,
-      [property: Newtonsoft.Json.JsonProperty("isMutable")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isMutable")]
       bool IsMutable,
-      [property: Newtonsoft.Json.JsonProperty("isConstructed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isConstructed")]
       bool IsConstructed,
-      [property: Newtonsoft.Json.JsonProperty("startLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startLine")]
       double StartLine,
-      [property: Newtonsoft.Json.JsonProperty("startColumn")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startColumn")]
       double StartColumn,
-      [property: Newtonsoft.Json.JsonProperty("length")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("length")]
       double Length,
-      [property: Newtonsoft.Json.JsonProperty("endLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endLine")]
       double EndLine,
-      [property: Newtonsoft.Json.JsonProperty("endColumn")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endColumn")]
       double EndColumn,
-      [property: Newtonsoft.Json.JsonProperty("sourceMapURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceMapURL")]
       string? SourceMapURL = default,
-      [property: Newtonsoft.Json.JsonProperty("ownerNode")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ownerNode")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? OwnerNode = default,
-      [property: Newtonsoft.Json.JsonProperty("hasSourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasSourceURL")]
       bool? HasSourceURL = default,
-      [property: Newtonsoft.Json.JsonProperty("loadingFailed")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loadingFailed")]
       bool? LoadingFailed = default
     ) : ChromeProtocol.Core.IType
     {
@@ -224,27 +224,27 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="RuleTypes">The array keeps the types of ancestor CSSRules from the innermost going outwards.</param>
     public record CSSRuleType(
-      [property: Newtonsoft.Json.JsonProperty("selectorList")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selectorList")]
       ChromeProtocol.Domains.CSS.SelectorListType SelectorList,
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       ChromeProtocol.Domains.CSS.StyleSheetOriginType Origin,
-      [property: Newtonsoft.Json.JsonProperty("style")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("style")]
       ChromeProtocol.Domains.CSS.CSSStyleType Style,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default,
-      [property: Newtonsoft.Json.JsonProperty("nestingSelectors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nestingSelectors")]
       System.Collections.Generic.IReadOnlyList<string>? NestingSelectors = default,
-      [property: Newtonsoft.Json.JsonProperty("media")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("media")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSMediaType>? Media = default,
-      [property: Newtonsoft.Json.JsonProperty("containerQueries")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containerQueries")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSContainerQueryType>? ContainerQueries = default,
-      [property: Newtonsoft.Json.JsonProperty("supports")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("supports")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSSupportsType>? Supports = default,
-      [property: Newtonsoft.Json.JsonProperty("layers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("layers")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSLayerType>? Layers = default,
-      [property: Newtonsoft.Json.JsonProperty("scopes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scopes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSScopeType>? Scopes = default,
-      [property: Newtonsoft.Json.JsonProperty("ruleTypes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ruleTypes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSRuleTypeType>? RuleTypes = default
     ) : ChromeProtocol.Core.IType
     {
@@ -253,7 +253,7 @@ namespace ChromeProtocol.Domains
     /// Enum indicating the type of a CSS rule, used to represent the order of a style rule&#39;s ancestors.<br/>
     /// This list only contains rule types that are collected during the ancestor rule collection.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record CSSRuleTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -268,13 +268,13 @@ namespace ChromeProtocol.Domains
     /// <param name="EndOffset">Offset of the end of the rule body from the beginning of the stylesheet.</param>
     /// <param name="Used">Indicates whether the rule was actually used by some element in the page.</param>
     public record RuleUsageType(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("startOffset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startOffset")]
       double StartOffset,
-      [property: Newtonsoft.Json.JsonProperty("endOffset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endOffset")]
       double EndOffset,
-      [property: Newtonsoft.Json.JsonProperty("used")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("used")]
       bool Used
     ) : ChromeProtocol.Core.IType
     {
@@ -285,13 +285,13 @@ namespace ChromeProtocol.Domains
     /// <param name="EndLine">End line of range</param>
     /// <param name="EndColumn">End column of range (exclusive).</param>
     public record SourceRangeType(
-      [property: Newtonsoft.Json.JsonProperty("startLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startLine")]
       int StartLine,
-      [property: Newtonsoft.Json.JsonProperty("startColumn")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("startColumn")]
       int StartColumn,
-      [property: Newtonsoft.Json.JsonProperty("endLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endLine")]
       int EndLine,
-      [property: Newtonsoft.Json.JsonProperty("endColumn")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("endColumn")]
       int EndColumn
     ) : ChromeProtocol.Core.IType
     {
@@ -300,11 +300,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Value">Shorthand value.</param>
     /// <param name="Important">Whether the property has &quot;!important&quot; annotation (implies `false` if absent).</param>
     public record ShorthandEntryType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value,
-      [property: Newtonsoft.Json.JsonProperty("important")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("important")]
       bool? Important = default
     ) : ChromeProtocol.Core.IType
     {
@@ -312,9 +312,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Computed style property name.</param>
     /// <param name="Value">Computed style property value.</param>
     public record CSSComputedStylePropertyType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.IType
     {
@@ -329,15 +329,15 @@ namespace ChromeProtocol.Domains
     /// <param name="CssText">Style declaration text (if available).</param>
     /// <param name="Range">Style declaration range in the enclosing stylesheet (if available).</param>
     public record CSSStyleType(
-      [property: Newtonsoft.Json.JsonProperty("cssProperties")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssProperties")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSPropertyType> CssProperties,
-      [property: Newtonsoft.Json.JsonProperty("shorthandEntries")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("shorthandEntries")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.ShorthandEntryType> ShorthandEntries,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default,
-      [property: Newtonsoft.Json.JsonProperty("cssText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssText")]
       string? CssText = default,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType? Range = default
     ) : ChromeProtocol.Core.IType
     {
@@ -356,23 +356,23 @@ namespace ChromeProtocol.Domains
     /// This field will be empty if the given property is not a shorthand.<br/>
     /// </param>
     public record CSSPropertyType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value,
-      [property: Newtonsoft.Json.JsonProperty("important")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("important")]
       bool? Important = default,
-      [property: Newtonsoft.Json.JsonProperty("implicit")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("implicit")]
       bool? Implicit = default,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string? Text = default,
-      [property: Newtonsoft.Json.JsonProperty("parsedOk")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parsedOk")]
       bool? ParsedOk = default,
-      [property: Newtonsoft.Json.JsonProperty("disabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disabled")]
       bool? Disabled = default,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType? Range = default,
-      [property: Newtonsoft.Json.JsonProperty("longhandProperties")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("longhandProperties")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSPropertyType>? LonghandProperties = default
     ) : ChromeProtocol.Core.IType
     {
@@ -393,17 +393,17 @@ namespace ChromeProtocol.Domains
     /// <param name="StyleSheetId">Identifier of the stylesheet containing this object (if exists).</param>
     /// <param name="MediaList">Array of media queries.</param>
     public record CSSMediaType(
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("source")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
       string Source,
-      [property: Newtonsoft.Json.JsonProperty("sourceURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceURL")]
       string? SourceURL = default,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType? Range = default,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default,
-      [property: Newtonsoft.Json.JsonProperty("mediaList")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mediaList")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.MediaQueryType>? MediaList = default
     ) : ChromeProtocol.Core.IType
     {
@@ -412,9 +412,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Expressions">Array of media query expressions.</param>
     /// <param name="Active">Whether the media query condition is satisfied.</param>
     public record MediaQueryType(
-      [property: Newtonsoft.Json.JsonProperty("expressions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("expressions")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.MediaQueryExpressionType> Expressions,
-      [property: Newtonsoft.Json.JsonProperty("active")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("active")]
       bool Active
     ) : ChromeProtocol.Core.IType
     {
@@ -426,15 +426,15 @@ namespace ChromeProtocol.Domains
     /// <param name="ValueRange">The associated range of the value text in the enclosing stylesheet (if available).</param>
     /// <param name="ComputedLength">Computed length of media query expression (if applicable).</param>
     public record MediaQueryExpressionType(
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       double Value,
-      [property: Newtonsoft.Json.JsonProperty("unit")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("unit")]
       string Unit,
-      [property: Newtonsoft.Json.JsonProperty("feature")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("feature")]
       string Feature,
-      [property: Newtonsoft.Json.JsonProperty("valueRange")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("valueRange")]
       ChromeProtocol.Domains.CSS.SourceRangeType? ValueRange = default,
-      [property: Newtonsoft.Json.JsonProperty("computedLength")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("computedLength")]
       double? ComputedLength = default
     ) : ChromeProtocol.Core.IType
     {
@@ -450,17 +450,17 @@ namespace ChromeProtocol.Domains
     /// <param name="PhysicalAxes">Optional physical axes queried for the container.</param>
     /// <param name="LogicalAxes">Optional logical axes queried for the container.</param>
     public record CSSContainerQueryType(
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType? Range = default,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string? Name = default,
-      [property: Newtonsoft.Json.JsonProperty("physicalAxes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("physicalAxes")]
       ChromeProtocol.Domains.DOM.PhysicalAxesType? PhysicalAxes = default,
-      [property: Newtonsoft.Json.JsonProperty("logicalAxes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("logicalAxes")]
       ChromeProtocol.Domains.DOM.LogicalAxesType? LogicalAxes = default
     ) : ChromeProtocol.Core.IType
     {
@@ -474,13 +474,13 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StyleSheetId">Identifier of the stylesheet containing this object (if exists).</param>
     public record CSSSupportsType(
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("active")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("active")]
       bool Active,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType? Range = default,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -493,11 +493,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StyleSheetId">Identifier of the stylesheet containing this object (if exists).</param>
     public record CSSScopeType(
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType? Range = default,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -510,11 +510,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StyleSheetId">Identifier of the stylesheet containing this object (if exists).</param>
     public record CSSLayerType(
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType? Range = default,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -527,11 +527,11 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="SubLayers">Direct sub-layers</param>
     public record CSSLayerDataType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("order")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("order")]
       double Order,
-      [property: Newtonsoft.Json.JsonProperty("subLayers")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subLayers")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSLayerDataType>? SubLayers = default
     ) : ChromeProtocol.Core.IType
     {
@@ -542,13 +542,13 @@ namespace ChromeProtocol.Domains
     /// <param name="IsCustomFont">Indicates if the font was downloaded or resolved locally.</param>
     /// <param name="GlyphCount">Amount of glyphs that were rendered with this font.</param>
     public record PlatformFontUsageType(
-      [property: Newtonsoft.Json.JsonProperty("familyName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("familyName")]
       string FamilyName,
-      [property: Newtonsoft.Json.JsonProperty("postScriptName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("postScriptName")]
       string PostScriptName,
-      [property: Newtonsoft.Json.JsonProperty("isCustomFont")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("isCustomFont")]
       bool IsCustomFont,
-      [property: Newtonsoft.Json.JsonProperty("glyphCount")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("glyphCount")]
       double GlyphCount
     ) : ChromeProtocol.Core.IType
     {
@@ -560,15 +560,15 @@ namespace ChromeProtocol.Domains
     /// <param name="MaxValue">The maximum value (inclusive) the font supports for this tag.</param>
     /// <param name="DefaultValue">The default value.</param>
     public record FontVariationAxisType(
-      [property: Newtonsoft.Json.JsonProperty("tag")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tag")]
       string Tag,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("minValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("minValue")]
       double MinValue,
-      [property: Newtonsoft.Json.JsonProperty("maxValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxValue")]
       double MaxValue,
-      [property: Newtonsoft.Json.JsonProperty("defaultValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("defaultValue")]
       double DefaultValue
     ) : ChromeProtocol.Core.IType
     {
@@ -588,25 +588,25 @@ namespace ChromeProtocol.Domains
     /// <param name="PlatformFontFamily">The resolved platform font family</param>
     /// <param name="FontVariationAxes">Available variation settings (a.k.a. &quot;axes&quot;).</param>
     public record FontFaceType(
-      [property: Newtonsoft.Json.JsonProperty("fontFamily")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontFamily")]
       string FontFamily,
-      [property: Newtonsoft.Json.JsonProperty("fontStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontStyle")]
       string FontStyle,
-      [property: Newtonsoft.Json.JsonProperty("fontVariant")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontVariant")]
       string FontVariant,
-      [property: Newtonsoft.Json.JsonProperty("fontWeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontWeight")]
       string FontWeight,
-      [property: Newtonsoft.Json.JsonProperty("fontStretch")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontStretch")]
       string FontStretch,
-      [property: Newtonsoft.Json.JsonProperty("fontDisplay")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontDisplay")]
       string FontDisplay,
-      [property: Newtonsoft.Json.JsonProperty("unicodeRange")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("unicodeRange")]
       string UnicodeRange,
-      [property: Newtonsoft.Json.JsonProperty("src")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("src")]
       string Src,
-      [property: Newtonsoft.Json.JsonProperty("platformFontFamily")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("platformFontFamily")]
       string PlatformFontFamily,
-      [property: Newtonsoft.Json.JsonProperty("fontVariationAxes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontVariationAxes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.FontVariationAxisType>? FontVariationAxes = default
     ) : ChromeProtocol.Core.IType
     {
@@ -619,11 +619,11 @@ namespace ChromeProtocol.Domains
     /// stylesheet rules) this rule came from.<br/>
     /// </param>
     public record CSSTryRuleType(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       ChromeProtocol.Domains.CSS.StyleSheetOriginType Origin,
-      [property: Newtonsoft.Json.JsonProperty("style")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("style")]
       ChromeProtocol.Domains.CSS.CSSStyleType Style,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -631,9 +631,9 @@ namespace ChromeProtocol.Domains
     /// <summary>CSS position-fallback rule representation.</summary>
     /// <param name="TryRules">List of keyframes.</param>
     public record CSSPositionFallbackRuleType(
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       ChromeProtocol.Domains.CSS.ValueType Name,
-      [property: Newtonsoft.Json.JsonProperty("tryRules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tryRules")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSTryRuleType> TryRules
     ) : ChromeProtocol.Core.IType
     {
@@ -642,22 +642,22 @@ namespace ChromeProtocol.Domains
     /// <param name="AnimationName">Animation name.</param>
     /// <param name="Keyframes">List of keyframes.</param>
     public record CSSKeyframesRuleType(
-      [property: Newtonsoft.Json.JsonProperty("animationName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("animationName")]
       ChromeProtocol.Domains.CSS.ValueType AnimationName,
-      [property: Newtonsoft.Json.JsonProperty("keyframes")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyframes")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSKeyframeRuleType> Keyframes
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Representation of a custom property registration through CSS.registerProperty</summary>
     public record CSSPropertyRegistrationType(
-      [property: Newtonsoft.Json.JsonProperty("propertyName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("propertyName")]
       string PropertyName,
-      [property: Newtonsoft.Json.JsonProperty("inherits")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inherits")]
       bool Inherits,
-      [property: Newtonsoft.Json.JsonProperty("syntax")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("syntax")]
       string Syntax,
-      [property: Newtonsoft.Json.JsonProperty("initialValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initialValue")]
       ChromeProtocol.Domains.CSS.ValueType? InitialValue = default
     ) : ChromeProtocol.Core.IType
     {
@@ -671,13 +671,13 @@ namespace ChromeProtocol.Domains
     /// stylesheet rules) this rule came from.<br/>
     /// </param>
     public record CSSFontPaletteValuesRuleType(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       ChromeProtocol.Domains.CSS.StyleSheetOriginType Origin,
-      [property: Newtonsoft.Json.JsonProperty("fontPaletteName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fontPaletteName")]
       ChromeProtocol.Domains.CSS.ValueType FontPaletteName,
-      [property: Newtonsoft.Json.JsonProperty("style")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("style")]
       ChromeProtocol.Domains.CSS.CSSStyleType Style,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -691,13 +691,13 @@ namespace ChromeProtocol.Domains
     /// stylesheet rules) this rule came from.<br/>
     /// </param>
     public record CSSPropertyRuleType(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       ChromeProtocol.Domains.CSS.StyleSheetOriginType Origin,
-      [property: Newtonsoft.Json.JsonProperty("propertyName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("propertyName")]
       ChromeProtocol.Domains.CSS.ValueType PropertyName,
-      [property: Newtonsoft.Json.JsonProperty("style")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("style")]
       ChromeProtocol.Domains.CSS.CSSStyleType Style,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -711,13 +711,13 @@ namespace ChromeProtocol.Domains
     /// stylesheet rules) this rule came from.<br/>
     /// </param>
     public record CSSKeyframeRuleType(
-      [property: Newtonsoft.Json.JsonProperty("origin")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
       ChromeProtocol.Domains.CSS.StyleSheetOriginType Origin,
-      [property: Newtonsoft.Json.JsonProperty("keyText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyText")]
       ChromeProtocol.Domains.CSS.ValueType KeyText,
-      [property: Newtonsoft.Json.JsonProperty("style")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("style")]
       ChromeProtocol.Domains.CSS.CSSStyleType Style,
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default
     ) : ChromeProtocol.Core.IType
     {
@@ -727,11 +727,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Range">The range of the style text in the enclosing stylesheet.</param>
     /// <param name="Text">New style text.</param>
     public record StyleDeclarationEditType(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType Range,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text
     ) : ChromeProtocol.Core.IType
     {
@@ -743,7 +743,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Font">The web font that has loaded.</param>
     [ChromeProtocol.Core.MethodName("CSS.fontsUpdated")]
     public record FontsUpdated(
-      [property: Newtonsoft.Json.JsonProperty("font")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("font")]
       ChromeProtocol.Domains.CSS.FontFaceType? Font = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -760,7 +760,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Header">Added stylesheet metainfo.</param>
     [ChromeProtocol.Core.MethodName("CSS.styleSheetAdded")]
     public record StyleSheetAdded(
-      [property: Newtonsoft.Json.JsonProperty("header")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("header")]
       ChromeProtocol.Domains.CSS.CSSStyleSheetHeaderType Header
     ) : ChromeProtocol.Core.IEvent
     {
@@ -768,7 +768,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Fired whenever a stylesheet is changed as a result of the client operation.</summary>
     [ChromeProtocol.Core.MethodName("CSS.styleSheetChanged")]
     public record StyleSheetChanged(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -777,7 +777,7 @@ namespace ChromeProtocol.Domains
     /// <param name="StyleSheetId">Identifier of the removed stylesheet.</param>
     [ChromeProtocol.Core.MethodName("CSS.styleSheetRemoved")]
     public record StyleSheetRemoved(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -794,7 +794,7 @@ namespace ChromeProtocol.Domains
     /// validated. If omitted, declarations in the new rule text can only be validated statically, which may produce<br/>
     /// incorrect results if the declaration contains a var() for example.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.CSS.AddRuleRequest AddRule(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, string RuleText, ChromeProtocol.Domains.CSS.SourceRangeType Location, ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default)    
+    public static ChromeProtocol.Domains.CSS.AddRuleRequest AddRule(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, string RuleText, ChromeProtocol.Domains.CSS.SourceRangeType Location, ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default)
     {
       return new ChromeProtocol.Domains.CSS.AddRuleRequest(StyleSheetId, RuleText, Location, NodeForPropertySyntaxValidation);
     }
@@ -812,47 +812,47 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("CSS.addRule")]
     public record AddRuleRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("ruleText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ruleText")]
       string RuleText,
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.CSS.SourceRangeType Location,
-      [property: Newtonsoft.Json.JsonProperty("nodeForPropertySyntaxValidation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeForPropertySyntaxValidation")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default
     ) : ChromeProtocol.Core.ICommand<AddRuleRequestResult>
     {
     }
     /// <param name="Rule">The newly created rule.</param>
     public record AddRuleRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("rule")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rule")]
       ChromeProtocol.Domains.CSS.CSSRuleType Rule
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns all class names from specified stylesheet.</summary>
-    public static ChromeProtocol.Domains.CSS.CollectClassNamesRequest CollectClassNames(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId)    
+    public static ChromeProtocol.Domains.CSS.CollectClassNamesRequest CollectClassNames(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId)
     {
       return new ChromeProtocol.Domains.CSS.CollectClassNamesRequest(StyleSheetId);
     }
     /// <summary>Returns all class names from specified stylesheet.</summary>
     [ChromeProtocol.Core.MethodName("CSS.collectClassNames")]
     public record CollectClassNamesRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId
     ) : ChromeProtocol.Core.ICommand<CollectClassNamesRequestResult>
     {
     }
     /// <param name="ClassNames">Class name list.</param>
     public record CollectClassNamesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("classNames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("classNames")]
       System.Collections.Generic.IReadOnlyList<string> ClassNames
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Creates a new special &quot;via-inspector&quot; stylesheet in the frame with given `frameId`.</summary>
     /// <param name="FrameId">Identifier of the frame where &quot;via-inspector&quot; stylesheet should be created.</param>
-    public static ChromeProtocol.Domains.CSS.CreateStyleSheetRequest CreateStyleSheet(ChromeProtocol.Domains.Page.FrameIdType FrameId)    
+    public static ChromeProtocol.Domains.CSS.CreateStyleSheetRequest CreateStyleSheet(ChromeProtocol.Domains.Page.FrameIdType FrameId)
     {
       return new ChromeProtocol.Domains.CSS.CreateStyleSheetRequest(FrameId);
     }
@@ -860,20 +860,20 @@ namespace ChromeProtocol.Domains
     /// <param name="FrameId">Identifier of the frame where &quot;via-inspector&quot; stylesheet should be created.</param>
     [ChromeProtocol.Core.MethodName("CSS.createStyleSheet")]
     public record CreateStyleSheetRequest(
-      [property: Newtonsoft.Json.JsonProperty("frameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("frameId")]
       ChromeProtocol.Domains.Page.FrameIdType FrameId
     ) : ChromeProtocol.Core.ICommand<CreateStyleSheetRequestResult>
     {
     }
     /// <param name="StyleSheetId">Identifier of the created &quot;via-inspector&quot; stylesheet.</param>
     public record CreateStyleSheetRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Disables the CSS agent for the given page.</summary>
-    public static ChromeProtocol.Domains.CSS.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.CSS.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.CSS.DisableRequest();
     }
@@ -889,7 +889,7 @@ namespace ChromeProtocol.Domains
     /// Enables the CSS agent for the given page. Clients should not assume that the CSS agent has been<br/>
     /// enabled until the result of this command is received.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.CSS.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.CSS.EnableRequest();
     }
@@ -910,7 +910,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     /// <param name="NodeId">The element id for which to force the pseudo state.</param>
     /// <param name="ForcedPseudoClasses">Element pseudo classes to force when computing the element&#39;s style.</param>
-    public static ChromeProtocol.Domains.CSS.ForcePseudoStateRequest ForcePseudoState(ChromeProtocol.Domains.DOM.NodeIdType NodeId, System.Collections.Generic.IReadOnlyList<string> ForcedPseudoClasses)    
+    public static ChromeProtocol.Domains.CSS.ForcePseudoStateRequest ForcePseudoState(ChromeProtocol.Domains.DOM.NodeIdType NodeId, System.Collections.Generic.IReadOnlyList<string> ForcedPseudoClasses)
     {
       return new ChromeProtocol.Domains.CSS.ForcePseudoStateRequest(NodeId, ForcedPseudoClasses);
     }
@@ -922,9 +922,9 @@ namespace ChromeProtocol.Domains
     /// <param name="ForcedPseudoClasses">Element pseudo classes to force when computing the element&#39;s style.</param>
     [ChromeProtocol.Core.MethodName("CSS.forcePseudoState")]
     public record ForcePseudoStateRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("forcedPseudoClasses")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("forcedPseudoClasses")]
       System.Collections.Generic.IReadOnlyList<string> ForcedPseudoClasses
     ) : ChromeProtocol.Core.ICommand<ForcePseudoStateRequestResult>
     {
@@ -933,14 +933,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="NodeId">Id of the node to get background colors for.</param>
-    public static ChromeProtocol.Domains.CSS.GetBackgroundColorsRequest GetBackgroundColors(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.CSS.GetBackgroundColorsRequest GetBackgroundColors(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.CSS.GetBackgroundColorsRequest(NodeId);
     }
     /// <param name="NodeId">Id of the node to get background colors for.</param>
     [ChromeProtocol.Core.MethodName("CSS.getBackgroundColors")]
     public record GetBackgroundColorsRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetBackgroundColorsRequestResult>
     {
@@ -958,31 +958,31 @@ namespace ChromeProtocol.Domains
     /// &#39;100&#39;).<br/>
     /// </param>
     public record GetBackgroundColorsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("backgroundColors")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backgroundColors")]
       System.Collections.Generic.IReadOnlyList<string>? BackgroundColors = default,
-      [property: Newtonsoft.Json.JsonProperty("computedFontSize")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("computedFontSize")]
       string? ComputedFontSize = default,
-      [property: Newtonsoft.Json.JsonProperty("computedFontWeight")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("computedFontWeight")]
       string? ComputedFontWeight = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns the computed style for a DOM node identified by `nodeId`.</summary>
-    public static ChromeProtocol.Domains.CSS.GetComputedStyleForNodeRequest GetComputedStyleForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.CSS.GetComputedStyleForNodeRequest GetComputedStyleForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.CSS.GetComputedStyleForNodeRequest(NodeId);
     }
     /// <summary>Returns the computed style for a DOM node identified by `nodeId`.</summary>
     [ChromeProtocol.Core.MethodName("CSS.getComputedStyleForNode")]
     public record GetComputedStyleForNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetComputedStyleForNodeRequestResult>
     {
     }
     /// <param name="ComputedStyle">Computed style for the specified DOM node.</param>
     public record GetComputedStyleForNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("computedStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("computedStyle")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSComputedStylePropertyType> ComputedStyle
     ) : ChromeProtocol.Core.IType
     {
@@ -991,7 +991,7 @@ namespace ChromeProtocol.Domains
     /// Returns the styles defined inline (explicitly in the &quot;style&quot; attribute and implicitly, using DOM<br/>
     /// attributes) for a DOM node identified by `nodeId`.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.GetInlineStylesForNodeRequest GetInlineStylesForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.CSS.GetInlineStylesForNodeRequest GetInlineStylesForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.CSS.GetInlineStylesForNodeRequest(NodeId);
     }
@@ -1001,7 +1001,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("CSS.getInlineStylesForNode")]
     public record GetInlineStylesForNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetInlineStylesForNodeRequestResult>
     {
@@ -1009,22 +1009,22 @@ namespace ChromeProtocol.Domains
     /// <param name="InlineStyle">Inline style for the specified DOM node.</param>
     /// <param name="AttributesStyle">Attribute-defined element style (e.g. resulting from &quot;width=20 height=100%&quot;).</param>
     public record GetInlineStylesForNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("inlineStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inlineStyle")]
       ChromeProtocol.Domains.CSS.CSSStyleType? InlineStyle = default,
-      [property: Newtonsoft.Json.JsonProperty("attributesStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attributesStyle")]
       ChromeProtocol.Domains.CSS.CSSStyleType? AttributesStyle = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns requested styles for a DOM node identified by `nodeId`.</summary>
-    public static ChromeProtocol.Domains.CSS.GetMatchedStylesForNodeRequest GetMatchedStylesForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.CSS.GetMatchedStylesForNodeRequest GetMatchedStylesForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.CSS.GetMatchedStylesForNodeRequest(NodeId);
     }
     /// <summary>Returns requested styles for a DOM node identified by `nodeId`.</summary>
     [ChromeProtocol.Core.MethodName("CSS.getMatchedStylesForNode")]
     public record GetMatchedStylesForNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetMatchedStylesForNodeRequestResult>
     {
@@ -1042,35 +1042,35 @@ namespace ChromeProtocol.Domains
     /// <param name="CssFontPaletteValuesRule">A font-palette-values rule matching this node.</param>
     /// <param name="ParentLayoutNodeId">Id of the first parent element that does not have display: contents.</param>
     public record GetMatchedStylesForNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("inlineStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inlineStyle")]
       ChromeProtocol.Domains.CSS.CSSStyleType? InlineStyle = default,
-      [property: Newtonsoft.Json.JsonProperty("attributesStyle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("attributesStyle")]
       ChromeProtocol.Domains.CSS.CSSStyleType? AttributesStyle = default,
-      [property: Newtonsoft.Json.JsonProperty("matchedCSSRules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("matchedCSSRules")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.RuleMatchType>? MatchedCSSRules = default,
-      [property: Newtonsoft.Json.JsonProperty("pseudoElements")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("pseudoElements")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.PseudoElementMatchesType>? PseudoElements = default,
-      [property: Newtonsoft.Json.JsonProperty("inherited")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inherited")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.InheritedStyleEntryType>? Inherited = default,
-      [property: Newtonsoft.Json.JsonProperty("inheritedPseudoElements")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("inheritedPseudoElements")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.InheritedPseudoElementMatchesType>? InheritedPseudoElements = default,
-      [property: Newtonsoft.Json.JsonProperty("cssKeyframesRules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssKeyframesRules")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSKeyframesRuleType>? CssKeyframesRules = default,
-      [property: Newtonsoft.Json.JsonProperty("cssPositionFallbackRules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssPositionFallbackRules")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSPositionFallbackRuleType>? CssPositionFallbackRules = default,
-      [property: Newtonsoft.Json.JsonProperty("cssPropertyRules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssPropertyRules")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSPropertyRuleType>? CssPropertyRules = default,
-      [property: Newtonsoft.Json.JsonProperty("cssPropertyRegistrations")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssPropertyRegistrations")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSPropertyRegistrationType>? CssPropertyRegistrations = default,
-      [property: Newtonsoft.Json.JsonProperty("cssFontPaletteValuesRule")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssFontPaletteValuesRule")]
       ChromeProtocol.Domains.CSS.CSSFontPaletteValuesRuleType? CssFontPaletteValuesRule = default,
-      [property: Newtonsoft.Json.JsonProperty("parentLayoutNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("parentLayoutNodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType? ParentLayoutNodeId = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns all media queries parsed by the rendering engine.</summary>
-    public static ChromeProtocol.Domains.CSS.GetMediaQueriesRequest GetMediaQueries()    
+    public static ChromeProtocol.Domains.CSS.GetMediaQueriesRequest GetMediaQueries()
     {
       return new ChromeProtocol.Domains.CSS.GetMediaQueriesRequest();
     }
@@ -1080,7 +1080,7 @@ namespace ChromeProtocol.Domains
     {
     }
     public record GetMediaQueriesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("medias")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("medias")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSMediaType> Medias
     ) : ChromeProtocol.Core.IType
     {
@@ -1089,7 +1089,7 @@ namespace ChromeProtocol.Domains
     /// Requests information about platform fonts which we used to render child TextNodes in the given<br/>
     /// node.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.GetPlatformFontsForNodeRequest GetPlatformFontsForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.CSS.GetPlatformFontsForNodeRequest GetPlatformFontsForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.CSS.GetPlatformFontsForNodeRequest(NodeId);
     }
@@ -1099,34 +1099,34 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("CSS.getPlatformFontsForNode")]
     public record GetPlatformFontsForNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetPlatformFontsForNodeRequestResult>
     {
     }
     /// <param name="Fonts">Usage statistics for every employed platform font.</param>
     public record GetPlatformFontsForNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("fonts")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("fonts")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.PlatformFontUsageType> Fonts
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns the current textual content for a stylesheet.</summary>
-    public static ChromeProtocol.Domains.CSS.GetStyleSheetTextRequest GetStyleSheetText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId)    
+    public static ChromeProtocol.Domains.CSS.GetStyleSheetTextRequest GetStyleSheetText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId)
     {
       return new ChromeProtocol.Domains.CSS.GetStyleSheetTextRequest(StyleSheetId);
     }
     /// <summary>Returns the current textual content for a stylesheet.</summary>
     [ChromeProtocol.Core.MethodName("CSS.getStyleSheetText")]
     public record GetStyleSheetTextRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId
     ) : ChromeProtocol.Core.ICommand<GetStyleSheetTextRequestResult>
     {
     }
     /// <param name="Text">The stylesheet text.</param>
     public record GetStyleSheetTextRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text
     ) : ChromeProtocol.Core.IType
     {
@@ -1137,7 +1137,7 @@ namespace ChromeProtocol.Domains
     /// layer for the nearest ancestor document or shadow root. The layer root contains<br/>
     /// the full layer tree for the tree scope and their ordering.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.GetLayersForNodeRequest GetLayersForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
+    public static ChromeProtocol.Domains.CSS.GetLayersForNodeRequest GetLayersForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
     {
       return new ChromeProtocol.Domains.CSS.GetLayersForNodeRequest(NodeId);
     }
@@ -1149,13 +1149,13 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("CSS.getLayersForNode")]
     public record GetLayersForNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId
     ) : ChromeProtocol.Core.ICommand<GetLayersForNodeRequestResult>
     {
     }
     public record GetLayersForNodeRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("rootLayer")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("rootLayer")]
       ChromeProtocol.Domains.CSS.CSSLayerDataType RootLayer
     ) : ChromeProtocol.Core.IType
     {
@@ -1168,7 +1168,7 @@ namespace ChromeProtocol.Domains
     /// by the DOM agent. If no changes to the tracked properties occur after the node has been pushed<br/>
     /// to the front-end, no updates will be issued for the node.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.TrackComputedStyleUpdatesRequest TrackComputedStyleUpdates(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSComputedStylePropertyType> PropertiesToTrack)    
+    public static ChromeProtocol.Domains.CSS.TrackComputedStyleUpdatesRequest TrackComputedStyleUpdates(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSComputedStylePropertyType> PropertiesToTrack)
     {
       return new ChromeProtocol.Domains.CSS.TrackComputedStyleUpdatesRequest(PropertiesToTrack);
     }
@@ -1182,7 +1182,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("CSS.trackComputedStyleUpdates")]
     public record TrackComputedStyleUpdatesRequest(
-      [property: Newtonsoft.Json.JsonProperty("propertiesToTrack")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("propertiesToTrack")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSComputedStylePropertyType> PropertiesToTrack
     ) : ChromeProtocol.Core.ICommand<TrackComputedStyleUpdatesRequestResult>
     {
@@ -1191,7 +1191,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Polls the next batch of computed style updates.</summary>
-    public static ChromeProtocol.Domains.CSS.TakeComputedStyleUpdatesRequest TakeComputedStyleUpdates()    
+    public static ChromeProtocol.Domains.CSS.TakeComputedStyleUpdatesRequest TakeComputedStyleUpdates()
     {
       return new ChromeProtocol.Domains.CSS.TakeComputedStyleUpdatesRequest();
     }
@@ -1202,7 +1202,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="NodeIds">The list of node Ids that have their tracked computed styles updated.</param>
     public record TakeComputedStyleUpdatesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds
     ) : ChromeProtocol.Core.IType
     {
@@ -1212,7 +1212,7 @@ namespace ChromeProtocol.Domains
     /// property<br/>
     /// </summary>
     /// <param name="NodeId">The element id for which to set property.</param>
-    public static ChromeProtocol.Domains.CSS.SetEffectivePropertyValueForNodeRequest SetEffectivePropertyValueForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string PropertyName, string Value)    
+    public static ChromeProtocol.Domains.CSS.SetEffectivePropertyValueForNodeRequest SetEffectivePropertyValueForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string PropertyName, string Value)
     {
       return new ChromeProtocol.Domains.CSS.SetEffectivePropertyValueForNodeRequest(NodeId, PropertyName, Value);
     }
@@ -1223,11 +1223,11 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">The element id for which to set property.</param>
     [ChromeProtocol.Core.MethodName("CSS.setEffectivePropertyValueForNode")]
     public record SetEffectivePropertyValueForNodeRequest(
-      [property: Newtonsoft.Json.JsonProperty("nodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeId")]
       ChromeProtocol.Domains.DOM.NodeIdType NodeId,
-      [property: Newtonsoft.Json.JsonProperty("propertyName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("propertyName")]
       string PropertyName,
-      [property: Newtonsoft.Json.JsonProperty("value")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("value")]
       string Value
     ) : ChromeProtocol.Core.ICommand<SetEffectivePropertyValueForNodeRequestResult>
     {
@@ -1236,191 +1236,191 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Modifies the property rule property name.</summary>
-    public static ChromeProtocol.Domains.CSS.SetPropertyRulePropertyNameRequest SetPropertyRulePropertyName(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string PropertyName)    
+    public static ChromeProtocol.Domains.CSS.SetPropertyRulePropertyNameRequest SetPropertyRulePropertyName(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string PropertyName)
     {
       return new ChromeProtocol.Domains.CSS.SetPropertyRulePropertyNameRequest(StyleSheetId, Range, PropertyName);
     }
     /// <summary>Modifies the property rule property name.</summary>
     [ChromeProtocol.Core.MethodName("CSS.setPropertyRulePropertyName")]
     public record SetPropertyRulePropertyNameRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType Range,
-      [property: Newtonsoft.Json.JsonProperty("propertyName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("propertyName")]
       string PropertyName
     ) : ChromeProtocol.Core.ICommand<SetPropertyRulePropertyNameRequestResult>
     {
     }
     /// <param name="PropertyName">The resulting key text after modification.</param>
     public record SetPropertyRulePropertyNameRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("propertyName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("propertyName")]
       ChromeProtocol.Domains.CSS.ValueType PropertyName
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Modifies the keyframe rule key text.</summary>
-    public static ChromeProtocol.Domains.CSS.SetKeyframeKeyRequest SetKeyframeKey(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string KeyText)    
+    public static ChromeProtocol.Domains.CSS.SetKeyframeKeyRequest SetKeyframeKey(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string KeyText)
     {
       return new ChromeProtocol.Domains.CSS.SetKeyframeKeyRequest(StyleSheetId, Range, KeyText);
     }
     /// <summary>Modifies the keyframe rule key text.</summary>
     [ChromeProtocol.Core.MethodName("CSS.setKeyframeKey")]
     public record SetKeyframeKeyRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType Range,
-      [property: Newtonsoft.Json.JsonProperty("keyText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyText")]
       string KeyText
     ) : ChromeProtocol.Core.ICommand<SetKeyframeKeyRequestResult>
     {
     }
     /// <param name="KeyText">The resulting key text after modification.</param>
     public record SetKeyframeKeyRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("keyText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("keyText")]
       ChromeProtocol.Domains.CSS.ValueType KeyText
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Modifies the rule selector.</summary>
-    public static ChromeProtocol.Domains.CSS.SetMediaTextRequest SetMediaText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)    
+    public static ChromeProtocol.Domains.CSS.SetMediaTextRequest SetMediaText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)
     {
       return new ChromeProtocol.Domains.CSS.SetMediaTextRequest(StyleSheetId, Range, Text);
     }
     /// <summary>Modifies the rule selector.</summary>
     [ChromeProtocol.Core.MethodName("CSS.setMediaText")]
     public record SetMediaTextRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType Range,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text
     ) : ChromeProtocol.Core.ICommand<SetMediaTextRequestResult>
     {
     }
     /// <param name="Media">The resulting CSS media rule after modification.</param>
     public record SetMediaTextRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("media")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("media")]
       ChromeProtocol.Domains.CSS.CSSMediaType Media
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Modifies the expression of a container query.</summary>
-    public static ChromeProtocol.Domains.CSS.SetContainerQueryTextRequest SetContainerQueryText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)    
+    public static ChromeProtocol.Domains.CSS.SetContainerQueryTextRequest SetContainerQueryText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)
     {
       return new ChromeProtocol.Domains.CSS.SetContainerQueryTextRequest(StyleSheetId, Range, Text);
     }
     /// <summary>Modifies the expression of a container query.</summary>
     [ChromeProtocol.Core.MethodName("CSS.setContainerQueryText")]
     public record SetContainerQueryTextRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType Range,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text
     ) : ChromeProtocol.Core.ICommand<SetContainerQueryTextRequestResult>
     {
     }
     /// <param name="ContainerQuery">The resulting CSS container query rule after modification.</param>
     public record SetContainerQueryTextRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("containerQuery")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("containerQuery")]
       ChromeProtocol.Domains.CSS.CSSContainerQueryType ContainerQuery
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Modifies the expression of a supports at-rule.</summary>
-    public static ChromeProtocol.Domains.CSS.SetSupportsTextRequest SetSupportsText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)    
+    public static ChromeProtocol.Domains.CSS.SetSupportsTextRequest SetSupportsText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)
     {
       return new ChromeProtocol.Domains.CSS.SetSupportsTextRequest(StyleSheetId, Range, Text);
     }
     /// <summary>Modifies the expression of a supports at-rule.</summary>
     [ChromeProtocol.Core.MethodName("CSS.setSupportsText")]
     public record SetSupportsTextRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType Range,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text
     ) : ChromeProtocol.Core.ICommand<SetSupportsTextRequestResult>
     {
     }
     /// <param name="Supports">The resulting CSS Supports rule after modification.</param>
     public record SetSupportsTextRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("supports")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("supports")]
       ChromeProtocol.Domains.CSS.CSSSupportsType Supports
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Modifies the expression of a scope at-rule.</summary>
-    public static ChromeProtocol.Domains.CSS.SetScopeTextRequest SetScopeText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)    
+    public static ChromeProtocol.Domains.CSS.SetScopeTextRequest SetScopeText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)
     {
       return new ChromeProtocol.Domains.CSS.SetScopeTextRequest(StyleSheetId, Range, Text);
     }
     /// <summary>Modifies the expression of a scope at-rule.</summary>
     [ChromeProtocol.Core.MethodName("CSS.setScopeText")]
     public record SetScopeTextRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType Range,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text
     ) : ChromeProtocol.Core.ICommand<SetScopeTextRequestResult>
     {
     }
     /// <param name="Scope">The resulting CSS Scope rule after modification.</param>
     public record SetScopeTextRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("scope")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scope")]
       ChromeProtocol.Domains.CSS.CSSScopeType Scope
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Modifies the rule selector.</summary>
-    public static ChromeProtocol.Domains.CSS.SetRuleSelectorRequest SetRuleSelector(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Selector)    
+    public static ChromeProtocol.Domains.CSS.SetRuleSelectorRequest SetRuleSelector(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Selector)
     {
       return new ChromeProtocol.Domains.CSS.SetRuleSelectorRequest(StyleSheetId, Range, Selector);
     }
     /// <summary>Modifies the rule selector.</summary>
     [ChromeProtocol.Core.MethodName("CSS.setRuleSelector")]
     public record SetRuleSelectorRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("range")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("range")]
       ChromeProtocol.Domains.CSS.SourceRangeType Range,
-      [property: Newtonsoft.Json.JsonProperty("selector")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selector")]
       string Selector
     ) : ChromeProtocol.Core.ICommand<SetRuleSelectorRequestResult>
     {
     }
     /// <param name="SelectorList">The resulting selector list after modification.</param>
     public record SetRuleSelectorRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("selectorList")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("selectorList")]
       ChromeProtocol.Domains.CSS.SelectorListType SelectorList
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Sets the new stylesheet text.</summary>
-    public static ChromeProtocol.Domains.CSS.SetStyleSheetTextRequest SetStyleSheetText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, string Text)    
+    public static ChromeProtocol.Domains.CSS.SetStyleSheetTextRequest SetStyleSheetText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, string Text)
     {
       return new ChromeProtocol.Domains.CSS.SetStyleSheetTextRequest(StyleSheetId, Text);
     }
     /// <summary>Sets the new stylesheet text.</summary>
     [ChromeProtocol.Core.MethodName("CSS.setStyleSheetText")]
     public record SetStyleSheetTextRequest(
-      [property: Newtonsoft.Json.JsonProperty("styleSheetId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
       ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
-      [property: Newtonsoft.Json.JsonProperty("text")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("text")]
       string Text
     ) : ChromeProtocol.Core.ICommand<SetStyleSheetTextRequestResult>
     {
     }
     /// <param name="SourceMapURL">URL of source map associated with script (if any).</param>
     public record SetStyleSheetTextRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("sourceMapURL")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceMapURL")]
       string? SourceMapURL = default
     ) : ChromeProtocol.Core.IType
     {
@@ -1431,7 +1431,7 @@ namespace ChromeProtocol.Domains
     /// validated. If omitted, declarations in the new rule text can only be validated statically, which may produce<br/>
     /// incorrect results if the declaration contains a var() for example.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.CSS.SetStyleTextsRequest SetStyleTexts(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.StyleDeclarationEditType> Edits, ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default)    
+    public static ChromeProtocol.Domains.CSS.SetStyleTextsRequest SetStyleTexts(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.StyleDeclarationEditType> Edits, ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default)
     {
       return new ChromeProtocol.Domains.CSS.SetStyleTextsRequest(Edits, NodeForPropertySyntaxValidation);
     }
@@ -1443,22 +1443,22 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("CSS.setStyleTexts")]
     public record SetStyleTextsRequest(
-      [property: Newtonsoft.Json.JsonProperty("edits")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("edits")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.StyleDeclarationEditType> Edits,
-      [property: Newtonsoft.Json.JsonProperty("nodeForPropertySyntaxValidation")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeForPropertySyntaxValidation")]
       ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default
     ) : ChromeProtocol.Core.ICommand<SetStyleTextsRequestResult>
     {
     }
     /// <param name="Styles">The resulting styles after modification.</param>
     public record SetStyleTextsRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("styles")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("styles")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSStyleType> Styles
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Enables the selector recording.</summary>
-    public static ChromeProtocol.Domains.CSS.StartRuleUsageTrackingRequest StartRuleUsageTracking()    
+    public static ChromeProtocol.Domains.CSS.StartRuleUsageTrackingRequest StartRuleUsageTracking()
     {
       return new ChromeProtocol.Domains.CSS.StartRuleUsageTrackingRequest();
     }
@@ -1474,7 +1474,7 @@ namespace ChromeProtocol.Domains
     /// Stop tracking rule usage and return the list of rules that were used since last call to<br/>
     /// `takeCoverageDelta` (or since start of coverage instrumentation).<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.StopRuleUsageTrackingRequest StopRuleUsageTracking()    
+    public static ChromeProtocol.Domains.CSS.StopRuleUsageTrackingRequest StopRuleUsageTracking()
     {
       return new ChromeProtocol.Domains.CSS.StopRuleUsageTrackingRequest();
     }
@@ -1487,7 +1487,7 @@ namespace ChromeProtocol.Domains
     {
     }
     public record StopRuleUsageTrackingRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("ruleUsage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ruleUsage")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.RuleUsageType> RuleUsage
     ) : ChromeProtocol.Core.IType
     {
@@ -1496,7 +1496,7 @@ namespace ChromeProtocol.Domains
     /// Obtain list of rules that became used since last call to this method (or since start of coverage<br/>
     /// instrumentation).<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.TakeCoverageDeltaRequest TakeCoverageDelta()    
+    public static ChromeProtocol.Domains.CSS.TakeCoverageDeltaRequest TakeCoverageDelta()
     {
       return new ChromeProtocol.Domains.CSS.TakeCoverageDeltaRequest();
     }
@@ -1510,16 +1510,16 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Timestamp">Monotonically increasing time, in seconds.</param>
     public record TakeCoverageDeltaRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("coverage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("coverage")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.RuleUsageType> Coverage,
-      [property: Newtonsoft.Json.JsonProperty("timestamp")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("timestamp")]
       double Timestamp
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Enables/disables rendering of local CSS fonts (enabled by default).</summary>
     /// <param name="Enabled">Whether rendering of local fonts is enabled.</param>
-    public static ChromeProtocol.Domains.CSS.SetLocalFontsEnabledRequest SetLocalFontsEnabled(bool Enabled)    
+    public static ChromeProtocol.Domains.CSS.SetLocalFontsEnabledRequest SetLocalFontsEnabled(bool Enabled)
     {
       return new ChromeProtocol.Domains.CSS.SetLocalFontsEnabledRequest(Enabled);
     }
@@ -1527,7 +1527,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Enabled">Whether rendering of local fonts is enabled.</param>
     [ChromeProtocol.Core.MethodName("CSS.setLocalFontsEnabled")]
     public record SetLocalFontsEnabledRequest(
-      [property: Newtonsoft.Json.JsonProperty("enabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
       bool Enabled
     ) : ChromeProtocol.Core.ICommand<SetLocalFontsEnabledRequestResult>
     {

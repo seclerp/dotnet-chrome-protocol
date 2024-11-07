@@ -12,7 +12,7 @@ namespace ChromeProtocol.Domains
   {
     /// <summary>Sets breakpoint on particular native event.</summary>
     /// <param name="EventName">Instrumentation name to stop on.</param>
-    public static ChromeProtocol.Domains.EventBreakpoints.SetInstrumentationBreakpointRequest SetInstrumentationBreakpoint(string EventName)    
+    public static ChromeProtocol.Domains.EventBreakpoints.SetInstrumentationBreakpointRequest SetInstrumentationBreakpoint(string EventName)
     {
       return new ChromeProtocol.Domains.EventBreakpoints.SetInstrumentationBreakpointRequest(EventName);
     }
@@ -20,7 +20,7 @@ namespace ChromeProtocol.Domains
     /// <param name="EventName">Instrumentation name to stop on.</param>
     [ChromeProtocol.Core.MethodName("EventBreakpoints.setInstrumentationBreakpoint")]
     public record SetInstrumentationBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("eventName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventName")]
       string EventName
     ) : ChromeProtocol.Core.ICommand<SetInstrumentationBreakpointRequestResult>
     {
@@ -30,7 +30,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Removes breakpoint on particular native event.</summary>
     /// <param name="EventName">Instrumentation name to stop on.</param>
-    public static ChromeProtocol.Domains.EventBreakpoints.RemoveInstrumentationBreakpointRequest RemoveInstrumentationBreakpoint(string EventName)    
+    public static ChromeProtocol.Domains.EventBreakpoints.RemoveInstrumentationBreakpointRequest RemoveInstrumentationBreakpoint(string EventName)
     {
       return new ChromeProtocol.Domains.EventBreakpoints.RemoveInstrumentationBreakpointRequest(EventName);
     }
@@ -38,7 +38,7 @@ namespace ChromeProtocol.Domains
     /// <param name="EventName">Instrumentation name to stop on.</param>
     [ChromeProtocol.Core.MethodName("EventBreakpoints.removeInstrumentationBreakpoint")]
     public record RemoveInstrumentationBreakpointRequest(
-      [property: Newtonsoft.Json.JsonProperty("eventName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eventName")]
       string EventName
     ) : ChromeProtocol.Core.ICommand<RemoveInstrumentationBreakpointRequestResult>
     {
@@ -47,7 +47,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Removes all breakpoints</summary>
-    public static ChromeProtocol.Domains.EventBreakpoints.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.EventBreakpoints.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.EventBreakpoints.DisableRequest();
     }

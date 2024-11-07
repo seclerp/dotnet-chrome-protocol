@@ -6,14 +6,14 @@ namespace ChromeProtocol.Domains
   public static partial class DeviceAccess
   {
     /// <summary>Device request id.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record RequestIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>A device id.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record DeviceIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -22,9 +22,9 @@ namespace ChromeProtocol.Domains
     /// <summary>Device information displayed in a user prompt to select a device.</summary>
     /// <param name="Name">Display name as it appears in a device request user prompt.</param>
     public record PromptDeviceType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.DeviceAccess.DeviceIdType Id,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name
     ) : ChromeProtocol.Core.IType
     {
@@ -35,15 +35,15 @@ namespace ChromeProtocol.Domains
     /// </summary>
     [ChromeProtocol.Core.MethodName("DeviceAccess.deviceRequestPrompted")]
     public record DeviceRequestPrompted(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.DeviceAccess.RequestIdType Id,
-      [property: Newtonsoft.Json.JsonProperty("devices")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("devices")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DeviceAccess.PromptDeviceType> Devices
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Enable events in this domain.</summary>
-    public static ChromeProtocol.Domains.DeviceAccess.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.DeviceAccess.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.DeviceAccess.EnableRequest();
     }
@@ -56,7 +56,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disable events in this domain.</summary>
-    public static ChromeProtocol.Domains.DeviceAccess.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.DeviceAccess.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.DeviceAccess.DisableRequest();
     }
@@ -69,16 +69,16 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Select a device in response to a DeviceAccess.deviceRequestPrompted event.</summary>
-    public static ChromeProtocol.Domains.DeviceAccess.SelectPromptRequest SelectPrompt(ChromeProtocol.Domains.DeviceAccess.RequestIdType Id, ChromeProtocol.Domains.DeviceAccess.DeviceIdType DeviceId)    
+    public static ChromeProtocol.Domains.DeviceAccess.SelectPromptRequest SelectPrompt(ChromeProtocol.Domains.DeviceAccess.RequestIdType Id, ChromeProtocol.Domains.DeviceAccess.DeviceIdType DeviceId)
     {
       return new ChromeProtocol.Domains.DeviceAccess.SelectPromptRequest(Id, DeviceId);
     }
     /// <summary>Select a device in response to a DeviceAccess.deviceRequestPrompted event.</summary>
     [ChromeProtocol.Core.MethodName("DeviceAccess.selectPrompt")]
     public record SelectPromptRequest(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.DeviceAccess.RequestIdType Id,
-      [property: Newtonsoft.Json.JsonProperty("deviceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deviceId")]
       ChromeProtocol.Domains.DeviceAccess.DeviceIdType DeviceId
     ) : ChromeProtocol.Core.ICommand<SelectPromptRequestResult>
     {
@@ -87,14 +87,14 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.</summary>
-    public static ChromeProtocol.Domains.DeviceAccess.CancelPromptRequest CancelPrompt(ChromeProtocol.Domains.DeviceAccess.RequestIdType Id)    
+    public static ChromeProtocol.Domains.DeviceAccess.CancelPromptRequest CancelPrompt(ChromeProtocol.Domains.DeviceAccess.RequestIdType Id)
     {
       return new ChromeProtocol.Domains.DeviceAccess.CancelPromptRequest(Id);
     }
     /// <summary>Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.</summary>
     [ChromeProtocol.Core.MethodName("DeviceAccess.cancelPrompt")]
     public record CancelPromptRequest(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.DeviceAccess.RequestIdType Id
     ) : ChromeProtocol.Core.ICommand<CancelPromptRequestResult>
     {

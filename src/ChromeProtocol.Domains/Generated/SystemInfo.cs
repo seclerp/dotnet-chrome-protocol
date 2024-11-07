@@ -16,21 +16,21 @@ namespace ChromeProtocol.Domains
     /// <param name="SubSysId">Sub sys ID of the GPU, only available on Windows.</param>
     /// <param name="Revision">Revision of the GPU, only available on Windows.</param>
     public record GPUDeviceType(
-      [property: Newtonsoft.Json.JsonProperty("vendorId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("vendorId")]
       double VendorId,
-      [property: Newtonsoft.Json.JsonProperty("deviceId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deviceId")]
       double DeviceId,
-      [property: Newtonsoft.Json.JsonProperty("vendorString")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("vendorString")]
       string VendorString,
-      [property: Newtonsoft.Json.JsonProperty("deviceString")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("deviceString")]
       string DeviceString,
-      [property: Newtonsoft.Json.JsonProperty("driverVendor")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("driverVendor")]
       string DriverVendor,
-      [property: Newtonsoft.Json.JsonProperty("driverVersion")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("driverVersion")]
       string DriverVersion,
-      [property: Newtonsoft.Json.JsonProperty("subSysId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subSysId")]
       double? SubSysId = default,
-      [property: Newtonsoft.Json.JsonProperty("revision")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("revision")]
       double? Revision = default
     ) : ChromeProtocol.Core.IType
     {
@@ -39,9 +39,9 @@ namespace ChromeProtocol.Domains
     /// <param name="Width">Width in pixels.</param>
     /// <param name="Height">Height in pixels.</param>
     public record SizeType(
-      [property: Newtonsoft.Json.JsonProperty("width")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("width")]
       int Width,
-      [property: Newtonsoft.Json.JsonProperty("height")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("height")]
       int Height
     ) : ChromeProtocol.Core.IType
     {
@@ -54,11 +54,11 @@ namespace ChromeProtocol.Domains
     /// <param name="MaxResolution">Maximum video dimensions in pixels supported for this |profile|.</param>
     /// <param name="MinResolution">Minimum video dimensions in pixels supported for this |profile|.</param>
     public record VideoDecodeAcceleratorCapabilityType(
-      [property: Newtonsoft.Json.JsonProperty("profile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("profile")]
       string Profile,
-      [property: Newtonsoft.Json.JsonProperty("maxResolution")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxResolution")]
       ChromeProtocol.Domains.SystemInfo.SizeType MaxResolution,
-      [property: Newtonsoft.Json.JsonProperty("minResolution")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("minResolution")]
       ChromeProtocol.Domains.SystemInfo.SizeType MinResolution
     ) : ChromeProtocol.Core.IType
     {
@@ -75,26 +75,26 @@ namespace ChromeProtocol.Domains
     /// 24000/1001 fps, etc.<br/>
     /// </param>
     public record VideoEncodeAcceleratorCapabilityType(
-      [property: Newtonsoft.Json.JsonProperty("profile")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("profile")]
       string Profile,
-      [property: Newtonsoft.Json.JsonProperty("maxResolution")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxResolution")]
       ChromeProtocol.Domains.SystemInfo.SizeType MaxResolution,
-      [property: Newtonsoft.Json.JsonProperty("maxFramerateNumerator")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxFramerateNumerator")]
       int MaxFramerateNumerator,
-      [property: Newtonsoft.Json.JsonProperty("maxFramerateDenominator")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxFramerateDenominator")]
       int MaxFramerateDenominator
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>YUV subsampling type of the pixels of a given image.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SubsamplingFormatType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
     /// <summary>Image format of a given image.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record ImageTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -109,13 +109,13 @@ namespace ChromeProtocol.Domains
     /// <param name="MinDimensions">Minimum supported dimensions of the image in pixels.</param>
     /// <param name="Subsamplings">Optional array of supported subsampling formats, e.g. 4:2:0, if known.</param>
     public record ImageDecodeAcceleratorCapabilityType(
-      [property: Newtonsoft.Json.JsonProperty("imageType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("imageType")]
       ChromeProtocol.Domains.SystemInfo.ImageTypeType ImageType,
-      [property: Newtonsoft.Json.JsonProperty("maxDimensions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("maxDimensions")]
       ChromeProtocol.Domains.SystemInfo.SizeType MaxDimensions,
-      [property: Newtonsoft.Json.JsonProperty("minDimensions")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("minDimensions")]
       ChromeProtocol.Domains.SystemInfo.SizeType MinDimensions,
-      [property: Newtonsoft.Json.JsonProperty("subsamplings")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("subsamplings")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.SystemInfo.SubsamplingFormatType> Subsamplings
     ) : ChromeProtocol.Core.IType
     {
@@ -129,20 +129,20 @@ namespace ChromeProtocol.Domains
     /// <param name="AuxAttributes">An optional dictionary of additional GPU related attributes.</param>
     /// <param name="FeatureStatus">An optional dictionary of graphics features and their status.</param>
     public record GPUInfoType(
-      [property: Newtonsoft.Json.JsonProperty("devices")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("devices")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.SystemInfo.GPUDeviceType> Devices,
-      [property: Newtonsoft.Json.JsonProperty("driverBugWorkarounds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("driverBugWorkarounds")]
       System.Collections.Generic.IReadOnlyList<string> DriverBugWorkarounds,
-      [property: Newtonsoft.Json.JsonProperty("videoDecoding")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("videoDecoding")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.SystemInfo.VideoDecodeAcceleratorCapabilityType> VideoDecoding,
-      [property: Newtonsoft.Json.JsonProperty("videoEncoding")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("videoEncoding")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.SystemInfo.VideoEncodeAcceleratorCapabilityType> VideoEncoding,
-      [property: Newtonsoft.Json.JsonProperty("imageDecoding")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("imageDecoding")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.SystemInfo.ImageDecodeAcceleratorCapabilityType> ImageDecoding,
-      [property: Newtonsoft.Json.JsonProperty("auxAttributes")]
-      Newtonsoft.Json.Linq.JObject? AuxAttributes = default,
-      [property: Newtonsoft.Json.JsonProperty("featureStatus")]
-      Newtonsoft.Json.Linq.JObject? FeatureStatus = default
+      [property: System.Text.Json.Serialization.JsonPropertyName("auxAttributes")]
+      System.Text.Json.Nodes.JsonObject? AuxAttributes = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("featureStatus")]
+      System.Text.Json.Nodes.JsonObject? FeatureStatus = default
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -154,17 +154,17 @@ namespace ChromeProtocol.Domains
     /// process since the process start.<br/>
     /// </param>
     public record ProcessInfoType(
-      [property: Newtonsoft.Json.JsonProperty("type")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("type")]
       string Type,
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       int Id,
-      [property: Newtonsoft.Json.JsonProperty("cpuTime")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("cpuTime")]
       double CpuTime
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns information about the system.</summary>
-    public static ChromeProtocol.Domains.SystemInfo.GetInfoRequest GetInfo()    
+    public static ChromeProtocol.Domains.SystemInfo.GetInfoRequest GetInfo()
     {
       return new ChromeProtocol.Domains.SystemInfo.GetInfoRequest();
     }
@@ -187,38 +187,38 @@ namespace ChromeProtocol.Domains
     /// supported.<br/>
     /// </param>
     public record GetInfoRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("gpu")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("gpu")]
       ChromeProtocol.Domains.SystemInfo.GPUInfoType Gpu,
-      [property: Newtonsoft.Json.JsonProperty("modelName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("modelName")]
       string ModelName,
-      [property: Newtonsoft.Json.JsonProperty("modelVersion")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("modelVersion")]
       string ModelVersion,
-      [property: Newtonsoft.Json.JsonProperty("commandLine")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("commandLine")]
       string CommandLine
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns information about the feature state.</summary>
-    public static ChromeProtocol.Domains.SystemInfo.GetFeatureStateRequest GetFeatureState(string FeatureState)    
+    public static ChromeProtocol.Domains.SystemInfo.GetFeatureStateRequest GetFeatureState(string FeatureState)
     {
       return new ChromeProtocol.Domains.SystemInfo.GetFeatureStateRequest(FeatureState);
     }
     /// <summary>Returns information about the feature state.</summary>
     [ChromeProtocol.Core.MethodName("SystemInfo.getFeatureState")]
     public record GetFeatureStateRequest(
-      [property: Newtonsoft.Json.JsonProperty("featureState")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("featureState")]
       string FeatureState
     ) : ChromeProtocol.Core.ICommand<GetFeatureStateRequestResult>
     {
     }
     public record GetFeatureStateRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("featureEnabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("featureEnabled")]
       bool FeatureEnabled
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Returns information about all running processes.</summary>
-    public static ChromeProtocol.Domains.SystemInfo.GetProcessInfoRequest GetProcessInfo()    
+    public static ChromeProtocol.Domains.SystemInfo.GetProcessInfoRequest GetProcessInfo()
     {
       return new ChromeProtocol.Domains.SystemInfo.GetProcessInfoRequest();
     }
@@ -229,7 +229,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="ProcessInfo">An array of process info blocks.</param>
     public record GetProcessInfoRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("processInfo")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("processInfo")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.SystemInfo.ProcessInfoType> ProcessInfo
     ) : ChromeProtocol.Core.IType
     {

@@ -11,11 +11,11 @@ namespace Protocol.Generated
     /// <param name="LineNumber">Line number in the script (0-based).</param>
     /// <param name="ColumnNumber">Column number in the script (0-based).</param>
     public record SourceLocationType(
-      [property: Newtonsoft.Json.JsonProperty("scriptId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("scriptId")]
       Protocol.Generated.Runtime.ScriptIdType ScriptId,
-      [property: Newtonsoft.Json.JsonProperty("lineNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("lineNumber")]
       int LineNumber,
-      [property: Newtonsoft.Json.JsonProperty("columnNumber")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNumber")]
       int? ColumnNumber = default
     ) : ChromeProtocol.Core.IType
     {
@@ -30,14 +30,14 @@ namespace Protocol.Generated
     /// <param name="JustMyCodeStepping">If true, enables stepping only into user code, not library one.</param>
     [ChromeProtocol.Core.MethodName("DotnetDebugger.setDebuggerProperty")]
     public record SetDebuggerPropertyRequest(
-      [property: Newtonsoft.Json.JsonProperty("JustMyCodeStepping")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("JustMyCodeStepping")]
       bool JustMyCodeStepping
     ) : ChromeProtocol.Core.ICommand<SetDebuggerPropertyRequestResult>
     {
     }
     /// <param name="JustMyCodeEnabled">TBD</param>
     public record SetDebuggerPropertyRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("justMyCodeEnabled")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("justMyCodeEnabled")]
       bool? JustMyCodeEnabled = default
     ) : ChromeProtocol.Core.IType
     {
@@ -52,7 +52,7 @@ namespace Protocol.Generated
     /// <param name="Location">TBD</param>
     [ChromeProtocol.Core.MethodName("DotnetDebugger.setNextIP")]
     public record SetNextIPRequest(
-      [property: Newtonsoft.Json.JsonProperty("location")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       Protocol.Generated.DotnetDebugger.SourceLocationType Location
     ) : ChromeProtocol.Core.ICommand<SetNextIPRequestResult>
     {
@@ -76,13 +76,13 @@ namespace Protocol.Generated
     /// <param name="Dpdb">The PDB changes to be applied</param>
     [ChromeProtocol.Core.MethodName("DotnetDebugger.applyUpdates")]
     public record ApplyUpdatesRequest(
-      [property: Newtonsoft.Json.JsonProperty("moduleGUID")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("moduleGUID")]
       string ModuleGUID,
-      [property: Newtonsoft.Json.JsonProperty("dmeta")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dmeta")]
       string Dmeta,
-      [property: Newtonsoft.Json.JsonProperty("dil")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dil")]
       string Dil,
-      [property: Newtonsoft.Json.JsonProperty("dpdb")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("dpdb")]
       string Dpdb
     ) : ChromeProtocol.Core.ICommand<ApplyUpdatesRequestResult>
     {
@@ -100,7 +100,7 @@ namespace Protocol.Generated
     /// <param name="Url">TBD</param>
     [ChromeProtocol.Core.MethodName("DotnetDebugger.addSymbolServerUrl")]
     public record AddSymbolServerUrlRequest(
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url
     ) : ChromeProtocol.Core.ICommand<AddSymbolServerUrlRequestResult>
     {
@@ -122,11 +122,11 @@ namespace Protocol.Generated
     /// <param name="MethodName">TBD</param>
     [ChromeProtocol.Core.MethodName("DotnetDebugger.getMethodLocation")]
     public record GetMethodLocationRequest(
-      [property: Newtonsoft.Json.JsonProperty("assemblyName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("assemblyName")]
       string AssemblyName,
-      [property: Newtonsoft.Json.JsonProperty("typeName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("typeName")]
       string TypeName,
-      [property: Newtonsoft.Json.JsonProperty("methodName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("methodName")]
       string MethodName
     ) : ChromeProtocol.Core.ICommand<GetMethodLocationRequestResult>
     {
@@ -135,11 +135,11 @@ namespace Protocol.Generated
     /// <param name="Column">TBD</param>
     /// <param name="Url">TBD</param>
     public record GetMethodLocationRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("line")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("line")]
       int Line,
-      [property: Newtonsoft.Json.JsonProperty("column")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("column")]
       int Column,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url
     ) : ChromeProtocol.Core.IType
     {

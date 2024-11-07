@@ -10,7 +10,7 @@ namespace ChromeProtocol.Domains
     /// This is either obtained from another method or specified as `blob:&lt;uuid&gt;` where<br/>
     /// `&lt;uuid&gt;` is an UUID of a Blob.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record StreamHandleType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -18,7 +18,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Close the stream, discard any temporary backing storage.</summary>
     /// <param name="Handle">Handle of the stream to close.</param>
-    public static ChromeProtocol.Domains.IO.CloseRequest Close(ChromeProtocol.Domains.IO.StreamHandleType Handle)    
+    public static ChromeProtocol.Domains.IO.CloseRequest Close(ChromeProtocol.Domains.IO.StreamHandleType Handle)
     {
       return new ChromeProtocol.Domains.IO.CloseRequest(Handle);
     }
@@ -26,7 +26,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Handle">Handle of the stream to close.</param>
     [ChromeProtocol.Core.MethodName("IO.close")]
     public record CloseRequest(
-      [property: Newtonsoft.Json.JsonProperty("handle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("handle")]
       ChromeProtocol.Domains.IO.StreamHandleType Handle
     ) : ChromeProtocol.Core.ICommand<CloseRequestResult>
     {
@@ -41,7 +41,7 @@ namespace ChromeProtocol.Domains
     /// following the last read). Some types of streams may only support sequential reads.<br/>
     /// </param>
     /// <param name="Size">Maximum number of bytes to read (left upon the agent discretion if not specified).</param>
-    public static ChromeProtocol.Domains.IO.ReadRequest Read(ChromeProtocol.Domains.IO.StreamHandleType Handle, int? Offset = default, int? Size = default)    
+    public static ChromeProtocol.Domains.IO.ReadRequest Read(ChromeProtocol.Domains.IO.StreamHandleType Handle, int? Offset = default, int? Size = default)
     {
       return new ChromeProtocol.Domains.IO.ReadRequest(Handle, Offset, Size);
     }
@@ -54,11 +54,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Size">Maximum number of bytes to read (left upon the agent discretion if not specified).</param>
     [ChromeProtocol.Core.MethodName("IO.read")]
     public record ReadRequest(
-      [property: Newtonsoft.Json.JsonProperty("handle")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("handle")]
       ChromeProtocol.Domains.IO.StreamHandleType Handle,
-      [property: Newtonsoft.Json.JsonProperty("offset")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("offset")]
       int? Offset = default,
-      [property: Newtonsoft.Json.JsonProperty("size")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("size")]
       int? Size = default
     ) : ChromeProtocol.Core.ICommand<ReadRequestResult>
     {
@@ -67,18 +67,18 @@ namespace ChromeProtocol.Domains
     /// <param name="Eof">Set if the end-of-file condition occurred while reading.</param>
     /// <param name="Base64Encoded">Set if the data is base64-encoded</param>
     public record ReadRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("data")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("data")]
       string Data,
-      [property: Newtonsoft.Json.JsonProperty("eof")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("eof")]
       bool Eof,
-      [property: Newtonsoft.Json.JsonProperty("base64Encoded")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("base64Encoded")]
       bool? Base64Encoded = default
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Return UUID of Blob object specified by a remote object id.</summary>
     /// <param name="ObjectId">Object id of a Blob object wrapper.</param>
-    public static ChromeProtocol.Domains.IO.ResolveBlobRequest ResolveBlob(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)    
+    public static ChromeProtocol.Domains.IO.ResolveBlobRequest ResolveBlob(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)
     {
       return new ChromeProtocol.Domains.IO.ResolveBlobRequest(ObjectId);
     }
@@ -86,14 +86,14 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">Object id of a Blob object wrapper.</param>
     [ChromeProtocol.Core.MethodName("IO.resolveBlob")]
     public record ResolveBlobRequest(
-      [property: Newtonsoft.Json.JsonProperty("objectId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("objectId")]
       ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId
     ) : ChromeProtocol.Core.ICommand<ResolveBlobRequestResult>
     {
     }
     /// <param name="Uuid">UUID of the specified Blob.</param>
     public record ResolveBlobRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("uuid")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("uuid")]
       string Uuid
     ) : ChromeProtocol.Core.IType
     {

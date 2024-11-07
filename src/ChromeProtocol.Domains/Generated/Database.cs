@@ -6,7 +6,7 @@ namespace ChromeProtocol.Domains
   public static partial class Database
   {
     /// <summary>Unique identifier of Database object.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record DatabaseIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -18,13 +18,13 @@ namespace ChromeProtocol.Domains
     /// <param name="Name">Database name.</param>
     /// <param name="Version">Database version.</param>
     public record DatabaseType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.Database.DatabaseIdType Id,
-      [property: Newtonsoft.Json.JsonProperty("domain")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("domain")]
       string Domain,
-      [property: Newtonsoft.Json.JsonProperty("name")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
-      [property: Newtonsoft.Json.JsonProperty("version")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("version")]
       string Version
     ) : ChromeProtocol.Core.IType
     {
@@ -33,22 +33,22 @@ namespace ChromeProtocol.Domains
     /// <param name="Message">Error message.</param>
     /// <param name="Code">Error code.</param>
     public record ErrorType(
-      [property: Newtonsoft.Json.JsonProperty("message")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("message")]
       string Message,
-      [property: Newtonsoft.Json.JsonProperty("code")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("code")]
       int Code
     ) : ChromeProtocol.Core.IType
     {
     }
     [ChromeProtocol.Core.MethodName("Database.addDatabase")]
     public record AddDatabase(
-      [property: Newtonsoft.Json.JsonProperty("database")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("database")]
       ChromeProtocol.Domains.Database.DatabaseType Database
     ) : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>Disables database tracking, prevents database events from being sent to the client.</summary>
-    public static ChromeProtocol.Domains.Database.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Database.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Database.DisableRequest();
     }
@@ -61,7 +61,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables database tracking, database events will now be delivered to the client.</summary>
-    public static ChromeProtocol.Domains.Database.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Database.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Database.EnableRequest();
     }
@@ -73,42 +73,42 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Database.ExecuteSQLRequest ExecuteSQL(ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId, string Query)    
+    public static ChromeProtocol.Domains.Database.ExecuteSQLRequest ExecuteSQL(ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId, string Query)
     {
       return new ChromeProtocol.Domains.Database.ExecuteSQLRequest(DatabaseId, Query);
     }
     [ChromeProtocol.Core.MethodName("Database.executeSQL")]
     public record ExecuteSQLRequest(
-      [property: Newtonsoft.Json.JsonProperty("databaseId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseId")]
       ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId,
-      [property: Newtonsoft.Json.JsonProperty("query")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("query")]
       string Query
     ) : ChromeProtocol.Core.ICommand<ExecuteSQLRequestResult>
     {
     }
     public record ExecuteSQLRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("columnNames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("columnNames")]
       System.Collections.Generic.IReadOnlyList<string>? ColumnNames = default,
-      [property: Newtonsoft.Json.JsonProperty("values")]
-      System.Collections.Generic.IReadOnlyList<Newtonsoft.Json.Linq.JToken>? Values = default,
-      [property: Newtonsoft.Json.JsonProperty("sqlError")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("values")]
+      System.Collections.Generic.IReadOnlyList<System.Text.Json.Nodes.JsonNode>? Values = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("sqlError")]
       ChromeProtocol.Domains.Database.ErrorType? SqlError = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Database.GetDatabaseTableNamesRequest GetDatabaseTableNames(ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId)    
+    public static ChromeProtocol.Domains.Database.GetDatabaseTableNamesRequest GetDatabaseTableNames(ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId)
     {
       return new ChromeProtocol.Domains.Database.GetDatabaseTableNamesRequest(DatabaseId);
     }
     [ChromeProtocol.Core.MethodName("Database.getDatabaseTableNames")]
     public record GetDatabaseTableNamesRequest(
-      [property: Newtonsoft.Json.JsonProperty("databaseId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("databaseId")]
       ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId
     ) : ChromeProtocol.Core.ICommand<GetDatabaseTableNamesRequestResult>
     {
     }
     public record GetDatabaseTableNamesRequestResult(
-      [property: Newtonsoft.Json.JsonProperty("tableNames")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("tableNames")]
       System.Collections.Generic.IReadOnlyList<string> TableNames
     ) : ChromeProtocol.Core.IType
     {

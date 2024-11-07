@@ -6,7 +6,7 @@ namespace ChromeProtocol.Domains
   public static partial class Preload
   {
     /// <summary>Unique id</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record RuleSetIdType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -39,27 +39,27 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="ErrorMessage">TODO(https://crbug.com/1425354): Replace this property with structured error.</param>
     public record RuleSetType(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.Preload.RuleSetIdType Id,
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType LoaderId,
-      [property: Newtonsoft.Json.JsonProperty("sourceText")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("sourceText")]
       string SourceText,
-      [property: Newtonsoft.Json.JsonProperty("backendNodeId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("backendNodeId")]
       ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string? Url = default,
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType? RequestId = default,
-      [property: Newtonsoft.Json.JsonProperty("errorType")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorType")]
       ChromeProtocol.Domains.Preload.RuleSetErrorTypeType? ErrorType = default,
       [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-      [property: Newtonsoft.Json.JsonProperty("errorMessage")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("errorMessage")]
       string? ErrorMessage = default
     ) : ChromeProtocol.Core.IType
     {
     }
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record RuleSetErrorTypeType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -70,7 +70,7 @@ namespace ChromeProtocol.Domains
     /// mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it<br/>
     /// isn&#39;t being used by clients).<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SpeculationActionType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -80,7 +80,7 @@ namespace ChromeProtocol.Domains
     /// Corresponds to mojom::SpeculationTargetHint.<br/>
     /// See https://github.com/WICG/nav-speculation/blob/main/triggers.md#window-name-targeting-hints<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record SpeculationTargetHintType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -94,13 +94,13 @@ namespace ChromeProtocol.Domains
     /// still keyed with the initial URL.<br/>
     /// </summary>
     public record PreloadingAttemptKeyType(
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType LoaderId,
-      [property: Newtonsoft.Json.JsonProperty("action")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("action")]
       ChromeProtocol.Domains.Preload.SpeculationActionType Action,
-      [property: Newtonsoft.Json.JsonProperty("url")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("url")]
       string Url,
-      [property: Newtonsoft.Json.JsonProperty("targetHint")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("targetHint")]
       ChromeProtocol.Domains.Preload.SpeculationTargetHintType? TargetHint = default
     ) : ChromeProtocol.Core.IType
     {
@@ -113,17 +113,17 @@ namespace ChromeProtocol.Domains
     /// possible for multiple rule sets and links to trigger a single attempt.<br/>
     /// </summary>
     public record PreloadingAttemptSourceType(
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       ChromeProtocol.Domains.Preload.PreloadingAttemptKeyType Key,
-      [property: Newtonsoft.Json.JsonProperty("ruleSetIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ruleSetIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Preload.RuleSetIdType> RuleSetIds,
-      [property: Newtonsoft.Json.JsonProperty("nodeIds")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("nodeIds")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.BackendNodeIdType> NodeIds
     ) : ChromeProtocol.Core.IType
     {
     }
     /// <summary>List of FinalStatus reasons for Prerender2.</summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PrerenderFinalStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -133,7 +133,7 @@ namespace ChromeProtocol.Domains
     /// Preloading status values, see also PreloadingTriggeringOutcome. This<br/>
     /// status is shared by prefetchStatusUpdated and prerenderStatusUpdated.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PreloadingStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -143,7 +143,7 @@ namespace ChromeProtocol.Domains
     /// TODO(https://crbug.com/1384419): revisit the list of PrefetchStatus and<br/>
     /// filter out the ones that aren&#39;t necessary to the developers.<br/>
     /// </summary>
-    [Newtonsoft.Json.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record PrefetchStatusType(
       string Value
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
@@ -151,11 +151,11 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Information of headers to be displayed when the header mismatch occurred.</summary>
     public record PrerenderMismatchedHeadersType(
-      [property: Newtonsoft.Json.JsonProperty("headerName")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("headerName")]
       string HeaderName,
-      [property: Newtonsoft.Json.JsonProperty("initialValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initialValue")]
       string? InitialValue = default,
-      [property: Newtonsoft.Json.JsonProperty("activationValue")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("activationValue")]
       string? ActivationValue = default
     ) : ChromeProtocol.Core.IType
     {
@@ -163,14 +163,14 @@ namespace ChromeProtocol.Domains
     /// <summary>Upsert. Currently, it is only emitted when a rule set added.</summary>
     [ChromeProtocol.Core.MethodName("Preload.ruleSetUpdated")]
     public record RuleSetUpdated(
-      [property: Newtonsoft.Json.JsonProperty("ruleSet")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("ruleSet")]
       ChromeProtocol.Domains.Preload.RuleSetType RuleSet
     ) : ChromeProtocol.Core.IEvent
     {
     }
     [ChromeProtocol.Core.MethodName("Preload.ruleSetRemoved")]
     public record RuleSetRemoved(
-      [property: Newtonsoft.Json.JsonProperty("id")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("id")]
       ChromeProtocol.Domains.Preload.RuleSetIdType Id
     ) : ChromeProtocol.Core.IEvent
     {
@@ -178,15 +178,15 @@ namespace ChromeProtocol.Domains
     /// <summary>Fired when a preload enabled state is updated.</summary>
     [ChromeProtocol.Core.MethodName("Preload.preloadEnabledStateUpdated")]
     public record PreloadEnabledStateUpdated(
-      [property: Newtonsoft.Json.JsonProperty("disabledByPreference")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disabledByPreference")]
       bool DisabledByPreference,
-      [property: Newtonsoft.Json.JsonProperty("disabledByDataSaver")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disabledByDataSaver")]
       bool DisabledByDataSaver,
-      [property: Newtonsoft.Json.JsonProperty("disabledByBatterySaver")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disabledByBatterySaver")]
       bool DisabledByBatterySaver,
-      [property: Newtonsoft.Json.JsonProperty("disabledByHoldbackPrefetchSpeculationRules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disabledByHoldbackPrefetchSpeculationRules")]
       bool DisabledByHoldbackPrefetchSpeculationRules,
-      [property: Newtonsoft.Json.JsonProperty("disabledByHoldbackPrerenderSpeculationRules")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disabledByHoldbackPrerenderSpeculationRules")]
       bool DisabledByHoldbackPrerenderSpeculationRules
     ) : ChromeProtocol.Core.IEvent
     {
@@ -195,17 +195,17 @@ namespace ChromeProtocol.Domains
     /// <param name="InitiatingFrameId">The frame id of the frame initiating prefetch.</param>
     [ChromeProtocol.Core.MethodName("Preload.prefetchStatusUpdated")]
     public record PrefetchStatusUpdated(
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       ChromeProtocol.Domains.Preload.PreloadingAttemptKeyType Key,
-      [property: Newtonsoft.Json.JsonProperty("initiatingFrameId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("initiatingFrameId")]
       ChromeProtocol.Domains.Page.FrameIdType InitiatingFrameId,
-      [property: Newtonsoft.Json.JsonProperty("prefetchUrl")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("prefetchUrl")]
       string PrefetchUrl,
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       ChromeProtocol.Domains.Preload.PreloadingStatusType Status,
-      [property: Newtonsoft.Json.JsonProperty("prefetchStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("prefetchStatus")]
       ChromeProtocol.Domains.Preload.PrefetchStatusType PrefetchStatus,
-      [property: Newtonsoft.Json.JsonProperty("requestId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
       ChromeProtocol.Domains.Network.RequestIdType RequestId
     ) : ChromeProtocol.Core.IEvent
     {
@@ -217,15 +217,15 @@ namespace ChromeProtocol.Domains
     /// </param>
     [ChromeProtocol.Core.MethodName("Preload.prerenderStatusUpdated")]
     public record PrerenderStatusUpdated(
-      [property: Newtonsoft.Json.JsonProperty("key")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("key")]
       ChromeProtocol.Domains.Preload.PreloadingAttemptKeyType Key,
-      [property: Newtonsoft.Json.JsonProperty("status")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("status")]
       ChromeProtocol.Domains.Preload.PreloadingStatusType Status,
-      [property: Newtonsoft.Json.JsonProperty("prerenderStatus")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("prerenderStatus")]
       ChromeProtocol.Domains.Preload.PrerenderFinalStatusType? PrerenderStatus = default,
-      [property: Newtonsoft.Json.JsonProperty("disallowedMojoInterface")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("disallowedMojoInterface")]
       string? DisallowedMojoInterface = default,
-      [property: Newtonsoft.Json.JsonProperty("mismatchedHeaders")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("mismatchedHeaders")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Preload.PrerenderMismatchedHeadersType>? MismatchedHeaders = default
     ) : ChromeProtocol.Core.IEvent
     {
@@ -233,14 +233,14 @@ namespace ChromeProtocol.Domains
     /// <summary>Send a list of sources for all preloading attempts in a document.</summary>
     [ChromeProtocol.Core.MethodName("Preload.preloadingAttemptSourcesUpdated")]
     public record PreloadingAttemptSourcesUpdated(
-      [property: Newtonsoft.Json.JsonProperty("loaderId")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("loaderId")]
       ChromeProtocol.Domains.Network.LoaderIdType LoaderId,
-      [property: Newtonsoft.Json.JsonProperty("preloadingAttemptSources")]
+      [property: System.Text.Json.Serialization.JsonPropertyName("preloadingAttemptSources")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Preload.PreloadingAttemptSourceType> PreloadingAttemptSources
     ) : ChromeProtocol.Core.IEvent
     {
     }
-    public static ChromeProtocol.Domains.Preload.EnableRequest Enable()    
+    public static ChromeProtocol.Domains.Preload.EnableRequest Enable()
     {
       return new ChromeProtocol.Domains.Preload.EnableRequest();
     }
@@ -251,7 +251,7 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Preload.DisableRequest Disable()    
+    public static ChromeProtocol.Domains.Preload.DisableRequest Disable()
     {
       return new ChromeProtocol.Domains.Preload.DisableRequest();
     }
