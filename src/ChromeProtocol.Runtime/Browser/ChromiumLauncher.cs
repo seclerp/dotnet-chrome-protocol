@@ -1,20 +1,42 @@
 ﻿using System.Diagnostics;
+using System.Text.RegularExpressions;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace ChromeProtocol.Runtime.Browser;
 
 public class ChromiumLauncher
 {
+  private string? _pageUrl;
   private string? _userProfileDirectory;
   private int? _remoteDebuggingPort;
   private List<string> _customArguments = [];
 
-  private ChromiumLauncher()
+  private readonly int _portReadingRetries = 10;
+  private readonly int _portReadingDelay = 500;
+
+  private readonly ILogger _logger;
+
+  private ChromiumLauncher(ILogger logger)
   {
+    _logger = logger;
+  }
+
+  public static ChromiumLauncher Create(ILogger logger)
+  {
+    return new(logger);
   }
 
   public static ChromiumLauncher Create()
   {
-    return new();
+    return new(NullLogger.Instance);
+  }
+
+  public ChromiumLauncher WithPage(string pageUrl)
+  {
+    _pageUrl = pageUrl;
+
+    return this;
   }
 
   public ChromiumLauncher WithUserProfileDirectory(string path)
@@ -45,10 +67,13 @@ public class ChromiumLauncher
     return this;
   }
 
-  public IChromiumBrowser LaunchLocal(string chromiumExePath)
+  public async Task<IChromiumBrowser> LaunchLocalAsync(string chromiumExePath)
   {
     IEnumerable<string> CollectArguments()
     {
+      if (_pageUrl is not null)
+        yield return _pageUrl;
+
       foreach (var customArgument in _customArguments)
         yield return customArgument;
 
@@ -59,48 +84,45 @@ public class ChromiumLauncher
         yield return $"--remote-debugging-port={remoteDebuggingPort}";
     }
 
-    try
+    var arguments = CollectArguments().ToList();
+
+    // Create a new process to launch Chrome.
+    var processInfo = new ProcessStartInfo
     {
-      var arguments = CollectArguments().ToList();
+      FileName = chromiumExePath,
+      Arguments = string.Join(" ", arguments),
+      UseShellExecute = false,
+      RedirectStandardOutput = false,
+      RedirectStandardError = true,
+      CreateNoWindow = false
+    };
 
-      // Create a new process to launch Chrome.
-      ProcessStartInfo processInfo = new ProcessStartInfo
-      {
-        FileName = chromiumExePath,
-        Arguments = string.Join(" ", arguments),
-        UseShellExecute = false,
-        RedirectStandardOutput = false,
-        RedirectStandardError = false,
-        CreateNoWindow = true
-      };
+    // Start the process.
+    var process = Process.Start(processInfo);
+    var debuggingEndpoint = await WaitDebuggingEndpointAsync(process).ConfigureAwait(false);
 
-      // Start the process.
-      var process = Process.Start(processInfo);
-      if (process != null)
+    return new LocalChromiumBrowser(debuggingEndpoint, process);
+  }
+
+  private async Task<Uri> WaitDebuggingEndpointAsync(Process process)
+  {
+    while (!process.StandardError.EndOfStream)
+    {
+      var line = await process.StandardError.ReadLineAsync().ConfigureAwait(false);
+      if (!string.IsNullOrEmpty(line))
       {
-        Console.WriteLine("Chrome launched successfully.");
+        // Sample expected line format: "DevTools listening on ws://127.0.0.1:PORT/PATH"
+        var match = Regex.Match(line, @"ws:\/\/127\.0\.0\.1:(\d+)(\/.+)?");
+        if (match.Success)
+        {
+          var port = match.Groups[1].Value;
+          var path = match.Groups[2].Value;
+
+          return new Uri($"ws://127.0.0.1:{port}{path}");
+        }
       }
     }
-    catch (Exception ex)
-    {
-      Console.WriteLine($"Error launching Chrome: {ex.Message}");
-    }
-  }
-}
 
-public interface IChromiumBrowser : IDisposable
-{
-  public string UserProfileDirectory { get; }
-  public Uri DebuggingEndpoint { get; }
-}
-
-internal class LocalChromiumBrowser(string userProfileDirectory, Uri debuggingEndpoint, Process process) : IChromiumBrowser
-{
-  public string UserProfileDirectory => userProfileDirectory;
-  public Uri DebuggingEndpoint => debuggingEndpoint;
-
-  public void Dispose()
-  {
-    process.Dispose();
+    throw new Exception("Expected debugging endpoint in the stderr");
   }
 }
