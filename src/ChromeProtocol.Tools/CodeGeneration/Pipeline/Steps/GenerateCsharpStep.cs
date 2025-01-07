@@ -77,7 +77,7 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
           {
             var valueType = CsharpTypeResolver.Resolve(@namespace, domain.Name, null, type.Kind, null, false);
             recordBuilder
-              .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", nameof(JsonConverterAttribute)),
+              .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", nameof(JsonConverter)),
                 attr => attr.Arguments("typeof(ChromeProtocol.Core.PrimitiveTypeConverter)"))
               .Modifiers("public")
               .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
@@ -93,7 +93,7 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
           CsharpTypeInfo.MakeNullable(CsharpTypeInfo.FromTypeName("System.Text.Json.Nodes", "JsonNode")));
         return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
           recordBuilder => recordBuilder.Modifiers("public")
-            .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", nameof(JsonConverterAttribute)),
+            .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", nameof(JsonConverter)),
               attr => attr.Arguments("typeof(ChromeProtocol.Core.ObjectTypeConverter)"))
             .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
             .Inherit(CsharpTypeInfo.FromTypeName("ChromeProtocol.Core", nameof(IObjectType)))
@@ -106,7 +106,7 @@ public class GenerateCsharpStep : ICodeGenerationPipelineStep<CodeGenerationCont
           CsharpTypeInfo.FromTypeName("System.Text.Json.Nodes", "JsonNode"));
         return classBuilder.Record(CsharpNameResolver.Resolve(type.Id, ItemKind.TypeName, classBuilder.Node.Name),
           recordBuilder => recordBuilder.Modifiers("public")
-            .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", nameof(JsonConverterAttribute)),
+            .Attribute(CsharpTypeInfo.FromTypeName("System.Text.Json.Serialization", nameof(JsonConverter)),
               attr => attr.Arguments("typeof(ChromeProtocol.Core.ArrayTypeConverter)"))
             .ApplyIf(type.Deprecated, _ => MarkDeprecated(_, "type"))
             .Inherit(CsharpTypeInfo.FromTypeName("ChromeProtocol.Core", nameof(IArrayType)))
