@@ -162,6 +162,24 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IType
     {
     }
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    public record PressureSourceType(
+      string Value
+    ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
+    {
+    }
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    public record PressureStateType(
+      string Value
+    ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
+    {
+    }
+    public record PressureMetadataType(
+      [property: System.Text.Json.Serialization.JsonPropertyName("available")]
+      bool? Available = default
+    ) : ChromeProtocol.Core.IType
+    {
+    }
     /// <summary>Enum of image types that can be disabled.</summary>
     [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
     public record DisabledImageTypeType(
@@ -176,7 +194,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Tells whether emulation is supported.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Emulation.CanEmulateRequest CanEmulate()
+    public static ChromeProtocol.Domains.Emulation.CanEmulateRequest CanEmulate()    
     {
       return new ChromeProtocol.Domains.Emulation.CanEmulateRequest();
     }
@@ -195,7 +213,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears the overridden device metrics.</summary>
-    public static ChromeProtocol.Domains.Emulation.ClearDeviceMetricsOverrideRequest ClearDeviceMetricsOverride()
+    public static ChromeProtocol.Domains.Emulation.ClearDeviceMetricsOverrideRequest ClearDeviceMetricsOverride()    
     {
       return new ChromeProtocol.Domains.Emulation.ClearDeviceMetricsOverrideRequest();
     }
@@ -208,7 +226,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears the overridden Geolocation Position and Error.</summary>
-    public static ChromeProtocol.Domains.Emulation.ClearGeolocationOverrideRequest ClearGeolocationOverride()
+    public static ChromeProtocol.Domains.Emulation.ClearGeolocationOverrideRequest ClearGeolocationOverride()    
     {
       return new ChromeProtocol.Domains.Emulation.ClearGeolocationOverrideRequest();
     }
@@ -221,7 +239,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Requests that page scale factor is reset to initial values.</summary>
-    public static ChromeProtocol.Domains.Emulation.ResetPageScaleFactorRequest ResetPageScaleFactor()
+    public static ChromeProtocol.Domains.Emulation.ResetPageScaleFactorRequest ResetPageScaleFactor()    
     {
       return new ChromeProtocol.Domains.Emulation.ResetPageScaleFactorRequest();
     }
@@ -235,7 +253,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enables or disables simulating a focused and active page.</summary>
     /// <param name="Enabled">Whether to enable to disable focus emulation.</param>
-    public static ChromeProtocol.Domains.Emulation.SetFocusEmulationEnabledRequest SetFocusEmulationEnabled(bool Enabled)
+    public static ChromeProtocol.Domains.Emulation.SetFocusEmulationEnabledRequest SetFocusEmulationEnabled(bool Enabled)    
     {
       return new ChromeProtocol.Domains.Emulation.SetFocusEmulationEnabledRequest(Enabled);
     }
@@ -256,7 +274,7 @@ namespace ChromeProtocol.Domains
     /// Whether to enable or disable automatic dark mode.<br/>
     /// If not specified, any existing override will be cleared.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetAutoDarkModeOverrideRequest SetAutoDarkModeOverride(bool? Enabled = default)
+    public static ChromeProtocol.Domains.Emulation.SetAutoDarkModeOverrideRequest SetAutoDarkModeOverride(bool? Enabled = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetAutoDarkModeOverrideRequest(Enabled);
     }
@@ -277,7 +295,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enables CPU throttling to emulate slow CPUs.</summary>
     /// <param name="Rate">Throttling rate as a slowdown factor (1 is no throttle, 2 is 2x slowdown, etc).</param>
-    public static ChromeProtocol.Domains.Emulation.SetCPUThrottlingRateRequest SetCPUThrottlingRate(double Rate)
+    public static ChromeProtocol.Domains.Emulation.SetCPUThrottlingRateRequest SetCPUThrottlingRate(double Rate)    
     {
       return new ChromeProtocol.Domains.Emulation.SetCPUThrottlingRateRequest(Rate);
     }
@@ -301,7 +319,7 @@ namespace ChromeProtocol.Domains
     /// RGBA of the default background color. If not specified, any existing override will be<br/>
     /// cleared.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetDefaultBackgroundColorOverrideRequest SetDefaultBackgroundColorOverride(ChromeProtocol.Domains.DOM.RGBAType? Color = default)
+    public static ChromeProtocol.Domains.Emulation.SetDefaultBackgroundColorOverrideRequest SetDefaultBackgroundColorOverride(ChromeProtocol.Domains.DOM.RGBAType? Color = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetDefaultBackgroundColorOverrideRequest(Color);
     }
@@ -353,8 +371,9 @@ namespace ChromeProtocol.Domains
     /// <param name="DevicePosture">
     /// If set, the posture of a foldable device. If not set the posture is set<br/>
     /// to continuous.<br/>
+    /// Deprecated, use Emulation.setDevicePostureOverride.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetDeviceMetricsOverrideRequest SetDeviceMetricsOverride(int Width, int Height, double DeviceScaleFactor, bool Mobile, double? Scale = default, int? ScreenWidth = default, int? ScreenHeight = default, int? PositionX = default, int? PositionY = default, bool? DontSetVisibleSize = default, ChromeProtocol.Domains.Emulation.ScreenOrientationType? ScreenOrientation = default, ChromeProtocol.Domains.Page.ViewportType? Viewport = default, ChromeProtocol.Domains.Emulation.DisplayFeatureType? DisplayFeature = default, ChromeProtocol.Domains.Emulation.DevicePostureType? DevicePosture = default)
+    public static ChromeProtocol.Domains.Emulation.SetDeviceMetricsOverrideRequest SetDeviceMetricsOverride(int Width, int Height, double DeviceScaleFactor, bool Mobile, double? Scale = default, int? ScreenWidth = default, int? ScreenHeight = default, int? PositionX = default, int? PositionY = default, bool? DontSetVisibleSize = default, ChromeProtocol.Domains.Emulation.ScreenOrientationType? ScreenOrientation = default, ChromeProtocol.Domains.Page.ViewportType? Viewport = default, ChromeProtocol.Domains.Emulation.DisplayFeatureType? DisplayFeature = default, ChromeProtocol.Domains.Emulation.DevicePostureType? DevicePosture = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetDeviceMetricsOverrideRequest(Width, Height, DeviceScaleFactor, Mobile, Scale, ScreenWidth, ScreenHeight, PositionX, PositionY, DontSetVisibleSize, ScreenOrientation, Viewport, DisplayFeature, DevicePosture);
     }
@@ -388,6 +407,7 @@ namespace ChromeProtocol.Domains
     /// <param name="DevicePosture">
     /// If set, the posture of a foldable device. If not set the posture is set<br/>
     /// to continuous.<br/>
+    /// Deprecated, use Emulation.setDevicePostureOverride.<br/>
     /// </param>
     [ChromeProtocol.Core.MethodName("Emulation.setDeviceMetricsOverride")]
     public record SetDeviceMetricsOverrideRequest(
@@ -417,6 +437,7 @@ namespace ChromeProtocol.Domains
       ChromeProtocol.Domains.Page.ViewportType? Viewport = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("displayFeature")]
       ChromeProtocol.Domains.Emulation.DisplayFeatureType? DisplayFeature = default,
+      [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
       [property: System.Text.Json.Serialization.JsonPropertyName("devicePosture")]
       ChromeProtocol.Domains.Emulation.DevicePostureType? DevicePosture = default
     ) : ChromeProtocol.Core.ICommand<SetDeviceMetricsOverrideRequestResult>
@@ -425,8 +446,53 @@ namespace ChromeProtocol.Domains
     public record SetDeviceMetricsOverrideRequestResult() : ChromeProtocol.Core.IType
     {
     }
+    /// <summary>
+    /// Start reporting the given posture value to the Device Posture API.<br/>
+    /// This override can also be set in setDeviceMetricsOverride().<br/>
+    /// </summary>
+    public static ChromeProtocol.Domains.Emulation.SetDevicePostureOverrideRequest SetDevicePostureOverride(ChromeProtocol.Domains.Emulation.DevicePostureType Posture)    
+    {
+      return new ChromeProtocol.Domains.Emulation.SetDevicePostureOverrideRequest(Posture);
+    }
+    /// <summary>
+    /// Start reporting the given posture value to the Device Posture API.<br/>
+    /// This override can also be set in setDeviceMetricsOverride().<br/>
+    /// </summary>
+    [ChromeProtocol.Core.MethodName("Emulation.setDevicePostureOverride")]
+    public record SetDevicePostureOverrideRequest(
+      [property: System.Text.Json.Serialization.JsonPropertyName("posture")]
+      ChromeProtocol.Domains.Emulation.DevicePostureType Posture
+    ) : ChromeProtocol.Core.ICommand<SetDevicePostureOverrideRequestResult>
+    {
+    }
+    public record SetDevicePostureOverrideRequestResult() : ChromeProtocol.Core.IType
+    {
+    }
+    /// <summary>
+    /// Clears a device posture override set with either setDeviceMetricsOverride()<br/>
+    /// or setDevicePostureOverride() and starts using posture information from the<br/>
+    /// platform again.<br/>
+    /// Does nothing if no override is set.<br/>
+    /// </summary>
+    public static ChromeProtocol.Domains.Emulation.ClearDevicePostureOverrideRequest ClearDevicePostureOverride()    
+    {
+      return new ChromeProtocol.Domains.Emulation.ClearDevicePostureOverrideRequest();
+    }
+    /// <summary>
+    /// Clears a device posture override set with either setDeviceMetricsOverride()<br/>
+    /// or setDevicePostureOverride() and starts using posture information from the<br/>
+    /// platform again.<br/>
+    /// Does nothing if no override is set.<br/>
+    /// </summary>
+    [ChromeProtocol.Core.MethodName("Emulation.clearDevicePostureOverride")]
+    public record ClearDevicePostureOverrideRequest() : ChromeProtocol.Core.ICommand<ClearDevicePostureOverrideRequestResult>
+    {
+    }
+    public record ClearDevicePostureOverrideRequestResult() : ChromeProtocol.Core.IType
+    {
+    }
     /// <param name="Hidden">Whether scrollbars should be always hidden.</param>
-    public static ChromeProtocol.Domains.Emulation.SetScrollbarsHiddenRequest SetScrollbarsHidden(bool Hidden)
+    public static ChromeProtocol.Domains.Emulation.SetScrollbarsHiddenRequest SetScrollbarsHidden(bool Hidden)    
     {
       return new ChromeProtocol.Domains.Emulation.SetScrollbarsHiddenRequest(Hidden);
     }
@@ -442,7 +508,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="Disabled">Whether document.coookie API should be disabled.</param>
-    public static ChromeProtocol.Domains.Emulation.SetDocumentCookieDisabledRequest SetDocumentCookieDisabled(bool Disabled)
+    public static ChromeProtocol.Domains.Emulation.SetDocumentCookieDisabledRequest SetDocumentCookieDisabled(bool Disabled)    
     {
       return new ChromeProtocol.Domains.Emulation.SetDocumentCookieDisabledRequest(Disabled);
     }
@@ -459,7 +525,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="Enabled">Whether touch emulation based on mouse input should be enabled.</param>
     /// <param name="Configuration">Touch/gesture events configuration. Default: current platform.</param>
-    public static ChromeProtocol.Domains.Emulation.SetEmitTouchEventsForMouseRequest SetEmitTouchEventsForMouse(bool Enabled, string? Configuration = default)
+    public static ChromeProtocol.Domains.Emulation.SetEmitTouchEventsForMouseRequest SetEmitTouchEventsForMouse(bool Enabled, string? Configuration = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetEmitTouchEventsForMouseRequest(Enabled, Configuration);
     }
@@ -480,7 +546,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Emulates the given media type or media feature for CSS media queries.</summary>
     /// <param name="Media">Media type to emulate. Empty string disables the override.</param>
     /// <param name="Features">Media features to emulate.</param>
-    public static ChromeProtocol.Domains.Emulation.SetEmulatedMediaRequest SetEmulatedMedia(string? Media = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.MediaFeatureType>? Features = default)
+    public static ChromeProtocol.Domains.Emulation.SetEmulatedMediaRequest SetEmulatedMedia(string? Media = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.MediaFeatureType>? Features = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetEmulatedMediaRequest(Media, Features);
     }
@@ -504,7 +570,7 @@ namespace ChromeProtocol.Domains
     /// Vision deficiency to emulate. Order: best-effort emulations come first, followed by any<br/>
     /// physiologically accurate emulations for medically recognized color vision deficiencies.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetEmulatedVisionDeficiencyRequest SetEmulatedVisionDeficiency(string Type)
+    public static ChromeProtocol.Domains.Emulation.SetEmulatedVisionDeficiencyRequest SetEmulatedVisionDeficiency(string Type)    
     {
       return new ChromeProtocol.Domains.Emulation.SetEmulatedVisionDeficiencyRequest(Type);
     }
@@ -530,7 +596,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Latitude">Mock latitude</param>
     /// <param name="Longitude">Mock longitude</param>
     /// <param name="Accuracy">Mock accuracy</param>
-    public static ChromeProtocol.Domains.Emulation.SetGeolocationOverrideRequest SetGeolocationOverride(double? Latitude = default, double? Longitude = default, double? Accuracy = default)
+    public static ChromeProtocol.Domains.Emulation.SetGeolocationOverrideRequest SetGeolocationOverride(double? Latitude = default, double? Longitude = default, double? Accuracy = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetGeolocationOverrideRequest(Latitude, Longitude, Accuracy);
     }
@@ -555,7 +621,7 @@ namespace ChromeProtocol.Domains
     public record SetGeolocationOverrideRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Emulation.GetOverriddenSensorInformationRequest GetOverriddenSensorInformation(ChromeProtocol.Domains.Emulation.SensorTypeType Type)
+    public static ChromeProtocol.Domains.Emulation.GetOverriddenSensorInformationRequest GetOverriddenSensorInformation(ChromeProtocol.Domains.Emulation.SensorTypeType Type)    
     {
       return new ChromeProtocol.Domains.Emulation.GetOverriddenSensorInformationRequest(Type);
     }
@@ -579,7 +645,7 @@ namespace ChromeProtocol.Domains
     /// sensor-backend Sensor objects will fire an error event and new calls to<br/>
     /// Sensor.start() will attempt to use a real sensor instead.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Emulation.SetSensorOverrideEnabledRequest SetSensorOverrideEnabled(bool Enabled, ChromeProtocol.Domains.Emulation.SensorTypeType Type, ChromeProtocol.Domains.Emulation.SensorMetadataType? Metadata = default)
+    public static ChromeProtocol.Domains.Emulation.SetSensorOverrideEnabledRequest SetSensorOverrideEnabled(bool Enabled, ChromeProtocol.Domains.Emulation.SensorTypeType Type, ChromeProtocol.Domains.Emulation.SensorMetadataType? Metadata = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetSensorOverrideEnabledRequest(Enabled, Type, Metadata);
     }
@@ -608,7 +674,7 @@ namespace ChromeProtocol.Domains
     /// Updates the sensor readings reported by a sensor type previously overridden<br/>
     /// by setSensorOverrideEnabled.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Emulation.SetSensorOverrideReadingsRequest SetSensorOverrideReadings(ChromeProtocol.Domains.Emulation.SensorTypeType Type, ChromeProtocol.Domains.Emulation.SensorReadingType Reading)
+    public static ChromeProtocol.Domains.Emulation.SetSensorOverrideReadingsRequest SetSensorOverrideReadings(ChromeProtocol.Domains.Emulation.SensorTypeType Type, ChromeProtocol.Domains.Emulation.SensorReadingType Reading)    
     {
       return new ChromeProtocol.Domains.Emulation.SetSensorOverrideReadingsRequest(Type, Reading);
     }
@@ -628,10 +694,66 @@ namespace ChromeProtocol.Domains
     public record SetSensorOverrideReadingsRequestResult() : ChromeProtocol.Core.IType
     {
     }
+    /// <summary>
+    /// Overrides a pressure source of a given type, as used by the Compute<br/>
+    /// Pressure API, so that updates to PressureObserver.observe() are provided<br/>
+    /// via setPressureStateOverride instead of being retrieved from<br/>
+    /// platform-provided telemetry data.<br/>
+    /// </summary>
+    public static ChromeProtocol.Domains.Emulation.SetPressureSourceOverrideEnabledRequest SetPressureSourceOverrideEnabled(bool Enabled, ChromeProtocol.Domains.Emulation.PressureSourceType Source, ChromeProtocol.Domains.Emulation.PressureMetadataType? Metadata = default)    
+    {
+      return new ChromeProtocol.Domains.Emulation.SetPressureSourceOverrideEnabledRequest(Enabled, Source, Metadata);
+    }
+    /// <summary>
+    /// Overrides a pressure source of a given type, as used by the Compute<br/>
+    /// Pressure API, so that updates to PressureObserver.observe() are provided<br/>
+    /// via setPressureStateOverride instead of being retrieved from<br/>
+    /// platform-provided telemetry data.<br/>
+    /// </summary>
+    [ChromeProtocol.Core.MethodName("Emulation.setPressureSourceOverrideEnabled")]
+    public record SetPressureSourceOverrideEnabledRequest(
+      [property: System.Text.Json.Serialization.JsonPropertyName("enabled")]
+      bool Enabled,
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
+      ChromeProtocol.Domains.Emulation.PressureSourceType Source,
+      [property: System.Text.Json.Serialization.JsonPropertyName("metadata")]
+      ChromeProtocol.Domains.Emulation.PressureMetadataType? Metadata = default
+    ) : ChromeProtocol.Core.ICommand<SetPressureSourceOverrideEnabledRequestResult>
+    {
+    }
+    public record SetPressureSourceOverrideEnabledRequestResult() : ChromeProtocol.Core.IType
+    {
+    }
+    /// <summary>
+    /// Provides a given pressure state that will be processed and eventually be<br/>
+    /// delivered to PressureObserver users. |source| must have been previously<br/>
+    /// overridden by setPressureSourceOverrideEnabled.<br/>
+    /// </summary>
+    public static ChromeProtocol.Domains.Emulation.SetPressureStateOverrideRequest SetPressureStateOverride(ChromeProtocol.Domains.Emulation.PressureSourceType Source, ChromeProtocol.Domains.Emulation.PressureStateType State)    
+    {
+      return new ChromeProtocol.Domains.Emulation.SetPressureStateOverrideRequest(Source, State);
+    }
+    /// <summary>
+    /// Provides a given pressure state that will be processed and eventually be<br/>
+    /// delivered to PressureObserver users. |source| must have been previously<br/>
+    /// overridden by setPressureSourceOverrideEnabled.<br/>
+    /// </summary>
+    [ChromeProtocol.Core.MethodName("Emulation.setPressureStateOverride")]
+    public record SetPressureStateOverrideRequest(
+      [property: System.Text.Json.Serialization.JsonPropertyName("source")]
+      ChromeProtocol.Domains.Emulation.PressureSourceType Source,
+      [property: System.Text.Json.Serialization.JsonPropertyName("state")]
+      ChromeProtocol.Domains.Emulation.PressureStateType State
+    ) : ChromeProtocol.Core.ICommand<SetPressureStateOverrideRequestResult>
+    {
+    }
+    public record SetPressureStateOverrideRequestResult() : ChromeProtocol.Core.IType
+    {
+    }
     /// <summary>Overrides the Idle state.</summary>
     /// <param name="IsUserActive">Mock isUserActive</param>
     /// <param name="IsScreenUnlocked">Mock isScreenUnlocked</param>
-    public static ChromeProtocol.Domains.Emulation.SetIdleOverrideRequest SetIdleOverride(bool IsUserActive, bool IsScreenUnlocked)
+    public static ChromeProtocol.Domains.Emulation.SetIdleOverrideRequest SetIdleOverride(bool IsUserActive, bool IsScreenUnlocked)    
     {
       return new ChromeProtocol.Domains.Emulation.SetIdleOverrideRequest(IsUserActive, IsScreenUnlocked);
     }
@@ -651,7 +773,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears Idle state overrides.</summary>
-    public static ChromeProtocol.Domains.Emulation.ClearIdleOverrideRequest ClearIdleOverride()
+    public static ChromeProtocol.Domains.Emulation.ClearIdleOverrideRequest ClearIdleOverride()    
     {
       return new ChromeProtocol.Domains.Emulation.ClearIdleOverrideRequest();
     }
@@ -666,7 +788,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Overrides value returned by the javascript navigator object.</summary>
     /// <param name="Platform">The platform navigator.platform should return.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Emulation.SetNavigatorOverridesRequest SetNavigatorOverrides(string Platform)
+    public static ChromeProtocol.Domains.Emulation.SetNavigatorOverridesRequest SetNavigatorOverrides(string Platform)    
     {
       return new ChromeProtocol.Domains.Emulation.SetNavigatorOverridesRequest(Platform);
     }
@@ -686,7 +808,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets a specified page scale factor.</summary>
     /// <param name="PageScaleFactor">Page scale factor.</param>
-    public static ChromeProtocol.Domains.Emulation.SetPageScaleFactorRequest SetPageScaleFactor(double PageScaleFactor)
+    public static ChromeProtocol.Domains.Emulation.SetPageScaleFactorRequest SetPageScaleFactor(double PageScaleFactor)    
     {
       return new ChromeProtocol.Domains.Emulation.SetPageScaleFactorRequest(PageScaleFactor);
     }
@@ -704,7 +826,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Switches script execution in the page.</summary>
     /// <param name="Value">Whether script execution should be disabled in the page.</param>
-    public static ChromeProtocol.Domains.Emulation.SetScriptExecutionDisabledRequest SetScriptExecutionDisabled(bool Value)
+    public static ChromeProtocol.Domains.Emulation.SetScriptExecutionDisabledRequest SetScriptExecutionDisabled(bool Value)    
     {
       return new ChromeProtocol.Domains.Emulation.SetScriptExecutionDisabledRequest(Value);
     }
@@ -723,7 +845,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Enables touch on platforms which do not support them.</summary>
     /// <param name="Enabled">Whether the touch event emulation should be enabled.</param>
     /// <param name="MaxTouchPoints">Maximum touch points supported. Defaults to one.</param>
-    public static ChromeProtocol.Domains.Emulation.SetTouchEmulationEnabledRequest SetTouchEmulationEnabled(bool Enabled, int? MaxTouchPoints = default)
+    public static ChromeProtocol.Domains.Emulation.SetTouchEmulationEnabledRequest SetTouchEmulationEnabled(bool Enabled, int? MaxTouchPoints = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetTouchEmulationEnabledRequest(Enabled, MaxTouchPoints);
     }
@@ -755,7 +877,7 @@ namespace ChromeProtocol.Domains
     /// forwards to prevent deadlock.<br/>
     /// </param>
     /// <param name="InitialVirtualTime">If set, base::Time::Now will be overridden to initially return this value.</param>
-    public static ChromeProtocol.Domains.Emulation.SetVirtualTimePolicyRequest SetVirtualTimePolicy(ChromeProtocol.Domains.Emulation.VirtualTimePolicyType Policy, double? Budget = default, int? MaxVirtualTimeTaskStarvationCount = default, ChromeProtocol.Domains.Network.TimeSinceEpochType? InitialVirtualTime = default)
+    public static ChromeProtocol.Domains.Emulation.SetVirtualTimePolicyRequest SetVirtualTimePolicy(ChromeProtocol.Domains.Emulation.VirtualTimePolicyType Policy, double? Budget = default, int? MaxVirtualTimeTaskStarvationCount = default, ChromeProtocol.Domains.Network.TimeSinceEpochType? InitialVirtualTime = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetVirtualTimePolicyRequest(Policy, Budget, MaxVirtualTimeTaskStarvationCount, InitialVirtualTime);
     }
@@ -797,7 +919,7 @@ namespace ChromeProtocol.Domains
     /// ICU style C locale (e.g. &quot;en_US&quot;). If not specified or empty, disables the override and<br/>
     /// restores default host system locale.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetLocaleOverrideRequest SetLocaleOverride(string? Locale = default)
+    public static ChromeProtocol.Domains.Emulation.SetLocaleOverrideRequest SetLocaleOverride(string? Locale = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetLocaleOverrideRequest(Locale);
     }
@@ -822,7 +944,7 @@ namespace ChromeProtocol.Domains
     /// https://source.chromium.org/chromium/chromium/deps/icu.git/+/faee8bc70570192d82d2978a71e2a615788597d1:source/data/misc/metaZones.txt<br/>
     /// If empty, disables the override and restores default host system timezone.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Emulation.SetTimezoneOverrideRequest SetTimezoneOverride(string TimezoneId)
+    public static ChromeProtocol.Domains.Emulation.SetTimezoneOverrideRequest SetTimezoneOverride(string TimezoneId)    
     {
       return new ChromeProtocol.Domains.Emulation.SetTimezoneOverrideRequest(TimezoneId);
     }
@@ -850,7 +972,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Width">Frame width (DIP).</param>
     /// <param name="Height">Frame height (DIP).</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Emulation.SetVisibleSizeRequest SetVisibleSize(int Width, int Height)
+    public static ChromeProtocol.Domains.Emulation.SetVisibleSizeRequest SetVisibleSize(int Width, int Height)    
     {
       return new ChromeProtocol.Domains.Emulation.SetVisibleSizeRequest(Width, Height);
     }
@@ -876,7 +998,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="ImageTypes">Image types to disable.</param>
-    public static ChromeProtocol.Domains.Emulation.SetDisabledImageTypesRequest SetDisabledImageTypes(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.DisabledImageTypeType> ImageTypes)
+    public static ChromeProtocol.Domains.Emulation.SetDisabledImageTypesRequest SetDisabledImageTypes(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Emulation.DisabledImageTypeType> ImageTypes)    
     {
       return new ChromeProtocol.Domains.Emulation.SetDisabledImageTypesRequest(ImageTypes);
     }
@@ -892,7 +1014,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="HardwareConcurrency">Hardware concurrency to report</param>
-    public static ChromeProtocol.Domains.Emulation.SetHardwareConcurrencyOverrideRequest SetHardwareConcurrencyOverride(int HardwareConcurrency)
+    public static ChromeProtocol.Domains.Emulation.SetHardwareConcurrencyOverrideRequest SetHardwareConcurrencyOverride(int HardwareConcurrency)    
     {
       return new ChromeProtocol.Domains.Emulation.SetHardwareConcurrencyOverrideRequest(HardwareConcurrency);
     }
@@ -915,7 +1037,7 @@ namespace ChromeProtocol.Domains
     /// <param name="AcceptLanguage">Browser language to emulate.</param>
     /// <param name="Platform">The platform navigator.platform should return.</param>
     /// <param name="UserAgentMetadata">To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData</param>
-    public static ChromeProtocol.Domains.Emulation.SetUserAgentOverrideRequest SetUserAgentOverride(string UserAgent, string? AcceptLanguage = default, string? Platform = default, ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default)
+    public static ChromeProtocol.Domains.Emulation.SetUserAgentOverrideRequest SetUserAgentOverride(string UserAgent, string? AcceptLanguage = default, string? Platform = default, ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default)    
     {
       return new ChromeProtocol.Domains.Emulation.SetUserAgentOverrideRequest(UserAgent, AcceptLanguage, Platform, UserAgentMetadata);
     }
@@ -945,7 +1067,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Allows overriding the automation flag.</summary>
     /// <param name="Enabled">Whether the override should be enabled.</param>
-    public static ChromeProtocol.Domains.Emulation.SetAutomationOverrideRequest SetAutomationOverride(bool Enabled)
+    public static ChromeProtocol.Domains.Emulation.SetAutomationOverrideRequest SetAutomationOverride(bool Enabled)    
     {
       return new ChromeProtocol.Domains.Emulation.SetAutomationOverrideRequest(Enabled);
     }

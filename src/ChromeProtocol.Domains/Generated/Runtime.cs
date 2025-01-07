@@ -543,7 +543,7 @@ namespace ChromeProtocol.Domains
     /// <param name="PromiseObjectId">Identifier of the promise.</param>
     /// <param name="ReturnByValue">Whether the result is expected to be a JSON object that should be sent by value.</param>
     /// <param name="GeneratePreview">Whether preview should be generated for the result.</param>
-    public static ChromeProtocol.Domains.Runtime.AwaitPromiseRequest AwaitPromise(ChromeProtocol.Domains.Runtime.RemoteObjectIdType PromiseObjectId, bool? ReturnByValue = default, bool? GeneratePreview = default)
+    public static ChromeProtocol.Domains.Runtime.AwaitPromiseRequest AwaitPromise(ChromeProtocol.Domains.Runtime.RemoteObjectIdType PromiseObjectId, bool? ReturnByValue = default, bool? GeneratePreview = default)    
     {
       return new ChromeProtocol.Domains.Runtime.AwaitPromiseRequest(PromiseObjectId, ReturnByValue, GeneratePreview);
     }
@@ -620,7 +620,7 @@ namespace ChromeProtocol.Domains
     /// Specifies the result serialization. If provided, overrides<br/>
     /// `generatePreview` and `returnByValue`.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.CallFunctionOnRequest CallFunctionOn(string FunctionDeclaration, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.CallArgumentType>? Arguments = default, bool? Silent = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? UserGesture = default, bool? AwaitPromise = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ObjectGroup = default, bool? ThrowOnSideEffect = default, string? UniqueContextId = default, ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default)
+    public static ChromeProtocol.Domains.Runtime.CallFunctionOnRequest CallFunctionOn(string FunctionDeclaration, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Runtime.CallArgumentType>? Arguments = default, bool? Silent = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? UserGesture = default, bool? AwaitPromise = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ObjectGroup = default, bool? ThrowOnSideEffect = default, string? UniqueContextId = default, ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default)    
     {
       return new ChromeProtocol.Domains.Runtime.CallFunctionOnRequest(FunctionDeclaration, ObjectId, Arguments, Silent, ReturnByValue, GeneratePreview, UserGesture, AwaitPromise, ExecutionContextId, ObjectGroup, ThrowOnSideEffect, UniqueContextId, SerializationOptions);
     }
@@ -721,7 +721,7 @@ namespace ChromeProtocol.Domains
     /// Specifies in which execution context to perform script run. If the parameter is omitted the<br/>
     /// evaluation will be performed in the context of the inspected page.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.CompileScriptRequest CompileScript(string Expression, string SourceURL, bool PersistScript, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)
+    public static ChromeProtocol.Domains.Runtime.CompileScriptRequest CompileScript(string Expression, string SourceURL, bool PersistScript, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)    
     {
       return new ChromeProtocol.Domains.Runtime.CompileScriptRequest(Expression, SourceURL, PersistScript, ExecutionContextId);
     }
@@ -757,7 +757,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables reporting of execution contexts creation.</summary>
-    public static ChromeProtocol.Domains.Runtime.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Runtime.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Runtime.DisableRequest();
     }
@@ -770,7 +770,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Discards collected exceptions and console API calls.</summary>
-    public static ChromeProtocol.Domains.Runtime.DiscardConsoleEntriesRequest DiscardConsoleEntries()
+    public static ChromeProtocol.Domains.Runtime.DiscardConsoleEntriesRequest DiscardConsoleEntries()    
     {
       return new ChromeProtocol.Domains.Runtime.DiscardConsoleEntriesRequest();
     }
@@ -787,7 +787,7 @@ namespace ChromeProtocol.Domains
     /// When the reporting gets enabled the event will be sent immediately for each existing execution<br/>
     /// context.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Runtime.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Runtime.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Runtime.EnableRequest();
     }
@@ -854,7 +854,7 @@ namespace ChromeProtocol.Domains
     /// Specifies the result serialization. If provided, overrides<br/>
     /// `generatePreview` and `returnByValue`.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.EvaluateRequest Evaluate(string Expression, string? ObjectGroup = default, bool? IncludeCommandLineAPI = default, bool? Silent = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ContextId = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? UserGesture = default, bool? AwaitPromise = default, bool? ThrowOnSideEffect = default, ChromeProtocol.Domains.Runtime.TimeDeltaType? Timeout = default, bool? DisableBreaks = default, bool? ReplMode = default, bool? AllowUnsafeEvalBlockedByCSP = default, string? UniqueContextId = default, ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default)
+    public static ChromeProtocol.Domains.Runtime.EvaluateRequest Evaluate(string Expression, string? ObjectGroup = default, bool? IncludeCommandLineAPI = default, bool? Silent = default, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ContextId = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? UserGesture = default, bool? AwaitPromise = default, bool? ThrowOnSideEffect = default, ChromeProtocol.Domains.Runtime.TimeDeltaType? Timeout = default, bool? DisableBreaks = default, bool? ReplMode = default, bool? AllowUnsafeEvalBlockedByCSP = default, string? UniqueContextId = default, ChromeProtocol.Domains.Runtime.SerializationOptionsType? SerializationOptions = default)    
     {
       return new ChromeProtocol.Domains.Runtime.EvaluateRequest(Expression, ObjectGroup, IncludeCommandLineAPI, Silent, ContextId, ReturnByValue, GeneratePreview, UserGesture, AwaitPromise, ThrowOnSideEffect, Timeout, DisableBreaks, ReplMode, AllowUnsafeEvalBlockedByCSP, UniqueContextId, SerializationOptions);
     }
@@ -957,7 +957,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns the isolate id.</summary>
-    public static ChromeProtocol.Domains.Runtime.GetIsolateIdRequest GetIsolateId()
+    public static ChromeProtocol.Domains.Runtime.GetIsolateIdRequest GetIsolateId()    
     {
       return new ChromeProtocol.Domains.Runtime.GetIsolateIdRequest();
     }
@@ -977,7 +977,7 @@ namespace ChromeProtocol.Domains
     /// Returns the JavaScript heap usage.<br/>
     /// It is the total usage of the corresponding isolate not scoped to a particular Runtime.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Runtime.GetHeapUsageRequest GetHeapUsage()
+    public static ChromeProtocol.Domains.Runtime.GetHeapUsageRequest GetHeapUsage()    
     {
       return new ChromeProtocol.Domains.Runtime.GetHeapUsageRequest();
     }
@@ -1014,7 +1014,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="GeneratePreview">Whether preview should be generated for the results.</param>
     /// <param name="NonIndexedPropertiesOnly">If true, returns non-indexed properties only.</param>
-    public static ChromeProtocol.Domains.Runtime.GetPropertiesRequest GetProperties(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, bool? OwnProperties = default, bool? AccessorPropertiesOnly = default, bool? GeneratePreview = default, bool? NonIndexedPropertiesOnly = default)
+    public static ChromeProtocol.Domains.Runtime.GetPropertiesRequest GetProperties(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, bool? OwnProperties = default, bool? AccessorPropertiesOnly = default, bool? GeneratePreview = default, bool? NonIndexedPropertiesOnly = default)    
     {
       return new ChromeProtocol.Domains.Runtime.GetPropertiesRequest(ObjectId, OwnProperties, AccessorPropertiesOnly, GeneratePreview, NonIndexedPropertiesOnly);
     }
@@ -1066,7 +1066,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns all let, const and class variables from global scope.</summary>
     /// <param name="ExecutionContextId">Specifies in which execution context to lookup global scope variables.</param>
-    public static ChromeProtocol.Domains.Runtime.GlobalLexicalScopeNamesRequest GlobalLexicalScopeNames(ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)
+    public static ChromeProtocol.Domains.Runtime.GlobalLexicalScopeNamesRequest GlobalLexicalScopeNames(ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default)    
     {
       return new ChromeProtocol.Domains.Runtime.GlobalLexicalScopeNamesRequest(ExecutionContextId);
     }
@@ -1087,7 +1087,7 @@ namespace ChromeProtocol.Domains
     }
     /// <param name="PrototypeObjectId">Identifier of the prototype to return objects for.</param>
     /// <param name="ObjectGroup">Symbolic group name that can be used to release the results.</param>
-    public static ChromeProtocol.Domains.Runtime.QueryObjectsRequest QueryObjects(ChromeProtocol.Domains.Runtime.RemoteObjectIdType PrototypeObjectId, string? ObjectGroup = default)
+    public static ChromeProtocol.Domains.Runtime.QueryObjectsRequest QueryObjects(ChromeProtocol.Domains.Runtime.RemoteObjectIdType PrototypeObjectId, string? ObjectGroup = default)    
     {
       return new ChromeProtocol.Domains.Runtime.QueryObjectsRequest(PrototypeObjectId, ObjectGroup);
     }
@@ -1111,7 +1111,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Releases remote object with given id.</summary>
     /// <param name="ObjectId">Identifier of the object to release.</param>
-    public static ChromeProtocol.Domains.Runtime.ReleaseObjectRequest ReleaseObject(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)
+    public static ChromeProtocol.Domains.Runtime.ReleaseObjectRequest ReleaseObject(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)    
     {
       return new ChromeProtocol.Domains.Runtime.ReleaseObjectRequest(ObjectId);
     }
@@ -1129,7 +1129,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Releases all remote objects that belong to a given group.</summary>
     /// <param name="ObjectGroup">Symbolic object group name.</param>
-    public static ChromeProtocol.Domains.Runtime.ReleaseObjectGroupRequest ReleaseObjectGroup(string ObjectGroup)
+    public static ChromeProtocol.Domains.Runtime.ReleaseObjectGroupRequest ReleaseObjectGroup(string ObjectGroup)    
     {
       return new ChromeProtocol.Domains.Runtime.ReleaseObjectGroupRequest(ObjectGroup);
     }
@@ -1146,7 +1146,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Tells inspected instance to run if it was waiting for debugger to attach.</summary>
-    public static ChromeProtocol.Domains.Runtime.RunIfWaitingForDebuggerRequest RunIfWaitingForDebugger()
+    public static ChromeProtocol.Domains.Runtime.RunIfWaitingForDebuggerRequest RunIfWaitingForDebugger()    
     {
       return new ChromeProtocol.Domains.Runtime.RunIfWaitingForDebuggerRequest();
     }
@@ -1176,7 +1176,7 @@ namespace ChromeProtocol.Domains
     /// Whether execution should `await` for resulting value and return once awaited promise is<br/>
     /// resolved.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.RunScriptRequest RunScript(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ObjectGroup = default, bool? Silent = default, bool? IncludeCommandLineAPI = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? AwaitPromise = default)
+    public static ChromeProtocol.Domains.Runtime.RunScriptRequest RunScript(ChromeProtocol.Domains.Runtime.ScriptIdType ScriptId, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ObjectGroup = default, bool? Silent = default, bool? IncludeCommandLineAPI = default, bool? ReturnByValue = default, bool? GeneratePreview = default, bool? AwaitPromise = default)    
     {
       return new ChromeProtocol.Domains.Runtime.RunScriptRequest(ScriptId, ExecutionContextId, ObjectGroup, Silent, IncludeCommandLineAPI, ReturnByValue, GeneratePreview, AwaitPromise);
     }
@@ -1234,7 +1234,7 @@ namespace ChromeProtocol.Domains
     /// Maximum depth of async call stacks. Setting to `0` will effectively disable collecting async<br/>
     /// call stacks (default).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.SetAsyncCallStackDepthRequest SetAsyncCallStackDepth(int MaxDepth)
+    public static ChromeProtocol.Domains.Runtime.SetAsyncCallStackDepthRequest SetAsyncCallStackDepth(int MaxDepth)    
     {
       return new ChromeProtocol.Domains.Runtime.SetAsyncCallStackDepthRequest(MaxDepth);
     }
@@ -1253,7 +1253,7 @@ namespace ChromeProtocol.Domains
     public record SetAsyncCallStackDepthRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Runtime.SetCustomObjectFormatterEnabledRequest SetCustomObjectFormatterEnabled(bool Enabled)
+    public static ChromeProtocol.Domains.Runtime.SetCustomObjectFormatterEnabledRequest SetCustomObjectFormatterEnabled(bool Enabled)    
     {
       return new ChromeProtocol.Domains.Runtime.SetCustomObjectFormatterEnabledRequest(Enabled);
     }
@@ -1267,7 +1267,7 @@ namespace ChromeProtocol.Domains
     public record SetCustomObjectFormatterEnabledRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Runtime.SetMaxCallStackSizeToCaptureRequest SetMaxCallStackSizeToCapture(int Size)
+    public static ChromeProtocol.Domains.Runtime.SetMaxCallStackSizeToCaptureRequest SetMaxCallStackSizeToCapture(int Size)    
     {
       return new ChromeProtocol.Domains.Runtime.SetMaxCallStackSizeToCaptureRequest(Size);
     }
@@ -1285,7 +1285,7 @@ namespace ChromeProtocol.Domains
     /// Terminate current or next JavaScript execution.<br/>
     /// Will cancel the termination when the outer-most script execution ends.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Runtime.TerminateExecutionRequest TerminateExecution()
+    public static ChromeProtocol.Domains.Runtime.TerminateExecutionRequest TerminateExecution()    
     {
       return new ChromeProtocol.Domains.Runtime.TerminateExecutionRequest();
     }
@@ -1324,7 +1324,7 @@ namespace ChromeProtocol.Domains
     /// `Page.addScriptToEvaluateOnNewDocument`.<br/>
     /// This parameter is mutually exclusive with `executionContextId`.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Runtime.AddBindingRequest AddBinding(string Name, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ExecutionContextName = default)
+    public static ChromeProtocol.Domains.Runtime.AddBindingRequest AddBinding(string Name, ChromeProtocol.Domains.Runtime.ExecutionContextIdType? ExecutionContextId = default, string? ExecutionContextName = default)    
     {
       return new ChromeProtocol.Domains.Runtime.AddBindingRequest(Name, ExecutionContextId, ExecutionContextName);
     }
@@ -1371,7 +1371,7 @@ namespace ChromeProtocol.Domains
     /// This method does not remove binding function from global object but<br/>
     /// unsubscribes current runtime agent from Runtime.bindingCalled notifications.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Runtime.RemoveBindingRequest RemoveBinding(string Name)
+    public static ChromeProtocol.Domains.Runtime.RemoveBindingRequest RemoveBinding(string Name)    
     {
       return new ChromeProtocol.Domains.Runtime.RemoveBindingRequest(Name);
     }
@@ -1397,7 +1397,7 @@ namespace ChromeProtocol.Domains
     /// Error was thrown.<br/>
     /// </summary>
     /// <param name="ErrorObjectId">The error object for which to resolve the exception details.</param>
-    public static ChromeProtocol.Domains.Runtime.GetExceptionDetailsRequest GetExceptionDetails(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ErrorObjectId)
+    public static ChromeProtocol.Domains.Runtime.GetExceptionDetailsRequest GetExceptionDetails(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ErrorObjectId)    
     {
       return new ChromeProtocol.Domains.Runtime.GetExceptionDetailsRequest(ErrorObjectId);
     }

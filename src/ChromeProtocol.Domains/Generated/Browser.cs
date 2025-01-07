@@ -71,6 +71,7 @@ namespace ChromeProtocol.Domains
     /// Note that userVisibleOnly = true is the only currently supported type.<br/>
     /// </param>
     /// <param name="AllowWithoutSanitization">For &quot;clipboard&quot; permission, may specify allowWithoutSanitization.</param>
+    /// <param name="AllowWithoutGesture">For &quot;fullscreen&quot; permission, must specify allowWithoutGesture:true.</param>
     /// <param name="PanTiltZoom">For &quot;camera&quot; permission, may specify panTiltZoom.</param>
     public record PermissionDescriptorType(
       [property: System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -81,6 +82,8 @@ namespace ChromeProtocol.Domains
       bool? UserVisibleOnly = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("allowWithoutSanitization")]
       bool? AllowWithoutSanitization = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("allowWithoutGesture")]
+      bool? AllowWithoutGesture = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("panTiltZoom")]
       bool? PanTiltZoom = default
     ) : ChromeProtocol.Core.IType
@@ -165,7 +168,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Setting">Setting of the permission.</param>
     /// <param name="Origin">Origin the permission applies to, all origins if not specified.</param>
     /// <param name="BrowserContextId">Context to override. When omitted, default browser context is used.</param>
-    public static ChromeProtocol.Domains.Browser.SetPermissionRequest SetPermission(ChromeProtocol.Domains.Browser.PermissionDescriptorType Permission, ChromeProtocol.Domains.Browser.PermissionSettingType Setting, string? Origin = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
+    public static ChromeProtocol.Domains.Browser.SetPermissionRequest SetPermission(ChromeProtocol.Domains.Browser.PermissionDescriptorType Permission, ChromeProtocol.Domains.Browser.PermissionSettingType Setting, string? Origin = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
     {
       return new ChromeProtocol.Domains.Browser.SetPermissionRequest(Permission, Setting, Origin, BrowserContextId);
     }
@@ -193,7 +196,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Grant specific permissions to the given origin and reject all others.</summary>
     /// <param name="Origin">Origin the permission applies to, all origins if not specified.</param>
     /// <param name="BrowserContextId">BrowserContext to override permissions. When omitted, default browser context is used.</param>
-    public static ChromeProtocol.Domains.Browser.GrantPermissionsRequest GrantPermissions(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Browser.PermissionTypeType> Permissions, string? Origin = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
+    public static ChromeProtocol.Domains.Browser.GrantPermissionsRequest GrantPermissions(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Browser.PermissionTypeType> Permissions, string? Origin = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
     {
       return new ChromeProtocol.Domains.Browser.GrantPermissionsRequest(Permissions, Origin, BrowserContextId);
     }
@@ -216,7 +219,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Reset all permission management for all origins.</summary>
     /// <param name="BrowserContextId">BrowserContext to reset permissions. When omitted, default browser context is used.</param>
-    public static ChromeProtocol.Domains.Browser.ResetPermissionsRequest ResetPermissions(ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
+    public static ChromeProtocol.Domains.Browser.ResetPermissionsRequest ResetPermissions(ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
     {
       return new ChromeProtocol.Domains.Browser.ResetPermissionsRequest(BrowserContextId);
     }
@@ -244,7 +247,7 @@ namespace ChromeProtocol.Domains
     /// or &#39;allowAndName&#39;.<br/>
     /// </param>
     /// <param name="EventsEnabled">Whether to emit download events (defaults to false).</param>
-    public static ChromeProtocol.Domains.Browser.SetDownloadBehaviorRequest SetDownloadBehavior(string Behavior, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default, string? DownloadPath = default, bool? EventsEnabled = default)
+    public static ChromeProtocol.Domains.Browser.SetDownloadBehaviorRequest SetDownloadBehavior(string Behavior, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default, string? DownloadPath = default, bool? EventsEnabled = default)    
     {
       return new ChromeProtocol.Domains.Browser.SetDownloadBehaviorRequest(Behavior, BrowserContextId, DownloadPath, EventsEnabled);
     }
@@ -279,7 +282,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Cancel a download if in progress</summary>
     /// <param name="Guid">Global unique identifier of the download.</param>
     /// <param name="BrowserContextId">BrowserContext to perform the action in. When omitted, default browser context is used.</param>
-    public static ChromeProtocol.Domains.Browser.CancelDownloadRequest CancelDownload(string Guid, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)
+    public static ChromeProtocol.Domains.Browser.CancelDownloadRequest CancelDownload(string Guid, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default)    
     {
       return new ChromeProtocol.Domains.Browser.CancelDownloadRequest(Guid, BrowserContextId);
     }
@@ -299,7 +302,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Close browser gracefully.</summary>
-    public static ChromeProtocol.Domains.Browser.CloseRequest Close()
+    public static ChromeProtocol.Domains.Browser.CloseRequest Close()    
     {
       return new ChromeProtocol.Domains.Browser.CloseRequest();
     }
@@ -312,7 +315,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Crashes browser on the main thread.</summary>
-    public static ChromeProtocol.Domains.Browser.CrashRequest Crash()
+    public static ChromeProtocol.Domains.Browser.CrashRequest Crash()    
     {
       return new ChromeProtocol.Domains.Browser.CrashRequest();
     }
@@ -325,7 +328,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Crashes GPU process.</summary>
-    public static ChromeProtocol.Domains.Browser.CrashGpuProcessRequest CrashGpuProcess()
+    public static ChromeProtocol.Domains.Browser.CrashGpuProcessRequest CrashGpuProcess()    
     {
       return new ChromeProtocol.Domains.Browser.CrashGpuProcessRequest();
     }
@@ -338,7 +341,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns version information.</summary>
-    public static ChromeProtocol.Domains.Browser.GetVersionRequest GetVersion()
+    public static ChromeProtocol.Domains.Browser.GetVersionRequest GetVersion()    
     {
       return new ChromeProtocol.Domains.Browser.GetVersionRequest();
     }
@@ -370,7 +373,7 @@ namespace ChromeProtocol.Domains
     /// Returns the command line switches for the browser process if, and only if<br/>
     /// --enable-automation is on the commandline.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Browser.GetBrowserCommandLineRequest GetBrowserCommandLine()
+    public static ChromeProtocol.Domains.Browser.GetBrowserCommandLineRequest GetBrowserCommandLine()    
     {
       return new ChromeProtocol.Domains.Browser.GetBrowserCommandLineRequest();
     }
@@ -396,7 +399,7 @@ namespace ChromeProtocol.Domains
     /// all histograms.<br/>
     /// </param>
     /// <param name="Delta">If true, retrieve delta since last delta call.</param>
-    public static ChromeProtocol.Domains.Browser.GetHistogramsRequest GetHistograms(string? Query = default, bool? Delta = default)
+    public static ChromeProtocol.Domains.Browser.GetHistogramsRequest GetHistograms(string? Query = default, bool? Delta = default)    
     {
       return new ChromeProtocol.Domains.Browser.GetHistogramsRequest(Query, Delta);
     }
@@ -426,7 +429,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Get a Chrome histogram by name.</summary>
     /// <param name="Name">Requested histogram name.</param>
     /// <param name="Delta">If true, retrieve delta since last delta call.</param>
-    public static ChromeProtocol.Domains.Browser.GetHistogramRequest GetHistogram(string Name, bool? Delta = default)
+    public static ChromeProtocol.Domains.Browser.GetHistogramRequest GetHistogram(string Name, bool? Delta = default)    
     {
       return new ChromeProtocol.Domains.Browser.GetHistogramRequest(Name, Delta);
     }
@@ -451,7 +454,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Get position and size of the browser window.</summary>
     /// <param name="WindowId">Browser window id.</param>
-    public static ChromeProtocol.Domains.Browser.GetWindowBoundsRequest GetWindowBounds(ChromeProtocol.Domains.Browser.WindowIDType WindowId)
+    public static ChromeProtocol.Domains.Browser.GetWindowBoundsRequest GetWindowBounds(ChromeProtocol.Domains.Browser.WindowIDType WindowId)    
     {
       return new ChromeProtocol.Domains.Browser.GetWindowBoundsRequest(WindowId);
     }
@@ -476,7 +479,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Get the browser window that contains the devtools target.</summary>
     /// <param name="TargetId">Devtools agent host id. If called as a part of the session, associated targetId is used.</param>
-    public static ChromeProtocol.Domains.Browser.GetWindowForTargetRequest GetWindowForTarget(ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)
+    public static ChromeProtocol.Domains.Browser.GetWindowForTargetRequest GetWindowForTarget(ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)    
     {
       return new ChromeProtocol.Domains.Browser.GetWindowForTargetRequest(TargetId);
     }
@@ -508,7 +511,7 @@ namespace ChromeProtocol.Domains
     /// New window bounds. The &#39;minimized&#39;, &#39;maximized&#39; and &#39;fullscreen&#39; states cannot be combined<br/>
     /// with &#39;left&#39;, &#39;top&#39;, &#39;width&#39; or &#39;height&#39;. Leaves unspecified fields unchanged.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Browser.SetWindowBoundsRequest SetWindowBounds(ChromeProtocol.Domains.Browser.WindowIDType WindowId, ChromeProtocol.Domains.Browser.BoundsType Bounds)
+    public static ChromeProtocol.Domains.Browser.SetWindowBoundsRequest SetWindowBounds(ChromeProtocol.Domains.Browser.WindowIDType WindowId, ChromeProtocol.Domains.Browser.BoundsType Bounds)    
     {
       return new ChromeProtocol.Domains.Browser.SetWindowBoundsRequest(WindowId, Bounds);
     }
@@ -532,7 +535,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Set dock tile details, platform-specific.</summary>
     /// <param name="Image">Png encoded image. (Encoded as a base64 string when passed over JSON)</param>
-    public static ChromeProtocol.Domains.Browser.SetDockTileRequest SetDockTile(string? BadgeLabel = default, string? Image = default)
+    public static ChromeProtocol.Domains.Browser.SetDockTileRequest SetDockTile(string? BadgeLabel = default, string? Image = default)    
     {
       return new ChromeProtocol.Domains.Browser.SetDockTileRequest(BadgeLabel, Image);
     }
@@ -551,7 +554,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Invoke custom browser commands used by telemetry.</summary>
-    public static ChromeProtocol.Domains.Browser.ExecuteBrowserCommandRequest ExecuteBrowserCommand(ChromeProtocol.Domains.Browser.BrowserCommandIdType CommandId)
+    public static ChromeProtocol.Domains.Browser.ExecuteBrowserCommandRequest ExecuteBrowserCommand(ChromeProtocol.Domains.Browser.BrowserCommandIdType CommandId)    
     {
       return new ChromeProtocol.Domains.Browser.ExecuteBrowserCommandRequest(CommandId);
     }
@@ -570,7 +573,7 @@ namespace ChromeProtocol.Domains
     /// Allows a site to use privacy sandbox features that require enrollment<br/>
     /// without the site actually being enrolled. Only supported on page targets.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Browser.AddPrivacySandboxEnrollmentOverrideRequest AddPrivacySandboxEnrollmentOverride(string Url)
+    public static ChromeProtocol.Domains.Browser.AddPrivacySandboxEnrollmentOverrideRequest AddPrivacySandboxEnrollmentOverride(string Url)    
     {
       return new ChromeProtocol.Domains.Browser.AddPrivacySandboxEnrollmentOverrideRequest(Url);
     }

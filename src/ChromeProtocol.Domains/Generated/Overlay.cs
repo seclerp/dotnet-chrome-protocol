@@ -382,7 +382,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables domain notifications.</summary>
-    public static ChromeProtocol.Domains.Overlay.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Overlay.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Overlay.DisableRequest();
     }
@@ -395,7 +395,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables domain notifications.</summary>
-    public static ChromeProtocol.Domains.Overlay.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Overlay.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Overlay.EnableRequest();
     }
@@ -413,7 +413,7 @@ namespace ChromeProtocol.Domains
     /// <param name="IncludeStyle">Whether to include style info.</param>
     /// <param name="ColorFormat">The color format to get config with (default: hex).</param>
     /// <param name="ShowAccessibilityInfo">Whether to show accessibility info (default: true).</param>
-    public static ChromeProtocol.Domains.Overlay.GetHighlightObjectForTestRequest GetHighlightObjectForTest(ChromeProtocol.Domains.DOM.NodeIdType NodeId, bool? IncludeDistance = default, bool? IncludeStyle = default, ChromeProtocol.Domains.Overlay.ColorFormatType? ColorFormat = default, bool? ShowAccessibilityInfo = default)
+    public static ChromeProtocol.Domains.Overlay.GetHighlightObjectForTestRequest GetHighlightObjectForTest(ChromeProtocol.Domains.DOM.NodeIdType NodeId, bool? IncludeDistance = default, bool? IncludeStyle = default, ChromeProtocol.Domains.Overlay.ColorFormatType? ColorFormat = default, bool? ShowAccessibilityInfo = default)    
     {
       return new ChromeProtocol.Domains.Overlay.GetHighlightObjectForTestRequest(NodeId, IncludeDistance, IncludeStyle, ColorFormat, ShowAccessibilityInfo);
     }
@@ -447,7 +447,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>For Persistent Grid testing.</summary>
     /// <param name="NodeIds">Ids of the node to get highlight object for.</param>
-    public static ChromeProtocol.Domains.Overlay.GetGridHighlightObjectsForTestRequest GetGridHighlightObjectsForTest(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds)
+    public static ChromeProtocol.Domains.Overlay.GetGridHighlightObjectsForTestRequest GetGridHighlightObjectsForTest(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOM.NodeIdType> NodeIds)    
     {
       return new ChromeProtocol.Domains.Overlay.GetGridHighlightObjectsForTestRequest(NodeIds);
     }
@@ -469,7 +469,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>For Source Order Viewer testing.</summary>
     /// <param name="NodeId">Id of the node to highlight.</param>
-    public static ChromeProtocol.Domains.Overlay.GetSourceOrderHighlightObjectForTestRequest GetSourceOrderHighlightObjectForTest(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
+    public static ChromeProtocol.Domains.Overlay.GetSourceOrderHighlightObjectForTestRequest GetSourceOrderHighlightObjectForTest(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
     {
       return new ChromeProtocol.Domains.Overlay.GetSourceOrderHighlightObjectForTestRequest(NodeId);
     }
@@ -490,7 +490,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Hides any highlight.</summary>
-    public static ChromeProtocol.Domains.Overlay.HideHighlightRequest HideHighlight()
+    public static ChromeProtocol.Domains.Overlay.HideHighlightRequest HideHighlight()    
     {
       return new ChromeProtocol.Domains.Overlay.HideHighlightRequest();
     }
@@ -512,7 +512,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ContentColor">The content box highlight fill color (default: transparent).</param>
     /// <param name="ContentOutlineColor">The content box highlight outline color (default: transparent).</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Overlay.HighlightFrameRequest HighlightFrame(ChromeProtocol.Domains.Page.FrameIdType FrameId, ChromeProtocol.Domains.DOM.RGBAType? ContentColor = default, ChromeProtocol.Domains.DOM.RGBAType? ContentOutlineColor = default)
+    public static ChromeProtocol.Domains.Overlay.HighlightFrameRequest HighlightFrame(ChromeProtocol.Domains.Page.FrameIdType FrameId, ChromeProtocol.Domains.DOM.RGBAType? ContentColor = default, ChromeProtocol.Domains.DOM.RGBAType? ContentOutlineColor = default)    
     {
       return new ChromeProtocol.Domains.Overlay.HighlightFrameRequest(FrameId, ContentColor, ContentOutlineColor);
     }
@@ -550,7 +550,7 @@ namespace ChromeProtocol.Domains
     /// <param name="BackendNodeId">Identifier of the backend node to highlight.</param>
     /// <param name="ObjectId">JavaScript object id of the node to be highlighted.</param>
     /// <param name="Selector">Selectors to highlight relevant nodes.</param>
-    public static ChromeProtocol.Domains.Overlay.HighlightNodeRequest HighlightNode(ChromeProtocol.Domains.Overlay.HighlightConfigType HighlightConfig, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, string? Selector = default)
+    public static ChromeProtocol.Domains.Overlay.HighlightNodeRequest HighlightNode(ChromeProtocol.Domains.Overlay.HighlightConfigType HighlightConfig, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default, string? Selector = default)    
     {
       return new ChromeProtocol.Domains.Overlay.HighlightNodeRequest(HighlightConfig, NodeId, BackendNodeId, ObjectId, Selector);
     }
@@ -585,7 +585,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Quad">Quad to highlight</param>
     /// <param name="Color">The highlight fill color (default: transparent).</param>
     /// <param name="OutlineColor">The highlight outline color (default: transparent).</param>
-    public static ChromeProtocol.Domains.Overlay.HighlightQuadRequest HighlightQuad(ChromeProtocol.Domains.DOM.QuadType Quad, ChromeProtocol.Domains.DOM.RGBAType? Color = default, ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default)
+    public static ChromeProtocol.Domains.Overlay.HighlightQuadRequest HighlightQuad(ChromeProtocol.Domains.DOM.QuadType Quad, ChromeProtocol.Domains.DOM.RGBAType? Color = default, ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default)    
     {
       return new ChromeProtocol.Domains.Overlay.HighlightQuadRequest(Quad, Color, OutlineColor);
     }
@@ -614,7 +614,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Height">Rectangle height</param>
     /// <param name="Color">The highlight fill color (default: transparent).</param>
     /// <param name="OutlineColor">The highlight outline color (default: transparent).</param>
-    public static ChromeProtocol.Domains.Overlay.HighlightRectRequest HighlightRect(int X, int Y, int Width, int Height, ChromeProtocol.Domains.DOM.RGBAType? Color = default, ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default)
+    public static ChromeProtocol.Domains.Overlay.HighlightRectRequest HighlightRect(int X, int Y, int Width, int Height, ChromeProtocol.Domains.DOM.RGBAType? Color = default, ChromeProtocol.Domains.DOM.RGBAType? OutlineColor = default)    
     {
       return new ChromeProtocol.Domains.Overlay.HighlightRectRequest(X, Y, Width, Height, Color, OutlineColor);
     }
@@ -653,7 +653,7 @@ namespace ChromeProtocol.Domains
     /// <param name="NodeId">Identifier of the node to highlight.</param>
     /// <param name="BackendNodeId">Identifier of the backend node to highlight.</param>
     /// <param name="ObjectId">JavaScript object id of the node to be highlighted.</param>
-    public static ChromeProtocol.Domains.Overlay.HighlightSourceOrderRequest HighlightSourceOrder(ChromeProtocol.Domains.Overlay.SourceOrderConfigType SourceOrderConfig, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)
+    public static ChromeProtocol.Domains.Overlay.HighlightSourceOrderRequest HighlightSourceOrder(ChromeProtocol.Domains.Overlay.SourceOrderConfigType SourceOrderConfig, ChromeProtocol.Domains.DOM.NodeIdType? NodeId = default, ChromeProtocol.Domains.DOM.BackendNodeIdType? BackendNodeId = default, ChromeProtocol.Domains.Runtime.RemoteObjectIdType? ObjectId = default)    
     {
       return new ChromeProtocol.Domains.Overlay.HighlightSourceOrderRequest(SourceOrderConfig, NodeId, BackendNodeId, ObjectId);
     }
@@ -690,7 +690,7 @@ namespace ChromeProtocol.Domains
     /// A descriptor for the highlight appearance of hovered-over nodes. May be omitted if `enabled<br/>
     /// == false`.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Overlay.SetInspectModeRequest SetInspectMode(ChromeProtocol.Domains.Overlay.InspectModeType Mode, ChromeProtocol.Domains.Overlay.HighlightConfigType? HighlightConfig = default)
+    public static ChromeProtocol.Domains.Overlay.SetInspectModeRequest SetInspectMode(ChromeProtocol.Domains.Overlay.InspectModeType Mode, ChromeProtocol.Domains.Overlay.HighlightConfigType? HighlightConfig = default)    
     {
       return new ChromeProtocol.Domains.Overlay.SetInspectModeRequest(Mode, HighlightConfig);
     }
@@ -717,7 +717,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Highlights owner element of all frames detected to be ads.</summary>
     /// <param name="Show">True for showing ad highlights</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowAdHighlightsRequest SetShowAdHighlights(bool Show)
+    public static ChromeProtocol.Domains.Overlay.SetShowAdHighlightsRequest SetShowAdHighlights(bool Show)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowAdHighlightsRequest(Show);
     }
@@ -734,7 +734,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="Message">The message to display, also triggers resume and step over controls.</param>
-    public static ChromeProtocol.Domains.Overlay.SetPausedInDebuggerMessageRequest SetPausedInDebuggerMessage(string? Message = default)
+    public static ChromeProtocol.Domains.Overlay.SetPausedInDebuggerMessageRequest SetPausedInDebuggerMessage(string? Message = default)    
     {
       return new ChromeProtocol.Domains.Overlay.SetPausedInDebuggerMessageRequest(Message);
     }
@@ -751,7 +751,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows debug borders on layers</summary>
     /// <param name="Show">True for showing debug borders</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowDebugBordersRequest SetShowDebugBorders(bool Show)
+    public static ChromeProtocol.Domains.Overlay.SetShowDebugBordersRequest SetShowDebugBorders(bool Show)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowDebugBordersRequest(Show);
     }
@@ -769,7 +769,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows the FPS counter</summary>
     /// <param name="Show">True for showing the FPS counter</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowFPSCounterRequest SetShowFPSCounter(bool Show)
+    public static ChromeProtocol.Domains.Overlay.SetShowFPSCounterRequest SetShowFPSCounter(bool Show)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowFPSCounterRequest(Show);
     }
@@ -787,7 +787,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Highlight multiple elements with the CSS Grid overlay.</summary>
     /// <param name="GridNodeHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowGridOverlaysRequest SetShowGridOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.GridNodeHighlightConfigType> GridNodeHighlightConfigs)
+    public static ChromeProtocol.Domains.Overlay.SetShowGridOverlaysRequest SetShowGridOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.GridNodeHighlightConfigType> GridNodeHighlightConfigs)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowGridOverlaysRequest(GridNodeHighlightConfigs);
     }
@@ -804,7 +804,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="FlexNodeHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowFlexOverlaysRequest SetShowFlexOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.FlexNodeHighlightConfigType> FlexNodeHighlightConfigs)
+    public static ChromeProtocol.Domains.Overlay.SetShowFlexOverlaysRequest SetShowFlexOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.FlexNodeHighlightConfigType> FlexNodeHighlightConfigs)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowFlexOverlaysRequest(FlexNodeHighlightConfigs);
     }
@@ -820,7 +820,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="ScrollSnapHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowScrollSnapOverlaysRequest SetShowScrollSnapOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ScrollSnapHighlightConfigType> ScrollSnapHighlightConfigs)
+    public static ChromeProtocol.Domains.Overlay.SetShowScrollSnapOverlaysRequest SetShowScrollSnapOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ScrollSnapHighlightConfigType> ScrollSnapHighlightConfigs)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowScrollSnapOverlaysRequest(ScrollSnapHighlightConfigs);
     }
@@ -836,7 +836,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="ContainerQueryHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowContainerQueryOverlaysRequest SetShowContainerQueryOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ContainerQueryHighlightConfigType> ContainerQueryHighlightConfigs)
+    public static ChromeProtocol.Domains.Overlay.SetShowContainerQueryOverlaysRequest SetShowContainerQueryOverlays(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.ContainerQueryHighlightConfigType> ContainerQueryHighlightConfigs)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowContainerQueryOverlaysRequest(ContainerQueryHighlightConfigs);
     }
@@ -853,7 +853,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows paint rectangles</summary>
     /// <param name="Result">True for showing paint rectangles</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowPaintRectsRequest SetShowPaintRects(bool Result)
+    public static ChromeProtocol.Domains.Overlay.SetShowPaintRectsRequest SetShowPaintRects(bool Result)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowPaintRectsRequest(Result);
     }
@@ -871,7 +871,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows layout shift regions</summary>
     /// <param name="Result">True for showing layout shift regions</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowLayoutShiftRegionsRequest SetShowLayoutShiftRegions(bool Result)
+    public static ChromeProtocol.Domains.Overlay.SetShowLayoutShiftRegionsRequest SetShowLayoutShiftRegions(bool Result)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowLayoutShiftRegionsRequest(Result);
     }
@@ -889,7 +889,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Requests that backend shows scroll bottleneck rects</summary>
     /// <param name="Show">True for showing scroll bottleneck rects</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowScrollBottleneckRectsRequest SetShowScrollBottleneckRects(bool Show)
+    public static ChromeProtocol.Domains.Overlay.SetShowScrollBottleneckRectsRequest SetShowScrollBottleneckRects(bool Show)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowScrollBottleneckRectsRequest(Show);
     }
@@ -908,7 +908,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Deprecated, no longer has any effect.</summary>
     /// <param name="Show">True for showing hit-test borders</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Overlay.SetShowHitTestBordersRequest SetShowHitTestBorders(bool Show)
+    public static ChromeProtocol.Domains.Overlay.SetShowHitTestBordersRequest SetShowHitTestBorders(bool Show)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowHitTestBordersRequest(Show);
     }
@@ -926,25 +926,28 @@ namespace ChromeProtocol.Domains
     public record SetShowHitTestBordersRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    /// <summary>Request that backend shows an overlay with web vital metrics.</summary>
-    public static ChromeProtocol.Domains.Overlay.SetShowWebVitalsRequest SetShowWebVitals(bool Show)
+    /// <summary>Deprecated, no longer has any effect.</summary>
+    [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
+    public static ChromeProtocol.Domains.Overlay.SetShowWebVitalsRequest SetShowWebVitals(bool Show)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowWebVitalsRequest(Show);
     }
-    /// <summary>Request that backend shows an overlay with web vital metrics.</summary>
+    /// <summary>Deprecated, no longer has any effect.</summary>
     [ChromeProtocol.Core.MethodName("Overlay.setShowWebVitals")]
+    [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetShowWebVitalsRequest(
       [property: System.Text.Json.Serialization.JsonPropertyName("show")]
       bool Show
     ) : ChromeProtocol.Core.ICommand<SetShowWebVitalsRequestResult>
     {
     }
+    [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
     public record SetShowWebVitalsRequestResult() : ChromeProtocol.Core.IType
     {
     }
     /// <summary>Paints viewport size upon main frame resize.</summary>
     /// <param name="Show">Whether to paint size or not.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowViewportSizeOnResizeRequest SetShowViewportSizeOnResize(bool Show)
+    public static ChromeProtocol.Domains.Overlay.SetShowViewportSizeOnResizeRequest SetShowViewportSizeOnResize(bool Show)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowViewportSizeOnResizeRequest(Show);
     }
@@ -962,7 +965,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Add a dual screen device hinge</summary>
     /// <param name="HingeConfig">hinge data, null means hideHinge</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowHingeRequest SetShowHinge(ChromeProtocol.Domains.Overlay.HingeConfigType? HingeConfig = default)
+    public static ChromeProtocol.Domains.Overlay.SetShowHingeRequest SetShowHinge(ChromeProtocol.Domains.Overlay.HingeConfigType? HingeConfig = default)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowHingeRequest(HingeConfig);
     }
@@ -980,7 +983,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Show elements in isolation mode with overlays.</summary>
     /// <param name="IsolatedElementHighlightConfigs">An array of node identifiers and descriptors for the highlight appearance.</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowIsolatedElementsRequest SetShowIsolatedElements(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.IsolatedElementHighlightConfigType> IsolatedElementHighlightConfigs)
+    public static ChromeProtocol.Domains.Overlay.SetShowIsolatedElementsRequest SetShowIsolatedElements(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Overlay.IsolatedElementHighlightConfigType> IsolatedElementHighlightConfigs)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowIsolatedElementsRequest(IsolatedElementHighlightConfigs);
     }
@@ -998,7 +1001,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Show Window Controls Overlay for PWA</summary>
     /// <param name="WindowControlsOverlayConfig">Window Controls Overlay data, null means hide Window Controls Overlay</param>
-    public static ChromeProtocol.Domains.Overlay.SetShowWindowControlsOverlayRequest SetShowWindowControlsOverlay(ChromeProtocol.Domains.Overlay.WindowControlsOverlayConfigType? WindowControlsOverlayConfig = default)
+    public static ChromeProtocol.Domains.Overlay.SetShowWindowControlsOverlayRequest SetShowWindowControlsOverlay(ChromeProtocol.Domains.Overlay.WindowControlsOverlayConfigType? WindowControlsOverlayConfig = default)    
     {
       return new ChromeProtocol.Domains.Overlay.SetShowWindowControlsOverlayRequest(WindowControlsOverlayConfig);
     }

@@ -130,7 +130,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.ClearObjectStoreRequest ClearObjectStore(string DatabaseName, string ObjectStoreName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
+    public static ChromeProtocol.Domains.IndexedDB.ClearObjectStoreRequest ClearObjectStore(string DatabaseName, string ObjectStoreName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
     {
       return new ChromeProtocol.Domains.IndexedDB.ClearObjectStoreRequest(DatabaseName, ObjectStoreName, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -169,7 +169,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.DeleteDatabaseRequest DeleteDatabase(string DatabaseName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
+    public static ChromeProtocol.Domains.IndexedDB.DeleteDatabaseRequest DeleteDatabase(string DatabaseName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
     {
       return new ChromeProtocol.Domains.IndexedDB.DeleteDatabaseRequest(DatabaseName, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -205,7 +205,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.DeleteObjectStoreEntriesRequest DeleteObjectStoreEntries(string DatabaseName, string ObjectStoreName, ChromeProtocol.Domains.IndexedDB.KeyRangeType KeyRange, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
+    public static ChromeProtocol.Domains.IndexedDB.DeleteObjectStoreEntriesRequest DeleteObjectStoreEntries(string DatabaseName, string ObjectStoreName, ChromeProtocol.Domains.IndexedDB.KeyRangeType KeyRange, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
     {
       return new ChromeProtocol.Domains.IndexedDB.DeleteObjectStoreEntriesRequest(DatabaseName, ObjectStoreName, KeyRange, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -238,7 +238,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables events from backend.</summary>
-    public static ChromeProtocol.Domains.IndexedDB.DisableRequest Disable()
+    public static ChromeProtocol.Domains.IndexedDB.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.IndexedDB.DisableRequest();
     }
@@ -251,7 +251,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables events from backend.</summary>
-    public static ChromeProtocol.Domains.IndexedDB.EnableRequest Enable()
+    public static ChromeProtocol.Domains.IndexedDB.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.IndexedDB.EnableRequest();
     }
@@ -276,7 +276,7 @@ namespace ChromeProtocol.Domains
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
     /// <param name="KeyRange">Key range.</param>
-    public static ChromeProtocol.Domains.IndexedDB.RequestDataRequest RequestData(string DatabaseName, string ObjectStoreName, string IndexName, int SkipCount, int PageSize, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default, ChromeProtocol.Domains.IndexedDB.KeyRangeType? KeyRange = default)
+    public static ChromeProtocol.Domains.IndexedDB.RequestDataRequest RequestData(string DatabaseName, string ObjectStoreName, string IndexName, int SkipCount, int PageSize, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default, ChromeProtocol.Domains.IndexedDB.KeyRangeType? KeyRange = default)    
     {
       return new ChromeProtocol.Domains.IndexedDB.RequestDataRequest(DatabaseName, ObjectStoreName, IndexName, SkipCount, PageSize, SecurityOrigin, StorageKey, StorageBucket, KeyRange);
     }
@@ -335,7 +335,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.GetMetadataRequest GetMetadata(string DatabaseName, string ObjectStoreName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
+    public static ChromeProtocol.Domains.IndexedDB.GetMetadataRequest GetMetadata(string DatabaseName, string ObjectStoreName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
     {
       return new ChromeProtocol.Domains.IndexedDB.GetMetadataRequest(DatabaseName, ObjectStoreName, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -385,7 +385,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.RequestDatabaseRequest RequestDatabase(string DatabaseName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
+    public static ChromeProtocol.Domains.IndexedDB.RequestDatabaseRequest RequestDatabase(string DatabaseName, string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
     {
       return new ChromeProtocol.Domains.IndexedDB.RequestDatabaseRequest(DatabaseName, SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -424,7 +424,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.IndexedDB.RequestDatabaseNamesRequest RequestDatabaseNames(string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
+    public static ChromeProtocol.Domains.IndexedDB.RequestDatabaseNamesRequest RequestDatabaseNames(string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
     {
       return new ChromeProtocol.Domains.IndexedDB.RequestDatabaseNamesRequest(SecurityOrigin, StorageKey, StorageBucket);
     }

@@ -40,7 +40,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Does nothing.</summary>
-    public static ChromeProtocol.Domains.Console.ClearMessagesRequest ClearMessages()
+    public static ChromeProtocol.Domains.Console.ClearMessagesRequest ClearMessages()    
     {
       return new ChromeProtocol.Domains.Console.ClearMessagesRequest();
     }
@@ -53,7 +53,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables console domain, prevents further console messages from being reported to the client.</summary>
-    public static ChromeProtocol.Domains.Console.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Console.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Console.DisableRequest();
     }
@@ -69,7 +69,7 @@ namespace ChromeProtocol.Domains
     /// Enables console domain, sends the messages collected so far to the client by means of the<br/>
     /// `messageAdded` notification.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Console.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Console.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Console.EnableRequest();
     }

@@ -98,7 +98,7 @@ namespace ChromeProtocol.Domains
     /// normally happen, if this is unimportant to what&#39;s being tested.<br/>
     /// (step 4 of https://fedidcg.github.io/FedCM/#browser-api-rp-sign-in)<br/>
     /// </param>
-    public static ChromeProtocol.Domains.FedCm.EnableRequest Enable(bool? DisableRejectionDelay = default)
+    public static ChromeProtocol.Domains.FedCm.EnableRequest Enable(bool? DisableRejectionDelay = default)    
     {
       return new ChromeProtocol.Domains.FedCm.EnableRequest(DisableRejectionDelay);
     }
@@ -117,7 +117,7 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.DisableRequest Disable()
+    public static ChromeProtocol.Domains.FedCm.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.FedCm.DisableRequest();
     }
@@ -128,7 +128,7 @@ namespace ChromeProtocol.Domains
     public record DisableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.SelectAccountRequest SelectAccount(string DialogId, int AccountIndex)
+    public static ChromeProtocol.Domains.FedCm.SelectAccountRequest SelectAccount(string DialogId, int AccountIndex)    
     {
       return new ChromeProtocol.Domains.FedCm.SelectAccountRequest(DialogId, AccountIndex);
     }
@@ -144,7 +144,7 @@ namespace ChromeProtocol.Domains
     public record SelectAccountRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.ClickDialogButtonRequest ClickDialogButton(string DialogId, ChromeProtocol.Domains.FedCm.DialogButtonType DialogButton)
+    public static ChromeProtocol.Domains.FedCm.ClickDialogButtonRequest ClickDialogButton(string DialogId, ChromeProtocol.Domains.FedCm.DialogButtonType DialogButton)    
     {
       return new ChromeProtocol.Domains.FedCm.ClickDialogButtonRequest(DialogId, DialogButton);
     }
@@ -160,7 +160,7 @@ namespace ChromeProtocol.Domains
     public record ClickDialogButtonRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.OpenUrlRequest OpenUrl(string DialogId, int AccountIndex, ChromeProtocol.Domains.FedCm.AccountUrlTypeType AccountUrlType)
+    public static ChromeProtocol.Domains.FedCm.OpenUrlRequest OpenUrl(string DialogId, int AccountIndex, ChromeProtocol.Domains.FedCm.AccountUrlTypeType AccountUrlType)    
     {
       return new ChromeProtocol.Domains.FedCm.OpenUrlRequest(DialogId, AccountIndex, AccountUrlType);
     }
@@ -178,7 +178,7 @@ namespace ChromeProtocol.Domains
     public record OpenUrlRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.FedCm.DismissDialogRequest DismissDialog(string DialogId, bool? TriggerCooldown = default)
+    public static ChromeProtocol.Domains.FedCm.DismissDialogRequest DismissDialog(string DialogId, bool? TriggerCooldown = default)    
     {
       return new ChromeProtocol.Domains.FedCm.DismissDialogRequest(DialogId, TriggerCooldown);
     }
@@ -198,7 +198,7 @@ namespace ChromeProtocol.Domains
     /// Resets the cooldown time, if any, to allow the next FedCM call to show<br/>
     /// a dialog even if one was recently dismissed by the user.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.FedCm.ResetCooldownRequest ResetCooldown()
+    public static ChromeProtocol.Domains.FedCm.ResetCooldownRequest ResetCooldown()    
     {
       return new ChromeProtocol.Domains.FedCm.ResetCooldownRequest();
     }

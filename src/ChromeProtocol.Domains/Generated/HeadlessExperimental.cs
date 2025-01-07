@@ -44,7 +44,7 @@ namespace ChromeProtocol.Domains
     /// no screenshot will be captured. Note that capturing a screenshot can fail, for example,<br/>
     /// during renderer initialization. In such a case, no screenshot data will be returned.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.HeadlessExperimental.BeginFrameRequest BeginFrame(double? FrameTimeTicks = default, double? Interval = default, bool? NoDisplayUpdates = default, ChromeProtocol.Domains.HeadlessExperimental.ScreenshotParamsType? Screenshot = default)
+    public static ChromeProtocol.Domains.HeadlessExperimental.BeginFrameRequest BeginFrame(double? FrameTimeTicks = default, double? Interval = default, bool? NoDisplayUpdates = default, ChromeProtocol.Domains.HeadlessExperimental.ScreenshotParamsType? Screenshot = default)    
     {
       return new ChromeProtocol.Domains.HeadlessExperimental.BeginFrameRequest(FrameTimeTicks, Interval, NoDisplayUpdates, Screenshot);
     }
@@ -100,7 +100,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Disables headless events for the target.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.HeadlessExperimental.DisableRequest Disable()
+    public static ChromeProtocol.Domains.HeadlessExperimental.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.HeadlessExperimental.DisableRequest();
     }
@@ -116,7 +116,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enables headless events for the target.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.HeadlessExperimental.EnableRequest Enable()
+    public static ChromeProtocol.Domains.HeadlessExperimental.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.HeadlessExperimental.EnableRequest();
     }

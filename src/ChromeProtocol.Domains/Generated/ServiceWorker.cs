@@ -102,7 +102,7 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IEvent
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.DeliverPushMessageRequest DeliverPushMessage(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Data)
+    public static ChromeProtocol.Domains.ServiceWorker.DeliverPushMessageRequest DeliverPushMessage(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Data)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.DeliverPushMessageRequest(Origin, RegistrationId, Data);
     }
@@ -120,7 +120,7 @@ namespace ChromeProtocol.Domains
     public record DeliverPushMessageRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.DisableRequest Disable()
+    public static ChromeProtocol.Domains.ServiceWorker.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.ServiceWorker.DisableRequest();
     }
@@ -131,7 +131,7 @@ namespace ChromeProtocol.Domains
     public record DisableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.DispatchSyncEventRequest DispatchSyncEvent(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Tag, bool LastChance)
+    public static ChromeProtocol.Domains.ServiceWorker.DispatchSyncEventRequest DispatchSyncEvent(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Tag, bool LastChance)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.DispatchSyncEventRequest(Origin, RegistrationId, Tag, LastChance);
     }
@@ -151,7 +151,7 @@ namespace ChromeProtocol.Domains
     public record DispatchSyncEventRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.DispatchPeriodicSyncEventRequest DispatchPeriodicSyncEvent(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Tag)
+    public static ChromeProtocol.Domains.ServiceWorker.DispatchPeriodicSyncEventRequest DispatchPeriodicSyncEvent(string Origin, ChromeProtocol.Domains.ServiceWorker.RegistrationIDType RegistrationId, string Tag)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.DispatchPeriodicSyncEventRequest(Origin, RegistrationId, Tag);
     }
@@ -169,7 +169,7 @@ namespace ChromeProtocol.Domains
     public record DispatchPeriodicSyncEventRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.EnableRequest Enable()
+    public static ChromeProtocol.Domains.ServiceWorker.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.ServiceWorker.EnableRequest();
     }
@@ -180,7 +180,7 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.InspectWorkerRequest InspectWorker(string VersionId)
+    public static ChromeProtocol.Domains.ServiceWorker.InspectWorkerRequest InspectWorker(string VersionId)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.InspectWorkerRequest(VersionId);
     }
@@ -194,7 +194,7 @@ namespace ChromeProtocol.Domains
     public record InspectWorkerRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.SetForceUpdateOnPageLoadRequest SetForceUpdateOnPageLoad(bool ForceUpdateOnPageLoad)
+    public static ChromeProtocol.Domains.ServiceWorker.SetForceUpdateOnPageLoadRequest SetForceUpdateOnPageLoad(bool ForceUpdateOnPageLoad)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.SetForceUpdateOnPageLoadRequest(ForceUpdateOnPageLoad);
     }
@@ -208,7 +208,7 @@ namespace ChromeProtocol.Domains
     public record SetForceUpdateOnPageLoadRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.SkipWaitingRequest SkipWaiting(string ScopeURL)
+    public static ChromeProtocol.Domains.ServiceWorker.SkipWaitingRequest SkipWaiting(string ScopeURL)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.SkipWaitingRequest(ScopeURL);
     }
@@ -222,7 +222,7 @@ namespace ChromeProtocol.Domains
     public record SkipWaitingRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.StartWorkerRequest StartWorker(string ScopeURL)
+    public static ChromeProtocol.Domains.ServiceWorker.StartWorkerRequest StartWorker(string ScopeURL)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.StartWorkerRequest(ScopeURL);
     }
@@ -236,7 +236,7 @@ namespace ChromeProtocol.Domains
     public record StartWorkerRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.StopAllWorkersRequest StopAllWorkers()
+    public static ChromeProtocol.Domains.ServiceWorker.StopAllWorkersRequest StopAllWorkers()    
     {
       return new ChromeProtocol.Domains.ServiceWorker.StopAllWorkersRequest();
     }
@@ -247,7 +247,7 @@ namespace ChromeProtocol.Domains
     public record StopAllWorkersRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.StopWorkerRequest StopWorker(string VersionId)
+    public static ChromeProtocol.Domains.ServiceWorker.StopWorkerRequest StopWorker(string VersionId)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.StopWorkerRequest(VersionId);
     }
@@ -261,7 +261,7 @@ namespace ChromeProtocol.Domains
     public record StopWorkerRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.UnregisterRequest Unregister(string ScopeURL)
+    public static ChromeProtocol.Domains.ServiceWorker.UnregisterRequest Unregister(string ScopeURL)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.UnregisterRequest(ScopeURL);
     }
@@ -275,7 +275,7 @@ namespace ChromeProtocol.Domains
     public record UnregisterRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.ServiceWorker.UpdateRegistrationRequest UpdateRegistration(string ScopeURL)
+    public static ChromeProtocol.Domains.ServiceWorker.UpdateRegistrationRequest UpdateRegistration(string ScopeURL)    
     {
       return new ChromeProtocol.Domains.ServiceWorker.UpdateRegistrationRequest(ScopeURL);
     }

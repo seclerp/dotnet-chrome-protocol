@@ -64,7 +64,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears the log.</summary>
-    public static ChromeProtocol.Domains.Log.ClearRequest Clear()
+    public static ChromeProtocol.Domains.Log.ClearRequest Clear()    
     {
       return new ChromeProtocol.Domains.Log.ClearRequest();
     }
@@ -77,7 +77,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables log domain, prevents further log entries from being reported to the client.</summary>
-    public static ChromeProtocol.Domains.Log.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Log.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Log.DisableRequest();
     }
@@ -93,7 +93,7 @@ namespace ChromeProtocol.Domains
     /// Enables log domain, sends the entries collected so far to the client by means of the<br/>
     /// `entryAdded` notification.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Log.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Log.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Log.EnableRequest();
     }
@@ -110,7 +110,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>start violation reporting.</summary>
     /// <param name="Config">Configuration for violations.</param>
-    public static ChromeProtocol.Domains.Log.StartViolationsReportRequest StartViolationsReport(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Log.ViolationSettingType> Config)
+    public static ChromeProtocol.Domains.Log.StartViolationsReportRequest StartViolationsReport(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Log.ViolationSettingType> Config)    
     {
       return new ChromeProtocol.Domains.Log.StartViolationsReportRequest(Config);
     }
@@ -127,7 +127,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Stop violation reporting.</summary>
-    public static ChromeProtocol.Domains.Log.StopViolationsReportRequest StopViolationsReport()
+    public static ChromeProtocol.Domains.Log.StopViolationsReportRequest StopViolationsReport()    
     {
       return new ChromeProtocol.Domains.Log.StopViolationsReportRequest();
     }

@@ -22,7 +22,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>TBD.</summary>
     /// <param name="JustMyCodeStepping">If true, enables stepping only into user code, not library one.</param>
-    public static ChromeProtocol.Domains.DotnetDebugger.SetDebuggerPropertyRequest SetDebuggerProperty(bool JustMyCodeStepping)
+    public static ChromeProtocol.Domains.DotnetDebugger.SetDebuggerPropertyRequest SetDebuggerProperty(bool JustMyCodeStepping)    
     {
       return new ChromeProtocol.Domains.DotnetDebugger.SetDebuggerPropertyRequest(JustMyCodeStepping);
     }
@@ -44,7 +44,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>TBD</summary>
     /// <param name="Location">TBD</param>
-    public static ChromeProtocol.Domains.DotnetDebugger.SetNextIPRequest SetNextIP(ChromeProtocol.Domains.DotnetDebugger.SourceLocationType Location)
+    public static ChromeProtocol.Domains.DotnetDebugger.SetNextIPRequest SetNextIP(ChromeProtocol.Domains.DotnetDebugger.SourceLocationType Location)    
     {
       return new ChromeProtocol.Domains.DotnetDebugger.SetNextIPRequest(Location);
     }
@@ -65,7 +65,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Dmeta">The metadata changes to be applied</param>
     /// <param name="Dil">The IL changes to be applied</param>
     /// <param name="Dpdb">The PDB changes to be applied</param>
-    public static ChromeProtocol.Domains.DotnetDebugger.ApplyUpdatesRequest ApplyUpdates(string ModuleGUID, string Dmeta, string Dil, string Dpdb)
+    public static ChromeProtocol.Domains.DotnetDebugger.ApplyUpdatesRequest ApplyUpdates(string ModuleGUID, string Dmeta, string Dil, string Dpdb)    
     {
       return new ChromeProtocol.Domains.DotnetDebugger.ApplyUpdatesRequest(ModuleGUID, Dmeta, Dil, Dpdb);
     }
@@ -92,7 +92,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Note: this command will never respond, so don&#39;t wait for the response. When succeeded, it will emit &#39;Debugger.scriptParsed&#39; event per each parsed .NET source file.</summary>
     /// <param name="Url">TBD</param>
-    public static ChromeProtocol.Domains.DotnetDebugger.AddSymbolServerUrlRequest AddSymbolServerUrl(string Url)
+    public static ChromeProtocol.Domains.DotnetDebugger.AddSymbolServerUrlRequest AddSymbolServerUrl(string Url)    
     {
       return new ChromeProtocol.Domains.DotnetDebugger.AddSymbolServerUrlRequest(Url);
     }
@@ -112,7 +112,7 @@ namespace ChromeProtocol.Domains
     /// <param name="AssemblyName">TBD</param>
     /// <param name="TypeName">TBD</param>
     /// <param name="MethodName">TBD</param>
-    public static ChromeProtocol.Domains.DotnetDebugger.GetMethodLocationRequest GetMethodLocation(string AssemblyName, string TypeName, string MethodName)
+    public static ChromeProtocol.Domains.DotnetDebugger.GetMethodLocationRequest GetMethodLocation(string AssemblyName, string TypeName, string MethodName)    
     {
       return new ChromeProtocol.Domains.DotnetDebugger.GetMethodLocationRequest(AssemblyName, TypeName, MethodName);
     }

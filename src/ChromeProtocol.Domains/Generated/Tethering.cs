@@ -20,7 +20,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Request browser port binding.</summary>
     /// <param name="Port">Port number to bind.</param>
-    public static ChromeProtocol.Domains.Tethering.BindRequest Bind(int Port)
+    public static ChromeProtocol.Domains.Tethering.BindRequest Bind(int Port)    
     {
       return new ChromeProtocol.Domains.Tethering.BindRequest(Port);
     }
@@ -38,7 +38,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Request browser port unbinding.</summary>
     /// <param name="Port">Port number to unbind.</param>
-    public static ChromeProtocol.Domains.Tethering.UnbindRequest Unbind(int Port)
+    public static ChromeProtocol.Domains.Tethering.UnbindRequest Unbind(int Port)    
     {
       return new ChromeProtocol.Domains.Tethering.UnbindRequest(Port);
     }

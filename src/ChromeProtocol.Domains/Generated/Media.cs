@@ -156,7 +156,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables the Media domain</summary>
-    public static ChromeProtocol.Domains.Media.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Media.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Media.EnableRequest();
     }
@@ -169,7 +169,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables the Media domain.</summary>
-    public static ChromeProtocol.Domains.Media.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Media.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Media.DisableRequest();
     }

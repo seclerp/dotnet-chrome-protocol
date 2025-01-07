@@ -48,7 +48,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables database tracking, prevents database events from being sent to the client.</summary>
-    public static ChromeProtocol.Domains.Database.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Database.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Database.DisableRequest();
     }
@@ -61,7 +61,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables database tracking, database events will now be delivered to the client.</summary>
-    public static ChromeProtocol.Domains.Database.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Database.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Database.EnableRequest();
     }
@@ -73,7 +73,7 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Database.ExecuteSQLRequest ExecuteSQL(ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId, string Query)
+    public static ChromeProtocol.Domains.Database.ExecuteSQLRequest ExecuteSQL(ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId, string Query)    
     {
       return new ChromeProtocol.Domains.Database.ExecuteSQLRequest(DatabaseId, Query);
     }
@@ -96,7 +96,7 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Database.GetDatabaseTableNamesRequest GetDatabaseTableNames(ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId)
+    public static ChromeProtocol.Domains.Database.GetDatabaseTableNamesRequest GetDatabaseTableNames(ChromeProtocol.Domains.Database.DatabaseIdType DatabaseId)    
     {
       return new ChromeProtocol.Domains.Database.GetDatabaseTableNamesRequest(DatabaseId);
     }

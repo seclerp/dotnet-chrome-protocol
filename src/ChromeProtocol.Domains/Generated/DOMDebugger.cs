@@ -68,7 +68,7 @@ namespace ChromeProtocol.Domains
     /// Whether or not iframes and shadow roots should be traversed when returning the subtree<br/>
     /// (default is false). Reports listeners for all contexts if pierce is enabled.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOMDebugger.GetEventListenersRequest GetEventListeners(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, int? Depth = default, bool? Pierce = default)
+    public static ChromeProtocol.Domains.DOMDebugger.GetEventListenersRequest GetEventListeners(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId, int? Depth = default, bool? Pierce = default)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.GetEventListenersRequest(ObjectId, Depth, Pierce);
     }
@@ -103,7 +103,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Removes DOM breakpoint that was set using `setDOMBreakpoint`.</summary>
     /// <param name="NodeId">Identifier of the node to remove breakpoint from.</param>
     /// <param name="Type">Type of the breakpoint to remove.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.RemoveDOMBreakpointRequest RemoveDOMBreakpoint(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type)
+    public static ChromeProtocol.Domains.DOMDebugger.RemoveDOMBreakpointRequest RemoveDOMBreakpoint(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.RemoveDOMBreakpointRequest(NodeId, Type);
     }
@@ -125,7 +125,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Removes breakpoint on particular DOM event.</summary>
     /// <param name="EventName">Event name.</param>
     /// <param name="TargetName">EventTarget interface name.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.RemoveEventListenerBreakpointRequest RemoveEventListenerBreakpoint(string EventName, string? TargetName = default)
+    public static ChromeProtocol.Domains.DOMDebugger.RemoveEventListenerBreakpointRequest RemoveEventListenerBreakpoint(string EventName, string? TargetName = default)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.RemoveEventListenerBreakpointRequest(EventName, TargetName);
     }
@@ -147,7 +147,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Removes breakpoint on particular native event.</summary>
     /// <param name="EventName">Instrumentation name to stop on.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.DOMDebugger.RemoveInstrumentationBreakpointRequest RemoveInstrumentationBreakpoint(string EventName)
+    public static ChromeProtocol.Domains.DOMDebugger.RemoveInstrumentationBreakpointRequest RemoveInstrumentationBreakpoint(string EventName)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.RemoveInstrumentationBreakpointRequest(EventName);
     }
@@ -167,7 +167,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Removes breakpoint from XMLHttpRequest.</summary>
     /// <param name="Url">Resource URL substring.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.RemoveXHRBreakpointRequest RemoveXHRBreakpoint(string Url)
+    public static ChromeProtocol.Domains.DOMDebugger.RemoveXHRBreakpointRequest RemoveXHRBreakpoint(string Url)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.RemoveXHRBreakpointRequest(Url);
     }
@@ -185,7 +185,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets breakpoint on particular CSP violations.</summary>
     /// <param name="ViolationTypes">CSP Violations to stop upon.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.SetBreakOnCSPViolationRequest SetBreakOnCSPViolation(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMDebugger.CSPViolationTypeType> ViolationTypes)
+    public static ChromeProtocol.Domains.DOMDebugger.SetBreakOnCSPViolationRequest SetBreakOnCSPViolation(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.DOMDebugger.CSPViolationTypeType> ViolationTypes)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetBreakOnCSPViolationRequest(ViolationTypes);
     }
@@ -204,7 +204,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets breakpoint on particular operation with DOM.</summary>
     /// <param name="NodeId">Identifier of the node to set breakpoint on.</param>
     /// <param name="Type">Type of the operation to stop upon.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.SetDOMBreakpointRequest SetDOMBreakpoint(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type)
+    public static ChromeProtocol.Domains.DOMDebugger.SetDOMBreakpointRequest SetDOMBreakpoint(ChromeProtocol.Domains.DOM.NodeIdType NodeId, ChromeProtocol.Domains.DOMDebugger.DOMBreakpointTypeType Type)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetDOMBreakpointRequest(NodeId, Type);
     }
@@ -229,7 +229,7 @@ namespace ChromeProtocol.Domains
     /// EventTarget interface name to stop on. If equal to `&quot;*&quot;` or not provided, will stop on any<br/>
     /// EventTarget.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOMDebugger.SetEventListenerBreakpointRequest SetEventListenerBreakpoint(string EventName, string? TargetName = default)
+    public static ChromeProtocol.Domains.DOMDebugger.SetEventListenerBreakpointRequest SetEventListenerBreakpoint(string EventName, string? TargetName = default)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetEventListenerBreakpointRequest(EventName, TargetName);
     }
@@ -254,7 +254,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets breakpoint on particular native event.</summary>
     /// <param name="EventName">Instrumentation name to stop on.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.DOMDebugger.SetInstrumentationBreakpointRequest SetInstrumentationBreakpoint(string EventName)
+    public static ChromeProtocol.Domains.DOMDebugger.SetInstrumentationBreakpointRequest SetInstrumentationBreakpoint(string EventName)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetInstrumentationBreakpointRequest(EventName);
     }
@@ -274,7 +274,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets breakpoint on XMLHttpRequest.</summary>
     /// <param name="Url">Resource URL substring. All XHRs having this substring in the URL will get stopped upon.</param>
-    public static ChromeProtocol.Domains.DOMDebugger.SetXHRBreakpointRequest SetXHRBreakpoint(string Url)
+    public static ChromeProtocol.Domains.DOMDebugger.SetXHRBreakpointRequest SetXHRBreakpoint(string Url)    
     {
       return new ChromeProtocol.Domains.DOMDebugger.SetXHRBreakpointRequest(Url);
     }

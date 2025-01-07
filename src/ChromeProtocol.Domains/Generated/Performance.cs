@@ -29,7 +29,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disable collecting and reporting metrics.</summary>
-    public static ChromeProtocol.Domains.Performance.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Performance.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Performance.DisableRequest();
     }
@@ -43,7 +43,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enable collecting and reporting metrics.</summary>
     /// <param name="TimeDomain">Time domain to use for collecting and reporting duration metrics.</param>
-    public static ChromeProtocol.Domains.Performance.EnableRequest Enable(string? TimeDomain = default)
+    public static ChromeProtocol.Domains.Performance.EnableRequest Enable(string? TimeDomain = default)    
     {
       return new ChromeProtocol.Domains.Performance.EnableRequest(TimeDomain);
     }
@@ -66,7 +66,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     /// <param name="TimeDomain">Time domain</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Performance.SetTimeDomainRequest SetTimeDomain(string TimeDomain)
+    public static ChromeProtocol.Domains.Performance.SetTimeDomainRequest SetTimeDomain(string TimeDomain)    
     {
       return new ChromeProtocol.Domains.Performance.SetTimeDomainRequest(TimeDomain);
     }
@@ -89,7 +89,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Retrieve current values of run-time metrics.</summary>
-    public static ChromeProtocol.Domains.Performance.GetMetricsRequest GetMetrics()
+    public static ChromeProtocol.Domains.Performance.GetMetricsRequest GetMetrics()    
     {
       return new ChromeProtocol.Domains.Performance.GetMetricsRequest();
     }

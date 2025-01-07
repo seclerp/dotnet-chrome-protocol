@@ -126,6 +126,8 @@ namespace ChromeProtocol.Domains
     /// <param name="PushEnd">Time the server finished pushing request.</param>
     /// <param name="ReceiveHeadersStart">Started receiving response headers.</param>
     /// <param name="ReceiveHeadersEnd">Finished receiving response headers.</param>
+    /// <param name="WorkerRouterEvaluationStart">Started ServiceWorker static routing source evaluation.</param>
+    /// <param name="WorkerCacheLookupStart">Started cache lookup when the source was evaluated to `cache`.</param>
     public record ResourceTimingType(
       [property: System.Text.Json.Serialization.JsonPropertyName("requestTime")]
       double RequestTime,
@@ -164,7 +166,11 @@ namespace ChromeProtocol.Domains
       [property: System.Text.Json.Serialization.JsonPropertyName("receiveHeadersStart")]
       double ReceiveHeadersStart,
       [property: System.Text.Json.Serialization.JsonPropertyName("receiveHeadersEnd")]
-      double ReceiveHeadersEnd
+      double ReceiveHeadersEnd,
+      [property: System.Text.Json.Serialization.JsonPropertyName("workerRouterEvaluationStart")]
+      double? WorkerRouterEvaluationStart = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("workerCacheLookupStart")]
+      double? WorkerCacheLookupStart = default
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -189,9 +195,12 @@ namespace ChromeProtocol.Domains
     /// <param name="InitialPriority">Priority of the resource request at the time request is sent.</param>
     /// <param name="ReferrerPolicy">The referrer policy of the request, as defined in https://www.w3.org/TR/referrer-policy/</param>
     /// <param name="UrlFragment">Fragment of the requested URL starting with hash, if present.</param>
-    /// <param name="PostData">HTTP POST request data.</param>
+    /// <param name="PostData">
+    /// HTTP POST request data.<br/>
+    /// Use postDataEntries instead.<br/>
+    /// </param>
     /// <param name="HasPostData">True when the request has POST data. Note that postData might still be omitted when this flag is true when the data is too long.</param>
-    /// <param name="PostDataEntries">Request body elements. This will be converted from base64 to binary</param>
+    /// <param name="PostDataEntries">Request body elements (post data broken into individual entries).</param>
     /// <param name="MixedContentType">The mixed content type of the request.</param>
     /// <param name="IsLinkPreload">Whether is loaded via link preload.</param>
     /// <param name="TrustTokenParams">
@@ -215,6 +224,7 @@ namespace ChromeProtocol.Domains
       string ReferrerPolicy,
       [property: System.Text.Json.Serialization.JsonPropertyName("urlFragment")]
       string? UrlFragment = default,
+      [property: System.Obsolete("This property marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
       [property: System.Text.Json.Serialization.JsonPropertyName("postData")]
       string? PostData = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("hasPostData")]
@@ -397,11 +407,22 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
+    /// <param name="RuleIdMatched">
+    /// ID of the rule matched. If there is a matched rule, this field will<br/>
+    /// be set, otherwiser no value will be set.<br/>
+    /// </param>
+    /// <param name="MatchedSourceType">
+    /// The router source of the matched rule. If there is a matched rule, this<br/>
+    /// field will be set, otherwise no value will be set.<br/>
+    /// </param>
+    /// <param name="ActualSourceType">The actual router source used.</param>
     public record ServiceWorkerRouterInfoType(
       [property: System.Text.Json.Serialization.JsonPropertyName("ruleIdMatched")]
-      int RuleIdMatched,
+      int? RuleIdMatched = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("matchedSourceType")]
-      ChromeProtocol.Domains.Network.ServiceWorkerRouterSourceType MatchedSourceType
+      ChromeProtocol.Domains.Network.ServiceWorkerRouterSourceType? MatchedSourceType = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("actualSourceType")]
+      ChromeProtocol.Domains.Network.ServiceWorkerRouterSourceType? ActualSourceType = default
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -424,7 +445,13 @@ namespace ChromeProtocol.Domains
     /// <param name="FromDiskCache">Specifies that the request was served from the disk cache.</param>
     /// <param name="FromServiceWorker">Specifies that the request was served from the ServiceWorker.</param>
     /// <param name="FromPrefetchCache">Specifies that the request was served from the prefetch cache.</param>
-    /// <param name="ServiceWorkerRouterInfo">Information about how Service Worker Static Router was used.</param>
+    /// <param name="FromEarlyHints">Specifies that the request was served from the prefetch cache.</param>
+    /// <param name="ServiceWorkerRouterInfo">
+    /// Information about how ServiceWorker Static Router API was used. If this<br/>
+    /// field is set with `matchedSourceType` field, a matching rule is found.<br/>
+    /// If this field is set without `matchedSource`, no matching rule is found.<br/>
+    /// Otherwise, the API is not used.<br/>
+    /// </param>
     /// <param name="Timing">Timing information for the given request.</param>
     /// <param name="ServiceWorkerResponseSource">Response source of response from ServiceWorker.</param>
     /// <param name="ResponseTime">The time at which the returned response was generated.</param>
@@ -471,6 +498,8 @@ namespace ChromeProtocol.Domains
       bool? FromServiceWorker = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("fromPrefetchCache")]
       bool? FromPrefetchCache = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("fromEarlyHints")]
+      bool? FromEarlyHints = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("serviceWorkerRouterInfo")]
       ChromeProtocol.Domains.Network.ServiceWorkerRouterInfoType? ServiceWorkerRouterInfo = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("timing")]
@@ -585,6 +614,23 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IType
     {
     }
+    /// <summary>
+    /// cookiePartitionKey object<br/>
+    /// The representation of the components of the key that are created by the cookiePartitionKey class contained in net/cookies/cookie_partition_key.h.<br/>
+    /// </summary>
+    /// <param name="TopLevelSite">
+    /// The site of the top-level URL the browser was visiting at the start<br/>
+    /// of the request to the endpoint that set the cookie.<br/>
+    /// </param>
+    /// <param name="HasCrossSiteAncestor">Indicates if the cookie has any ancestors that are cross-site to the topLevelSite.</param>
+    public record CookiePartitionKeyType(
+      [property: System.Text.Json.Serialization.JsonPropertyName("topLevelSite")]
+      string TopLevelSite,
+      [property: System.Text.Json.Serialization.JsonPropertyName("hasCrossSiteAncestor")]
+      bool HasCrossSiteAncestor
+    ) : ChromeProtocol.Core.IType
+    {
+    }
     /// <summary>Cookie object</summary>
     /// <param name="Name">Cookie name.</param>
     /// <param name="Value">Cookie value.</param>
@@ -604,10 +650,7 @@ namespace ChromeProtocol.Domains
     /// This is a temporary ability and it will be removed in the future.<br/>
     /// </param>
     /// <param name="SameSite">Cookie SameSite type.</param>
-    /// <param name="PartitionKey">
-    /// Cookie partition key. The site of the top-level URL the browser was visiting at the start<br/>
-    /// of the request to the endpoint that set the cookie.<br/>
-    /// </param>
+    /// <param name="PartitionKey">Cookie partition key.</param>
     /// <param name="PartitionKeyOpaque">True if cookie partition key is opaque.</param>
     public record CookieType(
       [property: System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -640,7 +683,7 @@ namespace ChromeProtocol.Domains
       [property: System.Text.Json.Serialization.JsonPropertyName("sameSite")]
       ChromeProtocol.Domains.Network.CookieSameSiteType? SameSite = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("partitionKey")]
-      string? PartitionKey = default,
+      ChromeProtocol.Domains.Network.CookiePartitionKeyType? PartitionKey = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("partitionKeyOpaque")]
       bool? PartitionKeyOpaque = default
     ) : ChromeProtocol.Core.IType
@@ -693,10 +736,13 @@ namespace ChromeProtocol.Domains
     /// corresponding reason. A cookie could only have at most one exemption reason.<br/>
     /// </summary>
     /// <param name="ExemptionReason">The reason the cookie was exempted.</param>
+    /// <param name="CookieLine">The string representing this individual cookie as it would appear in the header.</param>
     /// <param name="Cookie">The cookie object representing the cookie.</param>
     public record ExemptedSetCookieWithReasonType(
       [property: System.Text.Json.Serialization.JsonPropertyName("exemptionReason")]
       ChromeProtocol.Domains.Network.CookieExemptionReasonType ExemptionReason,
+      [property: System.Text.Json.Serialization.JsonPropertyName("cookieLine")]
+      string CookieLine,
       [property: System.Text.Json.Serialization.JsonPropertyName("cookie")]
       ChromeProtocol.Domains.Network.CookieType Cookie
     ) : ChromeProtocol.Core.IType
@@ -743,11 +789,7 @@ namespace ChromeProtocol.Domains
     /// An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.<br/>
     /// This is a temporary ability and it will be removed in the future.<br/>
     /// </param>
-    /// <param name="PartitionKey">
-    /// Cookie partition key. The site of the top-level URL the browser was visiting at the start<br/>
-    /// of the request to the endpoint that set the cookie.<br/>
-    /// If not set, the cookie will be set as not partitioned.<br/>
-    /// </param>
+    /// <param name="PartitionKey">Cookie partition key. If not set, the cookie will be set as not partitioned.</param>
     public record CookieParamType(
       [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       string Name,
@@ -776,7 +818,7 @@ namespace ChromeProtocol.Domains
       [property: System.Text.Json.Serialization.JsonPropertyName("sourcePort")]
       int? SourcePort = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("partitionKey")]
-      string? PartitionKey = default
+      ChromeProtocol.Domains.Network.CookiePartitionKeyType? PartitionKey = default
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -1622,11 +1664,27 @@ namespace ChromeProtocol.Domains
       [property: System.Text.Json.Serialization.JsonPropertyName("headersText")]
       string? HeadersText = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("cookiePartitionKey")]
-      string? CookiePartitionKey = default,
+      ChromeProtocol.Domains.Network.CookiePartitionKeyType? CookiePartitionKey = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("cookiePartitionKeyOpaque")]
       bool? CookiePartitionKeyOpaque = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("exemptedCookies")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.ExemptedSetCookieWithReasonType>? ExemptedCookies = default
+    ) : ChromeProtocol.Core.IEvent
+    {
+    }
+    /// <summary>
+    /// Fired when 103 Early Hints headers is received in addition to the common response.<br/>
+    /// Not every responseReceived event will have an responseReceivedEarlyHints fired.<br/>
+    /// Only one responseReceivedEarlyHints may be fired for eached responseReceived event.<br/>
+    /// </summary>
+    /// <param name="RequestId">Request identifier. Used to match this information to another responseReceived event.</param>
+    /// <param name="Headers">Raw response headers as they were received over the wire.</param>
+    [ChromeProtocol.Core.MethodName("Network.responseReceivedEarlyHints")]
+    public record ResponseReceivedEarlyHints(
+      [property: System.Text.Json.Serialization.JsonPropertyName("requestId")]
+      ChromeProtocol.Domains.Network.RequestIdType RequestId,
+      [property: System.Text.Json.Serialization.JsonPropertyName("headers")]
+      ChromeProtocol.Domains.Network.HeadersType Headers
     ) : ChromeProtocol.Core.IEvent
     {
     }
@@ -1660,6 +1718,11 @@ namespace ChromeProtocol.Domains
       [property: System.Text.Json.Serialization.JsonPropertyName("issuedTokenCount")]
       int? IssuedTokenCount = default
     ) : ChromeProtocol.Core.IEvent
+    {
+    }
+    /// <summary>Fired once security policy has been updated.</summary>
+    [ChromeProtocol.Core.MethodName("Network.policyUpdated")]
+    public record PolicyUpdated() : ChromeProtocol.Core.IEvent
     {
     }
     /// <summary>
@@ -1763,7 +1826,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.</summary>
     /// <param name="Encodings">List of accepted content encodings.</param>
-    public static ChromeProtocol.Domains.Network.SetAcceptedEncodingsRequest SetAcceptedEncodings(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.ContentEncodingType> Encodings)
+    public static ChromeProtocol.Domains.Network.SetAcceptedEncodingsRequest SetAcceptedEncodings(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.ContentEncodingType> Encodings)    
     {
       return new ChromeProtocol.Domains.Network.SetAcceptedEncodingsRequest(Encodings);
     }
@@ -1780,7 +1843,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears accepted encodings set by setAcceptedEncodings</summary>
-    public static ChromeProtocol.Domains.Network.ClearAcceptedEncodingsOverrideRequest ClearAcceptedEncodingsOverride()
+    public static ChromeProtocol.Domains.Network.ClearAcceptedEncodingsOverrideRequest ClearAcceptedEncodingsOverride()    
     {
       return new ChromeProtocol.Domains.Network.ClearAcceptedEncodingsOverrideRequest();
     }
@@ -1794,7 +1857,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Tells whether clearing browser cache is supported.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.CanClearBrowserCacheRequest CanClearBrowserCache()
+    public static ChromeProtocol.Domains.Network.CanClearBrowserCacheRequest CanClearBrowserCache()    
     {
       return new ChromeProtocol.Domains.Network.CanClearBrowserCacheRequest();
     }
@@ -1814,7 +1877,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Tells whether clearing browser cookies is supported.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.CanClearBrowserCookiesRequest CanClearBrowserCookies()
+    public static ChromeProtocol.Domains.Network.CanClearBrowserCookiesRequest CanClearBrowserCookies()    
     {
       return new ChromeProtocol.Domains.Network.CanClearBrowserCookiesRequest();
     }
@@ -1834,7 +1897,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Tells whether emulation of network conditions is supported.</summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.CanEmulateNetworkConditionsRequest CanEmulateNetworkConditions()
+    public static ChromeProtocol.Domains.Network.CanEmulateNetworkConditionsRequest CanEmulateNetworkConditions()    
     {
       return new ChromeProtocol.Domains.Network.CanEmulateNetworkConditionsRequest();
     }
@@ -1853,7 +1916,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears browser cache.</summary>
-    public static ChromeProtocol.Domains.Network.ClearBrowserCacheRequest ClearBrowserCache()
+    public static ChromeProtocol.Domains.Network.ClearBrowserCacheRequest ClearBrowserCache()    
     {
       return new ChromeProtocol.Domains.Network.ClearBrowserCacheRequest();
     }
@@ -1866,7 +1929,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears browser cookies.</summary>
-    public static ChromeProtocol.Domains.Network.ClearBrowserCookiesRequest ClearBrowserCookies()
+    public static ChromeProtocol.Domains.Network.ClearBrowserCookiesRequest ClearBrowserCookies()    
     {
       return new ChromeProtocol.Domains.Network.ClearBrowserCookiesRequest();
     }
@@ -1909,7 +1972,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="AuthChallengeResponse">Response to a requestIntercepted with an authChallenge. Must not be set otherwise.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.ContinueInterceptedRequestRequest ContinueInterceptedRequest(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId, ChromeProtocol.Domains.Network.ErrorReasonType? ErrorReason = default, string? RawResponse = default, string? Url = default, string? Method = default, string? PostData = default, ChromeProtocol.Domains.Network.HeadersType? Headers = default, ChromeProtocol.Domains.Network.AuthChallengeResponseType? AuthChallengeResponse = default)
+    public static ChromeProtocol.Domains.Network.ContinueInterceptedRequestRequest ContinueInterceptedRequest(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId, ChromeProtocol.Domains.Network.ErrorReasonType? ErrorReason = default, string? RawResponse = default, string? Url = default, string? Method = default, string? PostData = default, ChromeProtocol.Domains.Network.HeadersType? Headers = default, ChromeProtocol.Domains.Network.AuthChallengeResponseType? AuthChallengeResponse = default)    
     {
       return new ChromeProtocol.Domains.Network.ContinueInterceptedRequestRequest(InterceptionId, ErrorReason, RawResponse, Url, Method, PostData, Headers, AuthChallengeResponse);
     }
@@ -1978,10 +2041,10 @@ namespace ChromeProtocol.Domains
     /// <param name="Domain">If specified, deletes only cookies with the exact domain.</param>
     /// <param name="Path">If specified, deletes only cookies with the exact path.</param>
     /// <param name="PartitionKey">
-    /// If specified, deletes only cookies with the the given name and partitionKey where domain<br/>
-    /// matches provided URL.<br/>
+    /// If specified, deletes only cookies with the the given name and partitionKey where<br/>
+    /// all partition key attributes match the cookie partition key attribute.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Network.DeleteCookiesRequest DeleteCookies(string Name, string? Url = default, string? Domain = default, string? Path = default, string? PartitionKey = default)
+    public static ChromeProtocol.Domains.Network.DeleteCookiesRequest DeleteCookies(string Name, string? Url = default, string? Domain = default, string? Path = default, ChromeProtocol.Domains.Network.CookiePartitionKeyType? PartitionKey = default)    
     {
       return new ChromeProtocol.Domains.Network.DeleteCookiesRequest(Name, Url, Domain, Path, PartitionKey);
     }
@@ -1994,8 +2057,8 @@ namespace ChromeProtocol.Domains
     /// <param name="Domain">If specified, deletes only cookies with the exact domain.</param>
     /// <param name="Path">If specified, deletes only cookies with the exact path.</param>
     /// <param name="PartitionKey">
-    /// If specified, deletes only cookies with the the given name and partitionKey where domain<br/>
-    /// matches provided URL.<br/>
+    /// If specified, deletes only cookies with the the given name and partitionKey where<br/>
+    /// all partition key attributes match the cookie partition key attribute.<br/>
     /// </param>
     [ChromeProtocol.Core.MethodName("Network.deleteCookies")]
     public record DeleteCookiesRequest(
@@ -2008,7 +2071,7 @@ namespace ChromeProtocol.Domains
       [property: System.Text.Json.Serialization.JsonPropertyName("path")]
       string? Path = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("partitionKey")]
-      string? PartitionKey = default
+      ChromeProtocol.Domains.Network.CookiePartitionKeyType? PartitionKey = default
     ) : ChromeProtocol.Core.ICommand<DeleteCookiesRequestResult>
     {
     }
@@ -2016,7 +2079,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables network tracking, prevents network events from being sent to the client.</summary>
-    public static ChromeProtocol.Domains.Network.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Network.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Network.DisableRequest();
     }
@@ -2034,9 +2097,12 @@ namespace ChromeProtocol.Domains
     /// <param name="DownloadThroughput">Maximal aggregated download throughput (bytes/sec). -1 disables download throttling.</param>
     /// <param name="UploadThroughput">Maximal aggregated upload throughput (bytes/sec).  -1 disables upload throttling.</param>
     /// <param name="ConnectionType">Connection type if known.</param>
-    public static ChromeProtocol.Domains.Network.EmulateNetworkConditionsRequest EmulateNetworkConditions(bool Offline, double Latency, double DownloadThroughput, double UploadThroughput, ChromeProtocol.Domains.Network.ConnectionTypeType? ConnectionType = default)
+    /// <param name="PacketLoss">WebRTC packet loss (percent, 0-100). 0 disables packet loss emulation, 100 drops all the packets.</param>
+    /// <param name="PacketQueueLength">WebRTC packet queue length (packet). 0 removes any queue length limitations.</param>
+    /// <param name="PacketReordering">WebRTC packetReordering feature.</param>
+    public static ChromeProtocol.Domains.Network.EmulateNetworkConditionsRequest EmulateNetworkConditions(bool Offline, double Latency, double DownloadThroughput, double UploadThroughput, ChromeProtocol.Domains.Network.ConnectionTypeType? ConnectionType = default, double? PacketLoss = default, int? PacketQueueLength = default, bool? PacketReordering = default)    
     {
-      return new ChromeProtocol.Domains.Network.EmulateNetworkConditionsRequest(Offline, Latency, DownloadThroughput, UploadThroughput, ConnectionType);
+      return new ChromeProtocol.Domains.Network.EmulateNetworkConditionsRequest(Offline, Latency, DownloadThroughput, UploadThroughput, ConnectionType, PacketLoss, PacketQueueLength, PacketReordering);
     }
     /// <summary>Activates emulation of network conditions.</summary>
     /// <param name="Offline">True to emulate internet disconnection.</param>
@@ -2044,6 +2110,9 @@ namespace ChromeProtocol.Domains
     /// <param name="DownloadThroughput">Maximal aggregated download throughput (bytes/sec). -1 disables download throttling.</param>
     /// <param name="UploadThroughput">Maximal aggregated upload throughput (bytes/sec).  -1 disables upload throttling.</param>
     /// <param name="ConnectionType">Connection type if known.</param>
+    /// <param name="PacketLoss">WebRTC packet loss (percent, 0-100). 0 disables packet loss emulation, 100 drops all the packets.</param>
+    /// <param name="PacketQueueLength">WebRTC packet queue length (packet). 0 removes any queue length limitations.</param>
+    /// <param name="PacketReordering">WebRTC packetReordering feature.</param>
     [ChromeProtocol.Core.MethodName("Network.emulateNetworkConditions")]
     public record EmulateNetworkConditionsRequest(
       [property: System.Text.Json.Serialization.JsonPropertyName("offline")]
@@ -2055,7 +2124,13 @@ namespace ChromeProtocol.Domains
       [property: System.Text.Json.Serialization.JsonPropertyName("uploadThroughput")]
       double UploadThroughput,
       [property: System.Text.Json.Serialization.JsonPropertyName("connectionType")]
-      ChromeProtocol.Domains.Network.ConnectionTypeType? ConnectionType = default
+      ChromeProtocol.Domains.Network.ConnectionTypeType? ConnectionType = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("packetLoss")]
+      double? PacketLoss = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("packetQueueLength")]
+      int? PacketQueueLength = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("packetReordering")]
+      bool? PacketReordering = default
     ) : ChromeProtocol.Core.ICommand<EmulateNetworkConditionsRequestResult>
     {
     }
@@ -2066,7 +2141,7 @@ namespace ChromeProtocol.Domains
     /// <param name="MaxTotalBufferSize">Buffer size in bytes to use when preserving network payloads (XHRs, etc).</param>
     /// <param name="MaxResourceBufferSize">Per-resource buffer size in bytes to use when preserving network payloads (XHRs, etc).</param>
     /// <param name="MaxPostDataSize">Longest post body size (in bytes) that would be included in requestWillBeSent notification</param>
-    public static ChromeProtocol.Domains.Network.EnableRequest Enable(int? MaxTotalBufferSize = default, int? MaxResourceBufferSize = default, int? MaxPostDataSize = default)
+    public static ChromeProtocol.Domains.Network.EnableRequest Enable(int? MaxTotalBufferSize = default, int? MaxResourceBufferSize = default, int? MaxPostDataSize = default)    
     {
       return new ChromeProtocol.Domains.Network.EnableRequest(MaxTotalBufferSize, MaxResourceBufferSize, MaxPostDataSize);
     }
@@ -2094,7 +2169,7 @@ namespace ChromeProtocol.Domains
     /// Deprecated. Use Storage.getCookies instead.<br/>
     /// </summary>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.GetAllCookiesRequest GetAllCookies()
+    public static ChromeProtocol.Domains.Network.GetAllCookiesRequest GetAllCookies()    
     {
       return new ChromeProtocol.Domains.Network.GetAllCookiesRequest();
     }
@@ -2118,7 +2193,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns the DER-encoded certificate.</summary>
     /// <param name="Origin">Origin to get certificate for.</param>
-    public static ChromeProtocol.Domains.Network.GetCertificateRequest GetCertificate(string Origin)
+    public static ChromeProtocol.Domains.Network.GetCertificateRequest GetCertificate(string Origin)    
     {
       return new ChromeProtocol.Domains.Network.GetCertificateRequest(Origin);
     }
@@ -2146,7 +2221,7 @@ namespace ChromeProtocol.Domains
     /// If not specified, it&#39;s assumed to be set to the list containing<br/>
     /// the URLs of the page and all of its subframes.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Network.GetCookiesRequest GetCookies(System.Collections.Generic.IReadOnlyList<string>? Urls = default)
+    public static ChromeProtocol.Domains.Network.GetCookiesRequest GetCookies(System.Collections.Generic.IReadOnlyList<string>? Urls = default)    
     {
       return new ChromeProtocol.Domains.Network.GetCookiesRequest(Urls);
     }
@@ -2175,7 +2250,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns content served for the given request.</summary>
     /// <param name="RequestId">Identifier of the network request to get content for.</param>
-    public static ChromeProtocol.Domains.Network.GetResponseBodyRequest GetResponseBody(ChromeProtocol.Domains.Network.RequestIdType RequestId)
+    public static ChromeProtocol.Domains.Network.GetResponseBodyRequest GetResponseBody(ChromeProtocol.Domains.Network.RequestIdType RequestId)    
     {
       return new ChromeProtocol.Domains.Network.GetResponseBodyRequest(RequestId);
     }
@@ -2200,7 +2275,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns post data sent with the request. Returns an error when no data was sent with the request.</summary>
     /// <param name="RequestId">Identifier of the network request to get content for.</param>
-    public static ChromeProtocol.Domains.Network.GetRequestPostDataRequest GetRequestPostData(ChromeProtocol.Domains.Network.RequestIdType RequestId)
+    public static ChromeProtocol.Domains.Network.GetRequestPostDataRequest GetRequestPostData(ChromeProtocol.Domains.Network.RequestIdType RequestId)    
     {
       return new ChromeProtocol.Domains.Network.GetRequestPostDataRequest(RequestId);
     }
@@ -2222,7 +2297,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns content served for the given currently intercepted request.</summary>
     /// <param name="InterceptionId">Identifier for the intercepted request to get body for.</param>
-    public static ChromeProtocol.Domains.Network.GetResponseBodyForInterceptionRequest GetResponseBodyForInterception(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId)
+    public static ChromeProtocol.Domains.Network.GetResponseBodyForInterceptionRequest GetResponseBodyForInterception(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId)    
     {
       return new ChromeProtocol.Domains.Network.GetResponseBodyForInterceptionRequest(InterceptionId);
     }
@@ -2251,7 +2326,7 @@ namespace ChromeProtocol.Domains
     /// the response body. The stream only supports sequential read, IO.read will fail if the position<br/>
     /// is specified.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Network.TakeResponseBodyForInterceptionAsStreamRequest TakeResponseBodyForInterceptionAsStream(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId)
+    public static ChromeProtocol.Domains.Network.TakeResponseBodyForInterceptionAsStreamRequest TakeResponseBodyForInterceptionAsStream(ChromeProtocol.Domains.Network.InterceptionIdType InterceptionId)    
     {
       return new ChromeProtocol.Domains.Network.TakeResponseBodyForInterceptionAsStreamRequest(InterceptionId);
     }
@@ -2280,7 +2355,7 @@ namespace ChromeProtocol.Domains
     /// attribute, user, password.<br/>
     /// </summary>
     /// <param name="RequestId">Identifier of XHR to replay.</param>
-    public static ChromeProtocol.Domains.Network.ReplayXHRRequest ReplayXHR(ChromeProtocol.Domains.Network.RequestIdType RequestId)
+    public static ChromeProtocol.Domains.Network.ReplayXHRRequest ReplayXHR(ChromeProtocol.Domains.Network.RequestIdType RequestId)    
     {
       return new ChromeProtocol.Domains.Network.ReplayXHRRequest(RequestId);
     }
@@ -2305,7 +2380,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Query">String to search for.</param>
     /// <param name="CaseSensitive">If true, search is case sensitive.</param>
     /// <param name="IsRegex">If true, treats string parameter as regex.</param>
-    public static ChromeProtocol.Domains.Network.SearchInResponseBodyRequest SearchInResponseBody(ChromeProtocol.Domains.Network.RequestIdType RequestId, string Query, bool? CaseSensitive = default, bool? IsRegex = default)
+    public static ChromeProtocol.Domains.Network.SearchInResponseBodyRequest SearchInResponseBody(ChromeProtocol.Domains.Network.RequestIdType RequestId, string Query, bool? CaseSensitive = default, bool? IsRegex = default)    
     {
       return new ChromeProtocol.Domains.Network.SearchInResponseBodyRequest(RequestId, Query, CaseSensitive, IsRegex);
     }
@@ -2336,7 +2411,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Blocks URLs from loading.</summary>
     /// <param name="Urls">URL patterns to block. Wildcards (&#39;*&#39;) are allowed.</param>
-    public static ChromeProtocol.Domains.Network.SetBlockedURLsRequest SetBlockedURLs(System.Collections.Generic.IReadOnlyList<string> Urls)
+    public static ChromeProtocol.Domains.Network.SetBlockedURLsRequest SetBlockedURLs(System.Collections.Generic.IReadOnlyList<string> Urls)    
     {
       return new ChromeProtocol.Domains.Network.SetBlockedURLsRequest(Urls);
     }
@@ -2354,7 +2429,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Toggles ignoring of service worker for each request.</summary>
     /// <param name="Bypass">Bypass service worker and load from network.</param>
-    public static ChromeProtocol.Domains.Network.SetBypassServiceWorkerRequest SetBypassServiceWorker(bool Bypass)
+    public static ChromeProtocol.Domains.Network.SetBypassServiceWorkerRequest SetBypassServiceWorker(bool Bypass)    
     {
       return new ChromeProtocol.Domains.Network.SetBypassServiceWorkerRequest(Bypass);
     }
@@ -2372,7 +2447,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Toggles ignoring cache for each request. If `true`, cache will not be used.</summary>
     /// <param name="CacheDisabled">Cache disabled state.</param>
-    public static ChromeProtocol.Domains.Network.SetCacheDisabledRequest SetCacheDisabled(bool CacheDisabled)
+    public static ChromeProtocol.Domains.Network.SetCacheDisabledRequest SetCacheDisabled(bool CacheDisabled)    
     {
       return new ChromeProtocol.Domains.Network.SetCacheDisabledRequest(CacheDisabled);
     }
@@ -2409,12 +2484,8 @@ namespace ChromeProtocol.Domains
     /// An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.<br/>
     /// This is a temporary ability and it will be removed in the future.<br/>
     /// </param>
-    /// <param name="PartitionKey">
-    /// Cookie partition key. The site of the top-level URL the browser was visiting at the start<br/>
-    /// of the request to the endpoint that set the cookie.<br/>
-    /// If not set, the cookie will be set as not partitioned.<br/>
-    /// </param>
-    public static ChromeProtocol.Domains.Network.SetCookieRequest SetCookie(string Name, string Value, string? Url = default, string? Domain = default, string? Path = default, bool? Secure = default, bool? HttpOnly = default, ChromeProtocol.Domains.Network.CookieSameSiteType? SameSite = default, ChromeProtocol.Domains.Network.TimeSinceEpochType? Expires = default, ChromeProtocol.Domains.Network.CookiePriorityType? Priority = default, bool? SameParty = default, ChromeProtocol.Domains.Network.CookieSourceSchemeType? SourceScheme = default, int? SourcePort = default, string? PartitionKey = default)
+    /// <param name="PartitionKey">Cookie partition key. If not set, the cookie will be set as not partitioned.</param>
+    public static ChromeProtocol.Domains.Network.SetCookieRequest SetCookie(string Name, string Value, string? Url = default, string? Domain = default, string? Path = default, bool? Secure = default, bool? HttpOnly = default, ChromeProtocol.Domains.Network.CookieSameSiteType? SameSite = default, ChromeProtocol.Domains.Network.TimeSinceEpochType? Expires = default, ChromeProtocol.Domains.Network.CookiePriorityType? Priority = default, bool? SameParty = default, ChromeProtocol.Domains.Network.CookieSourceSchemeType? SourceScheme = default, int? SourcePort = default, ChromeProtocol.Domains.Network.CookiePartitionKeyType? PartitionKey = default)    
     {
       return new ChromeProtocol.Domains.Network.SetCookieRequest(Name, Value, Url, Domain, Path, Secure, HttpOnly, SameSite, Expires, Priority, SameParty, SourceScheme, SourcePort, PartitionKey);
     }
@@ -2439,11 +2510,7 @@ namespace ChromeProtocol.Domains
     /// An unspecified port value allows protocol clients to emulate legacy cookie scope for the port.<br/>
     /// This is a temporary ability and it will be removed in the future.<br/>
     /// </param>
-    /// <param name="PartitionKey">
-    /// Cookie partition key. The site of the top-level URL the browser was visiting at the start<br/>
-    /// of the request to the endpoint that set the cookie.<br/>
-    /// If not set, the cookie will be set as not partitioned.<br/>
-    /// </param>
+    /// <param name="PartitionKey">Cookie partition key. If not set, the cookie will be set as not partitioned.</param>
     [ChromeProtocol.Core.MethodName("Network.setCookie")]
     public record SetCookieRequest(
       [property: System.Text.Json.Serialization.JsonPropertyName("name")]
@@ -2473,7 +2540,7 @@ namespace ChromeProtocol.Domains
       [property: System.Text.Json.Serialization.JsonPropertyName("sourcePort")]
       int? SourcePort = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("partitionKey")]
-      string? PartitionKey = default
+      ChromeProtocol.Domains.Network.CookiePartitionKeyType? PartitionKey = default
     ) : ChromeProtocol.Core.ICommand<SetCookieRequestResult>
     {
     }
@@ -2487,7 +2554,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets given cookies.</summary>
     /// <param name="Cookies">Cookies to be set.</param>
-    public static ChromeProtocol.Domains.Network.SetCookiesRequest SetCookies(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieParamType> Cookies)
+    public static ChromeProtocol.Domains.Network.SetCookiesRequest SetCookies(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.CookieParamType> Cookies)    
     {
       return new ChromeProtocol.Domains.Network.SetCookiesRequest(Cookies);
     }
@@ -2505,7 +2572,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Specifies whether to always send extra HTTP headers with the requests from this page.</summary>
     /// <param name="Headers">Map with extra HTTP headers.</param>
-    public static ChromeProtocol.Domains.Network.SetExtraHTTPHeadersRequest SetExtraHTTPHeaders(ChromeProtocol.Domains.Network.HeadersType Headers)
+    public static ChromeProtocol.Domains.Network.SetExtraHTTPHeadersRequest SetExtraHTTPHeaders(ChromeProtocol.Domains.Network.HeadersType Headers)    
     {
       return new ChromeProtocol.Domains.Network.SetExtraHTTPHeadersRequest(Headers);
     }
@@ -2523,7 +2590,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Specifies whether to attach a page script stack id in requests</summary>
     /// <param name="Enabled">Whether to attach a page script stack for debugging purpose.</param>
-    public static ChromeProtocol.Domains.Network.SetAttachDebugStackRequest SetAttachDebugStack(bool Enabled)
+    public static ChromeProtocol.Domains.Network.SetAttachDebugStackRequest SetAttachDebugStack(bool Enabled)    
     {
       return new ChromeProtocol.Domains.Network.SetAttachDebugStackRequest(Enabled);
     }
@@ -2548,7 +2615,7 @@ namespace ChromeProtocol.Domains
     /// continueInterceptedRequest call.<br/>
     /// </param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Network.SetRequestInterceptionRequest SetRequestInterception(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.RequestPatternType> Patterns)
+    public static ChromeProtocol.Domains.Network.SetRequestInterceptionRequest SetRequestInterception(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Network.RequestPatternType> Patterns)    
     {
       return new ChromeProtocol.Domains.Network.SetRequestInterceptionRequest(Patterns);
     }
@@ -2577,7 +2644,7 @@ namespace ChromeProtocol.Domains
     /// <param name="AcceptLanguage">Browser language to emulate.</param>
     /// <param name="Platform">The platform navigator.platform should return.</param>
     /// <param name="UserAgentMetadata">To be sent in Sec-CH-UA-* headers and returned in navigator.userAgentData</param>
-    public static ChromeProtocol.Domains.Network.SetUserAgentOverrideRequest SetUserAgentOverride(string UserAgent, string? AcceptLanguage = default, string? Platform = default, ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default)
+    public static ChromeProtocol.Domains.Network.SetUserAgentOverrideRequest SetUserAgentOverride(string UserAgent, string? AcceptLanguage = default, string? Platform = default, ChromeProtocol.Domains.Emulation.UserAgentMetadataType? UserAgentMetadata = default)    
     {
       return new ChromeProtocol.Domains.Network.SetUserAgentOverrideRequest(UserAgent, AcceptLanguage, Platform, UserAgentMetadata);
     }
@@ -2607,7 +2674,7 @@ namespace ChromeProtocol.Domains
     /// If enabled, the dataReceived event contains the data that was received during streaming.<br/>
     /// </summary>
     /// <param name="RequestId">Identifier of the request to stream.</param>
-    public static ChromeProtocol.Domains.Network.StreamResourceContentRequest StreamResourceContent(ChromeProtocol.Domains.Network.RequestIdType RequestId)
+    public static ChromeProtocol.Domains.Network.StreamResourceContentRequest StreamResourceContent(ChromeProtocol.Domains.Network.RequestIdType RequestId)    
     {
       return new ChromeProtocol.Domains.Network.StreamResourceContentRequest(RequestId);
     }
@@ -2632,7 +2699,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns information about the COEP/COOP isolation status.</summary>
     /// <param name="FrameId">If no frameId is provided, the status of the target is provided.</param>
-    public static ChromeProtocol.Domains.Network.GetSecurityIsolationStatusRequest GetSecurityIsolationStatus(ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)
+    public static ChromeProtocol.Domains.Network.GetSecurityIsolationStatusRequest GetSecurityIsolationStatus(ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)    
     {
       return new ChromeProtocol.Domains.Network.GetSecurityIsolationStatusRequest(FrameId);
     }
@@ -2656,7 +2723,7 @@ namespace ChromeProtocol.Domains
     /// Enabling triggers &#39;reportingApiReportAdded&#39; for all existing reports.<br/>
     /// </summary>
     /// <param name="Enable">Whether to enable or disable events for the Reporting API</param>
-    public static ChromeProtocol.Domains.Network.EnableReportingApiRequest EnableReportingApi(bool Enable)
+    public static ChromeProtocol.Domains.Network.EnableReportingApiRequest EnableReportingApi(bool Enable)    
     {
       return new ChromeProtocol.Domains.Network.EnableReportingApiRequest(Enable);
     }
@@ -2682,7 +2749,7 @@ namespace ChromeProtocol.Domains
     /// Frame id to get the resource for. Mandatory for frame targets, and<br/>
     /// should be omitted for worker targets.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Network.LoadNetworkResourceRequest LoadNetworkResource(string Url, ChromeProtocol.Domains.Network.LoadNetworkResourceOptionsType Options, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)
+    public static ChromeProtocol.Domains.Network.LoadNetworkResourceRequest LoadNetworkResource(string Url, ChromeProtocol.Domains.Network.LoadNetworkResourceOptionsType Options, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)    
     {
       return new ChromeProtocol.Domains.Network.LoadNetworkResourceRequest(Url, Options, FrameId);
     }

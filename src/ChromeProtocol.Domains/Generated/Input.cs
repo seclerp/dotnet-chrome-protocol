@@ -120,7 +120,7 @@ namespace ChromeProtocol.Domains
     /// Bit field representing pressed modifier keys. Alt=1, Ctrl=2, Meta/Command=4, Shift=8<br/>
     /// (default: 0).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Input.DispatchDragEventRequest DispatchDragEvent(string Type, double X, double Y, ChromeProtocol.Domains.Input.DragDataType Data, int? Modifiers = default)
+    public static ChromeProtocol.Domains.Input.DispatchDragEventRequest DispatchDragEvent(string Type, double X, double Y, ChromeProtocol.Domains.Input.DragDataType Data, int? Modifiers = default)    
     {
       return new ChromeProtocol.Domains.Input.DispatchDragEventRequest(Type, X, Y, Data, Modifiers);
     }
@@ -188,7 +188,7 @@ namespace ChromeProtocol.Domains
     /// These are related to but not equal the command names used in `document.execCommand` and NSStandardKeyBindingResponding.<br/>
     /// See https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/editing/commands/editor_command_names.h for valid command names.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Input.DispatchKeyEventRequest DispatchKeyEvent(string Type, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, string? Text = default, string? UnmodifiedText = default, string? KeyIdentifier = default, string? Code = default, string? Key = default, int? WindowsVirtualKeyCode = default, int? NativeVirtualKeyCode = default, bool? AutoRepeat = default, bool? IsKeypad = default, bool? IsSystemKey = default, int? Location = default, System.Collections.Generic.IReadOnlyList<string>? Commands = default)
+    public static ChromeProtocol.Domains.Input.DispatchKeyEventRequest DispatchKeyEvent(string Type, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, string? Text = default, string? UnmodifiedText = default, string? KeyIdentifier = default, string? Code = default, string? Key = default, int? WindowsVirtualKeyCode = default, int? NativeVirtualKeyCode = default, bool? AutoRepeat = default, bool? IsKeypad = default, bool? IsSystemKey = default, int? Location = default, System.Collections.Generic.IReadOnlyList<string>? Commands = default)    
     {
       return new ChromeProtocol.Domains.Input.DispatchKeyEventRequest(Type, Modifiers, Timestamp, Text, UnmodifiedText, KeyIdentifier, Code, Key, WindowsVirtualKeyCode, NativeVirtualKeyCode, AutoRepeat, IsKeypad, IsSystemKey, Location, Commands);
     }
@@ -270,7 +270,7 @@ namespace ChromeProtocol.Domains
     /// for example an emoji keyboard or an IME.<br/>
     /// </summary>
     /// <param name="Text">The text to insert.</param>
-    public static ChromeProtocol.Domains.Input.InsertTextRequest InsertText(string Text)
+    public static ChromeProtocol.Domains.Input.InsertTextRequest InsertText(string Text)    
     {
       return new ChromeProtocol.Domains.Input.InsertTextRequest(Text);
     }
@@ -299,7 +299,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SelectionEnd">selection end</param>
     /// <param name="ReplacementStart">replacement start</param>
     /// <param name="ReplacementEnd">replacement end</param>
-    public static ChromeProtocol.Domains.Input.ImeSetCompositionRequest ImeSetComposition(string Text, int SelectionStart, int SelectionEnd, int? ReplacementStart = default, int? ReplacementEnd = default)
+    public static ChromeProtocol.Domains.Input.ImeSetCompositionRequest ImeSetComposition(string Text, int SelectionStart, int SelectionEnd, int? ReplacementStart = default, int? ReplacementEnd = default)    
     {
       return new ChromeProtocol.Domains.Input.ImeSetCompositionRequest(Text, SelectionStart, SelectionEnd, ReplacementStart, ReplacementEnd);
     }
@@ -357,7 +357,7 @@ namespace ChromeProtocol.Domains
     /// <param name="DeltaX">X delta in CSS pixels for mouse wheel event (default: 0).</param>
     /// <param name="DeltaY">Y delta in CSS pixels for mouse wheel event (default: 0).</param>
     /// <param name="PointerType">Pointer type (default: &quot;mouse&quot;).</param>
-    public static ChromeProtocol.Domains.Input.DispatchMouseEventRequest DispatchMouseEvent(string Type, double X, double Y, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, ChromeProtocol.Domains.Input.MouseButtonType? Button = default, int? Buttons = default, int? ClickCount = default, double? Force = default, double? TangentialPressure = default, double? TiltX = default, double? TiltY = default, int? Twist = default, double? DeltaX = default, double? DeltaY = default, string? PointerType = default)
+    public static ChromeProtocol.Domains.Input.DispatchMouseEventRequest DispatchMouseEvent(string Type, double X, double Y, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, ChromeProtocol.Domains.Input.MouseButtonType? Button = default, int? Buttons = default, int? ClickCount = default, double? Force = default, double? TangentialPressure = default, double? TiltX = default, double? TiltY = default, int? Twist = default, double? DeltaX = default, double? DeltaY = default, string? PointerType = default)    
     {
       return new ChromeProtocol.Domains.Input.DispatchMouseEventRequest(Type, X, Y, Modifiers, Timestamp, Button, Buttons, ClickCount, Force, TangentialPressure, TiltX, TiltY, Twist, DeltaX, DeltaY, PointerType);
     }
@@ -442,7 +442,7 @@ namespace ChromeProtocol.Domains
     /// (default: 0).<br/>
     /// </param>
     /// <param name="Timestamp">Time at which the event occurred.</param>
-    public static ChromeProtocol.Domains.Input.DispatchTouchEventRequest DispatchTouchEvent(string Type, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Input.TouchPointType> TouchPoints, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default)
+    public static ChromeProtocol.Domains.Input.DispatchTouchEventRequest DispatchTouchEvent(string Type, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Input.TouchPointType> TouchPoints, int? Modifiers = default, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default)    
     {
       return new ChromeProtocol.Domains.Input.DispatchTouchEventRequest(Type, TouchPoints, Modifiers, Timestamp);
     }
@@ -478,7 +478,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Cancels any active dragging in the page.</summary>
-    public static ChromeProtocol.Domains.Input.CancelDraggingRequest CancelDragging()
+    public static ChromeProtocol.Domains.Input.CancelDraggingRequest CancelDragging()    
     {
       return new ChromeProtocol.Domains.Input.CancelDraggingRequest();
     }
@@ -503,7 +503,7 @@ namespace ChromeProtocol.Domains
     /// (default: 0).<br/>
     /// </param>
     /// <param name="ClickCount">Number of times the mouse button was clicked (default: 0).</param>
-    public static ChromeProtocol.Domains.Input.EmulateTouchFromMouseEventRequest EmulateTouchFromMouseEvent(string Type, int X, int Y, ChromeProtocol.Domains.Input.MouseButtonType Button, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, double? DeltaX = default, double? DeltaY = default, int? Modifiers = default, int? ClickCount = default)
+    public static ChromeProtocol.Domains.Input.EmulateTouchFromMouseEventRequest EmulateTouchFromMouseEvent(string Type, int X, int Y, ChromeProtocol.Domains.Input.MouseButtonType Button, ChromeProtocol.Domains.Input.TimeSinceEpochType? Timestamp = default, double? DeltaX = default, double? DeltaY = default, int? Modifiers = default, int? ClickCount = default)    
     {
       return new ChromeProtocol.Domains.Input.EmulateTouchFromMouseEventRequest(Type, X, Y, Button, Timestamp, DeltaX, DeltaY, Modifiers, ClickCount);
     }
@@ -548,7 +548,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Ignores input events (useful while auditing page).</summary>
     /// <param name="Ignore">Ignores input events processing when set to true.</param>
-    public static ChromeProtocol.Domains.Input.SetIgnoreInputEventsRequest SetIgnoreInputEvents(bool Ignore)
+    public static ChromeProtocol.Domains.Input.SetIgnoreInputEventsRequest SetIgnoreInputEvents(bool Ignore)    
     {
       return new ChromeProtocol.Domains.Input.SetIgnoreInputEventsRequest(Ignore);
     }
@@ -568,7 +568,7 @@ namespace ChromeProtocol.Domains
     /// Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.<br/>
     /// Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Input.SetInterceptDragsRequest SetInterceptDrags(bool Enabled)
+    public static ChromeProtocol.Domains.Input.SetInterceptDragsRequest SetInterceptDrags(bool Enabled)    
     {
       return new ChromeProtocol.Domains.Input.SetInterceptDragsRequest(Enabled);
     }
@@ -595,7 +595,7 @@ namespace ChromeProtocol.Domains
     /// Which type of input events to be generated (default: &#39;default&#39;, which queries the platform<br/>
     /// for the preferred input type).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Input.SynthesizePinchGestureRequest SynthesizePinchGesture(double X, double Y, double ScaleFactor, int? RelativeSpeed = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default)
+    public static ChromeProtocol.Domains.Input.SynthesizePinchGestureRequest SynthesizePinchGesture(double X, double Y, double ScaleFactor, int? RelativeSpeed = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default)    
     {
       return new ChromeProtocol.Domains.Input.SynthesizePinchGestureRequest(X, Y, ScaleFactor, RelativeSpeed, GestureSourceType);
     }
@@ -648,7 +648,7 @@ namespace ChromeProtocol.Domains
     /// <param name="RepeatCount">The number of times to repeat the gesture (default: 0).</param>
     /// <param name="RepeatDelayMs">The number of milliseconds delay between each repeat. (default: 250).</param>
     /// <param name="InteractionMarkerName">The name of the interaction markers to generate, if not empty (default: &quot;&quot;).</param>
-    public static ChromeProtocol.Domains.Input.SynthesizeScrollGestureRequest SynthesizeScrollGesture(double X, double Y, double? XDistance = default, double? YDistance = default, double? XOverscroll = default, double? YOverscroll = default, bool? PreventFling = default, int? Speed = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default, int? RepeatCount = default, int? RepeatDelayMs = default, string? InteractionMarkerName = default)
+    public static ChromeProtocol.Domains.Input.SynthesizeScrollGestureRequest SynthesizeScrollGesture(double X, double Y, double? XDistance = default, double? YDistance = default, double? XOverscroll = default, double? YOverscroll = default, bool? PreventFling = default, int? Speed = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default, int? RepeatCount = default, int? RepeatDelayMs = default, string? InteractionMarkerName = default)    
     {
       return new ChromeProtocol.Domains.Input.SynthesizeScrollGestureRequest(X, Y, XDistance, YDistance, XOverscroll, YOverscroll, PreventFling, Speed, GestureSourceType, RepeatCount, RepeatDelayMs, InteractionMarkerName);
     }
@@ -715,7 +715,7 @@ namespace ChromeProtocol.Domains
     /// Which type of input events to be generated (default: &#39;default&#39;, which queries the platform<br/>
     /// for the preferred input type).<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Input.SynthesizeTapGestureRequest SynthesizeTapGesture(double X, double Y, int? Duration = default, int? TapCount = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default)
+    public static ChromeProtocol.Domains.Input.SynthesizeTapGestureRequest SynthesizeTapGesture(double X, double Y, int? Duration = default, int? TapCount = default, ChromeProtocol.Domains.Input.GestureSourceTypeType? GestureSourceType = default)    
     {
       return new ChromeProtocol.Domains.Input.SynthesizeTapGestureRequest(X, Y, Duration, TapCount, GestureSourceType);
     }

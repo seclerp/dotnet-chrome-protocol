@@ -25,7 +25,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables inspector domain notifications.</summary>
-    public static ChromeProtocol.Domains.Inspector.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Inspector.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Inspector.DisableRequest();
     }
@@ -38,7 +38,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables inspector domain notifications.</summary>
-    public static ChromeProtocol.Domains.Inspector.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Inspector.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Inspector.EnableRequest();
     }

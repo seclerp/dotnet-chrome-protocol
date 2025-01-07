@@ -43,7 +43,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enable events in this domain.</summary>
-    public static ChromeProtocol.Domains.DeviceAccess.EnableRequest Enable()
+    public static ChromeProtocol.Domains.DeviceAccess.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.DeviceAccess.EnableRequest();
     }
@@ -56,7 +56,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disable events in this domain.</summary>
-    public static ChromeProtocol.Domains.DeviceAccess.DisableRequest Disable()
+    public static ChromeProtocol.Domains.DeviceAccess.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.DeviceAccess.DisableRequest();
     }
@@ -69,7 +69,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Select a device in response to a DeviceAccess.deviceRequestPrompted event.</summary>
-    public static ChromeProtocol.Domains.DeviceAccess.SelectPromptRequest SelectPrompt(ChromeProtocol.Domains.DeviceAccess.RequestIdType Id, ChromeProtocol.Domains.DeviceAccess.DeviceIdType DeviceId)
+    public static ChromeProtocol.Domains.DeviceAccess.SelectPromptRequest SelectPrompt(ChromeProtocol.Domains.DeviceAccess.RequestIdType Id, ChromeProtocol.Domains.DeviceAccess.DeviceIdType DeviceId)    
     {
       return new ChromeProtocol.Domains.DeviceAccess.SelectPromptRequest(Id, DeviceId);
     }
@@ -87,7 +87,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.</summary>
-    public static ChromeProtocol.Domains.DeviceAccess.CancelPromptRequest CancelPrompt(ChromeProtocol.Domains.DeviceAccess.RequestIdType Id)
+    public static ChromeProtocol.Domains.DeviceAccess.CancelPromptRequest CancelPrompt(ChromeProtocol.Domains.DeviceAccess.RequestIdType Id)    
     {
       return new ChromeProtocol.Domains.DeviceAccess.CancelPromptRequest(Id);
     }

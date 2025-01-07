@@ -122,7 +122,7 @@ namespace ChromeProtocol.Domains
     /// <param name="FieldId">Identifies a field that serves as an anchor for autofill.</param>
     /// <param name="Card">Credit card information to fill out the form. Credit card data is not saved.</param>
     /// <param name="FrameId">Identifies the frame that field belongs to.</param>
-    public static ChromeProtocol.Domains.Autofill.TriggerRequest Trigger(ChromeProtocol.Domains.DOM.BackendNodeIdType FieldId, ChromeProtocol.Domains.Autofill.CreditCardType Card, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)
+    public static ChromeProtocol.Domains.Autofill.TriggerRequest Trigger(ChromeProtocol.Domains.DOM.BackendNodeIdType FieldId, ChromeProtocol.Domains.Autofill.CreditCardType Card, ChromeProtocol.Domains.Page.FrameIdType? FrameId = default)    
     {
       return new ChromeProtocol.Domains.Autofill.TriggerRequest(FieldId, Card, FrameId);
     }
@@ -148,7 +148,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Set addresses so that developers can verify their forms implementation.</summary>
-    public static ChromeProtocol.Domains.Autofill.SetAddressesRequest SetAddresses(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Autofill.AddressType> Addresses)
+    public static ChromeProtocol.Domains.Autofill.SetAddressesRequest SetAddresses(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Autofill.AddressType> Addresses)    
     {
       return new ChromeProtocol.Domains.Autofill.SetAddressesRequest(Addresses);
     }
@@ -164,7 +164,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables autofill domain notifications.</summary>
-    public static ChromeProtocol.Domains.Autofill.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Autofill.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Autofill.DisableRequest();
     }
@@ -177,7 +177,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables autofill domain notifications.</summary>
-    public static ChromeProtocol.Domains.Autofill.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Autofill.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Autofill.EnableRequest();
     }

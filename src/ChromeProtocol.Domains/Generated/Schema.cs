@@ -19,7 +19,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns supported domains.</summary>
-    public static ChromeProtocol.Domains.Schema.GetDomainsRequest GetDomains()
+    public static ChromeProtocol.Domains.Schema.GetDomainsRequest GetDomains()    
     {
       return new ChromeProtocol.Domains.Schema.GetDomainsRequest();
     }

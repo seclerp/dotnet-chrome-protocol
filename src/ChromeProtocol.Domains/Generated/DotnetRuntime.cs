@@ -12,7 +12,7 @@ namespace ChromeProtocol.Domains
     /// <param name="ObjectId">TBD</param>
     /// <param name="TypeName">TBD</param>
     /// <param name="MethodName">TBD</param>
-    public static ChromeProtocol.Domains.DotnetRuntime.CallFunctionOnRequest CallFunctionOn(string ObjectId, string TypeName, string MethodName)
+    public static ChromeProtocol.Domains.DotnetRuntime.CallFunctionOnRequest CallFunctionOn(string ObjectId, string TypeName, string MethodName)    
     {
       return new ChromeProtocol.Domains.DotnetRuntime.CallFunctionOnRequest(ObjectId, TypeName, MethodName);
     }

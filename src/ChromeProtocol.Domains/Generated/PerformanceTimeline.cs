@@ -98,7 +98,7 @@ namespace ChromeProtocol.Domains
     /// filter disables recording.<br/>
     /// Note that not all types exposed to the web platform are currently supported.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.PerformanceTimeline.EnableRequest Enable(System.Collections.Generic.IReadOnlyList<string> EventTypes)
+    public static ChromeProtocol.Domains.PerformanceTimeline.EnableRequest Enable(System.Collections.Generic.IReadOnlyList<string> EventTypes)    
     {
       return new ChromeProtocol.Domains.PerformanceTimeline.EnableRequest(EventTypes);
     }

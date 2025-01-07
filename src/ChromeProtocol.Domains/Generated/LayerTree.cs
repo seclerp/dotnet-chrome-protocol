@@ -145,7 +145,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Provides the reasons why the given layer was composited.</summary>
     /// <param name="LayerId">The id of the layer for which we want to get the reasons it was composited.</param>
-    public static ChromeProtocol.Domains.LayerTree.CompositingReasonsRequest CompositingReasons(ChromeProtocol.Domains.LayerTree.LayerIdType LayerId)
+    public static ChromeProtocol.Domains.LayerTree.CompositingReasonsRequest CompositingReasons(ChromeProtocol.Domains.LayerTree.LayerIdType LayerId)    
     {
       return new ChromeProtocol.Domains.LayerTree.CompositingReasonsRequest(LayerId);
     }
@@ -169,7 +169,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables compositing tree inspection.</summary>
-    public static ChromeProtocol.Domains.LayerTree.DisableRequest Disable()
+    public static ChromeProtocol.Domains.LayerTree.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.LayerTree.DisableRequest();
     }
@@ -182,7 +182,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables compositing tree inspection.</summary>
-    public static ChromeProtocol.Domains.LayerTree.EnableRequest Enable()
+    public static ChromeProtocol.Domains.LayerTree.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.LayerTree.EnableRequest();
     }
@@ -196,7 +196,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns the snapshot identifier.</summary>
     /// <param name="Tiles">An array of tiles composing the snapshot.</param>
-    public static ChromeProtocol.Domains.LayerTree.LoadSnapshotRequest LoadSnapshot(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.LayerTree.PictureTileType> Tiles)
+    public static ChromeProtocol.Domains.LayerTree.LoadSnapshotRequest LoadSnapshot(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.LayerTree.PictureTileType> Tiles)    
     {
       return new ChromeProtocol.Domains.LayerTree.LoadSnapshotRequest(Tiles);
     }
@@ -218,7 +218,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns the layer snapshot identifier.</summary>
     /// <param name="LayerId">The id of the layer.</param>
-    public static ChromeProtocol.Domains.LayerTree.MakeSnapshotRequest MakeSnapshot(ChromeProtocol.Domains.LayerTree.LayerIdType LayerId)
+    public static ChromeProtocol.Domains.LayerTree.MakeSnapshotRequest MakeSnapshot(ChromeProtocol.Domains.LayerTree.LayerIdType LayerId)    
     {
       return new ChromeProtocol.Domains.LayerTree.MakeSnapshotRequest(LayerId);
     }
@@ -242,7 +242,7 @@ namespace ChromeProtocol.Domains
     /// <param name="MinRepeatCount">The maximum number of times to replay the snapshot (1, if not specified).</param>
     /// <param name="MinDuration">The minimum duration (in seconds) to replay the snapshot.</param>
     /// <param name="ClipRect">The clip rectangle to apply when replaying the snapshot.</param>
-    public static ChromeProtocol.Domains.LayerTree.ProfileSnapshotRequest ProfileSnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId, int? MinRepeatCount = default, double? MinDuration = default, ChromeProtocol.Domains.DOM.RectType? ClipRect = default)
+    public static ChromeProtocol.Domains.LayerTree.ProfileSnapshotRequest ProfileSnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId, int? MinRepeatCount = default, double? MinDuration = default, ChromeProtocol.Domains.DOM.RectType? ClipRect = default)    
     {
       return new ChromeProtocol.Domains.LayerTree.ProfileSnapshotRequest(SnapshotId, MinRepeatCount, MinDuration, ClipRect);
     }
@@ -272,7 +272,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Releases layer snapshot captured by the back-end.</summary>
     /// <param name="SnapshotId">The id of the layer snapshot.</param>
-    public static ChromeProtocol.Domains.LayerTree.ReleaseSnapshotRequest ReleaseSnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId)
+    public static ChromeProtocol.Domains.LayerTree.ReleaseSnapshotRequest ReleaseSnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId)    
     {
       return new ChromeProtocol.Domains.LayerTree.ReleaseSnapshotRequest(SnapshotId);
     }
@@ -293,7 +293,7 @@ namespace ChromeProtocol.Domains
     /// <param name="FromStep">The first step to replay from (replay from the very start if not specified).</param>
     /// <param name="ToStep">The last step to replay to (replay till the end if not specified).</param>
     /// <param name="Scale">The scale to apply while replaying (defaults to 1).</param>
-    public static ChromeProtocol.Domains.LayerTree.ReplaySnapshotRequest ReplaySnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId, int? FromStep = default, int? ToStep = default, double? Scale = default)
+    public static ChromeProtocol.Domains.LayerTree.ReplaySnapshotRequest ReplaySnapshot(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId, int? FromStep = default, int? ToStep = default, double? Scale = default)    
     {
       return new ChromeProtocol.Domains.LayerTree.ReplaySnapshotRequest(SnapshotId, FromStep, ToStep, Scale);
     }
@@ -324,7 +324,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Replays the layer snapshot and returns canvas log.</summary>
     /// <param name="SnapshotId">The id of the layer snapshot.</param>
-    public static ChromeProtocol.Domains.LayerTree.SnapshotCommandLogRequest SnapshotCommandLog(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId)
+    public static ChromeProtocol.Domains.LayerTree.SnapshotCommandLogRequest SnapshotCommandLog(ChromeProtocol.Domains.LayerTree.SnapshotIdType SnapshotId)    
     {
       return new ChromeProtocol.Domains.LayerTree.SnapshotCommandLogRequest(SnapshotId);
     }

@@ -173,7 +173,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables the fetch domain.</summary>
-    public static ChromeProtocol.Domains.Fetch.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Fetch.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Fetch.DisableRequest();
     }
@@ -198,7 +198,7 @@ namespace ChromeProtocol.Domains
     /// If true, authRequired events will be issued and requests will be paused<br/>
     /// expecting a call to continueWithAuth.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Fetch.EnableRequest Enable(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.RequestPatternType>? Patterns = default, bool? HandleAuthRequests = default)
+    public static ChromeProtocol.Domains.Fetch.EnableRequest Enable(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.RequestPatternType>? Patterns = default, bool? HandleAuthRequests = default)    
     {
       return new ChromeProtocol.Domains.Fetch.EnableRequest(Patterns, HandleAuthRequests);
     }
@@ -230,7 +230,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Causes the request to fail with specified reason.</summary>
     /// <param name="RequestId">An id the client received in requestPaused event.</param>
     /// <param name="ErrorReason">Causes the request to fail with the given reason.</param>
-    public static ChromeProtocol.Domains.Fetch.FailRequestRequest FailRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, ChromeProtocol.Domains.Network.ErrorReasonType ErrorReason)
+    public static ChromeProtocol.Domains.Fetch.FailRequestRequest FailRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, ChromeProtocol.Domains.Network.ErrorReasonType ErrorReason)    
     {
       return new ChromeProtocol.Domains.Fetch.FailRequestRequest(RequestId, ErrorReason);
     }
@@ -268,7 +268,7 @@ namespace ChromeProtocol.Domains
     /// A textual representation of responseCode.<br/>
     /// If absent, a standard phrase matching responseCode is used.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Fetch.FulfillRequestRequest FulfillRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, int ResponseCode, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default, string? BinaryResponseHeaders = default, string? Body = default, string? ResponsePhrase = default)
+    public static ChromeProtocol.Domains.Fetch.FulfillRequestRequest FulfillRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, int ResponseCode, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default, string? BinaryResponseHeaders = default, string? Body = default, string? ResponsePhrase = default)    
     {
       return new ChromeProtocol.Domains.Fetch.FulfillRequestRequest(RequestId, ResponseCode, ResponseHeaders, BinaryResponseHeaders, Body, ResponsePhrase);
     }
@@ -322,7 +322,7 @@ namespace ChromeProtocol.Domains
     /// may be applied to a different request produced by a redirect.<br/>
     /// </param>
     /// <param name="InterceptResponse">If set, overrides response interception behavior for this request.</param>
-    public static ChromeProtocol.Domains.Fetch.ContinueRequestRequest ContinueRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, string? Url = default, string? Method = default, string? PostData = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? Headers = default, bool? InterceptResponse = default)
+    public static ChromeProtocol.Domains.Fetch.ContinueRequestRequest ContinueRequest(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, string? Url = default, string? Method = default, string? PostData = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? Headers = default, bool? InterceptResponse = default)    
     {
       return new ChromeProtocol.Domains.Fetch.ContinueRequestRequest(RequestId, Url, Method, PostData, Headers, InterceptResponse);
     }
@@ -360,7 +360,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Continues a request supplying authChallengeResponse following authRequired event.</summary>
     /// <param name="RequestId">An id the client received in authRequired event.</param>
     /// <param name="AuthChallengeResponse">Response to  with an authChallenge.</param>
-    public static ChromeProtocol.Domains.Fetch.ContinueWithAuthRequest ContinueWithAuth(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, ChromeProtocol.Domains.Fetch.AuthChallengeResponseType AuthChallengeResponse)
+    public static ChromeProtocol.Domains.Fetch.ContinueWithAuthRequest ContinueWithAuth(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, ChromeProtocol.Domains.Fetch.AuthChallengeResponseType AuthChallengeResponse)    
     {
       return new ChromeProtocol.Domains.Fetch.ContinueWithAuthRequest(RequestId, AuthChallengeResponse);
     }
@@ -397,7 +397,7 @@ namespace ChromeProtocol.Domains
     /// need to represent some non-UTF8 values that can&#39;t be transmitted<br/>
     /// over the protocol as text. (Encoded as a base64 string when passed over JSON)<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Fetch.ContinueResponseRequest ContinueResponse(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, int? ResponseCode = default, string? ResponsePhrase = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default, string? BinaryResponseHeaders = default)
+    public static ChromeProtocol.Domains.Fetch.ContinueResponseRequest ContinueResponse(ChromeProtocol.Domains.Fetch.RequestIdType RequestId, int? ResponseCode = default, string? ResponsePhrase = default, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Fetch.HeaderEntryType>? ResponseHeaders = default, string? BinaryResponseHeaders = default)    
     {
       return new ChromeProtocol.Domains.Fetch.ContinueResponseRequest(RequestId, ResponseCode, ResponsePhrase, ResponseHeaders, BinaryResponseHeaders);
     }
@@ -450,7 +450,7 @@ namespace ChromeProtocol.Domains
     /// comments to `requestPaused` for details.<br/>
     /// </summary>
     /// <param name="RequestId">Identifier for the intercepted request to get body for.</param>
-    public static ChromeProtocol.Domains.Fetch.GetResponseBodyRequest GetResponseBody(ChromeProtocol.Domains.Fetch.RequestIdType RequestId)
+    public static ChromeProtocol.Domains.Fetch.GetResponseBodyRequest GetResponseBody(ChromeProtocol.Domains.Fetch.RequestIdType RequestId)    
     {
       return new ChromeProtocol.Domains.Fetch.GetResponseBodyRequest(RequestId);
     }
@@ -496,7 +496,7 @@ namespace ChromeProtocol.Domains
     /// Calling other methods that affect the request or disabling fetch<br/>
     /// domain before body is received results in an undefined behavior.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Fetch.TakeResponseBodyAsStreamRequest TakeResponseBodyAsStream(ChromeProtocol.Domains.Fetch.RequestIdType RequestId)
+    public static ChromeProtocol.Domains.Fetch.TakeResponseBodyAsStreamRequest TakeResponseBodyAsStream(ChromeProtocol.Domains.Fetch.RequestIdType RequestId)    
     {
       return new ChromeProtocol.Domains.Fetch.TakeResponseBodyAsStreamRequest(RequestId);
     }

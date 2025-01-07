@@ -109,7 +109,7 @@ namespace ChromeProtocol.Domains
     /// $x functions).<br/>
     /// </summary>
     /// <param name="HeapObjectId">Heap snapshot object id to be accessible by means of $x command line API.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.AddInspectedHeapObjectRequest AddInspectedHeapObject(ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType HeapObjectId)
+    public static ChromeProtocol.Domains.HeapProfiler.AddInspectedHeapObjectRequest AddInspectedHeapObject(ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType HeapObjectId)    
     {
       return new ChromeProtocol.Domains.HeapProfiler.AddInspectedHeapObjectRequest(HeapObjectId);
     }
@@ -128,7 +128,7 @@ namespace ChromeProtocol.Domains
     public record AddInspectedHeapObjectRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.CollectGarbageRequest CollectGarbage()
+    public static ChromeProtocol.Domains.HeapProfiler.CollectGarbageRequest CollectGarbage()    
     {
       return new ChromeProtocol.Domains.HeapProfiler.CollectGarbageRequest();
     }
@@ -139,7 +139,7 @@ namespace ChromeProtocol.Domains
     public record CollectGarbageRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.DisableRequest Disable()
+    public static ChromeProtocol.Domains.HeapProfiler.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.HeapProfiler.DisableRequest();
     }
@@ -150,7 +150,7 @@ namespace ChromeProtocol.Domains
     public record DisableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.EnableRequest Enable()
+    public static ChromeProtocol.Domains.HeapProfiler.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.HeapProfiler.EnableRequest();
     }
@@ -162,7 +162,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="ObjectId">Identifier of the object to get heap object id for.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.GetHeapObjectIdRequest GetHeapObjectId(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)
+    public static ChromeProtocol.Domains.HeapProfiler.GetHeapObjectIdRequest GetHeapObjectId(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)    
     {
       return new ChromeProtocol.Domains.HeapProfiler.GetHeapObjectIdRequest(ObjectId);
     }
@@ -182,7 +182,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="ObjectGroup">Symbolic group name that can be used to release multiple objects.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.GetObjectByHeapObjectIdRequest GetObjectByHeapObjectId(ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType ObjectId, string? ObjectGroup = default)
+    public static ChromeProtocol.Domains.HeapProfiler.GetObjectByHeapObjectIdRequest GetObjectByHeapObjectId(ChromeProtocol.Domains.HeapProfiler.HeapSnapshotObjectIdType ObjectId, string? ObjectGroup = default)    
     {
       return new ChromeProtocol.Domains.HeapProfiler.GetObjectByHeapObjectIdRequest(ObjectId, ObjectGroup);
     }
@@ -203,7 +203,7 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.GetSamplingProfileRequest GetSamplingProfile()
+    public static ChromeProtocol.Domains.HeapProfiler.GetSamplingProfileRequest GetSamplingProfile()    
     {
       return new ChromeProtocol.Domains.HeapProfiler.GetSamplingProfileRequest();
     }
@@ -240,7 +240,7 @@ namespace ChromeProtocol.Domains
     /// minor GC, which is useful when tuning a latency-sensitive application<br/>
     /// for minimal GC activity.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.HeapProfiler.StartSamplingRequest StartSampling(double? SamplingInterval = default, bool? IncludeObjectsCollectedByMajorGC = default, bool? IncludeObjectsCollectedByMinorGC = default)
+    public static ChromeProtocol.Domains.HeapProfiler.StartSamplingRequest StartSampling(double? SamplingInterval = default, bool? IncludeObjectsCollectedByMajorGC = default, bool? IncludeObjectsCollectedByMinorGC = default)    
     {
       return new ChromeProtocol.Domains.HeapProfiler.StartSamplingRequest(SamplingInterval, IncludeObjectsCollectedByMajorGC, IncludeObjectsCollectedByMinorGC);
     }
@@ -280,7 +280,7 @@ namespace ChromeProtocol.Domains
     public record StartSamplingRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.StartTrackingHeapObjectsRequest StartTrackingHeapObjects(bool? TrackAllocations = default)
+    public static ChromeProtocol.Domains.HeapProfiler.StartTrackingHeapObjectsRequest StartTrackingHeapObjects(bool? TrackAllocations = default)    
     {
       return new ChromeProtocol.Domains.HeapProfiler.StartTrackingHeapObjectsRequest(TrackAllocations);
     }
@@ -294,7 +294,7 @@ namespace ChromeProtocol.Domains
     public record StartTrackingHeapObjectsRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.HeapProfiler.StopSamplingRequest StopSampling()
+    public static ChromeProtocol.Domains.HeapProfiler.StopSamplingRequest StopSampling()    
     {
       return new ChromeProtocol.Domains.HeapProfiler.StopSamplingRequest();
     }
@@ -316,7 +316,7 @@ namespace ChromeProtocol.Domains
     /// <param name="TreatGlobalObjectsAsRoots">Deprecated in favor of `exposeInternals`.</param>
     /// <param name="CaptureNumericValue">If true, numerical values are included in the snapshot</param>
     /// <param name="ExposeInternals">If true, exposes internals of the snapshot.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.StopTrackingHeapObjectsRequest StopTrackingHeapObjects(bool? ReportProgress = default, bool? TreatGlobalObjectsAsRoots = default, bool? CaptureNumericValue = default, bool? ExposeInternals = default)
+    public static ChromeProtocol.Domains.HeapProfiler.StopTrackingHeapObjectsRequest StopTrackingHeapObjects(bool? ReportProgress = default, bool? TreatGlobalObjectsAsRoots = default, bool? CaptureNumericValue = default, bool? ExposeInternals = default)    
     {
       return new ChromeProtocol.Domains.HeapProfiler.StopTrackingHeapObjectsRequest(ReportProgress, TreatGlobalObjectsAsRoots, CaptureNumericValue, ExposeInternals);
     }
@@ -351,7 +351,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="CaptureNumericValue">If true, numerical values are included in the snapshot</param>
     /// <param name="ExposeInternals">If true, exposes internals of the snapshot.</param>
-    public static ChromeProtocol.Domains.HeapProfiler.TakeHeapSnapshotRequest TakeHeapSnapshot(bool? ReportProgress = default, bool? TreatGlobalObjectsAsRoots = default, bool? CaptureNumericValue = default, bool? ExposeInternals = default)
+    public static ChromeProtocol.Domains.HeapProfiler.TakeHeapSnapshotRequest TakeHeapSnapshot(bool? ReportProgress = default, bool? TreatGlobalObjectsAsRoots = default, bool? CaptureNumericValue = default, bool? ExposeInternals = default)    
     {
       return new ChromeProtocol.Domains.HeapProfiler.TakeHeapSnapshotRequest(ReportProgress, TreatGlobalObjectsAsRoots, CaptureNumericValue, ExposeInternals);
     }

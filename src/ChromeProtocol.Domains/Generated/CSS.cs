@@ -628,13 +628,25 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IType
     {
     }
-    /// <summary>CSS position-fallback rule representation.</summary>
-    /// <param name="TryRules">List of keyframes.</param>
-    public record CSSPositionFallbackRuleType(
+    /// <summary>CSS @position-try rule representation.</summary>
+    /// <param name="Name">The prelude dashed-ident name</param>
+    /// <param name="Origin">Parent stylesheet&#39;s origin.</param>
+    /// <param name="Style">Associated style declaration.</param>
+    /// <param name="StyleSheetId">
+    /// The css style sheet identifier (absent for user agent stylesheet and user-specified<br/>
+    /// stylesheet rules) this rule came from.<br/>
+    /// </param>
+    public record CSSPositionTryRuleType(
       [property: System.Text.Json.Serialization.JsonPropertyName("name")]
       ChromeProtocol.Domains.CSS.ValueType Name,
-      [property: System.Text.Json.Serialization.JsonPropertyName("tryRules")]
-      System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSTryRuleType> TryRules
+      [property: System.Text.Json.Serialization.JsonPropertyName("origin")]
+      ChromeProtocol.Domains.CSS.StyleSheetOriginType Origin,
+      [property: System.Text.Json.Serialization.JsonPropertyName("style")]
+      ChromeProtocol.Domains.CSS.CSSStyleType Style,
+      [property: System.Text.Json.Serialization.JsonPropertyName("active")]
+      bool Active,
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
+      ChromeProtocol.Domains.CSS.StyleSheetIdType? StyleSheetId = default
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -794,7 +806,7 @@ namespace ChromeProtocol.Domains
     /// validated. If omitted, declarations in the new rule text can only be validated statically, which may produce<br/>
     /// incorrect results if the declaration contains a var() for example.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.CSS.AddRuleRequest AddRule(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, string RuleText, ChromeProtocol.Domains.CSS.SourceRangeType Location, ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default)
+    public static ChromeProtocol.Domains.CSS.AddRuleRequest AddRule(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, string RuleText, ChromeProtocol.Domains.CSS.SourceRangeType Location, ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default)    
     {
       return new ChromeProtocol.Domains.CSS.AddRuleRequest(StyleSheetId, RuleText, Location, NodeForPropertySyntaxValidation);
     }
@@ -831,7 +843,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns all class names from specified stylesheet.</summary>
-    public static ChromeProtocol.Domains.CSS.CollectClassNamesRequest CollectClassNames(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId)
+    public static ChromeProtocol.Domains.CSS.CollectClassNamesRequest CollectClassNames(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId)    
     {
       return new ChromeProtocol.Domains.CSS.CollectClassNamesRequest(StyleSheetId);
     }
@@ -852,7 +864,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Creates a new special &quot;via-inspector&quot; stylesheet in the frame with given `frameId`.</summary>
     /// <param name="FrameId">Identifier of the frame where &quot;via-inspector&quot; stylesheet should be created.</param>
-    public static ChromeProtocol.Domains.CSS.CreateStyleSheetRequest CreateStyleSheet(ChromeProtocol.Domains.Page.FrameIdType FrameId)
+    public static ChromeProtocol.Domains.CSS.CreateStyleSheetRequest CreateStyleSheet(ChromeProtocol.Domains.Page.FrameIdType FrameId)    
     {
       return new ChromeProtocol.Domains.CSS.CreateStyleSheetRequest(FrameId);
     }
@@ -873,7 +885,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables the CSS agent for the given page.</summary>
-    public static ChromeProtocol.Domains.CSS.DisableRequest Disable()
+    public static ChromeProtocol.Domains.CSS.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.CSS.DisableRequest();
     }
@@ -889,7 +901,7 @@ namespace ChromeProtocol.Domains
     /// Enables the CSS agent for the given page. Clients should not assume that the CSS agent has been<br/>
     /// enabled until the result of this command is received.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.EnableRequest Enable()
+    public static ChromeProtocol.Domains.CSS.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.CSS.EnableRequest();
     }
@@ -910,7 +922,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     /// <param name="NodeId">The element id for which to force the pseudo state.</param>
     /// <param name="ForcedPseudoClasses">Element pseudo classes to force when computing the element&#39;s style.</param>
-    public static ChromeProtocol.Domains.CSS.ForcePseudoStateRequest ForcePseudoState(ChromeProtocol.Domains.DOM.NodeIdType NodeId, System.Collections.Generic.IReadOnlyList<string> ForcedPseudoClasses)
+    public static ChromeProtocol.Domains.CSS.ForcePseudoStateRequest ForcePseudoState(ChromeProtocol.Domains.DOM.NodeIdType NodeId, System.Collections.Generic.IReadOnlyList<string> ForcedPseudoClasses)    
     {
       return new ChromeProtocol.Domains.CSS.ForcePseudoStateRequest(NodeId, ForcedPseudoClasses);
     }
@@ -933,7 +945,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <param name="NodeId">Id of the node to get background colors for.</param>
-    public static ChromeProtocol.Domains.CSS.GetBackgroundColorsRequest GetBackgroundColors(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
+    public static ChromeProtocol.Domains.CSS.GetBackgroundColorsRequest GetBackgroundColors(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
     {
       return new ChromeProtocol.Domains.CSS.GetBackgroundColorsRequest(NodeId);
     }
@@ -968,7 +980,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns the computed style for a DOM node identified by `nodeId`.</summary>
-    public static ChromeProtocol.Domains.CSS.GetComputedStyleForNodeRequest GetComputedStyleForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
+    public static ChromeProtocol.Domains.CSS.GetComputedStyleForNodeRequest GetComputedStyleForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
     {
       return new ChromeProtocol.Domains.CSS.GetComputedStyleForNodeRequest(NodeId);
     }
@@ -991,7 +1003,7 @@ namespace ChromeProtocol.Domains
     /// Returns the styles defined inline (explicitly in the &quot;style&quot; attribute and implicitly, using DOM<br/>
     /// attributes) for a DOM node identified by `nodeId`.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.GetInlineStylesForNodeRequest GetInlineStylesForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
+    public static ChromeProtocol.Domains.CSS.GetInlineStylesForNodeRequest GetInlineStylesForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
     {
       return new ChromeProtocol.Domains.CSS.GetInlineStylesForNodeRequest(NodeId);
     }
@@ -1017,7 +1029,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns requested styles for a DOM node identified by `nodeId`.</summary>
-    public static ChromeProtocol.Domains.CSS.GetMatchedStylesForNodeRequest GetMatchedStylesForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
+    public static ChromeProtocol.Domains.CSS.GetMatchedStylesForNodeRequest GetMatchedStylesForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
     {
       return new ChromeProtocol.Domains.CSS.GetMatchedStylesForNodeRequest(NodeId);
     }
@@ -1036,7 +1048,11 @@ namespace ChromeProtocol.Domains
     /// <param name="Inherited">A chain of inherited styles (from the immediate node parent up to the DOM tree root).</param>
     /// <param name="InheritedPseudoElements">A chain of inherited pseudo element styles (from the immediate node parent up to the DOM tree root).</param>
     /// <param name="CssKeyframesRules">A list of CSS keyframed animations matching this node.</param>
-    /// <param name="CssPositionFallbackRules">A list of CSS position fallbacks matching this node.</param>
+    /// <param name="CssPositionTryRules">A list of CSS @position-try rules matching this node, based on the position-try-fallbacks property.</param>
+    /// <param name="ActivePositionFallbackIndex">
+    /// Index of the active fallback in the applied position-try-fallback property,<br/>
+    /// will not be set if there is no active position-try fallback.<br/>
+    /// </param>
     /// <param name="CssPropertyRules">A list of CSS at-property rules matching this node.</param>
     /// <param name="CssPropertyRegistrations">A list of CSS property registrations matching this node.</param>
     /// <param name="CssFontPaletteValuesRule">A font-palette-values rule matching this node.</param>
@@ -1056,8 +1072,10 @@ namespace ChromeProtocol.Domains
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.InheritedPseudoElementMatchesType>? InheritedPseudoElements = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("cssKeyframesRules")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSKeyframesRuleType>? CssKeyframesRules = default,
-      [property: System.Text.Json.Serialization.JsonPropertyName("cssPositionFallbackRules")]
-      System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSPositionFallbackRuleType>? CssPositionFallbackRules = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("cssPositionTryRules")]
+      System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSPositionTryRuleType>? CssPositionTryRules = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("activePositionFallbackIndex")]
+      int? ActivePositionFallbackIndex = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("cssPropertyRules")]
       System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSPropertyRuleType>? CssPropertyRules = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("cssPropertyRegistrations")]
@@ -1070,7 +1088,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns all media queries parsed by the rendering engine.</summary>
-    public static ChromeProtocol.Domains.CSS.GetMediaQueriesRequest GetMediaQueries()
+    public static ChromeProtocol.Domains.CSS.GetMediaQueriesRequest GetMediaQueries()    
     {
       return new ChromeProtocol.Domains.CSS.GetMediaQueriesRequest();
     }
@@ -1089,7 +1107,7 @@ namespace ChromeProtocol.Domains
     /// Requests information about platform fonts which we used to render child TextNodes in the given<br/>
     /// node.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.GetPlatformFontsForNodeRequest GetPlatformFontsForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
+    public static ChromeProtocol.Domains.CSS.GetPlatformFontsForNodeRequest GetPlatformFontsForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
     {
       return new ChromeProtocol.Domains.CSS.GetPlatformFontsForNodeRequest(NodeId);
     }
@@ -1112,7 +1130,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns the current textual content for a stylesheet.</summary>
-    public static ChromeProtocol.Domains.CSS.GetStyleSheetTextRequest GetStyleSheetText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId)
+    public static ChromeProtocol.Domains.CSS.GetStyleSheetTextRequest GetStyleSheetText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId)    
     {
       return new ChromeProtocol.Domains.CSS.GetStyleSheetTextRequest(StyleSheetId);
     }
@@ -1137,7 +1155,7 @@ namespace ChromeProtocol.Domains
     /// layer for the nearest ancestor document or shadow root. The layer root contains<br/>
     /// the full layer tree for the tree scope and their ordering.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.GetLayersForNodeRequest GetLayersForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)
+    public static ChromeProtocol.Domains.CSS.GetLayersForNodeRequest GetLayersForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId)    
     {
       return new ChromeProtocol.Domains.CSS.GetLayersForNodeRequest(NodeId);
     }
@@ -1161,6 +1179,33 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>
+    /// Given a CSS selector text and a style sheet ID, getLocationForSelector<br/>
+    /// returns an array of locations of the CSS selector in the style sheet.<br/>
+    /// </summary>
+    public static ChromeProtocol.Domains.CSS.GetLocationForSelectorRequest GetLocationForSelector(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, string SelectorText)    
+    {
+      return new ChromeProtocol.Domains.CSS.GetLocationForSelectorRequest(StyleSheetId, SelectorText);
+    }
+    /// <summary>
+    /// Given a CSS selector text and a style sheet ID, getLocationForSelector<br/>
+    /// returns an array of locations of the CSS selector in the style sheet.<br/>
+    /// </summary>
+    [ChromeProtocol.Core.MethodName("CSS.getLocationForSelector")]
+    public record GetLocationForSelectorRequest(
+      [property: System.Text.Json.Serialization.JsonPropertyName("styleSheetId")]
+      ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId,
+      [property: System.Text.Json.Serialization.JsonPropertyName("selectorText")]
+      string SelectorText
+    ) : ChromeProtocol.Core.ICommand<GetLocationForSelectorRequestResult>
+    {
+    }
+    public record GetLocationForSelectorRequestResult(
+      [property: System.Text.Json.Serialization.JsonPropertyName("ranges")]
+      System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.SourceRangeType> Ranges
+    ) : ChromeProtocol.Core.IType
+    {
+    }
+    /// <summary>
     /// Starts tracking the given computed styles for updates. The specified array of properties<br/>
     /// replaces the one previously specified. Pass empty array to disable tracking.<br/>
     /// Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.<br/>
@@ -1168,7 +1213,7 @@ namespace ChromeProtocol.Domains
     /// by the DOM agent. If no changes to the tracked properties occur after the node has been pushed<br/>
     /// to the front-end, no updates will be issued for the node.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.TrackComputedStyleUpdatesRequest TrackComputedStyleUpdates(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSComputedStylePropertyType> PropertiesToTrack)
+    public static ChromeProtocol.Domains.CSS.TrackComputedStyleUpdatesRequest TrackComputedStyleUpdates(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.CSSComputedStylePropertyType> PropertiesToTrack)    
     {
       return new ChromeProtocol.Domains.CSS.TrackComputedStyleUpdatesRequest(PropertiesToTrack);
     }
@@ -1191,7 +1236,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Polls the next batch of computed style updates.</summary>
-    public static ChromeProtocol.Domains.CSS.TakeComputedStyleUpdatesRequest TakeComputedStyleUpdates()
+    public static ChromeProtocol.Domains.CSS.TakeComputedStyleUpdatesRequest TakeComputedStyleUpdates()    
     {
       return new ChromeProtocol.Domains.CSS.TakeComputedStyleUpdatesRequest();
     }
@@ -1212,7 +1257,7 @@ namespace ChromeProtocol.Domains
     /// property<br/>
     /// </summary>
     /// <param name="NodeId">The element id for which to set property.</param>
-    public static ChromeProtocol.Domains.CSS.SetEffectivePropertyValueForNodeRequest SetEffectivePropertyValueForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string PropertyName, string Value)
+    public static ChromeProtocol.Domains.CSS.SetEffectivePropertyValueForNodeRequest SetEffectivePropertyValueForNode(ChromeProtocol.Domains.DOM.NodeIdType NodeId, string PropertyName, string Value)    
     {
       return new ChromeProtocol.Domains.CSS.SetEffectivePropertyValueForNodeRequest(NodeId, PropertyName, Value);
     }
@@ -1236,7 +1281,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Modifies the property rule property name.</summary>
-    public static ChromeProtocol.Domains.CSS.SetPropertyRulePropertyNameRequest SetPropertyRulePropertyName(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string PropertyName)
+    public static ChromeProtocol.Domains.CSS.SetPropertyRulePropertyNameRequest SetPropertyRulePropertyName(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string PropertyName)    
     {
       return new ChromeProtocol.Domains.CSS.SetPropertyRulePropertyNameRequest(StyleSheetId, Range, PropertyName);
     }
@@ -1260,7 +1305,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Modifies the keyframe rule key text.</summary>
-    public static ChromeProtocol.Domains.CSS.SetKeyframeKeyRequest SetKeyframeKey(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string KeyText)
+    public static ChromeProtocol.Domains.CSS.SetKeyframeKeyRequest SetKeyframeKey(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string KeyText)    
     {
       return new ChromeProtocol.Domains.CSS.SetKeyframeKeyRequest(StyleSheetId, Range, KeyText);
     }
@@ -1284,7 +1329,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Modifies the rule selector.</summary>
-    public static ChromeProtocol.Domains.CSS.SetMediaTextRequest SetMediaText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)
+    public static ChromeProtocol.Domains.CSS.SetMediaTextRequest SetMediaText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)    
     {
       return new ChromeProtocol.Domains.CSS.SetMediaTextRequest(StyleSheetId, Range, Text);
     }
@@ -1308,7 +1353,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Modifies the expression of a container query.</summary>
-    public static ChromeProtocol.Domains.CSS.SetContainerQueryTextRequest SetContainerQueryText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)
+    public static ChromeProtocol.Domains.CSS.SetContainerQueryTextRequest SetContainerQueryText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)    
     {
       return new ChromeProtocol.Domains.CSS.SetContainerQueryTextRequest(StyleSheetId, Range, Text);
     }
@@ -1332,7 +1377,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Modifies the expression of a supports at-rule.</summary>
-    public static ChromeProtocol.Domains.CSS.SetSupportsTextRequest SetSupportsText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)
+    public static ChromeProtocol.Domains.CSS.SetSupportsTextRequest SetSupportsText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)    
     {
       return new ChromeProtocol.Domains.CSS.SetSupportsTextRequest(StyleSheetId, Range, Text);
     }
@@ -1356,7 +1401,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Modifies the expression of a scope at-rule.</summary>
-    public static ChromeProtocol.Domains.CSS.SetScopeTextRequest SetScopeText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)
+    public static ChromeProtocol.Domains.CSS.SetScopeTextRequest SetScopeText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Text)    
     {
       return new ChromeProtocol.Domains.CSS.SetScopeTextRequest(StyleSheetId, Range, Text);
     }
@@ -1380,7 +1425,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Modifies the rule selector.</summary>
-    public static ChromeProtocol.Domains.CSS.SetRuleSelectorRequest SetRuleSelector(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Selector)
+    public static ChromeProtocol.Domains.CSS.SetRuleSelectorRequest SetRuleSelector(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, ChromeProtocol.Domains.CSS.SourceRangeType Range, string Selector)    
     {
       return new ChromeProtocol.Domains.CSS.SetRuleSelectorRequest(StyleSheetId, Range, Selector);
     }
@@ -1404,7 +1449,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Sets the new stylesheet text.</summary>
-    public static ChromeProtocol.Domains.CSS.SetStyleSheetTextRequest SetStyleSheetText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, string Text)
+    public static ChromeProtocol.Domains.CSS.SetStyleSheetTextRequest SetStyleSheetText(ChromeProtocol.Domains.CSS.StyleSheetIdType StyleSheetId, string Text)    
     {
       return new ChromeProtocol.Domains.CSS.SetStyleSheetTextRequest(StyleSheetId, Text);
     }
@@ -1431,7 +1476,7 @@ namespace ChromeProtocol.Domains
     /// validated. If omitted, declarations in the new rule text can only be validated statically, which may produce<br/>
     /// incorrect results if the declaration contains a var() for example.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.CSS.SetStyleTextsRequest SetStyleTexts(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.StyleDeclarationEditType> Edits, ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default)
+    public static ChromeProtocol.Domains.CSS.SetStyleTextsRequest SetStyleTexts(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CSS.StyleDeclarationEditType> Edits, ChromeProtocol.Domains.DOM.NodeIdType? NodeForPropertySyntaxValidation = default)    
     {
       return new ChromeProtocol.Domains.CSS.SetStyleTextsRequest(Edits, NodeForPropertySyntaxValidation);
     }
@@ -1458,7 +1503,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables the selector recording.</summary>
-    public static ChromeProtocol.Domains.CSS.StartRuleUsageTrackingRequest StartRuleUsageTracking()
+    public static ChromeProtocol.Domains.CSS.StartRuleUsageTrackingRequest StartRuleUsageTracking()    
     {
       return new ChromeProtocol.Domains.CSS.StartRuleUsageTrackingRequest();
     }
@@ -1474,7 +1519,7 @@ namespace ChromeProtocol.Domains
     /// Stop tracking rule usage and return the list of rules that were used since last call to<br/>
     /// `takeCoverageDelta` (or since start of coverage instrumentation).<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.StopRuleUsageTrackingRequest StopRuleUsageTracking()
+    public static ChromeProtocol.Domains.CSS.StopRuleUsageTrackingRequest StopRuleUsageTracking()    
     {
       return new ChromeProtocol.Domains.CSS.StopRuleUsageTrackingRequest();
     }
@@ -1496,7 +1541,7 @@ namespace ChromeProtocol.Domains
     /// Obtain list of rules that became used since last call to this method (or since start of coverage<br/>
     /// instrumentation).<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.CSS.TakeCoverageDeltaRequest TakeCoverageDelta()
+    public static ChromeProtocol.Domains.CSS.TakeCoverageDeltaRequest TakeCoverageDelta()    
     {
       return new ChromeProtocol.Domains.CSS.TakeCoverageDeltaRequest();
     }
@@ -1519,7 +1564,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enables/disables rendering of local CSS fonts (enabled by default).</summary>
     /// <param name="Enabled">Whether rendering of local fonts is enabled.</param>
-    public static ChromeProtocol.Domains.CSS.SetLocalFontsEnabledRequest SetLocalFontsEnabled(bool Enabled)
+    public static ChromeProtocol.Domains.CSS.SetLocalFontsEnabledRequest SetLocalFontsEnabled(bool Enabled)    
     {
       return new ChromeProtocol.Domains.CSS.SetLocalFontsEnabledRequest(Enabled);
     }

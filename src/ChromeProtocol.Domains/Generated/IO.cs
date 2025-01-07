@@ -18,7 +18,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Close the stream, discard any temporary backing storage.</summary>
     /// <param name="Handle">Handle of the stream to close.</param>
-    public static ChromeProtocol.Domains.IO.CloseRequest Close(ChromeProtocol.Domains.IO.StreamHandleType Handle)
+    public static ChromeProtocol.Domains.IO.CloseRequest Close(ChromeProtocol.Domains.IO.StreamHandleType Handle)    
     {
       return new ChromeProtocol.Domains.IO.CloseRequest(Handle);
     }
@@ -41,7 +41,7 @@ namespace ChromeProtocol.Domains
     /// following the last read). Some types of streams may only support sequential reads.<br/>
     /// </param>
     /// <param name="Size">Maximum number of bytes to read (left upon the agent discretion if not specified).</param>
-    public static ChromeProtocol.Domains.IO.ReadRequest Read(ChromeProtocol.Domains.IO.StreamHandleType Handle, int? Offset = default, int? Size = default)
+    public static ChromeProtocol.Domains.IO.ReadRequest Read(ChromeProtocol.Domains.IO.StreamHandleType Handle, int? Offset = default, int? Size = default)    
     {
       return new ChromeProtocol.Domains.IO.ReadRequest(Handle, Offset, Size);
     }
@@ -78,7 +78,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Return UUID of Blob object specified by a remote object id.</summary>
     /// <param name="ObjectId">Object id of a Blob object wrapper.</param>
-    public static ChromeProtocol.Domains.IO.ResolveBlobRequest ResolveBlob(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)
+    public static ChromeProtocol.Domains.IO.ResolveBlobRequest ResolveBlob(ChromeProtocol.Domains.Runtime.RemoteObjectIdType ObjectId)    
     {
       return new ChromeProtocol.Domains.IO.ResolveBlobRequest(ObjectId);
     }

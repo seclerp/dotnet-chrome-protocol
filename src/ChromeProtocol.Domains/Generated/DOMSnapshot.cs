@@ -407,7 +407,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables DOM snapshot agent for the given page.</summary>
-    public static ChromeProtocol.Domains.DOMSnapshot.DisableRequest Disable()
+    public static ChromeProtocol.Domains.DOMSnapshot.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.DOMSnapshot.DisableRequest();
     }
@@ -420,7 +420,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables DOM snapshot agent for the given page.</summary>
-    public static ChromeProtocol.Domains.DOMSnapshot.EnableRequest Enable()
+    public static ChromeProtocol.Domains.DOMSnapshot.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.DOMSnapshot.EnableRequest();
     }
@@ -443,7 +443,7 @@ namespace ChromeProtocol.Domains
     /// <param name="IncludePaintOrder">Whether to determine and include the paint order index of LayoutTreeNodes (default false).</param>
     /// <param name="IncludeUserAgentShadowTree">Whether to include UA shadow tree in the snapshot (default false).</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.DOMSnapshot.GetSnapshotRequest GetSnapshot(System.Collections.Generic.IReadOnlyList<string> ComputedStyleWhitelist, bool? IncludeEventListeners = default, bool? IncludePaintOrder = default, bool? IncludeUserAgentShadowTree = default)
+    public static ChromeProtocol.Domains.DOMSnapshot.GetSnapshotRequest GetSnapshot(System.Collections.Generic.IReadOnlyList<string> ComputedStyleWhitelist, bool? IncludeEventListeners = default, bool? IncludePaintOrder = default, bool? IncludeUserAgentShadowTree = default)    
     {
       return new ChromeProtocol.Domains.DOMSnapshot.GetSnapshotRequest(ComputedStyleWhitelist, IncludeEventListeners, IncludePaintOrder, IncludeUserAgentShadowTree);
     }
@@ -504,7 +504,7 @@ namespace ChromeProtocol.Domains
     /// An element might have the opacity property set that affects the text color of the element.<br/>
     /// The final text color opacity is computed based on the opacity of all overlapping elements.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.DOMSnapshot.CaptureSnapshotRequest CaptureSnapshot(System.Collections.Generic.IReadOnlyList<string> ComputedStyles, bool? IncludePaintOrder = default, bool? IncludeDOMRects = default, bool? IncludeBlendedBackgroundColors = default, bool? IncludeTextColorOpacities = default)
+    public static ChromeProtocol.Domains.DOMSnapshot.CaptureSnapshotRequest CaptureSnapshot(System.Collections.Generic.IReadOnlyList<string> ComputedStyles, bool? IncludePaintOrder = default, bool? IncludeDOMRects = default, bool? IncludeBlendedBackgroundColors = default, bool? IncludeTextColorOpacities = default)    
     {
       return new ChromeProtocol.Domains.DOMSnapshot.CaptureSnapshotRequest(ComputedStyles, IncludePaintOrder, IncludeDOMRects, IncludeBlendedBackgroundColors, IncludeTextColorOpacities);
     }

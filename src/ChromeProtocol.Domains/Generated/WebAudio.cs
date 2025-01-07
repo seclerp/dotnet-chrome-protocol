@@ -300,7 +300,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables the WebAudio domain and starts sending context lifetime events.</summary>
-    public static ChromeProtocol.Domains.WebAudio.EnableRequest Enable()
+    public static ChromeProtocol.Domains.WebAudio.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.WebAudio.EnableRequest();
     }
@@ -313,7 +313,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables the WebAudio domain.</summary>
-    public static ChromeProtocol.Domains.WebAudio.DisableRequest Disable()
+    public static ChromeProtocol.Domains.WebAudio.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.WebAudio.DisableRequest();
     }
@@ -326,7 +326,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Fetch the realtime data from the registered contexts.</summary>
-    public static ChromeProtocol.Domains.WebAudio.GetRealtimeDataRequest GetRealtimeData(ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId)
+    public static ChromeProtocol.Domains.WebAudio.GetRealtimeDataRequest GetRealtimeData(ChromeProtocol.Domains.WebAudio.GraphObjectIdType ContextId)    
     {
       return new ChromeProtocol.Domains.WebAudio.GetRealtimeDataRequest(ContextId);
     }

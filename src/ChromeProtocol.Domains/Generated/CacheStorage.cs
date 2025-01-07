@@ -86,7 +86,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Deletes a cache.</summary>
     /// <param name="CacheId">Id of cache for deletion.</param>
-    public static ChromeProtocol.Domains.CacheStorage.DeleteCacheRequest DeleteCache(ChromeProtocol.Domains.CacheStorage.CacheIdType CacheId)
+    public static ChromeProtocol.Domains.CacheStorage.DeleteCacheRequest DeleteCache(ChromeProtocol.Domains.CacheStorage.CacheIdType CacheId)    
     {
       return new ChromeProtocol.Domains.CacheStorage.DeleteCacheRequest(CacheId);
     }
@@ -105,7 +105,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Deletes a cache entry.</summary>
     /// <param name="CacheId">Id of cache where the entry will be deleted.</param>
     /// <param name="Request">URL spec of the request.</param>
-    public static ChromeProtocol.Domains.CacheStorage.DeleteEntryRequest DeleteEntry(ChromeProtocol.Domains.CacheStorage.CacheIdType CacheId, string Request)
+    public static ChromeProtocol.Domains.CacheStorage.DeleteEntryRequest DeleteEntry(ChromeProtocol.Domains.CacheStorage.CacheIdType CacheId, string Request)    
     {
       return new ChromeProtocol.Domains.CacheStorage.DeleteEntryRequest(CacheId, Request);
     }
@@ -131,7 +131,7 @@ namespace ChromeProtocol.Domains
     /// </param>
     /// <param name="StorageKey">Storage key.</param>
     /// <param name="StorageBucket">Storage bucket. If not specified, it uses the default bucket.</param>
-    public static ChromeProtocol.Domains.CacheStorage.RequestCacheNamesRequest RequestCacheNames(string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)
+    public static ChromeProtocol.Domains.CacheStorage.RequestCacheNamesRequest RequestCacheNames(string? SecurityOrigin = default, string? StorageKey = default, ChromeProtocol.Domains.Storage.StorageBucketType? StorageBucket = default)    
     {
       return new ChromeProtocol.Domains.CacheStorage.RequestCacheNamesRequest(SecurityOrigin, StorageKey, StorageBucket);
     }
@@ -164,7 +164,7 @@ namespace ChromeProtocol.Domains
     /// <param name="CacheId">Id of cache that contains the entry.</param>
     /// <param name="RequestURL">URL spec of the request.</param>
     /// <param name="RequestHeaders">headers of the request.</param>
-    public static ChromeProtocol.Domains.CacheStorage.RequestCachedResponseRequest RequestCachedResponse(ChromeProtocol.Domains.CacheStorage.CacheIdType CacheId, string RequestURL, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CacheStorage.HeaderType> RequestHeaders)
+    public static ChromeProtocol.Domains.CacheStorage.RequestCachedResponseRequest RequestCachedResponse(ChromeProtocol.Domains.CacheStorage.CacheIdType CacheId, string RequestURL, System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.CacheStorage.HeaderType> RequestHeaders)    
     {
       return new ChromeProtocol.Domains.CacheStorage.RequestCachedResponseRequest(CacheId, RequestURL, RequestHeaders);
     }
@@ -195,7 +195,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SkipCount">Number of records to skip.</param>
     /// <param name="PageSize">Number of records to fetch.</param>
     /// <param name="PathFilter">If present, only return the entries containing this substring in the path</param>
-    public static ChromeProtocol.Domains.CacheStorage.RequestEntriesRequest RequestEntries(ChromeProtocol.Domains.CacheStorage.CacheIdType CacheId, int? SkipCount = default, int? PageSize = default, string? PathFilter = default)
+    public static ChromeProtocol.Domains.CacheStorage.RequestEntriesRequest RequestEntries(ChromeProtocol.Domains.CacheStorage.CacheIdType CacheId, int? SkipCount = default, int? PageSize = default, string? PathFilter = default)    
     {
       return new ChromeProtocol.Domains.CacheStorage.RequestEntriesRequest(CacheId, SkipCount, PageSize, PathFilter);
     }

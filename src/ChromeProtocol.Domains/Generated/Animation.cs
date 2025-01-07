@@ -170,8 +170,17 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IEvent
     {
     }
+    /// <summary>Event for animation that has been updated.</summary>
+    /// <param name="Animation">Animation that was updated.</param>
+    [ChromeProtocol.Core.MethodName("Animation.animationUpdated")]
+    public record AnimationUpdated(
+      [property: System.Text.Json.Serialization.JsonPropertyName("animation")]
+      ChromeProtocol.Domains.Animation.AnimationType Animation
+    ) : ChromeProtocol.Core.IEvent
+    {
+    }
     /// <summary>Disables animation domain notifications.</summary>
-    public static ChromeProtocol.Domains.Animation.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Animation.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Animation.DisableRequest();
     }
@@ -184,7 +193,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables animation domain notifications.</summary>
-    public static ChromeProtocol.Domains.Animation.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Animation.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Animation.EnableRequest();
     }
@@ -198,7 +207,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Returns the current time of the an animation.</summary>
     /// <param name="Id">Id of animation.</param>
-    public static ChromeProtocol.Domains.Animation.GetCurrentTimeRequest GetCurrentTime(string Id)
+    public static ChromeProtocol.Domains.Animation.GetCurrentTimeRequest GetCurrentTime(string Id)    
     {
       return new ChromeProtocol.Domains.Animation.GetCurrentTimeRequest(Id);
     }
@@ -219,7 +228,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Gets the playback rate of the document timeline.</summary>
-    public static ChromeProtocol.Domains.Animation.GetPlaybackRateRequest GetPlaybackRate()
+    public static ChromeProtocol.Domains.Animation.GetPlaybackRateRequest GetPlaybackRate()    
     {
       return new ChromeProtocol.Domains.Animation.GetPlaybackRateRequest();
     }
@@ -237,7 +246,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Releases a set of animations to no longer be manipulated.</summary>
     /// <param name="Animations">List of animation ids to seek.</param>
-    public static ChromeProtocol.Domains.Animation.ReleaseAnimationsRequest ReleaseAnimations(System.Collections.Generic.IReadOnlyList<string> Animations)
+    public static ChromeProtocol.Domains.Animation.ReleaseAnimationsRequest ReleaseAnimations(System.Collections.Generic.IReadOnlyList<string> Animations)    
     {
       return new ChromeProtocol.Domains.Animation.ReleaseAnimationsRequest(Animations);
     }
@@ -255,7 +264,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Gets the remote object of the Animation.</summary>
     /// <param name="AnimationId">Animation id.</param>
-    public static ChromeProtocol.Domains.Animation.ResolveAnimationRequest ResolveAnimation(string AnimationId)
+    public static ChromeProtocol.Domains.Animation.ResolveAnimationRequest ResolveAnimation(string AnimationId)    
     {
       return new ChromeProtocol.Domains.Animation.ResolveAnimationRequest(AnimationId);
     }
@@ -278,7 +287,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Seek a set of animations to a particular time within each animation.</summary>
     /// <param name="Animations">List of animation ids to seek.</param>
     /// <param name="CurrentTime">Set the current time of each animation.</param>
-    public static ChromeProtocol.Domains.Animation.SeekAnimationsRequest SeekAnimations(System.Collections.Generic.IReadOnlyList<string> Animations, double CurrentTime)
+    public static ChromeProtocol.Domains.Animation.SeekAnimationsRequest SeekAnimations(System.Collections.Generic.IReadOnlyList<string> Animations, double CurrentTime)    
     {
       return new ChromeProtocol.Domains.Animation.SeekAnimationsRequest(Animations, CurrentTime);
     }
@@ -300,7 +309,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Sets the paused state of a set of animations.</summary>
     /// <param name="Animations">Animations to set the pause state of.</param>
     /// <param name="Paused">Paused state to set to.</param>
-    public static ChromeProtocol.Domains.Animation.SetPausedRequest SetPaused(System.Collections.Generic.IReadOnlyList<string> Animations, bool Paused)
+    public static ChromeProtocol.Domains.Animation.SetPausedRequest SetPaused(System.Collections.Generic.IReadOnlyList<string> Animations, bool Paused)    
     {
       return new ChromeProtocol.Domains.Animation.SetPausedRequest(Animations, Paused);
     }
@@ -321,7 +330,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Sets the playback rate of the document timeline.</summary>
     /// <param name="PlaybackRate">Playback rate for animations on page</param>
-    public static ChromeProtocol.Domains.Animation.SetPlaybackRateRequest SetPlaybackRate(double PlaybackRate)
+    public static ChromeProtocol.Domains.Animation.SetPlaybackRateRequest SetPlaybackRate(double PlaybackRate)    
     {
       return new ChromeProtocol.Domains.Animation.SetPlaybackRateRequest(PlaybackRate);
     }
@@ -341,7 +350,7 @@ namespace ChromeProtocol.Domains
     /// <param name="AnimationId">Animation id.</param>
     /// <param name="Duration">Duration of the animation.</param>
     /// <param name="Delay">Delay of the animation.</param>
-    public static ChromeProtocol.Domains.Animation.SetTimingRequest SetTiming(string AnimationId, double Duration, double Delay)
+    public static ChromeProtocol.Domains.Animation.SetTimingRequest SetTiming(string AnimationId, double Duration, double Delay)    
     {
       return new ChromeProtocol.Domains.Animation.SetTimingRequest(AnimationId, Duration, Delay);
     }

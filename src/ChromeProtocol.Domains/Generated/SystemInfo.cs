@@ -164,7 +164,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns information about the system.</summary>
-    public static ChromeProtocol.Domains.SystemInfo.GetInfoRequest GetInfo()
+    public static ChromeProtocol.Domains.SystemInfo.GetInfoRequest GetInfo()    
     {
       return new ChromeProtocol.Domains.SystemInfo.GetInfoRequest();
     }
@@ -199,7 +199,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns information about the feature state.</summary>
-    public static ChromeProtocol.Domains.SystemInfo.GetFeatureStateRequest GetFeatureState(string FeatureState)
+    public static ChromeProtocol.Domains.SystemInfo.GetFeatureStateRequest GetFeatureState(string FeatureState)    
     {
       return new ChromeProtocol.Domains.SystemInfo.GetFeatureStateRequest(FeatureState);
     }
@@ -218,7 +218,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns information about all running processes.</summary>
-    public static ChromeProtocol.Domains.SystemInfo.GetProcessInfoRequest GetProcessInfo()
+    public static ChromeProtocol.Domains.SystemInfo.GetProcessInfoRequest GetProcessInfo()    
     {
       return new ChromeProtocol.Domains.SystemInfo.GetProcessInfoRequest();
     }

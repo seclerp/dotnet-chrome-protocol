@@ -73,7 +73,7 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IEvent
     {
     }
-    public static ChromeProtocol.Domains.DOMStorage.ClearRequest Clear(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId)
+    public static ChromeProtocol.Domains.DOMStorage.ClearRequest Clear(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId)    
     {
       return new ChromeProtocol.Domains.DOMStorage.ClearRequest(StorageId);
     }
@@ -88,7 +88,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables storage tracking, prevents storage events from being sent to the client.</summary>
-    public static ChromeProtocol.Domains.DOMStorage.DisableRequest Disable()
+    public static ChromeProtocol.Domains.DOMStorage.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.DOMStorage.DisableRequest();
     }
@@ -101,7 +101,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables storage tracking, storage events will now be delivered to the client.</summary>
-    public static ChromeProtocol.Domains.DOMStorage.EnableRequest Enable()
+    public static ChromeProtocol.Domains.DOMStorage.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.DOMStorage.EnableRequest();
     }
@@ -113,7 +113,7 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.DOMStorage.GetDOMStorageItemsRequest GetDOMStorageItems(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId)
+    public static ChromeProtocol.Domains.DOMStorage.GetDOMStorageItemsRequest GetDOMStorageItems(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId)    
     {
       return new ChromeProtocol.Domains.DOMStorage.GetDOMStorageItemsRequest(StorageId);
     }
@@ -130,7 +130,7 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.DOMStorage.RemoveDOMStorageItemRequest RemoveDOMStorageItem(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId, string Key)
+    public static ChromeProtocol.Domains.DOMStorage.RemoveDOMStorageItemRequest RemoveDOMStorageItem(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId, string Key)    
     {
       return new ChromeProtocol.Domains.DOMStorage.RemoveDOMStorageItemRequest(StorageId, Key);
     }
@@ -146,7 +146,7 @@ namespace ChromeProtocol.Domains
     public record RemoveDOMStorageItemRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.DOMStorage.SetDOMStorageItemRequest SetDOMStorageItem(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId, string Key, string Value)
+    public static ChromeProtocol.Domains.DOMStorage.SetDOMStorageItemRequest SetDOMStorageItem(ChromeProtocol.Domains.DOMStorage.StorageIdType StorageId, string Key, string Value)    
     {
       return new ChromeProtocol.Domains.DOMStorage.SetDOMStorageItemRequest(StorageId, Key, Value);
     }

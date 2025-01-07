@@ -143,7 +143,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Stop trace events collection.</summary>
-    public static ChromeProtocol.Domains.Tracing.EndRequest End()
+    public static ChromeProtocol.Domains.Tracing.EndRequest End()    
     {
       return new ChromeProtocol.Domains.Tracing.EndRequest();
     }
@@ -156,7 +156,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Gets supported tracing categories.</summary>
-    public static ChromeProtocol.Domains.Tracing.GetCategoriesRequest GetCategories()
+    public static ChromeProtocol.Domains.Tracing.GetCategoriesRequest GetCategories()    
     {
       return new ChromeProtocol.Domains.Tracing.GetCategoriesRequest();
     }
@@ -174,7 +174,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Record a clock sync marker in the trace.</summary>
     /// <param name="SyncId">The ID of this clock sync marker</param>
-    public static ChromeProtocol.Domains.Tracing.RecordClockSyncMarkerRequest RecordClockSyncMarker(string SyncId)
+    public static ChromeProtocol.Domains.Tracing.RecordClockSyncMarkerRequest RecordClockSyncMarker(string SyncId)    
     {
       return new ChromeProtocol.Domains.Tracing.RecordClockSyncMarkerRequest(SyncId);
     }
@@ -193,7 +193,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Request a global memory dump.</summary>
     /// <param name="Deterministic">Enables more deterministic results by forcing garbage collection</param>
     /// <param name="LevelOfDetail">Specifies level of details in memory dump. Defaults to &quot;detailed&quot;.</param>
-    public static ChromeProtocol.Domains.Tracing.RequestMemoryDumpRequest RequestMemoryDump(bool? Deterministic = default, ChromeProtocol.Domains.Tracing.MemoryDumpLevelOfDetailType? LevelOfDetail = default)
+    public static ChromeProtocol.Domains.Tracing.RequestMemoryDumpRequest RequestMemoryDump(bool? Deterministic = default, ChromeProtocol.Domains.Tracing.MemoryDumpLevelOfDetailType? LevelOfDetail = default)    
     {
       return new ChromeProtocol.Domains.Tracing.RequestMemoryDumpRequest(Deterministic, LevelOfDetail);
     }
@@ -241,7 +241,7 @@ namespace ChromeProtocol.Domains
     /// are ignored. (Encoded as a base64 string when passed over JSON)<br/>
     /// </param>
     /// <param name="TracingBackend">Backend type (defaults to `auto`)</param>
-    public static ChromeProtocol.Domains.Tracing.StartRequest Start(string? Categories = default, string? Options = default, double? BufferUsageReportingInterval = default, string? TransferMode = default, ChromeProtocol.Domains.Tracing.StreamFormatType? StreamFormat = default, ChromeProtocol.Domains.Tracing.StreamCompressionType? StreamCompression = default, ChromeProtocol.Domains.Tracing.TraceConfigType? TraceConfig = default, string? PerfettoConfig = default, ChromeProtocol.Domains.Tracing.TracingBackendType? TracingBackend = default)
+    public static ChromeProtocol.Domains.Tracing.StartRequest Start(string? Categories = default, string? Options = default, double? BufferUsageReportingInterval = default, string? TransferMode = default, ChromeProtocol.Domains.Tracing.StreamFormatType? StreamFormat = default, ChromeProtocol.Domains.Tracing.StreamCompressionType? StreamCompression = default, ChromeProtocol.Domains.Tracing.TraceConfigType? TraceConfig = default, string? PerfettoConfig = default, ChromeProtocol.Domains.Tracing.TracingBackendType? TracingBackend = default)    
     {
       return new ChromeProtocol.Domains.Tracing.StartRequest(Categories, Options, BufferUsageReportingInterval, TransferMode, StreamFormat, StreamCompression, TraceConfig, PerfettoConfig, TracingBackend);
     }

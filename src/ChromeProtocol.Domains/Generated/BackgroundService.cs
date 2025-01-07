@@ -76,7 +76,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables event updates for the service.</summary>
-    public static ChromeProtocol.Domains.BackgroundService.StartObservingRequest StartObserving(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)
+    public static ChromeProtocol.Domains.BackgroundService.StartObservingRequest StartObserving(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)    
     {
       return new ChromeProtocol.Domains.BackgroundService.StartObservingRequest(Service);
     }
@@ -92,7 +92,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables event updates for the service.</summary>
-    public static ChromeProtocol.Domains.BackgroundService.StopObservingRequest StopObserving(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)
+    public static ChromeProtocol.Domains.BackgroundService.StopObservingRequest StopObserving(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)    
     {
       return new ChromeProtocol.Domains.BackgroundService.StopObservingRequest(Service);
     }
@@ -108,7 +108,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Set the recording state for the service.</summary>
-    public static ChromeProtocol.Domains.BackgroundService.SetRecordingRequest SetRecording(bool ShouldRecord, ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)
+    public static ChromeProtocol.Domains.BackgroundService.SetRecordingRequest SetRecording(bool ShouldRecord, ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)    
     {
       return new ChromeProtocol.Domains.BackgroundService.SetRecordingRequest(ShouldRecord, Service);
     }
@@ -126,7 +126,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Clears all stored data for the service.</summary>
-    public static ChromeProtocol.Domains.BackgroundService.ClearEventsRequest ClearEvents(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)
+    public static ChromeProtocol.Domains.BackgroundService.ClearEventsRequest ClearEvents(ChromeProtocol.Domains.BackgroundService.ServiceNameType Service)    
     {
       return new ChromeProtocol.Domains.BackgroundService.ClearEventsRequest(Service);
     }

@@ -26,7 +26,7 @@ namespace ChromeProtocol.Domains
     /// <param name="OpenerFrameId">Frame id of originating window (is only set if target has an opener).</param>
     /// <param name="Subtype">
     /// Provides additional details for specific target types. For example, for<br/>
-    /// the type of &quot;page&quot;, this may be set to &quot;portal&quot; or &quot;prerender&quot;.<br/>
+    /// the type of &quot;page&quot;, this may be set to &quot;prerender&quot;.<br/>
     /// </param>
     public record TargetInfoType(
       [property: System.Text.Json.Serialization.JsonPropertyName("targetId")]
@@ -174,7 +174,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Activates (focuses) the target.</summary>
-    public static ChromeProtocol.Domains.Target.ActivateTargetRequest ActivateTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId)
+    public static ChromeProtocol.Domains.Target.ActivateTargetRequest ActivateTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId)    
     {
       return new ChromeProtocol.Domains.Target.ActivateTargetRequest(TargetId);
     }
@@ -195,7 +195,7 @@ namespace ChromeProtocol.Domains
     /// We plan to make this the default, deprecate non-flattened mode,<br/>
     /// and eventually retire it. See crbug.com/991325.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Target.AttachToTargetRequest AttachToTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId, bool? Flatten = default)
+    public static ChromeProtocol.Domains.Target.AttachToTargetRequest AttachToTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId, bool? Flatten = default)    
     {
       return new ChromeProtocol.Domains.Target.AttachToTargetRequest(TargetId, Flatten);
     }
@@ -222,7 +222,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Attaches to the browser target, only uses flat sessionId mode.</summary>
-    public static ChromeProtocol.Domains.Target.AttachToBrowserTargetRequest AttachToBrowserTarget()
+    public static ChromeProtocol.Domains.Target.AttachToBrowserTargetRequest AttachToBrowserTarget()    
     {
       return new ChromeProtocol.Domains.Target.AttachToBrowserTargetRequest();
     }
@@ -239,7 +239,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Closes the target. If the target is a page that gets closed too.</summary>
-    public static ChromeProtocol.Domains.Target.CloseTargetRequest CloseTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId)
+    public static ChromeProtocol.Domains.Target.CloseTargetRequest CloseTarget(ChromeProtocol.Domains.Target.TargetIDType TargetId)    
     {
       return new ChromeProtocol.Domains.Target.CloseTargetRequest(TargetId);
     }
@@ -268,7 +268,7 @@ namespace ChromeProtocol.Domains
     /// - `binding.onmessage = json =&gt; handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.<br/>
     /// </summary>
     /// <param name="BindingName">Binding name, &#39;cdp&#39; if not specified.</param>
-    public static ChromeProtocol.Domains.Target.ExposeDevToolsProtocolRequest ExposeDevToolsProtocol(ChromeProtocol.Domains.Target.TargetIDType TargetId, string? BindingName = default)
+    public static ChromeProtocol.Domains.Target.ExposeDevToolsProtocolRequest ExposeDevToolsProtocol(ChromeProtocol.Domains.Target.TargetIDType TargetId, string? BindingName = default)    
     {
       return new ChromeProtocol.Domains.Target.ExposeDevToolsProtocolRequest(TargetId, BindingName);
     }
@@ -304,7 +304,7 @@ namespace ChromeProtocol.Domains
     /// An optional list of origins to grant unlimited cross-origin access to.<br/>
     /// Parts of the URL other than those constituting origin are ignored.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Target.CreateBrowserContextRequest CreateBrowserContext(bool? DisposeOnDetach = default, string? ProxyServer = default, string? ProxyBypassList = default, System.Collections.Generic.IReadOnlyList<string>? OriginsWithUniversalNetworkAccess = default)
+    public static ChromeProtocol.Domains.Target.CreateBrowserContextRequest CreateBrowserContext(bool? DisposeOnDetach = default, string? ProxyServer = default, string? ProxyBypassList = default, System.Collections.Generic.IReadOnlyList<string>? OriginsWithUniversalNetworkAccess = default)    
     {
       return new ChromeProtocol.Domains.Target.CreateBrowserContextRequest(DisposeOnDetach, ProxyServer, ProxyBypassList, OriginsWithUniversalNetworkAccess);
     }
@@ -340,7 +340,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns all browser contexts created with `Target.createBrowserContext` method.</summary>
-    public static ChromeProtocol.Domains.Target.GetBrowserContextsRequest GetBrowserContexts()
+    public static ChromeProtocol.Domains.Target.GetBrowserContextsRequest GetBrowserContexts()    
     {
       return new ChromeProtocol.Domains.Target.GetBrowserContextsRequest();
     }
@@ -371,7 +371,7 @@ namespace ChromeProtocol.Domains
     /// false by default).<br/>
     /// </param>
     /// <param name="ForTab">Whether to create the target of type &quot;tab&quot;.</param>
-    public static ChromeProtocol.Domains.Target.CreateTargetRequest CreateTarget(string Url, int? Width = default, int? Height = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default, bool? EnableBeginFrameControl = default, bool? NewWindow = default, bool? Background = default, bool? ForTab = default)
+    public static ChromeProtocol.Domains.Target.CreateTargetRequest CreateTarget(string Url, int? Width = default, int? Height = default, ChromeProtocol.Domains.Browser.BrowserContextIDType? BrowserContextId = default, bool? EnableBeginFrameControl = default, bool? NewWindow = default, bool? Background = default, bool? ForTab = default)    
     {
       return new ChromeProtocol.Domains.Target.CreateTargetRequest(Url, Width, Height, BrowserContextId, EnableBeginFrameControl, NewWindow, Background, ForTab);
     }
@@ -421,7 +421,7 @@ namespace ChromeProtocol.Domains
     /// <summary>Detaches session with given id.</summary>
     /// <param name="SessionId">Session to detach.</param>
     /// <param name="TargetId">Deprecated.</param>
-    public static ChromeProtocol.Domains.Target.DetachFromTargetRequest DetachFromTarget(ChromeProtocol.Domains.Target.SessionIDType? SessionId = default, ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)
+    public static ChromeProtocol.Domains.Target.DetachFromTargetRequest DetachFromTarget(ChromeProtocol.Domains.Target.SessionIDType? SessionId = default, ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)    
     {
       return new ChromeProtocol.Domains.Target.DetachFromTargetRequest(SessionId, TargetId);
     }
@@ -445,7 +445,7 @@ namespace ChromeProtocol.Domains
     /// Deletes a BrowserContext. All the belonging pages will be closed without calling their<br/>
     /// beforeunload hooks.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Target.DisposeBrowserContextRequest DisposeBrowserContext(ChromeProtocol.Domains.Browser.BrowserContextIDType BrowserContextId)
+    public static ChromeProtocol.Domains.Target.DisposeBrowserContextRequest DisposeBrowserContext(ChromeProtocol.Domains.Browser.BrowserContextIDType BrowserContextId)    
     {
       return new ChromeProtocol.Domains.Target.DisposeBrowserContextRequest(BrowserContextId);
     }
@@ -464,7 +464,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Returns information about a target.</summary>
-    public static ChromeProtocol.Domains.Target.GetTargetInfoRequest GetTargetInfo(ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)
+    public static ChromeProtocol.Domains.Target.GetTargetInfoRequest GetTargetInfo(ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)    
     {
       return new ChromeProtocol.Domains.Target.GetTargetInfoRequest(TargetId);
     }
@@ -488,7 +488,7 @@ namespace ChromeProtocol.Domains
     /// and target discovery is currently enabled, a filter used for target discovery<br/>
     /// is used for consistency.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Target.GetTargetsRequest GetTargets(ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)
+    public static ChromeProtocol.Domains.Target.GetTargetsRequest GetTargets(ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)    
     {
       return new ChromeProtocol.Domains.Target.GetTargetsRequest(Filter);
     }
@@ -520,7 +520,7 @@ namespace ChromeProtocol.Domains
     /// <param name="SessionId">Identifier of the session.</param>
     /// <param name="TargetId">Deprecated.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Target.SendMessageToTargetRequest SendMessageToTarget(string Message, ChromeProtocol.Domains.Target.SessionIDType? SessionId = default, ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)
+    public static ChromeProtocol.Domains.Target.SendMessageToTargetRequest SendMessageToTarget(string Message, ChromeProtocol.Domains.Target.SessionIDType? SessionId = default, ChromeProtocol.Domains.Target.TargetIDType? TargetId = default)    
     {
       return new ChromeProtocol.Domains.Target.SendMessageToTargetRequest(Message, SessionId, TargetId);
     }
@@ -566,7 +566,7 @@ namespace ChromeProtocol.Domains
     /// and eventually retire it. See crbug.com/991325.<br/>
     /// </param>
     /// <param name="Filter">Only targets matching filter will be attached.</param>
-    public static ChromeProtocol.Domains.Target.SetAutoAttachRequest SetAutoAttach(bool AutoAttach, bool WaitForDebuggerOnStart, bool? Flatten = default, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)
+    public static ChromeProtocol.Domains.Target.SetAutoAttachRequest SetAutoAttach(bool AutoAttach, bool WaitForDebuggerOnStart, bool? Flatten = default, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)    
     {
       return new ChromeProtocol.Domains.Target.SetAutoAttachRequest(AutoAttach, WaitForDebuggerOnStart, Flatten, Filter);
     }
@@ -616,7 +616,7 @@ namespace ChromeProtocol.Domains
     /// to run paused targets.<br/>
     /// </param>
     /// <param name="Filter">Only targets matching filter will be attached.</param>
-    public static ChromeProtocol.Domains.Target.AutoAttachRelatedRequest AutoAttachRelated(ChromeProtocol.Domains.Target.TargetIDType TargetId, bool WaitForDebuggerOnStart, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)
+    public static ChromeProtocol.Domains.Target.AutoAttachRelatedRequest AutoAttachRelated(ChromeProtocol.Domains.Target.TargetIDType TargetId, bool WaitForDebuggerOnStart, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)    
     {
       return new ChromeProtocol.Domains.Target.AutoAttachRelatedRequest(TargetId, WaitForDebuggerOnStart, Filter);
     }
@@ -655,7 +655,7 @@ namespace ChromeProtocol.Domains
     /// Only targets matching filter will be attached. If `discover` is false,<br/>
     /// `filter` must be omitted or empty.<br/>
     /// </param>
-    public static ChromeProtocol.Domains.Target.SetDiscoverTargetsRequest SetDiscoverTargets(bool Discover, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)
+    public static ChromeProtocol.Domains.Target.SetDiscoverTargetsRequest SetDiscoverTargets(bool Discover, ChromeProtocol.Domains.Target.TargetFilterType? Filter = default)    
     {
       return new ChromeProtocol.Domains.Target.SetDiscoverTargetsRequest(Discover, Filter);
     }
@@ -685,7 +685,7 @@ namespace ChromeProtocol.Domains
     /// `true`.<br/>
     /// </summary>
     /// <param name="Locations">List of remote locations.</param>
-    public static ChromeProtocol.Domains.Target.SetRemoteLocationsRequest SetRemoteLocations(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Target.RemoteLocationType> Locations)
+    public static ChromeProtocol.Domains.Target.SetRemoteLocationsRequest SetRemoteLocations(System.Collections.Generic.IReadOnlyList<ChromeProtocol.Domains.Target.RemoteLocationType> Locations)    
     {
       return new ChromeProtocol.Domains.Target.SetRemoteLocationsRequest(Locations);
     }

@@ -286,6 +286,12 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
     {
     }
+    [System.Text.Json.Serialization.JsonConverter(typeof(ChromeProtocol.Core.PrimitiveTypeConverter))]
+    public record SharedDictionaryErrorType(
+      string Value
+    ) : ChromeProtocol.Core.PrimitiveType<string>(Value)
+    {
+    }
     /// <summary>
     /// Details for issues around &quot;Attribution Reporting API&quot; usage.<br/>
     /// Explainer: https://github.com/WICG/attribution-reporting-api<br/>
@@ -330,6 +336,14 @@ namespace ChromeProtocol.Domains
       string Url,
       [property: System.Text.Json.Serialization.JsonPropertyName("location")]
       ChromeProtocol.Domains.Audits.SourceCodeLocationType? Location = default
+    ) : ChromeProtocol.Core.IType
+    {
+    }
+    public record SharedDictionaryIssueDetailsType(
+      [property: System.Text.Json.Serialization.JsonPropertyName("sharedDictionaryError")]
+      ChromeProtocol.Domains.Audits.SharedDictionaryErrorType SharedDictionaryError,
+      [property: System.Text.Json.Serialization.JsonPropertyName("request")]
+      ChromeProtocol.Domains.Audits.AffectedRequestType Request
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -392,7 +406,13 @@ namespace ChromeProtocol.Domains
     /// </summary>
     public record CookieDeprecationMetadataIssueDetailsType(
       [property: System.Text.Json.Serialization.JsonPropertyName("allowedSites")]
-      System.Collections.Generic.IReadOnlyList<string> AllowedSites
+      System.Collections.Generic.IReadOnlyList<string> AllowedSites,
+      [property: System.Text.Json.Serialization.JsonPropertyName("optOutPercentage")]
+      double OptOutPercentage,
+      [property: System.Text.Json.Serialization.JsonPropertyName("isOptOutTopLevel")]
+      bool IsOptOutTopLevel,
+      [property: System.Text.Json.Serialization.JsonPropertyName("operation")]
+      ChromeProtocol.Domains.Audits.CookieOperationType Operation
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -561,7 +581,9 @@ namespace ChromeProtocol.Domains
       [property: System.Text.Json.Serialization.JsonPropertyName("propertyRuleIssueDetails")]
       ChromeProtocol.Domains.Audits.PropertyRuleIssueDetailsType? PropertyRuleIssueDetails = default,
       [property: System.Text.Json.Serialization.JsonPropertyName("federatedAuthUserInfoRequestIssueDetails")]
-      ChromeProtocol.Domains.Audits.FederatedAuthUserInfoRequestIssueDetailsType? FederatedAuthUserInfoRequestIssueDetails = default
+      ChromeProtocol.Domains.Audits.FederatedAuthUserInfoRequestIssueDetailsType? FederatedAuthUserInfoRequestIssueDetails = default,
+      [property: System.Text.Json.Serialization.JsonPropertyName("sharedDictionaryIssueDetails")]
+      ChromeProtocol.Domains.Audits.SharedDictionaryIssueDetailsType? SharedDictionaryIssueDetails = default
     ) : ChromeProtocol.Core.IType
     {
     }
@@ -605,7 +627,7 @@ namespace ChromeProtocol.Domains
     /// <param name="Encoding">The encoding to use.</param>
     /// <param name="Quality">The quality of the encoding (0-1). (defaults to 1)</param>
     /// <param name="SizeOnly">Whether to only return the size information (defaults to false).</param>
-    public static ChromeProtocol.Domains.Audits.GetEncodedResponseRequest GetEncodedResponse(ChromeProtocol.Domains.Network.RequestIdType RequestId, string Encoding, double? Quality = default, bool? SizeOnly = default)
+    public static ChromeProtocol.Domains.Audits.GetEncodedResponseRequest GetEncodedResponse(ChromeProtocol.Domains.Network.RequestIdType RequestId, string Encoding, double? Quality = default, bool? SizeOnly = default)    
     {
       return new ChromeProtocol.Domains.Audits.GetEncodedResponseRequest(RequestId, Encoding, Quality, SizeOnly);
     }
@@ -644,7 +666,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables issues domain, prevents further issues from being reported to the client.</summary>
-    public static ChromeProtocol.Domains.Audits.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Audits.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Audits.DisableRequest();
     }
@@ -660,7 +682,7 @@ namespace ChromeProtocol.Domains
     /// Enables issues domain, sends the issues collected so far to the client by means of the<br/>
     /// `issueAdded` event.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Audits.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Audits.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Audits.EnableRequest();
     }
@@ -680,7 +702,7 @@ namespace ChromeProtocol.Domains
     /// using Audits.issueAdded event.<br/>
     /// </summary>
     /// <param name="ReportAAA">Whether to report WCAG AAA level issues. Default is false.</param>
-    public static ChromeProtocol.Domains.Audits.CheckContrastRequest CheckContrast(bool? ReportAAA = default)
+    public static ChromeProtocol.Domains.Audits.CheckContrastRequest CheckContrast(bool? ReportAAA = default)    
     {
       return new ChromeProtocol.Domains.Audits.CheckContrastRequest(ReportAAA);
     }
@@ -703,7 +725,7 @@ namespace ChromeProtocol.Domains
     /// Runs the form issues check for the target page. Found issues are reported<br/>
     /// using Audits.issueAdded event.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Audits.CheckFormsIssuesRequest CheckFormsIssues()
+    public static ChromeProtocol.Domains.Audits.CheckFormsIssuesRequest CheckFormsIssues()    
     {
       return new ChromeProtocol.Domains.Audits.CheckFormsIssuesRequest();
     }

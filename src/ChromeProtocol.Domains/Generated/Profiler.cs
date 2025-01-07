@@ -156,7 +156,7 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IEvent
     {
     }
-    public static ChromeProtocol.Domains.Profiler.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Profiler.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Profiler.DisableRequest();
     }
@@ -167,7 +167,7 @@ namespace ChromeProtocol.Domains
     public record DisableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Profiler.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Profiler.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Profiler.EnableRequest();
     }
@@ -182,7 +182,7 @@ namespace ChromeProtocol.Domains
     /// Collect coverage data for the current isolate. The coverage data may be incomplete due to<br/>
     /// garbage collection.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Profiler.GetBestEffortCoverageRequest GetBestEffortCoverage()
+    public static ChromeProtocol.Domains.Profiler.GetBestEffortCoverageRequest GetBestEffortCoverage()    
     {
       return new ChromeProtocol.Domains.Profiler.GetBestEffortCoverageRequest();
     }
@@ -203,7 +203,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Changes CPU profiler sampling interval. Must be called before CPU profiles recording started.</summary>
     /// <param name="Interval">New sampling interval in microseconds.</param>
-    public static ChromeProtocol.Domains.Profiler.SetSamplingIntervalRequest SetSamplingInterval(int Interval)
+    public static ChromeProtocol.Domains.Profiler.SetSamplingIntervalRequest SetSamplingInterval(int Interval)    
     {
       return new ChromeProtocol.Domains.Profiler.SetSamplingIntervalRequest(Interval);
     }
@@ -219,7 +219,7 @@ namespace ChromeProtocol.Domains
     public record SetSamplingIntervalRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Profiler.StartRequest Start()
+    public static ChromeProtocol.Domains.Profiler.StartRequest Start()    
     {
       return new ChromeProtocol.Domains.Profiler.StartRequest();
     }
@@ -238,7 +238,7 @@ namespace ChromeProtocol.Domains
     /// <param name="CallCount">Collect accurate call counts beyond simple &#39;covered&#39; or &#39;not covered&#39;.</param>
     /// <param name="Detailed">Collect block-based coverage.</param>
     /// <param name="AllowTriggeredUpdates">Allow the backend to send updates on its own initiative</param>
-    public static ChromeProtocol.Domains.Profiler.StartPreciseCoverageRequest StartPreciseCoverage(bool? CallCount = default, bool? Detailed = default, bool? AllowTriggeredUpdates = default)
+    public static ChromeProtocol.Domains.Profiler.StartPreciseCoverageRequest StartPreciseCoverage(bool? CallCount = default, bool? Detailed = default, bool? AllowTriggeredUpdates = default)    
     {
       return new ChromeProtocol.Domains.Profiler.StartPreciseCoverageRequest(CallCount, Detailed, AllowTriggeredUpdates);
     }
@@ -268,7 +268,7 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Profiler.StopRequest Stop()
+    public static ChromeProtocol.Domains.Profiler.StopRequest Stop()    
     {
       return new ChromeProtocol.Domains.Profiler.StopRequest();
     }
@@ -287,7 +287,7 @@ namespace ChromeProtocol.Domains
     /// Disable precise code coverage. Disabling releases unnecessary execution count records and allows<br/>
     /// executing optimized code.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Profiler.StopPreciseCoverageRequest StopPreciseCoverage()
+    public static ChromeProtocol.Domains.Profiler.StopPreciseCoverageRequest StopPreciseCoverage()    
     {
       return new ChromeProtocol.Domains.Profiler.StopPreciseCoverageRequest();
     }
@@ -306,7 +306,7 @@ namespace ChromeProtocol.Domains
     /// Collect coverage data for the current isolate, and resets execution counters. Precise code<br/>
     /// coverage needs to have started.<br/>
     /// </summary>
-    public static ChromeProtocol.Domains.Profiler.TakePreciseCoverageRequest TakePreciseCoverage()
+    public static ChromeProtocol.Domains.Profiler.TakePreciseCoverageRequest TakePreciseCoverage()    
     {
       return new ChromeProtocol.Domains.Profiler.TakePreciseCoverageRequest();
     }

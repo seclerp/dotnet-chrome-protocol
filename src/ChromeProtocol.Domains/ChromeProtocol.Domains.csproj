@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>ChromeProtocol.Domains</PackageId>
     <Description>Pre-generated Chrome DevTools Protocol JS and Browser domain sets. Schema version: 1.3, updated 24.02.2024, revision 6d5e973</Description>
+    <Description>Pre-generated Chrome DevTools Protocol JS and Browser domain sets. Updated 07.01.2025, Chrome base revision 1367902</Description>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
 

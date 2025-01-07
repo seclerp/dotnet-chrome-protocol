@@ -245,7 +245,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Disables tracking security state changes.</summary>
-    public static ChromeProtocol.Domains.Security.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Security.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Security.DisableRequest();
     }
@@ -258,7 +258,7 @@ namespace ChromeProtocol.Domains
     {
     }
     /// <summary>Enables tracking security state changes.</summary>
-    public static ChromeProtocol.Domains.Security.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Security.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Security.EnableRequest();
     }
@@ -272,7 +272,7 @@ namespace ChromeProtocol.Domains
     }
     /// <summary>Enable/disable whether all certificate errors should be ignored.</summary>
     /// <param name="Ignore">If true, all certificate errors will be ignored.</param>
-    public static ChromeProtocol.Domains.Security.SetIgnoreCertificateErrorsRequest SetIgnoreCertificateErrors(bool Ignore)
+    public static ChromeProtocol.Domains.Security.SetIgnoreCertificateErrorsRequest SetIgnoreCertificateErrors(bool Ignore)    
     {
       return new ChromeProtocol.Domains.Security.SetIgnoreCertificateErrorsRequest(Ignore);
     }
@@ -292,7 +292,7 @@ namespace ChromeProtocol.Domains
     /// <param name="EventId">The ID of the event.</param>
     /// <param name="Action">The action to take on the certificate error.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Security.HandleCertificateErrorRequest HandleCertificateError(int EventId, ChromeProtocol.Domains.Security.CertificateErrorActionType Action)
+    public static ChromeProtocol.Domains.Security.HandleCertificateErrorRequest HandleCertificateError(int EventId, ChromeProtocol.Domains.Security.CertificateErrorActionType Action)    
     {
       return new ChromeProtocol.Domains.Security.HandleCertificateErrorRequest(EventId, Action);
     }
@@ -319,7 +319,7 @@ namespace ChromeProtocol.Domains
     /// </summary>
     /// <param name="Override">If true, certificate errors will be overridden.</param>
     [System.Obsolete("This command marked as deprecated in the corresponding CDP definition schema. It may be removed in the future releases.", false)]
-    public static ChromeProtocol.Domains.Security.SetOverrideCertificateErrorsRequest SetOverrideCertificateErrors(bool Override)
+    public static ChromeProtocol.Domains.Security.SetOverrideCertificateErrorsRequest SetOverrideCertificateErrors(bool Override)    
     {
       return new ChromeProtocol.Domains.Security.SetOverrideCertificateErrorsRequest(Override);
     }

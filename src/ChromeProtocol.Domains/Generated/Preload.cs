@@ -240,7 +240,7 @@ namespace ChromeProtocol.Domains
     ) : ChromeProtocol.Core.IEvent
     {
     }
-    public static ChromeProtocol.Domains.Preload.EnableRequest Enable()
+    public static ChromeProtocol.Domains.Preload.EnableRequest Enable()    
     {
       return new ChromeProtocol.Domains.Preload.EnableRequest();
     }
@@ -251,7 +251,7 @@ namespace ChromeProtocol.Domains
     public record EnableRequestResult() : ChromeProtocol.Core.IType
     {
     }
-    public static ChromeProtocol.Domains.Preload.DisableRequest Disable()
+    public static ChromeProtocol.Domains.Preload.DisableRequest Disable()    
     {
       return new ChromeProtocol.Domains.Preload.DisableRequest();
     }
