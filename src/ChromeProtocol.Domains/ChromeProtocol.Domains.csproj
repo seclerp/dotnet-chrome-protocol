@@ -3,7 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>ChromeProtocol.Domains</PackageId>
-    <Version>$(Version).1367902</Version>
+    <BaseVersion>$(Version)</BaseVersion>
+    <Version>$(BaseVersion).1367902</Version>
+    <AssemblyVersion>$(BaseVersion)</AssemblyVersion>
+    <FileVersion>$(BaseVersion)</FileVersion>
     <Description>Pre-generated Chrome DevTools Protocol JS and Browser domain sets. Updated 07.01.2025, Chrome base revision 1367902</Description>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
