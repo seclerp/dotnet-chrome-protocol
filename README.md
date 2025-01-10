@@ -26,16 +26,17 @@ A runtime library and schema code generation tools for Chrome DevTools Protocol 
 // A port should be the one used in --remote-debugging-port argument when launching Chrome
 var debuggingEndpoint = new Uri("ws://127.0.0.1:1234");
 var browserClient = new DefaultProtocolClient(debuggingEndpoint, new ConsoleLogger(...));
+await browserClient.ConnectAsync();
 ```
 
-#### Create a scoped client (a client for specific session)
+#### Create a scoped client (a client for the specific session)
 ```csharp
 var pageClient = browserClient.CreateScoped(sessionId);
 ```
 
 #### Send commands
 ```csharp
-// Send and wait for response
+// Send and wait for the response
 var targets = await browserClient.SendCommandAsync(Domains.Target.GetTargets());
 await pageClient.SendCommandAsync(Domains.Debugger.Enable());
 
