@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📝 Fetch Sources
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: 🛠 Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
       - name: 🏗 Restore dependencies
@@ -33,7 +33,7 @@ jobs:
           path: ./CHANGELOG.md
       - name: 🚀 Create Release
         id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
