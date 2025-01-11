@@ -67,6 +67,12 @@ public class ChromiumLauncher
     return this;
   }
 
+  /// <summary>
+  /// For Windows and Linux it should be a full path to the executable
+  /// For MacOS it should be the full path to the native executable inside package.
+  /// </summary>
+  /// <param name="chromiumExePath"></param>
+  /// <returns></returns>
   public async Task<IChromiumBrowser> LaunchLocalAsync(string chromiumExePath)
   {
     IEnumerable<string> CollectArguments()
@@ -80,8 +86,8 @@ public class ChromiumLauncher
       if (_userProfileDirectory is {} userProfileDirectory)
         yield return $"--user-data-dir=\"{userProfileDirectory}\"";
 
-      if (_remoteDebuggingPort is {} remoteDebuggingPort)
-        yield return $"--remote-debugging-port={remoteDebuggingPort}";
+      var remoteDebuggingPort = _remoteDebuggingPort ?? 0;
+      yield return $"--remote-debugging-port={remoteDebuggingPort}";
     }
 
     var arguments = CollectArguments().ToList();
