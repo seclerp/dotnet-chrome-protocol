@@ -10,12 +10,14 @@ namespace ChromeProtocol.Runtime.Tests.Launcher;
 public class ChromiumLauncherTests
 {
   private readonly ITestOutputHelper _outputHelper;
+  private readonly ILogger _testLogger;
   private readonly IBrowserBinariesStorage _storage;
   private readonly ChromeBrowserDownloader _downloader;
 
   public ChromiumLauncherTests(ITestOutputHelper outputHelper)
   {
     _outputHelper = outputHelper;
+    _testLogger = new XunitLogger(_outputHelper, nameof(ChromiumLauncherTests));
     _storage = new DefaultChromeBinariesStorage(new XunitLogger(outputHelper, "BrowserStorage"));
     _downloader = new ChromeBrowserDownloader(_storage, new XunitLogger(outputHelper, "Downloader"));
   }
@@ -26,6 +28,7 @@ public class ChromiumLauncherTests
     await DownloadChromeIfNeeded(ChromeConstants.ChromeVersion);
 
     var exePath = await _storage.ResolveExePathAsync(ChromeConstants.ChromeVersion);
+    _testLogger.LogInformation($"Chrome executable path: {exePath}");
 
     using var chrome = await ChromiumLauncher.Create(new XunitLogger(_outputHelper, "Launcher"))
       .WithArguments(
@@ -56,7 +59,13 @@ public class ChromiumLauncherTests
 
   private async Task DownloadChromeIfNeeded(string version)
   {
+    _testLogger.LogInformation($"Checking if Chrome version {version} is already downloaded...");
     if (!await _storage.IsAvailableAsync(version))
+    {
+      _testLogger.LogInformation("Initiating download...");
       await _downloader.DownloadVersionAsync(version);
+    }
+    else
+      _testLogger.LogInformation($"Chrome version {version} is already downloaded.");
   }
 }
