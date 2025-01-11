@@ -32,6 +32,7 @@ public class ChromiumLauncherTests
         "--headless",
         "--no-default-browser-check",
         "--no-first-run",
+        "--no-sandbox",
         "--disable-extensions",
         "--disable-popup-blocking ",
         "--disable-translate",

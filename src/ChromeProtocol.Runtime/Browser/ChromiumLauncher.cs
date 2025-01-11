@@ -117,9 +117,9 @@ public class ChromiumLauncher
     while (!process.StandardError.EndOfStream)
     {
       var line = await process.StandardError.ReadLineAsync().ConfigureAwait(false);
-      outputBuilder.Append(line);
       if (!string.IsNullOrEmpty(line))
       {
+        outputBuilder.Append(line);
         // Sample expected line format: "DevTools listening on ws://127.0.0.1:PORT/PATH"
         var match = Regex.Match(line, @"ws:\/\/127\.0\.0\.1:(\d+)(\/.+)?");
         if (match.Success)
