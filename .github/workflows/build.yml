@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'cookiecutter.json' # Do not run .NET CI after editing cookiecutter.json (project setup in progress)
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - 'cookiecutter.json' # Do not run .NET CI after editing cookiecutter.json (project setup in progress)
 
 defaults:
   run:
@@ -18,21 +14,34 @@ defaults:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        arch: [x64]
+        include:
+          - os: macos-latest
+            arch: arm64
+    runs-on: ${{ matrix.os }}
     steps:
-    - name: 📝 Fetch Sources
-      uses: actions/checkout@v3
-    - name: 🛠 Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 8.0.x
-    - name: 🏗 Restore dependencies
-      run: dotnet restore
-    - name: 🏗 Build
-      run: dotnet build --no-restore
-    - name: 📝 Test ChromeProtocol.Core
-      run: dotnet test --no-build --verbosity normal ChromeProtocol.Core.Tests
-    - name: 📝 Test ChromeProtocol.Runtime
-      run: dotnet test --no-build --verbosity normal ChromeProtocol.Runtime.Tests
-    - name: 📝 Test ChromeProtocol.Tools
-      run: dotnet test --no-build --verbosity normal ChromeProtocol.Tools.Tests
+      - name: 📝 Fetch Sources
+        uses: actions/checkout@v3
+
+      - name: 🛠 Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: 🏗 Restore dependencies
+        run: dotnet restore
+
+      - name: 🏗 Build
+        run: dotnet build --no-restore
+
+      - name: 📝 Test ChromeProtocol.Core
+        run: dotnet test --no-build --verbosity normal ChromeProtocol.Core.Tests
+
+      - name: 📝 Test ChromeProtocol.Runtime
+        run: dotnet test --no-build --verbosity normal ChromeProtocol.Runtime.Tests
+
+      - name: 📝 Test ChromeProtocol.Tools
+        run: dotnet test --no-build --verbosity normal ChromeProtocol.Tools.Tests
