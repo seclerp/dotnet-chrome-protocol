@@ -14,7 +14,7 @@ updates:
 
   # NuGet packages
   - package-ecosystem: "nuget"
-    directory: "/"
+    directory: "/src"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 25
