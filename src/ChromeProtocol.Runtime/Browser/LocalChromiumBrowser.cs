@@ -9,6 +9,6 @@ internal class LocalChromiumBrowser(Uri debuggingEndpoint, Process process) : IC
 
   public void Dispose()
   {
-    process.Dispose();
+    process.Kill();
   }
 }
