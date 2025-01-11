@@ -2,9 +2,13 @@ name: Build and Test
 
 on:
   push:
+    branches:
+      - main
     paths-ignore:
       - 'cookiecutter.json' # Do not run .NET CI after editing cookiecutter.json (project setup in progress)
   pull_request:
+    branches:
+      - main
     paths-ignore:
       - 'cookiecutter.json' # Do not run .NET CI after editing cookiecutter.json (project setup in progress)
 
