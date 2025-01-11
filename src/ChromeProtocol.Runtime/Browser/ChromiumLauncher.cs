@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -112,9 +113,11 @@ public class ChromiumLauncher
 
   private async Task<Uri> WaitDebuggingEndpointAsync(Process process)
   {
+    var outputBuilder = new StringBuilder();
     while (!process.StandardError.EndOfStream)
     {
       var line = await process.StandardError.ReadLineAsync().ConfigureAwait(false);
+      outputBuilder.Append(line);
       if (!string.IsNullOrEmpty(line))
       {
         // Sample expected line format: "DevTools listening on ws://127.0.0.1:PORT/PATH"
@@ -129,6 +132,6 @@ public class ChromiumLauncher
       }
     }
 
-    throw new Exception("Expected debugging endpoint in the stderr");
+    throw new Exception($"Expected debugging endpoint in the stderr. Got:\n{outputBuilder}");
   }
 }
