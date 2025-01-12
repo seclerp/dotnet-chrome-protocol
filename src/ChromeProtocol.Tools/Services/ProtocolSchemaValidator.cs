@@ -12,14 +12,14 @@ public class ProtocolSchemaValidator
   {
     await using var schemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ChromeProtocol.Tools.protocol_definition_schema.json");
     var schema = await JsonSchema.FromStream(schemaStream).ConfigureAwait(false);
-    var result = schema.Validate(protocolDocument, new ValidationOptions
+    var result = schema.Evaluate(protocolDocument, new EvaluationOptions
     {
-      OutputFormat = OutputFormat.Detailed
+      OutputFormat = OutputFormat.Hierarchical
     });
     if (!result.IsValid)
     {
       var presentableErrors = FlattenResults(result)
-        .Where(results => results.Message != null)
+        .Where(results => results.HasErrors)
         .Select(error => _formatter.Format(fileName, error));
       return (false, presentableErrors);
     }
@@ -27,22 +27,21 @@ public class ProtocolSchemaValidator
     return (true, Enumerable.Empty<string>());
   }
 
-  private IEnumerable<ValidationResults> FlattenResults(ValidationResults root)
+  private IEnumerable<EvaluationResults> FlattenResults(EvaluationResults root)
   {
-    void CollectResults(ValidationResults node, LinkedList<ValidationResults> acc)
+    void CollectResults(EvaluationResults node, LinkedList<EvaluationResults> acc)
     {
-      node.ToDetailed();
       acc.AddLast(node);
-      if (node.HasNestedResults)
+      if (node.HasDetails)
       {
-        foreach (var nested in node.NestedResults)
+        foreach (var nested in node.Details)
         {
           CollectResults(nested, acc);
         }
       }
     }
 
-    var acc = new LinkedList<ValidationResults>();
+    var acc = new LinkedList<EvaluationResults>();
     CollectResults(root, acc);
     return acc;
   }

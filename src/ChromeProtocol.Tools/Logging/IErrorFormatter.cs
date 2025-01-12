@@ -5,7 +5,7 @@ namespace ChromeProtocol.Tools.Logging;
 
 public interface IErrorFormatter
 {
-  string Format(string fileName, ValidationResults error);
+  string Format(string fileName, EvaluationResults error);
 
   string Format(CodeGenerationError error);
 }

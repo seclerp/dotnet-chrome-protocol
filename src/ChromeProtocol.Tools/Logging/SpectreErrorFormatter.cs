@@ -6,22 +6,30 @@ namespace ChromeProtocol.Tools.Logging;
 
 public class SpectreErrorFormatter : IErrorFormatter
 {
-  public string Format(string fileName, ValidationResults error)
+  public string Format(string fileName, EvaluationResults errors)
   {
-    var position = $" -> {error.InstanceLocation.Source}";
+    var position = $" -> {errors.InstanceLocation}";
     var builder = new StringBuilder();
-    builder.Append("[underline orange3]");
+
+    if (errors.Errors is not null)
     {
-      builder.Append(EscapeMarkup(Path.GetFileName(fileName)));
-      builder.Append(EscapeMarkup(position));
+      foreach (var (_, error) in errors.Errors)
+      {
+        builder.Append("[underline orange3]");
+        {
+          builder.Append(EscapeMarkup(Path.GetFileName(fileName)));
+          builder.Append(EscapeMarkup(position));
+        }
+        builder.Append("[/]");
+        builder.Append("[bold orange3]");
+        {
+          builder.Append(": ");
+          builder.Append(EscapeMarkup(error));
+        }
+        builder.Append("[/]");
+      }
     }
-    builder.Append("[/]");
-    builder.Append("[bold orange3]");
-    {
-      builder.Append(": ");
-      builder.Append(EscapeMarkup(error.Message ?? ""));
-    }
-    builder.Append("[/]");
+
     return builder.ToString();
   }
 
