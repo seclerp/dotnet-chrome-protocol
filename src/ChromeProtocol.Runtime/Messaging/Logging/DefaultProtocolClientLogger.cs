@@ -15,11 +15,11 @@ public class DefaultProtocolClientLogger : ProtocolClientLogger
     _logger = logger;
   }
 
-  public override void LogConnected(string message) => _logger.LogInformation(message);
-  public override void LogDisconnected(string message) => _logger.LogInformation(message);
-  public override void LogOutgoingRequest(string message) => _logger.LogInformation(message);
-  public override void LogIncomingResponse(string message) => _logger.LogInformation(message);
-  public override void LogIncomingUnknownResponse(string message) => _logger.LogWarning(message);
-  public override void LogIncomingError(string message) => _logger.LogError(message);
-  public override void LogIncomingEvent(string message) => _logger.LogInformation(message);
+  protected override void LogConnected(string message) => _logger.LogInformation(message);
+  protected override void LogDisconnected(string message) => _logger.LogInformation(message);
+  protected override void LogOutgoingRequest(string message) => _logger.LogInformation(message);
+  protected override void LogIncomingResponse(string message) => _logger.LogInformation(message);
+  protected override void LogIncomingUnknownResponse(string message) => _logger.LogWarning(message);
+  protected override void LogIncomingError(string message) => _logger.LogError(message);
+  protected override void LogIncomingEvent(string message) => _logger.LogInformation(message);
 }
