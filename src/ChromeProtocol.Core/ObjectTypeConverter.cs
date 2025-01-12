@@ -4,8 +4,13 @@ using System.Text.Json.Serialization;
 
 namespace ChromeProtocol.Core;
 
+/// <summary>
+/// A converter that converts JSON object into <see cref="IObjectType"/>,
+/// wrapping root properties into <see cref="IObjectType.Properties"/>.
+/// </summary>
 public class ObjectTypeConverter : JsonConverter<IObjectType?>
 {
+  /// <inheritdoc />
   public override bool CanConvert(Type objectType)
   {
     return typeof(IObjectType).IsAssignableFrom(objectType);

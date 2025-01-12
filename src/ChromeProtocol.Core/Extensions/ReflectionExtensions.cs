@@ -1,8 +1,8 @@
 namespace ChromeProtocol.Core.Extensions;
 
-public static class ReflectionExtensions
+internal static class ReflectionExtensions
 {
-  public static IEnumerable<Type> BaseTypesAndSelf(this Type type)
+  internal static IEnumerable<Type> BaseTypesAndSelf(this Type type)
   {
     while (type != null)
     {

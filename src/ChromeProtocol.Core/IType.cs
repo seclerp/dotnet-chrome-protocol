@@ -1,5 +1,6 @@
 ﻿namespace ChromeProtocol.Core;
 
-public interface IType
-{
-}
+/// <summary>
+/// An interface that represents CDP domain type.
+/// </summary>
+public interface IType;

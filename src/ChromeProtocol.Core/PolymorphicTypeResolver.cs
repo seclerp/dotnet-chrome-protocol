@@ -4,6 +4,10 @@ using System.Text.Json.Serialization.Metadata;
 
 namespace ChromeProtocol.Core;
 
+/// <summary>
+/// A JSON type resolver that uses pre-computed CDP type derivatives to handle cases when System.Text.Json
+/// can't resolve proper inherited type.
+/// </summary>
 public sealed class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
 {
   private readonly Dictionary<Type, Type[]> _derivedTypes;
