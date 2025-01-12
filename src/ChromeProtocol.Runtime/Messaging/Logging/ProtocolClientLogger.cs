@@ -6,6 +6,10 @@ using ChromeProtocol.Runtime.Messaging.Json;
 
 namespace ChromeProtocol.Runtime.Messaging.Logging;
 
+/// <summary>
+/// A service that enables logging of CDP protocol messages. To start logging,
+/// call <see cref="StartLogging"/> after creating the instance of the <see cref="ProtocolClientLogger"/> class.
+/// </summary>
 public abstract class ProtocolClientLogger : IDisposable
 {
   private readonly IProtocolClient _client;
@@ -15,12 +19,21 @@ public abstract class ProtocolClientLogger : IDisposable
   // Contains methodName for particular request id.
   private readonly ConcurrentDictionary<int, string> _methodNamesMapping = new();
 
+  /// <summary>
+  /// Creates an instance of type <see cref="ProtocolClientLogger"/>.
+  /// </summary>
+  /// <param name="client">A protocol client instance.</param>
+  /// <param name="options">Configuration options.</param>
   protected ProtocolClientLogger(IProtocolClient client, ProtocolClientLoggerOptions options)
   {
     _client = client;
     _options = options;
   }
 
+  /// <summary>
+  /// Starts logging of protocol messages.
+  /// </summary>
+  /// <remarks>All protocol calls that happened before calling this method will not be collected.</remarks>
   public void StartLogging()
   {
     _client.OnConnected += ProcessConnected;
@@ -32,7 +45,7 @@ public abstract class ProtocolClientLogger : IDisposable
 
   private void ProcessConnected(object sender, EventArgs args)
   {
-    LogConnected("Protocol client connection estabilished");
+    LogConnected("Protocol client connection established");
   }
 
   private void ProcessDisconnected(object sender, EventArgs args)
@@ -82,19 +95,47 @@ public abstract class ProtocolClientLogger : IDisposable
     _client.OnEventReceived -= ProcessIncomingEvent;
   }
 
-  public abstract void LogConnected(string message);
+  /// <summary>
+  /// Gets called when the protocol client has been connected to the browser.
+  /// </summary>
+  /// <param name="message">A related message.</param>
+  protected abstract void LogConnected(string message);
 
-  public abstract void LogDisconnected(string message);
+  /// <summary>
+  /// Gets called when the protocol client has been disconnected to the browser.
+  /// </summary>
+  /// <param name="message">A related message.</param>
+  protected abstract void LogDisconnected(string message);
 
-  public abstract void LogOutgoingRequest(string message);
+  /// <summary>
+  /// Gets called when the protocol client sends an outgoing message (request).
+  /// </summary>
+  /// <param name="message">A related message.</param>
+  protected abstract void LogOutgoingRequest(string message);
 
-  public abstract void LogIncomingResponse(string message);
+  /// <summary>
+  /// Gets called when the protocol client receives an incoming message (response) related to the already sent request.
+  /// </summary>
+  /// <param name="message">A related message.</param>
+  protected abstract void LogIncomingResponse(string message);
 
-  public abstract void LogIncomingUnknownResponse(string message);
+  /// <summary>
+  /// Gets called when the protocol client receives an incoming message (response or event).
+  /// </summary>
+  /// <param name="message">A related message.</param>
+  protected abstract void LogIncomingUnknownResponse(string message);
 
-  public abstract void LogIncomingError(string message);
+  /// <summary>
+  /// Gets called when the protocol client receives an incoming message containing error.
+  /// </summary>
+  /// <param name="message">A related message.</param>
+  protected abstract void LogIncomingError(string message);
 
-  public abstract void LogIncomingEvent(string message);
+  /// <summary>
+  /// Gets called when the protocol client receives an incoming message (event).
+  /// </summary>
+  /// <param name="message">A related message.</param>
+  protected abstract void LogIncomingEvent(string message);
 
   private string TruncateIfNeeded(string message) =>
     message.Length > _options.MaxMessageLengthChars && _options.MaxMessageLengthChars > 0

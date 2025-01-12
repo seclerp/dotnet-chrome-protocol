@@ -4,8 +4,14 @@ using ChromeProtocol.Core;
 
 namespace ChromeProtocol.Runtime.Messaging.Json;
 
+/// <summary>
+/// A container for the configured <see cref="JsonSerializerOptions"/> to be used with CDP serialization.
+/// </summary>
 public static class JsonProtocolSerialization
 {
+  /// <summary>
+  /// A configured instance of <see cref="JsonSerializerOptions"/>.
+  /// </summary>
   public static readonly JsonSerializerOptions Settings;
 
   static JsonProtocolSerialization()
