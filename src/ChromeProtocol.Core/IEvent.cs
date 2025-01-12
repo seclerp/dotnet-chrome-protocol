@@ -1,5 +1,6 @@
 namespace ChromeProtocol.Core;
 
-public interface IEvent
-{
-}
+/// <summary>
+/// An interface that represents CDP domain event.
+/// </summary>
+public interface IEvent;

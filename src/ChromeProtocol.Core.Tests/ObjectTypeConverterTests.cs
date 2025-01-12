@@ -6,7 +6,7 @@ using Xunit;
 namespace ChromeProtocol.Core.Tests;
 
 [JsonConverter(typeof(ObjectTypeConverter))]
-public record TestableObjectType(IReadOnlyDictionary<string, JsonNode?> Properties) : IObjectType;
+internal record TestableObjectType(IReadOnlyDictionary<string, JsonNode?> Properties) : IObjectType;
 
 public sealed class ObjectTypeConverterTests
 {

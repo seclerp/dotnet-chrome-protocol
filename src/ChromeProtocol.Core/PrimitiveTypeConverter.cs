@@ -4,6 +4,9 @@ using ChromeProtocol.Core.Extensions;
 
 namespace ChromeProtocol.Core;
 
+/// <summary>
+/// A converter that converts CDP primitive (single-value) types.
+/// </summary>
 public class PrimitiveTypeConverter : JsonConverter<object>
 {
   static Type? GetValueType(Type objectType) =>
@@ -13,6 +16,7 @@ public class PrimitiveTypeConverter : JsonConverter<object>
       .Select(t => t.GetGenericArguments()[0])
       .FirstOrDefault();
 
+  /// <inheritdoc />
   public override bool CanConvert(Type objectType)
     => GetValueType(objectType) != null;
 
