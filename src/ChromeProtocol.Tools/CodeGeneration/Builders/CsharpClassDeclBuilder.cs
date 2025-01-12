@@ -9,7 +9,7 @@ public class CsharpClassDeclBuilder : CsharpTypeDeclBuilder<CsharpClassDeclBuild
   {
   }
 
-  public CsharpClassDeclBuilder Constructor(Action<CsharpMethodDeclBuilder> configuration = null)
+  public CsharpClassDeclBuilder Constructor(Action<CsharpMethodDeclBuilder>? configuration = null)
   {
     var methodBuilder = new CsharpMethodDeclBuilder(Node.Name);
     methodBuilder.ReturnType(null);
@@ -20,7 +20,7 @@ public class CsharpClassDeclBuilder : CsharpTypeDeclBuilder<CsharpClassDeclBuild
     return this;
   }
 
-  public CsharpClassDeclBuilder Field(string name, CsharpTypeInfo typeInfo, Action<CsharpFieldDeclBuilder> configuration = null)
+  public CsharpClassDeclBuilder Field(string name, CsharpTypeInfo typeInfo, Action<CsharpFieldDeclBuilder>? configuration = null)
   {
     var fieldBuilder = new CsharpFieldDeclBuilder(name, typeInfo);
     configuration?.Invoke(fieldBuilder);

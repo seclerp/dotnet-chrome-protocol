@@ -18,7 +18,7 @@ public class CsharpFileBuilder : CsharpCodeBuilder<CsharpFile>
     return this;
   }
 
-  public CsharpFileBuilder Namespace(string fullName, Action<CsharpNamespaceDeclBuilder> configuration = null)
+  public CsharpFileBuilder Namespace(string fullName, Action<CsharpNamespaceDeclBuilder>? configuration = null)
   {
     var classBuilder = new CsharpNamespaceDeclBuilder(fullName);
     configuration?.Invoke(classBuilder);

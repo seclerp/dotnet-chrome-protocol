@@ -9,7 +9,7 @@ public class CsharpRecordDeclBuilder : CsharpTypeDeclBuilder<CsharpRecordDeclBui
   {
   }
 
-  public CsharpRecordDeclBuilder Parameters(Action<CsharpRecordParametersListBuilder> configuration = null)
+  public CsharpRecordDeclBuilder Parameters(Action<CsharpRecordParametersListBuilder>? configuration = null)
   {
     var paramsBuilder = new CsharpRecordParametersListBuilder();
     configuration?.Invoke(paramsBuilder);

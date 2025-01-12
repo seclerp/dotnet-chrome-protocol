@@ -17,7 +17,7 @@ public class CsharpRecordParameterBuilder : CsharpCodeBuilder<CsharpRecordParame
     return this;
   }
 
-  public CsharpRecordParameterBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder> configuration = null)
+  public CsharpRecordParameterBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder>? configuration = null)
   {
     var attributeBuilder = new CsharpAttributeDeclBuilder(type);
     configuration?.Invoke(attributeBuilder);

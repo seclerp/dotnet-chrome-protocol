@@ -9,7 +9,7 @@ public class CsharpNamespaceDeclBuilder : CsharpCodeBuilder<CsharpNamespaceDecl>
     Node.FullName = fullName;
   }
 
-  public CsharpNamespaceDeclBuilder Class(string name, Action<CsharpClassDeclBuilder> configuration = null)
+  public CsharpNamespaceDeclBuilder Class(string name, Action<CsharpClassDeclBuilder>? configuration = null)
   {
     var classBuilder = new CsharpClassDeclBuilder(name);
     configuration?.Invoke(classBuilder);
@@ -19,7 +19,7 @@ public class CsharpNamespaceDeclBuilder : CsharpCodeBuilder<CsharpNamespaceDecl>
     return this;
   }
 
-  public CsharpNamespaceDeclBuilder Record(string name, Action<CsharpRecordDeclBuilder> configuration = null)
+  public CsharpNamespaceDeclBuilder Record(string name, Action<CsharpRecordDeclBuilder>? configuration = null)
   {
     var classBuilder = new CsharpRecordDeclBuilder(name);
     configuration?.Invoke(classBuilder);
@@ -29,7 +29,7 @@ public class CsharpNamespaceDeclBuilder : CsharpCodeBuilder<CsharpNamespaceDecl>
     return this;
   }
 
-  public CsharpNamespaceDeclBuilder Interface(string name, Action<CsharpInterfaceDeclBuilder> configuration = null)
+  public CsharpNamespaceDeclBuilder Interface(string name, Action<CsharpInterfaceDeclBuilder>? configuration = null)
   {
     var interfaceBuilder = new CsharpInterfaceDeclBuilder(name);
     configuration?.Invoke(interfaceBuilder);
@@ -46,7 +46,7 @@ public class CsharpNamespaceDeclBuilder : CsharpCodeBuilder<CsharpNamespaceDecl>
     return this;
   }
 
-  public CsharpNamespaceDeclBuilder XmlComment(Action<CsharpXmlCommentBuilder> configuration = null)
+  public CsharpNamespaceDeclBuilder XmlComment(Action<CsharpXmlCommentBuilder>? configuration = null)
   {
     var commentBuilder = new CsharpXmlCommentBuilder();
     configuration?.Invoke(commentBuilder);

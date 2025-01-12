@@ -29,7 +29,7 @@ public class CsharpPropertyDeclBuilder : CsharpCodeBuilder<CsharpPropertyDecl>
     return this;
   }
 
-  public CsharpPropertyDeclBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder> configuration = null)
+  public CsharpPropertyDeclBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder>? configuration = null)
   {
     var attributeBuilder = new CsharpAttributeDeclBuilder(type);
     configuration?.Invoke(attributeBuilder);
