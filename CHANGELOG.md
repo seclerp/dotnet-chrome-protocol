@@ -5,6 +5,34 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0]
+
+### Added
+
+- `ChromeProtocol.Runtime.Browser.ChromiumLauncher` class that simplifies starting Chrome and obtaining debugging endpoint
+- Simple example project `ChromeProtocol.Usage` that highlights usage of the `ChromeProtocol.Runtime` and `ChromeProtocol.Domains` libraries
+
+### Removed
+
+- `ChromeProtocol.Runtime.Messaging.Logger.ChannelProtocolClientLogger`
+
+### Changed
+
+- `ProtocolClientLogger.LogConnected` became `protected`
+- `ProtocolClientLogger.LogDisconnected` became `protected`
+- `ProtocolClientLogger.LogOutgoingRequest` became `protected`
+- `ProtocolClientLogger.LogIncomingResponse` became `protected`
+- `ProtocolClientLogger.LogIncomingUnknownResponse` became `protected`
+- `ProtocolClientLogger.LogIncomingError` became `protected`
+- `ProtocolClientLogger.LogIncomingEvent` became `protected`
+- `ChromeProtocol.Core.Extensions.ReflectionExtensions` became `internal`
+- `System.Text.Json` has been updated to the version `8.0.5` to address high-severity vulnerabilities
+
+### Fixed
+
+- Different typos and confusing `[Obsolete]` attributes
+- Multiple nullability issues in different places across packages
+
 ## [2.0.1]
 
 ### Changed
@@ -75,7 +103,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/seclerp/dotnet-chrome-protocol/compare/2.0.1...HEAD
+[Unreleased]: https://github.com/seclerp/dotnet-chrome-protocol/compare/2.1.0...HEAD
+[2.1.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/2.0.1...2.1.0
 [2.0.1]: https://github.com/seclerp/dotnet-chrome-protocol/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.3.0...2.0.0
 [1.3.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.2.3...1.3.0

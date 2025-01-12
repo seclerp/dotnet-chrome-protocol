@@ -1,7 +1,7 @@
 <Project>
   <!-- Global project and StyleCop Analyzers configuration -->
   <PropertyGroup>
-    <Version>2.0.1</Version>
+    <Version>2.1.0</Version>
     <Authors>seclerp</Authors>
     <RepositoryUrl>https://github.com/seclerp/dotnet-chrome-protocol</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
