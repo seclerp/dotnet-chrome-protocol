@@ -19,7 +19,7 @@ public class CsharpMethodDeclBuilder : CsharpCodeBuilder<CsharpMethodDecl>
     return this;
   }
 
-  public CsharpMethodDeclBuilder XmlComment(Action<CsharpXmlCommentBuilder> configuration = null)
+  public CsharpMethodDeclBuilder XmlComment(Action<CsharpXmlCommentBuilder>? configuration = null)
   {
     var commentBuilder = new CsharpXmlCommentBuilder();
     configuration?.Invoke(commentBuilder);
@@ -28,7 +28,7 @@ public class CsharpMethodDeclBuilder : CsharpCodeBuilder<CsharpMethodDecl>
     return this;
   }
 
-  public CsharpMethodDeclBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder> configuration = null)
+  public CsharpMethodDeclBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder>? configuration = null)
   {
     var attributeBuilder = new CsharpAttributeDeclBuilder(type);
     configuration?.Invoke(attributeBuilder);
@@ -45,7 +45,7 @@ public class CsharpMethodDeclBuilder : CsharpCodeBuilder<CsharpMethodDecl>
     return this;
   }
 
-  public CsharpMethodDeclBuilder Parameters(Action<CsharpParametersListBuilder> configuration = null)
+  public CsharpMethodDeclBuilder Parameters(Action<CsharpParametersListBuilder>? configuration = null)
   {
     var paramsBuilder = new CsharpParametersListBuilder();
     configuration?.Invoke(paramsBuilder);

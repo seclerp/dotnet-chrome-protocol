@@ -35,7 +35,7 @@ public abstract class CsharpTypeDeclBuilder<TCsharpTypeDeclBuilder, TCsharpTypeD
     return (TCsharpTypeDeclBuilder)this;
   }
 
-  public TCsharpTypeDeclBuilder Property(string name, CsharpTypeInfo typeInfo, Action<CsharpPropertyDeclBuilder> configuration = null, bool hasGetter = true, bool hasSetter = true)
+  public TCsharpTypeDeclBuilder Property(string name, CsharpTypeInfo typeInfo, Action<CsharpPropertyDeclBuilder>? configuration = null, bool hasGetter = true, bool hasSetter = true)
   {
     var propertyBuilder = new CsharpPropertyDeclBuilder(name, typeInfo, hasGetter, hasSetter);
     configuration?.Invoke(propertyBuilder);
@@ -45,7 +45,7 @@ public abstract class CsharpTypeDeclBuilder<TCsharpTypeDeclBuilder, TCsharpTypeD
     return (TCsharpTypeDeclBuilder)this;
   }
 
-  public TCsharpTypeDeclBuilder Method(string name, Action<CsharpMethodDeclBuilder> configuration = null)
+  public TCsharpTypeDeclBuilder Method(string name, Action<CsharpMethodDeclBuilder>? configuration = null)
   {
     var methodBuilder = new CsharpMethodDeclBuilder(name);
     configuration?.Invoke(methodBuilder);
@@ -55,7 +55,7 @@ public abstract class CsharpTypeDeclBuilder<TCsharpTypeDeclBuilder, TCsharpTypeD
     return (TCsharpTypeDeclBuilder)this;
   }
 
-  public TCsharpTypeDeclBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder> configuration = null)
+  public TCsharpTypeDeclBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder>? configuration = null)
   {
     var attributeBuilder = new CsharpAttributeDeclBuilder(type);
     configuration?.Invoke(attributeBuilder);
@@ -72,7 +72,7 @@ public abstract class CsharpTypeDeclBuilder<TCsharpTypeDeclBuilder, TCsharpTypeD
     return (TCsharpTypeDeclBuilder)this;
   }
 
-  public TCsharpTypeDeclBuilder XmlComment(Action<CsharpXmlCommentBuilder> configuration = null)
+  public TCsharpTypeDeclBuilder XmlComment(Action<CsharpXmlCommentBuilder>? configuration = null)
   {
     var commentBuilder = new CsharpXmlCommentBuilder();
     configuration?.Invoke(commentBuilder);
@@ -81,7 +81,7 @@ public abstract class CsharpTypeDeclBuilder<TCsharpTypeDeclBuilder, TCsharpTypeD
     return (TCsharpTypeDeclBuilder)this;
   }
 
-  public TCsharpTypeDeclBuilder Class(string name, Action<CsharpClassDeclBuilder> configuration = null)
+  public TCsharpTypeDeclBuilder Class(string name, Action<CsharpClassDeclBuilder>? configuration = null)
   {
     var classBuilder = new CsharpClassDeclBuilder(name);
     configuration?.Invoke(classBuilder);
@@ -91,7 +91,7 @@ public abstract class CsharpTypeDeclBuilder<TCsharpTypeDeclBuilder, TCsharpTypeD
     return (TCsharpTypeDeclBuilder)this;
   }
 
-  public TCsharpTypeDeclBuilder Record(string name, Action<CsharpRecordDeclBuilder> configuration = null)
+  public TCsharpTypeDeclBuilder Record(string name, Action<CsharpRecordDeclBuilder>? configuration = null)
   {
     var recordBuilder = new CsharpRecordDeclBuilder(name);
     configuration?.Invoke(recordBuilder);

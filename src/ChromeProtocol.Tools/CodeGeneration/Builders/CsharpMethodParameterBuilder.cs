@@ -17,7 +17,7 @@ public class CsharpMethodParameterBuilder : CsharpCodeBuilder<CsharpMethodParame
     return this;
   }
 
-  public CsharpMethodParameterBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder> configuration = null)
+  public CsharpMethodParameterBuilder Attribute(CsharpTypeInfo type, Action<CsharpAttributeDeclBuilder>? configuration = null)
   {
     var attributeBuilder = new CsharpAttributeDeclBuilder(type);
     configuration?.Invoke(attributeBuilder);
