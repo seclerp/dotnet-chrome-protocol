@@ -13,7 +13,6 @@ public interface IProtocolClient : IDisposable
 
   Task ConnectAsync(CancellationToken token = default);
 
-  [Obsolete("Use Dispose of the ConnectAsync return object.")]
   Task DisconnectAsync(CancellationToken token = default);
 
   [Obsolete("Use SubscribeSync or SubscribeAsync instead.")]
