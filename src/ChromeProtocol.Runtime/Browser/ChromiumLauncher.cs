@@ -6,15 +6,15 @@ using Microsoft.Extensions.Logging.Abstractions;
 
 namespace ChromeProtocol.Runtime.Browser;
 
+/// <summary>
+/// A Chromium browser launcher.
+/// </summary>
 public class ChromiumLauncher
 {
   private string? _pageUrl;
   private string? _userProfileDirectory;
   private int? _remoteDebuggingPort;
   private List<string> _customArguments = [];
-
-  private readonly int _portReadingRetries = 10;
-  private readonly int _portReadingDelay = 500;
 
   private readonly ILogger _logger;
 
@@ -23,16 +23,24 @@ public class ChromiumLauncher
     _logger = logger;
   }
 
-  public static ChromiumLauncher Create(ILogger logger)
-  {
-    return new(logger);
-  }
+  /// <summary>
+  /// Create <see cref="ChromiumLauncher"/> instance with the given logger.
+  /// </summary>
+  /// <param name="logger">A logger instance.</param>
+  /// <returns>A new <see cref="ChromiumLauncher"/> instance.</returns>
+  public static ChromiumLauncher Create(ILogger logger) => new(logger);
 
-  public static ChromiumLauncher Create()
-  {
-    return new(NullLogger.Instance);
-  }
+  /// <summary>
+  /// Create <see cref="ChromiumLauncher"/> instance.
+  /// </summary>
+  /// <returns>A new <see cref="ChromiumLauncher"/> instance.</returns>
+  public static ChromiumLauncher Create() => new(NullLogger.Instance);
 
+  /// <summary>
+  /// Sets the page that will be opened in the browser tab.
+  /// </summary>
+  /// <param name="pageUrl"></param>
+  /// <returns>An updated <see cref="ChromiumLauncher"/> instance.</returns>
   public ChromiumLauncher WithPage(string pageUrl)
   {
     _pageUrl = pageUrl;
@@ -40,6 +48,12 @@ public class ChromiumLauncher
     return this;
   }
 
+  /// <summary>
+  /// Sets the user's profile directory that will be used by the browser.
+  /// </summary>
+  /// <param name="path">A path to the directory.</param>
+  /// <returns>An updated <see cref="ChromiumLauncher"/> instance.</returns>
+  /// <remarks>Transforms into --user-data-dir="value" command line argument.</remarks>
   public ChromiumLauncher WithUserProfileDirectory(string path)
   {
     _userProfileDirectory = path;
@@ -47,6 +61,13 @@ public class ChromiumLauncher
     return this;
   }
 
+  /// <summary>
+  /// Sets the TCP remote debugging port that will be exposed by the browser.<br/>
+  /// If set to 0, browser will choose and allocate port number automatically.
+  /// </summary>
+  /// <param name="port">A port number.</param>
+  /// <returns>An updated <see cref="ChromiumLauncher"/> instance.</returns>
+  /// <remarks>Transforms into --remote-debugging-port=value command line argument.</remarks>
   public ChromiumLauncher WithRemoteDebuggingPort(int port)
   {
     _remoteDebuggingPort = port;
@@ -54,6 +75,12 @@ public class ChromiumLauncher
     return this;
   }
 
+  /// <summary>
+  /// Adds custom command line argument to the arguments' list.
+  /// </summary>
+  /// <param name="arg">An argument value.</param>
+  /// <returns>An updated <see cref="ChromiumLauncher"/> instance.</returns>
+  /// <remarks>Argument will be added after special pretending --args argument.</remarks>
   public ChromiumLauncher WithArgument(string arg)
   {
     _customArguments.Add(arg);
@@ -61,6 +88,12 @@ public class ChromiumLauncher
     return this;
   }
 
+  /// <summary>
+  /// Adds custom command line arguments to the arguments' list.
+  /// </summary>
+  /// <param name="args">An argument values collection.</param>
+  /// <returns>An updated <see cref="ChromiumLauncher"/> instance.</returns>
+  /// <remarks>Argument will be added after special pretending --args argument.</remarks>
   public ChromiumLauncher WithArguments(params string[] args)
   {
     _customArguments.AddRange(args);
@@ -69,11 +102,15 @@ public class ChromiumLauncher
   }
 
   /// <summary>
-  /// For Windows and Linux it should be a full path to the executable
-  /// For MacOS it should be the full path to the native executable inside package.
+  /// Launches the Chromium browser with the given path,
+  /// using the options configured by this <see cref="ChromiumLauncher"/> instance.
   /// </summary>
-  /// <param name="chromiumExePath"></param>
+  /// <param name="chromiumExePath">A path to the Chromium executable.</param>
   /// <returns></returns>
+  /// <remarks>For Windows and Linux, a path should be a full path to the executable.</remarks>
+  /// <remarks>For MacOS, a path should be the full path to the native executable inside package.</remarks>
+  /// <example>LaunchLocalAsync("C:\Program Files\Google\Chrome\Application\chrome.exe")</example>
+  /// <example>LaunchLocalAsync("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")</example>
   public async Task<IChromiumBrowser> LaunchLocalAsync(string chromiumExePath)
   {
     IEnumerable<string> CollectArguments()

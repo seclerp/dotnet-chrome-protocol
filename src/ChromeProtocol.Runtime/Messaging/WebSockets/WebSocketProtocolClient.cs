@@ -18,14 +18,10 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
   private readonly ConcurrentDictionary<(string? sessionId, string eventName), Func<ProtocolEvent<JsonObject>, Task>> _eventHandlers = new ();
   private readonly ConcurrentDictionary<int, TaskCompletionSource<JsonObject>> _responseResolvers = new ();
   private readonly TNativeClient _nativeClient;
-  private CancellationTokenSource _connectionCancellation;
+  private CancellationTokenSource? _connectionCancellation;
   private readonly BlockingCollection<ProtocolRequest<ICommand>> _outgoingMessages = new(new ConcurrentQueue<ProtocolRequest<ICommand>>());
   private int _currentId = 0;
   private bool _isDisposed = false;
-
-  public event EventHandler<ProtocolRequest<ICommand>> OnRequestSent;
-  public event EventHandler<ProtocolResponse<JsonObject>> OnResponseReceived;
-  public event EventHandler<ProtocolEvent<JsonObject>> OnEventReceived;
 
   public WebSocketProtocolClient(TNativeClient nativeClient, Uri wsUri, ILogger logger)
   {
@@ -36,6 +32,10 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   public event EventHandler? OnConnected;
   public event EventHandler? OnDisconnected;
+
+  public event EventHandler<ProtocolRequest<ICommand>>? OnRequestSent;
+  public event EventHandler<ProtocolResponse<JsonObject>>? OnResponseReceived;
+  public event EventHandler<ProtocolEvent<JsonObject>>? OnEventReceived;
 
   protected virtual Task InitializeConnectionAsync(TNativeClient nativeClient, Uri wsUri, CancellationToken token) =>
     Task.CompletedTask;
@@ -80,7 +80,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     {
       Dispose();
 
-      if (!_connectionCancellation.IsCancellationRequested)
+      if (!_connectionCancellation?.IsCancellationRequested ?? false)
         OnDisconnected?.Invoke(this, EventArgs.Empty);
     }
   }
@@ -151,9 +151,9 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
   public void Dispose()
   {
     if (_isDisposed) return;
-    if (_connectionCancellation.IsCancellationRequested) return;
+    if (_connectionCancellation?.IsCancellationRequested ?? false) return;
 
-    _connectionCancellation.Cancel();
+    _connectionCancellation?.Cancel();
     _isDisposed = true;
   }
 
@@ -284,7 +284,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     var bytes = Encoding.UTF8.GetBytes(serialized);
     try
     {
-      await _nativeClient.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, _connectionCancellation.Token).ConfigureAwait(false);
+      await _nativeClient.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, _connectionCancellation?.Token ?? CancellationToken.None).ConfigureAwait(false);
     }
     catch (WebSocketException ex) when (ex.WebSocketErrorCode == WebSocketError.InvalidState)
     {
