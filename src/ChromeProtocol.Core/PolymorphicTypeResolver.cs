@@ -16,6 +16,7 @@ public sealed class PolymorphicTypeResolver : DefaultJsonTypeInfoResolver
   public PolymorphicTypeResolver(Dictionary<Type, Type[]> derivedTypes)
     => _derivedTypes = derivedTypes;
 
+  /// <inheritdoc />
   public override JsonTypeInfo GetTypeInfo(Type type, JsonSerializerOptions options)
   {
     var typeInfo = base.GetTypeInfo(type, options);

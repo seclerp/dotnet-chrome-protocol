@@ -7,40 +7,41 @@ public class JsonObjects
 {
   public class GoodVersionsWithDownloads
   {
-    [JsonPropertyName("timestamp")] public DateTimeOffset Timestamp { get; set; }
+    [JsonPropertyName("timestamp")] public required DateTimeOffset Timestamp { get; set; }
 
-    [JsonPropertyName("versions")] public Version[] Versions { get; set; }
+    [JsonPropertyName("versions")] public required Version[] Versions { get; set; }
   }
 
   public class Version
   {
-    [JsonPropertyName("version")] public string VersionVersion { get; set; }
+    [JsonPropertyName("version")] public required string VersionVersion { get; set; }
 
     [JsonPropertyName("revision")]
     [JsonConverter(typeof(ParseStringConverter))]
     public long Revision { get; set; }
 
-    [JsonPropertyName("downloads")] public Downloads Downloads { get; set; }
+    [JsonPropertyName("downloads")] public required Downloads Downloads { get; set; }
   }
 
   public class Downloads
   {
-    [JsonPropertyName("chrome")] public Chrome[] Chrome { get; set; }
+    [JsonPropertyName("chrome")] public required Chrome[] Chrome { get; set; }
 
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    [JsonPropertyName("chromedriver")]
-    public Chrome[] Chromedriver { get; set; }
-
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    [JsonPropertyName("chrome-headless-shell")]
-    public Chrome[] ChromeHeadlessShell { get; set; }
+    // TODO: Reconsider whether this should be completely removed or not.
+    // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    // [JsonPropertyName("chromedriver")]
+    // public required Chrome[] Chromedriver { get; set; }
+    //
+    // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    // [JsonPropertyName("chrome-headless-shell")]
+    // public required Chrome[] ChromeHeadlessShell { get; set; }
   }
 
   public class Chrome
   {
     [JsonPropertyName("platform")] public Platform Platform { get; set; }
 
-    [JsonPropertyName("url")] public Uri Url { get; set; }
+    [JsonPropertyName("url")] public required Uri Url { get; set; }
   }
 
   public enum Platform
