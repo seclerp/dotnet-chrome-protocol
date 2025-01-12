@@ -18,7 +18,7 @@ public class ChromiumLauncherTests
   {
     _outputHelper = outputHelper;
     _testLogger = new XunitLogger(_outputHelper, nameof(ChromiumLauncherTests));
-    _storage = new DefaultChromeBinariesStorage(new XunitLogger(outputHelper, "BrowserStorage"));
+    _storage = new DefaultChromeBinariesStorage();
     _downloader = new ChromeBrowserDownloader(_storage, new XunitLogger(outputHelper, "Downloader"));
   }
 

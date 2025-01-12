@@ -3,14 +3,16 @@ using System.Runtime.InteropServices;
 
 namespace ChromeProtocol.Runtime.Tests.TestFramework.ChromeBrowser;
 
-public class DefaultChromeBinariesStorage(ILogger logger) : IBrowserBinariesStorage
+public class DefaultChromeBinariesStorage : IBrowserBinariesStorage
 {
   private readonly string StoragePath = Path.Combine(Path.GetTempPath(), "ChromiumProtocol.Tests.ChromeBinaries");
 
-  public async Task<bool> IsAvailableAsync(string version) =>
-    Directory.Exists(GetFullDestinationPath(version))
-    && TryResolveExePath(version, out var path)
-    && File.Exists(path);
+  public Task<bool> IsAvailableAsync(string version) =>
+    Task.FromResult(
+      Directory.Exists(GetFullDestinationPath(version))
+      && TryResolveExePath(version, out var path)
+      && File.Exists(path)
+    );
 
   public async Task SaveFromArchiveAsync(string version, Stream archive, bool replaceExisting = false)
   {
@@ -34,7 +36,7 @@ public class DefaultChromeBinariesStorage(ILogger logger) : IBrowserBinariesStor
     archive.Seek(position, SeekOrigin.Begin);
   }
 
-  public async Task<string> ResolveExePathAsync(string version)
+  public Task<string> ResolveExePathAsync(string version)
   {
     if (!TryResolveExePath(version, out var path))
     {
@@ -44,7 +46,7 @@ public class DefaultChromeBinariesStorage(ILogger logger) : IBrowserBinariesStor
     if (!File.Exists(path))
       throw new FileNotFoundException($"Chrome executable is expected to be at '{path}' but it was not found.");
 
-    return path;
+    return Task.FromResult(path);
   }
 
   private bool TryResolveExePath(string version, out string? path)

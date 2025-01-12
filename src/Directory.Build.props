@@ -12,7 +12,10 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <UseArtifactsOutput>true</UseArtifactsOutput>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(IsPackable) == True">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 </Project>

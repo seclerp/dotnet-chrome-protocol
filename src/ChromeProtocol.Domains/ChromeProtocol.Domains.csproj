@@ -9,6 +9,8 @@
     <FileVersion>$(BaseVersion)</FileVersion>
     <Description>Pre-generated Chrome DevTools Protocol JS and Browser domain sets. Updated 07.01.2025, Chrome base revision 1367902</Description>
     <IsPackable>true</IsPackable>
+    <!-- Documentation and deprecation usage problems should be muted for generated code. It should be addressed on JSON schema level. -->
+    <NoWarn>CS1591;CS0618;CS1573</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

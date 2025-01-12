@@ -57,9 +57,11 @@ public class WebSocketProtocolClientTests : IAsyncLifetime
     var tcs = new TaskCompletionSource<bool>();
     tokenSource.Token.Register(() => tcs.TrySetCanceled(), useSynchronizationContext: false);
 
-    var subscription = client.SubscribeOnceAsync<EventTriggeredEvent>(async _ =>
+    var subscription = client.SubscribeOnceAsync<EventTriggeredEvent>(_ =>
     {
       tcs.TrySetResult(true);
+
+      return Task.CompletedTask;;
     });
 
     tokenSource.Token.Register(() => subscription.Dispose());
@@ -70,14 +72,18 @@ public class WebSocketProtocolClientTests : IAsyncLifetime
     Assert.True(result);
   }
 
-  public async Task InitializeAsync()
+  public Task InitializeAsync()
   {
     _clientLogger.LogInformation("Start");
+
+    return Task.CompletedTask;
   }
 
-  public async Task DisposeAsync()
+  public Task DisposeAsync()
   {
     _clientLogger.LogInformation("Shutdown");
+
+    return Task.CompletedTask;
   }
 
   private async Task<IProtocolClient> CreateServerClient(TestServer server, CancellationToken token = default)
