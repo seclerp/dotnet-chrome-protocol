@@ -7,6 +7,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>(C) 2024 Andrii Rublov</Copyright>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <LangVersion>Latest</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -15,7 +16,4 @@
     <UseArtifactsOutput>true</UseArtifactsOutput>
   </PropertyGroup>
 
-  <PropertyGroup Condition="$(IsPackable) == True">
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
 </Project>
