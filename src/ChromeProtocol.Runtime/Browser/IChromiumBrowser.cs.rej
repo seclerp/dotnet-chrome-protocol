@@ -1,0 +1,7 @@
+--- src/ChromeProtocol.Runtime/Browser/IChromiumBrowser.cs	(revision Before)
++++ src/ChromeProtocol.Runtime/Browser/IChromiumBrowser.cs	(revision After)
+@@ -1,3 +1,4 @@
++using System.Collections.ObjectModel;
+ using ChromeProtocol.Runtime.Messaging;
+ 
+ namespace ChromeProtocol.Runtime.Browser;

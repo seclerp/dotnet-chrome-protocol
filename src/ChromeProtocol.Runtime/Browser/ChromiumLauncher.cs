@@ -145,7 +145,7 @@ public class ChromiumLauncher
     var process = Process.Start(processInfo);
     var debuggingEndpoint = await WaitDebuggingEndpointAsync(process).ConfigureAwait(false);
 
-    return new LocalChromiumBrowser(debuggingEndpoint, process);
+    return new LocalChromiumBrowser(debuggingEndpoint, process, _logger);
   }
 
   private async Task<Uri> WaitDebuggingEndpointAsync(Process process)
