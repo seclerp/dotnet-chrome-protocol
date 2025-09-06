@@ -1,6 +1,41 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
+  "extends": ["config:recommended"],
+  "packageRules": [
+    {
+      "matchDatasources": ["nuget"],
+      "matchPackageNames": ["System.Text.Json"],
+      "allowedVersions": "<=8.0.5"
+    },
+    {
+      "matchDatasources": ["nuget"],
+      "matchPackageNames": ["Microsoft.Extensions.Logging"],
+      "allowedVersions": "<=8.0.0"
+    },
+    {
+      "matchDatasources": ["nuget"],
+      "matchPackageNames": ["Microsoft.Extensions.Logging.Abstractions"],
+      "allowedVersions": "<=8.0.0"
+    },
+    {
+      "matchDatasources": ["nuget"],
+      "matchPackageNames": ["Microsoft.Extensions.Logging.Console"],
+      "allowedVersions": "<=7.0.0"
+    },
+    {
+      "matchDatasources": ["nuget"],
+      "matchPackageNames": ["System.Threading.Channels"],
+      "allowedVersions": "<=8.0.0"
+    },
+    {
+      "matchDatasources": ["nuget"],
+      "matchPackageNames": ["System.IO.Pipelines"],
+      "allowedVersions": "<=8.0.0"
+    },
+    {
+      "matchDatasources": ["nuget"],
+      "matchPackageNames": ["Microsoft.IO.RecyclableMemoryStream"],
+      "allowedVersions": "<=2.3.2"
+    }
   ]
 }

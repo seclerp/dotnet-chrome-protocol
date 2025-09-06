@@ -2,7 +2,7 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
-  <!-- Common -->
+  <!-- Common, check package versions that Rider uses before updating package versions in Common section -->
   <ItemGroup Label="Common">
     <PackageVersion Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
@@ -23,7 +23,7 @@
     <PackageVersion Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
   </ItemGroup>
-  <!-- Framework -->
+  <!-- Framework, check package versions that Rider uses before updating package versions in Framework section  -->
   <ItemGroup>
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     <PackageVersion Include="System.Threading.Channels" Version="6.0.0" />

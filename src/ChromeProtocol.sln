@@ -34,7 +34,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{7B81D3F1-B42B-457F-B677-3317CB092F53}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\FUNDING.yml = ..\.github\FUNDING.yml
-		..\.github\dependabot.yml = ..\.github\dependabot.yml
+		..\renovate.json = ..\renovate.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{68F4A830-B12C-40F8-8EAE-319140055442}"
