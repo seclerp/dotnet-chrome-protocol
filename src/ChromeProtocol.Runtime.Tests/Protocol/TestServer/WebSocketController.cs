@@ -33,7 +33,8 @@ public class WebSocketController : ControllerBase
 
     while (!receiveResult.CloseStatus.HasValue)
     {
-      await ProcessMessage(webSocket, new ArraySegment<byte>(buffer, 0, receiveResult.Count)).ConfigureAwait(false);
+      if (!await ProcessMessage(webSocket, new ArraySegment<byte>(buffer, 0, receiveResult.Count)).ConfigureAwait(false))
+        return;
 
       receiveResult = await webSocket.ReceiveAsync(
         new ArraySegment<byte>(buffer), token);
@@ -45,7 +46,7 @@ public class WebSocketController : ControllerBase
       token).ConfigureAwait(false);
   }
 
-  static async Task ProcessMessage(WebSocket webSocket, ArraySegment<byte> incoming)
+  static async Task<bool> ProcessMessage(WebSocket webSocket, ArraySegment<byte> incoming)
   {
     var message = JsonSerializer.Deserialize<ProtocolRequest<JsonObject>>(Encoding.UTF8.GetString(incoming.ToArray()), JsonProtocolSerialization.Settings)
                   ?? throw new NotImplementedException();
@@ -56,21 +57,32 @@ public class WebSocketController : ControllerBase
         var result = new EchoResult(message.Params["message"]?.Deserialize<string>() ?? throw new NotImplementedException());
         var response = new ProtocolResponse<EchoResult>(message.Id, result, null);
         await Send(webSocket, response).ConfigureAwait(false);
-        break;
+        return true;
       }
       case "AlwaysError":
       {
         var response = new ProtocolResponse<object>(message.Id, null, new ProtocolErrorInfo(-1, null, "I'm always failing", null));
         await Send(webSocket, response).ConfigureAwait(false);
-        break;
+        return true;
       }
       case "TriggerEvent":
       {
         var response = new ProtocolEvent<EventTriggeredEvent>("EventTriggered", new EventTriggeredEvent());
         await Send(webSocket, response).ConfigureAwait(false);
-        break;
+        return true;
+      }
+      case "NeverRespond":
+      {
+        return true;
+      }
+      case "CloseConnection":
+      {
+        await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closed by test server", CancellationToken.None).ConfigureAwait(false);
+        return false;
       }
     }
+
+    return true;
   }
 
   private static async Task Send(WebSocket webSocket, IProtocolMessage message)
