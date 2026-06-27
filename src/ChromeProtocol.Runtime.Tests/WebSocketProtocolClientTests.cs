@@ -48,6 +48,71 @@ public class WebSocketProtocolClientTests : IAsyncLifetime
   }
 
   [Fact]
+  public async Task SendCommandAsync_CanceledWhileWaitingForResponse_ShouldCancel()
+  {
+    var tokenSource = new CancellationTokenSource(30_0000);
+    await using var factory = TestServerFactory.CreateTestServer<Program>();
+    using var client = await CreateServerClient(factory.Server, tokenSource.Token).ConfigureAwait(false);
+    using var commandTokenSource = new CancellationTokenSource();
+
+    var command = client.SendCommandAsync(new NeverRespondCommand(), token: commandTokenSource.Token);
+    commandTokenSource.CancelAfter(100);
+
+    await Assert.ThrowsAnyAsync<OperationCanceledException>(async () => await command.ConfigureAwait(false)).ConfigureAwait(false);
+  }
+
+  [Fact]
+  public async Task SendCommandAsync_ConnectionClosedWhileWaitingForResponse_ShouldFail()
+  {
+    var tokenSource = new CancellationTokenSource(30_0000);
+    await using var factory = TestServerFactory.CreateTestServer<Program>();
+    using var client = await CreateServerClient(factory.Server, tokenSource.Token).ConfigureAwait(false);
+
+    await Assert.ThrowsAsync<ProtocolConnectionClosedException>(
+      async () => await client.SendCommandAsync(new CloseConnectionCommand(), token: tokenSource.Token).ConfigureAwait(false)).ConfigureAwait(false);
+  }
+
+  [Fact]
+  public async Task SendCommandAsync_AfterConnectionClosed_ShouldFail()
+  {
+    var tokenSource = new CancellationTokenSource(30_0000);
+    await using var factory = TestServerFactory.CreateTestServer<Program>();
+    using var client = await CreateServerClient(factory.Server, tokenSource.Token).ConfigureAwait(false);
+
+    await Assert.ThrowsAsync<ProtocolConnectionClosedException>(
+      async () => await client.SendCommandAsync(new CloseConnectionCommand(), token: tokenSource.Token).ConfigureAwait(false)).ConfigureAwait(false);
+
+    await Assert.ThrowsAsync<ObjectDisposedException>(
+      async () => await client.SendCommandAsync(new EchoCommand("Hello"), token: tokenSource.Token).ConfigureAwait(false)).ConfigureAwait(false);
+  }
+
+  [Fact]
+  public async Task SendCommandAsync_DisposedWhileWaitingForResponse_ShouldFail()
+  {
+    var tokenSource = new CancellationTokenSource(30_0000);
+    await using var factory = TestServerFactory.CreateTestServer<Program>();
+    using var client = await CreateServerClient(factory.Server, tokenSource.Token).ConfigureAwait(false);
+
+    var command = client.SendCommandAsync(new NeverRespondCommand(), token: tokenSource.Token);
+    client.Dispose();
+
+    await Assert.ThrowsAsync<ObjectDisposedException>(async () => await command.ConfigureAwait(false)).ConfigureAwait(false);
+  }
+
+  [Fact]
+  public async Task SendCommandAsync_AfterDisposed_ShouldFail()
+  {
+    var tokenSource = new CancellationTokenSource(30_0000);
+    await using var factory = TestServerFactory.CreateTestServer<Program>();
+    using var client = await CreateServerClient(factory.Server, tokenSource.Token).ConfigureAwait(false);
+
+    client.Dispose();
+
+    await Assert.ThrowsAsync<ObjectDisposedException>(
+      async () => await client.SendCommandAsync(new EchoCommand("Hello"), token: tokenSource.Token).ConfigureAwait(false)).ConfigureAwait(false);
+  }
+
+  [Fact]
   public async Task FireCommandAsync_TriggerEvent_ShouldSendEventBack()
   {
     var tokenSource = new CancellationTokenSource(30_0000);

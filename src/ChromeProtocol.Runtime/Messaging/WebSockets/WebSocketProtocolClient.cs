@@ -78,7 +78,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     }
     finally
     {
-      Dispose();
+      Close(new ProtocolConnectionClosedException());
 
       if (!_connectionCancellation?.IsCancellationRequested ?? false)
         OnDisconnected?.Invoke(this, EventArgs.Empty);
@@ -118,30 +118,52 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     string? sessionId = null,
     CancellationToken? token = default) where TResponse : IType
   {
+    var cancellationToken = token ?? CancellationToken.None;
+    cancellationToken.ThrowIfCancellationRequested();
+    ThrowIfDisposed();
+
     var id = Interlocked.Increment(ref _currentId);
     try
     {
-      var resolver = new TaskCompletionSource<JsonObject>();
+      var resolver = new TaskCompletionSource<JsonObject>(TaskCreationOptions.RunContinuationsAsynchronously);
       if (_responseResolvers.TryAdd(id, resolver))
       {
-        await FireInternalAsync(id, GetMethodName(command.GetType()), command, sessionId).ConfigureAwait(false);
-        var responseRaw = await resolver.Task.ConfigureAwait(false);
-        var response = responseRaw.Deserialize<TResponse>(JsonProtocolSerialization.Settings) ?? throw new ArgumentException(null, nameof(responseRaw));
-        return response;
+        using (cancellationToken.Register(() =>
+               {
+                 if (_responseResolvers.TryRemove(id, out var pendingResolver))
+                   pendingResolver.TrySetCanceled();
+               }))
+        {
+          await FireInternalAsync(id, GetMethodName(command.GetType()), command, sessionId).ConfigureAwait(false);
+          var responseRaw = await resolver.Task.ConfigureAwait(false);
+          var response = responseRaw.Deserialize<TResponse>(JsonProtocolSerialization.Settings) ?? throw new ArgumentException(null, nameof(responseRaw));
+          return response;
+        }
       }
 
       throw new Exception();
     }
-    catch (Exception e)
+    catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+    {
+      throw;
+    }
+    catch (Exception e) when (e is not ProtocolConnectionClosedException and not ObjectDisposedException)
     {
       _logger.LogError(e, "Error occured while sending the protocol message");
       throw;
+    }
+    finally
+    {
+      _responseResolvers.TryRemove(id, out _);
     }
   }
 
   public async Task FireCommandAsync(ICommand command, string? sessionId = default,
     CancellationToken token = default)
   {
+    token.ThrowIfCancellationRequested();
+    ThrowIfDisposed();
+
     var id = Interlocked.Increment(ref _currentId);
     await FireInternalAsync(id, GetMethodName(command.GetType()), command, sessionId).ConfigureAwait(false);
   }
@@ -150,19 +172,41 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   public void Dispose()
   {
-    if (_isDisposed) return;
-    if (_connectionCancellation?.IsCancellationRequested ?? false) return;
+    Close(new ObjectDisposedException(GetType().FullName));
+  }
 
-    _connectionCancellation?.Cancel();
+  private void Close(Exception pendingResponseException)
+  {
+    if (_isDisposed) return;
+
     _isDisposed = true;
+
+    if (!(_connectionCancellation?.IsCancellationRequested ?? false))
+      _connectionCancellation?.Cancel();
+
+    if (!_outgoingMessages.IsAddingCompleted)
+      _outgoingMessages.CompleteAdding();
+
+    FailPendingResponses(pendingResponseException);
   }
 
   private async Task FireInternalAsync(int id, string methodName, ICommand command, string? sessionId)
   {
+    ThrowIfDisposed();
+
     var request = new ProtocolRequest<ICommand>(id, methodName, command, sessionId);
-    if (!_outgoingMessages.TryAdd(request))
+    try
     {
-      throw new Exception("Can't schedule outgoing event for sending.");
+      if (!_outgoingMessages.TryAdd(request))
+      {
+        ThrowIfDisposed();
+        throw new Exception("Can't schedule outgoing event for sending.");
+      }
+    }
+    catch (InvalidOperationException)
+    {
+      ThrowIfDisposed();
+      throw;
     }
   }
 
@@ -215,6 +259,13 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
             incoming = _nativeClient.ReceiveAsync(new ArraySegment<byte>(buffer), token).ConfigureAwait(false)
               .GetAwaiter().GetResult();
 
+            if (incoming.MessageType == WebSocketMessageType.Close)
+            {
+              _logger.LogWarning($"Chrome has closed the WebSocket connection during receive operation. Socket state: {_nativeClient.State}");
+              DisconnectAsync(CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
+              return;
+            }
+
             memoryStream.Write(buffer, 0, incoming.Count);
           } while (!incoming.EndOfMessage);
 
@@ -236,6 +287,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
       catch (Exception e)
       {
         _logger.LogError(e, "Error occured while receiving the protocol message");
+        FailPendingResponses(new ProtocolConnectionClosedException("The protocol connection failed while receiving a message.", e));
         throw;
       }
     }).Start();
@@ -272,10 +324,10 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     _responseResolvers.TryRemove(response.Id, out var resolver);
 
     if (response.Error is { } error)
-      resolver?.SetException(new ProtocolErrorException(error));
+      resolver?.TrySetException(new ProtocolErrorException(error));
 
     if (response.Result is { } result)
-      resolver?.SetResult(result);
+      resolver?.TrySetResult(result);
   }
 
   private async Task ProcessOutgoingRequest(ProtocolRequest<ICommand> request)
@@ -292,6 +344,21 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
       await DisconnectAsync(CancellationToken.None).ConfigureAwait(false);
     }
     OnRequestSent?.Invoke(this, request);
+  }
+
+  private void FailPendingResponses(Exception exception)
+  {
+    foreach (var pendingResponse in _responseResolvers.ToArray())
+    {
+      if (_responseResolvers.TryRemove(pendingResponse.Key, out var resolver))
+        resolver.TrySetException(exception);
+    }
+  }
+
+  private void ThrowIfDisposed()
+  {
+    if (_isDisposed)
+      throw new ObjectDisposedException(GetType().FullName);
   }
 
   private static string GetMethodName(MemberInfo type) =>
