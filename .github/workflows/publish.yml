@@ -8,6 +8,9 @@ defaults:
 
 jobs:
   publish:
+    permissions:
+      id-token: write
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: 📝 Fetch Sources
