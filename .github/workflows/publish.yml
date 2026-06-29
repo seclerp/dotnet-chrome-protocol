@@ -51,7 +51,10 @@ jobs:
               - [ChromeProtocol.Runtime](https://www.nuget.org/packages/ChromeProtocol.Runtime)
               - [ChromeProtocol.Domains](https://www.nuget.org/packages/ChromeProtocol.Domains)
               - [ChromeProtocol.Core](https://www.nuget.org/packages/ChromeProtocol.Core)
+      - name: 🚀 NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: seclerp
       - name: 🚀 Publish
-        run: dotnet nuget push "**/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }} 
+        run: dotnet nuget push "**/*.nupkg" --api-key "${{steps.login.outputs.NUGET_API_KEY}}" --source https://api.nuget.org/v3/index.json --skip-duplicate
