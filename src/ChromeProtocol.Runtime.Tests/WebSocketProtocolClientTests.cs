@@ -73,6 +73,29 @@ public class WebSocketProtocolClientTests : IAsyncLifetime
   }
 
   [Fact]
+  public async Task SendCommandAsync_MultiplePendingCommandsWhenConnectionClosed_ShouldFailWithDifferentExceptions()
+  {
+    var tokenSource = new CancellationTokenSource(30_0000);
+    await using var factory = TestServerFactory.CreateTestServer<Program>();
+    using var client = await CreateServerClient(factory.Server, tokenSource.Token).ConfigureAwait(false);
+
+    var firstCommand = client.SendCommandAsync(new NeverRespondCommand(), token: tokenSource.Token);
+    var secondCommand = client.SendCommandAsync(new NeverRespondCommand(), token: tokenSource.Token);
+    var closeCommand = client.SendCommandAsync(new CloseConnectionCommand(), token: tokenSource.Token);
+
+    var firstException = await Assert.ThrowsAsync<ProtocolConnectionClosedException>(
+      async () => await firstCommand.ConfigureAwait(false)).ConfigureAwait(false);
+    var secondException = await Assert.ThrowsAsync<ProtocolConnectionClosedException>(
+      async () => await secondCommand.ConfigureAwait(false)).ConfigureAwait(false);
+    var closeException = await Assert.ThrowsAsync<ProtocolConnectionClosedException>(
+      async () => await closeCommand.ConfigureAwait(false)).ConfigureAwait(false);
+
+    Assert.NotSame(firstException, secondException);
+    Assert.NotSame(firstException, closeException);
+    Assert.NotSame(secondException, closeException);
+  }
+
+  [Fact]
   public async Task SendCommandAsync_AfterConnectionClosed_ShouldFail()
   {
     var tokenSource = new CancellationTokenSource(30_0000);

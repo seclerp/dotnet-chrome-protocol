@@ -78,7 +78,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     }
     finally
     {
-      Close(new ProtocolConnectionClosedException());
+      Close(() => new ProtocolConnectionClosedException());
 
       if (!_connectionCancellation?.IsCancellationRequested ?? false)
         OnDisconnected?.Invoke(this, EventArgs.Empty);
@@ -128,17 +128,16 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
       var resolver = new TaskCompletionSource<JsonObject>(TaskCreationOptions.RunContinuationsAsynchronously);
       if (_responseResolvers.TryAdd(id, resolver))
       {
-        using (cancellationToken.Register(() =>
-               {
-                 if (_responseResolvers.TryRemove(id, out var pendingResolver))
-                   pendingResolver.TrySetCanceled();
-               }))
+        using var _ = cancellationToken.Register(() =>
         {
-          await FireInternalAsync(id, GetMethodName(command.GetType()), command, sessionId).ConfigureAwait(false);
-          var responseRaw = await resolver.Task.ConfigureAwait(false);
-          var response = responseRaw.Deserialize<TResponse>(JsonProtocolSerialization.Settings) ?? throw new ArgumentException(null, nameof(responseRaw));
-          return response;
-        }
+          if (_responseResolvers.TryRemove(id, out var pendingResolver))
+            pendingResolver.TrySetCanceled();
+        });
+
+        await FireInternalAsync(id, GetMethodName(command.GetType()), command, sessionId).ConfigureAwait(false);
+        var responseRaw = await resolver.Task.ConfigureAwait(false);
+        var response = responseRaw.Deserialize<TResponse>(JsonProtocolSerialization.Settings) ?? throw new ArgumentException(null, nameof(responseRaw));
+        return response;
       }
 
       throw new Exception();
@@ -172,10 +171,10 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
 
   public void Dispose()
   {
-    Close(new ObjectDisposedException(GetType().FullName));
+    Close(() => new ObjectDisposedException(GetType().FullName));
   }
 
-  private void Close(Exception pendingResponseException)
+  private void Close(Func<Exception> pendingResponseExceptionFactory)
   {
     if (_isDisposed) return;
 
@@ -187,7 +186,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     if (!_outgoingMessages.IsAddingCompleted)
       _outgoingMessages.CompleteAdding();
 
-    FailPendingResponses(pendingResponseException);
+    FailPendingResponses(pendingResponseExceptionFactory);
   }
 
   private async Task FireInternalAsync(int id, string methodName, ICommand command, string? sessionId)
@@ -287,7 +286,7 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
       catch (Exception e)
       {
         _logger.LogError(e, "Error occured while receiving the protocol message");
-        FailPendingResponses(new ProtocolConnectionClosedException("The protocol connection failed while receiving a message.", e));
+        FailPendingResponses(() => new ProtocolConnectionClosedException("The protocol connection failed while receiving a message.", e));
         throw;
       }
     }).Start();
@@ -346,12 +345,12 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
     OnRequestSent?.Invoke(this, request);
   }
 
-  private void FailPendingResponses(Exception exception)
+  private void FailPendingResponses(Func<Exception> exceptionFactory)
   {
     foreach (var pendingResponse in _responseResolvers.ToArray())
     {
       if (_responseResolvers.TryRemove(pendingResponse.Key, out var resolver))
-        resolver.TrySetException(exception);
+        resolver.TrySetException(exceptionFactory());
     }
   }
 
