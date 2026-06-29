@@ -109,16 +109,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/seclerp/dotnet-chrome-protocol/compare/2.1.1...HEAD
-[2.1.1]: https://github.com/seclerp/dotnet-chrome-protocol/compare/2.1.0...2.1.1
-[2.1.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/2.0.1...2.1.0
-[2.0.1]: https://github.com/seclerp/dotnet-chrome-protocol/compare/2.0.0...2.0.1
-[2.0.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.3.0...2.0.0
-[1.3.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.2.3...1.3.0
-[1.2.3]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.2.2...1.2.3
-[1.2.2]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.2.1...1.2.2
-[1.2.1]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.2.0...1.2.1
-[1.2.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.1.0...1.2.0
-[1.1.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.1.0-preview2...1.1.0
-[1.1.0-preview2]: https://github.com/seclerp/dotnet-chrome-protocol/compare/1.1.0-preview1...1.1.0-preview2
-[1.1.0-preview1]: https://github.com/seclerp/dotnet-chrome-protocol/releases/tag/v1.1.0-preview1
+[Unreleased]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v2.1.1...HEAD
+[2.1.1]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v2.1.0...v2.1.1
+[2.1.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v2.0.1...v2.1.0
+[2.0.1]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v2.0.0...v2.0.1
+[2.0.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v1.3.0...v2.0.0
+[1.3.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v1.2.3...v1.3.0
+[1.2.3]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v1.2.2...v1.2.3
+[1.2.2]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v1.2.1...v1.2.2
+[1.2.1]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v1.2.0...v1.2.1
+[1.2.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v1.1.0-preview2...v1.1.0
+[1.1.0-preview2]: https://github.com/seclerp/dotnet-chrome-protocol/compare/v1.1.0-preview1...v1.1.0-preview2
+[1.1.0-preview1]: https://github.com/seclerp/dotnet-chrome-protocol/releases/tag/vv1.1.0-preview1
