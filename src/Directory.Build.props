@@ -1,11 +1,11 @@
 <Project>
   <!-- Global project and StyleCop Analyzers configuration -->
   <PropertyGroup>
-    <Version>2.1.0</Version>
+    <Version>2.1.1</Version>
     <Authors>seclerp</Authors>
     <RepositoryUrl>https://github.com/seclerp/dotnet-chrome-protocol</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>(C) 2024 Andrii Rublov</Copyright>
+    <Copyright>(C) 2026 Andrii Rublov</Copyright>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
