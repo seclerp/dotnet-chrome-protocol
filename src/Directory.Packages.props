@@ -14,8 +14,8 @@
   </ItemGroup>
   <!-- Test-only -->
   <ItemGroup>
-    <PackageVersion Include="FSharp.Core" Version="8.0.200" />
-    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.3" />
+    <PackageVersion Include="FSharp.Core" Version="8.0.403" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.20" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageVersion Include="xunit" Version="2.4.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.4.5" />
@@ -25,9 +25,9 @@
   </ItemGroup>
   <!-- Framework, check package versions that Rider uses before updating package versions in Framework section  -->
   <ItemGroup>
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
     <PackageVersion Include="System.Threading.Channels" Version="6.0.0" />
-    <PackageVersion Include="System.IO.Pipelines" Version="6.0.0" />
+    <PackageVersion Include="System.IO.Pipelines" Version="6.0.3" />
     <PackageVersion Include="Microsoft.IO.RecyclableMemoryStream" Version="2.3.2" />
   </ItemGroup>
 </Project>
