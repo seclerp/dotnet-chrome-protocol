@@ -234,6 +234,12 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
           _logger.LogInformation("Cancellation requested, stopping outgoing queue thread...");
           return;
         }
+        catch (Exception e)
+        {
+          _logger.LogWarning(e, "Error occurred while sending the protocol message");
+          Close(() => new ProtocolConnectionClosedException("The protocol connection failed while sending a message.", e));
+          return;
+        }
       }
     }).Start();
   }
@@ -285,9 +291,8 @@ public class WebSocketProtocolClient<TNativeClient> : IProtocolClient
       }
       catch (Exception e)
       {
-        _logger.LogError(e, "Error occured while receiving the protocol message");
-        FailPendingResponses(() => new ProtocolConnectionClosedException("The protocol connection failed while receiving a message.", e));
-        throw;
+        _logger.LogWarning(e, "Error occured while receiving the protocol message");
+        Close(() => new ProtocolConnectionClosedException("The protocol connection failed while receiving a message.", e));
       }
     }).Start();
   }
