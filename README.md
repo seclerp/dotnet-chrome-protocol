@@ -101,7 +101,7 @@ To do so:
 
 ### Prerequisites
 
-.NET SDK 8.0 or newer
+.NET SDK 10.0.401 or newer
 
 ### Build
 

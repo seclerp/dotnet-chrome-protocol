@@ -33,7 +33,7 @@ type GenerateCommandTests(outputHelper: ITestOutputHelper) =
       settings.OutputFolder <- testFolderPath
       settings.Namespace <- "Protocol.Generated"
 
-      let! code = generateCommand.ExecuteAsync(null, settings) |> Async.AwaitTask
+      let! code = generateCommand.ExecuteAsync(null, settings, System.Threading.CancellationToken.None) |> Async.AwaitTask
 
       let actualContents =
         Directory.GetFiles(testFolderPath, "*.cs")
