@@ -99,6 +99,7 @@ public class ChromeBrowserDownloader(IBrowserBinariesStorage browserBinariesStor
   private JsonObjects.Platform GetJsonPlatform() =>
     RuntimeInformation.OSArchitecture switch
     {
+      Architecture.Arm64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => JsonObjects.Platform.LinuxArm64,
       Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => JsonObjects.Platform.Linux64,
       Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => JsonObjects.Platform.Win64,
       Architecture.X64 when RuntimeInformation.IsOSPlatform(OSPlatform.OSX) => JsonObjects.Platform.MacX64,
