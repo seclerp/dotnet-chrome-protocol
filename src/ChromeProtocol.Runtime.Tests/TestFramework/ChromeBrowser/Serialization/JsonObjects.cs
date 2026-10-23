@@ -46,6 +46,7 @@ public class JsonObjects
 
   public enum Platform
   {
+    LinuxArm64,
     Linux64,
     MacArm64,
     MacX64,
@@ -76,6 +77,8 @@ public class JsonObjects
       var value = reader.GetString();
       switch (value)
       {
+        case "linux-arm64":
+          return Platform.LinuxArm64;
         case "linux64":
           return Platform.Linux64;
         case "mac-arm64":
@@ -95,6 +98,9 @@ public class JsonObjects
     {
       switch (value)
       {
+        case Platform.LinuxArm64:
+          JsonSerializer.Serialize(writer, "linux-arm64", options);
+          return;
         case Platform.Linux64:
           JsonSerializer.Serialize(writer, "linux64", options);
           return;
