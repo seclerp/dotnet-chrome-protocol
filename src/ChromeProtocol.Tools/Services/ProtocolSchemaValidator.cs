@@ -11,15 +11,16 @@ public class ProtocolSchemaValidator
   public async Task<(bool, IEnumerable<string>)> TryValidateAsync(string fileName, JsonDocument protocolDocument)
   {
     await using var schemaStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ChromeProtocol.Tools.protocol_definition_schema.json");
-    var schema = await JsonSchema.FromStream(schemaStream).ConfigureAwait(false);
-    var result = schema.Evaluate(protocolDocument, new EvaluationOptions
+    using var schemaDocument = await JsonDocument.ParseAsync(schemaStream).ConfigureAwait(false);
+    var schema = JsonSchema.Build(schemaDocument.RootElement);
+    var result = schema.Evaluate(protocolDocument.RootElement, new EvaluationOptions
     {
       OutputFormat = OutputFormat.Hierarchical
     });
     if (!result.IsValid)
     {
       var presentableErrors = FlattenResults(result)
-        .Where(results => results.HasErrors)
+        .Where(results => results.Errors is { Count: > 0 })
         .Select(error => _formatter.Format(fileName, error));
       return (false, presentableErrors);
     }
@@ -32,7 +33,7 @@ public class ProtocolSchemaValidator
     void CollectResults(EvaluationResults node, LinkedList<EvaluationResults> acc)
     {
       acc.AddLast(node);
-      if (node.HasDetails)
+      if (node.Details is { Count: > 0 })
       {
         foreach (var nested in node.Details)
         {
